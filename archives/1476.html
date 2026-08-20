@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/1476.html"/>
+	<title>企业应用网站性能优化实例分析-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth2">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>企业应用网站性能优化实例分析</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/1476.html" rel="bookmark">企业应用网站性能优化实例分析</a></h1>
+	<div class="post-meta">
+		2008-8-27 20:44:19 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 27 | 
+		浏览: <span class="AddView" id="spn1476" data-id="1476"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/WebDesign.html" rel="tag"><img src="/logo/WebDesign.gif" alt="网站设计" class="thumb" width="80" height="80" /></a><p>前段时间对某个企业应用网站进行了一次优化分析，解决这个网站经常死机和CPU高负载的种种问题，根据我接触的一些应用和服务器配置，我对这个案例总结了一些优化方案，用来解决网站的高负载和高并发等问题，这里我和大家分享一下这个案例，希望能和大家一起探讨一下这种解决方案的优劣。</p><p><strong>一、网站当前状况和性能现状</strong></p><p>系统硬件配置：CPU为两个Intel Xeon 2.4G，物理内存为2.5G.</p><p>系统软件配置：操作系统为<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> Server 2003标准版，数据库为SQL Server 2000.</p><p>服务器访问量：工作日：访问人数 10000，浏览量 30000 ，休息日：访问人数 4000，浏览量 10000，每用户访问页面为2.88页面，平均停留时间为3分钟。由于存在大型下载文件，服务器流量每天有80G到160G左右。</p><p>WEB系统：采用Tomcat服务器，使用Struts和Hibernate.</p><p>网站系统：网站有几套不同的系统，有新闻发布CMS系统、文件下载系统、反馈系统等等，使用基于Java的Struts和Hibernate的MVC架构，动态应用。</p><p>服务器CPU目前通常为40%左右，很多情况能增加到80-90%.</p><p><strong>二、网站性能分析</strong></p><p>通常情况下CPU达到80%说明系统性能存在瓶颈，需要找出系统的瓶颈究竟在哪里。</p><p>分析过程是，远程登录服务器，打开SQL Server 2000的事件探查器，记录和分析SQL语句，同时打开任务管理器，查看各个进程占用CPU的状况。</p><p>经过查询，SQLServer占用较大的CPU，说明系统调用CPU查询较多，初步可以确认是数据库引起的系统瓶颈，由于使用Struts和Hibernate应用，调用数据库频繁，因此可以采用减少SQL查询的方式降低对SQLServer的调用，通常情况下有两种方法：Cache或静态化。</p><p>另外，服务器的Web系统采用的架构存在一些问题，因为存在大型下载文件，占用的流量非常大，而Tomcat本身对于静态文件的处理性能并不好，也会对系统性能产生负面的影响。</p><p><strong>三、网站和服务器优化方案</strong></p><p><strong>1、缓存</strong></p><p>将页面静态化是通常的优化方案，但是对于当前的Tomcat服务器下的Struts和Hibernate未必有效，因为Tomcat对于静态HTML文件本身支持并不理想，并且新闻内容更新较为频繁。因此，在现有架构的基础上，可以使用hibernate的ehcached的动态缓存的方式，在动态应用中减少数据库负载，提升访问速度。</p><p>使用ehcache对访问频率高，对数据库消耗大的页面进行动态缓存（时间10分钟），在缓存的时间范围内这些页面直接重缓存中读取，无需访问数据库，提高这些页面的访问速度，减小数据库访问的压力。这样SQL Server数据库的负载会大为降低。</p><p><strong>2、静态化</strong></p><p>对于一般的网站来说，效率最高、消耗最小的就是纯静态化的html页面，所以我们尽可能使我们的网站上的页面采用静态页面来实现，这个最简单的方法其实也是最有效的方法。因此，从长远考虑，需要对当前网站的架构进行一番调整，以适应静态化页面的需求。</p><p>首先，由于Tomcat对于静态页面支持不太好，也不支持URL 重写，因此需要安装Apache服务器。</p><p>其次，由于Struts对于搜索引擎不友好，因此将其全部转换为静态HTML页面，即可降低对数据库的查询次数，也可提高对搜索引擎的友好度。因此需要使用HTML静态化的方式优化服务器端的WEB程序。</p><p>具体实施方案是，将现有Tomcat配置为8080端口，安装Apache服务器，配置为80端口，<a target="_blank" href="/archives/1308.html">在Apache中修改httpd.conf文件</a>，使得Tomcat解析JSP文件，静态HTML文件、图片文件、大型下载文件使用性能更好的Apache支持。</p><p>修改Apache的.haccess文件，将Struts应用重写为静态Html文件形式，修改<a target="_blank" href="/archives/1289.html">相关代码</a>，使得其能自动生成静态HTML文件。</p><p>优化访问量最多的页面，首页index.jsp为目前访问量最多的页面，里面的动态代码删除，将这个页面转化为静态的html页面index.html.</p><p><strong>3、应用部署</strong></p><p>如果资金允许的话，可以将数据库SQL Server 2000升级为SQLServer 2005，并单独部署到另外一台独立服务器上，文件下载也单独部署一台服务器。</p><p>由于Tomcat本身的局限性，一个Tomcat的资源无法无限利用服务器的所有资源，并且Tomcat需要响应的请求太多，势必影响到整体的性能，因此配置多服务器可以使得Web网站的负载大幅降低，从而提高整体的响应能力。</p><p>不过这种部署的缺点是需要付出升级软件、购买服务器、托管带宽等成本开销，建议不到万不得已，可以不用付出额外的资金升级。</p><p>以上就是我针对某企业应用网站进行分析和优化的具体步骤和方案，希望能起到抛砖引玉的作用，供大家参考。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/WebDesign.jpg" alt="企业应用网站性能优化实例分析" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note1476"></span><a href="javascript:commYea(1476);" id="dig1476">顶一下 ▲</a>(<span id="sdig1476"><Script language="javascript" type="text/javascript">showDig("1476");</script></span>) &nbsp; <a href="javascript:commNay(1476);" id="down1476">踩一下 ▼</a>(<span id="sdown1476"><Script language="javascript" type="text/javascript">showDown("1476");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/1475.html" title="YouTube上传支持Gears">YouTube上传支持Gears</a></div><div class="next_content">下一篇 » <a href="/archives/1477.html" title="美国运动员借助Google Earth获取北京奥运会金牌">美国运动员借助Google Earth获取北京奥运会金牌</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/1291.html">Web网站的性能测试工具</a></p><p class="mutualitylist"><a href="/archives/1288.html">从IIS的ASP迁移到APACHE的PHP的方法</a></p><p class="mutualitylist"><a href="/archives/776.html">解决网站大流量问题的策略</a></p><p class="mutualitylist"><a href="/archives/560.html">十大网站设计错误</a></p><p class="mutualitylist"><a href="/archives/517.html">网站设计的基本步骤和方法</a></p><p class="mutualitylist"><a href="/archives/228.html">关于“网站重构”概念解析</a></p><p class="mutualitylist"><a href="/archives/227.html">XHTML的学习</a></p><p class="mutualitylist"><a href="/archives/212.html">令网站打开提高速度的7大秘方</a></p><p class="mutualitylist"><a href="/archives/168.html">美女图片在网站上的应用</a></p><p class="mutualitylist"><a href="/archives/28.html">网站建设：提高网站访问量的策略</a></p><p class="mutualitylist"><a href="/archives/27.html">优化你的站点，让它加载的再快一些</a></p><p class="mutualitylist"><a href="/archives/26.html">使你的网站更专业－－谈网站优化</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

@@ -1,0 +1,415 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/6998.html"/>
+	<title>安全架构师站在网络安全角度看智能汽车的安全问题-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>安全架构师站在网络安全角度看智能汽车的安全问题</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/6998.html" rel="bookmark">安全架构师站在网络安全角度看智能汽车的安全问题</a></h1>
+	<div class="post-meta">
+		2022-11-28 20:57:19 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 2 | 
+		浏览: <span class="AddView" id="spn6998" data-id="6998"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Security.html" rel="tag"><img src="/logo/Security.gif" alt="安全" class="thumb" width="80" height="80" /></a><p>前言：先对广东潮州发生的2死多伤智能汽车失控事故致以默哀10分钟。</p>
+
+<p>为啥写这篇文章，是因为看了很多网络评论的分析，都仅仅停留在刹车是否踩下等的初浅问题的讨论上。</p>
+
+<p>作为某&ldquo;大型&rdquo;南极动物的工厂出来的前&ldquo;某天网&rdquo;安全架构师和项目主导人，我觉得有必要通过在<a href="/tag/Security.html" title="网络安全"  Target="_blank" >网络安全</a>角度，深入分析一下导致事故的各种因素，从而得出有利于对公众安全、长期认真真正负责任的分析。</p>
+
+<p>首先我们知道，复杂系统一定是不可靠的，不管是谁做的。</p>
+
+<p>这里先拿曾经的高铁动车事故来说：复杂的电信号和网络系统，总会因为人为的非人为的原因，导致系统层面的失控或者事故发生。</p>
+
+<p>简单来说：对于安全而言，所有系统都有漏洞。 &nbsp;专业点来说：图灵完备的软件系统无法证明绝对正确。而智能汽车、智能电气系统，一定是有图灵完备的软件系统的：包含了spaceX这样的宇航员用的智能系统&mdash;&mdash;曾经就发生过因为一个计算符号写少了等于号，所以价值几十亿美金的航天飞机失事，7个宇航员殉职。对没错，发生在美国。</p>
+
+<p>温州动车事故发生后，作为没拿上岗许可证的程序员，内心很是惶恐。据说原因是某些没拿证的程序员开发的系统有BUG（程序错误）导致的信号系统失控。</p>
+
+<p>当然，现在不用什么据说不据说，据说一般都是&ldquo;谣言&rdquo;。这里想说的是在各种事故发生了，总会有各种言论出来做为分析，不一定正确，但代表了某些人的看法。</p>
+
+<p>某B音的飞机因传感器问题导致的软件系统失控，这里飞机驾驶员的权限还不如软件系统。然后大家都知道了，死了不少人，某型号的飞机也被禁飞了很久。</p>
+
+<p>所以，我觉得：如果软件很重要，为什么不更注意安全多一些。在网络安全、软件安全、系统安全上投入多一些，总会带来更多的可靠性和品牌赞誉。</p>
+
+<p>举了这么多例子，说了这么多事故的故事。那么我们如何来分析这次智能汽车导致的事故的原因呢？</p>
+
+<p>智能系统一定是复杂系统，甚至是分布式的、网络的庞大系统，这是肯定的、毫无疑问的。</p>
+
+<p>所以出了事故，总会有小道消息说，该智能汽车的官方人员从后台数据显示：没有任何杀车纪录，都是电门踩到底，潮州的事故如此，江浙前几天发生的智能汽车失控靠着摩擦路边护栏才能停下来，也是如此。</p>
+
+<p>我想说的是：服务器的后台数据不一定可信，不可信的原因有很多种。</p>
+
+<p>1、并不是说官方的程序员不可信</p>
+
+<p>2、并不是说官方的网络服务程序不可信</p>
+
+<p>3、并不是说官方的智能汽车的智能操作系统、自动驾驶系统不可信</p>
+
+<p>4、并不是说官方的智能系统一定会黑客攻击了</p>
+
+<p>5、并不是说官方的智能系统一定被某些信号干扰了（说的就是传感器、非传感器信号）</p>
+
+<p>6、并不是说官方的智能汽车的刹车系统不够智能</p>
+
+<p>7、并不是说机械装置就一定可信（传感器也是机械系统）</p>
+
+<p>8、并不是说智能汽车没有类似飞机黑匣子一样的黑科技</p>
+
+<p>我想说的是：还是得有类似&ldquo;黑匣子&rdquo;的黑科技可能才更可信。</p>
+
+<p>所以，某B音飞机失事，查原因不全得靠黑匣子吗。</p>
+
+<p>后台数据不可信吗？不一定不可信，只是不能全信。因为后台数据是依靠不安全的无线网络信道得来的。</p>
+
+<p>原因很多，比如说俄乌纷争，据说某朗的无人机技术，是复刻自美国。原因是：美国军方侦察用无人机的无线电信号被干扰，然后被某朗军方完整捕获了。</p>
+
+<p>某拉的智能汽车，虽然安全级别并不一定低于美国军方，但是也会被、也能被电信号干扰，这是绝对的以及肯定的。所以360董事长曾当面跟某拉创始人说过：你的智能汽车系统不安全，我方程序员已经黑进去了。好吧：黑进去了。然后某拉创始人就再也不理360董事长了！！！</p>
+
+<p>他们间的矛盾是小事。</p>
+
+<p>对于安全而言，总得有人出来指出，哟，原来你没穿上我们普通人的衣服，你穿的是隐形的透明的钢铁不锈钢的合金衣！</p>
+
+<p>无线网络信道的不可信，问题很大。是具备能让智能汽车失控的潜在原因。</p>
+
+<p>但这并不是全部，能出问题还可能在智能系统上。</p>
+
+<p>智能系统一定是复杂的，特别是带有网络远程控制的智能系统。所以，谷歌的安卓系统，是能作恶的。国产的鸿蒙系统最近新增了2000万行代码，什么概念呢？拿一篇word文档举例，只能放得下50页，如果全部打印下来那就是40万页。我们普通的一本书比较厚的大概是1000页，也就是说大概打印下来能装400万本1000页厚的书。如果每个人1年写10本1000页厚的书，大概需要40万人1年才能写出2000万行代码。</p>
+
+<p>写代码是简单的，但是查代码漏洞不容易啊。首先，完整看完这2000万行代码，我觉得大部分人100辈子都做不到。更别说查漏洞了。</p>
+
+<p>这里肯定会有人抬杠一下，2000万行的智能系统不多见吧？</p>
+
+<p>举世流行的linux系统（google的安卓系统底层就是用这个），累计下来，预计有10亿行代码。linux系统在你人的智能手机上都安装有（苹果手机是类unix系统改造的，代码行数并不低）。</p>
+
+<p>所以，智能系统大部分都是复杂系统。</p>
+
+<p>复杂系统不一定不安全，就是有漏洞。这不，0day漏洞，作为云服务器运营商，亚马逊和国内的各种云，肯定整天在打智能系统的运维补丁。 &nbsp; 为啥？漏洞不少啊。</p>
+
+<p>既然智能系统不安全，能不能不用。这是个好问题，我想说的是：能不用就不用。</p>
+
+<p>所以俄罗斯跟乌克兰的矛盾在于：&ldquo;俄用的是电子管武器，没有智能系统&rdquo;（谣言止于智者）。乌用的是西式的武器系统，有大量的复杂的网络的、智能的、分布式的、APP的、去中心化举报敌情的各种智能系统。 &nbsp;战争的现状估计很多人都关注到，俄增兵了，战斗很焦灼。</p>
+
+<p>智能系统，既能用于智能汽车，也能用于战争，这是俄乌战争的启示。</p>
+
+<p>不仅如此，民用的电子芯片（例如MCU，某D牌厂商就号称能自主生产大部分车规级芯片&mdash;&mdash;这是个壮举）也能用于导弹等的复杂智能武器上。所以俄撤退了，抱走的是电冰箱，因为电冰箱里有MCU芯片，可以用于制造拥有智能系统的精确制导武器。</p>
+
+<p>对于穿上了红色衣服的安全教主说的话，某斯拉的智能汽车有漏洞，能被黑入，我是信的。因为没有漏洞的智能系统不存在。</p>
+
+<p>既然如此，智能系统充满漏洞，刹车系统被影响了，这并不奇怪。</p>
+
+<p>现在的智能汽车，都是有着比linux、安卓系统更加复杂的神经网络之无人驾驶的自动系统的。这可比某B音的飞机无人驾驶系统复杂1万倍的：在天上没有路障，没有信号灯、没有横穿马路的行人、没有左右摇摆的电动单车、没有坑坑洼洼有可能地陷的路面、没有因修路而设置的各种路障，飞行驾驶员还是年薪几百万的。</p>
+
+<p>复杂的贵达数亿美金的机械飞机都能失控、还能出智能无人驾驶系统事故，更别说才几十万元人民币的又带有复杂自动驾驶系统的智能电动汽车了。</p>
+
+<p>说了这么多，网络服务器、信道可能会被攻击，智能汽车的智能系统也充满了潜在的漏洞。还如何确保安全呢？</p>
+
+<p>本人不是机械工程师，无法给出机械方面的安全建议。但是就智能系统和网络安全、智能主机安全给出一些比普通人还算专业的建议，还是能做得到的。</p>
+
+<p>首先，要确保有日志。</p>
+
+<p>这不，某拉的官方工作人员说了，有后台数据，后台数据表明没刹车，电门按到底。</p>
+
+<p>对，专业的货车驾驶员，能把电位当刹车，一直踩，不松开过。</p>
+
+<p>就这不松开过就存在问题，谁剎车发现没反应，会一直踩到底不松呢（连踩到底几分钟不松很困难），除非是脑子轴了。但是警方说司机是没有毒驾、醉驾的。</p>
+
+<p>这就在逻辑上排除了，人为的电门会被正常表现的老司机一直踩到底没松过的可能性。</p>
+
+<p>如果不是人为一直踩电门，那有可能的原因是什么呢？</p>
+
+<p>很简单，电门不一定非得人踩着，才会有电门踩到底的行为。</p>
+
+<p>因为除了人，还有自动驾驶系统。即便自动驾驶系统没发过这样的指令，也可能是电信号干扰导致的。原因太多，一辆电动智能汽车的组件虽然看起来比机械油车零部件少，但是构建智能系统的复杂的分布式系统模块，一定是比普通汽车要多得多的。</p>
+
+<p>如果某拉的后台数据是对的，智能汽车的智能系统也是对的、驾驶员也没问题，那是什么问题呢？</p>
+
+<p>所以警方说了，是失控事故。我觉得这个&ldquo;失控&rdquo;定义非常清晰，说的就不是人为的。</p>
+
+<p>这里说的人，既是说驾驶员不会人为导致事故，也是说某拉不会故意让智能汽车发生事故。</p>
+
+<p>不是人为的，那就是非人为的。</p>
+
+<p>关于智能汽车的神经网络自动驾驶系统，我很早就跟行业知名的某媒咨询创始人兼CEO说过，自动驾驶会在5年内变得流行起来。</p>
+
+<p>果然，2022年了，现在的智能汽车不能没有自动驾驶。</p>
+
+<p>智能自动驾驶，作为算法工程师兼安全架构师、码农（农民工的农）的我，几天天天开这样的智能自动驾驶汽车。而且一出停车场，必开L2级别的自动驾驶，无它，省心省事。</p>
+
+<p>每天开上几十公里近百公里上下班，能省不少精力。</p>
+
+<p>但，自从刚买车不到1个月，就出了一个小小的自动驾驶事故，我的手再也没离开过方向盘，并且眼睛总是盯着路况，丝毫不会分心，即便我听着音质尚可的丹拿音响的Q版高清音乐。</p>
+
+<p>事故的原因很简单，以10公里/h不到的速度，自动驾驶的汽车径直地撞向了鬼探头的缓行的的士汽车。对于那个的士司机，现在依然对他感到歉意。因为我对自动驾驶的过于放心才导致了剐蹭，还好没发生人身伤害，只是让对方损失了半天的维修时间加上影响了一天的心情。</p>
+
+<p>因为这次事故，虽然我天天一出门必开自动驾驶，但是绝对不敢不看路况的情况下，把方向盘完全交给L2级别的自动驾驶的智能系统。</p>
+
+<p>原因无它，用它是为了省踩刹车、踩电门、踩油门（好吧，暴露就暴露吧，是史上最强混动系统的、在除了上海地区能挂绿牌插混的某D牌某H型号某M后缀的4.7s百公里加速插混版智能汽车）的精力。</p>
+
+<p>智能汽车的自动驾驶确实是神器，不仅省心、省力、还安全可靠。当然，这仅限于你的注意力不被分散、没有鬼探头、仅限跟车的情况下&mdash;&mdash;并且跟车的情况下保持安全距离，留够智能系统自动刹车的时间和距离&mdash;&mdash;总而言之，懂点计算机程序算法的人，估计更容易操控这样的智能自动驾驶汽车，不讲道理的非理性的人不建议采用自动驾驶模式，因为目前还不够智能，不够智能的汽车你跟它发脾气或者不理它，很容易出问题。</p>
+
+<p>拿自己开智能自动驾驶的经验告诉大家一个事实：</p>
+
+<p>带智能自动驾驶的汽车，电门和刹车，是能被带有神经网络的智能系统控制的。否则无法自动刹车、自动踩电门加速。</p>
+
+<p>从这次潮洲的智能汽车的事故来看，不管出于什么原因。车失控之后，十之八九&ldquo;被动&rdquo;启动了&ldquo;自动驾驶&rdquo;程序逻辑。</p>
+
+<p>是否如此，得查日志！</p>
+
+<p>再次，虽然有后台数据（网络日志&mdash;&mdash;通过无线网络传递过来的，经过无线通信基站、卫星、光纤、宽带、路由器、云服务商、服务器机等等的分布式去中心化网络系统），但不一定完全可信。</p>
+
+<p>就拿曾经在国内大工厂的安全方面的工作经验来看，网络日志也可能没打全、打漏、缺失、错误、被修改、被误处理、被清理。</p>
+
+<p>当然，没打全的网络日志，就很有可能因某些事件没有被纪录下来，这就导致了网络日志可能没办法真实还原现场。</p>
+
+<p>有人一定会说，既然没打全，那有还有没有可能拿到全量日志呢？</p>
+
+<p>没打全的原因很简单，涉及到成本问题。</p>
+
+<p>不管是智能汽车的无线网络通讯，还是保存于服务器端的网络日志，传输和保存都是需要大量成本的，如果把网络日志打全了（特别是把实时的路况的传感器数据&mdash;&mdash;包含某拉采用的图像识别的自动驾驶算法，这网速跟不跟得上，跟得上之后带宽费、网络存储费谁给？给不给得起，贵不贵都是要实际考虑的问题）。</p>
+
+<p>所以说，站在经济学的角度，这次或者后续的智能汽车发生事故，不可能得到全量的智能汽车运转日志数据。</p>
+
+<p>说到这里，我觉得没必要纠结某拉服务器上的后台数据（网络日志）的电门踩到底，没有踩过刹车的这个结论的。更重要的是如何通过&ldquo;有限的日志来反馈真相&rdquo;，这才是重要的事情。</p>
+
+<p>如果后台数据反馈的真相不正确，那么还有没有更好的办法呢？</p>
+
+<p>办法很简单：还是得看日志。</p>
+
+<p>既然后台数据（网络日志）不一定可信（或者说只代表了缺失信息的真相），那么很简单啊。不看网络日志，看主机日志&mdash;&mdash;就是智能汽车上保留的智能主机日志。</p>
+
+<p>故警方通报说：将邀请第三方的检测机构进行检查、核实事故发生的真实原因。</p>
+
+<p>说到这里，大家应该明白我的看法了吧，日志一定是反馈真相的有效手段，但是因为各种原因，日志也并不全，所以需要结合多方面的日志数据来整理分析。</p>
+
+<p>目前来看，警方已经在这么做了。</p>
+
+<p>比如说网络上各种报道看到的监控视频、相片等，都是一种交叉分析事故原因的方法。只不过这些都是佐证，最好的办法还是拿到主机上的日志，然后进行进一步的第三方的客观分析。</p>
+
+<p>这里点赞一下最近因为疫情的生存艰难的航空行业。他们很早就建立了基于飞行日志的黑匣子机制，而且一定是高规格的国际安全规范、安全标准。</p>
+
+<p>相比而言，目前带有复杂自动驾驶的智能汽车，在安全方面离真正的专业、安全规范、国际标准还有点远。相信为了更好地让普通人能得到便宜实惠、性能卓越、安全可靠的智能自动驾驶的智能汽车，接下来的生产设计厂商，不回避问题，建立更有公信力，安全可靠的安全行业行业规范。只有这样，才能更好的保护消费者，也能为品牌建立长期安全运转建立安全屏障。</p>
+
+<p>结论是啥：安全靠日志？</p>
+
+<p>好吧，查事故还真得靠具备还原真相的操作日志。虽然这些操控日志也未必全面、准确。但是不能没有，不能像普通人一样瞎猜吧。</p>
+
+<p>话说，有了日志，普通人也可以变身专业的侦探。这不，很多警匪电影，不就是说警方破获案件，主要靠路口的监控视频日志吗？</p>
+
+<p>日志分很多种：本机（主机）日志，网络日志，第三方监控日志（例如监控摄像头）。</p>
+
+<p>如果主机日志、网络日志都不可信，也是可能发生的。因为日志没打全嘛（经济原因或者存储空间不够）。</p>
+
+<p>在这种情况下，一定要依赖第三方的监控日志来做交叉对比。</p>
+
+<p>举个简单的例子，国家的网络安全法规定，所有提供网络服务的主体，必须把服务器放在国内部署。这是为了消费者和国家安全的一种监管方式。</p>
+
+<p>如果某拉的云服务器部署在国内，那就简单了。查有没有删除数据库日志还是简单的，监管部门可以让云服务商配合，从数据库日志中查看数据备份，进行数据比对就能知道是否发生人为的后台日志数据删改事件（某盟等saas云软件厂商、包括口碑不佳的某度都发行过程序员删改数据库事故&mdash;&mdash;这是上刑法的，所以农业出身的程序员，一定不要做这种事情）。</p>
+
+<p>除了服务器的备份数据比对，还有主机的日志交叉比对：这里警方需要第三方检测机构的原因在于，不能让事故方品牌来参与是为了公信力。</p>
+
+<p>主机日志有很多种，神经网络的自动驾驶的日志是最难懂的。最好开发这个系统的程序员来干这活，因为目前大部分的自动驾驶神经网络算法，算法结果有的时候连开发算法的程序员都看不懂。</p>
+
+<p>这就导致了很多问题，算法建模所产生的参数网络，有可能也是百万级、千万级的大表大参数，理解它有很大的困难性，更别说解读日志了。</p>
+
+<p>十之八九，我认为主机上的日志也是不全的。正因为车机系统太复杂&mdash;&mdash;操作系统、智能驾驶系统、传感器系统，都复杂且不一定能产生全面的可分析的全量日志。</p>
+
+<p>既然不能全靠网络日志，主机日志也不全，还咋整呢？</p>
+
+<p>人民群众的智慧是无以穷尽的，我认为最有价值的难点是：某D生产的绿牌新能源汽车，在剎车油门位置，放置了一个类似行车纪录仪一样的摄像头，自此之后，某D的车机就很安全了。</p>
+
+<p>这里引出第三方安全日志的重要性！</p>
+
+<p>行车纪录仪，除了供电，不会与主机复杂系统产生深入关联的类第三方系统，能在事故还原、剎车变油门事件中真实原因真相，提供类似第三方检测机构一样的公信力。</p>
+
+<p>第三方日志纪录仪、第三方检测带来真相，带来事故处理结果公信力！</p>
+
+<p>这在航空产业的黑匣子应用方面已经被证实。</p>
+
+<p>再说，某拉失控开到了190多公里/h的时速，最终驾驶员性命是安全的，车头损害严重，但是最终我认为，如果有主机/车机日志、车载黑匣子、第三方日志（类行业纪录仪），再经由第三方检测部门，按照标准的安全行业日志规范来读取还原真相，事故的原因查明将简单明了。</p>
+
+<p>没有瞎猜，没有信息不全面、信息失真、谣言参与的逻辑分析，只有基于数据日志分析得到的粗浅的人人可信的结论。</p>
+
+<p>再祝因故事不幸的人一切安好、早日康复！愿世间再无事故！</p>
+
+<p>写于中国2022.11.14</p>
+
+<p>来源：孤帆远影投稿</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Security.jpg" alt="安全架构师站在网络安全角度看智能汽车的安全问题" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note6998"></span><a href="javascript:commYea(6998);" id="dig6998">顶一下 ▲</a>(<span id="sdig6998"><Script language="javascript" type="text/javascript">showDig("6998");</script></span>) &nbsp; <a href="javascript:commNay(6998);" id="down6998">踩一下 ▼</a>(<span id="sdown6998"><Script language="javascript" type="text/javascript">showDown("6998");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/6997.html" title="推特恢复特朗普账号">推特恢复特朗普账号</a></div><div class="next_content">下一篇 » <a href="/archives/6999.html" title="刘强东发布全员信：京东高管降薪10%—20%">刘强东发布全员信：京东高管降薪10%—20%</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/6975.html">网络产品安全漏洞收集平台备案管理办法</a></p><p class="mutualitylist"><a href="/archives/6925.html">澳门称健康码遭来自欧美地区300多万次攻击</a></p><p class="mutualitylist"><a href="/archives/6919.html">多家银行关闭ATM二维码存款功能</a></p><p class="mutualitylist"><a href="/archives/6915.html">外交部：美国长期监听中国手机用户</a></p><p class="mutualitylist"><a href="/archives/6853.html">黑客网上兜售海量中国公民数据</a></p><p class="mutualitylist"><a href="/archives/6832.html">Cloudflare阻击最大的HTTPS DDoS攻击</a></p><p class="mutualitylist"><a href="/archives/6775.html">DMARC协议设置指南</a></p><p class="mutualitylist"><a href="/archives/6617.html">Cloudflare防火墙规则设置教程</a></p><p class="mutualitylist"><a href="/archives/6610.html">使用Cloudflare免费防御DDOS</a></p><p class="mutualitylist"><a href="/archives/6549.html">如何去除看不到的水印</a></p><p class="mutualitylist"><a href="/archives/6460.html">美国追回黑客的比特币赎金</a></p><p class="mutualitylist"><a href="/archives/6154.html">美国宣布针对中国的“净网”措施</a></p><p class="mutualitylist"><a href="/archives/6108.html">谷歌身份验证器更换手机的方法</a></p><p class="mutualitylist"><a href="/archives/6021.html">微软Github疑被中间人攻击</a></p><p class="mutualitylist"><a href="/archives/5946.html">手机在：钱没了 专家建议：晚上关机</a></p><p class="mutualitylist"><a href="/archives/5807.html">警惕翻墙诈骗短信</a></p><p class="mutualitylist"><a href="/archives/5753.html">Cloudflare大规模网络故障</a></p><p class="mutualitylist"><a href="/archives/5705.html">优衣库网站46万顾客信息泄露</a></p><p class="mutualitylist"><a href="/archives/5639.html">日本13岁女学生发弹窗代码被警方抓捕</a></p><p class="mutualitylist"><a href="/archives/5616.html">深圳面部识别公司被曝泄露250万信息</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-249581">
+		<div id="div-comment-249581" class="comment-body">
+		<div class="comment-author vcard">
+		<div style="float:right">1</div><cite class="fn"><a name="cmt249581">死的蚊</a></cite> &nbsp; <span class="says">说道：</span>		</div>
+		<div class="comment-meta commentmetadata">		</div>
+		目前智能汽车的现状是，一切数据都被汽车公司垄断。<br/>没有有足够公信力第三方介入及足够的信息公开，我先天倾向于信任当事人（消费者）。<br/>毕竟没人拿自己的生命开玩笑。<!--rev249581--><a style="display:none;" id="AjaxCommentEnd249581"></a>
+		<div class="reply"><span style="float:left" class="comment-meta commentmetadata">2022/11/23 20:05:09</span>		
+		<span id="note249581"></span><a href="javascript:commDig(249581);">支持</a>(<span id="sdig249581">16</span>)&nbsp;<a href="javascript:commDown(249581);">反对</a>(<span id="sdown249581">9</span>)&nbsp;<a class='comment-reply-link' href='#respond' onclick="RevertComment('249581')">回复</a>		</div>
+		</div>
+	</li>
+</ol>
+<ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-250126">
+		<div id="div-comment-250126" class="comment-body">
+		<div class="comment-author vcard">
+		<div style="float:right">2</div><cite class="fn"><a name="cmt250126">维中成</a></cite> &nbsp; <span class="says">说道：</span>		</div>
+		<div class="comment-meta commentmetadata">		</div>
+		有智能的地方 就肯定有江湖！<!--rev250126--><a style="display:none;" id="AjaxCommentEnd250126"></a>
+		<div class="reply"><span style="float:left" class="comment-meta commentmetadata">2023/8/15 13:07:56</span>		
+		<span id="note250126"></span><a href="javascript:commDig(250126);">支持</a>(<span id="sdig250126">6</span>)&nbsp;<a href="javascript:commDown(250126);">反对</a>(<span id="sdown250126">4</span>)&nbsp;<a class='comment-reply-link' href='#respond' onclick="RevertComment('250126')">回复</a>		</div>
+		</div>
+	</li>
+</ol>
+<ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	<div id="comment-form">
+<div id="respond" class="respond">
+<h3 id="comments-respond">发表留言</h3>
+<div class="cancel-comment-reply">
+<a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">点击这里取消回复。</a>
+</div>
+<form action="/zb_system/cmd.asp?act=cmt&amp;key=af983eae" method="post" id="frmSumbit" target="_self">
+<input type="hidden" name="inpId" id="inpId" value="6998" />
+	<input type="hidden" name="inpArticle" id="inpArticle" value="" />
+	<input type="hidden" name="inpRevID" id="inpRevID" value="" />
+<input type="text" name="inpName" id="inpName"  value="名称" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="1" />
+<input type="text" name="inpEmail" id="inpEmail" value="邮箱" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="2" />
+<input type="text" name="inpHomePage" id="inpHomePage" value="网站链接" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="3" />
+
+<textarea name="txaArticle" id="txaArticle" cols="100%" rows="10" tabindex="5"  onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('commentSubmit').click();return false};"></textarea>
+<br />
+<p style="display: none;"><input type="checkbox" name="chkRemember" checked="true" id="chkRemember" /> <label for="chkRemember">记住我,下次回复时不用重新输入个人信息</label></p>
+<input name="btnSumbit" type="submit" id="commentSubmit" tabindex="6" value="提交 (Ctrl+Enter)" onclick="JavaScript:return VerifyMessage()"/>
+</form>
+</div>
+</div>
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

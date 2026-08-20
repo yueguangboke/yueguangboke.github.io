@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3136.html"/>
+	<title>为什么要少用Iframe-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>为什么要少用Iframe</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3136.html" rel="bookmark">为什么要少用Iframe</a></h1>
+	<div class="post-meta">
+		2012-6-27 20:16:2 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 23 | 
+		浏览: <span class="AddView" id="spn3136" data-id="3136"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a><p><a href="http://www.w3.org/TR/html4/present/frames.html#edef-IFRAME">iframes</a> 提供了一个简单的方式把一个网站的内容嵌入到另一个网站中。但我们需要慎重的使用iframe。iframe的创建比其它包括scripts和css的 DOM 元素的创建慢了 1-2 个数量级。</p><p>使用 iframe 的页面一般不会包含太多 iframe，所以创建 DOM 节点所花费的时间不会占很大的比重。但带来一些其它的问题：onload 事件以及连接池(connection pool)。</p><p><strong>Iframes 阻塞页面加载</strong></p><p>及时触发 window 的 onload 事件是非常重要的。onload 事件触发使浏览器的 &ldquo;忙&rdquo; 指示器停止，告诉用户当前网页已经加载完毕。当 onload 事件加载延迟后，它给用户的感觉就是这个网页非常慢。</p><p>window 的 onload 事件需要在所有 iframe 加载完毕后(包含里面的元素)才会触发。在 Safari 和 <a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a> 里，通过 JavaScript 动态设置 iframe 的 SRC 可以避免这种阻塞情况。</p><p><strong>唯一的连接池</strong></p><p>浏览器只能开少量的连接到web服务器。比较老的浏览器，包含 Internet Explorer 6 &amp; 7 和 <a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a> 2，只能对一个域名(hostname)同时打开两个连接。这个数量的限制在新版本的浏览器中有所提高。Safari 3+ 和 Opera 9+ 可同时对一个域名打开 4 个连接，<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a> 1+, IE 8 以及 <a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a> 3 可以同时打开 6 个。你可以通过这篇文章查看具体的数据表：<a href="http://www.stevesouders.com/blog/2008/03/20/roundup-on-parallel-connections/">Roundup on Parallel Connections</a>.</p><p>有人可能希望 iframe 会有自己独立的连接池，但不是这样的。绝大部分浏览器，主页面和其中的 iframe 是共享这些连接的。这意味着 iframe 在加载资源时可能用光了所有的可用连接，从而阻塞了主页面资源的加载。如果 iframe 中的内容比主页面的内容更重要，这当然是很好的。但通常情况下，iframe 里的内容是没有主页面的内容重要的。这时 iframe 中用光了可用的连接就是不值得的了。一种解决办法是，在主页面上重要的元素加载完毕后，再动态设置 iframe 的 SRC。</p><p>美国前 10 大网站都使用了 iframe。大部分情况下，他们用它来加载广告。这是可以理解的，也是一种符合逻辑的解决方案，用一种简单的办法来加载广告服务。但请记住，iframe 会给你的页面性能带来冲击。只要可能，不要使用 iframe。当确实需要时，谨慎的使用他们。</p><p>&nbsp;来源：<a href="http://www.stevesouders.com/blog/2009/06/03/using-iframes-sparingly/">英文原文</a>&nbsp; &nbsp;中文编译：IT瘾 &nbsp;<a href="http://itindex.net/blog/2012/06/27/1340767816866.html">原文链接</a></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="为什么要少用Iframe" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3136"></span><a href="javascript:commYea(3136);" id="dig3136">顶一下 ▲</a>(<span id="sdig3136"><Script language="javascript" type="text/javascript">showDig("3136");</script></span>) &nbsp; <a href="javascript:commNay(3136);" id="down3136">踩一下 ▼</a>(<span id="sdown3136"><Script language="javascript" type="text/javascript">showDown("3136");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3135.html" title="Web 2.0时代我们需要什么样的阅读">Web 2.0时代我们需要什么样的阅读</a></div><div class="next_content">下一篇 » <a href="/archives/3137.html" title="谷歌发布Android 4.1系统">谷歌发布Android 4.1系统</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3119.html">SPDY 是什么？如何部署 SPDY？</a></p><p class="mutualitylist"><a href="/archives/3104.html">移动应用设计中应避免的十种错误</a></p><p class="mutualitylist"><a href="/archives/3097.html">MGC：机器生成内容</a></p><p class="mutualitylist"><a href="/archives/3088.html">互联网项目管理要点</a></p><p class="mutualitylist"><a href="/archives/3077.html">构建移动Web应用程序的技术堆栈</a></p><p class="mutualitylist"><a href="/archives/3067.html">一个杀手移动用户界面的七个步骤</a></p><p class="mutualitylist"><a href="/archives/3063.html">HTML5能取代Android和iOS应用程序吗？</a></p><p class="mutualitylist"><a href="/archives/3062.html">程序员真的很懒</a></p><p class="mutualitylist"><a href="/archives/3061.html">开发一个iOS应用没有那么容易</a></p><p class="mutualitylist"><a href="/archives/3028.html">国外程序员推荐：每个程序员都应读的书</a></p><p class="mutualitylist"><a href="/archives/3026.html">十六个快速启动项目样板</a></p><p class="mutualitylist"><a href="/archives/3024.html">使用HTML5的十大原因</a></p><p class="mutualitylist"><a href="/archives/3011.html">如何在Google成为一名优秀的产品经理？</a></p><p class="mutualitylist"><a href="/archives/3004.html">移动开发中HTML5能否替代本地程序？</a></p><p class="mutualitylist"><a href="/archives/2989.html">技术演讲的技巧和经验</a></p><p class="mutualitylist"><a href="/archives/2970.html">怎样打造高性能的移动用户体验</a></p><p class="mutualitylist"><a href="/archives/2954.html">为什么程序员的社会地位不高？</a></p><p class="mutualitylist"><a href="/archives/2924.html">HTML5未来发展的六大趋势</a></p><p class="mutualitylist"><a href="/archives/2912.html">IT工作者是21世纪的矿工吗？</a></p><p class="mutualitylist"><a href="/archives/2907.html">程序员的本质</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/6574.html"/>
+	<title>网站SSL证书出现错误和解决过程-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>网站SSL证书出现错误和解决过程</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/6574.html" rel="bookmark">网站SSL证书出现错误和解决过程</a></h1>
+	<div class="post-meta">
+		2021-9-30 0:10:31 | 
+		作者: 月光 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn6574" data-id="6574"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>9月30日，我的网站遇到一个很奇怪的问题，当天我在网站发了一篇新文章，之后就有不少用户向我反馈说，文章无法访问，访问时候提示证书错误，我感觉很奇怪，莫非网站SSL证书没有自动更新？我于是用电脑访问了一下网站，发现用电脑浏览器访问网站并没有出现异常。</p>
+
+<p>根据用户的截图，用户是用手机端<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>浏览器访问的，于是我就用自己iPhone的Chrome访问了一下我的网站，访问的结果让我不禁大吃一惊，我的网站访问后竟然提示&ldquo;ERR_CERT_DATE_INVALID&rdquo;错误，证书的确出了问题。</p>
+
+<p>一开始我怀疑是网站服务器的时间是不是有问题，登陆服务器上去看了一下，时间没问题，那么是证书没有自动更新吗？我的网站使用的是Let&#39;s Encrypt的证书，我设置为自动更新，我查看了一下，证书刚刚在9月23日自动更新过一次，有效期没有到，SSL证书肯定没有过期。</p>
+
+<p>我自己测试，在PC端用Chrome访问Let&#39;s Encrypt的证书没问题，但用iPhone的Chrome访问就会报SSL证书错误&ldquo;ERR_CERT_DATE_INVALID&rdquo;。难道是这个证书更新的时候出了什么问题，但为什么23日更新到现在都没异常，就是今天出现异常？</p>
+
+<p>我陷入了迷茫之中，我的网站使用Let&#39;s Encrypt的免费证书，已经自动更新了好几年，几年来一直都没有问题，今天是第一次出现这种奇怪的问题。</p>
+
+<p>好在我早先为网站申请过多个品牌的SSL证书，我于是先紧急手动安装了网站的DigiCert免费版SSL证书，证书是一年有效期的，安装部署SSL证书完成之后，使用手机端Chrome浏览网站恢复了正常，PC端浏览网站也正常。这说明问题的根源是Let&#39;s Encrypt的证书存在问题。</p>
+
+<p>考虑到Let&#39;s Encrypt的免费SSL证书今天出现的这种重大问题，同时考虑到这个证书3个月更换一次，可能会出现不可预知的更新错误，我决定，网站干脆就换DigiCert的免费版SSL证书算了，大不了就是一年手动更新一次SSL证书。</p>
+
+<p>我后来查询了一下相关新闻，这次的网站事故可能和这条新闻有关：《Let&#39;s Encrypt根证书过期预警 请在9月30日前及时更新》，时间正好对的上，正好是9月30日证书出错。下面是该新闻的全文：</p>
+
+<blockquote>
+<p><strong>Let&#39;s Encrypt根证书过期预警 请在9月30日前及时更新</strong></p>
+
+<p>安全研究员 Scott Helme 警告称：作为全球最大 HTTPs 证书提供商之一的 Let&#39;s Encrypt，即将于下周停用旧版根证书（Root CA）。这意味着数百万计依赖它的网站必须在 9 月 30 日前及时更新，不然将面临不受计算机、设备或 Web 浏览器信任的困扰。</p>
+
+<p style="text-align:center"><img alt="Let's Encrypt的证书" src="/upload/6574_1.jpg" /></p>
+
+<p>据悉，作为一家非盈利组织，Let&#39;s Encrypt 致力于通过颁发证书来推动设备和互联网数据通信的加密，确保不被第三方拦截并窃取信息。</p>
+
+<p>然而 Let&#39;s Encrypt 当前使用的 IdentTrust DST Root CA X3 根证书，也即将于下周过期。对于大部分网站的访客来说，9 月 30 日可能是个波澜不惊的一天。</p>
+
+<p>但是对于较旧的设备来说，可能还是会遇到一些问题 --正如 AddTrust External CA Root 在今年 5 月遭遇的根证书过期中断那样，造成Stripe、Red Hat 和 Roku 都受到了影响。</p>
+
+<p>Scott Helme 在一篇博文中写道：&ldquo;考虑到 Let&#39;s Encrypt 和 AddTrust 之间的体量差异，我有预感 IdenTrust 根证书到期时又会让历史重演，甚至可能引发更多的问题&rdquo;。</p>
+
+<p>当然，潜在易受影响的，主要是那些不怎么定期更新的设备 -- 比如嵌入式系统、或运行多年前软件版本的智能手机。</p>
+
+<p>举个例子，运行 macOS 2016 和 <a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> XP SP3 的设备用户可能在月底之后遇到麻烦。依赖 OpenSSL 1.0.2 或更早版本的客户端平台也可能受到影响，此外还有尚未升级到新版固件的 PlayStation 老游戏机。</p>
+
+<p>鉴于 Android 生态有着长期存在且众所周知的问题，为了防止大多数智能机受到本次事件的影响，Let&#39;s Encrypt 已于今年早些时候未雨绸缪地过渡到了自家的 ISRG Root X1 证书（到期时间为 2035 年）。</p>
+
+<p>虽然包括 Android 7.1.1（Nougat）及更早版本的设备并不信任它，但 Let&#39;s Encrypt 还是能够通过对自颁证书进行交叉签名的方式，让大多数 Android 设备可在未来三年内避免受到波及。</p>
+
+<p>但若你还想在 Android 5.0（Lollipop）上安装 <a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>，最好还是尽早为迁移至新平台做打算。</p>
+
+<p>最后，自 2014 年成立以来，截止 2021 年 9 月初，Let&#39;s Encrypt 总计已经颁发了超过 20 亿份证书。</p>
+</blockquote>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="网站SSL证书出现错误和解决过程" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note6574"></span><a href="javascript:commYea(6574);" id="dig6574">顶一下 ▲</a>(<span id="sdig6574"><Script language="javascript" type="text/javascript">showDig("6574");</script></span>) &nbsp; <a href="javascript:commNay(6574);" id="down6574">踩一下 ▼</a>(<span id="sdown6574"><Script language="javascript" type="text/javascript">showDown("6574");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/6573.html" title="我看李子柒事件">我看李子柒事件</a></div><div class="next_content">下一篇 » <a href="/archives/6575.html" title="支付宝宣布向银联云闪付开放线上场景">支付宝宣布向银联云闪付开放线上场景</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/6511.html">服务器启用HSTS协议</a></p><p class="mutualitylist"><a href="/archives/6510.html">服务器禁用TLS 1.0协议</a></p><p class="mutualitylist"><a href="/archives/6380.html">通过gzip和nginx来提高网站打开速度</a></p><p class="mutualitylist"><a href="/archives/6287.html">Windows IIS日志文件分析神器</a></p><p class="mutualitylist"><a href="/archives/6051.html">十大网站创业方向</a></p><p class="mutualitylist"><a href="/archives/6022.html">谷歌提醒网站管理：疫情期间切勿关站 会影响后续排名</a></p><p class="mutualitylist"><a href="/archives/5780.html">IIS子目录web.config与主站冲突解决方法</a></p><p class="mutualitylist"><a href="/archives/5611.html">SSL的安全配置和检测</a></p><p class="mutualitylist"><a href="/archives/5594.html">IIS通过URL重写实现防盗链</a></p><p class="mutualitylist"><a href="/archives/5571.html">BT天堂站长被判刑三年罚款八十万</a></p><p class="mutualitylist"><a href="/archives/5523.html">WordPress Hestia主题的定制和优化</a></p><p class="mutualitylist"><a href="/archives/5520.html">阿里云服务器迁移</a></p><p class="mutualitylist"><a href="/archives/5505.html">不带www域名重定向到带www域名</a></p><p class="mutualitylist"><a href="/archives/5463.html">IIS和Apache实现HTTP重定向到HTTPS</a></p><p class="mutualitylist"><a href="/archives/5408.html">IIS服务器多域名部署多个HTTPS的方法</a></p><p class="mutualitylist"><a href="/archives/5401.html">IIS自动申请部署免费SSL证书服务</a></p><p class="mutualitylist"><a href="/archives/5353.html">IIS实现反向代理</a></p><p class="mutualitylist"><a href="/archives/5081.html">在Apache下部署SSL证书实现HTTPS</a></p><p class="mutualitylist"><a href="/archives/5080.html">在IIS下部署SSL证书实现HTTPS</a></p><p class="mutualitylist"><a href="/archives/5075.html">Chrome将在网站上显示不安全警告</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	<div id="comment-form">
+<div id="respond" class="respond">
+<h3 id="comments-respond">发表留言</h3>
+<div class="cancel-comment-reply">
+<a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">点击这里取消回复。</a>
+</div>
+<form action="/zb_system/cmd.asp?act=cmt&amp;key=d0002e90" method="post" id="frmSumbit" target="_self">
+<input type="hidden" name="inpId" id="inpId" value="6574" />
+	<input type="hidden" name="inpArticle" id="inpArticle" value="" />
+	<input type="hidden" name="inpRevID" id="inpRevID" value="" />
+<input type="text" name="inpName" id="inpName"  value="名称" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="1" />
+<input type="text" name="inpEmail" id="inpEmail" value="邮箱" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="2" />
+<input type="text" name="inpHomePage" id="inpHomePage" value="网站链接" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="3" />
+
+<textarea name="txaArticle" id="txaArticle" cols="100%" rows="10" tabindex="5"  onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('commentSubmit').click();return false};"></textarea>
+<br />
+<p style="display: none;"><input type="checkbox" name="chkRemember" checked="true" id="chkRemember" /> <label for="chkRemember">记住我,下次回复时不用重新输入个人信息</label></p>
+<input name="btnSumbit" type="submit" id="commentSubmit" tabindex="6" value="提交 (Ctrl+Enter)" onclick="JavaScript:return VerifyMessage()"/>
+</form>
+</div>
+</div>
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

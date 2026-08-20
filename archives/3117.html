@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3117.html"/>
+	<title>论互联网手机的底层风险-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>论互联网手机的底层风险</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3117.html" rel="bookmark">论互联网手机的底层风险</a></h1>
+	<div class="post-meta">
+		2012-6-8 23:38:34 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 27 | 
+		浏览: <span class="AddView" id="spn3117" data-id="3117"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Mobile.html" rel="tag"><img src="/logo/Mobile.gif" alt="手机" class="thumb" width="80" height="80" /></a><p>近期，百度、盛大、360、阿里等厂商纷纷出台千元左右<a target="_blank" href="/archives/3049.html">互联网手机</a>，标志着互联网厂商向移动互联网发起猛烈攻势，以实现移动入口的抢滩登陆。无论产品实现形式是自家生产，还是与硬件终端厂商合作，互联网大佬们都在强调不会通过硬件盈利，要走互联网盈利的道路。而李彦宏近日说出的有用户不代表就有商业模式的话其实点明了其中的<a target="_blank" href="/archives/3094.html">风险和未知性</a>。</p><p>互联网大佬们想通过移动互联网盈利究竟如何实现，首先就要和最底层的系统发生关联。</p><p>如下图所示，互联网大佬进入智能手机的系统有以下两个路径：</p><p>1、发布自己的操作系统</p><p>2、进行应用程序的植入</p><p style="text-align: center"><img alt="论互联网手机的底层风险" src="/upload/3117_1.jpg" /></p><p>这是实现用户接触互联网大佬提供服务的物理实现基础。然而，在这样的基础上，互联网大佬也需要解决一个由来已久的问题：BOOTLOADER.手机的BOOTLOADER，及系统启动加载器，会完成系统硬件的初始化程序，启动系统化进程，在这里的一个重要功能就是ROCOVERY（恢复功能），实现对手机ROM的重新写入、恢复初始化及备份还原等等。当BOOTLOADER处于未锁定状态，用户即可刷新对应系统的ROM，包括官方的和第三方的系统。</p><p>对互联网大佬来说，第三方的系统会对其移动互联网生态带来很大的威胁。因为这意味着其内置的产品和服务可能会因第三方ROM代替，从而减少和用户的接触量，接触人群减少势必带来盈利能力的下滑。更有甚者，如果竞争对手的第三方ROM成为一款广受用户喜爱的产品，那么这对推广该产品的互联网厂商带来沉重的打击。例如，如果MIUI向360特供机华为闪耀提供对应版本的ROM，那么360的策略势必会受到打击，成为为其他人做嫁衣。</p><p>所以问题的关键在于BOOTLOADER，这一特定组件的开放策略往往由硬件生产商决定。但是这一切可能会发生变化。HTC早前是不提供BOOTLOADER解锁的，但是在去年用户的大量反馈下，宣布将永远不在其产品中锁定BOOTLOADER，同时提供专属页面帮助BOOLOADER锁定的用户实现解锁操作。根据目前业界的大趋势，包括三星、索尼等厂商也宣布向用户开放BOOTLOADER.这些操作本身加大了本土硬件厂商实施锁定BOOTLOADER的策略压力，因为这一方面或许会带来消费者的微词，另一方面意味要在系统的持续性开发&mdash;&mdash;系统升级上进行更多工作以满足用户要求产品随谷歌Android系统更新换代的需求。</p><p>综上，互联网厂商除了面临上层移动互联网商业模式的挑战，在底层也面临着不可控的失败风险。互联网厂商的终端争夺战，可能会远远超出以终端销量定成败的局面。</p><p>来源：申飞投稿</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Mobile.jpg" alt="论互联网手机的底层风险" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3117"></span><a href="javascript:commYea(3117);" id="dig3117">顶一下 ▲</a>(<span id="sdig3117"><Script language="javascript" type="text/javascript">showDig("3117");</script></span>) &nbsp; <a href="javascript:commNay(3117);" id="down3117">踩一下 ▼</a>(<span id="sdown3117"><Script language="javascript" type="text/javascript">showDown("3117");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3116.html" title="Z-Blog分类标签全站静态化方案">Z-Blog分类标签全站静态化方案</a></div><div class="next_content">下一篇 » <a href="/archives/3118.html" title="暴雪成功的秘密">暴雪成功的秘密</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3094.html">互联网公司做手机绝大部分会失败</a></p><p class="mutualitylist"><a href="/archives/3079.html">移动互联网真的进入了“拼爹”时代吗？</a></p><p class="mutualitylist"><a href="/archives/3075.html">手机浏览器HTML5支持情况调查</a></p><p class="mutualitylist"><a href="/archives/3051.html">戴尔云手机D43评测</a></p><p class="mutualitylist"><a href="/archives/3049.html">互联网公司为何要推自己的智能手机</a></p><p class="mutualitylist"><a href="/archives/3031.html">中国人为何宁花4000元买手机，不花6元买游戏 </a></p><p class="mutualitylist"><a href="/archives/3018.html">影响WP7销量的两个桎梏</a></p><p class="mutualitylist"><a href="/archives/2992.html">手机浏览器HTML5跑分完全调查</a></p><p class="mutualitylist"><a href="/archives/2973.html">给智能手机和平板用户新手的三个建议</a></p><p class="mutualitylist"><a href="/archives/2877.html">电信运营商移动IM产品集体失策</a></p><p class="mutualitylist"><a href="/archives/2856.html">手机版天地图评测</a></p><p class="mutualitylist"><a href="/archives/2854.html">从手机通话的免费谈开去</a></p><p class="mutualitylist"><a href="/archives/2820.html">初识移动互联网</a></p><p class="mutualitylist"><a href="/archives/2803.html">百度旗下手机应用盘点</a></p><p class="mutualitylist"><a href="/archives/2799.html">手机短信的末日</a></p><p class="mutualitylist"><a href="/archives/2788.html">Visa主宰移动支付和数字钱包的计划</a></p><p class="mutualitylist"><a href="/archives/2781.html">为什么短信会在未来几年消亡</a></p><p class="mutualitylist"><a href="/archives/2770.html">智能手机管理软件进入红海</a></p><p class="mutualitylist"><a href="/archives/2766.html">移动互联网的入口之争</a></p><p class="mutualitylist"><a href="/archives/2762.html">创意手机APP汇总</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

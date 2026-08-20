@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3461.html"/>
+	<title>为什么在12306买火车票要装根证书？-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>为什么在12306买火车票要装根证书？</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3461.html" rel="bookmark">为什么在12306买火车票要装根证书？</a></h1>
+	<div class="post-meta">
+		2013-5-7 17:21:49 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 56 | 
+		浏览: <span class="AddView" id="spn3461" data-id="3461"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Security.html" rel="tag"><img src="/logo/Security.gif" alt="安全" class="thumb" width="80" height="80" /></a><p>12306主页上有一段很显眼的文字&mdash;--&ldquo;为保障您顺畅购票，请下载安装根证书。&rdquo;这段文字和12306很多的其他问题一起成为网友诟病12306的话题，但是这个看似安全的根证书确可能会成为让12306用户们的安全受到严重威胁的东西。</p>
+
+<p>为什么在12306上买火车票要装根证书？想要回答这个问题，那么我们就必须先要提前回答说几个定义：</p>
+
+<p>电脑在与服务器交换敏感信息时会使用一种叫做SSL的加密方式。在很多情况下，交换敏感信息必须要通过这个方式来进行。包括12306在内，淘宝、京东等在交换敏感信息的时候都使用了SSL进行加密。</p>
+
+<p>那么，我们怎么知道网站是否使用了SSL加密呢？最简单的办法就是看看地址栏&mdash;&mdash;如果网址前面写的是&ldquo;https://&rdquo;，那么这个页面就是使用SSL加密的。这意味着你访问的页面是安全的并且可以用来交换敏感信息。如果你使用的是Internet Explorer 7或者以上版本浏览器，你应该能在浏览器地址栏的最右边看到一把小锁头。就像下图所示的那样。点开这把小锁头，就能看到关于https的信息。</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_1.jpg" /></p>
+
+<p style="text-align:left">用其他浏览器呢？现在流行的浏览器中，全部都会标示出来该网页是使用了https以防止窃听和用户的个人信息安全的。比如下边的图就是在<a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>中使用https浏览<a href="/tag/Wiki.html" title="维基百科"  Target="_blank" >维基百科</a>的画面。</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_2.jpg" /></p>
+
+<p>但是，谁又能保证https的安全呢？这里就又是一个概念：数字证书认证机构。它的译名很多，不过大致意思对就可以了。英文Certificate Authority，经常被缩写为CA。下文中也使用&ldquo;CA&rdquo;来称呼数字证书认证机构。</p>
+
+<p>CA是一个机构&mdash;&mdash;打个比方，这就像是信用卡一样。一个人向银行申请信用卡，就像网站向CA申请证书。CA觉得网站的信用合格，就签发SSL证书；银行觉得申请者的信用合格，就签发信用卡。等等，什么又是&ldquo;SSL证书&rdquo;呢？这就是CA签发给网站用以证明网站身份的&ldquo;信用卡&rdquo;。有了SSL证书，加密网页才能被信任。当你在访问一个被https加密的网页时，网页会出示一份证书，这份证书有助于用户信任这个网站。没有正规CA签发的证书的网站是不会受到浏览器的信任的&mdash;&mdash;就算你用了SSL来加密也没用。</p>
+
+<p>再看看前面的两张图片。第一章支付宝的截图中，CA就是：<em>VeriSign Class 3 Public Primary Certification Authority - G5</em></p>
+
+<p>第二章维基百科的截图中，CA是：<em>DigiCert Inc</em></p>
+
+<p>浏览器又上哪知道CA是正规的呢？那就是根证书库，这是一个操作系统认为可以被信任的CA的名单。几乎每个能上网操作系统（甚至包括诺基亚最弱智的S40系统）都有一个。在这里用Mac做示例。Mac的根证书库在：</p>
+
+<p><em>Finder-应用程序-其他（提示：OS X Lion或者以下操作系统叫&ldquo;实用工具&rdquo;）-钥匙串访问</em></p>
+
+<p>然后在最左边找&ldquo;系统根证书&rdquo;，点进去便是。看到的应该如下图所示。</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_3.jpg" /></p>
+
+<p>可以试着找一下<em>VeriSign Class 3 Public Primary Certification Authority - G5&mdash;--</em>肯定能找到！每次浏览器浏览https网页时，都会把网站出示的证书在这个库里面找一圈，能找到就OK，找不到的话，就证明你这个CA是不可靠的！</p>
+
+<p>SSL加密的目的除了保证用户信息在传输过程中的安全外，还保障了服务器的身份。有些简单的SSL证书仅仅需要用该网站域名的邮箱向CA发封邮件就能签发了&mdash;&mdash;不过如果是一个组织、团体、基金会或者盈利性机构（尤其是类似于支付宝或者<a href="/tag/PayPal.html" title="PayPal"  Target="_blank" >PayPal</a>的网络支付服务），那么SSL证书的签发就会变得十分繁琐。网站需要提供大量的文件以证明该网站是可靠的。如果能够证明该网站是可靠的，CA才会给签发证书。</p>
+
+<p>还有一种证书被称作EV SSL证书（Extended Validation SSL），这种证书遵循全球统一的严格身份验证标准颁发的SSL证书，是目前业界最高安全级别的SSL证书。这种证书显示起来，就是俗称的绿色地址栏证书。在IE 7和以上IE浏览器便会出现绿色地址栏，并且滚动展示该网站的信息和CA信息。如下图所示。</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_4.jpg" /></p>
+
+<p>EV SSL的申请手续更复杂，申请费用也更多，但是可以换来更多用户的信任。左图是<a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>下显示EV SSL证书的样子。这个证书证明了这个网站的经营者为<em>Wikimedia Foundation, Inc.</em>，并且位置位于<em>San Francisco</em> <em>California, US</em></p>
+
+<p>据一个叫做VeriSign的CA的统计，使用EV SSL能大幅提升用户对于网站的信任。</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_5.jpg" /></p>
+
+<p>总而言之，SSL证书的目的有两个：</p>
+
+<ul>
+	<li>确保网站和用户之间的数据是加密并且可靠的</li>
+	<li>确保网站所宣称身份的真实可靠</li>
+</ul>
+
+<p>如果访问12306.cn会出现什么情况呢？12306的确使用了SSL来加密以保障网页的安全，而访问直接访问12306就算不安装根证书也不会出现任何问题。以Chrome为例，访问主页不会出现任何问题，但是若要访问购票页面就会无法访问，如下图所示。</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_6.jpg" /></p>
+
+<p>12306会让我们访问一个叫<em>https://dynamic.12306.cn/otsweb</em>的网址。如果我们直接用Chrome访问这个网址呢？华丽丽的一幕出现了：</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_7.jpg" /></p>
+
+<p>使用IE8浏览这个页面会出现这样：</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_8.jpg" /></p>
+
+<p>回到Chrome，如果我们点击&ldquo;仍然继续&rdquo;，就会正常的看到购票页面没有任何阻力。IE8也是一样，不过IE8的地址栏整个都会变成红色的。</p>
+
+<p>如果我们点击旁边的小锁头来查看关于这个证书的信息呢？会出现下图。</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_9.jpg" /></p>
+
+<p>再点击&ldquo;证书信息&rdquo;，会看到这个12306的证书是一个叫做SRCA的CA签发的。</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_10.jpg" /></p>
+
+<p>但是在&ldquo;钥匙串访问&rdquo;里面根本没有一个叫做SRCA的CA。</p>
+
+<p>如果安装上了首页给出的&ldquo;根证书&rdquo;，（依然以Mac为例）钥匙串访问里面就会有一个叫做&ldquo;SRCA&rdquo;的CA！并且本来这个证书是不受信任的，安装之后就会被设置为&ldquo;<em>此证书已被标记为受此账户信任</em>&rdquo;。</p>
+
+<p style="text-align:center"><img alt="为什么在12306上买火车票要装根证书" src="/upload/3461_11.jpg" /></p>
+
+<p>这样的话，浏览器和操作系统就会信任这个证书，便不会给予CA信息不对的提示了。</p>
+
+<p>&ldquo;SRCA&rdquo;又是何许人也？在上图中，可以看到SRCA的细节部分，&ldquo;组织&rdquo;填写的是<em>Sinorail Certification Authority</em></p>
+
+<p>这也就不难分析了，&ldquo;Sinorial&rdquo;中的&ldquo;S&rdquo;和&ldquo;R&rdquo;，&ldquo;Certification Authority&rdquo;的&ldquo;S&rdquo;和&ldquo;A&rdquo;，就拼出来了&ldquo;SRCA&rdquo;。</p>
+
+<p>在搜索引擎中搜索<em>Sinorail Certification Authority</em>中的<em>Sinorail</em>，就会找到这样一个网站。叫做&ldquo;中铁信息工程集团&rdquo;。网址就是http://www.sinorail.com/。</p>
+
+<p>听名字就知道这网站跟12306肯定是亲戚关系。换种话说，就是自己给自己发证书。你说这证书能可信吗？</p>
+
+<p>正规CA的证书可不是白给的。要不然CA靠什么吃饭？一个SSL证书从每年三百块RMB到一万五不等。据我所知，最贵的证书是VeriSign签发的，一万五的那个就是他。而便宜的三百块证书&mdash;&mdash;只要不是VeriSign，其他CA签出来的最便宜的证书差不多都这个价。比较便宜的代表是Go Daddy、Comodo等。为什么12306要使用自己给自己的证书呢？貌似唯一的合理解释就是省钱。能省大概三百到一万五不等。</p>
+
+<p>铁道部有时候买一张火车票就差不多够一年的证书钱了。</p>
+
+<p>那么又为什么说铁道部用自己的证书不安全呢？有些人在12306上买票时会看到&ldquo;<em>该站点安全证书的吊销信息不可用，是否继续</em>&rdquo;的提示语，这又是什么意思呢？</p>
+
+<p>从前有个倒霉的的荷兰CA，叫DigiNotar。这CA被黑客攻破，导致这家CA办法给一些用户的证书的私钥失效（私钥是在SSL加密环节中非常重要的东西），这就使得以这家CA的名义伪造证书成了可能。黑客可以通过这家公司的名义伪造证书给一些非法网站，客户一看这是加密过的还是大型CA签出来的证书便很容易信任。因为DigiNotar名气很大，并且很多大公司都使用它的证书，微软等操作系统厂商在这事情发生之后开始忙不迭的发布更新补丁来宣布DigiNotar的证书失效。</p>
+
+<p>微软在 <a href="http://technet.microsoft.com/zh-cn/security/advisory/2607712" target="_blank">KB2607712</a> 补丁中宣布了DigiNotar的根证书无效。原文如下：</p>
+
+<blockquote>Microsoft 已获悉 DigiNotar 颁发了至少一个虚假数字证书，DigiNotar 是受信任的根证书颁发机构存储区中出现的一个证书颁发机构。虚假证书可能用于哄骗内容、执行网页仿冒攻击或者针对所有 Web 浏览器用户（包括 Internet Explorer 用户）执行中间人攻击。虽然这不是 Microsoft 产品中的一个漏洞，但是此问题会影响 Microsoft Windows 的所有受支持版本。</blockquote>
+
+<p>这家倒霉公司最后因为这件事华丽丽的破产了。</p>
+
+<p>正如这件事一样，有些知名CA出了事，微软这些系统厂商会忙不迭的发布补丁来宣布该CA的根证书失效&mdash;&mdash;有些小CA，尤其是&ldquo;SRCA&rdquo;这样貌似只给12306.cn一个网站签证书的CA，人还懒得管你呢！那么小CA的私钥失窃之后会有什么不就措施呢？那就是证书吊销列表，英文全称Certificate revocation list，简称CRL。下文也称呼它为CRL。更详细的内容可以参考<a href="https://zh.wikipedia.org/wiki/%E8%AF%81%E4%B9%A6%E5%90%8A%E9%94%80%E5%88%97%E8%A1%A8" target="_blank" title="">这里</a>和<a href="https://en.wikipedia.org/wiki/Certificate_revocation_list" target="_blank" title="">这里（英文）</a>。</p>
+
+<p>CRL是干什么的呢？比如你买的证书被盗了，只要将信息报告给CA，那么CA就会把你这个证书的信息添加到这个CA的CRL中，每次浏览器浏览加密网页时，都会检索CRL信息&mdash;&mdash;如果没有的话，就会提示<em>该站点安全证书的吊销信息不可用，是否继续</em>。想必读到这里大家也都知道了，12306的证书没有CRL信息。这也就意味着，12306所使用的证书一旦失窃，系统厂商不会管这个，甚至连最后一根救命稻草CRL都没有。</p>
+
+<p>简而言之，如果证书出了事，两种解决办法：</p>
+
+<ul>
+	<li>系统厂商发补丁宣布该证书失效</li>
+	<li>通过CRL宣布证书失效</li>
+</ul>
+
+<p>不过可惜的是12306出了事，这两招哪一个都不顶用。</p>
+
+<p>如果证书失窃，会有什么后果？最可能的后果就是像前面的倒霉蛋一样倒闭。不过铁道部（尽管已经倒闭）欠了两千多亿还巍然不动，这个可能便没有了。前面提到的两种解决方案一个也用不了，这就意味着遭殃的一定是用户。证书失窃，任何人都能用此来伪造虚假证书。尽管SRCA颁发的证书默认是不受到系统信任的，但是中国这么多去过12306网站买过火车票的人&mdash;&mdash;假设所有人都安装了这个根证书使的系统对此证书信任&mdash;&mdash;一个绿色地址栏都能提升用户这么大的信任，违法网站只要获得了SRCA颁发的证书，岂不就能轻易骗得用户的信任？</p>
+
+<p>如果你是Mac用户，并且访问<a href="https://www.12306.cn">https://www.12306.cn</a>没有任何障碍，那么可以参考<a href="https://player.vimeo.com/video/65127548" target="_blank">这个视频</a>中的步骤来将SRCA的证书设为不信任。如果要购票，反其道而行之即可。</p>
+
+<p>从证书的角度看，中国很多大佬都做的非常不到位。比如我手里的建行网银，在安装U盾的时候必须安装一个网银根证书。SSL证书方面中国也做的很不到位。比如京东只有在用户登陆的时候才用了SSL来加密，而京东甚至在下订单的时候依然是明文传输。新浪微博在更改个人敏感信息时仍然使用明文传输，而twitter在早期甚至连微博内容都用https。如果使用不加密的公共Wi-Fi的话，那么在同一个Wi-Fi热点下有一个黑客，黑客便可以非常轻松的窃取到你的个人信息。</p>
+
+<p>P.S.：现在12306在付款的过程中使用了VeriSign签发的合格的证书，但是这样并不代表着上面所说的可能造成的严重影响不会发生。</p>
+
+<p>EV SSL介绍：<a href="http://www.wosign.com/EVSSL/index.htm" target="_blank">http://www.wosign.com/EVSSL/index.htm</a></p>
+
+<p>这个地址打开后便可以看到EV SSL的效果：<a href="https://www.evssl.cn/en/" target="_blank">https://www.evssl.cn/en/</a></p>
+
+<p>HTTPS - 维基百科：<a href="https://zh.wikipedia.org/wiki/Https" target="_blank">https://zh.wikipedia.org/wiki/Https</a></p>
+
+<p>来源：techyan投稿，<a href="http://techyan.weebly.com/2/post/2013/05/12306.html" rel="nofollow" target="_blank">原文链接</a>。</p>
+
+<p>更新：2017年12月12日更新，12306网站终于支持SSL证书了，之前多年该网站都使用自己签发的证书。新证书于2017年11月29日生效，由DigiCert签发。 ​​​​</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Security.jpg" alt="为什么在12306买火车票要装根证书？" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3461"></span><a href="javascript:commYea(3461);" id="dig3461">顶一下 ▲</a>(<span id="sdig3461"><Script language="javascript" type="text/javascript">showDig("3461");</script></span>) &nbsp; <a href="javascript:commNay(3461);" id="down3461">踩一下 ▼</a>(<span id="sdown3461"><Script language="javascript" type="text/javascript">showDown("3461");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3460.html" title="混乱的Android市场">混乱的Android市场</a></div><div class="next_content">下一篇 » <a href="/archives/3462.html" title="高票房的《致青春》《钢铁侠3》营销点对比分析">高票房的《致青春》《钢铁侠3》营销点对比分析</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3386.html">Mandiant是家什么样的公司？</a></p><p class="mutualitylist"><a href="/archives/3373.html">预防Web应用程序的漏洞</a></p><p class="mutualitylist"><a href="/archives/3224.html">如何安全的存储密码</a></p><p class="mutualitylist"><a href="/archives/3100.html">常用个人密码管理软件</a></p><p class="mutualitylist"><a href="/archives/3052.html">OAuth 的权限问题与信息隐忧</a></p><p class="mutualitylist"><a href="/archives/3040.html">隐私观念是如何进化的？</a></p><p class="mutualitylist"><a href="/archives/3006.html">UC浏览器被指明文传输用户密码</a></p><p class="mutualitylist"><a href="/archives/3005.html">谷歌到底怎么绕过浏览器的隐私设定</a></p><p class="mutualitylist"><a href="/archives/3001.html">是谁在偷窥我们的网络隐私</a></p><p class="mutualitylist"><a href="/archives/2986.html">由拖库攻击谈口令字段的加密策略</a></p><p class="mutualitylist"><a href="/archives/2961.html">泄密门事件背后的真相</a></p><p class="mutualitylist"><a href="/archives/2960.html">国信办公布泄密门事件查处结果</a></p><p class="mutualitylist"><a href="/archives/2943.html">电子商务和政府网站用户资料泄漏</a></p><p class="mutualitylist"><a href="/archives/2942.html">标本兼治方能关上“泄密门”</a></p><p class="mutualitylist"><a href="/archives/2939.html">泄密门升级：天涯四千万用户数据外泄</a></p><p class="mutualitylist"><a href="/archives/2938.html">从泄密门分析中国网民习惯</a></p><p class="mutualitylist"><a href="/archives/2937.html">个人密码安全策略</a></p><p class="mutualitylist"><a href="/archives/2935.html">知名程序员网站CSDN被黑</a></p><p class="mutualitylist"><a href="/archives/2934.html">多家网站百万用户信息泄露</a></p><p class="mutualitylist"><a href="/archives/2933.html">CSDN网站六百万用户信息外泄</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

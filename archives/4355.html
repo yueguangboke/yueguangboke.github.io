@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4355.html"/>
+	<title>硬盘数据的恢复方法-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>硬盘数据的恢复方法</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4355.html" rel="bookmark">硬盘数据的恢复方法</a></h1>
+	<div class="post-meta">
+		2015-9-12 22:49:50 | 
+		作者: 月光 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 63 | 
+		浏览: <span class="AddView" id="spn4355" data-id="4355"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Security.html" rel="tag"><img src="/logo/Security.gif" alt="安全" class="thumb" width="80" height="80" /></a><p>我家里的个人电脑上有两块硬盘，主盘前年购买，从盘五年前购买，以前一直使用没有问题，也没有坏道，可就在昨天，我那个使用了五年时间的硬盘忽然出现了故障，系统启动后无法读取从盘文件，看不到硬盘，重启进入BOIS，只能看到一块硬盘，另一块看不到。然后关机，再进入BIOS又可以看到两块硬盘，然后操作系统启动后又找不到另一块硬盘了。</p>
+
+<p>我使用一些磁盘工具进行测试，发现磁盘工具读其他扇区正常，但是读分区表附近的扇区，就会出现死锁，然后系统就不认第二硬盘。</p>
+
+<p>这个损坏的硬盘有两个分区，1T容量，一个分区40G，剩余接近900G的容量为第二分区，绝大多数数据文件放在第二分区里，并且基本已经装满了硬盘，如果丢失的话，将会损失大量的数据。经过之前的测试，我判断是第二硬盘分区表附近的磁道坏了，磁头读过去就会出现故障。由于大部分数据在第二分区，因此数据内容估计没有受到损坏，还是有可能恢复的。</p>
+
+<p>这种硬盘损坏是我头一次遇到，一开始我尝试将硬盘数据复制到其他硬盘，经过几次操作，发现无法将硬盘中的文件复制出来，只要将硬盘接入，一读分区表就会不认盘。</p>
+
+<p>我只好尝试不再修复硬盘，而是将硬盘数据拷出。我手头上正好有一个同样大小的新硬盘，于是我考虑将整个硬盘进行对拷。一开始我使用Ghost进行硬盘复制，结果不但没复制成功，硬盘的分区反而丢失了。看来用Ghost修复硬盘太不靠谱了。</p>
+
+<p>经过了一次失败，我开始选用另一个工具：DiskGenius磁盘工具，使用其&ldquo;扇区拷贝&rdquo;功能对所有扇区进行复制，这个功能有一个不错的特点，就是支持&ldquo;逆向复制&rdquo;，可以从后往前拷贝，这对于我目前这种硬盘损坏情况非常适合。拷贝了5、6个小时，终于在95%的附近拷贝死锁，又不认硬盘了。尽管如此，我相信绝大多数数据内容都已经复制过去了。</p>
+
+<p style="text-align:center"><img alt="硬盘数据恢复" src="/upload/4355_1.jpg" /></p>
+
+<p>重新启动之后，使用DiskGenius的查找丢失分区功能进行分区查找，但是只找到一个分区，另一个没找到，只用查找丢失文件功能，终于找到了硬盘里数万个文件，然后将其复制出来，在未恢复分区的情况下，可以找到文件目录，但文件只能恢复开始的一小部分，大小都是小于64K，数据内容都是错的，大文件都打不开。看来必须恢复第二分区才能进行文件恢复操作。</p>
+
+<p>原有分区无法保存到损坏的硬盘里，而且一复制就不认盘，导致硬盘开头的数据无法复制，因此我只好另想办法，在新硬盘里手动建立分区。</p>
+
+<p>根据旧硬盘的分区大小和分区数据，我在新的硬盘里，手动建立两个和原有硬盘完全相同的分区，起始柱面、磁头、扇区、终止柱面等参数应该和原有硬盘完全相同。之后使用DiskGenius的&ldquo;已删除或格式化后的文件恢复&rdquo;功能，寻找丢失文件，这时候再将里面的大文件复制出来，发现大文件里的数据都是正常的，ZIP等格式也正确，图片显示正常，看来这次恢复是正常了。</p>
+
+<p>接下来的操作就简单而耗时了，在电脑接上一个移动硬盘，在DiskGenius里全选被恢复的文件，然后将其复制到移动硬盘里就可以正常恢复，估计恢复时间需要6、7个小时。</p>
+
+<p>最终结果，第二分区的数据基本上被完全恢复，第一分区没有找回，因为第一分区保存的是操作系统，因此没有重要数据，不恢复也无所谓。</p>
+
+<p>我浪费了2天时间来恢复硬盘数据，使用了原硬盘两倍的存储空间来进行恢复操作，如果我当初能花1、2个小时对硬盘数据进行备份，那么就不会有这么多的时间浪费。还好这2天时间是值得的，因为数据已经完全恢复。</p>
+
+<p>总结：就算硬盘的日常使用与维护再好，时间长了都有可能产生坏道，一旦硬盘出现了坏道，不必惊慌，如果硬盘上有重要文件，需要将硬盘的数据进行恢复。对于损坏的硬盘，切勿进行写操作，例如安装软件、操作系统、重新分区、切勿磁盘整理等操作，硬盘恢复软件不要直接在故障盘上操作，而要在另一个磁盘上运行。数据恢复需要更多存储空间，因此要准备好原有硬盘两倍左右的存储空间进行数据恢复。</p>
+
+<p>此外，数据文件和系统软件、应用软件要分开，操作系统、应用软件都安装在一个盘，数据文件放在另一个盘，这样，进行数据恢复的时候，只需要专注恢复数据文件即可，操作系统和其他软件可以不去恢复，而采取重新安装的方法。</p>
+
+<p>举例来说，对于<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> 7操作系统，将操作系统安装在C盘，点击桌面用户的文件夹，右键点击里面的&ldquo;我的文档&rdquo;、&ldquo;我的图片&rdquo;、&ldquo;我的音乐&rdquo;等图标，在&ldquo;属性&rdquo;-&ldquo;位置&rdquo;里，将其修改到D盘或其他硬盘，这样，即使整个C盘被格式化，用户的文件也不会丢失。</p>
+
+<p>一个重要的教训：硬盘使用超过了四年，就绝对不要在硬盘上保存重要的文件。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Security.jpg" alt="硬盘数据的恢复方法" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4355"></span><a href="javascript:commYea(4355);" id="dig4355">顶一下 ▲</a>(<span id="sdig4355"><Script language="javascript" type="text/javascript">showDig("4355");</script></span>) &nbsp; <a href="javascript:commNay(4355);" id="down4355">踩一下 ▼</a>(<span id="sdown4355"><Script language="javascript" type="text/javascript">showDown("4355");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4354.html" title="SEO将永久伴随搜索而存在并非没落">SEO将永久伴随搜索而存在并非没落</a></div><div class="next_content">下一篇 » <a href="/archives/4356.html" title="做微信营销活动的四大技巧">做微信营销活动的四大技巧</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/4340.html">深圳美女程序员鞋中藏物躲避安检</a></p><p class="mutualitylist"><a href="/archives/4339.html">服务器预防DDoS攻击的方法</a></p><p class="mutualitylist"><a href="/archives/4338.html">端口映射：新的DDoS放大攻击</a></p><p class="mutualitylist"><a href="/archives/4335.html">为了安全，请减少对密码的信任</a></p><p class="mutualitylist"><a href="/archives/4334.html">DDoS态势报告 DDoS攻击两极分化</a></p><p class="mutualitylist"><a href="/archives/4328.html">再谈网络安全的自动化</a></p><p class="mutualitylist"><a href="/archives/4315.html">密码管理器LastPass和KeePass对比评测</a></p><p class="mutualitylist"><a href="/archives/4313.html">比较专家与非专家如何安全上网</a></p><p class="mutualitylist"><a href="/archives/4294.html">手机丢失后的安全风险</a></p><p class="mutualitylist"><a href="/archives/4293.html">简要分析Hacking Team 远程控制系统</a></p><p class="mutualitylist"><a href="/archives/4275.html">那些国际安全软件巨头没落了吗？</a></p><p class="mutualitylist"><a href="/archives/4267.html">在线密码管理器LastPass被黑客攻破</a></p><p class="mutualitylist"><a href="/archives/4256.html">企业如何做好数据保护</a></p><p class="mutualitylist"><a href="/archives/4244.html">请把网络安全作为公司战略之一</a></p><p class="mutualitylist"><a href="/archives/4227.html">2014互联网金融安全报告</a></p><p class="mutualitylist"><a href="/archives/4225.html">邮箱遭到邮件列表攻击</a></p><p class="mutualitylist"><a href="/archives/4216.html">从基于JavaScript的DDOS攻击看安全浏览</a></p><p class="mutualitylist"><a href="/archives/4194.html">公共WiFi使用应注意的安全事项</a></p><p class="mutualitylist"><a href="/archives/4190.html">GitHub遭遇超大规模DDoS攻击</a></p><p class="mutualitylist"><a href="/archives/4183.html">谷歌称CNNIC发布伪造CA证书</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.yueguangboke.com" /><input type="hidden" name="sitesearch" value="www.yueguangboke.com" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (523)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (929)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3175)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7542.html" title="向身体低头，向岁月妥协：我的高血压“还债日记” ">向身体低头，向岁月妥协：我的高血压“还债(424)</a></li>
+<li><a href="/archives/7539.html" title="湖北男子家中用荣耀手机浏览TikTok与X被罚">湖北男子家中用荣耀手机浏览TikTok与(1703)</a></li>
+<li><a href="/archives/7541.html" title="《魔兽世界：至暗之夜》PVP教程">《魔兽世界：至暗之夜》PVP教程(246)</a></li>
+<li><a href="/archives/7540.html" title="《魔兽世界：至暗之夜》采矿采药攻略">《魔兽世界：至暗之夜》采矿采药攻略(670)</a></li>
+<li><a href="/archives/7538.html" title="国家互联网应急中心发布关于OpenClaw安全应用的风险提示">国家互联网应急中心发布关于OpenCla(805)</a></li>
+<li><a href="/archives/7537.html" title="腾讯QQ开放OpenClaw官方接入">腾讯QQ开放OpenClaw官方接入(735)</a></li>
+<li><a href="/archives/7536.html" title="Mac电脑安装OpenClaw教程">Mac电脑安装OpenClaw教程(625)</a></li>
+<li><a href="/archives/7535.html" title="电脑无法启动的修复案例">电脑无法启动的修复案例(293)</a></li>
+<li><a href="/archives/7532.html" title="公安部就网络犯罪防治法公开征求意见">公安部就网络犯罪防治法公开征求意见(887)</a></li>
+<li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(6208)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7542</li><li>评论总数:199536</li><li>浏览总数:72597514</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

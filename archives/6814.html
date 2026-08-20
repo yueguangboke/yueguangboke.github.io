@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/6814.html"/>
+	<title>升级Infinite Ajax Scroll的方法-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>升级Infinite Ajax Scroll的方法</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/6814.html" rel="bookmark">升级Infinite Ajax Scroll的方法</a></h1>
+	<div class="post-meta">
+		2022-5-28 22:6:47 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn6814" data-id="6814"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Script.html" rel="tag"><img src="/logo/Script.gif" alt="源代码" class="thumb" width="80" height="80" /></a><p>几年前曾经在几篇文章中介绍过Infinite Ajax Scroll这个插件，（参见：<a href="/archives/5617.html">使用Infinite Ajax Scroll实现下拉加载效果</a>，<a href="/archives/6598.html">通过谷歌分析统计Infinite Ajax Scroll数据</a>）由于该插件已经升级为3.0新版本，老版本2.3.1已经不维护，因此我这里介绍一下老版本升级到新版本的方法。</p>
+
+<p>新版本的调用方法和老版本有不少区别，并且新版本已经不再需要jQuery，相对来说更为轻量一些。</p>
+
+<p style="text-align:center"><img alt="Infinite Ajax Scroll" src="/upload/5617_1.jpg" /></p>
+
+<p>举例说明一下如何从老版本升级到新版本。</p>
+
+<p>一个页面的内容如下：</p>
+
+<blockquote>
+<p>&lt;div class=&quot;container&quot;&gt;<br />
+&nbsp; &lt;div class=&quot;item&quot;&gt;...&lt;/div&gt;<br />
+&nbsp; &lt;div class=&quot;item&quot;&gt;...&lt;/div&gt;<br />
+&lt;/div&gt;<br />
+&lt;div id=&quot;pagination&quot;&gt;<br />
+&nbsp; &lt;a href=&quot;page1.html&quot;&gt;1&lt;/a&gt;<br />
+&nbsp; &lt;a href=&quot;page2.html&quot; class=&quot;next&quot;&gt;2&lt;/a&gt;<br />
+&lt;/div&gt;</p>
+</blockquote>
+
+<p>老版本的 Infinite Ajax Scroll 需要增加的代码如下：</p>
+
+<blockquote>
+<p>var ias = $.ias({<br />
+&nbsp; container:&quot;.container&quot;,<br />
+&nbsp; item:&quot;.item&quot;,<br />
+&nbsp; pagination:&quot;#pagination&quot;,<br />
+&nbsp; next:&quot;.next a&quot;,<br />
+&nbsp; loader:&quot;&quot;<br />
+});<br />
+ias.extension(new IASSpinnerExtension());</p>
+</blockquote>
+
+<p>新版本的代码修改为</p>
+
+<blockquote>
+<p>let ias = new InfiniteAjaxScroll(&#39;.container&#39;, {<br />
+&nbsp; item: &#39;.item&#39;,<br />
+&nbsp; next: &#39;.next&#39;,<br />
+&nbsp; pagination: &#39;#pagination&#39;,<br />
+&nbsp; spinner: &#39;.loader&#39;,<br />
+});<br />
+ias.on(&#39;load&#39;, function(event) {<br />
+&nbsp; event.nocache = true;<br />
+});</p>
+</blockquote>
+
+<p>最后三行可阻止新版自动在链接后面加随机参数，这个随机参数很讨厌，经常引起各种莫名其妙的代码错误。</p>
+
+<p>新版本没有默认的spinner loder，因此需要手动设置，设置方法是：先在pagination标签前增加一个名为loader的标签，代码如下：</p>
+
+<blockquote>
+<p>&lt;div class=&#39;loader&#39;&gt;&lt;/div&gt;</p>
+</blockquote>
+
+<p>之后增加一段动图样式的CSS代码，代码如下，其中动图GIF可自行选择比较好看的加载动图即可。</p>
+
+<blockquote>
+<p>.loader {<br />
+&nbsp; height: 32px;<br />
+&nbsp; margin-top: 0;<br />
+&nbsp; text-align: center;<br />
+&nbsp; background: transparent url(&#39;loading.gif&#39;) no-repeat center center;<br />
+&nbsp; background-size: 32px 32px;<br />
+&nbsp; opacity: 0;<br />
+&nbsp; animation: flipAnimation 1s infinite;<br />
+&nbsp; transition: opacity 300ms;<br />
+}</p>
+</blockquote>
+
+<p>对于<a href="/tag/GoogleAnalytics.html" title="Google Analytics"  Target="_blank" >Google Analytics</a>（谷歌分析）的统计，可以增加如下代码实现翻页统计。</p>
+
+<blockquote>
+<p>ias.on(&#39;page&#39;, (event) =&gt; {<br />
+&nbsp; // update the title<br />
+&nbsp; document.title = event.title;<br />
+&nbsp; // update the url<br />
+&nbsp; let state = history.state;<br />
+&nbsp; history.replaceState(state, event.title, event.url);<br />
+&nbsp; // update the Google Analytics<br />
+var url = new URL(event.url);<br />
+ga(&#39;create&#39;, &#39;UA-XXXXX-Y&#39;, &#39;auto&#39;);<br />
+ga(&#39;send&#39;, &#39;pageview&#39;, url.pathname);<br />
+})</p>
+</blockquote>
+
+<p>上面代码将会在每一次url地址变换时候加载，需要使用analytics.js格式的Google Analytics代码，UA需要换成用户自己的数字，倒数2、3行即可将页面加载统计进去。</p>
+
+<p>经过增加上面的代码，用户就可以通过Google Analytics（谷歌分析）来统计出Infinite Ajax Scroll插件加载的页面的PV数据了。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Script.jpg" alt="升级Infinite Ajax Scroll的方法" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note6814"></span><a href="javascript:commYea(6814);" id="dig6814">顶一下 ▲</a>(<span id="sdig6814"><Script language="javascript" type="text/javascript">showDig("6814");</script></span>) &nbsp; <a href="javascript:commNay(6814);" id="down6814">踩一下 ▼</a>(<span id="sdown6814"><Script language="javascript" type="text/javascript">showDown("6814");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/6813.html" title="淘宝宣布禁止销售IP代理服务">淘宝宣布禁止销售IP代理服务</a></div><div class="next_content">下一篇 » <a href="/archives/6815.html" title="广电总局：经纪机构不得以应援集资等方式诱导粉丝消费">广电总局：经纪机构不得以应援集资等方式诱导粉丝消费</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/5871.html">Spotify：第三季度月活跃用户2.48亿户</a></p><p class="mutualitylist"><a href="/archives/5870.html">自学编程=做无用功？你只说对了一半</a></p><p class="mutualitylist"><a href="/archives/5787.html">HTML移动端及PC端页面适配跳转</a></p><p class="mutualitylist"><a href="/archives/5781.html">正则表达式匹配任意字符（包括换行符）</a></p><p class="mutualitylist"><a href="/archives/5617.html">使用Infinite Ajax Scroll实现下拉加载效果</a></p><p class="mutualitylist"><a href="/archives/5434.html">网站侧边栏广告固定浮动效果的实现</a></p><p class="mutualitylist"><a href="/archives/3975.html">IIS日志自动删除程序</a></p><p class="mutualitylist"><a href="/archives/2864.html">JavaScript仿淘宝智能浮动</a></p><p class="mutualitylist"><a href="/archives/2207.html">博客网站导航的制作</a></p><p class="mutualitylist"><a href="/archives/1972.html">正则表达式判断号码靓号类型</a></p><p class="mutualitylist"><a href="/archives/1961.html">通过Custom URL自定义同步服务</a></p><p class="mutualitylist"><a href="/archives/1830.html">在JavaScript中实现统计文本框Textarea字数</a></p><p class="mutualitylist"><a href="/archives/1705.html">手机版远程网站文件删除程序</a></p><p class="mutualitylist"><a href="/archives/713.html">防止文章被复制的网络分析软件</a></p><p class="mutualitylist"><a href="/archives/521.html">热文排行的算法进行了优化</a></p><p class="mutualitylist"><a href="/archives/447.html">Google和百度、雅虎的站内搜索代码</a></p><p class="mutualitylist"><a href="/archives/426.html">让广告代码不再影响你的网页加载速度</a></p><p class="mutualitylist"><a href="/archives/380.html">ASP无组件上传的原理</a></p><p class="mutualitylist"><a href="/archives/372.html">多个绑定多域名的PHP代码</a></p><p class="mutualitylist"><a href="/archives/206.html">ASP脚本生成GUID的实现</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	<div id="comment-form">
+<div id="respond" class="respond">
+<h3 id="comments-respond">发表留言</h3>
+<div class="cancel-comment-reply">
+<a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">点击这里取消回复。</a>
+</div>
+<form action="/zb_system/cmd.asp?act=cmt&amp;key=5ae68d25" method="post" id="frmSumbit" target="_self">
+<input type="hidden" name="inpId" id="inpId" value="6814" />
+	<input type="hidden" name="inpArticle" id="inpArticle" value="" />
+	<input type="hidden" name="inpRevID" id="inpRevID" value="" />
+<input type="text" name="inpName" id="inpName"  value="名称" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="1" />
+<input type="text" name="inpEmail" id="inpEmail" value="邮箱" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="2" />
+<input type="text" name="inpHomePage" id="inpHomePage" value="网站链接" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="3" />
+
+<textarea name="txaArticle" id="txaArticle" cols="100%" rows="10" tabindex="5"  onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('commentSubmit').click();return false};"></textarea>
+<br />
+<p style="display: none;"><input type="checkbox" name="chkRemember" checked="true" id="chkRemember" /> <label for="chkRemember">记住我,下次回复时不用重新输入个人信息</label></p>
+<input name="btnSumbit" type="submit" id="commentSubmit" tabindex="6" value="提交 (Ctrl+Enter)" onclick="JavaScript:return VerifyMessage()"/>
+</form>
+</div>
+</div>
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

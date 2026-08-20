@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/242.html"/>
+	<title>JAVASCRIPT加密解密终级指南-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>JAVASCRIPT加密解密终级指南</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/242.html" rel="bookmark">JAVASCRIPT加密解密终级指南</a></h1>
+	<div class="post-meta">
+		2005-8-28 21:38:49 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 6 | 
+		浏览: <span class="AddView" id="spn242" data-id="242"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>本文一共介绍了七种JAVASCRIPT加密方法。</p>
+
+<p>一：最简单的加密解密</p>
+
+<p>二：转义字符的妙用</p>
+
+<p>三：使用Microsoft出品的脚本编码器Script Encoder来进行编码 （自创简单解码）</p>
+
+<p>四：任意添加NUL空字符（十六进制00H） （自创）</p>
+
+<p>五：无用内容混乱以及换行空格TAB大法</p>
+
+<p>六：自写解密函数法</p>
+
+<p>七：错误的利用</p>
+
+<p>在做网页时（其实是网页木马呵呵），最让人烦恼的是自己辛辛苦苦写出来的客户端IE运行的JAVASCRIPT代码常常被别人轻易的拷贝，实在让自己的心里有点不是滋味，要知道自己写点东西也挺累的......^*^</p>
+
+<p>但我们也应该清楚地认识到因为JAVASCRIPT代码是在IE中解释执行，要想绝对的保密是不可能的，我们要做的就是尽可能的增大拷贝者复制的难度，让他知难而退（但愿~!~），下面我结合自己这几年来的实践，及个人研究的心得，和大家一起来探讨一下网页中JAVASCRIPT代码的加密解密技术。</p>
+
+<p>以加密下面的JAVASCRIPT代码为例：<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;<br />
+alert(&quot;《黑客防线》&quot;);<br />
+&lt;/SCRIPT&gt;</p>
+
+<p>一：最简单的加密解密</p>
+
+<p>大家对于JAVASCRIPT函数escape()和unescape()想必是比较了解啦（很多网页加密在用它们），分别是编码和解码字符串，比如例子代码用escape()函数加密后变为如下格式：<br />
+alert%28%22%u9ED1%u5BA2%u9632%u7EBF%22%29%3B</p>
+
+<p><br />
+如何？还看的懂吗？当然其中的ASCII字符&quot;alert&quot;并没有被加密，如果愿意我们可以写点JAVASCRIPT代码重新把它加密如下：<br />
+%61%6C%65%72%74%28%22%u9ED1%u5BA2%u9632%u7EBF%22%29%3B</p>
+
+<p><br />
+呵呵！如何？这次是完全都加密了！</p>
+
+<p>当然，这样加密后的代码是不能直接运行的，幸好还有eval(codeString)可用，这个函数的作用就是检查JavaScript代码并执行，必选项 codeString 参数是包含有效 JavaScript 代码的字符串值，加上上面的解码unescape()，加密后的结果如下：<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;<br />
+var code=unescape(&quot;%61%6C%65%72%74%28%22%u9ED1%u5BA2%u9632%u7EBF%22%29%3B&quot;);<br />
+eval(code)<br />
+&lt;/SCRIPT&gt;</p>
+
+<p><br />
+是不是很简单？不要高兴，解密也就同样的简单，解密代码都摆给别人啦（unescape()）！呵呵</p>
+
+<p>二：转义字符&quot;&quot;的妙用</p>
+
+<p>大家可能对转义字符&quot;&quot;不太熟悉，但对于JavaScript提供了一些特殊字符如：n （换行）、 r （回车）、&#39; （单引号 ）等应该是有所了解的吧？其实&quot;&quot;后面还可以跟八进制或十六进制的数字，如字符&quot;a&quot;则可以表示为：&quot;141&quot;或&quot;x61&quot;（注意是小写字符&quot;x&quot;），至于双字节字符如汉字&quot;黑&quot;则仅能用十六进制表示为&quot;u9ED1&quot;（注意是小写字符&quot;u&quot;），其中字符&quot;u&quot;表示是双字节字符，根据这个原理例子代码则可以表示为：</p>
+
+<p>八进制转义字符串如下:<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;<br />
+eval(&quot;1411541451621645042u9ED1u5BA2u9632u7EBF425173&quot;)<br />
+&lt;/SCRIPT&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>十六进制转义字符串如下:<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;<br />
+eval(&quot;x61x6Cx65x72x74x28x22u9ED1u5BA2u9632u7EBFx22x29x3B&quot;)<br />
+&lt;/SCRIPT&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>这次没有了解码函数，因为JavaScript执行时会自行转换，同样解码也是很简单如下：<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;<br />
+alert(&quot;x61x6Cx65x72x74x28x22u9ED1u5BA2u9632u7EBFx22x29x3B&quot;)<br />
+&lt;/SCRIPT&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>就会弹出对话框告诉你解密后的结果！</p>
+
+<p>三：使用Microsoft出品的脚本编码器Script Encoder来进行编码</p>
+
+<p>工具的使用就不多介绍啦！我是直接使用JavaScript调用控件Scripting.Encoder完成的编码！代码如下：<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;<br />
+var Senc=new ActiveXObject(&quot;Scripting.Encoder&quot;);<br />
+var code=&#39;&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;rnalert(&quot;《黑客防线》&quot;);rn&lt;/SCRIPT&gt;&#39;;<br />
+var Encode=Senc.EncodeScriptFile(&quot;.htm&quot;,code,0,&quot;&quot;);<br />
+alert(Encode);<br />
+&lt;/SCRIPT&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>编码后的结果如下：<br />
+&lt;SCRIPT LANGUAGE=&quot;JScript.Encode&quot;&gt;#@~^FgAAAA==@#@&amp;lsDD`J黑客防线r#p@#@&amp;FgMAAA==^#~@&lt;/SCRIPT&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>够难看懂得吧？但相应的解密工具早已出来，而且连解密网页都有！因为其解密网页代码过多，我就不多说拉！给大家介绍一下我独创的解密代码，如下：<br />
+&lt;SCRIPT LANGUAGE=&quot;JScript.Encode&quot;&gt;<br />
+function decode()<br />
+alert(decode.toString());<br />
+&lt;/SCRIPT&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>咋样？够简单吧？它是原理是：编码后的代码运行前IE会先对其进行解码，如果我们先把加密的代码放入一个自定义函数如上面的decode()中，然后对自定义函数decode调用toString()方法，得到的将是解码后的代码！</p>
+
+<p>如果你觉得这样编码得到的代码LANGUAGE属性是JScript.Encode，很容易让人识破，那么还有一个几乎不为人知的window对象的方法execScript()，其原形为：<br />
+window.execScript( sExpression, sLanguage )</p>
+
+<p><br />
+参数：<br />
+sExpression: 必选项。字符串(String)。要被执行的代码。<br />
+sLanguage　: 必选项。字符串(String)。指定执行的代码的语言。默认值为 Microsoft Jscript</p>
+
+<p>使用时，前面的&quot;window&quot;可以省略不写！</p>
+
+<p>利用它我们可以很好的运行编码后的JavaScript代码，如下：<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;<br />
+execScript(&quot;#@~^FgAAAA==@#@&amp;lsDD`J黑客防线r#p@#@&amp;FgMAAA==^#~@&quot;,&quot;Jscript.Encode&quot;)<br />
+&lt;/SCRIPT&gt;</p>
+
+<p><br />
+你可以利用方法二对其中的&quot;&quot;号内的字符串再进行编码，使得&quot;Jscript.Encode&quot;以及编码特征码&quot;#@~^&quot;不出现，效果会更好！</p>
+
+<p>四：任意添加NUL空字符（十六进制00H）</p>
+
+<p>一次偶然的实验，使我发现在HTML网页中任意位置添加任意个数的&quot;空字符&quot;，IE照样会正常显示其中的内容，并正常执行其中的JavaScript 代码，而添加的&quot;空字符&quot;我们在用一般的编辑器查看时，会显示形如空格或黑块，使得原码很难看懂，如用记事本查看则&quot;空字符&quot;会变成&quot;空格&quot;，利用这个原理加密结果如下：（其中显示的&quot;空格&quot;代表&quot;空字符&quot;）<br />
+&lt;S C RI P T L ANG U A G E =&quot; J a v a S c r I p t &quot;&gt;</p>
+
+<p>a l er t (&quot; 黑 客 防 线&quot;) ;</p>
+
+<p>&lt; / SC R I P T&gt;</p>
+
+<p><br />
+如何？是不是显得乱七八糟的？如果不知道方法的人很难想到要去掉里面的&quot;空字符&quot;（00H）的！</p>
+
+<p>五：无用内容混乱以及换行空格TAB大法</p>
+
+<p>在JAVASCRIPT代码中我们可以加入大量的无用字符串或数字，以及无用代码和注释内容等等，使真正的有用代码埋没在其中，并把有用的代码中能加入换行、空格、TAB的地方加入大量换行、空格、TAB，并可以把正常的字符串用&quot;&quot;来进行换行，这样就会使得代码难以看懂！如我加密后的形式如下：<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;<br />
+&quot;xajgxsadffgds&quot;;1234567890<br />
+625623216;var $=0;alert//@$%%&amp;*()(&amp;(^%^<br />
+//cctv function//<br />
+(//hhsaasajx xc<br />
+/*<br />
+asjgdsgu*/<br />
+&quot;黑</p>
+
+<p>客<br />
+防线&quot;//ashjgfgf<br />
+/*<br />
+@#%$^&amp;%$96667r45fggbhytjty<br />
+*/<br />
+//window<br />
+)<br />
+;&quot;#@$#%@#432hu&quot;;212351436<br />
+&lt;/SCRIPT&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>至少如果我看到这样的代码是不会有心思去分析它的，你哪？</p>
+
+<p>六：自写解密函数法</p>
+
+<p>这个方法和一、二差不多，只不过是自己写个函数对代码进行解密，很多VBS病毒使用这种方法对自身进行加密，来防止特征码扫描！下面是我写的一个简单的加密解密函数，</p>
+
+<p>加密代码如下（详细参照文件&quot;加密.htm&quot;）：<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;<br />
+function compile(code)<br />
+{<br />
+var c=String.fromCharCode(code.charCodeAt(0)+code.length);<br />
+for(var i=1;i&lt;code.length;i++)<br />
+alert(escape);<br />
+}<br />
+compile(&#39;alert(&quot;《黑客防线》&quot;);&#39;)<br />
+&lt;/SCRIPT&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>运行得到加密结果为：<br />
+o%CD%D1%D7%E6%9CJ%u9EF3%uFA73%uF1D4%u14F1%u7EE1Kd</p>
+
+<p>&nbsp;</p>
+
+<p>相应的加密后解密的代码如下：<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;<br />
+function uncompile(code)<br />
+{<br />
+code=unescape(code);<br />
+var c=String.fromCharCode(code.charCodeAt(0)-code.length);<br />
+for(var i=1;i&lt;code.length;i++)<br />
+return c;<br />
+}<br />
+eval(uncompile(&quot;o%CD%D1%D7%E6%9CJ%u9EF3%uFA73%uF1D4%u14F1%u7EE1Kd&quot;));<br />
+&lt;/SCRIPT&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>七：错误的利用</p>
+
+<p>利用try{}catch(e){}结构对代码进行测试解密，虽然这个想法很好（呵呵，夸夸自己），因为实用性不大，我仅给个例子<br />
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;</p>
+
+<p>var a=&#39;alert(&quot;《黑客防线》&quot;);&#39;;<br />
+var c=&quot;&quot;;<br />
+for(var i=0;i&lt;a.length;i++)</p>
+
+<p>alert;</p>
+
+<p>//上面的是加密代码，当然如果真正使用这个方法时，不会把加密写上的<br />
+//现在变量c就是加密后的代码</p>
+
+<p>//下面的函数t()先假设初始密码为０，解密执行，<br />
+//遇到错误则把密码加１，然后接着解密执行，直到正确运行</p>
+
+<p>var d=c; //保存加密后的代码<br />
+var b=0; //假定初始密码为0<br />
+t();</p>
+
+<p>function t()catch(e){<br />
+c=&quot;&quot;;<br />
+for(var i=0;i&lt;d.length;i++)<br />
+b+=1;<br />
+t();<br />
+//setTimeout(&quot;t()&quot;,0);<br />
+}<br />
+}<br />
+&lt;/SCRIPT&gt;</p>
+
+<p>作者：qdzx2008　来源：csdn.net</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Encryption.jpg" alt="JAVASCRIPT加密解密终级指南" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note242"></span><a href="javascript:commYea(242);" id="dig242">顶一下 ▲</a>(<span id="sdig242"><Script language="javascript" type="text/javascript">showDig("242");</script></span>) &nbsp; <a href="javascript:commNay(242);" id="down242">踩一下 ▼</a>(<span id="sdown242"><Script language="javascript" type="text/javascript">showDown("242");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/241.html" title="提高工作效率的时间管理方法">提高工作效率的时间管理方法</a></div><div class="next_content">下一篇 » <a href="/archives/243.html" title="香港青少年的电视片有感">香港青少年的电视片有感</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/83.html">USB Key身份认证产品的产生与发展</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.yueguangboke.com" /><input type="hidden" name="sitesearch" value="www.yueguangboke.com" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (520)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (929)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3172)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7539.html" title="湖北男子家中用荣耀手机浏览TikTok与X被罚">湖北男子家中用荣耀手机浏览TikTok与(1456)</a></li>
+<li><a href="/archives/7541.html" title="《魔兽世界：至暗之夜》PVP教程">《魔兽世界：至暗之夜》PVP教程(66)</a></li>
+<li><a href="/archives/7540.html" title="《魔兽世界：至暗之夜》采矿采药攻略">《魔兽世界：至暗之夜》采矿采药攻略(521)</a></li>
+<li><a href="/archives/7538.html" title="国家互联网应急中心发布关于OpenClaw安全应用的风险提示">国家互联网应急中心发布关于OpenCla(736)</a></li>
+<li><a href="/archives/7537.html" title="腾讯QQ开放OpenClaw官方接入">腾讯QQ开放OpenClaw官方接入(720)</a></li>
+<li><a href="/archives/7536.html" title="Mac电脑安装OpenClaw教程">Mac电脑安装OpenClaw教程(597)</a></li>
+<li><a href="/archives/7535.html" title="电脑无法启动的修复案例">电脑无法启动的修复案例(268)</a></li>
+<li><a href="/archives/7532.html" title="公安部就网络犯罪防治法公开征求意见">公安部就网络犯罪防治法公开征求意见(832)</a></li>
+<li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(6191)</a></li>
+<li><a href="/archives/7528.html" title="2025年财经年度总结">2025年财经年度总结(954)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7541</li><li>评论总数:199533</li><li>浏览总数:72526488</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

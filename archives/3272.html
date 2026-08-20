@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3272.html"/>
+	<title>高效代码审查的十个经验-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>高效代码审查的十个经验</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3272.html" rel="bookmark">高效代码审查的十个经验</a></h1>
+	<div class="post-meta">
+		2012-11-6 13:58:52 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 9 | 
+		浏览: <span class="AddView" id="spn3272" data-id="3272"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a><p>代码审查（Code Review)是软件开发中常用的手段，和QA测试相比，它更容易发现和架构以及时序相关等较难发现的问题，还可以帮助团队成员提高编程技能，统一编程风格等。</p><p><strong>1. 代码审查要求团队有良好的文化</strong></p><p>团队需要认识到代码审查是为了提高整个团队的能力，而不是针对个体设置的检查&ldquo;关卡&rdquo;。</p><p>&ldquo;A的代码有个bug被B发现，所以A能力不行，B能力更好&rdquo;，这一类的陷阱很容易被扩散从而影响团队内部的协作，因此需要避免。</p><p>另外，代码审查本身可以提高开发者的能力，让其从自身犯过的错误中学习，从他人的思路中学习。如果开发者对这个流程有抵触或者反感，这个目的就达不到。</p><p><strong>2. 谨慎的使用审查中问题的发现率作为考评标准</strong></p><p style="text-align: center"><img alt="高效代码审查的十个经验" src="/upload/3272_1.jpg" /></p><p>在代码审查中如果发现问题，对于问题的发现者来说这是好事，应该予以鼓励。但对于被发现者，我们不主张使用这个方式予以惩罚。软件开发中bug在所难免，过度苛求本身有悖常理。更糟的是，如果造成参与者怕承担责任，不愿意在审查中指出问题，代码审查就没有任何的价值和意义。</p><p><strong>3. 控制每次审查的代码数量</strong></p><p>根据smartbear在思科所作的调查，每次审查200行-400行的代码效果最好。每次试图审查的代码过多，发现问题的能力就会下降，具体的比例关系如下图所示：</p><p style="text-align: center"><img alt="高效代码审查的十个经验" src="/upload/3272_2.jpg" /></p><p>我们在实践中发现，随着开发平台和开发语言的不同，最优的代码审查量有所不同。但是限制每次审查的数量确实非常必要，因为这个过程是高强度的脑力密集型活动。时间一长，代码在审查者眼里只是字母，无任何逻辑联系，自然不会有太多的产出。</p><p><strong>4. 带着问题去进行审查</strong></p><p>我们在每次代码审查中，要求审查者利用自身的经验先思考可能会碰到的问题，然后通过审查工作验证这些问题是否已经解决。一个窍门是，从用户可见的功能出发，假设一个比较复杂的使用场景，在代码阅读中验证这个使用场景是否能够正确工作。</p><p>使用这个技巧，可以让审查者有代入感，真正的沉浸入代码中，提高效率。大家都知道看武侠小说不容易瞌睡，而看专业书容易瞌睡，原因就是武侠小说更容易产生代入感。</p><p>有的研究建议每次树立目标，控制单位时间内审核的代码数量。这个方法在我们的实践中显得很机械和流程化，不如上面的方法效果好。</p><p><strong>5. 所有的问题和修改，必须由原作者进行确认</strong></p><p>如果在审查中发现问题，务必由原作者进行确认。</p><p>这样做有两个目的：</p><p>(1)确认问题确实存在，保证问题被解决</p><p>(2)让原作者了解问题和不足，帮助其成长</p><p>有些时候为了追求效率，有经验的审查者更倾向于直接修改代码乃至重构所有代码，但这样不利于提高团队效率，并且会增加因为重构引入新bug的几率，通常情况下我们不予鼓励。</p><p><strong>6.利用代码审查激活个体&ldquo;能动性&quot;</strong></p><p>即使项目进度比较紧张，无法完全的进行代码审查，至少也要进行部分代码的审查，此时随即抽取一些关键部分是个不错的办法。</p><p>背后的逻辑是，软件开发是非常有创造性的工作，开发者都有强烈的自我驱动性和自我实现的要求。让开发者知道他写的任何代码都可能被其他人阅读和审察，可以促使开发者集中注意力，尤其是避免将质量糟糕，乃至有低级错误的代码提交给同伴审查。开源软件也很好的利用了这种心态来提高代码质量。</p><p><strong>7.在非正式，轻松的环境下进行代码审查</strong></p><p>如前所述，代码审查是一个脑力密集型的工作。参与者需要在比较轻松的环境下进行该工作。因此，我们认为像某些实践中建议的那样，以会议的形式进行代码审查效果并不好，不仅因为长时间的会议容易让效率低下，更因为会议上可能出现的争议和思考不利于进行如此复杂的工作。</p><p><strong>8.提交代码前自我审查，添加对代码的说明</strong></p><p>所有团队成员在提交代码给其他成员审查前，必须先进行一次审查。这次自我修正形式的审查除了检查代码的正确性以外，还可以完成如下的工作：</p><p>(1)对代码添加注释，说明本次修改背后的原因，方便其他人进行审查。</p><p>(2)修正编码风格，尤其是一些关键数据结构和方法的命名，提高代码的可读性。</p><p>(3)从全局审视设计，是否完整的考虑了所有情景。在实现之前做的设计如果存在考虑不周的情况，这个阶段可以很好的进行补救。</p><p>我们在实践中发现，即使只有原作者进行代码审查，仍然可以很好的提高代码质量。</p><p><strong>9.实现中记录笔记可以很好的提高问题发现率</strong></p><p>成员在编码的时候应做随手记录，包括在代码中用注释的方式表示，或者记录简单的个人文档，这样做有几个好处：</p><p>(1)避免遗漏。在编码时将考虑到的任何问题都记录下来，在审查阶段再次检查这些问题都确认解决。</p><p>(2)根据研究，每个人都习惯犯一些重复性的错误。这类问题在编码是记录下来，可以在审查的时候用作检查的依据。</p><p>(3)在反复记录笔记并在审查中发现类似的问题后，该类问题出现率会显著下降</p><p><strong>10. 使用好的工具进行轻量级的代码审查</strong></p><p>&ldquo;工欲善其事，必先利其器&rdquo;。我们使用的是bitbucket提供的代码托管服务。</p><p>每个团队成员独立开发功能，然后利用Pull Request的形式将代码提交给审查者。复审者可以很方便在网页上阅读代码，添加评论等，然后原作者会自动收到邮件提醒，对审阅的意见进行讨论。</p><p>即使团队成员分布在天南海北，利用bitbucket提供的工具也能很好的进行代码审查。</p><p>来源：<a target="_blank" href="http://jianguoyun.com/">坚果云</a>投稿（一个用于移动办公的安全云存储服务）。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="高效代码审查的十个经验" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3272"></span><a href="javascript:commYea(3272);" id="dig3272">顶一下 ▲</a>(<span id="sdig3272"><Script language="javascript" type="text/javascript">showDig("3272");</script></span>) &nbsp; <a href="javascript:commNay(3272);" id="down3272">踩一下 ▼</a>(<span id="sdown3272"><Script language="javascript" type="text/javascript">showDown("3272");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3271.html" title="深圳首家Apple Store开业">深圳首家Apple Store开业</a></div><div class="next_content">下一篇 » <a href="/archives/3273.html" title="微软确认Skype明年替换MSN">微软确认Skype明年替换MSN</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3269.html">设计思维与出稿方法</a></p><p class="mutualitylist"><a href="/archives/3213.html">关于产品的若干思考</a></p><p class="mutualitylist"><a href="/archives/3136.html">为什么要少用Iframe</a></p><p class="mutualitylist"><a href="/archives/3119.html">SPDY 是什么？如何部署 SPDY？</a></p><p class="mutualitylist"><a href="/archives/3104.html">移动应用设计中应避免的十种错误</a></p><p class="mutualitylist"><a href="/archives/3097.html">MGC：机器生成内容</a></p><p class="mutualitylist"><a href="/archives/3088.html">互联网项目管理要点</a></p><p class="mutualitylist"><a href="/archives/3077.html">构建移动Web应用程序的技术堆栈</a></p><p class="mutualitylist"><a href="/archives/3067.html">一个杀手移动用户界面的七个步骤</a></p><p class="mutualitylist"><a href="/archives/3063.html">HTML5能取代Android和iOS应用程序吗？</a></p><p class="mutualitylist"><a href="/archives/3062.html">程序员真的很懒</a></p><p class="mutualitylist"><a href="/archives/3061.html">开发一个iOS应用没有那么容易</a></p><p class="mutualitylist"><a href="/archives/3028.html">国外程序员推荐：每个程序员都应读的书</a></p><p class="mutualitylist"><a href="/archives/3026.html">十六个快速启动项目样板</a></p><p class="mutualitylist"><a href="/archives/3024.html">使用HTML5的十大原因</a></p><p class="mutualitylist"><a href="/archives/3011.html">如何在Google成为一名优秀的产品经理？</a></p><p class="mutualitylist"><a href="/archives/3004.html">移动开发中HTML5能否替代本地程序？</a></p><p class="mutualitylist"><a href="/archives/2989.html">技术演讲的技巧和经验</a></p><p class="mutualitylist"><a href="/archives/2970.html">怎样打造高性能的移动用户体验</a></p><p class="mutualitylist"><a href="/archives/2954.html">为什么程序员的社会地位不高？</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

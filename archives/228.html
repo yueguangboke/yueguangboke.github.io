@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/228.html"/>
+	<title>关于“网站重构”概念解析-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>关于“网站重构”概念解析</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/228.html" rel="bookmark">关于“网站重构”概念解析</a></h1>
+	<div class="post-meta">
+		2005-8-14 17:28:10 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 2 | 
+		浏览: <span class="AddView" id="spn228" data-id="228"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/WebDesign.html" rel="tag"><img src="/logo/WebDesign.gif" alt="网站设计" class="thumb" width="80" height="80" /></a><p>近来大家总是在标准上争论不休，其实，这些问题一些相关文章已经说得很明白了。以下我就谈谈我的看法。本文有太多的&ldquo;我认为&rdquo;，说明了我只是想把我的想法拿出来跟大家商榷，或许有太多不对的地方，也请大家一一指出。</p>
+<p>1、我对web标准的理解</p>
+<p>所谓的web标准，在一些教程文章上已经得到结论：结构化标准（XHTML、XML）、表现标准（CSS、XSLT？）、行为标准（DOM、ECMAScript）。这些东西在网上一搜一大把，在这里我就不多说了。我只说我自己的想法：</p>
+<p>a.标准是相对的，有其一定的局限性</p>
+<p>作为标准本身，它也在不断地完善中。我们也可以加入其中完善它，而不是盲从它。没有最好，只有更好。（LeXRus前一阵子说要成立自己的web标准组织，不知道现在怎么样了。）</p>
+<p>b.标准只是被推荐使用，好的标准大家都会自觉去遵守</p>
+<p>我们之所以使用标准，就是因为标准对我们有利。正如现在倡导的ISO9000标准一样，它只是倡导，并不强迫。我认为它对我有用，所以我用它；同样，如果你认为它实在不怎么样，你也可以不用它，标准本身不应该带有任何强迫性。就跟打篮球一样，NBA是24秒进攻，我们是30秒进攻，我们要想加入NBA，就得用人家的规则。还有我们加入&ldquo;世贸&rdquo;也是，如果我们够拽，自己成立一个&ldquo;世贸&rdquo;，自己发布一套标准，也是可以的。</p>
+<p>c.标准没有明确提到用div还是table</p>
+<p>有些朋友很容易把标准简单地等同于&ldquo;把table换成div&rdquo;。我不这么认为，因为table也是符合xml规则的。含有table的页面照样可以通过XHTML1.0的验证。</p>
+<p>d.&ldquo;div布局&rdquo;不只是用div进行布局</p>
+<p>我们可以用一切可能的标签（包括table）对页面进行布局，目的就是要达到最优。它只是提出一个概念，一个全新的模式。坛子里也有人说过，&ldquo;重要的是观念上的更新，而不是代码。&rdquo;当然，我们的最终目的是代码的更新。</p>
+<p>e.XHTML验证是手段，不是目的</p>
+<p>有时，我们用javascript来生成flash movie代码，以欺骗validator，通过验证。用这种方法，那么没有通不过验证的页面。如果只是玩玩，那是可以的。但是我怕会有些初学者太把validator当回事，甚至认为通过验证是最终目的。我的看法是：validator不过是一个工具，它帮助我们检查我们的页面是否符合标准，仅此而已。最终我们还是得按客户的要求设计我们的页面。</p>
+<p>2、我为什么要用标准</p>
+<p>有人会以为使用标准的目的就是为了达到标准。其实，《网站重构》一语道破天机：为了网站能&ldquo;活&rdquo;得更长久，为了提高网站的可访性，更为了降低成本，我们必须采用Web标准！这里有三个&ldquo;为了&rdquo;，没有一个是为了标准。标准只是手段。</p>
+<p>接触&ldquo;标准&rdquo;后，我尝试去做一些符合&ldquo;标准&rdquo;的页面。当时，并不是很明确为什么要使用标准，只是出于一种好奇心理。中间也遇到了一些难题，有技术上的，也有观念上的。但是，现在我很乐意用div+css来给客户做网页。</p>
+<p>用了标准以后，给我的感觉就是：代码精简了，维护方便了。</p>
+<p>代码精简，可缩短页面装载时间。就算在当前宽带的条件下，我们也不应该放宽对自己的要求&mdash;&mdash;精简代码（我想这也是每一个程序员对自己的要求），况且现在还有不少的拨号用户，以及手机上网/浏览的用户。这是一个分秒必争的社会。</p>
+<p>严格按照标准，可以获得更高的兼容性。一个合格的网页制作者，他总是试图让网页达到最高的兼容性。当然，他要在效果与兼容性之间取得某种平衡。就像我们现在挑老公：既要有钱，也要靓仔。</p>
+<p>维护方便，我甚至只要修改一下css就可以让整个页面呈现出完全不同的风格。这可以节省不少工作。</p>
+<p>当然，我认为用标准最重要的一点是：向后兼容。用一个专业的术语就是：可持续发展。网络总是在不断地发展中，一个好的网页制作者，总得对未来的发展有一定的预见。就现在我知道的，以后一段时间确实是xml的天下，直到有更好的东西出来取代它。</p>
+<p>每年都有太多的网站为了跟上时代，花不少钱在改版上。因为改版就意味着一切重来，包括代码，甚至程序。</p>
+<p>标准还要求我们把数据交给XHTML（或者html、xml），把表现交给css，两者各司其职，结合起来。</p>
+<p>3、为table平反</p>
+<p>《网站重构》一书出来以后，也许有很大的误读成分，一些朋友把标准跟重构混淆了，甚至等同起来。我没看过这本书，不好做评价。</p>
+<p>&ldquo;在不改变代码外在行为的前提下，对代码做出修改，以改进程序的内部结构&rdquo;，这就是重构。我认为&ldquo;网站重构&rdquo;兼有&ldquo;div布局&rdquo;跟&ldquo;web标准&rdquo;的意思。布局讲的是一种方法，标准讲的是一种规范，这是两码事。</p>
+<p>web标准并不是说不用table，我找遍了网上的文章，没有找到一篇文章说web标准反对使用甚至建议不使用table标签，我想它是这样说的：建议不要使用table&ldquo;布局&rdquo;，而改用div+cs&ldquo;布局&rdquo;。</p>
+<p>拿一个数据表来说，我认为用table来组织它是最好的解决方案。当然，你要用其他办法来实现也是可以的，但是我敢说都没有table来得简单、简洁。（也许有，只是我没找到？）当然，在学习阶段，强制自己不使用表格解决一切问题，还是蛮有用的。</p>
+<p>以上说了这么多，与其说是我的想法，不如说是汇总了大家的想法。但求不贻笑大方，如果能对初学者有所裨益，那就阿弥陀佛了。 </p>
+<p>作者：wyf122出处：http://wyf122.spaces.live.com/Blog/cns!2667AFC0FD72EB7!203.entry</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/WebDesign.jpg" alt="关于“网站重构”概念解析" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note228"></span><a href="javascript:commYea(228);" id="dig228">顶一下 ▲</a>(<span id="sdig228"><Script language="javascript" type="text/javascript">showDig("228");</script></span>) &nbsp; <a href="javascript:commNay(228);" id="down228">踩一下 ▼</a>(<span id="sdown228"><Script language="javascript" type="text/javascript">showDown("228");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/227.html" title="XHTML的学习">XHTML的学习</a></div><div class="next_content">下一篇 » <a href="/archives/229.html" title="第二次世界大战结束纪念日">第二次世界大战结束纪念日</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/227.html">XHTML的学习</a></p><p class="mutualitylist"><a href="/archives/212.html">令网站打开提高速度的7大秘方</a></p><p class="mutualitylist"><a href="/archives/168.html">美女图片在网站上的应用</a></p><p class="mutualitylist"><a href="/archives/28.html">网站建设：提高网站访问量的策略</a></p><p class="mutualitylist"><a href="/archives/27.html">优化你的站点，让它加载的再快一些</a></p><p class="mutualitylist"><a href="/archives/26.html">使你的网站更专业－－谈网站优化</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

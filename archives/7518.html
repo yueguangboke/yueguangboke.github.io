@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/7518.html"/>
+	<title>GitHub Pages搭建个人网站指南-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>GitHub Pages搭建个人网站指南</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/7518.html" rel="bookmark">GitHub Pages搭建个人网站指南</a></h1>
+	<div class="post-meta">
+		2025-10-20 15:35:0 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn7518" data-id="7518"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>怎么免费搭建个人网站是个老生常谈的话题了，对于一个纯HTML网站来说，使用GitHub Pages来搭建，目前来说是一个首选方案，其特点是免费、稳定、高速、可拓展性强。本文将详细讲述GitHub Pages搭建网站的教程。</p>
+
+<p><strong>一、网站地址和账号</strong></p>
+
+<p>搭建 GitHub Pages 需要先注册 GitHub 账号：前往 GitHub 官网完成注册，注册的用户名就是子域名的名称。</p>
+
+<p>Github支持自定义域名，可将自己注册的域名做为网站域名，如果不付费注册域名的话，也可以免费使用Github提供的子域名。</p>
+
+<p>用户网站主站的站点的域名为：仓库名必须为 用户名.github.io，全局唯一，对应根域名站点。</p>
+
+<p>用户项目站点（子站）：任意仓库均可开启，站点地址为 用户名.github.io/仓库名，适合搭建项目文档站。</p>
+
+<p><strong>二、基础环境搭建与首次部署</strong></p>
+
+<p>1. 创建仓库</p>
+
+<p>登录 GitHub 账号，点击首页右上角「+」号，选择 New repository 新建仓库：</p>
+
+<p>仓库名称严格填写：你的GitHub用户名.github.io（必须和账号用户名完全一致，大小写敏感），仓库权限选择 Public（公开）（私有仓库无法免费启用 Pages 服务），点击底部 Create repository 完成创建。</p>
+
+<p>2. 本地环境</p>
+
+<p>本地环境有很多选择，推荐使用 VS Code + Git 组合，在 VS Code 中可以用 AI 来创建一个网站，例如，输入提示词：创建个人网站，然后输入关于个人网站的要求，AI生成页面之后，点右侧菜单&ldquo;源代码管理&rdquo;- 发布到Github。这种通过 VS Code 发布&nbsp;Github 的方式适合少量HTML文件，不熟悉 git&nbsp;命令行的用户。</p>
+
+<p>如果有现成做好的网站，HTML文件数量很多的话，建议用 git 命令行来操作。</p>
+
+<p>克隆仓库到本地：</p>
+
+<p>git clone https://github.com/用户名/用户名.github.io.git</p>
+
+<p>cd 用户名.github.io</p>
+
+<p>3. 基础文件结构与首次提交</p>
+
+<p>网站默认入口文件为 index.html，将你做好的网站html文件全部复制过来。</p>
+
+<p>使用下面的命令提交并推送网站的代码：</p>
+
+<p>git add .<br />
+git commit -m &quot;init: upload all html files&quot;<br />
+git push -u origin main</p>
+
+<p>返回仓库主页，点击顶部导航栏 Settings（设置），左侧侧边栏下滑找到并点击 Pages 选项，在 Build and deployment 部署区域，设置参数，选择 Deploy from a branch，选择 main 分支，选择 / (root) 根目录，点击右侧 Save 保存配置。</p>
+
+<p>等待一会儿之后，访问 https://用户名.github.io 即可看到个人页面。</p>
+
+<p>4. 批量修改</p>
+
+<p>对于已经存在的文件，先通过pull命令将文件拉下来</p>
+
+<p>git pull origin main</p>
+
+<p>之后，通过各种方法来修改本地html文件，批量修改好了以后，通过下面的命令批量上传到github上去。</p>
+
+<p>git add &quot;*.html&quot;<br />
+git commit -m &quot;refactor: fix bug&quot;<br />
+git push origin main</p>
+
+<p><strong>三、自定义域名</strong></p>
+
+<p>默认二级域名较长，绑定自定义域名后，网站更专业、更具个人标识，GitHub Pages 免费支持 HTTPS 加密。</p>
+
+<p>购买域名推荐用Cloudflare。</p>
+
+<p>添加 CNAME 记录：在域名 DNS 管理中添加 CNAME 记录，主机名为 @ 或 www，指向 用户名.github.io。</p>
+
+<p>仓库配置：在 GitHub 仓库设置中启用「Custom domain」并输入域名。勾选 Enforce HTTPS，开启全站加密访问。</p>
+
+<p>等待几分钟解析生效，即可通过自定义域名访问网站。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="GitHub Pages搭建个人网站指南" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note7518"></span><a href="javascript:commYea(7518);" id="dig7518">顶一下 ▲</a>(<span id="sdig7518"><Script language="javascript" type="text/javascript">showDig("7518");</script></span>) &nbsp; <a href="javascript:commNay(7518);" id="down7518">踩一下 ▼</a>(<span id="sdown7518"><Script language="javascript" type="text/javascript">showDown("7518");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/7517.html" title="阿根廷警察被谷歌街景相机拍到裸照">阿根廷警察被谷歌街景相机拍到裸照</a></div><div class="next_content">下一篇 » <a href="/archives/7519.html" title="Cloudflare Pages搭建个人网站指南">Cloudflare Pages搭建个人网站指南</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/7347.html">放弃百度站内搜索</a></p><p class="mutualitylist"><a href="/archives/7122.html">制作匿名举报网站的方法</a></p><p class="mutualitylist"><a href="/archives/7100.html">防止网站被黑帽SEO利用</a></p><p class="mutualitylist"><a href="/archives/6839.html">免费运营维护网站指南</a></p><p class="mutualitylist"><a href="/archives/6574.html">网站SSL证书出现错误和解决过程</a></p><p class="mutualitylist"><a href="/archives/6511.html">服务器启用HSTS协议</a></p><p class="mutualitylist"><a href="/archives/6510.html">服务器禁用TLS 1.0协议</a></p><p class="mutualitylist"><a href="/archives/6380.html">通过gzip和nginx来提高网站打开速度</a></p><p class="mutualitylist"><a href="/archives/6287.html">Windows IIS日志文件分析神器</a></p><p class="mutualitylist"><a href="/archives/6051.html">十大网站创业方向</a></p><p class="mutualitylist"><a href="/archives/6022.html">谷歌提醒网站管理：疫情期间切勿关站 会影响后续排名</a></p><p class="mutualitylist"><a href="/archives/5780.html">IIS子目录web.config与主站冲突解决方法</a></p><p class="mutualitylist"><a href="/archives/5611.html">SSL的安全配置和检测</a></p><p class="mutualitylist"><a href="/archives/5594.html">IIS通过URL重写实现防盗链</a></p><p class="mutualitylist"><a href="/archives/5571.html">BT天堂站长被判刑三年罚款八十万</a></p><p class="mutualitylist"><a href="/archives/5523.html">WordPress Hestia主题的定制和优化</a></p><p class="mutualitylist"><a href="/archives/5520.html">阿里云服务器迁移</a></p><p class="mutualitylist"><a href="/archives/5505.html">不带www域名重定向到带www域名</a></p><p class="mutualitylist"><a href="/archives/5463.html">IIS和Apache实现HTTP重定向到HTTPS</a></p><p class="mutualitylist"><a href="/archives/5408.html">IIS服务器多域名部署多个HTTPS的方法</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	<div id="comment-form">
+<div id="respond" class="respond">
+<h3 id="comments-respond">发表留言</h3>
+<div class="cancel-comment-reply">
+<a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">点击这里取消回复。</a>
+</div>
+<form action="/zb_system/cmd.asp?act=cmt&amp;key=cb38068a" method="post" id="frmSumbit" target="_self">
+<input type="hidden" name="inpId" id="inpId" value="7518" />
+	<input type="hidden" name="inpArticle" id="inpArticle" value="" />
+	<input type="hidden" name="inpRevID" id="inpRevID" value="" />
+<input type="text" name="inpName" id="inpName"  value="名称" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="1" />
+<input type="text" name="inpEmail" id="inpEmail" value="邮箱" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="2" />
+<input type="text" name="inpHomePage" id="inpHomePage" value="网站链接" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="3" />
+
+<textarea name="txaArticle" id="txaArticle" cols="100%" rows="10" tabindex="5"  onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('commentSubmit').click();return false};"></textarea>
+<br />
+<p style="display: none;"><input type="checkbox" name="chkRemember" checked="true" id="chkRemember" /> <label for="chkRemember">记住我,下次回复时不用重新输入个人信息</label></p>
+<input name="btnSumbit" type="submit" id="commentSubmit" tabindex="6" value="提交 (Ctrl+Enter)" onclick="JavaScript:return VerifyMessage()"/>
+</form>
+</div>
+</div>
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.yueguangboke.com" /><input type="hidden" name="sitesearch" value="www.yueguangboke.com" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (525)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (939)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3182)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (676)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7557.html" title="推特推出全新“原创内容奖励计划”">推特推出全新“原创内容奖励计划”(183)</a></li>
+<li><a href="/archives/7555.html" title="大学教授出奇招抓AI作弊，35名学生32人中招">大学教授出奇招抓AI作弊，35名学生32(469)</a></li>
+<li><a href="/archives/7556.html" title="《生化危机9安魂曲》游戏评测">《生化危机9安魂曲》游戏评测(47)</a></li>
+<li><a href="/archives/7554.html" title="申真谞九段让子棋战胜KataGo">申真谞九段让子棋战胜KataGo(426)</a></li>
+<li><a href="/archives/7553.html" title="豆包千问宣布下线智能体功能">豆包千问宣布下线智能体功能(591)</a></li>
+<li><a href="/archives/7552.html" title="申真谞九段受让两子挑战KataGo">申真谞九段受让两子挑战KataGo(1071)</a></li>
+<li><a href="/archives/7550.html" title="《网络测评活动规范》出台">《网络测评活动规范》出台(653)</a></li>
+<li><a href="/archives/7551.html" title="韩红帮冯小刚新片《抓特务》“走个面”引争议">韩红帮冯小刚新片《抓特务》“走个面”引争(58)</a></li>
+<li><a href="/archives/7549.html" title="粉笔科技的人大讲座事件的说明与致歉">粉笔科技的人大讲座事件的说明与致歉(1105)</a></li>
+<li><a href="/archives/7548.html" title="《国务院关于对外投资的规定》自7月1日起施行">《国务院关于对外投资的规定》自7月1日起(1083)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7557</li><li>评论总数:199551</li><li>浏览总数:74063866</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/118.html"/>
+	<title>保护IIS服务器的15个技巧-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>保护IIS服务器的15个技巧</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/118.html" rel="bookmark">保护IIS服务器的15个技巧</a></h1>
+	<div class="post-meta">
+		2005-4-24 15:27:39 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 2 | 
+		浏览: <span class="AddView" id="spn118" data-id="118"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Security.html" rel="tag"><img src="/logo/Security.gif" alt="安全" class="thumb" width="80" height="80" /></a><p>通常地，大多数Web站点的设计目标都是：以最易接受的方式，为访问者提供即时的信息访问。在过去的几年中，越来越多的黑客、病毒和蠕虫带来的安全问题严重影响了网站的可访问性，尽管Apache服务器也常常是攻击者的目标，然而<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>的Internet信息服务(IIS) Web服务器才是真正意义上的众矢之的。</p>
+<p>高级教育机构往往无法在构建充满活力、界面友好的网站还是构建高安全性的网站之间找到平衡点。另外，它们现在必须致力于提高网站安全性以面对缩减中的技术预算 (其实许多它们的私有部门也面临着相似的局面)。</p>
+<p>正因为如此，我在这里将为预算而头疼的大学IT经理们提供一些技巧，以帮助他们保护他们的IIS服务器。虽然主要是面对大学里的IT专业人员的，但是这些技巧也基本上适用于希望通过少量的财政预算来提高安全性的IIS管理人员。实际上，这里面的一些技巧对拥有强大预算的IIS管理人员也是非常有用的。</p>
+<p>首先，开发一套安全策略</p>
+<p>保护Web服务器的第一步是确保网络管理员清楚安全策略中的每一项制度。如果公司高层没有把服务器的安全看作是必须被保护的资产，那么保护工作是完全没有意义的。这项工作需要长期的努力。如果预算不支持或者它不是长期IT战略的一部分，那么花费大量时间保护服务器安全的管理员将得不到管理层方面的重要支持。</p>
+<p>网络管理员为各方面资源建立安全性的直接结果是什么呢？一些特别喜欢冒险的用户将会被关在门外。那些用户随后会抱怨公司的管理层，管理层人员又会去质问网络管理员究竟发生了什么。那么，网络管理员没办法建立支持他们安全工作的文档，因此，冲突发生了。</p>
+<p>通过标注Web服务器安全级别以及可用性的安全策略，网络管理员将能够从容地在不同的操作系统上部署各种软件工具。</p>
+<p>IIS安全技巧</p>
+<p>微软的产品一向是众矢之的，因此IIS服务器特别容易成为攻击者的靶子。搞清楚了这一点后，网络管理员必须准备执行大量的安全措施。我将要为你们提供的是一个清单，服务器操作员也许会发现这是非常有用的。</p>
+<p>1. 保持<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>升级:</p>
+<p>你必须在第一时间及时地更新所有的升级，并为系统打好一切补丁。考虑将所有的更新下载到你网络上的一个专用的服务器上，并在该机器上以Web的形式将文件发布出来。通过这些工作，你可以防止你的Web服务器接受直接的Internet访问。</p>
+<p>2. 使用IIS防范工具:</p>
+<p>这个工具有许多实用的优点，然而，请慎重的使用这个工具。如果你的Web服务器和其他服务器相互作用，请首先测试一下防范工具，以确定它已经被正确的配置，保证其不会影响Web服务器与其他服务器之间的通讯。</p>
+<p>3. 移除缺省的Web站点:</p>
+<p>很多攻击者瞄准inetpub这个文件夹，并在里面放置一些偷袭工具，从而造成服务器的瘫痪。防止这种攻击最简单的方法就是在IIS里将缺省的站点禁用。然后，因为网虫们都是通过IP地址访问你的网站的 (他们一天可能要访问成千上万个IP地址)，他们的请求可能遇到麻烦。将你真实的Web站点指向一个背部分区的文件夹，且必须包含安全的NTFS权限 (将在后面NTFS的部分详细阐述)。</p>
+<p>4. 如果你并不需要FTP和SMTP服务，请卸载它们:</p>
+<p>进入计算机的最简单途径就是通过FTP访问。FTP本身就是被设计满足简单读/写访问的，如果你执行身份认证，你会发现你的用户名和密码都是通过明文的形式在网络上传播的。SMTP是另一种允许到文件夹的写权限的服务。通过禁用这两项服务，你能避免更多的黑客攻击。</p>
+<p>5. 有规则地检查你的管理员组和服务:</p>
+<p>有一天我进入我们的教室，发现在管理员组里多了一个用户。这意味着这时某个人已经成功地进入了你的系统，他或她可能冷不丁地将炸弹扔到你的系统里，这将会突然摧毁你的整个系统，或者占用大量的带宽以便黑客使用。黑客同样趋向于留下一个帮助服务，一旦这发生了，采取任何措施可能都太晚了，你只能重新格式化你的磁盘，从备份服务器恢复你每天备份的文件。因此，检查IIS服务器上的服务列表并保持尽量少的服务必须成为你每天的任务。你应该记住哪个服务应该存在，哪个服务不应该存在。Windows 2000 Resource Kit带给我们一个有用的程序，叫作tlist.exe，它能列出每种情况运行在svchost 之下的服务。运行这个程序可以寻找到一些你想要知道的隐藏服务。给你一个提示：任何含有daemon几个字的服务可能不是Windows本身包含的服务，都不应该存在于IIS服务器上。想要得到Windows服务的列表并知道它们各自有什么作用，请点击这里。</p>
+<p>6. 严格控制服务器的写访问权限:</p>
+<p>这听起来很容易，然而，在大学校园里，一个Web服务器实际上是有很多&quot;作者&quot;的。教职人员都希望让他们的课堂信息能被远程学生访问。职员们则希望与其他的职员共享他们的工作信息。服务器上的文件夹可能出现极其危险的访问权限。将这些信息共享或是传播出去的一个途径是安装第2个服务器以提供专门的共享和存储目的，然后配置你的Web服务器来指向共享服务器。这个步骤能让网络管理员将Web服务器本身的写权限仅仅限制给管理员组。</p>
+<p>7. 设置复杂的密码:</p>
+<p>我最近进入到教室，从事件察看器里发现了很多可能的黑客。他或她进入了实验室的域结构足够深，以至于能够对任何用户运行密码破解工具。如果有用户使用弱密码 (例如&quot;password&quot;或是 changeme&quot;或者任何字典单词)，那么黑客能快速并简单的入侵这些用户的账号。</p>
+<p>8. 减少/排除Web服务器上的共享:</p>
+<p>如果网络管理员是唯一拥有Web服务器写权限的人，就没有理由让任何共享存在。共享是对黑客最大的诱惑。此外，通过运行一个简单的循环批处理文件，黑客能够察看一个IP地址列表，利用\命令寻找Everyone/完全控制权限的共享。</p>
+<p>9. 禁用TCP/IP协议中的NetBIOS:</p>
+<p>这是残忍的。很多用户希望通过UNC路径名访问Web服务器。随着NETBIOS被禁用，他们便不能这么做了。另一方面，随着NETBIOS被禁用，黑客就不能看到你局域网上的资源了。这是一把双刃剑，如果网络管理员部署了这个工具，下一步便是如何教育Web用户如何在NETBIOS失效的情况下发布信息。</p>
+<p>10. 使用TCP端口阻塞:</p>
+<p>这是另一个残忍的工具。如果你熟悉每个通过合法原因访问你服务器的TCP端口，那么你可以进入你网络接口卡的属性选项卡，选择绑定的TCP/IP协议，阻塞所有你不需要的端口。你必须小心的使用这一工具，因为你并不希望将自己锁在Web服务器之外，特别是在当你需要远程登陆服务器的情况下。要得到TCP端口的详细细节，点击这里。</p>
+<p>11. 仔细检查*.bat和*.exe 文件: 每周搜索一次*.bat</p>
+<p>和*.exe文件，检查服务器上是否存在黑客最喜欢，而对你来说将是一场恶梦的可执行文件。在这些破坏性的文件中，也许有一些是*.reg文件。如果你右击并选择编辑，你可以发现黑客已经制造并能让他们能进入你系统的注册表文件。你可以删除这些没任何意义但却会给入侵者带来便利的主键。</p>
+<p>12. 管理IIS目录安全:</p>
+<p>IIS目录安全允许你拒绝特定的IP地址、子网甚至是域名。作为选择，我选择了一个被称作WhosOn的软件，它让我能够了解哪些IP地址正在试图访问服务器上的特定文件。WhosOn列出了一系列的异常。如果你发现一个家伙正在试图访问你的cmd.exe，你可以选择拒绝这个用户访问Web服务器。当然，在一个繁忙的Web站点，这可能需要一个全职的员工！然而，在内部网，这真的是一个非常有用的工具。你可以对所有局域网内部用户提供资源，也可以对特定的用户提供。</p>
+<p>13. 使用NTFS安全:</p>
+<p>缺省地，你的NTFS驱动器使用的是EVERYONE/完全控制权限，除非你手工关掉它们。关键是不要把自己锁定在外，不同的人需要不同的权限，管理员需要完全控制，后台管理账户也需要完全控制，系统和服务各自需要一种级别的访问权限，取决于不同的文件。最重要的文件夹是System32，这个文件夹的访问权限越小越好。在Web服务器上使用NTFS权限能帮助你保护重要的文件和应用程序。</p>
+<p>14.管理用户账户:如果你已经安装IIS，你可能产生了一个TSInternetUser账户。除非你真正需要这个账户，否则你应该禁用它。这个用户很容易被渗透，是黑客们的显著目标。为了帮助管理用户账户，确定你的本地安全策略没有问题。IUSR用户的权限也应该尽可能的小。</p>
+<p>15. 审计你的Web服务器:</p>
+<p>审计对你计算机的性能有着较大的影响，因此如果你不经常察看的话，还是不要做审计了。如果你真的能用到它，请审计系统事件并在你需要的时候加入审计工具。如果你正在使用前面提到的WhosOn工具，审计就不那么重要了。缺省地，IIS总是纪录访问， WhosOn 会将这些纪录放置在一个非常容易易读的数据库中，你可以通过Access或是 Excel打开它。如果你经常察看异常数据库，你能在任何时候找到服务器的脆弱点。</p>
+<p>总结</p>
+<p>上述所有IIS技巧和工具(除了WhosOn以外)都是Windows自带的。不要忘记在测试你网站可达性之前一个一个的使用这些技巧和工具。如果它们一起被部署，结果可能让你损失惨重，你可能需要重启，从而遗失访问。</p>
+<p>最后的技巧: 登陆你的Web服务器并在命令行下运行netstat -an。观察有多少IP地址正尝试和你的端口建立连接，然后你将有一大堆的调查和研究要做了。</p>
+<p>作者：佚名　来源：天极网</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Security.jpg" alt="保护IIS服务器的15个技巧" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note118"></span><a href="javascript:commYea(118);" id="dig118">顶一下 ▲</a>(<span id="sdig118"><Script language="javascript" type="text/javascript">showDig("118");</script></span>) &nbsp; <a href="javascript:commNay(118);" id="down118">踩一下 ▼</a>(<span id="sdown118"><Script language="javascript" type="text/javascript">showDown("118");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/117.html" title="硕士失业的连锁反应">硕士失业的连锁反应</a></div><div class="next_content">下一篇 » <a href="/archives/119.html" title="Access数据库自动编号初始值和步进值">Access数据库自动编号初始值和步进值</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/96.html">预防SQL注入漏洞函数</a></p><p class="mutualitylist"><a href="/archives/89.html">三种禁用FileSystemObject组件的方法</a></p><p class="mutualitylist"><a href="/archives/72.html">防范ASP木马的措施</a></p><p class="mutualitylist"><a href="/archives/71.html">ASP漏洞全接触-高级篇</a></p><p class="mutualitylist"><a href="/archives/70.html">ASP漏洞全接触-进阶篇</a></p><p class="mutualitylist"><a href="/archives/69.html">ASP漏洞全接触-入门篇</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

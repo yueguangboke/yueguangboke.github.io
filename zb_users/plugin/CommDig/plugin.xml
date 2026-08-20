@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin>
+<id>CommDig</id>
+<name>评论支持插件</name>
+<note>启用该插件后，需要修改b_article_comment.html模板，用于统计评论的受欢迎程度，此插件启用后需要重建所有文件。</note>
+<type>inline</type>
+<path>main.asp</path>
+<include>include.asp</include>
+<level>1</level>
+<author>
+	<name>三七八蛋</name>
+	<url>http://www.378q.com.cn</url>
+	<email>jimstory@qq.com</email>
+</author>
+<version>1.0</version>
+<adapted>Z-Blog 1.8</adapted>
+<pubdate>2010-01-15</pubdate>
+<modified>2010-01-15</modified>
+</plugin>

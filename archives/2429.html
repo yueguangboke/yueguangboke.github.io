@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2429.html"/>
+	<title>再谈软件保护中软加密和硬加密的安全强度-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>再谈软件保护中软加密和硬加密的安全强度</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2429.html" rel="bookmark">再谈软件保护中软加密和硬加密的安全强度</a></h1>
+	<div class="post-meta">
+		2010-11-29 17:20:39 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 14 | 
+		浏览: <span class="AddView" id="spn2429" data-id="2429"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>在<a target="_blank" href="/archives/2416.html">软件保护技术</a>中一般存在两种主要的保护方式：不需要额外的硬件设备，完全由软件实现的方式和使用硬件加密锁的方式。往往前者被称作&ldquo;<a target="_blank" href="/archives/719.html">软加密</a>&rdquo;方式；而后者被称作&ldquo;<a target="_blank" href="/archives/705.html">硬加密</a>&rdquo;方式。普遍认为，硬加密方式的安全强度要大于软加密方式。</p><p>但真的是这样吗？</p><p><strong>一&nbsp;软件解密方法</strong></p><p>如同软件加密的方式千差万别，软件解密的办法也多种多样。但从根本上，无外乎三种主要手段：</p><p>1.&nbsp;逆向工程</p><p>采用软件代码分析和跟踪的方法，找到软件中调用加密验证或判断验证结果的代码，并进行修改或替换，以绕过保护。</p><p>2.&nbsp;通讯欺骗</p><p>在软件代码调用验证机制的通道上对通讯指令截取和分析，并通过修改或回放的方法欺骗软件，使之产生错误的判断。</p><p>3.&nbsp;指纹复制</p><p>对软件进行加密认定的硬件信息或硬件本身进行复制。</p><p>其中逆向工程的破解方法与底层采用何种加密机制的关系不大，破解难度主要由软件代码的复杂程度以及核心安全库的防护机制决定。下面主要分析通讯欺骗和指纹复制的破解方法对软加密和硬加密的难易程度。</p><p><strong>通讯欺骗</strong></p><p>通讯欺骗往往通过监视、修改及复制系统功能调用的结果来实现。它需要破解者有能力在不影响软件正常运行的情况下截获及修改与软件保护相关的系统调用。要能正常实现通讯欺骗，必须要满足以下几个条件：</p><p>1.&nbsp;有能力找到所有与软件保护相关的系统调用。</p><p>这对硬加密非常容易&mdash;&mdash;所有对加密锁硬件的IO操作；但对软加密则不太容易，任何系统调用，包括文件、注册表、系统信息、时间的调用都可能与软件保护操作相关。</p><p>2.&nbsp;能够分析了解系统调用的输入、输出参数所代表的意义，能够伪造返回结果。</p><p>3.&nbsp;能够在不影响系统及应用程序正常工作的条件下修改返回结果。</p><p>设计精良的硬加密产品可以在软件代码和硬件加密锁之间构建所谓的&ldquo;安全通道&rdquo;，使得破解者虽然能够截获通讯命令，却无法分析得到其中的原始数据，也无法伪造通讯命令，从而基本无法进行通讯欺骗。</p><p>对于软加密来说，破解者总是可以得到系统调用命令的原始数据，但要想在不影响系统以及应用程序功能的情况下修改系统调用结果则并不容易。一方面，破解者必须能够了解哪些系统调用与软件保护机制有关；另一方面，系统调用的结果并不总是容易截获&mdash;&mdash;很多获取硬件指纹的命令基于系统中断调用；最后，修改系统调用结果在很多情况下将会影响系统和软件的运行，使得破解过程无法正常进行。</p><p>从理论上来说，除非破解者能够营造一个有能力任意监视并改写所有系统调用结果的独立环境，否则将无法完全实现通讯欺骗，而这样做的工作要比逆向工程还要复杂，从而导致对软加密采用通讯欺骗的破解方法失去意义。</p><p>从本质上来说，软加密基于系统功能调用，而硬加密基于对硬件本身功能的调用。因此软加密实现与系统本身的结合程度要比硬加密高得多。</p><p><strong>指纹复制</strong></p><p>软加密的安全指纹由所运行的软、硬件环境获取；而硬加密的指纹就是加密锁本身。与普遍的认知相反，对计算机运行环境指纹的复制要比想象中困难得多，而对加密锁硬件的复制则要比想象中的更容易也更危险。</p><p>为什么计算机运行环境不容易复制：</p><p>1.&nbsp;有一些计算机硬件设备包含了唯一的ID，比如说CPU或者某些型号的硬盘，这些唯一ID是不可复制的。</p><p>2.&nbsp;包括硬盘分区序列号或网卡MID等都具有很好的唯一性。</p><p>3.&nbsp;IP地址具有很好的唯一性，而伪造会导致系统网络通讯异常。</p><p>4.&nbsp;在局域网内部，机器名、用户名及内网IP地址都是很好的唯一特征。</p><p>5.&nbsp;根据操作系统及硬盘文件可以产生非常好的唯一特征。</p><p>6.&nbsp;最重要的是，要复制所有上述这些硬件和软件特征，其投入的成本不低。因此不具备大规模复制的可行性。</p><p>关于硬件加密锁的复制：</p><p>1.&nbsp;主要的加密锁芯片都可以通过硬件剖片的方法读出内容，从而进行复制，包括智能卡芯片。这个过程的成本比通常想象的要低，因为破解者往往会租用专业设备而不需要自己购买。</p><p>2.&nbsp;破解者总是可以买到厂家的加密锁，并进行分析和改造。</p><p>3.&nbsp;破解者可能会通过加密锁的代理或开发商内部相关人员得到加密锁内部的算法相关数据，从而在无需硬件分析的情况下复制加密锁。</p><p>4.&nbsp;需要注意的是，加密锁复制的前期成本较高，但一旦形成复制能力，后期的平均复制成本则很低。</p><p><strong>结论</strong></p><p>精心设计的软加密实现方案可以在通讯欺骗和指纹复制的破解环节上提供足够高的安全性，使破解者转向通过逆向工程的方法破解软件。在这种情况下，软件的防分析及跟踪能力以及代码内部的加密技巧成为了安全系统的核心，底层基于硬加密还是软加密将不再影响系统的实际安全性。</p><p><strong>二&nbsp;软加密的新技术及四大优势</strong></p><p>通过利用网络通讯和服务器认证，软加密方式在实际应用中可以获得比上述分析好得多的安全应用效果。</p><p>所谓服务器认证，是指软件安全系统首次运行的时候在服务器端&ldquo;备案&rdquo;，存储客户端硬件特征，并获取开发商授权的过程。除了首次运行的激活过程外，服务器认证还可以在今后再次进行，以核查及升级授权内容。</p><p>由北京比特安索公司开发的比特平台除了支持服务器认证技术，还提供了将授权运行于服务器系统之上的&ldquo;云授权&rdquo;保护方案。云授权采用客户端与服务器实时连接的验证方案，安全系统指纹始终依附在服务器上，因此具有更高的安全性。它与传统的软加密具有明显的区别，因此不在这里进行分析。</p><p>集成了服务器认证的软加密方案具有硬加密不具备的四大优势。</p><p><strong>双因素验证</strong></p><p>无论是传统的硬加密还是软加密，安全验证都是单因素的，即基于加密锁或本机硬件指纹。集成了服务器认证之后，加密方案本身是双因素的：既与本机硬件指纹相关，又与服务器相关。</p><p>双因素验证大大加强了系统整体的安全性，破解者无法通过破解其中的一个因素实现完整的盗版。它使新一代的软加密技术的安全性实质上超过传统硬加密成为现实。</p><p><strong>破解追踪</strong></p><p>世上没有绝对可靠的保护技术，而运行于客户环境的软件代码总是可以被跟踪和分析。与硬加密不同的是，实现双因素验证的软加密方案中很容易实现对破解应用的追踪。</p><p>除非通过逆向工程的办法把所有与服务器通讯相关的代码完全替换&mdash;&mdash;这个工作比软件破解本身的难度还要大&mdash;&mdash;否则服务器将有可能对软件的破解拷贝进行追踪。以比特平台为例，通过设置授权模版的&ldquo;强制认证&rdquo;或&ldquo;智能连接&rdquo;属性，客户端软件将定期或不定期地尝试与服务器进行连接验证，服务器因此可以发现是否有授权盗用的情况，并且可以根据相应的授权码找到盗用源头，解后进行封锁。</p><p>也就是说，新一代的软加密技术本身通过服务器验证的机制，不再是单纯的本地安全技术。它是包含了本地安全与<a href="/tag/Security.html" title="网络安全"  Target="_blank" >网络安全</a>的综合性系统架构。</p><p><strong>补救措施</strong></p><p>软加密的一个明显优势是可以方便地推出对破解版本的补救措施。</p><p>当基于硬加密的应用程序被破解后，一般来说，为保证升级后的应用程序与旧版本程序使用的加密锁不兼容，软件开发商在应用升级的时候必须同时升级应用程序代码并提供新的加密锁。这样的升级措施需要很大的成本，开发商实际上往往无法实施。</p><p>而软加密的补救措施是零成本的。</p><p>同样以比特平台为例，当开发商发现现有版本被破解后，可以在平台上为现有产品添加新的特征项（即功能模块），或升级已有的功能算法；开发商相应地升级应用程序代码，制作升级补丁，并发送给合法用户。</p><p>合法用户拿到升级补丁并升级应用程序后，应用软件可以自动连接到授权服务器进行算法更新并升级本地授权文件，从而完成升级。而盗版用户因为无法通过服务器验证而不能应用升级内容。破解者也必须再次实施破解才能使用新的功能。</p><p><strong>破解风险</strong></p><p>前面提到了，软加密与系统和使用环境的结合程度要比硬加密高得多。对于硬加密的破解版本使用者，除了软件本身可能会因破解不充分而存在问题外，使用者不存在任何其它使用风险，盗版使用的成本很低。</p><p>对于软加密，盗版使用者往往需要为使用软件而更改系统设置，如网卡MIC地址或系统时间，而这些都会对整个系统及其它应用程序造成影响，从而提高盗版使用难度，增加使用成本。这些系统设置和负面影响使得盗版使用不可能大规模推广。</p><p><strong>三&nbsp;效果为王</strong></p><p>使用软件保护技术或产品的目标是以最小的成本达成最佳的防盗版效果，其本身是一个系统性的工作，软件的整体安全性受系统中最薄弱部分的制约，并与实施难度、应用风险、危害程度等密切相关。</p><p>新一代软加密技术以服务器验证为基础，其整体安全性已超出包括传统硬加密在内的单纯的本地安全技术，并显著降低了盗版使用的扩散范围，具有更好的实际安全效果。</p><p>此外，软加密特有的无物流、易管理以及授权方案灵活等众多特点，使得它成为互联网时代的最佳软件保护方案。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Encryption.jpg" alt="再谈软件保护中软加密和硬加密的安全强度" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2429"></span><a href="javascript:commYea(2429);" id="dig2429">顶一下 ▲</a>(<span id="sdig2429"><Script language="javascript" type="text/javascript">showDig("2429");</script></span>) &nbsp; <a href="javascript:commNay(2429);" id="down2429">踩一下 ▼</a>(<span id="sdown2429"><Script language="javascript" type="text/javascript">showDown("2429");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2428.html" title="百度文库送用户进监狱">百度文库送用户进监狱</a></div><div class="next_content">下一篇 » <a href="/archives/2430.html" title="Symbian开源网站关闭">Symbian开源网站关闭</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2416.html">从软件保护到软件授权</a></p><p class="mutualitylist"><a href="/archives/1922.html">UCenter密码算法规则和生成方法</a></p><p class="mutualitylist"><a href="/archives/1895.html">有关MD5加密后的密码安全讨论</a></p><p class="mutualitylist"><a href="/archives/1882.html">你的密码还安全吗？</a></p><p class="mutualitylist"><a href="/archives/1832.html">利用U盘进行软件加密的方法</a></p><p class="mutualitylist"><a href="/archives/1544.html">基于硬件指纹的软件加密和注册技术</a></p><p class="mutualitylist"><a href="/archives/1506.html">MSN和Gtalk的本地密码存在严重漏洞</a></p><p class="mutualitylist"><a href="/archives/1466.html">Google推出KeyCzar软件加密工具</a></p><p class="mutualitylist"><a href="/archives/1212.html">微软的SLP软件加密保护服务</a></p><p class="mutualitylist"><a href="/archives/1161.html">软件加密锁产品介绍会议</a></p><p class="mutualitylist"><a href="/archives/1146.html">网站登录的加密传输安全</a></p><p class="mutualitylist"><a href="/archives/1129.html">中国网上银行的USB Key安全评测</a></p><p class="mutualitylist"><a href="/archives/927.html">USB Key的安全漏洞</a></p><p class="mutualitylist"><a href="/archives/880.html">加密算法中私钥的安全性</a></p><p class="mutualitylist"><a href="/archives/837.html">数据公钥加密和认证中的私钥公钥</a></p><p class="mutualitylist"><a href="/archives/823.html">网站的安全登录认证设计</a></p><p class="mutualitylist"><a href="/archives/753.html">中国网银安全分析：USB Key</a></p><p class="mutualitylist"><a href="/archives/752.html">中国网银安全分析：动态密码锁</a></p><p class="mutualitylist"><a href="/archives/751.html">中国网上银行系统安全性分析</a></p><p class="mutualitylist"><a href="/archives/720.html">Sentinel SuperPro加密锁编程开发指南</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

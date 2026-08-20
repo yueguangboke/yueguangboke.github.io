@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3922.html"/>
+	<title>OpenWRT路由配置技巧-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>OpenWRT路由配置技巧</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3922.html" rel="bookmark">OpenWRT路由配置技巧</a></h1>
+	<div class="post-meta">
+		2014-7-17 17:47:36 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 46 | 
+		浏览: <span class="AddView" id="spn3922" data-id="3922"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Software.html" rel="tag"><img src="/logo/Software.gif" alt="软件" class="thumb" width="80" height="80" /></a><p>OpenWRT&nbsp;可以被描述为一个嵌入式的 Linux 发行版。（主流路由器固件有 dd-wrt,tomato,openwrt三类）对比一个单一的、静态的系统，OpenWRT&nbsp;的包管理提供了一个完全可写的文件系统，从应用程序供应商提供的选择和配置，并允许您自定义的设备，以适应任何应用程序。对于开发人员，OpenWRT&nbsp;是使用框架来构建应用程序，而无需建立一个完整的固件来支持；对于用户来说，这意味着其拥有完全定制的能力，可以用前所未有的方式使用该设备。</p>
+
+<p>本文介绍的方法可以使一个普通的路由具备智能、稳定、安全的连接能力，并能够根据目标访问网站选择线路，从而得到一个既没有限制，也不会影响速度的 Wifi 环境，连接到这个网络的设备不需要任何配置即可安全上网，完全感觉不到任何不便。</p>
+
+<h3>chnroutes 路由表</h3>
+
+<p>这个路由表集中了所有分配到中国大陆的 IP 段，根据 http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest&nbsp;每天自动更新。</p>
+
+<p>最近在某宝整了一个 Netgear WNDR3800 二手路由回来，先后分别在 DD-WRT 和 OpenWRT 成功配置，最后还是选择了 OpenWRT。</p>
+
+<h3>DD-WRT vs OpenWRT</h3>
+
+<p>关于 DD-WRT 和 OpenWRT，我选择&nbsp;OpenWRT&nbsp;主要因为 DD-WRT ROM 中集成的软件太多，绝大多数用不到，要配置 jffs2 来保存脚本文件，一般配置则保存在nvram中，而且无线较不稳定，5G频段常搜索不到（当然可能是我这个路由器型号的支持问题）。OpenWRT 的配置文件语法统一，配置都存储在文件系统中，且 ROM 本身仅集成了必备组件，非常小，可以只安装需要的东西，WEB管理界面也是可选安装，简洁强大，经过若干天的使用一直比较稳定。</p>
+
+<h4>配置</h4>
+
+<p>已配置好 OpenWRT 上网的童鞋们可以直接跳过<span style="color:#ff0000">&nbsp;</span><strong>1.刷 ROM</strong> 和 <strong>2.初始配置</strong></p>
+
+<h5>1.刷 ROM</h5>
+
+<p>a.首先确定你的设备可以被 OpenWRT 所支持（到这里查看支持的设备列表：http://wiki.openwrt.org/toh/start），然后到这里下载编译好的 ROM：http://downloads.openwrt.org/ 。最新的 stable 版本是&nbsp;attitude_adjustment(12.09)，我下载的是 trunk 版本。</p>
+
+<p>b.在 OpenWRT 官网找相应设备的 Wiki 页面查看刷机方法，一般都是在路由器官方Web固件升级页面直接刷入（我的 WNDR3800 Wiki页面是：http://wiki.openwrt.org/toh/netgear/wndr3800）</p>
+
+<h5>2.初始配置</h5>
+
+<p>a.路由器启动后，有的型号没有安装 Wifi 模块，需要先用网线连接到 LAN 口，本机 IP 配置为静态 192.168.1.x，然后 telnet 到 192.168.1.1，更改 root 密码，然后 ssh 连入，参考：http://wiki.openwrt.org/doc/start#configuring.openwrt</p>
+
+<p style="text-align:center"><a href="/upload/3922_1b.jpg" target="_blank"><img alt="OpenWRT 路由配置 PPTP VPN + 断线自动重连 + chnroutes国内路由表" src="/upload/3922_1.jpg" /></a></p>
+
+<p>b.配置 WAN 口，让路由连上 Internet，参考：http://wiki.openwrt.org/doc/howto/internet.connection 。</p>
+
+<p>比如要配置 PPPoE：</p>
+
+<div>
+<pre>
+uci set network.wan.proto=pppoe
+uci set network.wan.username=<span style="color:#800000">&#39;</span><span style="color:#800000">yougotthisfromyour@isp.su</span><span style="color:#800000">&#39;</span>
+uci set network.wan.password=<span style="color:#800000">&#39;</span><span style="color:#800000">yourpassword</span><span style="color:#800000">&#39;</span>
+uci commit network
+ifup wan</pre>
+</div>
+
+<p>&nbsp;<br />
+c.安装 LuCI Web 管理界面并设置开机自动启动，参考：http://wiki.openwrt.org/doc/howto/luci.essentials</p>
+
+<div>
+<pre>
+opkg update
+opkg <span style="color:#0000ff">install</span> luci
+/etc/init.d/uhttpd start
+/etc/init.d/uhttpd enable</pre>
+</div>
+
+<p>&nbsp;<br />
+d.浏览器输入路由器 LAN 侧 IP（多为192.168.1.1），进行 Wifi 等配置</p>
+
+<p style="text-align:center"><a href="/upload/3922_2b.jpg" target="_blank"><img alt="OpenWRT 路由配置 PPTP VPN + 断线自动重连 + chnroutes国内路由表" src="/upload/3922_2.jpg" /></a></p>
+
+<p style="text-align:center"><a href="/upload/3922_3b.jpg" target="_blank"><img alt="OpenWRT 路由配置 PPTP VPN + 断线自动重连 + chnroutes国内路由表" src="/upload/3922_3.jpg" /></a></p>
+
+<h5>3.配置 DNS</h5>
+
+<p>a.创建&nbsp;/etc/config/sec_resolv.conf</p>
+
+<div>
+<pre>
+vim /etc/config/sec_resolv.conf</pre>
+</div>
+
+<p>填入以下 DNS Servers:</p>
+
+<div>
+<pre>
+nameserver <span style="color:#800080">8.8</span>.<span style="color:#800080">8.8</span>
+<span style="color:#000000">nameserver </span><span style="color:#800080">8.8</span>.<span style="color:#800080">4.4</span>
+<span style="color:#000000">nameserver </span><span style="color:#800080">208.67</span>.<span style="color:#800080">222.222</span></pre>
+</div>
+
+<p><br />
+b.编辑&nbsp;/etc/config/dhcp</p>
+
+<div>
+<pre>
+vim /etc/config/dhcp</pre>
+</div>
+
+<p>找到&nbsp;option resolvfile 选项，替换为：</p>
+
+<div>
+<pre>
+option resolvfile <span style="color:#800000">&#39;</span><span style="color:#800000">/etc/config/sec_resolv.conf</span><span style="color:#800000">&#39;</span></pre>
+</div>
+
+<h5>4.配置 PPTP</h5>
+
+<p>a.安装 ppp-mod-pptp</p>
+
+<div>
+<pre>
+<span style="color:#000000">opkg updateopkg </span><span style="color:#0000ff">install</span> ppp-mod-pptp</pre>
+</div>
+
+<p>&nbsp;&nbsp;<br />
+如果需要 LuCI 支持（推荐）：</p>
+
+<div>
+<pre>
+opkg <span style="color:#0000ff">install</span> luci-proto-ppp</pre>
+</div>
+
+<p>&nbsp;&nbsp;<br />
+b.配置 vpn 接口，编辑&nbsp;/etc/config/network 文件，应该已经有以下内容（如果没有，需要插入），并配置里面的 server、username 和 password：</p>
+
+<div>
+<pre>
+config <span style="color:#800000">&#39;</span><span style="color:#800000">interface</span><span style="color:#800000">&#39;</span> <span style="color:#800000">&#39;</span><span style="color:#800000">vpn</span><span style="color:#800000">&#39;</span><span style="color:#000000"> 
+option </span><span style="color:#800000">&#39;</span><span style="color:#800000">ifname</span><span style="color:#800000">&#39;</span><span style="color:#800000">&#39;</span><span style="color:#800000">pptp-vpn</span><span style="color:#800000">&#39;</span><span style="color:#000000">
+option </span><span style="color:#800000">&#39;</span><span style="color:#800000">proto</span><span style="color:#800000">&#39;</span> <span style="color:#800000">&#39;</span><span style="color:#800000">pptp</span><span style="color:#800000">&#39;</span>
+<span style="color:#000000">option </span><span style="color:#800000">&#39;</span><span style="color:#800000">username</span><span style="color:#800000">&#39;</span><span style="color:#800000">&#39;</span><span style="color:#800000">vpnusername</span><span style="color:#800000">&#39;</span>
+<span style="color:#000000">option </span><span style="color:#800000">&#39;</span><span style="color:#800000">password</span><span style="color:#800000">&#39;</span><span style="color:#800000">&#39;</span><span style="color:#800000">vpnpassword</span><span style="color:#800000">&#39;</span>
+<span style="color:#000000">option </span><span style="color:#800000">&#39;</span><span style="color:#800000">server</span><span style="color:#800000">&#39;</span><span style="color:#800000">&#39;</span><span style="color:#800000">vpn.example.org or ipaddress</span><span style="color:#800000">&#39;</span><span style="color:#000000"> 
+option </span><span style="color:#800000">&#39;</span><span style="color:#800000">buffering</span><span style="color:#800000">&#39;</span> <span style="color:#800000">&#39;</span><span style="color:#800000">1</span><span style="color:#800000">&#39;</span> </pre>
+</div>
+
+<p>&nbsp;&nbsp;&nbsp;<br />
+c.进入 Network -&gt; Firewall ，把 vpn 加入 wan zone，效果如图：</p>
+
+<p style="text-align:center"><a href="/upload/3922_4b.jpg" target="_blank"><img alt="OpenWRT 路由配置技巧" src="/upload/3922_4.jpg" style="display:block; margin-left:auto; margin-right:auto" /></a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p>d.进入 Network -&gt; Interfaces ，此时应该已经可以看到 VPN Interface 并可以连接，效果如图：</p>
+
+<p style="text-align:center"><a href="/upload/3922_5b.jpg" target="_blank"><img alt="OpenWRT 路由配置技巧" src="/upload/3922_5.jpg" /></a>&nbsp;</p>
+
+<p>&nbsp; &nbsp;&nbsp;</p>
+
+<p>e.此时在本机 traceroute www.google.com，应该能得到类似以下的结果：</p>
+
+<div>
+<pre>
+FL-MBP:~<span style="color:#000000"> fatlyz$ traceroute www.google.com 
+traceroute: Warning: www.google.com has multiple addresses; using </span><span style="color:#800080">74.125</span>.<span style="color:#800080">239.113</span><span style="color:#000000"> 
+traceroute to www.google.com (</span><span style="color:#800080">74.125</span>.<span style="color:#800080">239.113</span>), <span style="color:#800080">64</span> hops max, <span style="color:#800080">52</span> <span style="color:#0000ff">byte</span><span style="color:#000000"> packets
+ </span><span style="color:#800080">1</span>fc_r0.lan (<span style="color:#800080">192.168</span>.<span style="color:#800080">7.1</span>)<span style="color:#800080">2.266</span> ms<span style="color:#800080">0.999</span> ms<span style="color:#800080">0.946</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">2</span><span style="color:#800080">10.7</span>.<span style="color:#800080">0.1</span> (<span style="color:#800080">10.7</span>.<span style="color:#800080">0.1</span>)<span style="color:#800080">189.259</span> ms<span style="color:#800080">187.813</span> ms<span style="color:#800080">188.368</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">3</span><span style="color:#800080">23.92</span>.<span style="color:#800080">24.2</span> (<span style="color:#800080">23.92</span>.<span style="color:#800080">24.2</span>)<span style="color:#800080">189.847</span> ms<span style="color:#800080">190.489</span> ms<span style="color:#800080">188.939</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">4</span>10ge7-<span style="color:#800080">6</span>.core3.fmt2.he.net (<span style="color:#800080">65.49</span>.<span style="color:#800080">10.217</span>)<span style="color:#800080">188.508</span> ms<span style="color:#800080">192.216</span> ms<span style="color:#800080">202.863</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">5</span>10ge10-<span style="color:#800080">1</span>.core1.sjc2.he.net (<span style="color:#800080">184.105</span>.<span style="color:#800080">222.14</span>)<span style="color:#800080">195.695</span> ms<span style="color:#800080">195.691</span> ms<span style="color:#800080">284.242</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">6</span><span style="color:#800080">72.14</span>.<span style="color:#800080">219.161</span> (<span style="color:#800080">72.14</span>.<span style="color:#800080">219.161</span>)<span style="color:#800080">189.196</span> ms<span style="color:#800080">192.287</span> ms<span style="color:#800080">193.220</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">7</span><span style="color:#800080">216.239</span>.<span style="color:#800080">49.170</span> (<span style="color:#800080">216.239</span>.<span style="color:#800080">49.170</span>)<span style="color:#800080">192.496</span> ms<span style="color:#800080">188.547</span> ms<span style="color:#800080">189.881</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">8</span><span style="color:#800080">66.249</span>.<span style="color:#800080">95.29</span> (<span style="color:#800080">66.249</span>.<span style="color:#800080">95.29</span>)<span style="color:#800080">190.125</span> ms<span style="color:#800080">190.335</span> ms<span style="color:#800080">190.026</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">9</span>nuq05s01-<span style="color:#0000ff">in</span>-f17.1e100.net (<span style="color:#800080">74.125</span>.<span style="color:#800080">239.113</span>)<span style="color:#800080">189.804</span> ms<span style="color:#800080">190.556</span> ms<span style="color:#800080">190.242</span> ms</pre>
+</div>
+
+<p>可以看出，其中第二跳是 VPN 的网关，而&nbsp;traceroute www.baidu.com 的话第二跳应该也是同样的结果。</p>
+
+<p>这时已经可以访问 Google, Baidu 等国内外的站点了。</p>
+
+<h5>5.配置 chnroutes</h5>
+
+<p>a.到 chnroutes 项目的下载页面：http://chnroutes-dl.appspot.com/ 下载 linux.zip，解压</p>
+
+<p>b.把 ip-pre-up 重命名为 chnroutes.sh，打开编辑，在&nbsp;<strong>if [ ! -e /tmp/vpn_oldgw ]; then</strong>&nbsp;前插入以下代码，以避免 ppp 连接脚本重复执行导致重复添加路由表项：</p>
+
+<div>
+<pre>
+<span style="color:#0000ff">if</span> [ $OLDGW == <span style="color:#800000">&#39;</span><span style="color:#800000">x.x.x.x</span><span style="color:#800000">&#39;</span> ]; <span style="color:#0000ff">then</span><span style="color:#000000">exit </span><span style="color:#800080">0</span>
+<span style="color:#0000ff">fi</span></pre>
+</div>
+
+<p>其中 x.x.x.x 是 VPN 的网关，可以先本机连接上去之后查看一下网关地址。</p>
+
+<p>c.ssh 连接到路由器，执行以下命令：</p>
+
+<div>
+<pre>
+cd /etc/config/
+<span style="color:#0000ff">mkdir</span> pptp-vpn
+cd pptp-vpn
+vim chnroutes.sh</pre>
+</div>
+
+<p>在 vim 中把编辑好的 chnroutes.sh 粘贴进去（当然也可以通过 ssh 直接把 chnroutes.sh&nbsp;文件传过去，或者上传到某个地方再 wget 下载）</p>
+
+<p>执行以下命令，设置权限为可执行：&nbsp;</p>
+
+<div>
+<pre>
+<span style="color:#0000ff">chmod</span> a+x chnroutes.<span style="color:#0000ff">sh</span></pre>
+</div>
+
+<p>d.用 vim 编辑 /lib/netifd/ppp-up 文件：</p>
+
+<div>
+<pre>
+vim /lib/netifd/ppp-up</pre>
+</div>
+
+<p>在&nbsp;<strong>[ -d /etc/ppp/ip-up.d ] &amp;&amp; { </strong>这一行前插入以下内容，确保 ppp 连接脚本能够被执行：</p>
+
+<div>
+<pre>
+<span style="color:#0000ff">sh</span> /etc/config/pptp-vpn/chnroutes.<span style="color:#0000ff">sh</span></pre>
+</div>
+
+<p><br />
+e.重启路由，启动好之后，进入 LuCI 查看接口状态，等 WAN 和 VPN 都连接成功后，ssh进去，执行 <strong>route -n | head -n 10</strong>&nbsp;，效果应该类似这样：</p>
+
+<div>
+<pre>
+root@FC_R0:/etc/config# route -n | <span style="color:#0000ff">head</span> -n <span style="color:#800080">10</span><span style="color:#000000"> 
+Kernel IP routing table 
+Destination Gateway Genmask Flags Metric RefUse Iface 
+</span><span style="color:#800080">0.0</span>.<span style="color:#800080">0.0</span> <span style="color:#800080">10.7</span>.<span style="color:#800080">0.1</span><span style="color:#800080">0.0</span>.<span style="color:#800080">0.0</span> UG<span style="color:#800080">0</span><span style="color:#800080">0</span><span style="color:#800080">0</span> pptp-<span style="color:#000000">vpn 
+</span><span style="color:#800080">1.0</span>.<span style="color:#800080">1.0</span> <span style="color:#800080">58.111</span>.<span style="color:#800080">43.1</span> <span style="color:#800080">255.255</span>.<span style="color:#800080">255.0</span> UG<span style="color:#800080">0</span><span style="color:#800080">0</span><span style="color:#800080">0</span> pppoe-<span style="color:#000000">wan 
+</span><span style="color:#800080">1.0</span>.<span style="color:#800080">2.0</span> <span style="color:#800080">58.111</span>.<span style="color:#800080">43.1</span> <span style="color:#800080">255.255</span>.<span style="color:#800080">254.0</span> UG<span style="color:#800080">0</span><span style="color:#800080">0</span><span style="color:#800080">0</span> pppoe-<span style="color:#000000">wan 
+</span><span style="color:#800080">1.0</span>.<span style="color:#800080">8.0</span> <span style="color:#800080">58.111</span>.<span style="color:#800080">43.1</span> <span style="color:#800080">255.255</span>.<span style="color:#800080">248.0</span> UG<span style="color:#800080">0</span><span style="color:#800080">0</span><span style="color:#800080">0</span> pppoe-<span style="color:#000000">wan 
+</span><span style="color:#800080">1.0</span>.<span style="color:#800080">32.0</span><span style="color:#800080">58.111</span>.<span style="color:#800080">43.1</span> <span style="color:#800080">255.255</span>.<span style="color:#800080">224.0</span> UG<span style="color:#800080">0</span><span style="color:#800080">0</span><span style="color:#800080">0</span> pppoe-<span style="color:#000000">wan 
+</span><span style="color:#800080">1.1</span>.<span style="color:#800080">0.0</span> <span style="color:#800080">58.111</span>.<span style="color:#800080">43.1</span> <span style="color:#800080">255.255</span>.<span style="color:#800080">255.0</span> UG<span style="color:#800080">0</span><span style="color:#800080">0</span><span style="color:#800080">0</span> pppoe-<span style="color:#000000">wan 
+</span><span style="color:#800080">1.1</span>.<span style="color:#800080">2.0</span> <span style="color:#800080">58.111</span>.<span style="color:#800080">43.1</span> <span style="color:#800080">255.255</span>.<span style="color:#800080">254.0</span> UG<span style="color:#800080">0</span><span style="color:#800080">0</span><span style="color:#800080">0</span> pppoe-<span style="color:#000000">wan 
+</span><span style="color:#800080">1.1</span>.<span style="color:#800080">4.0</span> <span style="color:#800080">58.111</span>.<span style="color:#800080">43.1</span> <span style="color:#800080">255.255</span>.<span style="color:#800080">252.0</span> UG<span style="color:#800080">0</span><span style="color:#800080">0</span><span style="color:#800080">0</span> pppoe-wan</pre>
+</div>
+
+<p>其中 Destination 为&nbsp;0.0.0.0 的是默认路由，网关为 VPN 网关，意味着默认流量都经过 VPN，而以下的条目则把目的为国内的网段都指向了 ISP 提供的网关。</p>
+
+<p>至此 PPTP VPN 和 chnroutes 已经配置完毕。</p>
+
+<h5>6.配置 VPN 断线自动重连</h5>
+
+<p>a.创建 /etc/config/pptp-vpn/status-check.sh：</p>
+
+<div>
+<pre>
+vim /etc/config/pptp-vpn/status-check.<span style="color:#0000ff">sh</span></pre>
+</div>
+
+<p>在 vim 中粘贴以下内容（此脚本检测 VPN 连接状态，并在断线后会断开 WAN 和 VPN 接口，10秒后重新连接 WAN，并在 30 秒后重连 VPN）：</p>
+
+<div>
+<pre>
+#!/bin/<span style="color:#0000ff">sh</span>
+<span style="color:#0000ff">if</span> [ -f <span style="color:#800000">&quot;</span><span style="color:#800000">/tmp/vpn_status_check.lock</span><span style="color:#800000">&quot;</span><span style="color:#000000"> ]
+</span><span style="color:#0000ff">then</span>
+<span style="color:#000000">exit </span><span style="color:#800080">0</span>
+<span style="color:#0000ff">fi</span>
+<span style="color:#000000">VPN_CONN</span>=`<span style="color:#0000ff">ifconfig</span> | <span style="color:#0000ff">grep</span> pptp-<span style="color:#000000">vpn`
+</span><span style="color:#0000ff">if</span> [ -z <span style="color:#800000">&quot;</span><span style="color:#800000">$VPN_CONN</span><span style="color:#800000">&quot;</span><span style="color:#000000"> ]
+</span><span style="color:#0000ff">then</span>
+<span style="color:#0000ff">touch</span> /tmp/<span style="color:#000000">vpn_status_check.lock
+</span><span style="color:#0000ff">echo</span> WAN_VPN_RECONNECT at: &gt;&gt; /tmp/<span style="color:#000000">vpn_status_check_reconn.log
+</span><span style="color:#0000ff">date</span> &gt;&gt; /tmp/<span style="color:#000000">vpn_status_check_reconn.log
+ifdown vpn
+ifdown wan
+</span><span style="color:#0000ff">sleep</span> <span style="color:#800080">10</span>
+<span style="color:#000000">ifup wan
+</span><span style="color:#0000ff">sleep</span> <span style="color:#800080">30</span>
+<span style="color:#000000">ifdown vpn
+</span><span style="color:#0000ff">sleep</span> <span style="color:#800080">10</span>
+<span style="color:#000000">ifup vpn
+</span><span style="color:#0000ff">sleep</span> <span style="color:#800080">40</span>
+<span style="color:#0000ff">rm</span> /tmp/<span style="color:#000000">vpn_status_check.lock
+</span><span style="color:#0000ff">else</span>
+<span style="color:#0000ff">date</span> &gt; /tmp/<span style="color:#000000">vpn_status_check.log
+</span><span style="color:#0000ff">fi</span></pre>
+</div>
+
+<p>执行以下命令，设置权限为可执行：&nbsp;</p>
+
+<div>
+<pre>
+<span style="color:#0000ff">chmod</span> a+x /etc/config/pptp-vpn/status-check.<span style="color:#0000ff">sh</span></pre>
+</div>
+
+<p>b.进入LuCI 的 System -&gt;&nbsp;Scheduled Tasks 填入以下内容，并保存：</p>
+
+<div>
+<pre>
+*/<span style="color:#800080">1</span> * * * * /etc/config/pptp-vpn/status-check.<span style="color:#0000ff">sh</span></pre>
+</div>
+
+<p>以上实际上是编辑了 cron 配置，cron 每分钟运行检测 / 重连脚本，重启 cron：</p>
+
+<div>
+<pre>
+/etc/init.d/cron restart</pre>
+</div>
+
+<p><br />
+c.静待几分钟，查看 /tmp 目录，应该能看到&nbsp;vpn_oldgw 和 vpn_status_check.log 文件，查看&nbsp;vpn_status_check.log 文件，可以看到最近一次检测 VPN 连接状态的时间。</p>
+
+<div>
+<pre>
+root@FC_R0:/tmp# <span style="color:#0000ff">ls</span> vpn*
+<span style="color:#000000">vpn_oldgw vpn_status_check.log
+root@FC_R0:</span>/tmp# <span style="color:#0000ff">cat</span><span style="color:#000000"> vpn_status_check.log 
+Tue Jul </span><span style="color:#800080">15</span> <span style="color:#800080">00</span>:<span style="color:#800080">04</span>:<span style="color:#800080">02</span> HKT <span style="color:#800080">2014</span>
+<span style="color:#000000">root@FC_R0:</span>/tmp# </pre>
+</div>
+
+<p>你可以在 LuCI 中断开 VPN 接口，在接下来的4-5分钟，观察 WAN 和 VPN 的重连情况。</p>
+
+<p>d.分别 traceroute www.google.com 和 www.baidu.com ，观察第二跳的地址：</p>
+
+<div>
+<pre>
+FL-MBP:~ fatlyz$ traceroute www.google.com | <span style="color:#0000ff">head</span> -n <span style="color:#800080">3</span>
+<span style="color:#000000">traceroute: Warning: www.google.com has multiple addresses; using </span><span style="color:#800080">74.125</span>.<span style="color:#800080">239.115</span>
+<span style="color:#000000">traceroute to www.google.com (</span><span style="color:#800080">74.125</span>.<span style="color:#800080">239.115</span>), <span style="color:#800080">64</span> hops max, <span style="color:#800080">52</span> <span style="color:#0000ff">byte</span><span style="color:#000000"> packets
+ </span><span style="color:#800080">1</span>fc_r0.lan (<span style="color:#800080">192.168</span>.<span style="color:#800080">7.1</span>)<span style="color:#800080">2.161</span> ms<span style="color:#800080">0.912</span> ms<span style="color:#800080">0.895</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">2</span><span style="color:#800080">10.7</span>.<span style="color:#800080">0.1</span> (<span style="color:#800080">10.7</span>.<span style="color:#800080">0.1</span>)<span style="color:#800080">193.747</span> ms<span style="color:#800080">187.789</span> ms<span style="color:#800080">289.744</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">3</span><span style="color:#800080">23.92</span>.<span style="color:#800080">24.2</span> (<span style="color:#800080">23.92</span>.<span style="color:#800080">24.2</span>)<span style="color:#800080">259.323</span> ms<span style="color:#800080">354.625</span> ms<span style="color:#800080">408.535</span> ms</pre>
+</div>
+
+<div>
+<pre>
+FL-MBP:~ fatlyz$ traceroute www.baidu.com | <span style="color:#0000ff">head</span> -n <span style="color:#800080">3</span>
+<span style="color:#000000">traceroute to www.a.shifen.com (</span><span style="color:#800080">180.76</span>.<span style="color:#800080">3.151</span>), <span style="color:#800080">64</span> hops max, <span style="color:#800080">52</span> <span style="color:#0000ff">byte</span><span style="color:#000000"> packets
+ </span><span style="color:#800080">1</span>fc_r0.lan (<span style="color:#800080">192.168</span>.<span style="color:#800080">7.1</span>)<span style="color:#800080">1.190</span> ms<span style="color:#800080">0.984</span> ms<span style="color:#800080">0.731</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">2</span><span style="color:#800080">58.111</span>.<span style="color:#800080">43.1</span> (<span style="color:#800080">58.111</span>.<span style="color:#800080">43.1</span>)<span style="color:#800080">20.616</span> ms<span style="color:#800080">38.822</span> ms<span style="color:#800080">18.484</span><span style="color:#000000"> ms
+ </span><span style="color:#800080">3</span><span style="color:#800080">183.56</span>.<span style="color:#800080">35.133</span> (<span style="color:#800080">183.56</span>.<span style="color:#800080">35.133</span>)<span style="color:#800080">20.056</span> ms<span style="color:#800080">52.353</span> ms<span style="color:#800080">87.841</span> ms</pre>
+</div>
+
+<p>可以看出，已成功对国内外的目标地址进行了路由选择。</p>
+
+<p>至此，OpenWRT 路由的基本配置、PPTP、chnroutes 和自动重连已经配置完成。</p>
+
+<p>来源：投稿，作者：FatLYZ。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Software.jpg" alt="OpenWRT路由配置技巧" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3922"></span><a href="javascript:commYea(3922);" id="dig3922">顶一下 ▲</a>(<span id="sdig3922"><Script language="javascript" type="text/javascript">showDig("3922");</script></span>) &nbsp; <a href="javascript:commNay(3922);" id="down3922">踩一下 ▼</a>(<span id="sdown3922"><Script language="javascript" type="text/javascript">showDown("3922");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3921.html" title="Google和Adobe合作开发开源字体">Google和Adobe合作开发开源字体</a></div><div class="next_content">下一篇 » <a href="/archives/3923.html" title="阿里巴巴称正遭遇有组织的舆论敲诈">阿里巴巴称正遭遇有组织的舆论敲诈</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3891.html">快速找到应用软件Hosts的方法</a></p><p class="mutualitylist"><a href="/archives/3890.html">使用DNSCrypt解决DNS污染问题</a></p><p class="mutualitylist"><a href="/archives/3889.html">Dropbox的图片管理应用Carousel</a></p><p class="mutualitylist"><a href="/archives/3878.html">快速找到网站可用Hosts的方法</a></p><p class="mutualitylist"><a href="/archives/3869.html">金山WPS“灵魂”丢失</a></p><p class="mutualitylist"><a href="/archives/3825.html">珍爱生命，远离“匿名”应用</a></p><p class="mutualitylist"><a href="/archives/3815.html">DD-WRT刷机完整教程</a></p><p class="mutualitylist"><a href="/archives/3794.html">中科红旗的生与死</a></p><p class="mutualitylist"><a href="/archives/3732.html">具有“自主知识产权”的国产操作系统COS发布</a></p><p class="mutualitylist"><a href="/archives/3691.html">Instapaper为什么会限时免费</a></p><p class="mutualitylist"><a href="/archives/3634.html">福布斯发布2013十大软件厂商排行榜</a></p><p class="mutualitylist"><a href="/archives/3621.html">我们是否正在见证Ubuntu的没落？</a></p><p class="mutualitylist"><a href="/archives/3618.html">Evernote全面启用两步验证功能</a></p><p class="mutualitylist"><a href="/archives/3597.html">产品的国内版和国际版背后的思考</a></p><p class="mutualitylist"><a href="/archives/3580.html">漫谈软硬件的开发</a></p><p class="mutualitylist"><a href="/archives/3533.html">IFTTT推出iPhone应用</a></p><p class="mutualitylist"><a href="/archives/3493.html">Evernote实施三种安全保护功能</a></p><p class="mutualitylist"><a href="/archives/3441.html">真正永久使用的电子邮件</a></p><p class="mutualitylist"><a href="/archives/3433.html">Dropbox中文版正式发布</a></p><p class="mutualitylist"><a href="/archives/3414.html">迁移Google Keep的思考</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

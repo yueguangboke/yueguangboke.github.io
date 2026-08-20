@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4268.html"/>
+	<title>浅析Apache Storm 0.10.0-beta发布：剑指Heron-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate5 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/tech.html" title="查看 业界动态 中的全部文章">业界动态</a> &raquo; <span>浅析Apache Storm 0.10.0-beta发布：剑指Heron</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4268.html" rel="bookmark">浅析Apache Storm 0.10.0-beta发布：剑指Heron</a></h1>
+	<div class="post-meta">
+		2015-6-17 23:22:51 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/tech.html" title="业界动态" rel="category tag">业界动态</a> | 
+		评论: 2 | 
+		浏览: <span class="AddView" id="spn4268" data-id="4268"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Software.html" rel="tag"><img src="/logo/Software.gif" alt="软件" class="thumb" width="80" height="80" /></a><p>在浅析Storm的发布版本之前，先吐槽一下Storm的版本号。我是从0.8.0版本开始接触Storm的，那时候Storm还是推特的开源项目，作为一个Storm的半个老鸟，看到Storm又推出了一个新版本，当然是有些想法的。从2013年，Apache接手Storm之后版本号的发布继续延续了以前的风格。说白了就是众人期望了无数年，版本依然没有过&ldquo;1&rdquo;。</p><p><span style="font-size: 18px"><strong>浅析Storm 0.10.0-beta</strong></span></p><p>//顺序按照官网的要点顺序，翻译+个人见解</p><p><span style="font-size: 16px"><strong>一、集群安全性以及多用户调度部署。</strong></span></p><p><strong>我们先把官网列的点列出：</strong></p><ul class=" list-paddingleft-2" style="list-style-type: disc"><li><p>Kerberos Authentication with Automatic Credential Push and Renewal</p></li><li><p>Pluggable Authorization and ACLs</p></li><li><p>Multi-Tenant Scheduling with Per-User isolation and configurable resource limits.</p></li><li><p>User Impersonation</p></li><li><p>SSL Support for Storm UI, Log Viewer, and DRPC (Distributed Remote Procedure Call)</p></li><li><p>Secure integration with other Hadoop Projects (such as ZooKeeper, HDFS, HBase, etc.)</p></li><li><p>User isolation (Storm topologies run as the user who submitted them)</p></li></ul><p>在早期的Storm设计中，并没有考虑系统安全性的问题。</p><p>其实大部分开源软件的发展过程都差不多，早期的发展肯定是以功能以及性能为主，在发展到一定阶段之后，系统安全才会被加以考虑。如今，随着Storm的发展，以及当前实时业务需求的上涨，实际的集群部署也越来越多，安全性的需求也越来越高。</p><p>这次在安全性的支持方面，除了Storm的社区，<a href="/tag/Yahoo.html" title="雅虎"  Target="_blank" >雅虎</a>、赛门铁克还有Hortonworks作出了不小的贡献。</p><p><strong>主要改动点：</strong></p><ul class=" list-paddingleft-2" style="list-style-type: disc"><li><p>(1)自动更新Kerberos身份验证机制；</p></li><li><p>(2)可插拔的访问授权以及访问控制机制；</p></li><li><p>(3)支持多用户调度，并且对于不同用户可灵活配置资源；//这一点在向资源集中调度方向靠拢</p></li><li><p>(4)模拟多用户调度；</p></li><li><p>(5)UI方面的改进，支持SSL协议的日志查看器、DRPC页面监控；</p></li><li><p>(6)优化了与Hadoop生态的集成，主要是安全性方面，包括Zookeeper、Hbase以及HDFS等等；//随着大数据平台一体化，Storm的推广，越来越多的Hadoop生态组件会集成进去</p></li><li><p>(7)多用户的隔离，即每个用户中允许操作自己提交的拓扑任务；//其实这点跟在引入多用户的时候，必然是需要支持的</p></li></ul><p><strong>总结：</strong></p><p>安全性方面，不多说，博客虫(微信ID:blogchong)感觉这个点在一般的企业来说，其实优先级是不高的；</p><p>重点是对多用户调度的支持，以及资源管理方面的优化，自从Hadoop2.0以后，资源的集中管理一直是一个热门方向，所以，Storm在这方面的优化还是值得期待的。</p><p><span style="font-size: 16px"><strong>二、版本升级以及持续改进的优化</strong></span></p><p>在过去，升级Storm往往会出现很多问题，涉及到拓扑的变更、拓扑的重新部署等等。究其因，不同版本之间的数据结构往往是有所出入的。所以，升级的过程不是一个完全向下兼容的过程。</p><p>从storm 0.10.0开始，版本的升级方面将有很大的优化，甚至是可以在不停止拓扑任务的情况下进行版本升级，整个过程也可以实现自动化。</p><p><strong>总结：</strong></p><p>随着Storm的实际部署节点越来越多，必然会面临版本升级的情况，所以这一点的改进是很重要的，因为其对于用户后续的持续使用是一个巨大的考验。</p><p><span style="font-size: 16px"><strong>三、任务以及拓扑部署上的改进优化</strong></span></p><p>熟悉Storm的朋友可能知道，对于拓扑任务的部署，往往有任何的拓扑改动，我们都需要进行代码的重新编译。如果部署的拓扑规模较大，这将影响很大。</p><p>在新改进的方向中，希望通过外部配置文件的形式，去定义拓扑的布局以及相关的配置。</p><p><strong>先列上官网改进点：</strong></p><ul class=" list-paddingleft-2" style="list-style-type: disc"><li><p>Easily configure and deploy Storm topologies (Both Storm core and Micro-batch API) without embedding configuration in your topology code</p></li><li><p>Support for existing topology code</p></li><li><p>Define Storm Core API (Spouts/Bolts) using a flexible YAML DSL</p></li><li><p>YAML DSL support for most Storm components (storm-kafka, storm-hdfs, storm-hbase, etc.)</p></li><li><p>Convenient support for multi-lang components</p></li><li><p>External property substitution/filtering for easily switching between configurations/environments (similar to Maven-style ${variable.name} substitution)</p></li></ul><p><strong>主要改动点：</strong></p><ul class=" list-paddingleft-2" style="list-style-type: disc"><li><p>(1)优化拓扑的配置以及部署，在代码中将拓扑结构相关的东西剥离；</p></li><li><p>(2)依然支持现有的拓扑编码；//向下兼容</p></li><li><p>(3)使用灵活的YAML DSL去定义Spout以及Bolt；//说白了，还是在拓扑构建方面进行优化</p></li><li><p>(4)依然支持现有的一些接口，比如storm-kafka、storm-hbase、storm-hdfs；//依然是向下兼容，不多说</p></li><li><p>(5)多语言组件的支持；//以前虽然号称支持多语言，其实除了python以及java以外的语言，开发难度还是挺大的</p></li><li><p>(6)支持配置环境之间的切换，类似于Maven中${变量名}代替；</p></li></ul><p><strong>总结：</strong></p><p>向下兼容的一些东西，咱就不多说了，这是版本升级的理所应当支持的功能；</p><p>重点在于拓扑结构的革命性改变，其实我们可以发现，Storm 0.10.0在灵活性使用方面做了很多的该进，包括了这个拓扑结构</p><p><strong><span style="font-size: 16px">四、提供新的分组策略：局部关键词分组</span></strong></p><p>现有的Storm分组策略，在0.8版本到现在一直没有改变，如今引入了一个新的分组策略：局部关键词分组策略。</p><p>局部关键词分组与按字段分组(Grouping)一样，不同之处在于，其考虑了下游Bolt的负载情况，更好的利用了剩余资源，尽量达到了节点间的负载均衡。</p><p><strong>总结：</strong></p><p>从这点我们可以发现，Storm的革命性改进除了在灵活性方面，在资源调度方面也是不余余力啊。</p><p><span style="font-size: 16px"><strong>五、优化了日志框架</strong></span></p><p>调试分布式程序是一件很困难的事，通常我们会通过一个主要的信息来源去分析，那就是程序产生的日志文件。</p><p>但是这同样会产生矛盾，Storm是实时级别的架构系统，对于日志的记录层级难以掌控：多了，容易刷爆磁盘；少了，难以发现问题。</p><p>在Storm 0.10.0中，使用了log4j v2，这是一个具有更高的吞吐量以及更低的延迟的日志架构。并且更有效的利用资源，对于业务逻辑，我们可以轻松的追踪到。</p><p>同样，列上E文关键点：</p><ul class=" list-paddingleft-2" style="list-style-type: disc"><li><p>Rolling log files with size, duration, and date-based triggers that are composable</p></li><li><p>Dynamic log configuration updates without dropping log messages</p></li><li><p>Remote log monitoring and (re)configuration via JMX</p></li><li><p>A Syslog/RFC-5424-compliant appender.</p></li><li><p>Integration with log aggregators such as syslog-ng</p></li></ul><p><strong>主要关键点：</strong></p><ul class=" list-paddingleft-2" style="list-style-type: disc"><li><p>(1)通过日志文件大小、时间日期组合的方式，触发日志的滚动；</p></li><li><p>(2)动态的修改日志配置，不会丢失日志数据；</p></li><li><p>(3)支持日志的远程监控，以及JMX的远程配置；</p></li><li><p>(4)支持RFC-5424协议；</p></li><li><p>(5)Syslog-ng的整合以及支持日志聚合；//未来很有可能使用syslog-ng完全替代syslog，不过需要时间验证</p></li></ul><p><strong>总结：</strong></p><p>日志这一块的话，其实没什么多说的地方，现有日志其实也足够用了，问题不是很大，当然如果有更好的支持优化，肯定是大赞的。</p><p><span style="font-size: 16px"><strong>六、支持Hive数据的接入</strong></span></p><p>这个特性将会在0.13中引入，提供数据从Hive接入Storm的API，以及数据Hive落得的API，让数据从Storm到Hive的流程更加的合理以及方便，一旦数据在源头被提交，在Hive即可查询。</p><p>实现Storm到Hive的一体化，在微批处理以及事务处理中支持Hive。</p><p><strong>总结：</strong></p><p>依然是大数据平台一体化的改进，Storm与Hadoop生态的进一步&ldquo;合体&rdquo;。</p><p><span style="font-size: 16px"><strong>七、Microsoft Azure Event Hubs的整合</strong></span></p><p>在Azure云计算平台上支持Storm的部署执行，这个不多说。只能说Storm的影响力越来越大了，很多云平台已经主动和Storm&ldquo;联姻&rdquo;了。</p><p><strong><span style="font-size: 16px">八、对于Redis的支持</span></strong></p><p>除了Hadoop生态，对于大行其道的Nosql，Storm也开始整合。跟其他组件的支持类似，提供了一些使用案例，同样是Storm大融合的趋势。</p><p><span style="font-size: 16px"><strong>九、JDBC/RDBMS的整合集成</strong></span></p><p>Storm 0.10.0支持高灵活可定制的集成，几乎兼容任何类型的JDBC。甚至允许拓扑元组数据与数据库数据在拓扑进行灵活的交互。</p><p><strong>总结：</strong></p><p>在Hadoop盛行之前，其实Storm的数据落地方式很单调，其中将Storm处理过后的数据存入数据库中是一种主流，所以，这一方面的优化可以说解决了很多历史遗留问题。</p><p><strong><span style="font-size: 16px">十、依赖冲突的优化</span></strong></p><p>直接总结吧：在以往的Storm历史版本中，其实经常会出现依赖版本冲突的现象。在Storm 0.10.0中，对这方面作了优化。好吧，又是一个历史遗留问题，说明Storm在进一步规范化。</p><p><strong><span style="font-size: 18px">我们来梳理一下总结</span></strong></p><p>在推特发布Heron后没几天，Apache就发布了Storm的0.10.0，不可谓不及时。</p><p>也难怪，Heron号称颠覆性的设计，虽然它暂时没有开源，虽然Storm已经占据了数据实时处理领域的半壁江山，但是依然危机感十足啊。</p><p>OK，还是回到正题，说说我的感想：</p><p><strong><span style="font-size: 16px">(1)大数据平台统一融合趋势</span></strong></p><p>我在《DT时代变革的反思》一文中，曾经说到：支撑大数据得以发展的核心是数据平台。</p><p>在Hadoop大规模离线数据处理技术日渐成熟的今天，实时业务的需求逐渐在上升，这也是Storm得以快速发展的原因之一。</p><p>实时处理平台以及我们现在盛行的Hadoop生态平台，是两个不同的方向，逻辑上是分离的。</p><p>随着大数据处理的需求多样化，数据在不同平台上流通的需求很迫切。</p><p>如今，不管是现在版本Storm对Hive的支持、对redis的支持，还是以往中对HDFS、Hbase、Zookeeper的支持等，这都是Storm对于数据平台一体化做的努力。</p><p>在大数据平台方面，无论是实时处理，还是以Hadoop为代表的批量离线处理或者Nosql存储等几个方面，平台的统一融合将会是一个趋势。</p><p><span style="font-size: 16px"><strong>(2)资源的集中管理</strong></span></p><p>Storm在资源拓扑任务资源分配方面，一直以来都是一个硬伤。随着Hadoop2.0之后，Hadoop的资源统一交给Yarn管理，在分布式方面基本算是掀起了一股资源管理优化的风潮。</p><p>PS：翻译以及个人见解若有所误差，欢迎指正。</p><p>来源：博客虫投稿，<a target="_blank" href="http://www.blogchong.com/post/121.html">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Software.jpg" alt="浅析Apache Storm 0.10.0-beta发布：剑指Heron" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4268"></span><a href="javascript:commYea(4268);" id="dig4268">顶一下 ▲</a>(<span id="sdig4268"><Script language="javascript" type="text/javascript">showDig("4268");</script></span>) &nbsp; <a href="javascript:commNay(4268);" id="down4268">踩一下 ▼</a>(<span id="sdown4268"><Script language="javascript" type="text/javascript">showDown("4268");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4267.html" title="在线密码管理器LastPass被黑客攻破">在线密码管理器LastPass被黑客攻破</a></div><div class="next_content">下一篇 » <a href="/archives/4269.html" title="希捷个人云：家用NAS的解决方案">希捷个人云：家用NAS的解决方案</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/4257.html">恢复删除文件的方法</a></p><p class="mutualitylist"><a href="/archives/4148.html">个人用户如何安全地选择软件</a></p><p class="mutualitylist"><a href="/archives/4109.html">开源之死</a></p><p class="mutualitylist"><a href="/archives/4108.html">为什么开源软件没有桌面用户</a></p><p class="mutualitylist"><a href="/archives/4068.html">编辑Hosts文件的方法</a></p><p class="mutualitylist"><a href="/archives/3974.html">色情盗版“两驱动”快播被查</a></p><p class="mutualitylist"><a href="/archives/3938.html">虚拟现实设备Oculus：现在可以震撼未来</a></p><p class="mutualitylist"><a href="/archives/3935.html">浅析智能硬件的内涵</a></p><p class="mutualitylist"><a href="/archives/3924.html">通讯工具Line估值100亿美元合理吗？</a></p><p class="mutualitylist"><a href="/archives/3922.html">OpenWRT路由配置技巧</a></p><p class="mutualitylist"><a href="/archives/3891.html">快速找到应用软件Hosts的方法</a></p><p class="mutualitylist"><a href="/archives/3890.html">使用DNSCrypt解决DNS污染问题</a></p><p class="mutualitylist"><a href="/archives/3889.html">Dropbox的图片管理应用Carousel</a></p><p class="mutualitylist"><a href="/archives/3878.html">快速找到网站可用Hosts的方法</a></p><p class="mutualitylist"><a href="/archives/3869.html">金山WPS“灵魂”丢失</a></p><p class="mutualitylist"><a href="/archives/3825.html">珍爱生命，远离“匿名”应用</a></p><p class="mutualitylist"><a href="/archives/3815.html">DD-WRT刷机完整教程</a></p><p class="mutualitylist"><a href="/archives/3794.html">中科红旗的生与死</a></p><p class="mutualitylist"><a href="/archives/3732.html">具有“自主知识产权”的国产操作系统COS发布</a></p><p class="mutualitylist"><a href="/archives/3691.html">Instapaper为什么会限时免费</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

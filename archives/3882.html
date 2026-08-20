@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3882.html"/>
+	<title>GoAgent的安全风险-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>GoAgent的安全风险</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3882.html" rel="bookmark">GoAgent的安全风险</a></h1>
+	<div class="post-meta">
+		2014-6-12 16:15:41 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 52 | 
+		浏览: <span class="AddView" id="spn3882" data-id="3882"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Proxy.html" rel="tag"><img src="/logo/Proxy.gif" alt="代理服务器" class="thumb" width="80" height="80" /></a><p>GoAgent 利用 Google App Engine (GAE) 来实现安全上网，以免费、快速、稳定的特点深受网民的欢迎。但是，GoAgent 的安装和配置中存在两点严重安全风险的问题却鲜为人知。这两点安全风险都可能被攻击者利用进行 &ldquo;中间人攻击（man-in-the-middle attack）&rdquo; 来窃取 GoAgent 用户的网络帐号密码等敏感信息，其概括描述如下：</p>
+
+<ul>
+	<li>GoAgent 在启动时会尝试自动往系统的可信根证书中导入一个名为 &ldquo;GoAgent CA&rdquo; 的证书。由于这个证书的私钥是公开的，导致任何人都可以利用这个私钥来伪造任意网站的证书进行 HTTPS 中间人攻击。即使在不开启 GoAgent 时，这种攻击的风险仍然存在。换而言之，一旦这个证书被导入，攻击者可以用此绕过几乎所有网站的 HTTPS 保护。</li>
+	<li>GoAgent 本身对 TLS 证书的认证存在问题，而且默认时不对证书进行检查，这导致在使用 GoAgent 时存在 HTTPS 中间人攻击的风险。</li>
+</ul>
+
+<p>事实上曾经有用户在 GoAgent 主页上的问题跟踪列表中指出了这两个安全问题（见以下链接），但既没有修复也没有广泛公开，多数用户，尤其是非中文用户可能并不知情。下面是这两个问题的详细解释。</p>
+
+<blockquote><a href="https://code.google.com/p/goagent/issues/detail?id=11091" rel="nofollow">https://code.google.com/p/goagent/issues/detail?id=11091</a><br />
+<a href="https://code.google.com/p/goagent/issues/detail?id=8031" rel="nofollow">https://code.google.com/p/goagent/issues/detail?id=8031</a></blockquote>
+
+<h3>GoAgent 导入公开私钥根证书的问题</h3>
+
+<p>GoAgent 在启动时会尝试在系统中导入一个根证书来避免访问 HTTPS 网站时的证书报警，但在默认情况下所导入证书的私钥是公开的。因为私钥公开，任何人可以作为 &ldquo;GoAgent CA&rdquo; 来签发任何网站的证书。即使在 GoAgent 没有启动甚至卸载的情况下，这个公钥仍会遗留在系统中。在有些系统中，GoAgent 所导入的根证书不仅被 GoAgent 默认使用的浏览器信任，其他的浏览器也可能会信任这一根证书，从而受到这一问题的影响。</p>
+
+<p>GoAgent 所导入的这一公开私钥根证书的指纹是：</p>
+
+<blockquote>SHA1 Fingerprint=AB:70:2C:DF:18:EB:E8:B4:38:C5:28:69:CD:4A:5D:EF:48:B4:0E:33MD5 Fingerprint=56:B1:20:86:1B:0A:B0:61:38:00:1B:C3:67:CF:0C:CC</blockquote>
+
+<p>包含这一 &ldquo;GoAgent CA&rdquo; 证书以其私钥（文件中 <code>-----BEGIN RSA PRIVATE KEY-----</code> 位置）的文件 URL 为：</p>
+
+<blockquote><a href="https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/local/CA.crt" rel="nofollow">https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/local/CA.crt</a></blockquote>
+
+<p>根据版本信息，这一证书和私钥从 2011 年 6 月甚至更早的时间以来一直保持不变。</p>
+
+<blockquote><a href="https://github.com/goagent/goagent/blob/fa9959e577395e48a477fd5495afbc2363a51baa/local/CA.key" rel="nofollow">https://github.com/goagent/goagent/blob/fa9959e577395e48a477fd5495afbc2363a51baa/local/CA.key</a></blockquote>
+
+<p>GoAgent 主要包含两个部分：一个在用户计算机上运行的本地代理程序 <code>proxy.py</code>，以及一个在 GAE 上运行的远程代理程序 <code>gae.py</code>。</p>
+
+<blockquote><a href="https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/local/proxy.py" rel="nofollow">https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/local/proxy.py</a><br />
+<a href="https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/server/gae/gae.py" rel="nofollow">https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/server/gae/gae.py</a></blockquote>
+
+<p>安装时，用户需要上传 <code>gae.py</code> 到 GAE。用户浏览器通过设置一个本地代理将 HTTP/HTTPS 请求转发到 <code>proxy.py</code>，再由 <code>proxy.py</code> 和 <code>gae.py</code> 进行通信。</p>
+
+<p>默认情况下，GoAgent 在启动时试图导入上述 GoAgent CA 证书。具体的代码为 <code>proxy.py</code> 中的 <code>CertUtil.import_ca</code>：</p>
+
+<blockquote><a href="https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/local/proxy.py#L337" rel="nofollow">https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/local/proxy.py#L337</a></blockquote>
+
+<p>这个函数会根据用户操作系统通过不同的方式尝试导入证书，在某些情况下会需要管理员（root/administrator）权限。在 <a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> 下，这个函数会调用 <code>CertAddEncodedCertificateToStore</code> 这一 API。在 OS X 下，会尝试执行系统命令</p>
+
+<blockquote>security find-certificate -a -c &quot;GoAgent&quot; | grep &quot;GoAgent&quot; &gt;/dev/null || security add-trusted-cert -d -r trustRoot -k &quot;/Library/Keychains/System.keychain&quot; &quot;<em>pwd</em>/CA.crt&quot;</blockquote>
+
+<p>在 Ubuntu 下，会拷贝证书文件到 <code>/usr/local/share/ca-certificates</code> 然后执行 <code>update-ca-certificates</code>。在其他 GNU/Linux 发行版中，会尝试执行以下命令更改 NSS 数据库：</p>
+
+<blockquote>certutil -L -d sql:$HOME/.pki/nssdb | grep &quot;GoAgent&quot; || certutil -d sql:$HOME/.pki/nssdb -A -t &quot;C,,&quot; -n &quot;GoAgent&quot; -i &quot;<em>pwd</em>/CA.crt&quot;</blockquote>
+
+<p>由于 <a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a> 采用了不同的方式存储证书，这一自动安装过程不会导入 GoAgent CA 证书到 Firefox 中。但是 GoAgent 的安装指南和 FAQ 中说明了如何手动导入这一证书：</p>
+
+<blockquote><a href="https://code.google.com/p/goagent/wiki/InstallGuide" rel="nofollow">https://code.google.com/p/goagent/wiki/InstallGuide</a><br />
+<a href="https://code.google.com/p/goagent/wiki/FAQ" rel="nofollow">https://code.google.com/p/goagent/wiki/FAQ</a></blockquote>
+
+<p>这一证书随后被 <code>proxy.py</code> 用来作为 HTTPS 中间人来避免浏览器在访问 HTTPS 网站时出现报警。GoAgent 的工作原理如下：首先 <code>proxy.py</code> 将浏览器的 HTTP 请求进行编码并转发给 <code>gae.py</code>，<code>gae.py</code> 完成收到的请求然后将结果进行编码后返回给 <code>proxy.py</code>，最后 <code>proxy.py</code> 将结果转发给浏览器来完成 &ldquo;翻墙&rdquo; 过程。由于 GAE 的限制 （免费 app 无法使用 socket 接口），对于 HTTPS 请求，<code>proxy.py</code> 无法进行透明转发，只能作为中间人先和浏览器完成连接，然后获得其中的明文请求以后在转发给 <code>gae.py</code>。当收到 <code>CONNECT</code> 请求（这意味着浏览器正在浏览一个 HTTPS 网站）， <code>proxy.py</code> 首先利用 GoAgent CA 签发一个假的证书来和浏览器完成握手，从用户的角度，所有的 HTTPS 网站的证书都是由事先导入的 &ldquo;GoAgent CA&rdquo; 认证的，所以不会报警。有些浏览器会对少数网站的证书进行特别的检查（Certificate Pinning），这种情况下 &quot;GoAgent CA&rdquo; 所签发的证书可能会触发证书不安全的报警。GoAgent 的这种工作方式导致 HTTPS 不再是浏览器到网站的端到端安全通信，而变成了 <code>proxy.py</code> 到 GAE，以及 GAE 到网站两段独立的 HTTPS 连接，GAE 能够看到请求和应答的明文。</p>
+
+<p style="text-align:center"><img alt="GoAgent的安全风险" src="/upload/3882_1.jpg" /></p>
+
+<p style="text-align:center"><img alt="GoAgent的安全风险" src="/upload/3882_2.jpg" /></p>
+
+<h3>测试页面</h3>
+
+<p>请访问</p>
+
+<blockquote><a href="https://goagent-cert-test.bamsoftware.com/" rel="nofollow">https://goagent-cert-test.bamsoftware.com/</a></blockquote>
+
+<p>来进行测试。这个页面使用了一个由 GoAgent CA 签发的证书。如果你的浏览器没有受到影响，会显示报警信息；如果没有看到报警，则表明你的浏览器导入了公开的 GoAgent CA 证书，存在严重安全风险。</p>
+
+<h3>如何防止风险</h3>
+
+<p>GoAgent 本身带有生成证书文件 CA.crt 的功能。只需要删除 local/CA.crt 文件就能保证 GoAgent 所导入的证书是唯一的，不会被网络上的攻击者利用来进行攻击。</p>
+
+<p>下面的 &ldquo;补丁（patch）&rdquo; 文件会帮助你从 GoAgent 的 git 仓库中删除 <code>CA.crt</code> 文件，请下载补丁文件并执行以下命令： <code>git&nbsp;am&nbsp;0001-Remove-static-CA.crt.patch</code>. 如果你不是通过 git 获得 GoAgent（例如直接从 http://code.google.com/p/goagent/ 上的链接下载得到），请手动删除 <code>local/CA.crt</code> 文件。</p>
+
+<blockquote><a href="0001-Remove-static-CA.crt.patch" rel="nofollow">0001-Remove-static-CA.crt.patch</a></blockquote>
+
+<p>如果你以前曾经使用过 GoAgent，务必要检查系统中任何可能的地方，删除 SHA-1 指纹为 <code>AB:70:2C:DF:18:EB:E8:B4:38:C5:28:69:CD:4A:5D:EF:48:B4:0E:33</code> 的 &ldquo;GoAgent CA&rdquo; 证书（建议使用浏览器访问上面的测试页面进行检查）。下面说明在常见系统中检查和删除 GoAgent CA 证书的方法。</p>
+
+<h3>如何删除 GoAgent CA 证书</h3>
+
+<p>Firefox 中，打开 &ldquo;preferences&rdquo;，&rdquo;Advanced&rdquo;, &ldquo;Certificates&rdquo;, &ldquo;View Certificates&rdquo;, &ldquo;Authorities&rdquo;，然后在证书列表中找到 &ldquo;GoAgent CA&rdquo;，选中并点击 &ldquo;Delete or Distrust...&rdquo; 按钮，然后确认。</p>
+
+<p style="text-align:center"><img alt="GoAgent的安全风险" src="/upload/3882_3.jpg" /></p>
+
+<p>Ubuntu 下，删除 <code>/usr/local/share/ca-certificates/GoAgent.crt</code> 然后执行</p>
+
+<blockquote>update-ca-certificates --fresh</blockquote>
+
+<p><a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> 下，请参考以下链接：</p>
+
+<blockquote><a href="http://technet.microsoft.com/en-us/library/cc754841.aspx#BKMK_addlocal" rel="nofollow">http://technet.microsoft.com/en-us/library/cc754841.aspx#BKMK_addlocal</a></blockquote>
+
+<p>中 &quot;Adding certificates to the Trusted Root Certification Authorities store for a local computer&quot; 的步骤，但是在 step 8 时右键选中 &quot;GoAgent CA&quot; 然后选择 &quot;Delete&quot;。</p>
+
+<p style="text-align:center"><img alt="GoAgent的安全风险" src="/upload/3882_4.jpg" /></p>
+
+<p>在 Mac OS X下，打开 &ldquo;Keychain Access&rdquo; 应用，点击锁图标并输入密码解锁。在边上的控制面板中，选择 &quot;System&quot; 以及 &quot;Certificates&quot;，选中 &quot;GoAgent CA&quot; 然后按 &ldquo;Delete&rdquo; 键，点击 &quot;Delete&quot; 按钮并输入你的密码确认。</p>
+
+<p style="text-align:center"><img alt="GoAgent的安全风险" src="/upload/3882_5.jpg" /></p>
+
+<h3>GoAgent 没有进行正确的 TLS 验证，存在中间人攻击的风险</h3>
+
+<p>默认情况下，GoAgent 会通过 HTTPS 来保护本地 <code>proxy.py</code> 和 GAE 服务器上的 <code>gae.py</code> 之间的通信 （在配置文件 <code>proxy.ini</code> 中相关的设置默认为 <code>gae.mode=https</code>）。但是同样在默认情况下，GoAgent 不会要求对 GAE 服务器的证书进行验证（<code>gae.validate=0</code>），这导致本地 <code>proxy.py</code> 和 App Engine 服务器之间的通信存在 HTTPS 中间人攻击的风险。此外， <code>gae.validate</code> 配置项同样控制 App Engine 上的 <code>gae.py</code> 是否对网站服务器的证书进行验证，默认配置下这一配置为 0 导致 <code>gae.py</code> 也不会对网站证书进行验证，使得 <code>gae.py</code> 和网站之间的通信同样存在 HTTPS 中间人攻击的风险</p>
+
+<p>即使修改配置启用证书验证（<code>gae.validate=1</code>），GoAgent 对 App Engine 服务器证书的验证也并不严格：在 <code>proxy.py</code> 中只是对证书的 organizationName 进行了粗略的检查（是否为 &ldquo;Google &rdquo; 开头），而没有对主机名（hostname）进行匹配。</p>
+
+<blockquote><a href="https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/local/proxy.py#L1623" rel="nofollow">https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/local/proxy.py#L1623</a></blockquote>
+
+<p>将配置改为 <code>gae.validate=1</code> 同时会启用 <code>gae.py</code> 段对网站服务器证书的验证，这部分的事先没有明显的问题。</p>
+
+<blockquote><a href="https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/server/gae/gae.py#L184" rel="nofollow">https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/server/gae/gae.py#L184</a></blockquote>
+
+<p>GoAgent 还提供了一个可选功能，通过 RC4 和一个共享密钥来对 <code>proxy.py</code> 和 <code>gae.py</code> 之间的数据进行进一步的混淆。启用这一功能需要在 proxy.ini 中设置 <code>gae.password</code>，以及 <code>gae.options=rc4</code>，并在 <code>gae.py</code> 中设置 <code>__password__</code> 变量。</p>
+
+<blockquote><a href="https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/server/gae/gae.py#L5" rel="nofollow">https://github.com/goagent/goagent/blob/c4386808ea943e2ebed25f1e5264943354e3f9cb/server/gae/gae.py#L5</a></blockquote>
+
+<p>但是，这里的 RC4 加密只能起到一个简单的混淆作用，无法在不启用 HTTPS 的情况下利用这一功能来防止中间人攻击。GoAgent 中的 RC4 无法实现数据的机密性，因为密码本身会通过一个 <code>G-password</code> 头在 <code>proxy.py</code> 和 <code>gae.py</code> 中传送，而且在两段通信中会使用同样的密码流（keystream），导致攻击者很容易通过密文的 XOR 操作来获得 XOR 过的明文（见流密码的重用问题，Stream Cipher Key Reuse），进而得到明文。在这里 RC4 只能起到防止其他 GoAgent 用户共享服务端流量的目的，无法提供更多的保护来防止网络攻击。</p>
+
+<h3>如何防止风险</h3>
+
+<p>确认在 <code>proxy.ini</code> 中设置了 <code>gae.mode=https</code> （默认），并且启用了证书验证 <code>gae.validate=1</code>（非默认）。这样的设定基本上能够防止 <code>proxy.py</code> 和 GAE 服务器，以及 GAE 服务器和网站服务器之间的 HTTPS 中间人攻击。由于 <code>proxy.py</code> 中没有对证书的主机名进行严格匹配，<code>proxy.py</code> 和 GAE 服务器的通信仍存在（相对较小的）风险，如果有人能够申请到 organizationName 字段以 &ldquo;Google &rdquo; 开头的证书，仍然能够成功进行HTTPS 中间人攻击。</p>
+
+<p>来源：bamsoftware，<a href="https://www.bamsoftware.com/sec/goagent-advisory.html" rel="nofollow" target="_blank">原文链接</a>。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Proxy.jpg" alt="GoAgent的安全风险" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3882"></span><a href="javascript:commYea(3882);" id="dig3882">顶一下 ▲</a>(<span id="sdig3882"><Script language="javascript" type="text/javascript">showDig("3882");</script></span>) &nbsp; <a href="javascript:commNay(3882);" id="down3882">踩一下 ▼</a>(<span id="sdown3882"><Script language="javascript" type="text/javascript">showDown("3882");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3881.html" title="阿里巴巴全资合并UC优视">阿里巴巴全资合并UC优视</a></div><div class="next_content">下一篇 » <a href="/archives/3883.html" title="7个问题解读阿里巴巴收购UC">7个问题解读阿里巴巴收购UC</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3814.html">OpenVPN的配置和使用</a></p><p class="mutualitylist"><a href="/archives/3739.html">中国用户使用代理软件的分析</a></p><p class="mutualitylist"><a href="/archives/2764.html">内网用户轻松穿越外网</a></p><p class="mutualitylist"><a href="/archives/2696.html">I2P不完全使用手册</a></p><p class="mutualitylist"><a href="/archives/2283.html">网络访问攻防战之代理服务器篇</a></p><p class="mutualitylist"><a href="/archives/2232.html">网络访问攻防战</a></p><p class="mutualitylist"><a href="/archives/2210.html">使用HTTP代理服务器的安全性简评</a></p><p class="mutualitylist"><a href="/archives/2057.html">如何使用代理服务器上网</a></p><p class="mutualitylist"><a href="/archives/2024.html">SocksCap代理使用教程</a></p><p class="mutualitylist"><a href="/archives/1952.html">SSH加密通道配置</a></p><p class="mutualitylist"><a href="/archives/1697.html">开源代理软件GAppProxy</a></p><p class="mutualitylist"><a href="/archives/760.html">FireFox代理服务器扩展</a></p><p class="mutualitylist"><a href="/archives/739.html">免费代理服务器的使用设置</a></p><p class="mutualitylist"><a href="/archives/524.html">代理服务器的功能</a></p><p class="mutualitylist"><a href="/archives/424.html">TOR使用说明和介绍</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

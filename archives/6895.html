@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/6895.html"/>
+	<title>手机网页自适应深色模式适配-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>手机网页自适应深色模式适配</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/6895.html" rel="bookmark">手机网页自适应深色模式适配</a></h1>
+	<div class="post-meta">
+		2022-8-17 23:52:48 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 1 | 
+		浏览: <span class="AddView" id="spn6895" data-id="6895"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a><p>近几年，各个主流操作系统都逐渐开端注重深色方式，从而改善用户在环境光亮低时的阅读体验。很多手机APP应用都已经对深色模式进行了支持，常用的手机应用也在 App Store 的政策压力下对深色模式进行了适配。那么，对于手机网站来说，是否也能支持自适应浅色模式和深色模式，本文将介绍一下手机网页如何开发自适应深色模式适配。</p>
+
+<p>既然有了系统层级的适配，手机网站的页面就可以读取深色方式开关，从而完成网页的自顺应。CSS推出的 prefers-color-scheme 的 media 选择器，使得网页能够适配深色模式和浅色模式。</p>
+
+<p><strong>什么是prefers-color-scheme？</strong></p>
+
+<p>2020年7月31日，W3C发布的 Media Queries Level 5 标准草案 中提到了新的属性 prefers-color-scheme，网页现在可以通过条件规则组来获取浏览器宿系统的暗色模式状态并应用了。也就是说，现在我们可以很简单地实现&ldquo;暗色模式系统访问的页面是暗色的，亮色模式系统访问的页面是亮色的&rdquo;。</p>
+
+<p>prefers-color-scheme提供了两个值；分别是 light 以及 night；顾名思义，light就是白天模式的样式代码，则night是深色模式的样式代码。</p>
+
+<p>light&mdash;&mdash;浏览器系统使用亮色主题的界面，同时也是默认值，浏览器 privacy.resistFingerprinting 被设置为 true 时返回的也将是这个值。</p>
+
+<p>dark&mdash;&mdash;浏览器系统使用暗色主题的界面。</p>
+
+<p><strong>CSS语法</strong></p>
+
+<blockquote>
+<p>@media (prefers-color-scheme: &lt;mode&gt;) {<br />
+}</p>
+</blockquote>
+
+<p>其中 mode 有如下可能的取值：</p>
+
+<blockquote>
+<p>light：浅色模式<br />
+dark：深色模式</p>
+</blockquote>
+
+<p><strong>CSS样式代码</strong></p>
+
+<blockquote>
+<p>@media (prefers-color-scheme: light) {<br />
+// 亮色模式样式<br />
+}<br />
+@media (prefers-color-scheme: dark) {<br />
+// 深色模式样式<br />
+}</p>
+</blockquote>
+
+<p><strong>CSS变量</strong></p>
+
+<p>除了prefers-color-scheme，我们还要了解CSS变量的功能和用法。</p>
+
+<p>CSS 变量（CSS variable）又叫做&ldquo;CSS 自定义属性&rdquo;（CSS custom properties）。</p>
+
+<p>变量的声明使用变量名前面要加两根连词线&ndash;，变量名大小写敏感。var()函数用于读取变量。var()函数还可以使用第二个参数，表示变量的默认值。如果该变量不存在，就会使用这个默认值。</p>
+
+<p><strong>改造现有的网页</strong></p>
+
+<p>有了这个功能，我们就可以着力改造现有的网页。我们在CSS里将主题颜色使用CSS变量来表示，我们需要定义两组变量，一套深色，一套浅色，使用如下的代码进行处理。</p>
+
+<blockquote>
+<p>:root {<br />
+&nbsp; --bg: #FFFFFF;<br />
+&nbsp; --textColor: #000000;<br />
+&nbsp; --borderColor: #2C2C3A;<br />
+}<br />
+@media (prefers-color-scheme: dark) {<br />
+&nbsp; :root {<br />
+&nbsp; &nbsp; --bg: #000000;<br />
+&nbsp; &nbsp; --textColor: #FFFFFF;<br />
+&nbsp; &nbsp; --borderColor: #2C2C3A;<br />
+&nbsp; }<br />
+}</p>
+</blockquote>
+
+<p>这样，当有人使用手机的深色模式系统主题时候，访问网站的时候，将会自动切换到深色模式。</p>
+
+<p>只使用 CSS 条件规则很难实现某些需求，我们可以对 window 使用 matchMedia 方法得到的 Media 使用 matches 方法来获取系统暗色模式状态：</p>
+
+<blockquote>
+<p>if (window.matchMedia(&#39;prefers-color-scheme: dark&#39;).matches) {<br />
+// 是暗色模式做什么<br />
+} else {<br />
+// 非暗色模式做什么<br />
+}</p>
+</blockquote>
+
+<p>通过上面的改造，就可以实现手机端深色和浅色模式的自适应切换。</p>
+
+<p><strong>不同操作系统深色模式设置</strong></p>
+
+<p><a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>-设置-个性化-颜色-选择颜色-深色</p>
+
+<p>iPhone-设置-显示与亮度-外观-深色</p>
+
+<p>Android-设置-显示和亮度-显示模式-深色模式</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="手机网页自适应深色模式适配" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note6895"></span><a href="javascript:commYea(6895);" id="dig6895">顶一下 ▲</a>(<span id="sdig6895"><Script language="javascript" type="text/javascript">showDig("6895");</script></span>) &nbsp; <a href="javascript:commNay(6895);" id="down6895">踩一下 ▼</a>(<span id="sdown6895"><Script language="javascript" type="text/javascript">showDown("6895");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/6894.html" title="Gmail允许对政治电子邮件过滤垃圾邮件">Gmail允许对政治电子邮件过滤垃圾邮件</a></div><div class="next_content">下一篇 » <a href="/archives/6896.html" title="腾讯辟谣清仓美团">腾讯辟谣清仓美团</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/6627.html">常用校验类正则表达式大全</a></p><p class="mutualitylist"><a href="/archives/6597.html">在JS文件中加载JS文件的方法</a></p><p class="mutualitylist"><a href="/archives/6443.html">AutoHotkey新手教程</a></p><p class="mutualitylist"><a href="/archives/6385.html">豆瓣250评分排名算法机制</a></p><p class="mutualitylist"><a href="/archives/5922.html">Python才是世界上最好的语言</a></p><p class="mutualitylist"><a href="/archives/5874.html">Windows 10下注册32位OCX控件的方法</a></p><p class="mutualitylist"><a href="/archives/5591.html">锁死服务器的程序员回应称系编造</a></p><p class="mutualitylist"><a href="/archives/5590.html">创始人控诉程序员搞死创业公司</a></p><p class="mutualitylist"><a href="/archives/5580.html">谷歌研究员将发布HTTPS本地证书部署测试工具mkcert</a></p><p class="mutualitylist"><a href="/archives/5124.html">杭州大妈为女儿征婚：程序员成香饽饽</a></p><p class="mutualitylist"><a href="/archives/4906.html">“中国第一程序员” 求伯君的传奇经历</a></p><p class="mutualitylist"><a href="/archives/4514.html">如何建立对IT企业的信心？</a></p><p class="mutualitylist"><a href="/archives/4448.html">EditPlus常用正则表达式</a></p><p class="mutualitylist"><a href="/archives/4432.html">程序员的楷模：全自动化的生活</a></p><p class="mutualitylist"><a href="/archives/4415.html">我所理解的大数据个性化推荐</a></p><p class="mutualitylist"><a href="/archives/4384.html">网站开发适配iPad的7大技巧</a></p><p class="mutualitylist"><a href="/archives/4359.html">然而大部分期权并没有什么用</a></p><p class="mutualitylist"><a href="/archives/4233.html">这些年，这些挖掘机算法，这些反思</a></p><p class="mutualitylist"><a href="/archives/4223.html">谷歌推出全新Android开发框架Sky让App更流畅</a></p><p class="mutualitylist"><a href="/archives/4142.html">Google宣布淘汰SPDY</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-250049">
+		<div id="div-comment-250049" class="comment-body">
+		<div class="comment-author vcard">
+		<div style="float:right">1</div><cite class="fn"><a name="cmt250049">在线呢</a></cite> &nbsp; <span class="says">说道：</span>		</div>
+		<div class="comment-meta commentmetadata">		</div>
+		这句代码好像有误：window.matchMedia('prefers-color-scheme: dark').matches<br/><br/>应改为：window.matchMedia('(prefers-color-scheme: dark)').matches，即多加一对括弧才能正确运行。<!--rev250049--><a style="display:none;" id="AjaxCommentEnd250049"></a>
+		<div class="reply"><span style="float:left" class="comment-meta commentmetadata">2023/5/6 23:32:16</span>		
+		<span id="note250049"></span><a href="javascript:commDig(250049);">支持</a>(<span id="sdig250049">0</span>)&nbsp;<a href="javascript:commDown(250049);">反对</a>(<span id="sdown250049">0</span>)&nbsp;<a class='comment-reply-link' href='#respond' onclick="RevertComment('250049')">回复</a>		</div>
+		</div>
+	</li>
+</ol>
+<ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	<div id="comment-form">
+<div id="respond" class="respond">
+<h3 id="comments-respond">发表留言</h3>
+<div class="cancel-comment-reply">
+<a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">点击这里取消回复。</a>
+</div>
+<form action="/zb_system/cmd.asp?act=cmt&amp;key=78831611" method="post" id="frmSumbit" target="_self">
+<input type="hidden" name="inpId" id="inpId" value="6895" />
+	<input type="hidden" name="inpArticle" id="inpArticle" value="" />
+	<input type="hidden" name="inpRevID" id="inpRevID" value="" />
+<input type="text" name="inpName" id="inpName"  value="名称" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="1" />
+<input type="text" name="inpEmail" id="inpEmail" value="邮箱" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="2" />
+<input type="text" name="inpHomePage" id="inpHomePage" value="网站链接" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="3" />
+
+<textarea name="txaArticle" id="txaArticle" cols="100%" rows="10" tabindex="5"  onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('commentSubmit').click();return false};"></textarea>
+<br />
+<p style="display: none;"><input type="checkbox" name="chkRemember" checked="true" id="chkRemember" /> <label for="chkRemember">记住我,下次回复时不用重新输入个人信息</label></p>
+<input name="btnSumbit" type="submit" id="commentSubmit" tabindex="6" value="提交 (Ctrl+Enter)" onclick="JavaScript:return VerifyMessage()"/>
+</form>
+</div>
+</div>
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

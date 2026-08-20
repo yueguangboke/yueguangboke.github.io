@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2185.html"/>
+	<title>在Twitter应用中使用OAuth-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth7">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>在Twitter应用中使用OAuth</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2185.html" rel="bookmark">在Twitter应用中使用OAuth</a></h1>
+	<div class="post-meta">
+		2010-5-21 23:34:13 | 
+		作者: 音乐天堂 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 27 | 
+		浏览: <span class="AddView" id="spn2185" data-id="2185"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Twitter.html" rel="tag"><img src="/logo/Twitter.gif" alt="推特" class="thumb" width="80" height="80" /></a><p><a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>官方宣布将在2010年6月30日终止对Basic Authorization验证方式的支持，全面启用OAuth的认证方式，广大使用API的网民纷纷表示鸭梨很大，众多使用Basic Auth认证的第三方程序如何适应这个新的变化，本文将会介绍如何在Twitter应用中使用OAuth认证。</p>
+
+<p><strong>一、介绍OAuth</strong></p>
+
+<p>在Twitter未支持OAuth之前，使用的是Basic Auth认证。Basic Auth要求Twitter应用把用户名和口令直接附加在HTTP或HTTPS协议头中发送给Twitter API。这样，Twitter应用势必要求用户在其应用中输入自己的Twitter用户名和口令，从而可以把Twitter的用户名和口令附加在HTTP(S)协议中发送给Twitter。这样Twitter应用开发者就能知道使用了他的Twitter应用的用户的所有用户名和密码，这样开发者就能随意使用这些Twitter账号登陆Twitter做任何操作了。比如，可以修改用户的Twitter密码，甚至直接去Twitter的Settings中删除这个帐号。这将带来潜在的安全性问题。</p>
+
+<p>而使用OAuth，Twitter应用无需知道用户的Twitter口令，只需要得到Twitter和用户双方的授权信息（后面会说这个授权信息&mdash;&mdash;其实就是Token）即可。这样，Twitter应用开发者就不知道用户的Twitter口令，只能使用这个授权信息（Token）做有限的操作，无法修改用户的Twitter口令，也无法删除用户的Twitter账号。这在安全性上有了很大提高。</p>
+
+<p><strong>二、OAuth认证流程</strong></p>
+
+<p>要使用OAuth，首先要去Twitter中注册一个自己的Twitter应用，注册地址：<a href="http://dev.twitter.com/apps/new">http://dev.twitter.com/apps/new</a> 。注册之后，会得到自己Twitter应用的Consumer key和Consumer secret，都是一个字符串。之后就可以进行OAuth的认证过程：</p>
+
+<p>2.1、Twitter应用把Consumer key和Consumer secret放入HTTP请求中发送到Twitter API： https://api.<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>.com/oauth/request_token ，得到一个Request Token</p>
+
+<p>2.2、<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>应用重定向用户浏览器到 https://api.<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>.com/oauth/authorize?oauth_token=&lt;Request Token&gt; ，其中&lt;Request Token&gt;为在2.1中取得的Request Token</p>
+
+<p>2.3、Twitter官方网站上提示用户登录，之后提示用户选择是否允许此Twitter应用访问自己的账号。这个选择一次即可，之后在2.5中Twitter应用可以记录用户的选择（正因为OAuth的认证过程必须在官方网站上进行，所以对于某些国家的普通民众来说，相比Basic Auth是一个不方便的地方）</p>
+
+<p>2.4、用户选择允许之后，浏览器被重定向到Callback URL，并附加Verifier参数和新的Token。这个Callback URL是Twitter应用用于接收Verifier和新的Token的地址。Callback URL是注册Twitter应用需要填写的，也可以在2.1中在HTTP请求中和Consumer key和Consumer secret一起发送到Twitter API。由于Callback URL是浏览器访问的，并不是由Twitter服务器访问的，所以如果需要做测试的话，这个Callback URL可以是局域网地址或者是本机上的Web服务地址，比如可以是 http://localhost:8080/receive.jsp 。</p>
+
+<p>2.5、Twitter应用取得Verifier和新的Token后，把他们一起发送给Twitter API： https://api.twitter.com/oauth/access_token 取得一个Access Token。之后使用这个Access Token就可以调用各种Twitter API了。之后在使用每个Twitter API的时候，把Access Token附加于每一个Twitter API的HTTP请求中即可，Twitter API的使用，请见月光博客：<a href="/archives/2152.html">/archives/2152.html</a> 。Twitter应用可以把这个Access Token保存下来，以便以后直接使用，不需要用户重复去Twitter官方网站授权了</p>
+
+<p><strong>三、使用OAuth</strong></p>
+
+<p>由于OAuth的认证比较复杂，并且HTTP参数繁多。如果从头开始做OAuth势必需要把各个参数正确的并按一定顺序的填写到HTTP请求中。好在我们有各种开源的OAuth库（参考：<a href="http://dev.twitter.com/pages/oauth_libraries">http://dev.twitter.com/pages/oauth_libraries</a> ）可以使用。在这里，我把OAuth的Java库Scribe作为例子进行介绍（考虑到国内情况，我对Scribe做了一些修改，使其支持代理服务器）：</p>
+
+<p>3.1、创建一个twitter.properties，其中的内容为：</p>
+
+<p>consumer.key=&lt;Twitter应用的Consumer Key，可以去Twitter官方网站中自己的Twitter应用的参数中找到&gt;</p>
+
+<p>consumer.secret=&lt;Twitter应用的Consumer Secret&gt;</p>
+
+<p>request.token.verb=POST</p>
+
+<p>request.token.url=https://api.twitter.com/oauth/request_token</p>
+
+<p>access.token.verb=POST</p>
+
+<p>access.token.url=https://api.twitter.com/oauth/access_token</p>
+
+<p>callback.url=http://localhost:8080/receive.jsp</p>
+
+<p>3.2、读取twitter.properties到Properties对象中：</p>
+
+<p>Properties tp = new Properties();</p>
+
+<p>tp.load(TwOAuth.class.getResourceAsStream(&quot;/twitter.properties&quot;));</p>
+
+<p>BufferedReader stdinRd = new BufferedReader(new InputStreamReader(System.in));</p>
+
+<p>3.3、生成代理服务其对象（国内用户使用，因为国内无法直接访问Twitter API）：</p>
+
+<p>Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(&quot;HTTP代理服务器地址&quot;, HTTP代理服务器端口));//如果不使用代理服务器，请写为Proxy proxy = null;</p>
+
+<p>3.4、取得Request Token（对应2.1）：</p>
+
+<p>Scribe sb = new Scribe(tp);</p>
+
+<p>Token tk = sb.getRequestToken(proxy);</p>
+
+<p>3.5、重定向用户浏览器（由于例子是命令行程序，所以直接打印出访问地址，由用户自己打开浏览器访问），返回Callback URL后，提示用户输入Token和Verifier（如果是Web程序，可以直接通过Callback URL中获取Token和Verifier。Twitter认证之后，浏览器地址栏中就会出现Token和Verifier）（对应2.2、2.3、2.4）：</p>
+
+<p>System.out.println(&quot;Please visit https://api.twitter.com/oauth/authorize?oauth_token=&quot; + tk.getToken() + &quot; and get the token and verifier, then input the token:&quot;);</p>
+
+<p>tk = new Token(stdinRd.readLine(), tk.getSecret());</p>
+
+<p>System.out.println(&quot;And please input the verifier:&quot;);</p>
+
+<p>3.6、发送Token和Verifier，取得Access Token（对应2.5）：</p>
+
+<p>tk = sb.getAccessToken(tk, stdinRd.readLine(), proxy);</p>
+
+<p>3.7、可以开始使用各种Twitter API了，首先我们试验取得用户自己的时间线，结果以Xml格式返回并打印出来：</p>
+
+<p>Request req = new Request(Request.Verb.GET, &quot;https://api.twitter.com/statuses/user_timeline.xml&quot;);</p>
+
+<p>sb.signRequest(req, tk);//把Access Token附加到HTTP请求中</p>
+
+<p>Response resp = req.send(proxy);</p>
+
+<p>System.out.println(resp.getBody());//我们看到打印出很多信息，其中有很完整的时间线信息，只要解析这个Xml就能得到所有的信息</p>
+
+<p>3.8、再测试更新自己的状态（发推）：</p>
+
+<p>req = new Request(Request.Verb.POST, &quot;https://api.twitter.com/statuses/update.xml&quot;);</p>
+
+<p>req.addBodyParameter(&quot;status&quot;, &quot;我们Test&quot;);//发推内容：我们Test</p>
+
+<p>sb.signRequest(req, tk);</p>
+
+<p>resp = req.send(proxy);</p>
+
+<p>System.out.println(resp.getBody());//我们看到，发推成功。在Twitter中也能看到程序发的推了</p>
+
+<p><strong>四、后记</strong></p>
+
+<p>OAuth的基本介绍结束了，最后附上Java版OAuth的源代码和修改过支持代理服务器的Java OAuth库Scribe（<a href="/download/twoauth.zip">点击下载</a>）。其他语言应该也是类似的，各种语言的OAuth库可以参考：<a href="http://dev.twitter.com/pages/oauth_libraries">http://dev.twitter.com/pages/oauth_libraries</a> 。望大家做出国内直接可用的优秀Twitter应用。</p>
+
+<p>投稿人Twitter: @davidsky2012 ，投稿人Google Reader： <a href="https://www.google.com/reader/shared/lehui99" target="_blank">https://www.google.com/reader/shared/lehui99</a></p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Twitter.jpg" alt="在Twitter应用中使用OAuth" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2185"></span><a href="javascript:commYea(2185);" id="dig2185">顶一下 ▲</a>(<span id="sdig2185"><Script language="javascript" type="text/javascript">showDig("2185");</script></span>) &nbsp; <a href="javascript:commNay(2185);" id="down2185">踩一下 ▼</a>(<span id="sdown2185"><Script language="javascript" type="text/javascript">showDown("2185");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2184.html" title="通过开源程序同时解决DNS劫持和DNS污染的问题">通过开源程序同时解决DNS劫持和DNS污染的问题</a></div><div class="next_content">下一篇 » <a href="/archives/2186.html" title="Google支持HTTPS加密搜索">Google支持HTTPS加密搜索</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2152.html">Twitter API中文文档</a></p><p class="mutualitylist"><a href="/archives/2147.html">从数字看Twitter</a></p><p class="mutualitylist"><a href="/archives/2146.html">Twitter的广告平台：Promoted Tweets</a></p><p class="mutualitylist"><a href="/archives/2106.html">Twitter的100亿条信息带来的BUG</a></p><p class="mutualitylist"><a href="/archives/2094.html">Twitter的RT回复问题思考</a></p><p class="mutualitylist"><a href="/archives/2086.html">Google Buzz实时同步Twitter的方法</a></p><p class="mutualitylist"><a href="/archives/2085.html">Twitter实时同步Google Buzz的方法</a></p><p class="mutualitylist"><a href="/archives/2067.html">Twitter实时同步到Ping.fm和Hellotxt</a></p><p class="mutualitylist"><a href="/archives/2049.html">以Twitter为中心的微博同步工具</a></p><p class="mutualitylist"><a href="/archives/2020.html">基于PubSubHubBub的RSS Feed实时同步Twitter服务</a></p><p class="mutualitylist"><a href="/archives/2004.html">Twitter获选2009年最热门单词</a></p><p class="mutualitylist"><a href="/archives/1992.html">百度发布类Twitter产品：i贴吧</a></p><p class="mutualitylist"><a href="/archives/1990.html">新浪微博和Twitter的区别</a></p><p class="mutualitylist"><a href="/archives/1989.html">奥巴马承认没用过Twitter</a></p><p class="mutualitylist"><a href="/archives/1983.html">Twitter与LinkedIn实现整合</a></p><p class="mutualitylist"><a href="/archives/1980.html">实时同步Twitter信息到新浪微博</a></p><p class="mutualitylist"><a href="/archives/1962.html">Twitter同步到新浪微博和开心网</a></p><p class="mutualitylist"><a href="/archives/1956.html">Google App Engine搭建BirdNest教程</a></p><p class="mutualitylist"><a href="/archives/1955.html">Twitter大脑，谁的大脑？</a></p><p class="mutualitylist"><a href="/archives/1881.html">基于GAE的Twitter RSS Feed过滤工具</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

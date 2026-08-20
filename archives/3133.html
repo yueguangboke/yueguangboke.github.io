@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3133.html"/>
+	<title>WP7系统对付流氓程序的策略-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>WP7系统对付流氓程序的策略</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3133.html" rel="bookmark">WP7系统对付流氓程序的策略</a></h1>
+	<div class="post-meta">
+		2012-6-24 23:11:50 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 8 | 
+		浏览: <span class="AddView" id="spn3133" data-id="3133"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Mobile.html" rel="tag"><img src="/logo/Mobile.gif" alt="手机" class="thumb" width="80" height="80" /></a><p>本文主要说一说WP7手机的一个重要特点，那就是对于后台任务的管制，这个是对普通用户最为重要的，不过先声明并不是说的mango更新里新增的多任务切换的墓碑机制，而是WP7对于在后台运行的程序的种种限制，通过了解这些限制可以看看WP7是怎样帮消费者出出在Android平台里被流氓软件偷偷跑后台的这口怨气的。</p><p>多任务运行大家都领教过，从<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>系统到古老的Windows Mobile，还有Android都支持实时多任务机制。我们可以一边听歌一边上网，一边打游戏还能抽空出去聊个QQ，不过这也给普通用户带来了困扰，以马大嘴旗下的淘宝官方客户端为例，各种自己霸占后台不打招呼，关闭了所有需要推送的功能还是照开不误。偷流量，占内存不说，某些程序甚至还把自己加入到系统服务列，让用户无法以常规手段关闭，感觉这些开发商活的好累啊，可是WP7敲响了这些人的末日丧钟。因为整个WP7系统对于后台任务做了严格而苛刻的限制。</p><p>从系统设计来说，WP7的后台任务分为两种，Periodic Task（周期任务）和Resource Intensive Task（资源密集型任务），前者用于程序在后台更新一下Live Tile，或者联网查个天气更新这种小任务，后者用于在线下载这种需要长时间执行的大任务。</p><p>（1）一个程序能不能开后台，完全取决于用户的选择</p><p>在系统设置里，专门有一项控制后台程序，所有想在后台运行的程序都会在这里一项项列出来，想走后门？先问问用户允许不允许吧，在这里你除了可以看到所有的程序列表，还可以看到该程序在开发时所填写的为什么要后台运行的理由，所有程序就像一个个做了错事的孩子等待父母的教诲。</p><p>（2）对于用户没有吸引的程序，开了后台也坚决关闭</p><p>WP7系统规定，所有后台任务的生效时间只有14天，也就是说，14天的周期中，如果你都没有再开过这个程序，那系统将自动关闭该程序的后台运行。比如你下载了一个新奇的应用，在你第一次打开它的时候它开启了后台运行机制，但是可怜的它由于制作太烂导致你在剩下的14天中都没有开启它。并且由于工作的繁忙，你也没有去查看设置里的后台任务列表。呵呵没关系，系统自动就关闭了这小子。</p><p>（3）就算了你侥幸让用户开了后台，代码没优化好照样被关</p><p>到MANGO，也就是WP7.5，系统规定程序在后台运行的时候内存占用不能超过6MB，否则立即终止；同时也要求程序员对于程序代码慎之又慎，如果程序在后台运行时连续崩溃两次那么系统也将立刻关闭该程序在后台运行的权限。</p><p>（4）如果程序滥用后台运行权限，系统也将立刻终止</p><p>所有后台运行的程序每30分钟运行一次，每次最多执行25秒，超时后立即终止，想借助特权胡作非为么？WP7将直接代替用户对你说NO.</p><p>（5）对于需要长时间执行后台的程序，系统也提供了途径</p><p>刚才说的Resource Intensive Task在这里就派上了用场，可惜由于这些资源密集型任务需要资源过多，系统也将严格限制，除了刚才说的前3条之外，还有其余额外的限制，那就是：</p><p>a）电池电量不得低于90%，而且需要连接外部电源；</p><p>b）需要非手机网络连接，连着WIFI或PC吧，亲；</p><p>c）屏幕必须锁定，也不能接打电话，否则不执行；</p><p>d）最多执行10分钟，超时立即终止；</p><p>结语</p><p>可以看出，无论从Windows Phone生态体系的构建，还是到WP7系统的细节设计，<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>都展现出强大的控制欲，尤其对于后台运行的程序这一块，这将带领用户进入一个&ldquo;我说了算&rdquo;的时代，流氓不怕，会武术的流氓也不怕，只要你为WP7写APP，你就要服管，即使用户不懂这些机制，微软依然会对程序进行严格的管制，以期给用户提供一个良好的体验。</p><p>作者ID：Albert Gao，<a target="_blank" href="http://www.albertgao.com">网站</a>，<a target="_blank" href="http://weibo.com/albertgaohy">微博</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Mobile.jpg" alt="WP7系统对付流氓程序的策略" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3133"></span><a href="javascript:commYea(3133);" id="dig3133">顶一下 ▲</a>(<span id="sdig3133"><Script language="javascript" type="text/javascript">showDig("3133");</script></span>) &nbsp; <a href="javascript:commNay(3133);" id="down3133">踩一下 ▼</a>(<span id="sdown3133"><Script language="javascript" type="text/javascript">showDown("3133");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3132.html" title="从Delicious到美味书签">从Delicious到美味书签</a></div><div class="next_content">下一篇 » <a href="/archives/3134.html" title="揪出Android手机下乱弹广告的流氓">揪出Android手机下乱弹广告的流氓</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3123.html">透过“入口之争”看刷机产业链的价值</a></p><p class="mutualitylist"><a href="/archives/3122.html">移动互联网时代的“融合通信”</a></p><p class="mutualitylist"><a href="/archives/3117.html">论互联网手机的底层风险</a></p><p class="mutualitylist"><a href="/archives/3094.html">互联网公司做手机绝大部分会失败</a></p><p class="mutualitylist"><a href="/archives/3079.html">移动互联网真的进入了“拼爹”时代吗？</a></p><p class="mutualitylist"><a href="/archives/3075.html">手机浏览器HTML5支持情况调查</a></p><p class="mutualitylist"><a href="/archives/3051.html">戴尔云手机D43评测</a></p><p class="mutualitylist"><a href="/archives/3049.html">互联网公司为何要推自己的智能手机</a></p><p class="mutualitylist"><a href="/archives/3031.html">中国人为何宁花4000元买手机，不花6元买游戏 </a></p><p class="mutualitylist"><a href="/archives/3018.html">影响WP7销量的两个桎梏</a></p><p class="mutualitylist"><a href="/archives/2992.html">手机浏览器HTML5跑分完全调查</a></p><p class="mutualitylist"><a href="/archives/2973.html">给智能手机和平板用户新手的三个建议</a></p><p class="mutualitylist"><a href="/archives/2877.html">电信运营商移动IM产品集体失策</a></p><p class="mutualitylist"><a href="/archives/2856.html">手机版天地图评测</a></p><p class="mutualitylist"><a href="/archives/2854.html">从手机通话的免费谈开去</a></p><p class="mutualitylist"><a href="/archives/2820.html">初识移动互联网</a></p><p class="mutualitylist"><a href="/archives/2803.html">百度旗下手机应用盘点</a></p><p class="mutualitylist"><a href="/archives/2799.html">手机短信的末日</a></p><p class="mutualitylist"><a href="/archives/2788.html">Visa主宰移动支付和数字钱包的计划</a></p><p class="mutualitylist"><a href="/archives/2781.html">为什么短信会在未来几年消亡</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

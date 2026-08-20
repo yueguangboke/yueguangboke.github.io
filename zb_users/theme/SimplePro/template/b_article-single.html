@@ -1,0 +1,44 @@
+﻿<div class="content alpha  cate<#article/category/id#> auth<#article/author/id#>">
+<div class="entry clearfix breadcrumbs">
+<a href="<#ZC_BLOG_HOST#>"><#ZC_BLOG_TITLE#></a> &raquo; <a href="<#article/category/url#>" title="查看 <#article/category/name#> 中的全部文章"><#article/category/name#></a> &raquo; <span><#article/title#></span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="<#article/url#>" rel="bookmark"><#article/title#></a></h1>
+	<div class="post-meta">
+		<#article/posttime#> | 
+		作者: <#article/author/homepage#> | 
+		分类: <a href="<#article/category/url#>" title="<#article/category/name#>" rel="category tag"><#article/category/name#></a> | 
+		评论: <#article/commnums#> | 
+		浏览: <#article/addviewcount#>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<#template:article_tag#><#article/content#>
+<p style="text-align:center"><img src="<#ZC_BLOG_HOST#>logo/<#article/firsttagintro#>.jpg" alt="<#article/title#>" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note<#article/id#>"></span><a href="javascript:commYea(<#article/id#>);" id="dig<#article/id#>">顶一下 ▲</a>(<span id="sdig<#article/id#>"><Script language="javascript" type="text/javascript">showDig("<#article/id#>");</script></span>) &nbsp; <a href="javascript:commNay(<#article/id#>);" id="down<#article/id#>">踩一下 ▼</a>(<span id="sdown<#article/id#>"><Script language="javascript" type="text/javascript">showDown("<#article/id#>");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<#template:article_navbar_l#><#template:article_navbar_r#>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox"><#ZC_MSG231#></h4>
+	<ul class="divComments">
+	<li class="msgarticle"><#template:article_mutuality#></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<#template:article_comment#>
+	<#template:article_comment_pagebar#>
+	<#template:article_commentpost#>
+</div>
+</div><!-- END content -->

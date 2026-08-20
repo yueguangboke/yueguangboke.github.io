@@ -1,0 +1,543 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2764.html"/>
+	<title>内网用户轻松穿越外网-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>内网用户轻松穿越外网</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2764.html" rel="bookmark">内网用户轻松穿越外网</a></h1>
+	<div class="post-meta">
+		2011-8-7 19:30:1 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn2764" data-id="2764"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Proxy.html" rel="tag"><img src="/logo/Proxy.gif" alt="代理服务器" class="thumb" width="80" height="80" /></a>
+<p>引言：此文为校园网用户量身打造。按本文介绍的方法，成功后的效果是：你只需登录内网，然后通过IPv6网络和GAE个人代理服务，即可访问外网。本方案可以为你节省全部网费开支，当然运营商不大愿意看到的这样的结果，但我知道这是广大对于电信行业的垄断式经营怨声载道却又无可奈何的学子们梦寐以求的上网方案。我是站在群众一边的。</p>
+
+<p>话又说回来，各位电信巨头在每个季度赚得盆满钵满之余，稍稍为祖国的教育事业让出一份利润，也不为过吧？要知道，大多数学生都是没有收入的，而目前提供给我们的各种网络业务，质量参差不齐，服务令人失望，而且仅此一家别无分号。</p>
+
+<p>所以，每一个神奇的穿越技巧，都对应着一个糟糕的既有业务。</p>
+
+<p>如果我们可以有选择，如果现在的各种服务都合情合理正规正常，没人会吃饱了撑的去折腾这些。</p>
+
+<p>闲话到此为止，下面开始正式的技术讨论：）</p>
+
+<p style="text-align:center"><img alt="内网用户轻松穿越外网" src="/upload/2764_1.jpg" /></p>
+
+<p>首先，概述操作步骤如下，这是你将要在本文的指导下完成的整个配置流程：</p>
+
+<p>1. 开启IPv6服务</p>
+
+<p>2. 申请Google账号</p>
+
+<p>3. 创建个人GAE应用</p>
+
+<p>4. 配置GAppProxy/WallProxy代理</p>
+
+<p>5. 更改本机hosts文件</p>
+
+<p>6. 设置浏览器代理地址</p>
+
+<p>7. 启动代理，开始上网！</p>
+
+<p>以下是详细操作流程，按着步骤一步一步来，一定能成功的，祝你好运！</p>
+
+<p><strong>一、IPv6篇</strong></p>
+
+<p>1.1 准备工作：</p>
+
+<p>1）关闭本地连接的第三方防火墙</p>
+
+<p>当然你把本校的隧道地址添加为防火墙的白名单也可，但由于不同的防火墙软件设置不一样，一旦设置不对了就完全用不了IPv6，这里不再展开讨论。</p>
+
+<p>关闭防火墙步骤：右击本地连接&rarr;属性，在&ldquo;在连接时使用下列项目&rdquo;中找到有你防火墙软件的名字那个选项，把前面的勾去掉，确定即可。</p>
+
+<p>2）开启IPv6 helper服务</p>
+
+<p>开始菜单，运行，输入&ldquo;services.msc&rdquo;（不要引号），打开服务窗口，找到&ldquo;IPv6 helper service&rdquo;，双击打开，启动类型改为&ldquo;自动&rdquo;，然后点击&ldquo;启动&rdquo;按钮，确定。</p>
+
+<p>此外对于使用360安全卫士或者类似的国内所谓安全软件，由于它们会自作聪明地把这个必需服务给&ldquo;优化&rdquo;掉，所以你需要特别留意把禁掉的服务还原回来，否则IPv6是用不成的。</p>
+
+<p>3）某些安装不成功情况下，在&ldquo;运行&rdquo;中输入&ldquo;esentutl /p %windir%\security\Database\secedit.sdb&rdquo;（不要引号），也可解决问题。</p>
+
+<p>1.2 安装IPv6</p>
+
+<p>（仅针对WinXP/2003，Vista和Win7自带IPv6，不必安装。）</p>
+
+<p>开始，运行，输入&ldquo;cmd&rdquo;，回车打开命令提示符窗口；再输入&ldquo;IPv6 install&rdquo;，回车，搞定。</p>
+
+<p>1.3 配置IPv6</p>
+
+<p>由于校园网通常不是纯IPv6环境，所以需要一个&ldquo;隧道&rdquo;（很形象的比喻，具体技术细节大家有兴趣自己去搜吧），以电子科大的IPv6隧道设置为例（地址为：202.115.255.242）</p>
+
+<p>配置步骤：</p>
+
+<p>开始，运行，输入&ldquo;cmd&rdquo;，回车打开命令提示符窗口，输入&ldquo;netsh&rdquo;，回车，然后输入以下内容：</p>
+
+<p>netsh&gt;int</p>
+
+<p>netsh interface&gt;IPv6</p>
+
+<p>netsh interface IPv6&gt;isatap</p>
+
+<p>netsh interface IPv6 isatap&gt;set router 202.115.255.242</p>
+
+<p>（注：对于非校园网用户，其实也可以借助隧道应用IPv6服务，比如设置为上海交大的隧道地址：isatap.sjtu.edu.cn，但速度就不很理想了，看IPTV通常会很卡。所以对于公网用户，不妨直接参考下文GAE篇进行代理，Google可是IPv4/IPv6通吃的）</p>
+
+<p>完成后可打开http://www.6rank.edu.cn/网站进行验证，看能否登录，若可，则表示你的IPv6大功告成。（也可通过在命令行中输入&ldquo;ipconfig&rdquo;查看本机IP地址中有无形如&ldquo;2001：******&rdquo;的地址段，这个地址就是你的IPv6地址，若有，即表示配置成功）</p>
+
+<p>1.4 更改HOSTS文件</p>
+
+<p>更改hosts是最初等的翻墙术了，但在IPv6环境下效果那是出奇的好~</p>
+
+<p>打开&ldquo;C：\<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>\system32\drivers\etc\&rdquo;路径下的hosts文件（可用记事本打开）；</p>
+
+<p>在末尾添加一组以Google为首的n多IPv6网站地址目录（传送门&mdash;&mdash;最新Google IPv6 hosts地址集合：https://docs.google.com/View？id=dfkdmxnt_61d9ck9ffq，你会发现Google的IPv6地址数量很可观，多多益善啊！都复制进hosts里吧，这些可都是捷径啊~）</p>
+
+<p>保存，退出。</p>
+
+<p>你再用浏览器打开Google看看，是不是可以登上了？还不会跳转到Google HK，而且居然还可以查看网页快照！开心吧？且慢，再输入一个<a href="/tag/YouTube.html" title="YouTube"  Target="_blank" >YouTube</a>.com试试，额滴神啊，阔别多年的U2B又回来了！爽翻了吧，呵呵~</p>
+
+<p>好，我们歇一下，先开罐啤酒为生猛的IPv6干一杯~</p>
+
+<p>接下来，轮到第二位主角&mdash;&mdash;GAE&mdash;&mdash;登场了，有了Google的引擎推动，IPv6那可是如虎添翼啊！</p>
+
+<p><strong>二、GAE篇&mdash;&mdash;暨GAppProxy代理详解</strong></p>
+
+<p>前文所介绍的IPv6技术只能达到访问部分外网的目的，可网络的世界是广阔的，天下甚多网站，一个小小的hosts岂能装得下？</p>
+
+<p>况且所谓hosts翻墙，是很不稳妥的。</p>
+
+<p>景德镇的局域网总是会出现各种意想不到的问题，所谓道高一尺魔高一丈，想用傻瓜的方式翻过GFW的高墙，那是不可能滴~</p>
+
+<p>老罗不是说过么，坏人总是更勤奋一些。（我是坏人么？）</p>
+
+<p>其实，下面将要介绍的GAE应用下的GAppProxy代理方法也不复杂，按照步骤操作，很快就能搞定~</p>
+
+<p>Here we go！</p>
+
+<p>2.1 准备工作</p>
+
+<p>准备工作只有一条：你要有一个Google账号，也就是一个<a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a>.</p>
+
+<p>什么？你只用Qmail？呃，你还是真不关心自己的邮件安全，趁早换吧~原因不多说了&hellip;&hellip;总之这种&ldquo;网络严肃服务&rdquo;（我自己下的定义，就是指邮箱、域名、账号等对自己来说等很重要的服务）还是尽量远离天朝IT企业，这些服务在他们的托管下，用着心里不踏实。</p>
+
+<p>当然，这不是他们的错。</p>
+
+<p>况且你已经摆平IPv6了，还添加了n多Google hosts，不整个Google账号享用一下，岂非暴殄天物？</p>
+
+<p>好了，赶紧申请一个吧~（传送门：https://www.google.com/accounts/）</p>
+
+<p>2.2 创建GAE</p>
+
+<p>毫不夸张地说，GAE（Google App Engine）是Google划时代的产品。它的强大和便捷远远超出你的想象&hellip;&hellip;打住打住。</p>
+
+<p>下面是具体操作步骤图解：</p>
+
+<p>1）打开&quot;http://appengine.google.com/&quot;，输入你的Google账户、密码，登录；</p>
+
+<p>2） 点击&ldquo;Create an Application&rdquo;；</p>
+
+<p>国家一栏选&ldquo;Other&rdquo;；</p>
+
+<p>电话号码填&ldquo;+86 你的手机号&rdquo;（注意一个手机号只能注册一次）；</p>
+
+<p>3） 片刻之后，Google会往你的手机发送一个验证短信，把验证码输入进去，确定；</p>
+
+<p>4）填写你的Application Identifer，这个就是你以后上外网要仰仗的永久地址了，想个好点的名字哈（只能使用小写字母、数字和连字符&ldquo;-&rdquo;，长度不能小于6个字符。这里我使用的是uestcproxy，望文知意啊）；然后输入Application Title，确定；</p>
+
+<p>注：&ldquo;Authentication Options （Advanced）&rdquo;中最好选择默认选项，即&ldquo;Open to all Google Accounts user&rdquo;，其中第三个选项（Open to all users with an OpenID Provider）貌似很有用，不过现在尚处于实验阶段，不推荐使用。</p>
+
+<p>5）GAE应用创建成功！</p>
+
+<p>以后使用时可以进入&ldquo;Dashboard&rdquo;，查看流量等使用信息。</p>
+
+<p>注：每个Google账号可以申请十个GAE应用，每个GAE应用每天都有1G的流量（我通常一天的流量不超过100MB），足够用了。</p>
+
+<p>2.3 配置服务器端</p>
+
+<p>上一步仅仅是在Google为你申请了一个应用，但还未激活。你现在需要一个小小的上载工具，把Google服务器中的那个GAE代理服务激活，成为你的专属代理服务器！</p>
+
+<p>下面先介绍应用GAppProxy代理的方法，下一篇再介绍WallProxy代理方案。</p>
+
+<p>GAppProxy可以去项目下载专页下载，这里的版本最新（传送门：http://code.google.com/p/GAppProxy/downloads/list）。</p>
+
+<p>下面是具体操作步骤：</p>
+
+<p>1）点击&ldquo;GAppProxy服务端源码+<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>自动布署工具&rdquo;，进入下载页面进行下载（下载地址：http://GAppProxy.googlecode.com/files/uploader-2.0.0-win.zip）；</p>
+
+<p>2）把压缩包解开，点击uploader.exe，在AppID后输入你的Application Identifer，回车；</p>
+
+<p>3）输入你的Gmail；</p>
+
+<p>4）输入密码（注意：在输入密码的时候，屏幕不会有任何显示，不要紧，输完后回车即可）；</p>
+
+<p>5）稍等片刻，待配置完毕，当出现&ldquo;ready to start serving&rdquo;，大功告成！ 打开 http://uestcproxy.appspot.com/fetch.py ，会看到你的GAppProxy服务器端已经在工作了：</p>
+
+<p>2.4 配置GAppProxy本地代理</p>
+
+<p>现在在Google的服务器中已经有了你的一席之地，接下来你就要在你的电脑和Google服务器之间打通一条通道，然后就能以Googl为跳板，遨游外面广阔的网络世界了！</p>
+
+<p>这个通道，就由本地代理来开启。</p>
+
+<p>所谓万事俱备，只欠代理^ ^</p>
+
+<p>下面是具体操作步骤：</p>
+
+<p>1）打开GAppProxy下载专页下载GAppProxy的Windows版客户端（下载地址：http://GAppProxy.googlecode.com/files/localproxy-2.0.0-win.zip）；</p>
+
+<p>2）解开压缩包，用记事本打开proxy.conf文件；</p>
+
+<p>在末行添加fetch_server = http://xxxxxx.appspot.com/fetch.py，这里的xxxxxx即为前面你申请的Application Identifer（注意行首没有&ldquo;#&rdquo;号），保存退出；</p>
+
+<p>3）点击proxy.exe，开启代理！</p>
+
+<p>此时若已经登录公网，那么将会出现如下画面：Direct Fetch后面是Yes，表示你已经与Google服务器建立了直接连接。</p>
+
+<p>这时你再在浏览器中设置好如下代理：&ldquo;127.0.0.1：8000&rdquo;，就可以轻松翻墙，自由浏览了~而且你现在看下你的IP地理位置（传送门：http://www.geoiptool.com/），居然是美国加州山景城的IP，神奇吧~</p>
+
+<p>当然，我们的最终目的是在不登录公网的情况下也可以自由浏览，作为一个准Geek，这种半自由状态是不能接受的。</p>
+
+<p>下面在最后一节，隆重推出内网直通公网的杀手锏，各位童鞋打起精神咯~</p>
+
+<p>2.5 配置APPSPOT的HOSTS地址映射</p>
+
+<p>在开始真正的自由浏览之前，你还需做最后的一项工作： 为hosts添加当前的GoogleIPv6解析地址。</p>
+
+<p>具体操作如下：</p>
+
+<p>1）拨号进入校内网络；开始菜单，运行，输入&ldquo;cmd&rdquo;打开命令行窗口；</p>
+
+<p>2）输入&ldquo;ping IPv6.google.com&rdquo;，回车，得到最新Google的IPv6解析地址，记下来；</p>
+
+<p>3）用记事本打开hosts文件（位于C：\Windows\System32\drivers\etc），在末尾添加两行：</p>
+
+<p>2404：6800：8007：：63 uestcproxy.appspot.com</p>
+
+<p>2404：6800：8007：：63 www.appspot.com</p>
+
+<p>这里&ldquo;2404：6800：8007：：63&rdquo;即为Google的IPv6解析地址（2010-10-31下午ping得到），&ldquo;uestcproxy.appspot.com&rdquo;是我申请的GAE地址。</p>
+
+<p>注：添加appspot与Google的hosts地址映射非常重要，这是实现穿越的关键一环！</p>
+
+<p>4）点击proxy.exe，开启代理！</p>
+
+<p>此时Direct Fetch 后面为No，不必担心，这是因为你现在处于内网环境，但通过IPv6网络照样可以连接到Google的服务器。</p>
+
+<p>5）现在，打开Internet选项，设置浏览器代理地址。</p>
+
+<p>然后后打开你的浏览器，输入任意一个外网网址，回车！</p>
+
+<p>哈哈，怎么样，是不是顺利打开了~再看看此时的proxy程序窗口，一行行的数据正滚滚而过，表示你的网卡与Google的服务器沟通良好~</p>
+
+<p>然后再输入一个墙外的网站地址试试，是不是也可以顺畅打开了？</p>
+
+<p>Congratulation！</p>
+
+<p>至此，依托IPv6+GAppProxy技术，从内网穿越外网的任务大功告成！</p>
+
+<p>好好享用吧：）</p>
+
+<p><strong>三、GAE番外篇&mdash;&mdash;比GAppProxy更强大的WALLPROXY代理</strong></p>
+
+<p>第三篇所介绍的方法是基于GAppProxy代理服务的，是个完整的解决方案。但GAppProxy有一个很不方便的地方，就是对https的支持很不好，比如Facebook和Twitter的加密账户页面就无法正常显示。还有就是对于很多SSL连接，每次打开浏览器都会弹出证书无效警告，由于我平时经常用Google的SSL搜索，每次打开新页面都要处理一下那个警告页面，使用久了也会感到不爽。</p>
+
+<p>对于这个问题，GAppProxy项目的Groups上也讨论了很久，可解决方案不是太繁琐就是不完善，毕竟这只是个非商业项目，开发人员都是出于兴趣和爱好来维护，你也不能奢求太多。</p>
+
+<p>后来在Twitter上偶然见一位网友提到另一个基于GAE的代理服务&mdash;&mdash;WallProxy，据说可以很好地支持https，甚至还可以导入根证书而一劳永逸地解决SSL问题。</p>
+
+<p>我顿时眼前一亮，连忙去搜索WallProxy的相关页面，很快看到步调博客上的《使用Google App Engine+WallProxy来看YouTube和玩Twitese》（传送门：http://www.budiao.biz/google-app-engineWallProxy.html），然后按照博主的方案一路操作下来，挂上代理一试&mdash;&mdash;加密网站可以正常访问了~然后又试了下WallProxy独有的多app共存实现负载均衡技术，感觉也很不错，这下我申请的多个GAE-app地址都能派上用场，也不用担心每天1G的流量限制了。</p>
+
+<p>虽然前文已经给出了完整的内网穿越外网的攻略，但鉴于WallProxy对加密服务的改善和灵活配置，我还是决定补充一个GAE的番外篇，把WallProxy隆重推荐给大家。</p>
+
+<p>不过这里先说明下，WallProxy的设置步骤比之GAppProxy是比较繁琐的，而且你还要预装Python环境，如果实在懒得费功夫，而且对SSL应用要求不高的话，用GAppProxy代理足矣。</p>
+
+<p>好，关于WallProxy的背景介绍到此为止，下面跟我来一起摆平这个不可多得的上网利器吧~</p>
+
+<p>3.1 拥有至少一个GAE应用地址（方法同2.1~2.2）</p>
+
+<p>3.2 安装Python</p>
+
+<p>要求2.5以上，3.0以下版本。建议下载步调博主提供的压缩包（传送门：http://dl.dbank.com/c003f1c64w），这个压缩包已经包含了下文将要用到的所有工具，挺方便。</p>
+
+<p>3.3 安装GAE SDK</p>
+
+<p>SDK可以去GAE官方页面下载（传送门：http://code.google.com/intl/zh-CN/appengine/downloads.html）或者用3.2节给出的压缩包。</p>
+
+<p>SDK这个套件不是必需的，但由于SDK用来管理上载服务实在很便捷，远比命令行来得直观，推荐安装。而且以后如果用到其他GAE服务（比如自建博客，自架Twitter API等）也会用得到。</p>
+
+<p>如果你实在不想往电脑安装什么，可以用一个第三方上传工具SDUpload（传送门：http://code.google.com/p/sdapp/downloads/detail？name=SDUpload%200.1.rar&amp;can=2&amp;q=），不过对不熟悉命令行操作的人来说用起来稍显不便，这里不再赘述。</p>
+
+<p>下文还是以SDK操作为例。</p>
+
+<p>3.4 设置SDK</p>
+
+<p>1）安装完SDK后，启动&ldquo;Google App Engine Launcher&rdquo;程序（图标是一个涡轮引擎），打开Edit-Preference；</p>
+
+<p>2）Python栏选择你的Python安装路径；</p>
+
+<p>3）App Engine SDK栏选择你的SDK安装路径；</p>
+
+<p>4）Editor栏可选一个你用着顺手的编辑器，也可空着（默认为写字板）；OK.</p>
+
+<p>3.5 配置上传文件</p>
+
+<p>1）去WallProxy的下载页面下载WallProxy工具包（V0.3.7_for_windows版传送门：http://code.google.com/p/wallproxy/downloads/detail？name=wallproxy-win.7z&amp;can=2&amp;q=），或者使用3.2节给出的压缩包；</p>
+
+<p>2）解压缩后得到三个文件夹：gae_server、php_server、local；</p>
+
+<p>3）启动Google App Engine Launcher；</p>
+
+<p>4）打开File-Existing Application，在Application Path中指定三个文件夹中的gae_server所在的硬盘地址，点击&ldquo;Add&rdquo;；</p>
+
+<p>5）此时会发现SDK窗口中添加了一行内容，选中，然后点击&ldquo;Edit&rdquo;按钮，开始编辑app文件；</p>
+
+<p>6）把application：后面的&ldquo;your-gae-id&rdquo;替换为你自己创建的GAE-app名称，即Application Identifer，保存；</p>
+
+<p>7）回到SDK面板，你会发现name一栏中已经更新为你刚刚替换的Application Identifer；</p>
+
+<p>点击&ldquo;Deploy&rdquo;，然后在打开的窗口中输入你的Gmail账号、密码；</p>
+
+<p>点击&ldquo;OK&rdquo;，开始上传；</p>
+
+<p>8）上传成功后即可关闭SDK程序。</p>
+
+<p>3.6 添加APPSPOT与GOOGLE的IPv6地址的HOSTS地址映射（同2.5节）。</p>
+
+<p>3.7 配置本地代理</p>
+
+<p>1）打开三个文件夹中的local，点击WallProxy.exe；</p>
+
+<p>2）点击&ldquo;设置&rdquo;按钮；</p>
+
+<p>在打开的窗口中，把紧跟GAE_PROXY的一行中的&#39;url&#39;后面的地址替换为你自己的GAE应用地址，格式为&#39;http://XXXXXX.appspot.com/fetch.php&#39;（注意是php），确定退出；</p>
+
+<p>3）点击&ldquo;启动&rdquo;按钮，此时若一切操作无误，代理便开始工作了；</p>
+
+<p>4）设置浏览器代理地址为：127.0.0.1：8086（注意是8086，GAppProxy的是8000）。</p>
+
+<p>现在随便打开一个网站试试吧~不出意外的话，你已经能够畅游万维网了！</p>
+
+<p>3.8 WallProxy拓展应用</p>
+
+<p>1）设置多GAE-app，只需在本地代理设置中添加多行GAE-app url即可（当然前提是这些GAE-app已经开通并且配置成功，检验是否配置成功的方法是：在浏览器中打开这个url，如果页面自动跳转到一个叫做&ldquo;和谐社&rdquo;的Twitter页面，就表示成功了- -III）</p>
+
+<p>2）导入ca根证书</p>
+
+<p>这是WallProxy的特色功能，也是我青睐它的主要原因；</p>
+
+<p>在第一次执行WallProxy.exe后，会在local文件夹下生成一个cert文件夹，打开后会看到一个ca证书文件；</p>
+
+<p>打开后点击&ldquo;安装证书&rdquo;，然后按照提示将之装入&ldquo;受信任的根证书颁发机构&rdquo;；</p>
+
+<p>安装完成后再打开任何SSL等加密连接，都不会再出现使用GAppProxy时遇到的证书无效问题。</p>
+
+<p>终于可以把默认搜索引擎设为Google with SSL了~</p>
+
+<p>3.9 WALLPROXY与GAppProxy同时使用</p>
+
+<p>虽然WallProxy已经足够优秀，但我还是不愿让它彻底取代GAppProxy，GAppProxy的简单易用特性还是蛮招人喜爱的；另一方面，毕竟人家做这个完全是义务劳动，再加上n多&ldquo;不可控&rdquo;因素（你懂的），谁也说不准某天某时某个代理就挂了，到那时该如何是好？</p>
+
+<p>不如两个代理服务共存吧~</p>
+
+<p>可以吗？</p>
+
+<p>可以的~就算你手头只有一个GAE-app，也可以同时开两个代理！</p>
+
+<p>还是以前文我申请的名为uestcproxy的GAE-app为例，现在已有http://uestcproxy.appspot.com/fetch.py配置为我的GAppProxy代理服务器，如果我再用SDK的把uestcproxy配置为WallProxy的代理服务器的话，很显然GAppProxy就不能用了。</p>
+
+<p>解决思路就在于每个GAE-app服务其实可以有多个版本，不同版本对应不同的地址，然后让GAppProxy和WallProxy客户端代理不同的地址，就不会产生冲突了。</p>
+
+<p>具体操作步骤如下：</p>
+
+<p>1）在3.5节中，注意app文件内容中第二行有&ldquo;version&rdquo;，这就是版本号，默认为1；</p>
+
+<p>现在将之改为2.然后保存，上传。</p>
+
+<p>2）此时GAE将会为你分配两个不同的地址，分别是：</p>
+
+<p>http://1.latest.uestcproxy.appspot.com</p>
+
+<p>http://2.latest.uestcproxy.appspot.com</p>
+
+<p>对应两个不同的版本。</p>
+
+<p>你若输入http://uestcproxy.appspot.com/fetch.php，回车后将显示错误；</p>
+
+<p>而如果改换成http://2.latest.uestcproxy.appspot.com/fetch.php，就可以顺利跳转到那个Twitter页面了~</p>
+
+<p>3）现在，把WallProxy的设置页面中的url改成http://2.latest.uestcproxy.appspot.com/fetch.php，就可以顺利使用WallProxy代理上网了~</p>
+
+<p>4）对于GAppProxy端，则无需任何改动。</p>
+
+<p>这是因为，尽管http://1.latest.uestcproxy.appspot.com为版本1的地址，但它同时也是默认版本，而默认地址的格式是不变的。</p>
+
+<p>现在，两个代理共存共用了！你可以一个代理用来看Youtube，另一个用来上Twitter，何等的畅快啊~</p>
+
+<p><strong>后记</strong></p>
+
+<p>写这篇文章缘于某日在学校BBS上闲逛，来到IPv6版块，看到大量令人惊奇的IPv6应用文章，其中最令人激动的就是借助更改hosts文件访问几乎所有Google服务，对于我这个Google重度依赖用户，IPv6简直就是福音书。</p>
+
+<p>后来又发生了一件让人很不愉快的事，让我对电信的服务彻底失望。我就想，我们缴的网费并不便宜，却只得到这么差劲的服务，原因还不就是因为它无可动摇的垄断地位，这是多么令人愤懑的事情啊。</p>
+
+<p>作为一个学理工的，我只能从技术上寻找对策了。</p>
+
+<p>恰逢在Google Reader中看到一篇介绍GAE的文章，其中提到了搭建个人GAE应用，然后可借助GAppProxy代理上网。</p>
+
+<p>在此之前，我已经用过了不下5种代理工具，然而要么我对其安全不放心，要么效果差强人意。</p>
+
+<p>有着Google血统的东东，应该不会让人失望吧？</p>
+
+<p>抱着尝鲜的心态（凡是跟Google沾边的服务，我总是要试一试的），用自己的Gmail账号建立了一个GAE应用，然后下载GAppProxy工具包，简单几步配置完成后，打开浏览器一试，OMG，这速度真快啊！除了个别SSL网址打开有异常外，其他一切服务堪称完美~我从未想象在景德镇看Youtube，缓冲速度会这么猛。</p>
+
+<p>爽了一段时间后，我的网费再次告急。</p>
+
+<p>在去购买新的充值卡的路上，我突然想到在我的hosts文件中包含了大量Google的IPv6地址，让我得以直接从内网访问Google，那么，为何不能以此为通道，借Google作跳板，直接从内网访问公网呢？</p>
+
+<p>思路有了，剩下的一切都好办。</p>
+
+<p>一天之内，我就搞定了所有的配置工作，然后成功登录自己的Blog.</p>
+
+<p>感谢教育网率先开通IPv6服务，感谢GFW的技术迟钝以致IPv6至今仍是一方净土，感谢Google一如既往地提供上乘的互联网服务，感谢那些热心的人编写出如此强劲的代理程序。</p>
+
+<p>采用这种依托GAE平台的代理服务上网，最实际的效益就是：网费开支为零&mdash;&mdash;没有哪位同学要请我喝一杯么？</p>
+
+<p>不过最令我感到欣慰的，并非省去了一笔网费，而是我在完全合理、合法的情况下，完成了一次对既有约束的突破。</p>
+
+<p>在这个死气沉沉的大局域网之内，我通过某种不温不火的方式为自己找到了一丝自由的感觉，这，才是最大的收获。</p>
+
+<p>来源：读者与非投稿，<a href="https://docs.google.com/document/d/1wJuPnPFhw7BOU6JwkozchB71vjbw9KwwcgIOYj6kl7k/edit?hl=zh_CN&amp;pli=1" target="_blank">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Proxy.jpg" alt="内网用户轻松穿越外网" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2764"></span><a href="javascript:commYea(2764);" id="dig2764">顶一下 ▲</a>(<span id="sdig2764"><Script language="javascript" type="text/javascript">showDig("2764");</script></span>) &nbsp; <a href="javascript:commNay(2764);" id="down2764">踩一下 ▼</a>(<span id="sdown2764"><Script language="javascript" type="text/javascript">showDown("2764");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2763.html" title="浏览器内核WebKit编年史">浏览器内核WebKit编年史</a></div><div class="next_content">下一篇 » <a href="/archives/2765.html" title="Google如何设定目标与衡量成功">Google如何设定目标与衡量成功</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2696.html">I2P不完全使用手册</a></p><p class="mutualitylist"><a href="/archives/2283.html">网络访问攻防战之代理服务器篇</a></p><p class="mutualitylist"><a href="/archives/2232.html">网络访问攻防战</a></p><p class="mutualitylist"><a href="/archives/2210.html">使用HTTP代理服务器的安全性简评</a></p><p class="mutualitylist"><a href="/archives/2057.html">如何使用代理服务器上网</a></p><p class="mutualitylist"><a href="/archives/2024.html">SocksCap代理使用教程</a></p><p class="mutualitylist"><a href="/archives/1952.html">SSH加密通道配置</a></p><p class="mutualitylist"><a href="/archives/1697.html">开源代理软件GAppProxy</a></p><p class="mutualitylist"><a href="/archives/760.html">FireFox代理服务器扩展</a></p><p class="mutualitylist"><a href="/archives/739.html">免费代理服务器的使用设置</a></p><p class="mutualitylist"><a href="/archives/524.html">代理服务器的功能</a></p><p class="mutualitylist"><a href="/archives/424.html">TOR使用说明和介绍</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

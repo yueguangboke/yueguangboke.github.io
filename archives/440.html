@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/440.html"/>
+	<title>htaccess文件使用大全-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>htaccess文件使用大全</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/440.html" rel="bookmark">htaccess文件使用大全</a></h1>
+	<div class="post-meta">
+		2006-3-14 1:39:54 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 17 | 
+		浏览: <span class="AddView" id="spn440" data-id="440"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>Apache系统中的.htaccess文件(或者&rdquo;分布式配置文件&rdquo;提供了针对目录改变配置的方法， 即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。</p><p>子目录中的指令会覆盖更高级目录或者主服务器配置文件中的指令。</p><p>.htaccess必须以ASCII模式上传，最好将其权限设置为644。</p><p>错误文档的定位</p><p>常用的客户端请求错误返回代码：<br />401 Authorization Required<br />403 Forbidden<br />404 Not Found<br />405 Method Not Allowed<br />408 Request Timed Out<br />411 Content Length Required<br />412 Precondition Failed<br />413 Request Entity Too Long<br />414 Request URI Too Long<br />415 Unsupported Media Type</p><p>常见的服务器错误返回代码：<br />500 Internal Server Error</p><p>用户可以利用.htaccess指定自己事先制作好的错误提醒页面。一般情况下，人们可以专门设立一个目录，例如errors放置这些页面。然后再.htaccess中，加入如下的指令：</p><p>ErrorDocument 404 /errors/notfound.html<br />ErrorDocument 500 /errors/internalerror.html</p><p>一条指令一行。上述第一条指令的意思是对于404，也就是没有找到所需要的文档的时候得显示页面为/errors目录下的notfound.html页面。不难看出语法格式为：</p><p>ErrorDocument 错误代码 /目录名/文件名.扩展名</p><p>如果所需要提示的信息很少的话，不必专门制作页面，直接在指令中使用HTML号了，例如下面这个例子：</p><p>ErrorDocument 401 &ldquo;你没有权限访问该页面，请放弃！&rdquo;</p><p>文档访问的密码保护</p><p>要利用.htaccess对某个目录下的文档设定访问用户和对应的密码，首先要做的是生成一个.htpasswd的文本文档，例如：</p><p>zheng:y4E7Ep8e7EYV</p><p>这里密码经过加密，用户可以自己找些工具将密码加密成.htaccess支持的编码。该文档最好不要放在www目录下，建议放在www根目录文档之外，这样更为安全些。</p><p>有了授权用户文档，可以在.htaccess中加入如下指令了：</p><p>AuthUserFile .htpasswd的服务器目录<br />AuthGroupFile /dev/null （需要授权访问的目录）<br />AuthName EnterPassword<br />AuthType Basic （授权类型）</p><p>require user wsabstract （允许访问的用户，如果希望表中所有用户都允许，可以使用 require valid-user）</p><p>注，括号部分为学习时候自己添加的注释</p><p>拒绝来自某个IP的访问</p><p>如果我不想某个政府部门访问到我的站点的内容，那可以通过.htaccess中加入该部门的IP而将它们拒绝在外。</p><p>例如：</p><p>order allow,deny<br />deny from 210.10.56.32<br />deny from 219.5.45.<br />allow from all</p><p>第二行拒绝某个IP，第三行拒绝某个IP段，也就是219.5.45.0~219.2.45.255</p><p>想要拒绝所有人？用deny from all好了。不止用IP，也可以用域名来设定。</p><p>保护.htaccess文档</p><p>在使用.htaccess来设置目录的密码保护时，它包含了密码文件的路径。从安全考虑，有必要把.htaccess也保护起来，不让别人看到其中的内容。虽然可以用其他方式做到这点，比如文档的权限。不过，.htaccess本身也能做到，只需加入如下的指令：</p><p>order allow,deny<br />deny from all</p><p>URL转向</p><p>我们可能对网站进行重新规划，将文档进行了迁移，或者更改了目录。这时候，来自搜索引擎或者其他网站链接过来的访问就可能出错。这种情况下，可以通过如下指令来完成旧的URL自动转向到新的地址：</p><p>Redirect /旧目录/旧文档名 新文档的地址</p><p>或者整个目录的转向：</p><p>Redirect 旧目录 新目录</p><p>改变缺省的首页文件</p><p>一般情况下缺省的首页文件名有default、index等。不过，有些时候目录中没有缺省文件，而是某个特定的文件名，比如在pmwiki中是pmwiki.php。这种情况下，要用户记住文件名来访问很麻烦。在.htaccess中可以轻易的设置新的缺省文件名：</p><p>DirectoryIndex 新的缺省文件名</p><p>也可以列出多个，顺序表明它们之间的优先级别，例如：</p><p>DirectoryIndex filename.html index.cgi index.pl default.htm</p><p>防止盗链</p><p>如果不喜欢别人在他们的网页上连接自己的图片、文档的话，也可以通过htaccess的指令来做到。</p><p>所需要的指令如下：</p><p>RewriteEngine on<br />RewriteCond %{ HTTP_REFERER } !^$<br />RewriteCond %{ HTTP_REFERER } !^http://(<a href="http://www.)?mydomain.com/.*$">www.)?mydomain.com/.*$</a> [NC]<br />RewriteRule .(gif&amp;line;jpg)$ - [F]</p><p>如果觉得让别人的页面开个天窗不好看，那可以用一张图片来代替：</p><p>RewriteEngine on<br />RewriteCond %{ HTTP_REFERER } !^$<br />RewriteCond %{ HTTP_REFERER } !^http://(<a href="http://www.)?mydomain.com/.*$">www.)?mydomain.com/.*$</a> [NC]<br />RewriteRule .(gif&amp;line;jpg)$ <a href="http://www.mydomain.com/">http://www.mydomain.com/</a>替代图片文件名 [R,L] <br />&nbsp;</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="htaccess文件使用大全" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note440"></span><a href="javascript:commYea(440);" id="dig440">顶一下 ▲</a>(<span id="sdig440"><Script language="javascript" type="text/javascript">showDig("440");</script></span>) &nbsp; <a href="javascript:commNay(440);" id="down440">踩一下 ▼</a>(<span id="sdown440"><Script language="javascript" type="text/javascript">showDown("440");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/439.html" title="谁控制了我们的浏览器？">谁控制了我们的浏览器？</a></div><div class="next_content">下一篇 » <a href="/archives/441.html" title="Eclipse和JBuilder">Eclipse和JBuilder</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/329.html">个人创业的十个小窍门</a></p><p class="mutualitylist"><a href="/archives/327.html">Google Sitemaps使用指南</a></p><p class="mutualitylist"><a href="/archives/316.html">个人网站如何向商业网站转型</a></p><p class="mutualitylist"><a href="/archives/292.html">谈广告联盟与诚信问题的必然关联</a></p><p class="mutualitylist"><a href="/archives/269.html">网络创业？你需要什么</a></p><p class="mutualitylist"><a href="/archives/266.html">IIS网站防盗链下载的解决方案</a></p><p class="mutualitylist"><a href="/archives/216.html">防止垃圾留言的两大利器</a></p><p class="mutualitylist"><a href="/archives/175.html">从7LOG迁移到Movable Type</a></p><p class="mutualitylist"><a href="/archives/166.html">使用Web标准建站校验及常见错误</a></p><p class="mutualitylist"><a href="/archives/108.html">常用的一些网站测评方法</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

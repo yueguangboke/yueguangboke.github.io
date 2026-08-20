@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/7347.html"/>
+	<title>放弃百度站内搜索-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>放弃百度站内搜索</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/7347.html" rel="bookmark">放弃百度站内搜索</a></h1>
+	<div class="post-meta">
+		2023-11-12 11:37:38 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 6 | 
+		浏览: <span class="AddView" id="spn7347" data-id="7347"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>Google被封之前，本站的站内搜素用的是Google，Google被封后，不得不改用百度站内搜索，不过后来百度站内搜索好像不做了，但也懒得修改了，至少能用就行。</p>
+
+<p>但是，现在我发现百度的站内搜索已经完全不可用了，根本就搜不到文章，我分别针对几篇文章进行测试，无论Google，Bing还是国内的搜狗等，搜索质量都明显好于百度，估计百度已经彻底放弃优化了，那我也不得不放弃使用了。</p>
+
+<p>经过一些测试，感觉Bing的站内搜索效果更好一些，比搜狗好一点点，于是换用Bing来做站内搜索，Bing的国内版目前还行，就用它了。</p>
+
+<p>相关站内搜索代码如下：</p>
+
+<blockquote>
+<p>&lt;form method=&quot;get&quot; action=&quot;https://cn.bing.com/search&quot;&gt;<br />
+&lt;input type=&quot;text&quot; name=&quot;q&quot; id=&quot;edtSearch&quot; size=&quot;12&quot; value=&quot;&quot; /&gt;<br />
+&lt;input type=&quot;submit&quot; value=&quot;&lt;#ZC_MSG087#&gt;&quot; name=&quot;btnG&quot; id=&quot;btnPost&quot; /&gt;<br />
+&lt;input name=&quot;q1&quot; type=&quot;hidden&quot; value=&quot;site:williamlong.info&quot; /&gt;<br />
+&lt;/form&gt;</p>
+</blockquote>
+
+<p>代码比百度少的多，效果也好，百度搜索真是垃圾。</p>
+
+<p>另外附录我的Google站内搜索代码：</p>
+
+<blockquote>
+<p>&lt;form method=&quot;get&quot; action=&quot;http://www.google.com/search&quot;&gt;<br />
+&lt;input type=&quot;text&quot; name=&quot;q&quot; id=&quot;edtSearch&quot; size=&quot;12&quot; /&gt;<br />
+&lt;input type=&quot;submit&quot; value=&quot;&lt;#ZC_MSG087#&gt;&quot; name=&quot;btnG&quot; id=&quot;btnPost&quot; /&gt;<br />
+&lt;input type=&quot;hidden&quot; name=&quot;ie&quot; value=&quot;UTF-8&quot; /&gt;<br />
+&lt;input type=&quot;hidden&quot; name=&quot;oe&quot; value=&quot;UTF-8&quot; /&gt;<br />
+&lt;input type=&quot;hidden&quot; name=&quot;hl&quot; value=&quot;zh-CN&quot; /&gt;<br />
+&lt;input type=&quot;hidden&quot; name=&quot;domains&quot; value=&quot;www.williamlong.info&quot; /&gt;<br />
+&lt;input type=&quot;hidden&quot; name=&quot;sitesearch&quot; value=&quot;www.williamlong.info&quot; /&gt;<br />
+&lt;/form&gt;</p>
+</blockquote>
+
+<p>另外附录我的百度站内搜索代码：</p>
+
+<blockquote>
+<p>&lt;form method=&quot;get&quot; action=&quot;https://www.baidu.com/baidu&quot;&gt;<br />
+&lt;input type=&quot;text&quot; name=&quot;word&quot; size=&quot;12&quot; id=&quot;edtSearch&quot; /&gt;<br />
+&lt;input type=&quot;submit&quot; value=&quot;&lt;#ZC_MSG087#&gt;&quot; name=&quot;btnG&quot; id=&quot;btnPost&quot; /&gt;<br />
+&lt;input name=&quot;ie&quot; type=&quot;hidden&quot; value=&quot;utf-8&quot; /&gt;<br />
+&lt;input name=&quot;tn&quot; type=&quot;hidden&quot; value=&quot;bds&quot; /&gt;<br />
+&lt;input name=&quot;cl&quot; type=&quot;hidden&quot; value=&quot;3&quot; /&gt;<br />
+&lt;input name=&quot;ct&quot; type=&quot;hidden&quot; value=&quot;2097152&quot; /&gt;<br />
+&lt;input name=&quot;si&quot; type=&quot;hidden&quot; value=&quot;www.williamlong.info&quot; /&gt;<br />
+&lt;/form&gt;</p>
+</blockquote>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="放弃百度站内搜索" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note7347"></span><a href="javascript:commYea(7347);" id="dig7347">顶一下 ▲</a>(<span id="sdig7347"><Script language="javascript" type="text/javascript">showDig("7347");</script></span>) &nbsp; <a href="javascript:commNay(7347);" id="down7347">踩一下 ▼</a>(<span id="sdown7347"><Script language="javascript" type="text/javascript">showDown("7347");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/7346.html" title="阿里、京东发布双十一成绩单">阿里、京东发布双十一成绩单</a></div><div class="next_content">下一篇 » <a href="/archives/7348.html" title="我心中的最佳韩国电影">我心中的最佳韩国电影</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/7122.html">制作匿名举报网站的方法</a></p><p class="mutualitylist"><a href="/archives/7100.html">防止网站被黑帽SEO利用</a></p><p class="mutualitylist"><a href="/archives/6839.html">免费运营维护网站指南</a></p><p class="mutualitylist"><a href="/archives/6574.html">网站SSL证书出现错误和解决过程</a></p><p class="mutualitylist"><a href="/archives/6511.html">服务器启用HSTS协议</a></p><p class="mutualitylist"><a href="/archives/6510.html">服务器禁用TLS 1.0协议</a></p><p class="mutualitylist"><a href="/archives/6380.html">通过gzip和nginx来提高网站打开速度</a></p><p class="mutualitylist"><a href="/archives/6287.html">Windows IIS日志文件分析神器</a></p><p class="mutualitylist"><a href="/archives/6051.html">十大网站创业方向</a></p><p class="mutualitylist"><a href="/archives/6022.html">谷歌提醒网站管理：疫情期间切勿关站 会影响后续排名</a></p><p class="mutualitylist"><a href="/archives/5780.html">IIS子目录web.config与主站冲突解决方法</a></p><p class="mutualitylist"><a href="/archives/5611.html">SSL的安全配置和检测</a></p><p class="mutualitylist"><a href="/archives/5594.html">IIS通过URL重写实现防盗链</a></p><p class="mutualitylist"><a href="/archives/5571.html">BT天堂站长被判刑三年罚款八十万</a></p><p class="mutualitylist"><a href="/archives/5523.html">WordPress Hestia主题的定制和优化</a></p><p class="mutualitylist"><a href="/archives/5520.html">阿里云服务器迁移</a></p><p class="mutualitylist"><a href="/archives/5505.html">不带www域名重定向到带www域名</a></p><p class="mutualitylist"><a href="/archives/5463.html">IIS和Apache实现HTTP重定向到HTTPS</a></p><p class="mutualitylist"><a href="/archives/5408.html">IIS服务器多域名部署多个HTTPS的方法</a></p><p class="mutualitylist"><a href="/archives/5401.html">IIS自动申请部署免费SSL证书服务</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-250178">
+		<div id="div-comment-250178" class="comment-body">
+		<div class="comment-author vcard">
+		<div style="float:right">1</div><cite class="fn"><a name="cmt250178">静风说</a></cite> &nbsp; <span class="says">说道：</span>		</div>
+		<div class="comment-meta commentmetadata">		</div>
+		百度搜索真是垃圾。<br/><br/><!--rev250178--><a style="display:none;" id="AjaxCommentEnd250178"></a>
+		<div class="reply"><span style="float:left" class="comment-meta commentmetadata">2023/11/20 12:43:29</span>		
+		<span id="note250178"></span><a href="javascript:commDig(250178);">支持</a>(<span id="sdig250178">6</span>)&nbsp;<a href="javascript:commDown(250178);">反对</a>(<span id="sdown250178">0</span>)&nbsp;<a class='comment-reply-link' href='#respond' onclick="RevertComment('250178')">回复</a>		</div>
+		</div>
+	</li>
+</ol>
+<ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-250180">
+		<div id="div-comment-250180" class="comment-body">
+		<div class="comment-author vcard">
+		<div style="float:right">2</div><cite class="fn"><a name="cmt250180">反者道之动</a></cite> &nbsp; <span class="says">说道：</span>		</div>
+		<div class="comment-meta commentmetadata">		</div>
+		国内很多IT巨头处于垄断地位，大幅削减成本，以最小的代价，榨取最大的利润。服务器至少砍掉一大半，技术也基本不维护，人员砍掉很多老人，又没有竞争，利润好看，做到产品寿命结束为止，彻底沦落为资本的走狗。<!--rev250180--><a style="display:none;" id="AjaxCommentEnd250180"></a>
+		<div class="reply"><span style="float:left" class="comment-meta commentmetadata">2023/11/20 16:05:16</span>		
+		<span id="note250180"></span><a href="javascript:commDig(250180);">支持</a>(<span id="sdig250180">1</span>)&nbsp;<a href="javascript:commDown(250180);">反对</a>(<span id="sdown250180">0</span>)&nbsp;<a class='comment-reply-link' href='#respond' onclick="RevertComment('250180')">回复</a>		</div>
+		</div>
+	</li>
+</ol>
+<ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-250179">
+		<div id="div-comment-250179" class="comment-body">
+		<div class="comment-author vcard">
+		<div style="float:right">3</div><cite class="fn"><a name="cmt250179">皇家元林</a></cite> &nbsp; <span class="says">说道：</span>		</div>
+		<div class="comment-meta commentmetadata">		</div>
+		这些搜索引擎的站内搜索是不是搜索已收录的文章啊<br/>未收录的文章搜不到吧<br/>那用这个有什么意义<!--rev250179--><a style="display:none;" id="AjaxCommentEnd250179"></a>
+		<div class="reply"><span style="float:left" class="comment-meta commentmetadata">2023/11/20 14:10:34</span>		
+		<span id="note250179"></span><a href="javascript:commDig(250179);">支持</a>(<span id="sdig250179">0</span>)&nbsp;<a href="javascript:commDown(250179);">反对</a>(<span id="sdown250179">0</span>)&nbsp;<a class='comment-reply-link' href='#respond' onclick="RevertComment('250179')">回复</a>		</div>
+		</div>
+	</li>
+</ol>
+<ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-250190">
+		<div id="div-comment-250190" class="comment-body">
+		<div class="comment-author vcard">
+		<div style="float:right">4</div><cite class="fn"><a name="cmt250190">CarlNotes</a></cite> &nbsp; <span class="says">说道：</span>		</div>
+		<div class="comment-meta commentmetadata">		</div>
+		建议你可以使用自定义的站内搜索功能flexsearch实现，（不用担心文章在被特定搜索引擎收录之前无法搜索到的问题）思路及演示：[Node.js用FlexSearch给Hexo添加极速全站搜索](https://www.carlzeng.top/202312161121.html)<!--rev250190--><a style="display:none;" id="AjaxCommentEnd250190"></a>
+		<div class="reply"><span style="float:left" class="comment-meta commentmetadata">2023/12/18 10:58:24</span>		
+		<span id="note250190"></span><a href="javascript:commDig(250190);">支持</a>(<span id="sdig250190">0</span>)&nbsp;<a href="javascript:commDown(250190);">反对</a>(<span id="sdown250190">0</span>)&nbsp;<a class='comment-reply-link' href='#respond' onclick="RevertComment('250190')">回复</a>		</div>
+		</div>
+	</li>
+</ol>
+<ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-250215">
+		<div id="div-comment-250215" class="comment-body">
+		<div class="comment-author vcard">
+		<div style="float:right">5</div><cite class="fn"><a name="cmt250215">ccbbp</a></cite> &nbsp; <span class="says">说道：</span>		</div>
+		<div class="comment-meta commentmetadata">		</div>
+		百足之虫，死而不僵。大家看它像不像那只虫？<!--rev250215--><a style="display:none;" id="AjaxCommentEnd250215"></a>
+		<div class="reply"><span style="float:left" class="comment-meta commentmetadata">2024/2/5 21:04:28</span>		
+		<span id="note250215"></span><a href="javascript:commDig(250215);">支持</a>(<span id="sdig250215">0</span>)&nbsp;<a href="javascript:commDown(250215);">反对</a>(<span id="sdown250215">0</span>)&nbsp;<a class='comment-reply-link' href='#respond' onclick="RevertComment('250215')">回复</a>		</div>
+		</div>
+	</li>
+</ol>
+<ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-250247">
+		<div id="div-comment-250247" class="comment-body">
+		<div class="comment-author vcard">
+		<div style="float:right">6</div><cite class="fn"><a name="cmt250247">姓名祥批</a></cite> &nbsp; <span class="says">说道：</span>		</div>
+		<div class="comment-meta commentmetadata">		</div>
+		站内搜索很好用，为什么要用百度搜索！<!--rev250247--><a style="display:none;" id="AjaxCommentEnd250247"></a>
+		<div class="reply"><span style="float:left" class="comment-meta commentmetadata">2024/3/30 12:16:50</span>		
+		<span id="note250247"></span><a href="javascript:commDig(250247);">支持</a>(<span id="sdig250247">0</span>)&nbsp;<a href="javascript:commDown(250247);">反对</a>(<span id="sdown250247">0</span>)&nbsp;<a class='comment-reply-link' href='#respond' onclick="RevertComment('250247')">回复</a>		</div>
+		</div>
+	</li>
+</ol>
+<ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	<div id="comment-form">
+<div id="respond" class="respond">
+<h3 id="comments-respond">发表留言</h3>
+<div class="cancel-comment-reply">
+<a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">点击这里取消回复。</a>
+</div>
+<form action="/zb_system/cmd.asp?act=cmt&amp;key=dbce909d" method="post" id="frmSumbit" target="_self">
+<input type="hidden" name="inpId" id="inpId" value="7347" />
+	<input type="hidden" name="inpArticle" id="inpArticle" value="" />
+	<input type="hidden" name="inpRevID" id="inpRevID" value="" />
+<input type="text" name="inpName" id="inpName"  value="名称" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="1" />
+<input type="text" name="inpEmail" id="inpEmail" value="邮箱" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="2" />
+<input type="text" name="inpHomePage" id="inpHomePage" value="网站链接" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="3" />
+
+<textarea name="txaArticle" id="txaArticle" cols="100%" rows="10" tabindex="5"  onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('commentSubmit').click();return false};"></textarea>
+<br />
+<p style="display: none;"><input type="checkbox" name="chkRemember" checked="true" id="chkRemember" /> <label for="chkRemember">记住我,下次回复时不用重新输入个人信息</label></p>
+<input name="btnSumbit" type="submit" id="commentSubmit" tabindex="6" value="提交 (Ctrl+Enter)" onclick="JavaScript:return VerifyMessage()"/>
+</form>
+</div>
+</div>
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.yueguangboke.com" /><input type="hidden" name="sitesearch" value="www.yueguangboke.com" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (520)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (927)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3171)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7538.html" title="国家互联网应急中心发布关于OpenClaw安全应用的风险提示">国家互联网应急中心发布关于OpenCla(157)</a></li>
+<li><a href="/archives/7537.html" title="腾讯QQ开放OpenClaw官方接入">腾讯QQ开放OpenClaw官方接入(241)</a></li>
+<li><a href="/archives/7536.html" title="Mac电脑安装OpenClaw教程">Mac电脑安装OpenClaw教程(293)</a></li>
+<li><a href="/archives/7535.html" title="电脑无法启动的修复案例">电脑无法启动的修复案例(4)</a></li>
+<li><a href="/archives/7532.html" title="公安部就网络犯罪防治法公开征求意见">公安部就网络犯罪防治法公开征求意见(532)</a></li>
+<li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(6069)</a></li>
+<li><a href="/archives/7529.html" title="关于规范网络名人账号行为管理的通知">关于规范网络名人账号行为管理的通知(469)</a></li>
+<li><a href="/archives/7528.html" title="2025年财经年度总结">2025年财经年度总结(543)</a></li>
+<li><a href="/archives/7527.html" title="月光博客2025年推荐阅读文章">月光博客2025年推荐阅读文章(724)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1894)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7538</li><li>评论总数:199533</li><li>浏览总数:72210927</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

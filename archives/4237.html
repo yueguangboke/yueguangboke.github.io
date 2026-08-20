@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4237.html"/>
+	<title>谈谈响应式网站前端设计-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>谈谈响应式网站前端设计</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4237.html" rel="bookmark">谈谈响应式网站前端设计</a></h1>
+	<div class="post-meta">
+		2015-5-17 23:55:42 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 5 | 
+		浏览: <span class="AddView" id="spn4237" data-id="4237"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/WebDesign.html" rel="tag"><img src="/logo/WebDesign.gif" alt="网站设计" class="thumb" width="80" height="80" /></a><p>一段时间之前我对响应式的概念还是Bootstrap、Amaze之类的框架组件，用过几次也不以为然，我想国内搜索引擎在提供移动搜索结果页时还是会给移动网站加分的，却不能像google一样识别响应式网站，可能还需要一段时间发展。但毫无疑问的是现在Web趋势转向移动优先，当然如果你用域名或者其他解决方案也不是不可以，只是响应式可能更简单一些，发展前景也是不错的。</p><p>这两三个星期我每天都在写响应式页面，借此累积了不少响应式页面和ajax的经验。我大致的梳理了几个响应式页面的重点，如果想往这方面发展或是对它有些兴趣，希望能给大家一点帮助。</p><p><strong>控制大小</strong></p><p>习惯了PC页面的前端开发者可能更加喜欢用pc来控制大小，但在响应式的页面中出现更多的是em和rem，用它们来控制字体大小甚至是框体大小对整体的效果非常明显。</p><p>打个比方，我的字体设置是10px/20px/30px等等不同的，网站上不同的地方自然字体会有大小的差异这是必然的，如果一个页面足够复杂或是文字足够多的话，这些字体的大小设置也是一个量很大的工作，不过在响应式页面中你设计完它们并不是完事：你用手机浏览一下页面会发现字体会撑的很大，甚至有个别标题撑满了手机屏幕，这对移动端用户的体验影响可想而知。因此你要开始写媒体查询，然后发现一个页面有几十个字体需要设置，如果把它们在不同分辨率下一一调整你可能需要写百句以上的css代码，但如果你用em/rem，就能够把工作量大大减小，同时还能够保证字体的统一比例。</p><p>关于em/rem的解释大家可以自行搜索，网上这类教程数不胜数，实际上它们就和px一样简单，当我开始用之后也不过只花了几分钟熟悉它们。就像前面说的一样，你也可以用它们来控制框体的大小，然后再响应式的页面下统一缩放，当然这需要足够多的计算。另外值得一提的是字体图标也可以用它们来控制，具体可以参考不同&ldquo;字体图标&rdquo;的官方文档。</p><p><strong>百分比</strong></p><p>解决缩放问题的思路有好几种，最适合新手的无疑是百分比式的布局，在关键的宽度设置下百分比能够起到出乎意料的效果：</p><p>box1{ width:100%;}</p><p>ul{ margin:0 2%;}</p><p>我并不是推崇全部使用百分比来布局，但有时候这可能会大大减少工作量，给box1宽度设置100%之后它会自动以宽度填充满整个浏览器，不管你是手机PC什么分辨率，它总是有很好的表现。这时候你给box1下面的ul设置左右2%的margin也是如此，随着浏览器窗口大小改变时ul的实际margin大小也会随着变化，这么一说大家多少也都理解了百分比布局的概念。</p><p>当然有时候也不会有想象中的效果，特别是在较小的分辨率上时，原来看似不错的百分比设定会显得很怪，因为响应式多数时候只约定宽度，长度都是由文档和浏览器来决定的，这时候想要在所有的终端上都有很好的体验就需要Media Query来解决问题。</p><p><strong>Media Query</strong></p><p>通俗的解释就是CSS的媒体查询功能，它既能够准确的识别设备也能够自己设定分辨率或者宽度，w3cshool里有Media Query的参考文档，如果你嫌文档太多我可以粗略的解释一下它的工作原理。</p><p>在有必要的时候你可能会给一个box设置高度，当box拥有500px高度时它可能在PC上看起来不错，但用手机打开时就有些吓人了，整个box充斥了页面，里面的内容排列混乱，严重的影响了用户体验，这时候你就可以使用媒体查询Media Query，用它单独的为不同大小的设置不同的高度，比如640/320打开时box时就分别处于300/200px的高度，这样看起来就不错了。</p><p>大家可能会想到import，实际上媒体查询就可以这样理解，它为不同的宽度或设备设定了类似于import的css规则，保证了实际渲染完成页面的效果。</p><p>媒体查询也可以为一个页面准备多个不同的CSS，当设备大小不同时使用不同的CSS文件，如果样式文件比较大也可以考虑这种方法。</p><p><strong>说说框架</strong></p><p>我见到过和实际使用的前端框架中，不少都是富前端类型的设计，并不建议新手前端盲目的使用框架来布局，不管框架看起来多美好。在实际的使用过程中大家可能会发现很多问题，比如类名太多太复杂（在没有很多的css经验时可能对约定的类名所知甚少）、样式冲突。引入资源过多导致页面繁重、偏离设计效果等等。</p><p>就拿bootstrap来说，如果你要设计一个类似于google的搜索框就显得很难，google类型的搜索框实际上是将一个input包含在box里面，然后在这个box里面再加上左右图标，如果你用bootstrap来做可能会出现很多莫名奇妙的冲突，但实际上你得到了什么呢？一个圆角一个行高？还是他的百分比宽度呢？这些用css来写只不过是几句代码的事。</p><p>还有一些框架过度的依赖AJAX，它们也许想法很好，大量的AJAX在前端看起来的确很酷，对用户的友好性也足够强，但大量的请求对服务器并不友好，可能会使服务器的实际负载大大下降。总之还是一句话，按实际需求来解决问题，框架并不是万能的。</p><p>来源：维特博客投稿，<a target="_blank" href="http://wittsay.cc/w3cnews/708">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/WebDesign.jpg" alt="谈谈响应式网站前端设计" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4237"></span><a href="javascript:commYea(4237);" id="dig4237">顶一下 ▲</a>(<span id="sdig4237"><Script language="javascript" type="text/javascript">showDig("4237");</script></span>) &nbsp; <a href="javascript:commNay(4237);" id="down4237">踩一下 ▼</a>(<span id="sdown4237"><Script language="javascript" type="text/javascript">showDown("4237");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4236.html" title="互联网+来了，你准备好了吗？">互联网+来了，你准备好了吗？</a></div><div class="next_content">下一篇 » <a href="/archives/4238.html" title="京东1.7亿美元战略投资金蝶软件">京东1.7亿美元战略投资金蝶软件</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/4202.html">提高WEB用户体验至关重要的几点</a></p><p class="mutualitylist"><a href="/archives/4102.html"> “大”网站的内容进化：价值内容如何展现</a></p><p class="mutualitylist"><a href="/archives/3730.html">一个更加牛逼的科技媒体将如何崛起</a></p><p class="mutualitylist"><a href="/archives/3727.html">移动建站的方法和指南</a></p><p class="mutualitylist"><a href="/archives/3722.html">利用成功学思维做好网站运营</a></p><p class="mutualitylist"><a href="/archives/3716.html">产品经理终极方法论</a></p><p class="mutualitylist"><a href="/archives/3686.html">自适应网页设计的方法</a></p><p class="mutualitylist"><a href="/archives/3664.html">高性能、高可用的分布式架构体系</a></p><p class="mutualitylist"><a href="/archives/3592.html">众筹式资本：能让创业者走多远？</a></p><p class="mutualitylist"><a href="/archives/3489.html">智能手机应用软件的UI设计在品牌传播中的作用</a></p><p class="mutualitylist"><a href="/archives/3478.html">产品经理的自我修养：方法论</a></p><p class="mutualitylist"><a href="/archives/3467.html">产品经理的自我修养：认知模式</a></p><p class="mutualitylist"><a href="/archives/3387.html">浏览器的想象空间在哪里？</a></p><p class="mutualitylist"><a href="/archives/3385.html">2013年网页设计趋势预测</a></p><p class="mutualitylist"><a href="/archives/3279.html">浅析人人产品线的战略可能性</a></p><p class="mutualitylist"><a href="/archives/3258.html">活动类产品的探索之路</a></p><p class="mutualitylist"><a href="/archives/3251.html">自毁网站十二宗罪</a></p><p class="mutualitylist"><a href="/archives/3248.html">如何进行“网站易用性测试”</a></p><p class="mutualitylist"><a href="/archives/3247.html">关于网站易用性的全面解读</a></p><p class="mutualitylist"><a href="/archives/3238.html">产品启动页的秘密</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

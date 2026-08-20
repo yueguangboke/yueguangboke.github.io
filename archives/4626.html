@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4626.html"/>
+	<title>AlphaGo是怎样教棋手重新做人的-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>AlphaGo是怎样教棋手重新做人的</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4626.html" rel="bookmark">AlphaGo是怎样教棋手重新做人的</a></h1>
+	<div class="post-meta">
+		2016-6-2 20:57:1 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn4626" data-id="4626"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/GO.html" rel="tag"><img src="/logo/GO.gif" alt="围棋" class="thumb" width="80" height="80" /></a><p>回想起三月初，李世石输给AlphaGo的第二场刚刚结束。《连线》记者爱德华&middot;莫纳干(Edward Monaghan)从观战室的第一排起身抓起笔记本，大踏步地向门外走。我在上前采访现场解说麦克&middot;雷蒙(Michael Redmond)九段时和他打了个照面，告诉他看完比赛，我的心里很难过。</p><p>难过应该是现场媒体普遍的感受。第二场比赛结束后，比赛所在地首尔四季酒店一片死寂，只能听到周围媒体记者抢发稿件时的键盘声。前一天李世石宣布认输的时候，观战室的反应截然相反，一片炸裂。虽然从我个人来看，AlphaGo并不意味着围棋的终结，但你可以从我们当时的报道里感受现场的压抑。</p><p>本周，莫纳干在《连线》杂志在封面报道&ldquo;编程已死&rdquo;当中，再一次还原了3月初，震惊了整个世界的一周。莫纳干的视角更加深入，他跟随谷歌DeepMind团队，记录和还原了人机大战中最关键的第二场和第四场比赛。除此之外，人工智能带给我们的究竟是什么样的未来？或许你能从李世石和DeepMind团队的故事里找到答案。</p><p>以下是文章的主要内容：</p><p style="text-align: center"><img alt="重温人机围棋大战：AlphaGo是怎样教我们做人的" data-link="" src="/upload/4626_1.jpg" /></p><p>黄士杰(Aja Huang)把手伸入装有抛光黑色石质棋子的木碗中，用中指和食指夹出一枚棋子，眼睛透过金属镜框的眼镜一直盯着棋盘。他把棋子置于棋盘上一个几乎空白的区域中，就在一枚孤零零的白棋的左下方。在围棋里，这被称为&ldquo;尖冲&rdquo;，即从远离大部分对弈区域的侧边进行进攻。</p><p>坐在桌子对面的李世石(Lee Sedol)&mdash;&mdash;过去十年里最优秀的围棋棋手&mdash;&mdash;愣住了。他看了看棋盘上摆放的37枚棋子，然后起身离开。</p><p>在50英尺外的观战室里，迈克&middot;雷蒙(Michael Redmond)正通过闭路转播观看这场比赛。他是唯一一名达到围棋最高段位&mdash;&mdash;九段的西方棋手。他也和李世石一样吃惊。&ldquo;我不知道这步棋是好是坏，&rdquo;雷蒙对着近两百万在线观看比赛的观众们这样说道。</p><p>&ldquo;我还以为那是步错棋，&rdquo;另一名英语评论员克里斯&middot;加洛克(Chris Garlock)这么说道，他是美国围棋协会联络副主席。</p><p>几分钟后，李世石回到了比赛室。他坐了下来，却没有伸手拿棋子。一分钟过去，又一分钟过去&mdash;&mdash;整整15分钟过去了，围棋棋手对弈一局的基本时限是两个小时，这可占了很大一部分。最终，李世石拿起了一枚棋子放在了棋盘上，就在黄士杰刚刚放下的黑棋的正上方。</p><p>黄士杰的那一步棋不过是整局棋的第37手，却让李世石无法挽回。4小时20分钟后，李世石选择认输。</p><p>但是黄士杰并不是这场比赛的胜利者。他只是按照指令下棋&mdash;&mdash;在他的左边有一台平板显示器，这台显示器与附近首尔四季酒店里的一间控制室相连，同时还与分布在世界各地的谷歌数据中心的成百上千台电脑相连。黄士杰不过是下棋的那只手，而操控那只手的是一部名为AlphaGo的人工智能&mdash;&mdash;它打败了世界上最优秀的围棋棋手之一，而围棋或许是人类创造的最为复杂的游戏了。</p><p>在那个观战室里还有一名围棋专家观看比赛，他就是的三届欧洲围棋冠军樊麾(Fan Hui)。一开始，第37手也令他感到困惑。但他和AlphaGo对弈过。与其他人相比，他算是AlphaGo的陪练了。在五个月里，樊麾与这台机器进行过成百上千局对弈，让它的创造者明白它错在哪里。樊麾经常输给AlphaGo，但他渐渐变得比任何人都明白它。在他眼里，那一步&ldquo;尖冲&rdquo;不像是人类会下出的一步棋。但是思索了十秒后，他恍然大悟。&ldquo;这步太美了，&rdquo;他说，&ldquo;太美了。&rdquo;</p><p>五局三胜制度下，AlphaGo以二比零的优势领先于李世石&mdash;&mdash;甚至整个人类。第37手反映出，AlphaGo并不只是重复多年来程序算出的成手，或者通过暴力预测算法来机械地落子。在那一刻，AlphaGo证明它是有思考能力的，或者至少能以旁人无法辨别的方式模仿思考。在李世石眼中，AlphaGo表现出了围棋棋手所说的&ldquo;直觉&rdquo;&mdash;&mdash;一种让它能以像人类一样的方式，甚至超越人类的方式下出优美棋局的能力。</p><p>但是不要为李世石的失败，或者人类的失败惋惜。李世石并不是殉道者，第37手也并不是机器无情超越人类的开始。恰恰相反：这步棋是机器与人类共同进步的开始。</p><p style="text-align: center"><strong>* &nbsp;* &nbsp;*</strong></p><div class="img_wrapper" style="text-align: center"><img alt="大卫&middot;席尔瓦负责领导创造AlphaGo的团队。" data-link="" src="/upload/4626_2.jpg" /></div><div class="img_wrapper" style="text-align: center"><span class="img_descr">大卫&middot;席尔瓦负责领导创造AlphaGo的团队。(摄影：Geordie Wood；图片来源：《连线》)</span></div><p>当大卫&middot;席尔瓦(David Silver)还是一名来自英格兰东海岸城市萨福克的15岁国际象棋锦标赛选手时，戴米斯&middot;哈萨比斯(Demis Hassabis)已经是一名战无不胜的国际象棋神童，一个不折不扣的奇迹。他的母亲是中国和新加坡混血，父亲是希腊和塞浦路斯混血，一家人住在伦敦。他曾经是世界上14岁以下棋手中段位第二高的孩子。他经常参加地方赛事来保持自己思维的灵活性，同时挣一点外快。&ldquo;我知道戴米斯时他还不知道我，&rdquo;AlphaGo团队的领导者席尔瓦说道，&ldquo;我曾见他出现在我们镇上，赢得了比赛，然后离开。&rdquo;</p><p>他们俩在剑桥读本科时正式见了面。为了了解人类的思维，研究机器是否也能变得智能，两人的专业都是计算神经科学。但真正将两人联系在一起的是游戏，包括棋牌游戏和电脑游戏。</p><p>那是1998年。毕业后，两人自然而然地合开了一家电子游戏公司。哈萨比斯经常和一名同事下围棋，席尔瓦在他的影响下也开始自学围棋。&ldquo;如果你能在任何事情上打败戴米斯，那简直就像得到了荣誉勋章一样，&rdquo;席尔瓦说道，&ldquo;而且我还知道，戴米斯不过是刚开始对围棋感兴趣而已。&rdquo;</p><p>他们加入了当地的围棋俱乐部，和二三段的棋手对弈(相当于空手道黑带)。他们的野心还不止于此：他们忍不住思考，为什么机器从未破解这种智力游戏。1995年，一个名为Chinook的电脑程序打败了世界上最优秀的西洋跳棋选手。两年后，<span id="usstock_IBM">IBM</span>的深蓝超级计算机击败了国际象棋世界冠军加里&middot;卡斯帕罗夫。接下来的一年，机器还在Scrabble、Othello，甚至电视问答游戏节目《危险边缘》中获胜！用博弈论的术语讲，围棋与国际象棋和西洋跳棋一样，是一种完全信息博弈游戏&mdash;&mdash;毫无运气可言，信息完全公开。通常来说，电脑应该轻松就能将其掌握，但其就是攻克不下围棋。</p><p>问题是，围棋只是看起来简单。围棋诞生于3000多年前的中国，由两名棋手在一方纵横各19条直线的棋盘上对弈。棋手交替将黑白棋子放置于直线的交点上，努力包围对方下的棋子，或者将对方颜色的棋子隔开。人们把国际象棋比喻为战争，但其实它更像是一场战役。围棋更像战场全局，或者地缘政治博弈。棋网一角产生的涟漪会波及整盘棋局，局势变化莫测。在国际象棋中，一名棋手在一轮中通常有35种下法可以选择，但在围棋里，这一数字接近200。整场对弈下来，复杂程度又是另一个级别了。正如哈萨比斯和席尔瓦常说的那样，围棋棋盘上可能出现的情况比整个宇宙中的原子数量还多。</p><p>所以，与国际象棋不同，围棋棋手&mdash;&mdash;不论是人类还是机器&mdash;&mdash;都看不透每一步会带来的最终结果。顶级棋手靠的是直觉，而非硬算。&ldquo;好的布局看起来就很美，&rdquo;哈萨比斯说，&ldquo;它遵循着一定的美学。这就是几千年来围棋一直令人着迷的原因。&rdquo;</p><div class="img_wrapper">2005年，哈萨比斯和席尔瓦的游戏公司倒闭了，两人遂分道扬镳。在阿尔伯塔大学，席尔瓦研究了人工智能的初级形式&mdash;&mdash;增强学习。通过这种方法，机器可以重复同样的任务，找出效果最佳的决策，从而实现自主学习。哈萨比斯则去到了英国伦敦大学学院，获得了神经系统学的博士学位。</div><p>2010年，他们再次相聚。哈萨比斯在伦敦成立了一个名为DeepMind的人工智能公司，席尔瓦则加入了他。他们雄心勃勃，想要创造真正能够思考的通用人工智能。但他们必须找到一个出发点。</p><p>这个出发点自然是游戏，因为它们确实是检测人工智能的好办法。从定义上来说，游戏是有限的。它们与实际生活不同，更像是装在瓶子中的小型宇宙，你能客观地评判成败输赢。DeepMind将增强学习和深度学习相结合，这种新方法能够在庞大的数据集中找到规律。为了验证这种方法是否可行，研究者们教导他们刚刚成型的人工智能玩《太空侵略者》和《打砖块》。</p><p>它在《打砖块》上成效显著。这个游戏基本和《乒乓》差不多，不过不是和对手来回击打一个像素小球，而是用像素小球击打彩色砖块。打中一个块砖块便会消失；没接中球或者把球打到了屏幕外就算输。玩了500局游戏后，DeepMind的系统学会了将球以一定的角度打到砖块后面，从而保证小球一直在墙后击打砖块。这是一个经典的《打砖块》打法，但是DeepMind的电脑每次都能精准地使用这一方法，其速度是任何人类都无法超越的。</p><p>为了寻找投资人，哈萨比斯在一个晚宴上缠着彼得&middot;蒂尔(Peter Thiel)不放&mdash;&mdash;他是<a href="/tag/PayPal.html" title="PayPal"  Target="_blank" >PayPal</a>的联合创始人以及<span id="usstock_FB"><a href="/tag/Facebook.html" title="Facebook"  Target="_blank" >Facebook</a></span>的投资人。哈萨比斯只有几分钟的时间吸引他。他知道蒂尔热衷于国际象棋，便壮着胆子说国际象棋之所以能流传这么久，是因为象和马的优劣势之间充满创意的博弈。蒂尔提出要哈萨比斯第二天和他正式比一场。</p><p>一旦有一位硅谷亿万富翁听说过你，其他富翁也会知道你。通过蒂尔，哈萨比斯见到了伊隆&middot;马斯克，后者则和谷歌CEO拉里&middot;佩奇提及了DeepMind。不久便传出报道，称谷歌以6.5亿美元的价格收购了该公司。</p><p>加入搜索引擎巨头后，哈萨比斯在一场会议上用雅达利游戏机做了展示，与会人员包括谷歌的联合创始人谢尔盖&middot;布林(Sergey Brin)。他们发现两人之间有着共同的爱好。在斯坦福攻读硕士的时候，布林沉迷于围棋，以至于佩奇都担心谷歌能不能建立。</p><p>所以当布林遇见哈萨比斯，他们讨论了许多关于围棋的事情。&ldquo;你知道吗，几年内，DeepMind或许能打败世界围棋冠军，&rdquo;哈萨比斯说道，&ldquo;只要我们尽心研发。&rdquo;</p><p>&ldquo;我觉得那不可能，&rdquo;布林回复道。</p><p>哈萨比斯就等这句话。如他们所说，游戏已经开始。</p><p style="text-align: center"><strong>* &nbsp;* &nbsp;*</strong></p><div class="img_wrapper" style="text-align: center"><img alt="大卫&middot;席尔瓦负责领导创造AlphaGo的团队。" data-link="" src="/upload/4626_3.jpg" /></div><div class="img_wrapper" style="text-align: center"><span class="img_descr">由于围棋技艺精湛，李世石在韩国享有英雄一般的待遇。(摄影：Geordie Wood；图片来源：《连线》)</span></div><p>第二局棋结束后，席尔瓦进入AlphaGo的控制室。它的大脑不在此处，也不在任何地方，而是存在于全球成百上千台电脑之中。但是面对着这些显示器，席尔瓦能窥探AlphaGo的思想，监控其运行是否正常，并跟踪它对每场对弈结局的预测有何变化。</p><p>敲打几下键盘，席尔瓦调出了AlphaGo在对弈期间做出的决策记录。他放大查看AlphaGo在下出第37手的前一刻发生了什么。</p><p>在DeepMind和AlphaGo出现之前，人工智能研究者们试着用机器攻克围棋，在对弈时系统预测每一步棋将引发的结局&mdash;&mdash;即用计算机的暴力计算来解决这一问题。1997年，IBM的深蓝就是用这种方法在国际象棋上打败卡斯帕罗夫的。那时我作为《PC Magazine》的见习记者报道了那场比赛。与如今李世石对战AlphaGo一样，当年的人们也认为那是人工智能的标志性时刻。奇怪的是，还是与李世石的第二局比赛一样，深蓝在第二局比赛中也走出了人类不会走出的一步。卡斯帕罗夫和李世石一样困惑不已，但他并没有李世石那样的斗志；他几乎立刻认输，在巨大的压力下认输。</p><p>但是这种暴力计算从未攻克围棋。围棋有太多的可能性，即使是电脑都难以处理。席尔瓦的团队另辟蹊径，建造了一个能学会下出好棋局的机器，然后再让它进行比赛。</p><p>在伦敦国王十字车站附近的DeepMind办公室中，这支团队将3000万步人类下出的围棋步法输入到一个深度神经网络中，这个网络的硬件和软件能大致模拟人脑中的神经网。神经网络其实很常见，Facebook用它们给照片中的人脸加上标签，谷歌则用它们来识别安卓手机收到的语音命令。如果你给一个神经网输入足够多的你妈妈的照片，它就能记下她的脸。给它输入足够的话语，它就能识别你所说的话。输入3000万步围棋步法，它就能学会下围棋。</p><p>但是了解规则和达到一流水平之间还是存在差距的。第37手并不在那3000万步之中。那么AlphaGo是如何学会下出这一步的呢？</p><div class="img_wrapper">AlphaGo知道&mdash;&mdash;如果它能够&ldquo;知道&rdquo;的话&mdash;&mdash;这一步是放长线钓大鱼。&ldquo;它知道职业棋手并不会选择这么走，但是当它不断地深入探索，它可以推翻原先输入的指导步法，&rdquo;席尔瓦这么说道。从某种意义上来说，AlphaGo开始自主思考。它做出的决定不是以其创造者在其数字DNA中编入的规则为基础的，而是以其自学的算法为基础的。&ldquo;它通过反思和分析，自己探索出了这点。&rdquo;</div><p>事实上，这台机器还计算出，一名人类专业棋手只有万分之一的可能性下出同样的一步。但是AlphaGo还是下了这一步。</p><p>当它通过这些人类步法学会了怎样下围棋，席尔瓦就让这台机器和它自己对弈&mdash;&mdash;和一个与它的神经网络(稍稍)不同的版本不断对弈。在对弈中，它记录着哪些步法能让其在棋盘上围地最多，带来最大的收获&mdash;&mdash;这是席尔瓦在攻读硕士期间研究过的增强学习技术。AlphaGo开始发展出一套属于自己的非人类指令系统。</p><p>但这不过是窍门的一部分。后来，席尔瓦的团队将这些非人类围棋步法输入到第二个神经网络中，教它像卡斯帕罗夫(或者深蓝)预测国际象棋棋局一样预测围棋的棋局。它无法像国际象棋那样预测所有可能的步法&mdash;&mdash;这一做法尚未实现。但是将其与自己对弈多场后收集到的所有信息输进去后，AlphaGo开始可以预测一场围棋对弈可能展开的方式。</p><p>你能根据自己从未见过的起始条件来预测结局吗？如果能，这便是直觉。在第二局比赛中，AlphaGo正是凭直觉下出了第37手，即使是最优秀的人类棋手也无法洞悉这一点。这甚至超出了它的创造团队的预测。&ldquo;观看这些比赛时，我都无法描述心里有多紧张，&rdquo;席尔瓦回到控制室后这样对我说，&ldquo;我真的不知道会发生什么。&rdquo;</p><p style="text-align: center"><strong>* &nbsp;* &nbsp;*</strong></p><div class="img_wrapper" style="text-align: center"><img alt="大卫&middot;席尔瓦负责领导创造AlphaGo的团队。" data-link="" src="/upload/4626_4.jpg" /></div><div class="img_wrapper" style="text-align: center"><span class="img_descr">作为AlphaGo的创造者，哈萨比斯感到骄傲，甚至飘飘然。但他希望李世石能够赢下一局。(摄影：Geordie Wood；图片来源：《连线》)</span></div><p>如果你花6.5亿美元买下一家公司，你肯定不是因为它能研发一个会玩棋牌游戏的电脑。深度学习和神经网络支撑着十多项由谷歌提供的服务，包括它那无所不能的搜索引擎。AlphaGo另一个不那么秘密的武器&mdash;&mdash;增强学习已经在教导该公司的实验室机器人们拿起并移动各种物品。所以你能看出，这场比赛对谷歌员工们来说有多重要。谷歌的前CEO、现任董事长埃里克&middot;施密特(Eric Schmidt)在第一局开始前飞了过来。该公司最著名的工程师杰夫&middot;迪恩(Jeff Dean)也在现场观看第一局比赛。谢尔盖&middot;布林飞来看了第三局和第四局，还在他自己的木制棋盘上跟着下。</p><p>但是，商业问题并不是最重要的。比赛期间，我和哈萨比斯在首尔的文化和政治中心&mdash;&mdash;拥有600年历史的钟路区一起散了会步。就在我们聊天时，一名年轻妇女睁大眼睛，认出了哈萨比斯&mdash;&mdash;他的脸出现在了韩国的各大电视台和报纸上。然后她就像看见了泰勒&middot;斯威夫特或者贾斯汀&middot;比伯那样，激动地似乎要晕过去。</p><p>&ldquo;你看见她的反应了吗？&rdquo;我说。</p><p>&ldquo;看见了，&rdquo;他面无表情地回答，&ldquo;已经见怪不怪了。&rdquo;</p><p>他或许不是在开玩笑。电脑工程师通常不会有粉丝，但是在韩国，有800万人下围棋，而李世石被他们视为民族英雄。在中国，有超过2.8亿名观众观看了赛事直播。</p><p>所以，当李世石输掉了第一局和第二局比赛时，观众们的热情和激动被一些更加阴暗的情绪取代了，这也是情理之中的。第二局结束时，一名名为周峰的中国记者在观战室拦下了我，开心地和我这种将AlphaGo视为科技奇迹而非围棋杀手的人进行对话。</p><p>但是当我询问看见李世石输了比赛他作何感想时，他指着心口说：&ldquo;我很难过。&rdquo;</p><p>我也能感受到那份难过。某样本来只属于人类的东西再也不由我们独享。许多观看这场比赛的人们意识到，机器已经跨过了一道门槛。它们已经超越了人类的极限。当然，目前的机器还无法与人类进行实质意义的对话，编不出一个有趣的笑话；它们不会玩猜字游戏，也无法像我们一样根据由来已久的常识做出判断。但是，AlphaGo对我们的无情超越表明，如今的机器已经可以模仿&mdash;&mdash;甚至超过&mdash;&mdash;指引世界最优秀的围棋棋手们的人类直觉。</p><p>李世石紧接着输掉了第三局，AlphaGo在五局三胜中取得了胜利。在后来的新闻发布会上，李世石坐在哈萨比斯的旁边，因为让人们失望而作出道歉。&ldquo;我本可以拿出更好的成绩，带来更好的结局，&rdquo;他这样说道。</p><p>李世石发言时，一种意料之外的感觉开始啃食哈萨比斯的内心。作为AlphaGo的创造人之一，看着这台机器实现了人们认为其不能实现的成果，他感到骄傲，甚至飘飘然。但是即使是他也因为自己是人类的一员而感到不甘。他开始希望李世石能够赢下一局。</p><div class="img_wrapper">第四局下了2个小时，李世石又陷入了另一个麻烦中。他这局下得咄咄逼人，对棋盘上的特定区域发起猛攻。但是AlphaGo采取了更加豪迈的风格，以着眼整体的方式对整局局势进行衡量。在第37手时，AlphaGo将一枚黑色棋子置于一个旁边只有一枚白棋的地方，远离主战场。再一次，在第四局中，机器使用了一种神秘的方法控制了这场比赛。</div><p>AlphaGo已经赢得了整场比赛。李世石不再为了胜利下棋，而是为了人类。77手后，他似乎犹豫不决。他用右手撑着下巴，身体前后摇晃，在椅子中坐立不安，还伸手去挠脖子后部。两分钟过去了，四分钟过去了，六分钟过去了。</p><p>然后，左手扣着脖子后部的他做出了回击。他用右手的前两个手指执起一枚白棋，放在了紧挨着棋盘中心的地方。这是这局棋的第78手，一步&ldquo;挖&rdquo;步，即在两片大范围紧密的地区中间插入一棋。然后机器眨眼了。当然，不是真的眨眼，但是它的下一步令人心惊肉跳。李世石向黄士杰投去尖锐的眼光，似乎黄士杰才是他的对手而不是那十亿个电路。</p><p>在AlphaGo的控制室，运行机器的人们都停下了手里的工作，盯着他们的显示屏看。在李世石下出那绝妙的第78手之前，AlphaGo计算自己的胜算为70%。八步之后，这一数字变得不值一提。忽然，AlphaGo不是下一个深蓝，而成为了下一个卡斯帕罗夫。它无法相信一个人类会下出那一步&mdash;&mdash;其可能性接近万分之一。</p><div class="img_wrapper" style="text-align: center"><img alt="大卫&middot;席尔瓦负责领导创造AlphaGo的团队。" data-link="" src="/upload/4626_5.jpg" /></div><div class="img_wrapper" style="text-align: center"><span class="img_descr">李世石与AlphaGo之间的人机大战在韩国成了重大新闻事件。(摄影：Geordie Wood；图片来源：《连线》)</span></div><p>和人类一样，AlphaGo也会被惊讶震住。比赛进行到4小时45分钟时，AlphaGo认输了。和我们一样，它也会输。</p><p>&ldquo;到目前为止，AlphaGo所作出的所有思考都归于无用，&rdquo;哈萨比斯说道，&ldquo;它不得不从头再来。&rdquo;</p><p>终局开始了，我本来应该和哈萨比斯以及他的团队一起观看比赛。但就在我去找他们之前，一名谷歌员工来到新闻发布室找到我。&ldquo;非常抱歉，&rdquo;她说，&ldquo;团队改变主意了。他们不希望终局时有记者在场。&rdquo;</p><p>她走之后，我对《连线》的摄影师乔迪&middot;伍德(Geordie Wood)说：&ldquo;你知道那代表着什么吗？AlphaGo觉得自己要输了。&rdquo;</p><p>情况确实如此。开局不久AlphaGo就犯了一个新手才会犯的错误。在棋盘下半部分的拥挤区域，它将一枚白子放得太过接近李世石的一线黑子，丢掉了整片区域。AlphaGo的直觉错了；和人类一样，这个机器也有盲区。</p><p>但是随着比赛进行到第三个小时，AlphaGo开始挽回颓势。到三个半小时时，李世石的时限到了。根据比赛规则，从现在开始他每一步最多用一分钟，否则就算犯规。但是在他右手上方的棋盘上，还有一大片区域空白。再一次，他一直等到最后一秒才置下棋子。</p><p>然后AlphaGo的时限也到了。两名棋手都以看似不可能的速度下着棋。棋盘上满是棋子。整场比赛中第一次，棋局看起来会下到最后&mdash;&mdash;两方都不认输，进行最终计分。但是到了第五个小时，李世石和AlphaGo之间的差距太大，李世石选择认输。AlphaGo也会失败，但依然赢得了最终胜利。</p><p style="text-align: center"><strong>* &nbsp;* &nbsp;*</strong></p><div class="img_wrapper" style="text-align: center"><img alt="大卫&middot;席尔瓦负责领导创造AlphaGo的团队。" data-link="" src="/upload/4626_6.jpg" /></div><div class="img_wrapper" style="text-align: center"><span class="img_descr">全世界只有樊麾能体会李世石，他评论比赛时说&ldquo;善待李世石吧，善待。&rdquo;(摄影：Geordie Wood；图片来源：《连线》)</span></div><p>全世界只有一人能真正体会李世石的感觉，那就是樊麾，三届欧洲围棋冠军兼AlphaGo的真正训练师。去年10月，为了给这场在首尔举行的更大型比赛进行训练，他与AlphaGo进行了一场非公开对弈，以五比零的结局输给了这台机器。此后，樊麾以雇佣棋手的身份加入了DeepMind，与这台机器屡战屡败。</p><p>但是随着樊麾输给AlphaGo的次数越来越多，一件有趣的事情发生了&mdash;&mdash;他开始以崭新的视角看待围棋。与其他人类对弈时，他赢棋的次数越来越多&mdash;&mdash;还在与顶尖对手的对弈中取得了四次中盘胜。他的排名直线上升。AlphaGo也在训练他。</p><p>所以，我在比赛中询问樊麾，我们该如何看待李世石与机器的对弈？</p><p>&ldquo;善待李世石吧，&rdquo;他回答，&ldquo;善待。&rdquo;</p><p>这些天里，全球最大最富有的公司们都在用支撑AlphaGo的科技来寻求竞争优势。哪款应用能更好地识别照片？哪款可以回应语音命令？很快，这些相似的系统将帮助机器人以更加接近人类的方式与现实环境交互。</p><p>但是与AlphaGo非人类的类人之处相比，这些现实用途就显得平庸了许多。一种亚文化已经围绕着AlphaGo以前所未有的方式发展了出来，例如Google Photo。在德国的杜塞尔多夫，游戏设计、媒体和通信教授J&middot;马丁(J. Martin)运营着一个名为&ldquo;第37手&rdquo;<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>账号。一名来自佛罗里达，名为乔迪&middot;恩赛(Jordi Ensign)的45岁程序员在网上读过我写的一篇关于首尔比赛的文章后，发邮件告诉我，她的右臂内侧纹有AlphaGo第37手的纹身，而她的左臂内侧则纹有李世石的第78手&mdash;&mdash;围棋界已将这一步称为&ldquo;神之一手&rdquo;。</p><p>第四局比赛结束后的几小时里，李世石与哈萨比斯坐在一起。这名曾经的围棋神童告诉李世石说，他理解他的压力，理解他的创造力和斗志。&ldquo;我曾经也是一名棋手，&rdquo;哈萨比斯说，&ldquo;如果我的人生轨迹改变&hellip;&hellip;我明白达到你那样的高度要做出多少努力，多少牺牲。&rdquo;</p><p>李世石回答说，与AlphaGo对弈重新燃起了他对围棋的热爱。就像樊麾经历的那样，AlphaGo也让他以不同的视角审视围棋。&ldquo;我已经进步了，&rdquo;李世石说，&ldquo;它让我有了新想法。&rdquo;从那之后，他从未输过。</p><p>在这场比赛之前，哈萨比斯对全世界说，AlphaGo的人工智能技术已经引发了新一轮科学研究。在这轮研究里，机器将向人类指引下一场重大突破的方向。在没有证据支撑的当时，这番话显得有点空洞&mdash;&mdash;不过是典型的科技噱头罢了。但现在情况变了。这台机器做出了与人类非常相似的举动，甚至超越了人类。但是在这个过程中，它也让人类有所进步。是的。你可以将第37手视为机器超越人类创造者的预兆。但你也可以将其视为一颗种子：没有第37手，又怎会有第78手。</p><p>来源：《连线》，编译：新浪科技 刘玥</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/GO.jpg" alt="AlphaGo是怎样教棋手重新做人的" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4626"></span><a href="javascript:commYea(4626);" id="dig4626">顶一下 ▲</a>(<span id="sdig4626"><Script language="javascript" type="text/javascript">showDig("4626");</script></span>) &nbsp; <a href="javascript:commNay(4626);" id="down4626">踩一下 ▼</a>(<span id="sdown4626"><Script language="javascript" type="text/javascript">showDown("4626");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4625.html" title="重塑社交电商 场景革命诞生新机会">重塑社交电商 场景革命诞生新机会</a></div><div class="next_content">下一篇 » <a href="/archives/4627.html" title="中国围棋协会：柯洁或年内战谷歌AlphaGo">中国围棋协会：柯洁或年内战谷歌AlphaGo</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/4556.html">李开复：AlphaGo证明了人工智能发展超过我们想象</a></p><p class="mutualitylist"><a href="/archives/4547.html">阿尔法围棋与深蓝到底有什么不同</a></p><p class="mutualitylist"><a href="/archives/4544.html">AlphaGo最终局战胜李世石</a></p><p class="mutualitylist"><a href="/archives/4543.html">AlphaGo因输棋获世界第四排名</a></p><p class="mutualitylist"><a href="/archives/4542.html">李世石首胜谷歌AlphaGo</a></p><p class="mutualitylist"><a href="/archives/4541.html">AlphaGo三比零完胜李世石</a></p><p class="mutualitylist"><a href="/archives/4540.html">AlphaGo开发者：不存在秘密协议</a></p><p class="mutualitylist"><a href="/archives/4539.html">李世石再次败给AlphaGo</a></p><p class="mutualitylist"><a href="/archives/4538.html">李世石和AlphaGo人机围棋大赛</a></p><p class="mutualitylist"><a href="/archives/4530.html">常见围棋软件资源整理</a></p><p class="mutualitylist"><a href="/archives/4526.html">电脑围棋软件与人工智能</a></p><p class="mutualitylist"><a href="/archives/4523.html">谷歌人工智能AlphaGo挑战人类围棋冠军</a></p><p class="mutualitylist"><a href="/archives/4501.html">陈经：谷歌围棋算法存在缺陷 达不到人类最高水平 </a></p><p class="mutualitylist"><a href="/archives/4496.html">谷歌旗下人工智能软件击败欧洲围棋冠军</a></p><p class="mutualitylist"><a href="/archives/4444.html">蒙特卡洛算法与电脑围棋</a></p><p class="mutualitylist"><a href="/archives/1621.html">电脑围棋软件和围棋动画片</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

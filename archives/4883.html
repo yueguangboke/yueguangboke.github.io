@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4883.html"/>
+	<title>Windows Server 2008 IIS安装教程-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>Windows Server 2008 IIS安装教程</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4883.html" rel="bookmark">Windows Server 2008 IIS安装教程</a></h1>
+	<div class="post-meta">
+		2017-2-13 15:38:15 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn4883" data-id="4883"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Windows.html" rel="tag"><img src="/logo/Windows.gif" alt="视窗" class="thumb" width="80" height="80" /></a><p>这篇文章主要介绍了Windws Server 2008的WEB环境配置之安装IIS方法，需要的朋友可以参考下。</p>
+
+<p><a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> Server 2008 R2是目前主流的服务器系统之一，其使用简单，性能卓越，已经有越来越多的公司使用其作为业务服务的载体。</p>
+
+<p>互联网信息服务IIS （Internet Information Services），是由<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>公司提供的基于运行Microsoft<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>的互联网基本服务，是Windows Server的可选安装包。</p>
+
+<p>IIS是基于<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>系统的一个互联网信息服务，可以使用IIS创建网站、FTP站点等服务。</p>
+
+<p><strong>安装IIS的步骤如下：</strong></p>
+
+<p>打开服务器管理器，点击左边菜单栏&ldquo;角色&rdquo;调出角色窗口，添加角色。</p>
+
+<p>弹出&ldquo;角色向导&rdquo;，点击&ldquo;下一步&rdquo;进入服务器角色选项。</p>
+
+<p>勾选&ldquo;Web服务器（IIS）&rdquo;。</p>
+
+<p>接下来，它会出现IIS需要安装的一些必要组件，在这里勾选&ldquo;应用程序开发&rdquo;和&ldquo;安全性&rdquo;里面的选项。</p>
+
+<p>&ldquo;应用程序开发&rdquo;里，添加ASP.NET 、.NET 扩展性、CGI、ISAPI 扩展、ISAPI 筛选器，去掉 目录浏览（因为大多数网站用不到。）如果需要用到asp则勾选asp，如果需要用shtm需要开启在服务器端的包含文件。安装sqlserver一定要勾选 asp.net和.net扩展性。需要运行php则要安装cgi。一般建议全选。</p>
+
+<p>&ldquo;安全性&rdquo;里，将里面的&ldquo;基本身份验证&rdquo;以及&ldquo;Windows身份验证&rdquo;勾选上。</p>
+
+<p>初级安装IIS默认基本上这些功能已经足够了，点击&rdquo;下一步&rdquo;进入安装选择确认界面。</p>
+
+<p>系统列出了IIS服务器的安装列表，这里可以看到觉的HTTP功能，安全性及管理工具都在安装的列表里面，这时点击&ldquo;安装&rdquo;即可对这些组件及功能进行安装。</p>
+
+<p>等待安装完闭后关闭向导窗口，在打开浏览器输入本机IP，验证IIS7是否安装成功。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Windows.jpg" alt="Windows Server 2008 IIS安装教程" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4883"></span><a href="javascript:commYea(4883);" id="dig4883">顶一下 ▲</a>(<span id="sdig4883"><Script language="javascript" type="text/javascript">showDig("4883");</script></span>) &nbsp; <a href="javascript:commNay(4883);" id="down4883">踩一下 ▼</a>(<span id="sdown4883"><Script language="javascript" type="text/javascript">showDown("4883");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4882.html" title="走进一个真实的日本">走进一个真实的日本</a></div><div class="next_content">下一篇 » <a href="/archives/4884.html" title="Windows Server 2008 IIS的备份和还原">Windows Server 2008 IIS的备份和还原</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/4688.html">Windows 10周年更新今日起正式开放下载</a></p><p class="mutualitylist"><a href="/archives/4684.html">Windows 10不再免费升级？这里有新方法</a></p><p class="mutualitylist"><a href="/archives/4683.html">Windows 10免费升级结束</a></p><p class="mutualitylist"><a href="/archives/4524.html">Windows操作系统的安全设置</a></p><p class="mutualitylist"><a href="/archives/4474.html">停止微软Windows 10升级提示的方法</a></p><p class="mutualitylist"><a href="/archives/4311.html">Windows 10使用体验</a></p><p class="mutualitylist"><a href="/archives/4310.html">微软发布Windows 10正式版</a></p><p class="mutualitylist"><a href="/archives/4270.html">微软憋大招：Win10上跑安卓、iOS应用</a></p><p class="mutualitylist"><a href="/archives/4254.html">删除任务栏右下角Windows 10推送更新图标</a></p><p class="mutualitylist"><a href="/archives/4242.html">Windows性能监视器的使用技巧</a></p><p class="mutualitylist"><a href="/archives/4220.html">微软为Win10开发Android和iOS快速移植工具</a></p><p class="mutualitylist"><a href="/archives/4178.html">盗版Windows升级到Windows 10后仍然属于盗版 </a></p><p class="mutualitylist"><a href="/archives/4177.html">微软联手360、腾讯免费升级Windows 10</a></p><p class="mutualitylist"><a href="/archives/4165.html">Windows网站架构服务器的优劣</a></p><p class="mutualitylist"><a href="/archives/4110.html">Windows Server操作系统安装教程</a></p><p class="mutualitylist"><a href="/archives/3998.html">微软发布Windows 10操作系统</a></p><p class="mutualitylist"><a href="/archives/3817.html">微软Windows XP为什么不免费</a></p><p class="mutualitylist"><a href="/archives/3778.html">微软解释结束支持Windows XP</a></p><p class="mutualitylist"><a href="/archives/3668.html">关于微软Windows的八大惊人事实</a></p><p class="mutualitylist"><a href="/archives/3667.html">Windows平板电脑使用评测</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.yueguangboke.com" /><input type="hidden" name="sitesearch" value="www.yueguangboke.com" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (525)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (933)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3180)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7550.html" title="《网络测评活动规范》出台">《网络测评活动规范》出台(288)</a></li>
+<li><a href="/archives/7549.html" title="粉笔科技的人大讲座事件的说明与致歉">粉笔科技的人大讲座事件的说明与致歉(633)</a></li>
+<li><a href="/archives/7548.html" title="《国务院关于对外投资的规定》自7月1日起施行">《国务院关于对外投资的规定》自7月1日起(540)</a></li>
+<li><a href="/archives/7547.html" title="八部门综合整治非法跨境证券期货基金经营活动">八部门综合整治非法跨境证券期货基金经营活(344)</a></li>
+<li><a href="/archives/7543.html" title="母亲被保健品诈骗">母亲被保健品诈骗(1355)</a></li>
+<li><a href="/archives/7542.html" title="向身体低头，向岁月妥协：我的高血压“还债日记” ">向身体低头，向岁月妥协：我的高血压“还债(1153)</a></li>
+<li><a href="/archives/7544.html" title="AI编程从零开始：环境配置到开发调试">AI编程从零开始：环境配置到开发调试(1520)</a></li>
+<li><a href="/archives/7545.html" title="电视畅玩电脑游戏教程">电视畅玩电脑游戏教程(27)</a></li>
+<li><a href="/archives/7541.html" title="《魔兽世界：至暗之夜》PVP教程">《魔兽世界：至暗之夜》PVP教程(882)</a></li>
+<li><a href="/archives/7539.html" title="湖北男子家中用荣耀手机浏览TikTok与X被罚">湖北男子家中用荣耀手机浏览TikTok与(2626)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7550</li><li>评论总数:199551</li><li>浏览总数:73275031</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

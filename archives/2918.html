@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2918.html"/>
+	<title>为什么Android没有iOS那么顺滑 -月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth3">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>为什么Android没有iOS那么顺滑 </span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2918.html" rel="bookmark">为什么Android没有iOS那么顺滑 </a></h1>
+	<div class="post-meta">
+		2011-12-8 9:39:51 | 
+		作者: 翻译 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 106 | 
+		浏览: <span class="AddView" id="spn2918" data-id="2918"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Android.html" rel="tag"><img src="/logo/Android.gif" alt="安卓" class="thumb" width="80" height="80" /></a><p>虽然很多Android手机的配置都比iPhone要高，比如大多数Andorid手机的内存都有1GB，而iPhone 4S只有512MB内存，但用过iPhone的人都知道Android手机在使用的时候总感觉没有那么顺滑，究竟为什么会出现这种现象呢？一位软件工程师和前Google实习生Andrew Munn<a target="_blank" href="https://plus.google.com/100838276097451809262/posts/VDkV9XaJRGS">解释说</a>是因为Android系统UI效率低下的框架设计的问题。</p><p>不过，这个实习生Andrew Munn是一个软件工程专业的本科毕业生，他在Android团队并没有在框架团队工作，也没有看过Android渲染的源代码，因此他所说的未必是100%准确。并且他也曾经在<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> Phone团队工作过，因此可能会不自觉的对Android产生偏见。以下就是他对Android为什么没有iOS流畅体验的看法。</p><p style="text-align: center"><img alt="Android平板电脑" src="/upload/2783_6.jpg" /></p><p>Android没有iOS流畅的原因并非Java GC导致暂停，也不是因为Android运行的是Java编译的bytecode而iOS运行的native code，根本的原因是，iOS的UI渲染采用实时优先级，而Android的UI渲染遵循传统电脑模式的主线程普通优先级。</p><p>这听起来似乎很抽象和难以理解，但大家可以尝试一下，使用你的iPad或者iPhone，打开Safari，然后加载一个复杂的网页，例如新浪网首页，当网页加载到一半的时候，把你的手指放在屏幕上，并且四处移动，你会发现所有的渲染立刻停止，在你拿开手指前，网页永远也不会继续加载。</p><p>而在Android设备上重复这个操作，你会发现，浏览器会继续尝试加载页面并渲染HTML，试图多任务同时进行，因此对于Android来说，一个高效的双核处理器是很重要的，这也就是Galaxy S II能够非常平滑的原因。</p><p>在iOS中UI渲染过程具有绝对的优先等级，当用户接触到iPhone的触摸屏后，iOS中所有的进程都将停止，UI线程拦截了所有的事件，系统会将所有资源用于渲染UI过程，以保证用户界面的实时渲染优先级。而在Android系统中UI渲染过程的优先级别却没有那么高，也就是说当你触摸Android手机屏幕的时候，系统后台的程序并没有停止，仍然在继续运行之中，比如下载和查收短信，这样系统UI获得的资源就不够，这就是Android系统不流畅的原因。</p><p>由于这个原因，新发布的Galaxy Nexus，甚至配备四核处理器的话说EeePad Transformer Prime平板电脑都无法保证顺滑的操作体验，这些设备只能与3年前的iPhone顺滑程度相比，那么Android团队为什么不从根本解决这个问题呢？</p><p>除了UI渲染之外，Android缺乏有效的的硬件加速也是一个原因，在不同的Android手机上的硬件加速存在巨大差异，而苹果是唯一一个既做硬件又做软件的手持设备公司，只有苹果可以在硬件中插入对软件的优化，使得基于苹果芯片的设备不仅省电，而且流畅。</p><p>实际上，Android的开发工作在第一代iPhone发布之前就已经开始了，原始Android原型体被设计成为使用键盘手机的设备，也就是黑莓手机的竞争对手。UI渲染优先级别在有键盘的手机上并没有那么重要。但是在iPhone发布之后，Android小组为了快速推出能与iPhone竞争的产品，迅速将Android改成触摸屏手机系统，但那时重写UI框架已经不可能了。因为如果这样Android应用市场中的所有程序将变得不可用，这种关系将一直处于恶性循环之中。</p><p>英文原文：<a target="_blank" href="https://plus.google.com/100838276097451809262/posts/VDkV9XaJRGS">Follow up to &ldquo;Android graphics true facts&rdquo;, or The Reason Android is Laggy</a></p><p>参考阅读：<a target="_blank" href="/info/archives/576.html">iPhone为什么比Android好</a></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Android.jpg" alt="为什么Android没有iOS那么顺滑 " /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2918"></span><a href="javascript:commYea(2918);" id="dig2918">顶一下 ▲</a>(<span id="sdig2918"><Script language="javascript" type="text/javascript">showDig("2918");</script></span>) &nbsp; <a href="javascript:commNay(2918);" id="down2918">踩一下 ▼</a>(<span id="sdown2918"><Script language="javascript" type="text/javascript">showDown("2918");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2917.html" title="中国互联网生态报告发布">中国互联网生态报告发布</a></div><div class="next_content">下一篇 » <a href="/archives/2919.html" title="电子商务：交易与互联网技术">电子商务：交易与互联网技术</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2845.html">谷歌Android电子市场在中国恢复</a></p><p class="mutualitylist"><a href="/archives/2842.html">iPhone和Android生活类应用盘点</a></p><p class="mutualitylist"><a href="/archives/2826.html">从Android看智能终端的未来</a></p><p class="mutualitylist"><a href="/archives/2789.html">混乱的Android应用程序商店</a></p><p class="mutualitylist"><a href="/archives/2783.html">Android平板电脑使用评测</a></p><p class="mutualitylist"><a href="/archives/2773.html">Android的崛起和面临的困境</a></p><p class="mutualitylist"><a href="/archives/2747.html">第三方Android ROM市场前景</a></p><p class="mutualitylist"><a href="/archives/2733.html">Google和Android的专利纷争</a></p><p class="mutualitylist"><a href="/archives/2695.html">Android拍照和图片处理类应用盘点</a></p><p class="mutualitylist"><a href="/archives/2658.html">iPhone和Android网络类应用盘点</a></p><p class="mutualitylist"><a href="/archives/2644.html">Android平板是否能击败iPad</a></p><p class="mutualitylist"><a href="/archives/2638.html">iPhone和Android社交通讯应用盘点</a></p><p class="mutualitylist"><a href="/archives/2533.html">低价Android是个坑</a></p><p class="mutualitylist"><a href="/archives/2517.html">Google推出新版Android Market应用商店</a></p><p class="mutualitylist"><a href="/archives/2486.html">iPhone和Android社交网络应用盘点</a></p><p class="mutualitylist"><a href="/archives/2445.html">最佳Android游戏推荐</a></p><p class="mutualitylist"><a href="/archives/2362.html">常用Android手机软件应用</a></p><p class="mutualitylist"><a href="/archives/1963.html">Google应该让Android走山寨路线</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

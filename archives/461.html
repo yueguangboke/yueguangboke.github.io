@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/461.html"/>
+	<title>Java开发环境的配置心得-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>Java开发环境的配置心得</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/461.html" rel="bookmark">Java开发环境的配置心得</a></h1>
+	<div class="post-meta">
+		2006-4-4 21:6:1 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 8 | 
+		浏览: <span class="AddView" id="spn461" data-id="461"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a><p>前文介绍了几种主流脚本语言开发技术的对比，本文则介绍Java开发环境的搭建和配置的一些小小心得体会。</p>
+<p>做为一名从<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>开发者转向JAVA开发者的一员，这里介绍的都是一些初级的开发环境配置，也属于个人的经验介绍。其实也有人可能想转向.NET平台，但根据我的使用，感觉.NET里的C#和JAVA语法极为相似，开发的成本也基本相同，但由于业界普遍认为JAVA平台是成熟的、开放的，并且支持跨平台，而.NET还没有成熟，不开放源代码，也不支持跨平台，因此转到JAVA平台个人认为是不错的选择。</p>
+<p>首先讲一下环境配置，注意我配置的环境是在<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>2000 Server下的，不是Linux下的，配置的大致流程和操作系统无关，仅仅是在具体的安装上有差别。而配置成功与否，与操作系统无关。</p>
+<p>软件安装分为以下几个部分：</p>
+<p>1、 Java环境安装：</p>
+<p>这里使用的是J2SE 1.4.2，这个可以到sun公司的网站去下载：<a target="_BLANK" href="http://java.sun.com/j2se/1.4.2/download.html">http://java.sun.com/j2se/1.4.2/download.html</a> 。</p>
+<p>为什么不用其他的版本呢？我也不清楚，不过公司里配置的标准版本就是这个版本，大概是因为兼容性的原因吧。</p>
+<p>下载完成后，即可安装J2SE-SDK到E:\jsk目录下。</p>
+<p>配置环境变量如下：</p>
+<p>JAVA_HOME = E:\jdk</p>
+<p>PATH = %JAVA_HOME%\bin;%JAVA_HOME%\lib;%JAVA_HOME%\jre\lib;</p>
+<p>CLASSPATH = %JAVA_HOME%\lib;%JAVA_HOME%\jre\lib;</p>
+<p>2、 Web Server环境安装：</p>
+<p>Web Server选择流行的Apache Tomcat 5.0.28，到 <a target="_BLANK" href="http://tomcat.apache.org/">http://tomcat.apache.org/</a> 处下载，建议使用非安装的压缩版，有一点需要注意，Apache Tomcat不支持EJB，因此如果要进行EJB开发，那么就不要选择Apache Tomcat。</p>
+<p>解压tomcat到E:\Tomcat目录下。</p>
+<p>配置环境变量如下：</p>
+<p>TOMCAT_HOME = E:\Tomcat</p>
+<p>3、 IDE环境安装：</p>
+<p>Eclipse是目前最佳的IDE开发环境，我们公司目前统一配置的是Eclipse 3.11中文版，可以去 <a target="_BLANK" href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a> 下载。这个版本和后面提到的一些插件的兼容性较好。</p>
+<p>解压eclipse-SDK-3.1.1-win32.zip到E:\Eclipse即可使用英文原版。</p>
+<p>中文的安装需要先到官方网站点&ldquo;3.1.1_Language_Packs&rdquo;，下载NLpack1_FeatureOverlay-eclipse-SDK-3.1.1.zip 和NLpack1-eclipse-SDK-3.1.1a-win32.zip两个文件。</p>
+<p>然后将NLpack1-eclipse-SDK-3.1.1a-win32.zip解压后生成的eclipse文件夹下的features文件夹和plugins文件夹里的内容复制粘贴到E:\Eclipse文件夹下；以同样的方法解压 NLpack1_FeatureOverlay-eclipse-SDK-3.1.1.zip，将eclipse文件夹下的features文件夹里的内容也复制粘贴到E:\Eclipse文件夹下。粘贴时有同名文件的话，就让它覆盖掉原文件。</p>
+<p>到E:\Eclipse文件夹里，把configuration文件夹下除了config.ini 以外的的东西都删掉，最后运行eclipse.exe，就可以看到中文版的eclipse3.1.1了，汉化后一个很大的好处就是帮助全是中文的，这对我们这些新手有不少帮助。</p>
+<p>4、 TomcatPlugin插件安装：</p>
+<p>下载安装Sysdeo Tomcat插件，用来管理Tomcat服务器，提供断点调试功能，并且能自动建立Tomcat环境，修改其配置文件，是一个不错的Tomcat开发插件。</p>
+<p>英文原版下载地址：<a target="_BLANK" href="http://www.sysdeo.com/sysdeo/eclipse/tomcatplugin">http://www.sysdeo.com/sysdeo/eclipse/tomcatplugin</a></p>
+<p>中文版下载地址：<a target="_BLANK" href="http://download.gro.clinux.org/beansoft/tomcatPluginV31.zip">http://download.gro.clinux.org/beansoft/tomcatPluginV31.zip</a></p>
+<p>安装方法：</p>
+<p>（1）．解压tomcatPluginV31.zip</p>
+<p>（2）．将解压目录下文件夹com.sysdeo.eclipse.tomcat_3.1复制到eclipse安装目录中的plugins目录中，即E:\eclipse\plugins</p>
+<p>（3）．启动Eclipse，启动后你将看到你的菜单上多了一个下拉项Tomcat，点击 窗口-&gt;首选项，在左边树中点击tomcat，设置tomcat version为version 5.x，设置tomcat根目录为E:\tomcat，在左边树中点击tomcat-&gt;JVM setting，设置JRE为j2sdk1.4.2。</p>
+<p>4、 Lomboz插件安装：</p>
+<p>Lomboz插件是用来编辑JSP/HTML/XML等，是一个不错的JSP编辑器，还可以支持EJB。我用的版本是Lomboz V3.1。</p>
+<p>下载地址： <a target="_BLANK" href="http://www.objectlearn.com">http://www.objectlearn.com</a> ，建议下载那个Lomboz and prerequisites as one package版本。</p>
+<p>Lomboz的安装方法：</p>
+<p>（1）．解压lomboz-emf-gef-jem-3.1RC2.zip</p>
+<p>（2）．将解压目录下文件夹复制到eclipse安装目录中。</p>
+<p>至此，一个JAVA开发环境即搭建完毕。</p>
+<p>这时候就可以开始工作了。启动Eclipse，点新建－项目－JAVA-Tomcat Project，即可新建一个Tomcat下的JSP开发环境。TomcatPlugin插件会自动建立若干目录。</p>
+<p>此时建立的目录有：</p>
+<p>WEB-INF/src　JavaBean的源文件是放在WEB-INF目录下，系统会自动将其编译到WEB-INF/classes目录下。</p>
+<p>WEB-INF/classes　编译后的类文件会被放在这个目录下。</p>
+<p>work　执行JSP时,编译成的servlet源文件会放在此处。</p>
+<p>好了，现在一切都就绪了，我们就可以进行JSP开发了。<br /></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="Java开发环境的配置心得" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note461"></span><a href="javascript:commYea(461);" id="dig461">顶一下 ▲</a>(<span id="sdig461"><Script language="javascript" type="text/javascript">showDig("461");</script></span>) &nbsp; <a href="javascript:commNay(461);" id="down461">踩一下 ▼</a>(<span id="sdown461"><Script language="javascript" type="text/javascript">showDown("461");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/460.html" title="Perl、PHP、ASP、JSP技术比较">Perl、PHP、ASP、JSP技术比较</a></div><div class="next_content">下一篇 » <a href="/archives/462.html" title="美国电影协会百年百大惊悚电影">美国电影协会百年百大惊悚电影</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/460.html">Perl、PHP、ASP、JSP技术比较</a></p><p class="mutualitylist"><a href="/archives/433.html">常用正则表达式</a></p><p class="mutualitylist"><a href="/archives/171.html">彻底杜绝PHP的session cookie错误</a></p><p class="mutualitylist"><a href="/archives/133.html">VB代码撰写约定</a></p><p class="mutualitylist"><a href="/archives/119.html">Access数据库自动编号初始值和步进值</a></p><p class="mutualitylist"><a href="/archives/93.html">精妙SQL语句</a></p><p class="mutualitylist"><a href="/archives/92.html">JSP的参数传递的乱码解决</a></p><p class="mutualitylist"><a href="/archives/88.html">编写COM组件，将数据库链接的语句写成COM组件</a></p><p class="mutualitylist"><a href="/archives/85.html">清除SQLSERVER数据库日志的方法</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

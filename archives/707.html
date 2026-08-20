@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/707.html"/>
+	<title>软件加密锁编程技巧-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>软件加密锁编程技巧</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/707.html" rel="bookmark">软件加密锁编程技巧</a></h1>
+	<div class="post-meta">
+		2006-11-29 20:15:11 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 12 | 
+		浏览: <span class="AddView" id="spn707" data-id="707"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>本文将介绍软件加密锁的一些编程技巧，以及软件开发者将如何编写安全可靠的代码，如何对付各种各样的<a target="_blank" href="/archives/706.html">加密狗破解</a>，编写加密程序时应该尽量避免的一些问题等等。以下是全文。</p>
+<h2>一、加密狗加密的基本原理</h2>
+<p>开发商程序通过调用硬件加密狗的接口模块对硬件加密狗操作，硬件加密狗响应该操作并通过接口模块将相应数据返回给开发商的应用程序。开发商的应用程序可以对返回值进行判定并采取相应的动作。如果返回无效的响应，表明没有正确的狗，开发商可以将应用程序终止运行，或者让应用程序以错误的方式执行。简要示意如下：</p>
+<p style="text-align:center"><img alt="软件加密锁编程" src="/upload/707_1.jpg" /></p>
+<h2>二、常用的解密方法</h2>
+<p>1、反汇编后静态分析： W32Dasm、IDA Pro</p>
+<p>2、用调试工具跟踪动态分析：SoftICE、TRW2000</p>
+<p>3、针对各种语言的反汇编工具：VB、Delphi、Java等</p>
+<p>4、其他监视工具：FileMon、RegMon 等</p>
+<h2>三、如何提高加密强度</h2>
+<p>下面，我们以Sentinel SuperPro加密锁为例，详细介绍一下使用如何在编程的过程中提高加密强度的方法。</p>
+<h3>1、反DEBUG解密的编程方法和技巧</h3>
+<p>访问狗之后不要立即做判断，判断狗不正确后，不要立即提示，或者不提示。开发商在程序各个部分插入校验算法的代码，用以增加程序代码的复杂性，防止解密者轻易跟踪发现全部的校验代码。校验代码插入程序的频率越高，破解难度越大，软件就越安全。</p>
+<p>重要的字符串不要在程序中以明文出现，应该使用算法动态生成。</p>
+<p>在不影响程序效率的情况下，尽量多写一些查狗的函数，彼此要有区别，使用不同的算法，多一些查狗出错的标志，让这些标志参与运算，在不同的模块中，使用不同的查狗函数。</p>
+<p>针对某一具体查询校验，都有三步骤组成：查询得到响应串；比较响应串和查询串是否匹配；根据校验结果执行相应的步骤。建议三个步骤要延时执行。最好将三步骤相互远离些，甚至放到不同的子程序或函数中。例如：执行&ldquo;查询得到响应串&rdquo;后，相隔50行执行&ldquo;比较响应串和查询串是否匹配&rdquo;，假如程序需要调用一个函数。那么就在这个函数里执行&ldquo;执行相应的步骤&rdquo;。解密者在跟踪过程中，即使发现了其中一部分程序代码，但很难发现另外两部分代码和全部三部分之间的关联。程序难于被破解。</p>
+<p>将加密锁返回的&ldquo;响应串&rdquo;作为程序中的参数使用。例如：算法单元返回&ldquo;响应串&rdquo;是&ldquo;87611123&rdquo;，而程序中需要使用&ldquo;123&rdquo;这个参数。程序中得到&ldquo;响应串&rdquo;后，将&ldquo;响应串&rdquo;减去&ldquo;87611000&rdquo;得到参数。如果解密者修改代码跳过查询校验加密锁部分，参数将是错误值，从而会使程序运行紊乱。</p>
+<p>程序在验证加密算法过程中，一般情况下验证数据不正确程序就会选择退出。这样一来很容易被解密者发现代码特征，跳过查询校验部分。开发商设计查询校验部分时，如果程序校验数据不正确，程序也不退出可以继续执行一些无用的操作使程序紊乱，用以隐蔽代码迷惑解密者。</p>
+<p>开发商的软件可能有多个模块，查狗的模块或接口不要用显而易见的名字来命名，这样会令解密者更容易找到加密点，当然也可以利用一些名字来迷惑解密者，尤其是dll，引出函数时甚至可以不用函数名。</p>
+<p>给查狗函数加入一定的随机性，例如，随机地执行某一API函数，或者在狗的存储区中划定一小块区域作随机读写，读写地址、读写内容、读写长度都是随机取的，这样可以很好地防止那些模拟工具。</p>
+<p>试用版与正式版要分开，试用版不提供的功能，代码已经删掉，使得不可能利用试用版破解得到正式版。</p>
+<p>在大多数情况下，破解是通过更改exe 或 dll 文件实现的，要在程序中检查exe或dll文件的完整性，即利用某种算法计算出整个文件的校验和，在程序中比较，如果文件被更改，校验和就会变化，这类算法网上有很多，可以查得到。另外，exe和dll之间要相互认证，一方面防止dll被替换，另一方面防止非法exe访问dll。</p>
+<p>小结：应该尽量避免的问题</p>
+<p>1）访问狗、做判断、提示用户写在一起</p>
+<p>2）重要的字符串在程序中以明文出现</p>
+<p>3）在狗中存放字符串，程序中读出比较</p>
+<p>4）调用同一函数或判断同一个全局标志查狗</p>
+<p>5）试用版软件同正式版软件是同一份</p>
+<p>6）查狗的模块或接口名字太明显</p>
+<p>7）程序无随机性，每次运行执行路径都一样</p>
+<p>8）没有检查exe 或 dll 文件的完整性，exe 和 dll 之间也没有相互认证</p>
+<h3>2、反&ldquo;监听仿真&rdquo;软件保护锁的编程方法</h3>
+<p>1）随机查询法：开发商使用SuperPro开发工具生成大量查询、响应对，如：1000 对，并在程序中使用这些校验数据。在程序运行过程中，从1000 对查询、响应对之中，随机的抽出其中一对验证SuperPro加密算法。因为，校验数据很多，每次验证加密算法使用的&ldquo;查询响应对&rdquo;可能不同，&ldquo;监听仿真&rdquo;软件即使纪录了一部分&ldquo;查询响应对&rdquo;，但无法纪录全部&ldquo;查询响应对&rdquo;。软件每次运行时，都可能使用新的查询响应校验数据，&ldquo;监听仿真&rdquo;软件无法响应这些新的查询。因此，&ldquo;监听仿真&rdquo;也就失去了模拟、仿真SuperPro软件保护锁的作用。</p>
+<p>2）延时法：开发商可以事先使用开发工具生成大量的校验数据，即：&ldquo;查询、响应&rdquo;对，比如：200000 组&ldquo;查询、响应&rdquo;对，开发程序过程中，开发商设计定时查询、校验加密锁的机制。在程序运行过程中，每10分钟查询并校验加密锁一次，使用过的校验数据，4年内不再重复使用。即使监听软件24小时记录数据，也需要4年才能纪录完毕。4年后，软件早已过了&ldquo;热卖期&rdquo;了，使用监听软件的解密者也就失去了行动意义。</p>
+<p>3）分组、分时法：开发商可以在程序中把查询响应对分组，比如：1200 对校验数据可分为12组，每100对一组。程序在一年中的第一月使用第一组校验数据，第二月使用第二组校验数据，以此类推。监听软件就算记录了第一月的校验数据，第二个三个月以后校验数据没有纪录，在以后的时间段软件仍然无法正常使用，从而&ldquo;监听仿真&rdquo;失去意义。</p>
+<p>4）随机噪声数据法：开发商可以在程序中随机产生查询数据，随机数据和真实数据混合在一起，监听软件即使记录了查询数据，也会被其随机性所迷惑，同时也无法仿真另一个次软件运行产生的随机数，加密软件也就无法破解。</p>
+<p>注：本文部分内容来源于彩虹加密锁Sentinel SuperPro的使用说明文档以及相关技术文档整理而成。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Encryption.jpg" alt="软件加密锁编程技巧" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note707"></span><a href="javascript:commYea(707);" id="dig707">顶一下 ▲</a>(<span id="sdig707"><Script language="javascript" type="text/javascript">showDig("707");</script></span>) &nbsp; <a href="javascript:commNay(707);" id="down707">踩一下 ▼</a>(<span id="sdown707"><Script language="javascript" type="text/javascript">showDown("707");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/706.html" title="软件加密狗破解思路和方法">软件加密狗破解思路和方法</a></div><div class="next_content">下一篇 » <a href="/archives/708.html" title="百度搜藏的功能缺陷">百度搜藏的功能缺陷</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/706.html">软件加密狗破解思路和方法</a></p><p class="mutualitylist"><a href="/archives/705.html">国内软件加密锁产品评测</a></p><p class="mutualitylist"><a href="/archives/704.html">软件加密技术和注册机制</a></p><p class="mutualitylist"><a href="/archives/500.html">加密技术在企业数据安全中的应用</a></p><p class="mutualitylist"><a href="/archives/499.html">密码学基础</a></p><p class="mutualitylist"><a href="/archives/347.html">破解图片验证码限制的一般思路</a></p><p class="mutualitylist"><a href="/archives/315.html">巧用WinZip进行定时加密备份</a></p><p class="mutualitylist"><a href="/archives/272.html">银行应用USB Key身份认证方案</a></p><p class="mutualitylist"><a href="/archives/242.html">JAVASCRIPT加密解密终级指南</a></p><p class="mutualitylist"><a href="/archives/83.html">USB Key身份认证产品的产生与发展</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

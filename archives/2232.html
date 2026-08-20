@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2232.html"/>
+	<title>网络访问攻防战-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth7">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>网络访问攻防战</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2232.html" rel="bookmark">网络访问攻防战</a></h1>
+	<div class="post-meta">
+		2010-7-3 8:33:9 | 
+		作者: 音乐天堂 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 28 | 
+		浏览: <span class="AddView" id="spn2232" data-id="2232"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Proxy.html" rel="tag"><img src="/logo/Proxy.gif" alt="代理服务器" class="thumb" width="80" height="80" /></a><p>在很多大型企业中和有些国家中，为了限制员工或人民访问某些网站或使用某些网络应用程序，通常做了一些访问限制。限制的方法通常有<a target="_blank" href="/archives/2195.html">路由器IP过滤</a>和强制使用代理服务器等几种方式。</p><p>路由器IP过滤指的是通过在路由器中加入外网或国外的IP黑名单，使得内网或国内无法访问外网或国外的这些IP，达到限制访问的目的。强制使用代理服务器的过滤方式通常只在大型企业中应用，指的是内网必须通过代理服务器才能访问外网，那么在代理服务器上可以实现更为复杂的过滤机制。本文主要讲述IP过滤的攻防战，关于代理服务器的攻防战下次讨论。下面依次讲述网络访问攻防战的不断升级过程：</p><p>首先，如果要禁止人们访问某些网站，那么路由器管理者可以在路由器中设置IP过滤规则，把这些网站的IP加入黑名单，自然人们就无法访问这些网站了。</p><p>之后，人们为了继续访问这些网站，就会用代理服务器绕过限制。代理服务器的IP成千上万，而且不停在变化，使得限制网络访问的工作处于被动局面。</p><p>然而，由于代理服务器协议是<a target="_blank" href="/archives/2210.html">明文的</a>，通过监听网络数据包并制作自动搜集整理的程序可以知道人们访问了哪些代理服务器并自动把代理服务器的IP加入到IP黑名单中，这样使用普通代理服务器绕过访问限制的方式就失效了，绕过网络访问限制的工作处于相当被动的局面。</p><p>所以，为了避免被侦测到代理服务器地址，加密代理软件应运而生。用户和代理服务器之间的通讯协议进行了加密，使得无法简单通过侦听网络数据包分析出代理服务器的IP地址。又一次使得限制网络访问的工作处于被动局面。</p><p>但是，加密代理软件也需要和代理服务器进行通讯，也需要知道加密代理服务器的IP地址。所以加密代理软件一般会在启动时去某些发布加密代理服务器IP地址的地方获得加密代理服务器的IP。那么，只需要单独拿出一台计算机，启动加密代理软件，对这台计算机的网络通讯进行监视，那么即可知道发布加密代理IP地址的地方，从而对发布点进行IP过滤。而且可以做成程序自动启动加密代理软件，自动监视数据包，自动把加密代理IP的发布地点的IP加入黑名单，这样加密代理软件无法获得加密代理的IP，加密代理软件失效，绕过网络限制的工作又一次处于十分不利的位置。</p><p>加密代理软件为了对付这种情况，就需要把访问代理IP发布点的流量混杂在访问非代理IP发布点的流量中。比如，加密代理软件启动时，首先访问其它大量网站，在访问其它网站之中的某一次访问代理IP发布点，这样就把流量进行混杂了，无法通过简单的网络数据包侦听获得代理IP发布点的IP地址。如果把所有侦听到的地址全部加入黑名单，那么将会误封很多网站。限制网络访问的工作又处于不利的位置。</p><p>然后，为了能继续对网络访问进行限制，网络管理员就转而对加密代理的IP（而非发布点的IP）进行过滤。在加密代理软件启动完毕之后，通过加密代理下载一个大文件，那么流量比较大的IP即为加密代理的IP。通过这种方法，网络管理员仍旧可以做出自动封锁加密代理软件的程序，绕过网络限制的工作又失败了。</p><p>那么，加密代理软件可以采取同样的思路，把访问代理IP的流量混杂在其它流量中，并使分散的流量平分并不断变换代理IP，使得无法通过网络数据包流量统计获得加密代理的IP。人们又可以重新绕过网络访问限制了。然而，因为对流量进行了平分，所以网速通常只有几分之一了，大部分流量都耗费在混淆网络管理员的程序上面了。</p><p>到了这里，网络访问攻防战似乎走到头了，但是聪明的网络管理员并不是束手无策了。通过对加密代理软件进行逆向工程，还是可以找到代理IP的发布点，从而过滤这个发布点。不过，这样已经不能通过分析网络流量用程序自动找出IP进行过滤了。</p><p>最后，加密代理软件为了防止被逆向工程，对加密代理软件本身进行了软件加密处理，使得逆向工程变得十分困难。接下去就是软件加密与破解之间的智力较量了。</p><p>总结：如果不进行网络流量混淆，那么能被程序自动找出有用的IP进行过滤。如果不对加密软件进行加密，也比较容易被逆向工程，从而找到有用的IP进行过滤。加密代理软件作者需要时刻提防软件被破解，一旦被破解，那么需要对升级加密代理软件，使得限制网络访问的工作需要重新破解软件才能继续实施。</p><p>来源：读者投稿，作者的<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>： @davidsky2012 ，作者的<a href="/tag/GoogleReader.html" title="Google Reader"  Target="_blank" >Google Reader</a>： <a target="_blank" href="https://www.google.com/reader/shared/lehui99">https://www.google.com/reader/shared/lehui99</a></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Proxy.jpg" alt="网络访问攻防战" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2232"></span><a href="javascript:commYea(2232);" id="dig2232">顶一下 ▲</a>(<span id="sdig2232"><Script language="javascript" type="text/javascript">showDig("2232");</script></span>) &nbsp; <a href="javascript:commNay(2232);" id="down2232">踩一下 ▼</a>(<span id="sdown2232"><Script language="javascript" type="text/javascript">showDown("2232");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2231.html" title="流氓往事">流氓往事</a></div><div class="next_content">下一篇 » <a href="/archives/2233.html" title="为什么80后集体缺席互联网">为什么80后集体缺席互联网</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2210.html">使用HTTP代理服务器的安全性简评</a></p><p class="mutualitylist"><a href="/archives/2057.html">如何使用代理服务器上网</a></p><p class="mutualitylist"><a href="/archives/2024.html">SocksCap代理使用教程</a></p><p class="mutualitylist"><a href="/archives/1952.html">SSH加密通道配置</a></p><p class="mutualitylist"><a href="/archives/1697.html">开源代理软件GAppProxy</a></p><p class="mutualitylist"><a href="/archives/760.html">FireFox代理服务器扩展</a></p><p class="mutualitylist"><a href="/archives/739.html">免费代理服务器的使用设置</a></p><p class="mutualitylist"><a href="/archives/524.html">代理服务器的功能</a></p><p class="mutualitylist"><a href="/archives/424.html">TOR使用说明和介绍</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

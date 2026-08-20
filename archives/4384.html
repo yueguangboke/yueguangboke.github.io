@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4384.html"/>
+	<title>网站开发适配iPad的7大技巧-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth13">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>网站开发适配iPad的7大技巧</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4384.html" rel="bookmark">网站开发适配iPad的7大技巧</a></h1>
+	<div class="post-meta">
+		2015-10-11 23:23:4 | 
+		作者: 极客公园 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn4384" data-id="4384"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a><p>苹果新一代 iPad 的高 DPI 视网膜屏幕给网站在上面的显示带来困难，那么作为网站开发人员来说，应该如何对新一代 iPad 进行适配呢？</p><p>正文：</p><p>相信不少人都体验过新一代 iPad 了，其搭载的标志性的 9.7 英寸 Retina Display（视网膜屏幕）分辨率达到了前所未有 2048 x 1536 的分辨率，如此高分辨率给当前很多网站在 iPad 上的显示带来了难题。有人说，还不至于单独为新一代 iPad 这一个设备进行相应适配，但随着用上新一代 iPad 用户的逐渐增多，未来笔记本已经开始有视网膜屏幕普及的趋势，Retina Display 成为标配的视网膜时代有望到来，这使得针对网站适配的重要性日趋凸显，而绝非单独为一款设备进行设备。</p><p>接下来我们应当如何调整网站的开发，对新一代 iPad 进行适配呢？</p><p>1. 适配视网膜屏幕</p><p>想起在&ldquo;迎接视网膜时代&rdquo; Procaine 的评论&ldquo;草榴表示对视网膜屏压力很大&rdquo;，除了好笑外，也不失道理。因为对于网页显示来说，在 iOS 系统下矢量字体的自动改变使其根本勿需担心适配问题，但是对于图片来说就不是那么一回事了。当前很多网站对于图片的显示并没有适配机制，如果继续以原有大小在视网膜屏幕展示的话，就会出现马赛克模糊，与未适配应用下的部分图片素材造成的 UI 模糊类似。</p><p>那么对于新一代 iPad 下的网站图片应当如何进行适配呢？</p><p>方法是将现有图片资源替换为双倍尺寸的高质量图片资源后，再用 CSS 或 JS 进行调整。这种方法原理是让用户下载双倍尺寸的高质量图片然后再重新调整回原有大小，苹果官网已经进行了类似升级，率先支持 Retina 模式（只支持 Safari），它会自动判断设备的屏幕，如果是 Retina 显示屏，就会开启 Retina 显示器增强模式，调用双倍尺寸的高质量图片资源先缩小后再重新放大进行显示。（具体其原理参见高像素密度屏幕的适配）</p><p>2. 采用矢量格式图片</p><p>应当尽量将点阵图片（位图）资源替换为矢量图片，否则在进行图片自动放大适配过程中会出现锯齿，严重影响显示效果。而采用矢量图片就不用担心进行放大适配后的失真。</p><p>3. 注意同时为横屏和竖屏进行优化</p><p>大部分用户在 PC 端浏览网页时，显示器都是处于横屏模式的，并且大部分 PC 显示器也都只适合横向使用。但用户在使用 iPad 浏览网页时，因为 iPad 是可以旋转的，因此除了横向视图外，纵向视图也是用户经常处于的场景。</p><p>当为 iPad 开发网站时，必须同时对横屏模式和竖屏模式下的显示效果进行测试和优化。尤其是在竖屏模式下网站的元素和文字都会缩小，可用 -webkit-text-size-adjust 这个 Webkit 的私有 CSS 来阻止旋转屏幕时自动调整字体大小。如果不加优化，则很有可能会损害用户的阅读体验。</p><p>4. 使用自适应的网页设计方式</p><p>传统上，很多网页开发者会为自己的网站提供一个桌面版和一个手机版，甚至还会有一个平板电脑版或者 iOS 专用版，以适应不同设备用户的使用需求。这样的做法会造成以下后果：</p><p>无法适应设备数量的增长和定位的模糊化。不同形式、不同大小的移动设备正在变得越来越多，各种移动设备之间的界限也逐渐被模糊化。在这种情况下，很难通过&ldquo;桌面版&rdquo;和&ldquo;手机版&rdquo;这样简单粗暴的分类来满足不同设备的需求。例如，面对一个六寸的平板设备，你应该为其适配手机版还是桌面版？</p><p>代码版本增多，维护难度增加。同时维护多套界面加重了开发者的负担。开发者将不得不分别维护多套代码，承担更多的工作量。</p><p>适配方式未必精准。传统做法需要判断不同的浏览器和设备类型，然后适配不同版本的网页，这样的判断很容易出问题。例如下面是在同一台 Android 手机上用 Opera mini 和 <a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a> Lite 打开某网站的情形。</p><p>在这样的情况下，使用自适应的网页设计方式是一种更简单也更有价值的做法。开发者将只需要维护一套代码，代码将访问者所持设备的不同参数自动呈现不同的显示效果，即达到&quot;一次设计，普遍适用&quot;，让同一个网页自动适应不同大小的屏幕，根据屏幕宽度，自动调整布局。这样网站在不同设备上的显示效果将更为灵活，更好地满足不同设备用户的浏览需求。</p><p>开发者可以通过采用 CSS 3 的 Media Query 属性等方式来进行自适应的网络设计。如果需要兼容不支持 CSS 3 的旧版浏览器的话，则可以使用 CSS3-mediaqueries-js 等方式来实现，这一方式甚至可以支持 IE 5 和 Opera 7 等老旧和小众的浏览器。</p><p>5. 注意 iPad 上阅读和点击的不对称</p><p>对于网站来说，iPad 上用户的阅读和点击是不对称不平衡的，因为传统网站上的字体偏小，虽然在 iPad 上可以轻松阅读，但是却不够方便点击。在新一代 iPad 上虽然 DPI 更高，文字阅读起来更加清晰，但是作为点击目标的话还是太小，用户发现率低。因此要避免小的链接，采用大块区域（如图片等）作为点击链接，除了提高发现率外还可以降低用户的误点击率。</p><p>6. 去除 ：hover 伪类</p><p>在 iPad 和其他触摸屏设备上是没有鼠标指针的，因此也就没有 hover事件，CSS 的 ：hover 伪类也就没有用处。但是可以用 Touch 事件来模拟 hover，用点击动作来取代鼠标划过效果，从而实现交互。</p><p>7. 创建主屏幕图标</p><p>在 iPad 用户经常把一些常去的网站的快捷方式添加到主屏幕上以方便访问，如果你的网站没有一个 Icon 的话，系统会自动将网站缩略图作为图标，看起来相当的不&ldquo;友好&rdquo;。那么创建一个主屏幕图标很困难吗？不，非常简单。</p><p>你只需要在你的网站上传一张 PNG 透明图片，并将其设置为网站的 Icon file 属性，不需要做圆角和反光，iPad 会自己会完成，示例如下。</p><p>来源：极客公园投稿 <a target="_blank" href="http://www.geekpark.net/read/view/158729">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="网站开发适配iPad的7大技巧" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4384"></span><a href="javascript:commYea(4384);" id="dig4384">顶一下 ▲</a>(<span id="sdig4384"><Script language="javascript" type="text/javascript">showDig("4384");</script></span>) &nbsp; <a href="javascript:commNay(4384);" id="down4384">踩一下 ▼</a>(<span id="sdown4384"><Script language="javascript" type="text/javascript">showDown("4384");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4383.html" title="美团和大众点评合作的主要问题">美团和大众点评合作的主要问题</a></div><div class="next_content">下一篇 » <a href="/archives/4385.html" title="iPhone手机安全指南">iPhone手机安全指南</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/4359.html">然而大部分期权并没有什么用</a></p><p class="mutualitylist"><a href="/archives/4233.html">这些年，这些挖掘机算法，这些反思</a></p><p class="mutualitylist"><a href="/archives/4223.html">谷歌推出全新Android开发框架Sky让App更流畅</a></p><p class="mutualitylist"><a href="/archives/4142.html">Google宣布淘汰SPDY</a></p><p class="mutualitylist"><a href="/archives/3925.html">打造有风格的团队</a></p><p class="mutualitylist"><a href="/archives/3806.html">关于Nginx支持.htaccess的分析</a></p><p class="mutualitylist"><a href="/archives/3805.html">手机软件开发者的系统选择</a></p><p class="mutualitylist"><a href="/archives/3744.html">IMDB评分排名算法</a></p><p class="mutualitylist"><a href="/archives/3736.html">全栈工程师就是一棵歪脖子树</a></p><p class="mutualitylist"><a href="/archives/3731.html">全栈工程师到底有什么用</a></p><p class="mutualitylist"><a href="/archives/3685.html">程序员浪费生命的几种方式</a></p><p class="mutualitylist"><a href="/archives/3627.html">程序开发使用地图API时需注意的问题</a></p><p class="mutualitylist"><a href="/archives/3435.html">良好的源代码控制管理十戒</a></p><p class="mutualitylist"><a href="/archives/3422.html">巧用CSS文件愚人节恶搞</a></p><p class="mutualitylist"><a href="/archives/3421.html">程序员追求的是什么？</a></p><p class="mutualitylist"><a href="/archives/3396.html">产品经理类产品的探索之路</a></p><p class="mutualitylist"><a href="/archives/3374.html">沃尔玛实验室开源项目一览</a></p><p class="mutualitylist"><a href="/archives/3372.html">用于展现图表的50种JavaScript库</a></p><p class="mutualitylist"><a href="/archives/3371.html">12306反制浏览器被指“傻大黑粗”</a></p><p class="mutualitylist"><a href="/archives/3370.html">12306订票助手插件拖垮GitHub事件始末</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

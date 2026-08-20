@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2867.html"/>
+	<title>开发者应对iOS 5限制本地存储的非官方指南-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>开发者应对iOS 5限制本地存储的非官方指南</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2867.html" rel="bookmark">开发者应对iOS 5限制本地存储的非官方指南</a></h1>
+	<div class="post-meta">
+		2011-10-29 22:36:30 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 15 | 
+		浏览: <span class="AddView" id="spn2867" data-id="2867"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/IOS.html" rel="tag"><img src="/logo/IOS.gif" alt="苹果系统" class="thumb" width="80" height="80" /></a><p>众所周知，由于 iOS 5 新增的机制，在设备容量空间不足的情况下系统会自动清除高速缓存文件或临时目录的内容，迫使开发者将应用存储的数据最小化。</p><p sizset="8" sizcache="1">在 iOS 5 系统中，那些涉及到离线工作、需要用到本地存储的应用都会有相同的问题。很多的果迷热衷于使用这一类应用，尤其是在那些没有 Wi-Fi 网络的地方(地铁、飞机)。如果某一天你安装了一些很大的应用或者同步了大量的图书、音乐，这时候系统的自动清除机制被激活，随之而来的问题就是，你在地铁里、飞机上想要打发时间的时候突然发现找不到之前下载好的一些离线数据了。(如果对此还不清楚，可以看看<a target="_blank" href="/archives/2865.html">这篇文章</a>。)</p><p>苹果设计这个机制的初衷是为了保护好的用户体验，但是现在看来，苹果设计师还没有考虑得万分周全（或者是用户和开发者暂时还不能接受这种&ldquo;激进&rdquo;做法）。</p><p>作为开发者，现在要让苹果提供另外一个可以存储离线下载数据的文件夹已经不可能了，但是假如有足够的开发者向苹果表明他们确实需要这样一个文件夹来存储一些数据，我想在将来的版本当中，这种欠妥当情况也许会出现改善。</p><p style="text-align: center"><img alt="开发者应对iOS 5限制本地存储的非官方指南" src="/upload/2867_1.jpg" /></p><h3>开发者应该怎么做？</h3><p><strong>如果 APP 目前是把文件存储在 Documents 文件夹</strong></p><p>现在它在 iOS 5 中运行是不会有任何问题出现的，只是用户可能会抱怨 iCloud 备份了太多数据，浪费时间和存储空间。</p><p>但是当你的应用下次更新时，很可能会被苹果应用审核团队以在 Documents 文件夹存储太多数据为由拒绝，这绝对会是让你头疼的事情。</p><p><strong>如果 APP 目前已经(或打算)把文件存储在 Caches 目录</strong></p><p>请确保你的应用能漂亮的处理任何存储在 Caches 目录里的文件(被)消失的情况，一种解决这个问题的办法是创建一份应用存储在 Caches 目录里的文件的 URL(统一资源定位符) 列表。</p><p>显然开发者要把这个列表文件存储在一个更持久的不同地方。可以在应用启动时检查一下列表中的文件是否还呆在那里。如果发现有任何文件丢失，可以弹出提示框告知用户这个情况，然后询问是否重新下载。当然如果设备是离线状态，你的任何道歉和解释都将被认为是白痴行为。</p><p>要考虑到实际情况可能更复杂，比如有时候只有部分数据仍然有效，你需要决定怎么和多少提示需要显示。</p><p><strong>迁移现有的数据</strong></p><p>如果你打算更新应用，把数据存储在 Caches 目录里，以适应苹果 iOS 5/iCloud 的新规则，那么你可能会需要把原来存储在 Documents 目录里面的文件迁移到 Caches 目录。可以肯定，Apple 的应用审核团队不会对此进行测试，因为他们不会有你旧版本存储有数据的应用，所以，选择迁移数据可能是个正确的选择。</p><p>记住不要在应用启动时在主线程里面做大量数据迁移的工作，因为这可能会引起&ldquo;启动时间看门狗&rdquo;的注意，并被它终结掉。</p><p><strong>提早警告用户</strong></p><p>当应用运行时，你可以经过用户设备存储空间不足，这种警告并不会改变文件被清除的命运，但至少可以让更多的人知道这个问题的存在，从而引起苹果的注意。</p><p><strong>让苹果知道这是个大问题</strong></p><p>向苹果相关人员<a href="http://developer.apple.com/bugreporter/">提交漏洞报告</a>，或者疯狂的在<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>、微博、博客里面抱怨，或者像中国的网店主一样到淘宝公司门口举牌抗议，更可以学习华尔街事件的做法（不建议）。</p><h3>用户应该怎么做？</h3><p>知道现在，存储了大量数据的应用在备份时都是个大麻烦，因为 iTunes 备份进程不得不运行很长一段时间，特别是我们确实有那么多有用的数据需要备份的时候。</p><p>在 iCloud 备份过程中，用户可能不愿意使用免费的 5 GB 标配空间来备份他们认为不重要的数据（当然更不愿意付费购买额外空间），这是用户可以设置关闭某个应用的 iCloud 备份。设置的具体路径在：</p><p style="padding-left: 30px; background-color: #f5f5f5"><code><em><font face="Consolas">iCloud &gt; Storage &amp; Backup &gt; Manage Storage &gt; Backups </font></em></code></p><p>根据上面的路径进入设置界面，可以选择 开启/关闭 每个应用的 iCloud 备份，并不是每一个用户都会知道有这么个设置功能，所以可以在程序帮助文档、支持邮件中说明，或者，还是用老办法，弹出一个漂亮的提示框，告知用户这一切。当然，这好像是苹果应该做的事情。</p><p>最后，想说的是，苹果推出了新机制，大部分总是以用户体验更好为初衷的，但是限制本地存储的新机制或许对部分用户和开发者都存在欠妥的地方，本文只是应对 iOS 5 限制本地存储的非官方指南，希望文中没有提供有害的建议，仅供参考。</p><p>原文作者：Our4.org，<a target="_blank" href="http://our4.org/276.html">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/IOS.jpg" alt="开发者应对iOS 5限制本地存储的非官方指南" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2867"></span><a href="javascript:commYea(2867);" id="dig2867">顶一下 ▲</a>(<span id="sdig2867"><Script language="javascript" type="text/javascript">showDig("2867");</script></span>) &nbsp; <a href="javascript:commNay(2867);" id="down2867">踩一下 ▼</a>(<span id="sdown2867"><Script language="javascript" type="text/javascript">showDown("2867");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2866.html" title="谷歌地图API即将收费">谷歌地图API即将收费</a></div><div class="next_content">下一篇 » <a href="/archives/2868.html" title="当当网流量变现，对电商行业有何启示？">当当网流量变现，对电商行业有何启示？</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2865.html">苹果iOS 5限制应用本地存储问题</a></p><p class="mutualitylist"><a href="/archives/2859.html">苹果iOS 5的八大缺陷</a></p><p class="mutualitylist"><a href="/archives/2711.html">中国成仅次于美国的第二大iOS应用消费市场</a></p><p class="mutualitylist"><a href="/archives/2692.html">苹果发布全新Mac OS、iOS 5和iCloud</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

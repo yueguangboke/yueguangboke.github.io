@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2246.html"/>
+	<title>从DTD网络流量谈W3C管理员的郁闷、惆怅和纠结-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>从DTD网络流量谈W3C管理员的郁闷、惆怅和纠结</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2246.html" rel="bookmark">从DTD网络流量谈W3C管理员的郁闷、惆怅和纠结</a></h1>
+	<div class="post-meta">
+		2010-7-17 23:43:41 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 27 | 
+		浏览: <span class="AddView" id="spn2246" data-id="2246"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>DOCTYPE是Document Type（文档类型）的简写，在页面中，用来指定页面所使用的XHTML（或者HTML）的版本。DOCTYPE声明的写法遵循一定的规则，它指出阅读程序应该用什么规则集来解释文档中的标记。HTML xmlns属性是在文档中定义一个或多个可供选择的命名空间。该属性可以放置在文档内任何元素的开始标签中，它定义了一个命名空间，浏览器会将此命名空间用于该属性所在元素内的所有内容。</p><p>当我们在查看网页源文件的时候，在源文件顶部往往都能看到：</p><p>&lt;!DOCTYPE html PUBLIC &ldquo;-//W3C//DTD XHTML 1.0 Strict//EN&rdquo; &rdquo;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&rdquo;&gt;</p><p>或者</p><p>&lt;html xmlns=&rdquo;http://www.w3.org/1999/xhtml&rdquo; &hellip;&gt;</p><p>如上面的代码，都含有指向W3C网站服务器的关于HTML DTDs 和 命名空间相关的网页资源。W3C管理员的纠结正源于此。</p><p>我们注意到上面的刷蓝标签，其实并不是HTML中的超链接，他们是仅仅用来作为确认的URIs，这是以机器能读懂的方式告诉计算机&ldquo;这个文档是HTML&rdquo;。并且，通常计算机软件程序并不需要去抓取这些URI资源，并且一定不需要反反复复地去抓取这些资源！然而，W3C服务器却接收到&ldquo;令人震惊&rdquo;的&ldquo;出奇地大&rdquo;的对这些资源的请求：每天收到超过130，000，000次的请求，占用宽带使用350Mbps，仅仅是抓取几年未变样的资源文件。</p><p>这时，W3C管理员声音很哽咽，感觉得出这事对他影响很大，鬼斧很认真地接着听她讲下去，了解到：</p><p>这么大的网站访问请求，有绝大多数来自处理各种标记（HTML， XML， XSLT， SVG）的系统，如在验证DTD或schema的处理期间发起的请求。</p><p>要处理这么大的请求给W3C带来了昂贵的成本和代价：服务器！带宽！还要花费大量人力来分析这些请求数据、限制或阻止一些大量重复的请求。&ldquo;很郁闷，我们宁愿用这些钱去做其他事情！比如改进、完善W3C和WEB社区的软件和服务。而不是这样被耗这么多钱！&rdquo;W3C管理员显然有点小怒了。</p><p>&ldquo;前不久，我们加了一个系统来监控这些请求，并对一些泛滥的请求直接发送503错误，并根据具体的垃圾请求形式作为对应的响应信息返回。我们希望是这些个对W3C发起大量请求的软件的开发者或部署管理员能够注意到这个错误，并且对他们的软件做一些必要的修正。&rdquo;W3C管理员继续哽咽地讲到。听到这里我拍拍她的肩膀说&ldquo;i am sorry！&rdquo;表示同情。</p><p>&ldquo;但是这些系统大多数依旧每日无数次地请求相同的DTDs，即使我们夜以继日给它们返回503错误也毫无效果，为啥这些系统这么讨厌！他们根本就不关系这些请求！（对于一些请求源头，我们最后在TCP层对其IP进行了阻止。）&rdquo;</p><p>&ldquo;我们也鉴定出了一些导致对W3C大量请求的软件，并且联系了他们的负责人，告诉他们在对W3C进行DDos攻击。一些进行积极相应并及时修正了这些问题。不幸的是，有很多却拖延很长时间不给解决！还有大量的请求无法断定来源！&rdquo;W3C管理员眼睛里夹杂着丝丝无奈。</p><p>&ldquo;我多么希望这个问题可以一劳永逸地解决，做梦都想！这也是为了部署在W3C网站的所有软件着想。所以我给那些软件作者一些建议，希望他们不要再无休止地折磨W3C&rdquo;：</p><p>1、关注您的HTTP响应码。</p><p>编程的一个好习惯是检查您的响应码，否则当一些错误发生的时候您压根就不知道。</p><p>2、善用 HTTP caching/expiry 信息。</p><p>W3C网站的资源是以友好缓存方式存储的。我们的DTDs 和 schemata都明确定义过期时间为90天以上，所以压根没必要一天不停息地请求。（有一个公司的许多IP地址从W3C请求DTD，一个IP地址每天请求竟然超过10万次。）</p><p>3、如果您的软件实现采用HTTP，可允许超速缓存。</p><p>4、负责关注您对外出的网络流量。</p><p>5、在实际需要的时候才抓取外部内容。</p><p>最后，W3C管理员抛出一个问题：&ldquo;W3C可以忽略这个问题，响应所有的用户请求吗？&rdquo;</p><p>假如有一天，我们目前处理10亿多DTD请求，变为100亿次的DTD请求该会怎么办？</p><p>总的来说，对于W3C过度的DTD网络流量（W3C&lsquo;s Excessive DTD Traffic ）这个事，&ldquo;W3C管理员很生气，郁闷、惆怅、纠结&rdquo;，这比墨西哥湾漏油更让她寝食难安。</p><p>网林鬼斧最后给W3C管理员了三点建议，希望对其有所帮助：</p><p>1、首先得让大家知道这个事情、逐渐重视这个事，这一点阅网博客带头给大家进行国内首次的书面介绍。</p><p>2、在中国做一些更明了的使用手册或帮助手册，如果中文帮助做好，错误的时间、错误的请求是可以最大程度避免的。在做一份关于DTD使用经验更加简单明了方面，阅网博客愿意帮助W3C共同推进此事。（当然国外也是。）</p><p>3、希望W3C管理员注意身体，该吃吃该喝喝，有事别往心里隔，积极处理此事，但是别因此日渐憔悴，多出去转转、多陪陪家人：） 哈哈，有点扯远了。</p><p>最后，希望W3C管理员头疼的这个问题早日得到解决。</p><p>来源：阅网博客投稿，<a target="_blank" href="http://www.6e6.org/post/32.html">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="从DTD网络流量谈W3C管理员的郁闷、惆怅和纠结" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2246"></span><a href="javascript:commYea(2246);" id="dig2246">顶一下 ▲</a>(<span id="sdig2246"><Script language="javascript" type="text/javascript">showDig("2246");</script></span>) &nbsp; <a href="javascript:commNay(2246);" id="down2246">踩一下 ▼</a>(<span id="sdown2246"><Script language="javascript" type="text/javascript">showDown("2246");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2245.html" title="谷歌地图惊现哀怨女鬼脸">谷歌地图惊现哀怨女鬼脸</a></div><div class="next_content">下一篇 » <a href="/archives/2247.html" title="独立博客的思考">独立博客的思考</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/1971.html">Google网站性能优化工具Page Speed</a></p><p class="mutualitylist"><a href="/archives/1967.html">支持UCenter的PHP建站程序一览</a></p><p class="mutualitylist"><a href="/archives/1958.html">Alexa推出中文网站影响了谁？</a></p><p class="mutualitylist"><a href="/archives/1912.html">CentOS操作系统安装教程</a></p><p class="mutualitylist"><a href="/archives/1908.html">LAMP网站架构方案分析</a></p><p class="mutualitylist"><a href="/archives/1888.html">Alexa排名权威性和算法要素解析</a></p><p class="mutualitylist"><a href="/archives/1886.html">免费开源IIS过滤器</a></p><p class="mutualitylist"><a href="/archives/1854.html">国内ASP开源建站系统一览</a></p><p class="mutualitylist"><a href="/archives/1853.html">国内PHP开源建站程序一览</a></p><p class="mutualitylist"><a href="/archives/1852.html">国外优秀开源PHP建站程序一览</a></p><p class="mutualitylist"><a href="/archives/1846.html">IIS下PHP的ISAPI和FastCGI比较</a></p><p class="mutualitylist"><a href="/archives/1833.html">安全迁移网站的技巧</a></p><p class="mutualitylist"><a href="/archives/1752.html">IIS网站服务器性能优化指南</a></p><p class="mutualitylist"><a href="/archives/1716.html">MySQL常用维护管理工具</a></p><p class="mutualitylist"><a href="/archives/1547.html">网站防治垃圾留言的策略</a></p><p class="mutualitylist"><a href="/archives/1534.html">使用Google网站管理员工具自定义404页面</a></p><p class="mutualitylist"><a href="/archives/1481.html">Google推出404页面工具</a></p><p class="mutualitylist"><a href="/archives/1311.html">Alexa更新网站排名算法</a></p><p class="mutualitylist"><a href="/archives/1278.html">十大网站管理员的服务器工具软件</a></p><p class="mutualitylist"><a href="/archives/1276.html">我的博客服务器托管历史</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

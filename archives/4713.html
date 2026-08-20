@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4713.html"/>
+	<title>iOS超级大漏洞的来龙去脉-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate5 auth11">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/tech.html" title="查看 业界动态 中的全部文章">业界动态</a> &raquo; <span>iOS超级大漏洞的来龙去脉</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4713.html" rel="bookmark">iOS超级大漏洞的来龙去脉</a></h1>
+	<div class="post-meta">
+		2016-8-28 21:39:6 | 
+		作者: 雷锋 | 
+		分类: <a href="/cat/tech.html" title="业界动态" rel="category tag">业界动态</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn4713" data-id="4713"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/IOS.html" rel="tag"><img src="/logo/IOS.gif" alt="苹果系统" class="thumb" width="80" height="80" /></a><p>在 8 月 10 日的早晨，来自阿联酋的 46 岁人权活动家 Ahmed Mansoor 在自己的 iPhone 上，看到了一条来自陌生电话号码的奇怪短信。这条短信的内容很唬人，写着&ldquo;阿联酋国家监狱里的虐囚新消息&rdquo;，还配上了一条链接。在之前的斗争中，阿联酋政府就使用 FinFisher 和 Hacking Team 等公司的商业间谍软件对 Ahmed Mansoor 实施过黑客行动。</p><p>因此，Ahmed Mansoor 对这条短信产生了怀疑，没有点击链接，而是把短信转发给了在多伦多大学蒙克全球事务学院公民实验室（Citizen Lab）工作的 Bill Marczak.</p><p>结果显示，这条短信的确有问题，其附带的链接指向的是一个成熟的恶意软件。这个恶意软件利用了苹果 iOS 操作系统三个不为人知的漏洞，从而可以让黑客完全控制 Ahmed Mansoor 的 iPhone.这就是公民实验室和移动安全公司 Lookout 于本周四发布的联合报告的结论。</p><p>这是首次有人公开披露这类攻击。在这之前，还从未有人见过同时利用三个未知漏洞（又称零日漏洞）来试图控制 iPhone.用于此次攻击的工具和技术差不多算得上是给 iPhone 进行远程越狱，价值更是高达百万美元。在这些研究人员们警告苹果后，苹果很快在周四发布了更新来修复这些漏洞。</p><p>问题是：谁策划了这次攻击，他们用了哪些技术来实现？</p><p>研究人员们发现，提供此次攻击用到的间谍软件和零日漏洞的是一家不知名的以色列监控公司 NSO Group.在 Lookout 负责研究的副总裁 Mike Murray 看来，NSO Group &ldquo;基本上就是网络攻击军火商&rdquo;。</p><p>公民实验室和 Lookout 的研究人员们对这一前所未见的恶意软件感到震惊。</p><p>Mike Murray 表示：&ldquo;之前从未有人发现过这种恶意软件，基本上只需在 iPhone 上点击一下链接就能越狱。它是我们从业以来见过的最成熟的网络间谍软件。&rdquo;</p><p>自 2010 年创办以来，NSO 就逐渐树立了为政府提供监控手机的成熟恶意软件的名声。但在此之前，对 NSO 工具的使用从未出现在任何政府文件上。NSO 宣称，其产品极其隐蔽，就像&ldquo;幽灵&rdquo;一样。NSO 本身也像&ldquo;幽灵&rdquo;一样，没有官网，也几乎不接受采访或对报道置评。但还是有一些 NSO 的信息泄露了出来，包括其在 2014 年获得了一家美国风险投资公司 1.2 亿美元的投资，以及估值达到了 10 亿美元。</p><p>NSO 的恶意软件 Pegasus 旨在悄无声息地感染 iPhone，并能窃取、窃听被感染 iPhone 中的所有数据和通讯。</p><p>Mike Murray 解释道：&ldquo;Pegasus 会窃取 iPhone 中的所有信息，窃听所有通话，窃取所有短信、电子邮件、联系人。它还会给 iPhone 上的所有通讯机制添加后门。它能窃取 <a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a>、<a href="/tag/Facebook.html" title="Facebook"  Target="_blank" >Facebook</a>、Skype、Whatsapp、Viber、微信、 Telegram 等应用中的所有信息。&rdquo;</p><p>在 Mike Murray 和 Lookout 员工的帮助下，公民实验室的 Bill Marczak 和 John Scott-Railton 先在一台测试 iPhone 上点击了链接，让它感染 Pegasus，以研究 Pegasus 的具体用途。</p><p>此次针对 Ahmed Mansoor 的攻击，以及公民实验室追踪到的另一次攻击显示，著名的 Hacking Team 和 FinFisher 并不是个例，还有其他公司加入到了向政府提供黑客服务这一日益壮大的市场中来。</p><p>NSO 是如何被抓住现形的</p><p>在今年 5 月，公民实验室发现了一个代号 Stealth Falcon 的成熟黑客团体。虽然无法证实，但他们怀疑 Stealth Falcon 和阿联酋政府有关联，主要针对阿联酋国内外的异见人士。</p><p>通过对 Stealth Falcon 的研究，公民实验室理出了这一团体的大部分基础设施，包括用来窃取数据的服务器和域名。但公民实验室无法找到这些黑客所使用的恶意软件样本。从 8 月 10 日 Ahmed Mansoor 给 Bill Marczak 转发短信的那一刻起，这一切都改变了。</p><p>在 Bill Marczak 和 John Scott-Railton 研究了 Pegasus 后，他们追踪到了与 Pegasus 通讯的服务器及 IP 地址，并匹配到 Stealth Falcon 的基础设施中也包含这一服务器和 IP 地址。随后，他们发现一位 NSO 员工注册的域名也指向同一 IP 地址。</p><p>更重要的是，Pegasus 的开发者在 Pegasus 中留下了一个暴露了很多信息的字符串&ldquo;PegasusProtocol&rdquo;（Pegasus 协议），这明显指出了这一 NSO 间谍软件的代号。研究人员们还发现了更多和 NSO 及其客户基础设施有关联的域名，其中一些显然是被设计用来作为钓鱼网站，对象是红十字会等人权组织和新闻媒体组织的工作人员。</p><p>Pegasus 的发现让研究人员们第一次能够真正了解 NSO 出品的恶意软件的功能。自 2010 年创办以来，NSO 已然成为业内传奇，而公众对其基本一无所知。NSO 的高管们极少接受媒体采访，有关 NSO 的报道中也充斥着模糊的描述和未经证实的谣言。</p><p>NSO 联合创始人 Omri Lavie 在 2013 年对《防务新闻》表示：&ldquo;我们完全就是幽灵。&rdquo;</p><p>《华尔街日报》在 2014 年的一篇简短报道中称，墨西哥政府已经采购了 NSO 的产品，甚至连美国中央情报局都表达了购买意向。报道还称，NSO 的间谍软件行销全球。</p><p>现在 NSO 的间谍软件遭到了曝光，使用的零日漏洞也得到了修补，它应该再也不能宣称自己是&ldquo;幽灵&rdquo;了吧，虽然 NSO 可能还有其他零日漏洞和工具在手上。这也是研究人员们不指望自己的报告和苹果的补丁能阻止 NSO 很长时间的原因。</p><p>Mike Murray 表示道：&ldquo;单是给这些漏洞打补丁不可能让 NSO 破产。&rdquo;</p><p>更严重的是，Pegasus 的设定可以一路往下感染到 iOS 7，也就是说 NSO 很可能在 iPhone 5 时就能入侵 iPhone 了。</p><p>NSO 的发言人 Zamir Dahbash 在一份声明中表示：&ldquo;NSO 的使命是为获得授权的政府提供帮助他们打击恐怖活动和犯罪的技术，以便让世界变得更美好。&rdquo;</p><p>&ldquo;NSO 只对获得授权的政府机构销售，完全符合严格的出口管制法律和法规。另外，NSO 并不负责运营售出的系统。我们是一家严格意义上的技术公司。购买我们产品的客户必须保证合法地使用我们的工具。我们还在合同中专门列出，我们的产品只能用于预防和调查犯罪。&rdquo;</p><p>苹果的反应</p><p>公民实验室和 Lookout 的研究人员们在发现这些零日漏洞（代号 Trident）后，立刻联系了苹果公司。苹果公司用了 10 天时间来开发和发布补丁。现在这一补丁已经加入到 iOS 9.3.5 的更新包中，所有 iPhone 用户都应该尽快下载和安装这一更新。</p><p>苹果发言人在一份声明中表示：&ldquo;我们在知道这些漏洞后立刻进行了修复，并在 iOS 9.3.5 更新中加入了这些补丁。&rdquo;但这位发言人拒绝透露更多细节。</p><p><a href="/tag/Security.html" title="网络安全"  Target="_blank" >网络安全</a>公司 Trail Of Bits 首席执行官 Dan Guido 拥有丰富的 iOS 安全经验，他表示这些极少出现在公众视野中的攻击并不出人意料。不过他表示，尽管现在又发现了三个零日漏洞，但 iPhone 还是要比安卓手机安全得多。</p><p>Guido 说道：&ldquo;和其他厂商相比，苹果极大地提高了入侵苹果设备的成本。但这一事件也显示了需要有更好地针对 iOS 的入侵检测手段。iOS 仍然是市面上最安全的消费设备。问题是，只有当你拥有怀疑精神以及在公民实验室有朋友，才有可能知道自己的 iPhone 中是否安装了恶意软件。&rdquo;</p><p>其他受害者</p><p>研究人员们还没能找到其他 Pegasus 间谍软件的样本。但通过搜索类似链接和与此次攻击以及 Stealth Falcon 有关的域名，他们发现了一条疑似针对肯尼亚不知名受害者的推文，还有一次针对墨西哥调查记者 Rafael Cabrera 的攻击。</p><p>Rafael Cabrera 去年第一次受到了 NSO 恶意软件的针对性攻击，在今年 5 月又受到了第二次攻击。在第二次攻击中，黑客们试图引诱他点击一系列消息中的链接，如提供政府腐败线索、话费消费 500 美元的警告短信乃至号称是他妻子出轨的视频链接。Rafael Cabrera 表示，他没有点击上述任何链接。</p><p>他表示道：&ldquo;很明显，他们想要我点击链接，有点丧心病狂的感觉。&rdquo;</p><p>Rafael Cabrera 并不想猜测谁是幕后黑手，政府或其他人都有可能。墨西哥政府可能是 NSO 的客户，但不清楚是否真的有警察或情报部门使用 NSO 的恶意软件。墨西哥也是 Hacking Team 的最大客户，一些墨西哥政府部门被指控使用这些间谍软件来针对记者和异见人士，而非犯罪分子。</p><p>最终，Rafael Cabrera 和 Ahmed Mansoor 的 iPhone 都没有被黑，因为他们识破了黑客们的伎俩。当然，也可以说他们幸运。因为此前有过被政府黑客入侵的经历，他们比一般人要更警觉。</p><p>但公民实验室的 Bill Marczak 表示，他俩的遭遇可能预示着未来的风险。如果政府想要黑客工具而且愿意支付高价钱，那么 Hacking Team 和 NSO 这些公司仍然会继续提供它们。公民实验室在过去还记录了数起政府利用间谍软件对异见人士、记者和人权工作者发起的黑客攻击，工具和 NSO 制造的类似。尽管公民实验室公开了这些攻击并发出警告，但还是不断有类似的新攻击出现。有时候攻击是由同一政府发起的，甚至针对的是同一目标。</p><p>他表示道：&ldquo;根本没有什么激励，能让 NSO 这些公司不向阿联酋这种惯犯出售黑客工具。&rdquo;</p><p>这也预示着间谍软件行业一个新巨头的崛起，在 FinFisher 和 Hacking Team 遭到严重黑客攻击后，NSO 有着很大的增长空间。</p><p>而如果 Ahmed Mansoor 在 8 月 10 日点击了那个链接，这些事情可能永远也不会被人发现。</p><p>稿源：雷锋网</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/IOS.jpg" alt="iOS超级大漏洞的来龙去脉" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4713"></span><a href="javascript:commYea(4713);" id="dig4713">顶一下 ▲</a>(<span id="sdig4713"><Script language="javascript" type="text/javascript">showDig("4713");</script></span>) &nbsp; <a href="javascript:commNay(4713);" id="down4713">踩一下 ▼</a>(<span id="sdown4713"><Script language="javascript" type="text/javascript">showDown("4713");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4712.html" title="电商代运营亦产品为王">电商代运营亦产品为王</a></div><div class="next_content">下一篇 » <a href="/archives/4714.html" title="谈谈互联网推广：从了解用户开始">谈谈互联网推广：从了解用户开始</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/4711.html">苹果iOS出现重大漏洞</a></p><p class="mutualitylist"><a href="/archives/4553.html">iOS奇葩BUG：蓝色小圆点</a></p><p class="mutualitylist"><a href="/archives/4361.html">XcodeGhost病毒波及大量主流iOS应用</a></p><p class="mutualitylist"><a href="/archives/4360.html">苹果正式发布iOS 9</a></p><p class="mutualitylist"><a href="/archives/4171.html">苹果iOS 8.2引用户抱怨</a></p><p class="mutualitylist"><a href="/archives/3909.html">从HealthKit看iOS发展趋势</a></p><p class="mutualitylist"><a href="/archives/3723.html">越狱对iOS 7份额影响很小</a></p><p class="mutualitylist"><a href="/archives/3701.html">警惕iOS 7越狱工具</a></p><p class="mutualitylist"><a href="/archives/3606.html">iOS 7省电技巧</a></p><p class="mutualitylist"><a href="/archives/3499.html">iOS 生态系统发展之路——苹果辉煌不再了吗？</a></p><p class="mutualitylist"><a href="/archives/3497.html">iOS 生态系统发展之路——iPhone 与第三方应用程序</a></p><p class="mutualitylist"><a href="/archives/3401.html">iOS完美越狱是福利还是阴谋</a></p><p class="mutualitylist"><a href="/archives/3360.html">苹果正式发布iOS 6.1</a></p><p class="mutualitylist"><a href="/archives/3152.html">中国iOS开发者出走海外</a></p><p class="mutualitylist"><a href="/archives/2920.html">苹果公布2011年度最佳iOS应用 </a></p><p class="mutualitylist"><a href="/archives/2892.html">十大iOS塔防游戏评点</a></p><p class="mutualitylist"><a href="/archives/2883.html">苹果iOS游戏类应用不应该独立</a></p><p class="mutualitylist"><a href="/archives/2867.html">开发者应对iOS 5限制本地存储的非官方指南</a></p><p class="mutualitylist"><a href="/archives/2865.html">苹果iOS 5限制应用本地存储问题</a></p><p class="mutualitylist"><a href="/archives/2859.html">苹果iOS 5的八大缺陷</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

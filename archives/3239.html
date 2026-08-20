@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3239.html"/>
+	<title>金字塔算法模型初识-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate8 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/seo.html" title="查看 搜索引擎 中的全部文章">搜索引擎</a> &raquo; <span>金字塔算法模型初识</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3239.html" rel="bookmark">金字塔算法模型初识</a></h1>
+	<div class="post-meta">
+		2012-10-3 17:39:19 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/seo.html" title="搜索引擎" rel="category tag">搜索引擎</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn3239" data-id="3239"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Seo.html" rel="tag"><img src="/logo/Seo.gif" alt="搜索优化" class="thumb" width="80" height="80" /></a><p>Web3.0的到来后基于互联网营销模式层出不穷，seo就是其中一块炙手可热的领域。本人对百度算法跟踪研究已近5年的时间，我主要从事的是算法逆向，也就是通过一些相关指标来判断百度排名规则。</p><p>在叙述百度算法之前我先讲一下我在前不久之前看到百度搜索研发部博客中的一篇文章《浅谈网页搜索排序中的投票模型》里面叙述了美国的选举制度，这其实就是百度的其中一种投票体系的原型，我是这么认为的。用一张简单的图来阐述一下整个过程：</p><p style="text-align: center"><img alt="金字塔算法模型初识" src="/upload/3239_1.jpg" /></p><p>看了上图我相信大家都应该明白，排序的残产生应该是在&ldquo;总数据库&rdquo;和百度服务器之间发生的变化，百度蜘蛛会采集很多内容回来，全部存放入总服务器，总服务器通过规则判断筛选后最终在web服务器上放出页面给出排序，其实就是在&ldquo;总数据库&rdquo;发生了一些列的算法变化。当然我这边阐述的内容中的各个服务器和名称全部是我个人定义，但基本的逻辑应该是如此的，按照数据分析的原则：数据收集&mdash;&mdash;数据处理&mdash;&mdash;数据分析仪&mdash;&mdash;数据展现，其实就很能概括百度这一行为。</p><p>虽然百度一方面做着推广竞价，一方面又希望给广大用户一个良好的检索体验，可能很多seoer又恨又爱，但是根据官方的各种文本我们还是姑且相信百度搜索研发部门还是希望给用户一个好的检索体验。</p><p>说到了这里我不得不用一张图来给大家展示一下，什么是金字塔模型：</p><p style="text-align: center"><img alt="金字塔算法模型初识" src="/upload/3239_2.jpg" /></p><p>看了这图后，可能有限人应该会有质疑，这很像漏斗原理，对！没错，就跟漏斗原理很像，但是没用金字塔来的励志，大家都希望能够获得金字塔最高峰。</p><p>排序筛选过程又是如何的呢？我们引用一下百度搜索研发部文章内的一段内容：</p><p>&ldquo;系统里有n个网页，有m个特征（页面质量、页面内容丰富度、页面超链、文本相关性等）对n个网页有不同的打分，如何根据这些特征的&rdquo;投票&ldquo;，选出最适合放在第一位的网页呢？</p><p>从选举的例子中，我们可以得到的几个启示：</p><p>1. 设计算法时，要避免出现&ldquo;赢者通吃&rdquo;带来的信息丢失问题。</p><p>2. 不要因为某几个特征特别好，就把某个网页排到最前，或者因为某几个特征特别差，就把某个网页抛弃。</p><p>3. 最合适放在首位的网页不一定是在每个特征上都最好，而应该是能够兼顾所有特征，综合表现最好的那个。</p><p>4. 搜索引擎使用者对搜索结果的点击行为，可以看成是对搜索结果进行的&ldquo;投票&rdquo;，这样的&ldquo;投票&rdquo;信息的使用方式，也要注意考虑是否会带来选举过程中出现的种种不合理。</p><p>以上提到的种种选举方案，仅仅是对&ldquo;多候选人单职位的&rdquo;的情况进行讨论，而搜索引擎面对的问题，则更类似于&ldquo;多候选人排序&rdquo;的情况，也即：</p><p>系统里有n个网页，有m个特征（页面质量、页面内容丰富度、页面超链、文本相关性等）对n个网页有不同的打分，如何根据这些特征的&ldquo;投票&rdquo;，决定n个网页的顺序？</p><p>而这个&ldquo;多候选人排序&rdquo;问题，是有一个&ldquo;不可能的民主&rdquo;的理论的，该理论的大意是，&ldquo;合理&rdquo;的民主应该满足3个条件：</p><p>1. 如果选民都认为A比B好，那么最终结果应该也是A比B好</p><p>2. 没有&ldquo;独裁者&rdquo;，也即，不存在这样一个人，无论别人怎么排序，最终结果的排序都和这个人的排序一致</p><p>3. 无关因素独立性，也即，在第一次投票完成后，A排在B前面，现在进行第二次投票，如果所有人都没有改变自己投票中A和B的相对顺序，那最终结果应该也是A在B前面</p><p>而通过数学的证明，可以得出结论：如果某种选举方式满足条件1和3，则必然不满足2，也即必然存在&ldquo;独裁者&rdquo;。</p><p>根据&ldquo;不可能的民主&rdquo;理论，和搜索引擎结合起来看，似乎搜索引擎很难给出一个合理的网页排序，但是搜索引擎和投票又似乎有所不同，有两个角度可以破解</p><p>1. 认为条件3过于强，需要弱化。</p><p>2. 也许在网页排序问题上，真的存在这样一个&ldquo;独裁特征&rdquo;，这个&ldquo;独裁特征&rdquo;从目前看来，最适合的应该就是&ldquo;用户满意度&rdquo;了，按照用户的满意程度来排序网页，就是最合理的网页排序。如何衡量&ldquo;用户满意度&rdquo;呢？这就是我们一直在努力的。&ldquo;</p><p>相信大家阅读了这段内容后应该深有体会，百度算法和选举制有很大的雷同之处。那么我们做为逆向研究的方向是先从数据展现本身研究得出数据分析原则，这个是一项长期计划，因为我们必须对数以亿计的网站进行分析后才可以得出结论，而事实证明百度排序规则中不仅仅只有一条算法规则，会有多重规则。</p><p>前期我也已经开发出一个基于关键词的简单分析程序：</p><p>这个工具主要是辅助作用，之前讨论的选举制度主要针对的外链的有效性，而此工具的主要内容是针对相关性，也就是搜索结果最后的排序规则中的先后排序规则。当然这个工具还是处于毛胚状态，很多指标都还是没有加进去，后期大家可以一起参与这份研究，把一些相对比较重要的指标加进去便于我们的研究更加的完善。</p><p>如果你是纯粹做一个seoer我觉得到这里，你也可以停止阅读这份研究，因为事实证明，你只要获得最后排序的相关算法即可完成工作，通过此工具你已经能够轻松的获得什么样的密度情况下可以优先获得排名。倘若你在做价值数万的关键词，我觉得你可以继续往下看，因为这里就会讲到选举制度中的外链。</p><p>选举制度中的外链其实应该是放在最前面的，因为这是相对比较民主的一次选举，不像上述的内容相关性一样，内容相关性的选举应该是属于百度内部选举制度，是属于第二次选举，而外链选举是属于第一次选举，网站通过外链来证明自己的同时，证明自己被认可。</p><p>说到这里我想到站长很头疼的一个问题，也就是什么样的外链才算是真实有效的？很多seo工作者或多或少应该已经建了不少外链，但是实际效果不得而知。</p><p>但是你通过选举制度，你可以排除以下几类人选：</p><p>1.剥夺政治权益的。进百度黑名单的。</p><p>2.政治地位低下的。此站本身质量低下的。</p><p>3.无选举权的。也就是不在收录范围内的。</p><p>4.与选举无关的。什么叫与选举无关？这里其实包含了这么几个意思，一是说此站内容相关性不高，二是说此站不是真心选举你的，甚至是不认识你。这也是百度近期的回复中多次提及的内容&ldquo;真心推荐&rdquo;。</p><p>如果你已经理解了选举制度，相信到这里你会变的相对比较明朗，但是你要非常的清楚去认识一件事情也就是什么样的选举？选举制度可以一次性全员投票，也可以级级选举。</p><p>所以说对于外链的建设，本身也是一个选举与被选举的规则，百度官方很有可能近期也会放出外链查询工具，告诉你什么外链有用什么外链没用，我也会在下一期的时候给出相应的工具或者是判断方案。</p><p>来源：左倾观测站投稿，<a target="_blank" href="http://www.it54.cn/blog/post/244.html">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Seo.jpg" alt="金字塔算法模型初识" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3239"></span><a href="javascript:commYea(3239);" id="dig3239">顶一下 ▲</a>(<span id="sdig3239"><Script language="javascript" type="text/javascript">showDig("3239");</script></span>) &nbsp; <a href="javascript:commNay(3239);" id="down3239">踩一下 ▼</a>(<span id="sdown3239"><Script language="javascript" type="text/javascript">showDown("3239");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3238.html" title="产品启动页的秘密">产品启动页的秘密</a></div><div class="next_content">下一篇 » <a href="/archives/3240.html" title="那些让人欲罢不能的SEO和Social工具">那些让人欲罢不能的SEO和Social工具</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3186.html">Chrome常用的SEO插件</a></p><p class="mutualitylist"><a href="/archives/3185.html">SEO有没有未来？</a></p><p class="mutualitylist"><a href="/archives/2969.html">从英文维基百科关站看SEO</a></p><p class="mutualitylist"><a href="/archives/2948.html">Google SEO信息年终总结</a></p><p class="mutualitylist"><a href="/archives/2904.html">常用SEO搜索引擎优化工具</a></p><p class="mutualitylist"><a href="/archives/2818.html">白帽SEO为什么更好</a></p><p class="mutualitylist"><a href="/archives/2804.html">如何高效建设网站外部链接</a></p><p class="mutualitylist"><a href="/archives/2792.html">SEO如何做有效的外链</a></p><p class="mutualitylist"><a href="/archives/2718.html">评判外链质量的四个要点</a></p><p class="mutualitylist"><a href="/archives/2520.html">成为高权重网站的技巧</a></p><p class="mutualitylist"><a href="/archives/2519.html">不用SEO也能创建好网站</a></p><p class="mutualitylist"><a href="/archives/2482.html">二十个你必须知道的SEO概念</a></p><p class="mutualitylist"><a href="/archives/2324.html">从信息流动角度看搜索引擎优化SEO</a></p><p class="mutualitylist"><a href="/archives/2213.html">搜索引擎优化和用户体验</a></p><p class="mutualitylist"><a href="/archives/2140.html">别把SEO做成了SEC</a></p><p class="mutualitylist"><a href="/archives/1913.html">网站文章内链的一个思路</a></p><p class="mutualitylist"><a href="/archives/1907.html">影响搜索引擎排名的因素2009版</a></p><p class="mutualitylist"><a href="/archives/1769.html">常用博客SEO优化技巧</a></p><p class="mutualitylist"><a href="/archives/1693.html">谷歌、雅虎、微软推出复制内容规范</a></p><p class="mutualitylist"><a href="/archives/1518.html">博客友情链接的风险和规避</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

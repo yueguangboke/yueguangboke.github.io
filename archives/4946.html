@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4946.html"/>
+	<title>僵尸网络的检测与防御方法-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>僵尸网络的检测与防御方法</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4946.html" rel="bookmark">僵尸网络的检测与防御方法</a></h1>
+	<div class="post-meta">
+		2017-4-17 15:57:48 | 
+		作者: 月光 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn4946" data-id="4946"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Security.html" rel="tag"><img src="/logo/Security.gif" alt="安全" class="thumb" width="80" height="80" /></a><p>僵尸网络（botnet）由一系列被恶意软件感染的主机组成，受到一个被称为僵尸主控机（botmaster）远程控制。僵尸网络可以被用于执行一系列恶意活动，例如分布式拒绝服务攻击、发送垃圾邮件、窃取个人信息、执行分布式计算任务等。</p>
+
+<p>僵尸网络的通信方式主要有中心式、P2P以及混合两种方式，在中心式中，僵尸主机（bot）通过合法的通信信道进行通信，一般使用IRC（Internet RelayChat）的通信方式。当一台主机被感染之后，会与IRC服务器建立连接。botmaster会建立IRC command andcontrol （C&amp;C）信道控制僵尸主机，并实现下发入侵命令以及更新僵尸主机行为等指令。这种中心式的方式存在单点失效的风险，一旦IRC服务器被查出，整个僵尸网络就会失去控制，同时监控从主机到服务器的流量内容，很容易检测出僵尸主机。</p>
+
+<p>因此有新的僵尸网络依据P2P的方式进行通信。这种方式能够避免单点失效的缺陷，因此僵尸网络比较稳健。但是，这种僵尸网络构建成本高、通信的时延高。</p>
+
+<p>由于上述两种组网方式的僵尸网络都存在缺陷，因此出现两者的混合方式。有的僵尸网络还基于HTTP协议进行C&amp;C信号传输，使得这些流量可以绕过传统的防火墙，当这些流量经过加密时，也可以穿透具有DPI功能的设备。因此就需要根据其通信行为将其检测出来。</p>
+
+<p>一个僵尸网络的生存周期包括形成、C&amp;C、攻击、后攻击四个阶段。形成阶段由攻击者入侵有漏洞的主机，并在其上执行恶意程序，使之成为僵尸主机。一旦成为僵尸主机之后，botmaster会通过各种方式与之通信。之后根据botmaster的指令执行攻击行为。后攻击阶段是指botmaster对僵尸网络进行升级更新。</p>
+
+<p>传统的检测僵尸网络的方法一般在形成、攻击阶段，利用僵尸主机存在的行为特征，例如通信的数据内容。一些基于网络流量行为分析的方法可以检测僵尸网络，主要是从通信流量特征的角度去检测的，例如流量的通信周期，这种方法可以检测出一些加密的僵尸主机流量，同时还可以检测出新型的僵尸网络。</p>
+
+<p>僵尸网络是如何控制的？</p>
+
+<p>僵尸网络的核心特征是能够从僵尸牧民那里接收更新的指令。与网络中的每个机器人通信的能力允许攻击者交替攻击向量，更改目标IP地址，终止攻击以及其他自定义操作。僵尸网络设计各不相同，但控制结构可分为两大类：</p>
+
+<p>客户端/服务器僵尸网络模型</p>
+
+<p>客户端/服务器模型模仿传统的远程工作站工作流，其中每台机器连接到中央服务器（或少量集中式服务器）以访问信息。在此模型中，每个机器人将连接到命令和控制中心（CnC）资源，如Web域或IRC通道，以便接收指令。通过使用这些集中式存储库为僵尸网络提供新命令，攻击者只需修改每个僵尸网络从命令中心消耗的源材料，以便更新受感染机器的指令。控制僵尸网络的集中式服务器可以是攻击者拥有和操作的设备，也可以是受感染的设备。</p>
+
+<p>在任何这些客户端/服务器模型中，每个机器人将连接到命令中心资源，如Web域或IRC通道，以便接收指令。通过使用这些集中式存储库为僵尸网络提供新命令，攻击者只需修改每个僵尸网络从命令中心消耗的源材料，以便更新受感染机器的指令。</p>
+
+<p>从有限数量的集中式源向僵尸网络更新指令的简单性是这些机器的漏洞； 为了使用集中式服务器删除僵尸网络，只需要中断服务器。由于此漏洞，僵尸网络恶意软件的创建者已经发展并转向新模型，该模型不易受到单个或几个故障点的干扰。</p>
+
+<p>点对点僵尸网络模型</p>
+
+<p>为了规避客户端/服务器模型的漏洞，最近使用分散的对等文件共享组件设计了僵尸网络。在僵尸网络中嵌入控制结构消除了使用集中式服务器的僵尸网络中存在的单点故障，使缓解工作更加困难。P2P机器人可以是客户端和命令中心，与其相邻节点携手传播数据。</p>
+
+<p>点对点僵尸网络维护一个可信计算机列表，用户可以通过这些计算机提供和接收通信并更新其恶意软件。通过限制机器人连接的其他机器的数量，每个机器人仅暴露给相邻设备，使得更难跟踪并且更难以缓解。缺乏集中式命令服务器使得对等僵尸网络更容易受到僵尸网络创建者以外的其他人的控制。为了防止失去控制，分散的僵尸网络通常是加密的，因此访问受到限制。</p>
+
+<p>总结</p>
+
+<p>通过上述的例子，我们可以知道僵尸网络绝非无药可解的顽疾。应对这一威胁，需要同时从网络和主机两个层面着手，而网络和主机所需采用的产品或技术必须能够覆盖僵尸网络攻击和传播的每一途径，这样既可免受僵尸网络之害，创造良好的内部网络环境，并为净化互联网安全做出一份贡献。</p>
+
+<p>&nbsp;</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Security.jpg" alt="僵尸网络的检测与防御方法" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4946"></span><a href="javascript:commYea(4946);" id="dig4946">顶一下 ▲</a>(<span id="sdig4946"><Script language="javascript" type="text/javascript">showDig("4946");</script></span>) &nbsp; <a href="javascript:commNay(4946);" id="down4946">踩一下 ▼</a>(<span id="sdown4946"><Script language="javascript" type="text/javascript">showDown("4946");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4945.html" title="AlphaGo：人类数千年的围棋下法是错的">AlphaGo：人类数千年的围棋下法是错的</a></div><div class="next_content">下一篇 » <a href="/archives/4947.html" title="iOS 10和iOS 11的省电技巧">iOS 10和iOS 11的省电技巧</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/4923.html">中国互联网有哪些黑色产业链？</a></p><p class="mutualitylist"><a href="/archives/4881.html">手机信号真的会影响飞机飞行安全吗？</a></p><p class="mutualitylist"><a href="/archives/4810.html">借贷宝成立“10G裸条照片”处置组并报案</a></p><p class="mutualitylist"><a href="/archives/4809.html">借贷宝10G裸照视频在网盘泄漏</a></p><p class="mutualitylist"><a href="/archives/4801.html">保护你网络隐私安全的七大步骤</a></p><p class="mutualitylist"><a href="/archives/4768.html">美国遭遇大规模DDoS攻击：半个美国“断网”</a></p><p class="mutualitylist"><a href="/archives/4732.html">手机丢失后支付宝微信里的处理方法</a></p><p class="mutualitylist"><a href="/archives/4674.html">乌云和漏洞盒子停业整顿</a></p><p class="mutualitylist"><a href="/archives/4652.html">手机两步验证安全应用盘点</a></p><p class="mutualitylist"><a href="/archives/4629.html">LinkedIn密码是怎么被破解的？</a></p><p class="mutualitylist"><a href="/archives/4577.html">“黑暗幽灵”（别名 DCM ）的前世今生</a></p><p class="mutualitylist"><a href="/archives/4576.html">使用补卡攻击微信银行卡案例</a></p><p class="mutualitylist"><a href="/archives/4481.html">WIFI破解方法总结</a></p><p class="mutualitylist"><a href="/archives/4424.html">谁是最安全的电子邮件服务？</a></p><p class="mutualitylist"><a href="/archives/4403.html">数据防泄漏DLP技术深度剖析</a></p><p class="mutualitylist"><a href="/archives/4400.html">安卓出现高危漏洞WormHole漏洞</a></p><p class="mutualitylist"><a href="/archives/4368.html">新型思科路由器后门分析与防护</a></p><p class="mutualitylist"><a href="/archives/4355.html">硬盘恢复数据的过程</a></p><p class="mutualitylist"><a href="/archives/4340.html">深圳美女程序员鞋中藏物躲避安检</a></p><p class="mutualitylist"><a href="/archives/4339.html">服务器预防DDoS攻击的方法</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

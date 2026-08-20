@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3119.html"/>
+	<title>SPDY 是什么？如何部署 SPDY？-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth13">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>SPDY 是什么？如何部署 SPDY？</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3119.html" rel="bookmark">SPDY 是什么？如何部署 SPDY？</a></h1>
+	<div class="post-meta">
+		2012-6-10 23:18:59 | 
+		作者: 极客公园 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 15 | 
+		浏览: <span class="AddView" id="spn3119" data-id="3119"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a><p>SPDY 是 Google 开发的基于传输控制协议 (TCP) 的应用层协议 ，开发组正在推动 SPDY 成为正式标准（现为互联网草案）。SPDY 协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和提高安全性。（SPDY 是 Speedy 的昵音，意思是更快）</p><h3>SPDY 与 HTTP 的关系</h3><p>SPDY 协议只是在性能上对 HTTP 做了很大的优化，其核心思想是尽量减少连接个数，而对于 HTTP 的语义并没有做太大的修改。具体来说是，SPDY 使用了 HTTP 的方法和页眉，但是删除了一些头并重写了 HTTP 中管理连接和数据转移格式的部分，所以基本上是兼容 HTTP 的。</p><p>Google 在 SPDY 白皮书里表示要向协议栈下面渗透并替换掉传输层协议（TCP），但是因为这样无论是部署起来还是实现起来暂时相当困难，因此 Google 准备先对应用层协议 HTTP 进行改进，先在 SSL 之上增加一个会话层来实现 SPDY 协议，而 HTTP 的 GET 和 POST 消息格式保持不变，即现有的所有服务端应用均不用做任何修改。</p><p>因此在目前，SPDY 的目的是为了加强 HTTP，是对 HTTP 一个更好的实现和支持。至于未来 SPDY 得到广泛应用后会不会演一出狸猫换太子，替换掉 HTTP 并彻底颠覆整个 Internet 就是 Google 的事情了。</p><h4>为什么要重新建立一个 SPDY ？</h4><p>距离万维网之父蒂姆&middot;伯纳斯-李发明并推动 HTTP 成为如今互联网最流行的协议已经过去十几年了（现用 HTTP 1.1 规范也停滞了 13 年了），随着现在 WEB 技术的飞速发展尤其是 HTML5 的不断演进，包括 WebSockets 协议的出现以及当前网络环境的改变、传输内容的变化，当初的 HTTP 规范已经逐渐无法满足人们的需要了，HTTP 需要进一步发展，因此 HTTPbis 工作组已经被组建并被授权考虑 HTTP 2.0 ，希望能解决掉目前 HTTP 所带来的诸多限制。而 SPDY 正是 Google 在 HTTP 即将从 1.1 跨越到 2.0 之际推出的试图成为下一代互联网通信的协议，长期以来一直被认为是 HTTP 2.0 唯一可行选择。</p><h3>HTTP 协议的不足</h3><h5><strong>1. 单路连接 请求低效</strong></h5><p>HTTP 协议的最大弊端就是每个 TCP 连接只能对应一个 HTTP 请求，即每个 HTTP 连接只请求一个资源，浏览器只能通过建立多个连接来解决。此外在 HTTP 中对请求是严格的先入先出（FIFO）进行的，如果中间某个请求处理时间较长会阻塞后面的请求。</p><p>（注：虽然 HTTP pipelining 对连接请求做了改善，但复杂度增加很大，并未普及）</p><h5><strong>2. HTTP 只允许由客户端主动发起请求</strong></h5><p>服务端只能等待客户端发送一个请求，在可以满足预加载的现状是一种桎梏。</p><h5><strong>3. HTTP 头冗余</strong></h5><p>HTTP 头在同一个会话里是反复发送的，中间的冗余信息，比如 User-Agent、Host 等不需要重复发送的信息也在反复发送，浪费带宽和资源。</p><h3>SPDY 协议的优点</h3><h5><strong>1. 多路复用 请求优化</strong></h5><p>SPDY 规定在一个 SPDY 连接内可以有无限个并行请求，即允许多个并发 HTTP 请求共用一个 TCP会话。这样 SPDY 通过复用在单个 TCP 连接上的多次请求，而非为每个请求单独开放连接，这样只需建立一个 TCP 连接就可以传送网页上所有资源，不仅可以减少消息交互往返的时间还可以避免创建新连接造成的延迟，使得 TCP 的效率更高。</p><p>此外，SPDY 的多路复用可以设置优先级，而不像传统 HTTP 那样严格按照先入先出一个一个处理请求，它会选择性的先传输 CSS 这样更重要的资源，然后再传输网站图标之类不太重要的资源，可以避免让非关键资源占用网络通道的问题，提升 TCP 的性能。</p><h5><strong>2. 支持服务器推送技术</strong></h5><p>服务器可以主动向客户端发起通信向客户端推送数据，这种预加载可以使用户一直保持一个快速的网络。</p><h5><strong>3. SPDY 压缩了 HTTP 头</strong></h5><p>舍弃掉了不必要的头信息，经过压缩之后可以节省多余数据传输所带来的等待时间和带宽。</p><h5><strong>4. 强制使用 SSL 传输协议</strong></h5><p>Google 认为 Web 未来的发展方向必定是安全的网络连接，全部请求 SSL 加密后，信息传输更加安全。</p><h4>SPDY 协议的意义</h4><p>按照 Google 的说法，SPDY 被创造出来的唯一目的就是让 Web 更快（strive to make the whole web fast），其名字 SPDY（Speedy） 也似乎在暗示着这一点。那么 SPDY 的意义又在哪里呢？</p><h3>1. 普通用户：</h3><p>对于使用者来说，隐藏在浏览器下面的 SPDY 相比 HTTP 没有任何区别，但是我们可以感觉到 Google 服务在 <a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a> 下异常的快，这就是 SPDY 的功劳了。此外网站信息传输加密后不用担心信息被截取等，大大增加了安全性和保密性。</p><h3>2. 前端人员：</h3><p>对于前端工程师们来说，提升页面效率是一件很重要的事情，目前大多采用像 CSS Sprites 等方法来优化网站，对于因为页面加载时每张图片、icon 都请求一个连接甚至采用在不同页面引用不同图片来降低一个页面内图片的请求数量。而现在有了 SPDY 的请求优化可以将请求顺序进行重排，这样可以在很大程度上缓解页面加载时图片请求带来的影响。例如像极客公园的报名页面，如果报名用户过多，例如极客公园2012年创新大会或极客公园第 27 期长城会，可以很明显的感觉出头像的请求会拖累整体页面加载变慢甚至变卡，相信对于这点，经常上淘宝或刷微博的会深有体会，一旦网速稍微慢点就会出现页面加载异常，还有像苹果 App Store（除去服务器因为地区的延迟），豌豆荚这类应用分发平台上应用图标刷新缓慢等，如下面这个视频所示。</p><h3>3. 运维人员：</h3><p>SPDY 在降低连接数目的同时，还使得服务器上每个客户端占用的资源也减少，从而可以释放出更多内存和 CPU 。此外 SPDY 综合起来可以将浏览速度提升一倍，页面加载延迟方面的改进达 64% 。</p><h4>众家支持的&nbsp;SPDY 协议</h4><p>如果你在使用 Chrome 浏览器，同时使用像 <a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a> 等 Google 的网络服务的话，其实你已经不再是通过 HTTP 访问这些服务了。在浏览器打开 <a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>://net-internals/#spdy 就会发现你已经在使用 SPDY 协议了。（除了包括 Google 自家的 <a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a>、Google Plus 等 Google 系服务外，其他公共站点例如 Twitter 和 Webtide 也已经支持该协议。在国内，基于 WebKit 的豌豆荚&nbsp;2.0 也曾表示将引进Chrome的SPDY技术来进一步提升速度。</p><p>SPDY 的实现需要浏览器客户端和 Web 服务器同时支持。在客户端浏览器这快 Google自家的 Chrome 和Chromium 全系列不用说，都已经支持SPDY； Mozilla 家的 Firefox 自 Firefox 13 也默认开启对 SPDY 的支持。而亚马逊家的 Silk 利用 SPDY 的深度其实不比 Google 自家的 Chrome 和 Firefox 差。</p><p>在Web 服务器方面包括最流行和最广泛的 Apache 在内，Netty、Jeety、Varnish、Erlang 和 Hightide 应用服务器以及面向 node.js 的服务器也都已经宣布支持 SPDY。（ Nginx 也表示将支持 SPDY）</p><h4>如何部署 SPDY？</h4><p>近日 Google 正式发布了适用于最流行 Web 服务器 Apache 的插件 mod_spdy，将其下载安装后你的 Apache 服务器就能使用 SPDY 协议与兼容 SPDY 协议的浏览器如 Chrome、FireFox 等进行通信。像之前所说的那样，SPDY 是运行在 HTTPS 上，非 HTTPS 流量并不会受到 mod_spdy 影响。</p><h3>SPDY 部署要求：</h3><p>1. Apache 2.2 (&ge;2.2.4)</p><p>2. mod_ssl 模块开启</p><h3>SPDY 部署步骤：</h3><h5>1. 下载 mod_spdy 模块</h5><p>到<a title="mod_spdy 下载" target="_blank" href="https://developers.google.com/speed/spdy/mod_spdy/">下载页面</a>下载对应系统的安装包</p><h5>2. 安装 mod_spdy 模块</h5><p>在系统终端运行下面命令行</p><blockquote><p>dpkg -i mod-spdy-*.deb<br />apt-get -f install</p><p>-系统为 Debian/Ubuntu</p></blockquote><p>------------------------------------------------------------</p><blockquote><p>yum install at (if you do not already have 'at' installed)<br />rpm -U mod-spdy-*.rpm</p><p>-系统为 CentOS/Fedora</p></blockquote><h5>3. 重启服务器（Apache）</h5><blockquote><p>sudo /etc/init.d/apache2 restart （Debian/Ubuntu）</p></blockquote><h5>4. 确定开启与否</h5><p>打开 Chrome 浏览器，输入并前往 chrome://net-internals/#spdy 页面，查看主机名称是否出现在标识栏中。如果出现说明已经部署完毕，如果没有出现去服务器错误日志（error.log）里查询。</p><h4>未来的web基础？</h4><p>在最新的<a title="spdy 协议文档" target="_blank" href="http://dev.chromium.org/spdy/spdy-protocol">协议文档</a>里 Google 重新将 SPDY 分为了两层，其中一层被描述为 HTTP-like，大有取代 HTTP 的意图（Google 最近的一篇文章已经直呼<a title="spdy 将替代 https" target="_blank" href="http://googledevelopers.blogspot.com/2012/05/spdy-performance-on-mobile-networks.html"> SPDY 为&ldquo;a replacement for HTTP&rdquo;</a>）。同时 HTTP 2.0 标准制定工作组（HTTPbis）也表示，<a title="spdy 将代替 http" target="_blank" href="http://lists.w3.org/Archives/Public/ietf-http-wg/2012JanMar/0098.html">SPDY 很有希望接替当前的 HTTP 传输实现</a>。</p><p>考虑到 Chrome 和安卓的份额以及标准的推动，相信 SPDY 会有一个好前景。因此选择此刻支持 SPDY 也是明智的选择。</p><p>来源：极客公园投稿，<a target="_blank" href="http://www.geekpark.net/read/view/158198">原文链接</a></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="SPDY 是什么？如何部署 SPDY？" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3119"></span><a href="javascript:commYea(3119);" id="dig3119">顶一下 ▲</a>(<span id="sdig3119"><Script language="javascript" type="text/javascript">showDig("3119");</script></span>) &nbsp; <a href="javascript:commNay(3119);" id="down3119">踩一下 ▼</a>(<span id="sdown3119"><Script language="javascript" type="text/javascript">showDown("3119");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3118.html" title="暴雪成功的秘密">暴雪成功的秘密</a></div><div class="next_content">下一篇 » <a href="/archives/3120.html" title="互联网社会化之平台垄断破局">互联网社会化之平台垄断破局</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3104.html">移动应用设计中应避免的十种错误</a></p><p class="mutualitylist"><a href="/archives/3097.html">MGC：机器生成内容</a></p><p class="mutualitylist"><a href="/archives/3088.html">互联网项目管理要点</a></p><p class="mutualitylist"><a href="/archives/3077.html">构建移动Web应用程序的技术堆栈</a></p><p class="mutualitylist"><a href="/archives/3067.html">一个杀手移动用户界面的七个步骤</a></p><p class="mutualitylist"><a href="/archives/3063.html">HTML5能取代Android和iOS应用程序吗？</a></p><p class="mutualitylist"><a href="/archives/3062.html">程序员真的很懒</a></p><p class="mutualitylist"><a href="/archives/3061.html">开发一个iOS应用没有那么容易</a></p><p class="mutualitylist"><a href="/archives/3028.html">国外程序员推荐：每个程序员都应读的书</a></p><p class="mutualitylist"><a href="/archives/3026.html">十六个快速启动项目样板</a></p><p class="mutualitylist"><a href="/archives/3024.html">使用HTML5的十大原因</a></p><p class="mutualitylist"><a href="/archives/3011.html">如何在Google成为一名优秀的产品经理？</a></p><p class="mutualitylist"><a href="/archives/3004.html">移动开发中HTML5能否替代本地程序？</a></p><p class="mutualitylist"><a href="/archives/2989.html">技术演讲的技巧和经验</a></p><p class="mutualitylist"><a href="/archives/2970.html">怎样打造高性能的移动用户体验</a></p><p class="mutualitylist"><a href="/archives/2954.html">为什么程序员的社会地位不高？</a></p><p class="mutualitylist"><a href="/archives/2924.html">HTML5未来发展的六大趋势</a></p><p class="mutualitylist"><a href="/archives/2912.html">IT工作者是21世纪的矿工吗？</a></p><p class="mutualitylist"><a href="/archives/2907.html">程序员的本质</a></p><p class="mutualitylist"><a href="/archives/2769.html">关于编程，大学没有传授的十件事</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

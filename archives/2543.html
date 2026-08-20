@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2543.html"/>
+	<title>基于微博的开放评论系统-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>基于微博的开放评论系统</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2543.html" rel="bookmark">基于微博的开放评论系统</a></h1>
+	<div class="post-meta">
+		2011-2-20 13:0:23 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 22 | 
+		浏览: <span class="AddView" id="spn2543" data-id="2543"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Weibo.html" rel="tag"><img src="/logo/Weibo.gif" alt="微博" class="thumb" width="80" height="80" /></a><p>本文源于看网易新闻的一些想法。评论是网易新闻的一大特色，而且目前也与网易微博结合得很好。但是我想如果网易把评论支持做为微博的一大特色来做，就可以和新浪微博形成差异化竞争，成为自己的亮点。</p><p>其实把网易微博的评论支持功能做得更加开放、支持所有的网站，从技术上来说并不复杂，基本思路是：</p><p>1、对来源文章的URL进行基本处理，去除多余的浏览器传递参数。</p><p>2、对URL进行短网址处理，得到的短网址ID就是新闻的处理流水号。</p><p>经过以上两步处理，针对任意一篇新闻就得到了新闻的基本信息：流水号、原始URL、标题。</p><p>比如，新闻标题是：《基于&ldquo;定做&rdquo;的团购模式》</p><p>原始URL是：http://tallrain.blogbus.com/logs/105546174.html</p><p>短网址是：http://163.fm/CqimREh</p><p>流水号是：CqimREh</p><p>3、用户输入评论内容后，在评论内容里加入新闻评论统一标签，如&ldquo;#XWPL&rdquo;，并和新闻的基本信息一起组成微博整体。</p><p>比如，评论是：&ldquo;值得一试&rdquo;，那么整条评论微博包含了以下要素：</p><p>新闻标题：《基于&ldquo;定做&rdquo;的团购模式》</p><p>评论标签：#XWPL</p><p>流水号：#CqimREh（微博系统可以根据流水号查询到原始URL）</p><p>评论内容：值得一试</p><p>评论人ID：tallrain</p><p>评论时间：2011/02/17</p><p>那么整条微博的完整内容是：</p><p>&ldquo;值得一试 #XWPL http://163.fm/CqimREh 对《基于&rdquo;定做&ldquo;的团购模式》的评论&rdquo; &mdash;&mdash; tallrain，2011/02/17</p><p>从形式上看，和其它的微博并没有本质上的不同，但是由于有了评论标签和流水号，就可以通过这两个特征进行检索。</p><p>此外，微博在录入系统时，服务器可以根据评论标签，进行一些基本的统计工作，比如每增加一条评论，就更新一下新闻的微博评论数，这样就提高了统计和排序的效率。</p><p>展现评论的方法非常简单：</p><p>1、网站向微博系统提交新闻原始URL，请求获得评论。</p><p>2、微博系统根据原始URL，得到流水号、评论数。</p><p>3、系统根据评论标签和流水号，得到所有符合条件的评论微博，按照时间进行正向或逆向排序。</p><p>4、网站将微博系统输出的评论内容呈现到相应页面。</p><p>也可以建设专有评论网站，根据评论热度进行排序，实现类似DIGG的新闻评论网站。</p><p style="text-align: center"><img alt="基于微博的开放评论系统" src="/upload/2543_1.jpg" /></p><p>下面再谈两点系统推广的设想。</p><p>网易的微博已经和网易新闻评论结合得很好了，但既然是开放系统，就应该向所有网站推广，可参考的方法有：</p><p>1、在新闻网站提供&ldquo;分享到XX微博&rdquo;功能图标，并嵌入微博登录代码，实现在新闻原始页面的发布。新闻标题由页面TITLE获得。</p><p>2、发布浏览器插件，提供类似SIDEWIKI插件，通过浏览器发布评论。</p><p>来源：<a target="_blank" href="http://tallrain.blogbus.com">tallrain</a>投稿。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Weibo.jpg" alt="基于微博的开放评论系统" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2543"></span><a href="javascript:commYea(2543);" id="dig2543">顶一下 ▲</a>(<span id="sdig2543"><Script language="javascript" type="text/javascript">showDig("2543");</script></span>) &nbsp; <a href="javascript:commNay(2543);" id="down2543">踩一下 ▼</a>(<span id="sdown2543"><Script language="javascript" type="text/javascript">showDown("2543");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2542.html" title="如何在Twitter follow对的人">如何在Twitter follow对的人</a></div><div class="next_content">下一篇 » <a href="/archives/2544.html" title="Panoramio支持谷歌纵横自动标记">Panoramio支持谷歌纵横自动标记</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2530.html">门户微博年度数据分析</a></p><p class="mutualitylist"><a href="/archives/2523.html">微博变种与RSS变种</a></p><p class="mutualitylist"><a href="/archives/2491.html">微博价值和社会化营销</a></p><p class="mutualitylist"><a href="/archives/2490.html">新浪微博如何起飞</a></p><p class="mutualitylist"><a href="/archives/2487.html">李开复：微博改变一切</a></p><p class="mutualitylist"><a href="/archives/2474.html">新浪微博真正的对手</a></p><p class="mutualitylist"><a href="/archives/2433.html">新浪微博出现长时间故障</a></p><p class="mutualitylist"><a href="/archives/2423.html">新浪微博微群功能上线</a></p><p class="mutualitylist"><a href="/archives/2421.html">新浪首届微博开发者大会资料</a></p><p class="mutualitylist"><a href="/archives/2402.html">苍井空入驻新浪微博</a></p><p class="mutualitylist"><a href="/archives/2339.html">微博特殊符号的可复制性和可移植性</a></p><p class="mutualitylist"><a href="/archives/2337.html">杂谈新浪微博、腾讯微博、百度说吧</a></p><p class="mutualitylist"><a href="/archives/2267.html">浅谈微博的商业价值和盈利模式</a></p><p class="mutualitylist"><a href="/archives/2258.html">从微博到招聘有多远？</a></p><p class="mutualitylist"><a href="/archives/2254.html">破解新浪微博的媒体性优势</a></p><p class="mutualitylist"><a href="/archives/2249.html">微博通讯和即时通讯的对决</a></p><p class="mutualitylist"><a href="/archives/2080.html">新浪微博的RSS Feed功能</a></p><p class="mutualitylist"><a href="/archives/2076.html">微博营销分析—后宫优雅事件</a></p><p class="mutualitylist"><a href="/archives/2074.html">微博小说，微博客写作潮流</a></p><p class="mutualitylist"><a href="/archives/2064.html">探索新浪微博的盈利模式</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

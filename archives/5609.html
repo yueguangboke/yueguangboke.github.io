@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/5609.html"/>
+	<title>更换CKeditor编辑器-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate1 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/weblog.html" title="查看 网络日志 中的全部文章">网络日志</a> &raquo; <span>更换CKeditor编辑器</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/5609.html" rel="bookmark">更换CKeditor编辑器</a></h1>
+	<div class="post-meta">
+		2019-2-9 23:12:55 | 
+		作者: 月光 | 
+		分类: <a href="/cat/weblog.html" title="网络日志" rel="category tag">网络日志</a> | 
+		评论: 1 | 
+		浏览: <span class="AddView" id="spn5609" data-id="5609"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Zblog.html" rel="tag"><img src="/logo/Zblog.gif" alt="Zblog" class="thumb" width="80" height="80" /></a><p>Zblog默认用的编辑器是百度的UEditor编辑器，这个编辑器我用不惯，也感觉不太好用，于是想要更换编辑器为以前一直用的CKEditor编辑器。</p>
+
+<p>后台安装了一个&ldquo;CKEditor编辑器&rdquo;插件，发现了新问题，这个插件用的CKEditor比较老，有一些BUG，最令人不能接受的问题是，在编辑器里粘贴全角空格，会被自动过滤掉，这个实在不行啊，于是寻找解决方案。</p>
+
+<p>去CKEditor编辑器的官网看了一下，发现官网上的CKEditor 4并没有这个问题，于是在其<a href="https://ckeditor.com/ckeditor-4/download/" target="_blank">下载页面</a>下载了CKEditor v4.11.2的Full Package版本，下载回来之后，替换原有目录（zb_users/plugin/ckeditor/ckeditor）下的文件，运行基本正常，粘贴全角空格丢失问题没有了。</p>
+
+<p>替换后只有一个小问题，就是新建文章时，点击[手动生成摘要]会出错，解决方法是：编辑zb_system/admin/edit_article.asp文件，将文件中的：</p>
+
+<p>&lt;div id=&quot;divIntro&quot; style=&quot;display:&lt;%If EditArticle.Intro=&quot;&quot; Then Response.Write &quot;none&quot; Else Response.Write &quot;block&quot;%&gt;;&quot;&gt;</p>
+
+<p>一行替换为</p>
+
+<p>&lt;div id=&quot;divIntro&quot;&gt;</p>
+
+<p>即可解决问题。</p>
+
+<p>经过上述操作，即可在Zblog完美的使用无BUG的CKEditor编辑器。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Zblog.jpg" alt="更换CKeditor编辑器" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note5609"></span><a href="javascript:commYea(5609);" id="dig5609">顶一下 ▲</a>(<span id="sdig5609"><Script language="javascript" type="text/javascript">showDig("5609");</script></span>) &nbsp; <a href="javascript:commNay(5609);" id="down5609">踩一下 ▼</a>(<span id="sdown5609"><Script language="javascript" type="text/javascript">showDown("5609");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/5608.html" title="网站评分插件升级">网站评分插件升级</a></div><div class="next_content">下一篇 » <a href="/archives/5610.html" title="视频博客Vlog拍摄新手指南">视频博客Vlog拍摄新手指南</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/5608.html">网站评分插件升级</a></p><p class="mutualitylist"><a href="/archives/5606.html">博客模板和程序进行改版升级</a></p><p class="mutualitylist"><a href="/archives/5604.html">Z-Blog全站静态化方案</a></p><p class="mutualitylist"><a href="/archives/5504.html">Z-Blog ASP 1.8升级到2.3教程</a></p><p class="mutualitylist"><a href="/archives/3116.html">Z-Blog分类标签全站静态化方案</a></p><p class="mutualitylist"><a href="/archives/2795.html">Z-Blog增加评论投票功能</a></p><p class="mutualitylist"><a href="/archives/2608.html">Z-Blog在Apache的PHP下使用</a></p><p class="mutualitylist"><a href="/archives/2114.html">Z-Blog自定义时间评论关闭功能的修改</a></p><p class="mutualitylist"><a href="/archives/2062.html">Z-Blog性能优化和评论IP显示</a></p><p class="mutualitylist"><a href="/archives/1885.html">Z-Blog文件复制插件</a></p><p class="mutualitylist"><a href="/archives/1850.html">Z-Blog垃圾留言判定新方法</a></p><p class="mutualitylist"><a href="/archives/1794.html">Z-Blog博客实现回复评论功能</a></p><p class="mutualitylist"><a href="/archives/1694.html">Z-Blog Akismet插件更新升级</a></p><p class="mutualitylist"><a href="/archives/1691.html">基于ASP的Z-Blog Akismet插件</a></p><p class="mutualitylist"><a href="/archives/1622.html">Z-Blog发送邮件插件的修改</a></p><p class="mutualitylist"><a href="/archives/1584.html">Z-Blog URL转发漏洞的修复方法</a></p><p class="mutualitylist"><a href="/archives/1574.html">Z-Blog的自动发送邮件的方法</a></p><p class="mutualitylist"><a href="/archives/1522.html">Z-Blog文章排行插件</a></p><p class="mutualitylist"><a href="/archives/1505.html">Z-Blog文章投票评分插件</a></p><p class="mutualitylist"><a href="/archives/1499.html">Z-Blog 1.8的性能问题</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

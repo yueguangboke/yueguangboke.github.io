@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3302.html"/>
+	<title>Android上Chrome、Firefox和Opera广告过滤-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>Android上Chrome、Firefox和Opera广告过滤</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3302.html" rel="bookmark">Android上Chrome、Firefox和Opera广告过滤</a></h1>
+	<div class="post-meta">
+		2012-12-5 17:2:8 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 13 | 
+		浏览: <span class="AddView" id="spn3302" data-id="3302"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Android.html" rel="tag"><img src="/logo/Android.gif" alt="安卓" class="thumb" width="80" height="80" /></a><p>由于手机屏幕尺寸限制，通常网站手机版显示内容更加简洁，当然也就减少或者是去除了广告。但毕竟还有很多网站没有专门的手机版，或者是手机版的文字广告也占据不少空间。Opera和Google合作后，Opera mini也不再过滤Google搜索广告了。<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>、<a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>和Opera手机版都有各自的广告过滤功能。</p><h3>通用方法</h3><ul><li>未Root：Adblock Plus for Android；</li><li>Root：hosts和一切可以更改hosts的工具（比如AdAway）。</li></ul><p>Adblock Plus for Android来自大名鼎鼎的adblockplus.org。支持在非Root环境下对Wifi拦截广告（Root后支持3G环境过滤），目前只能订阅规则，不能自定义。最大的缺点是需要驻留后台，内存占用不小。<br />Root后可以编辑规则文件:</p><blockquote><p>/data/data/org.adblockplus.android/files/patterns.ini</p></blockquote><p>题外：Adblock Plus当初信誓旦旦的说不开发<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>版，现在不仅有了Adblock plus for Chrome，还有Opera、K-Meleon。</p><p>Hosts属于万能大法了，优点、缺点都和PC上一样。Hosts只能作用于网站域名，将需要拦截的域名IP地址限制为127.0.0.0或0.0.0.0，遗憾的是不能细化。</p><p>Android默认hosts文件位置：</p><blockquote><p>/etc/hosts</p></blockquote><h3>Chrome for Android(root)</h3><p>桌面版的Chrome支持用户全局css，Chrome for Android也继承了这一特性。全局css，局限明显。但隐藏部分内容，对于手机屏幕来讲也能节约不少空间。</p><p>Custom.css位置：</p><blockquote><p>/data/data/com.android.<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>/app_chrome/Default/User StyleSheets/Custom.css</p></blockquote><p>PC版的Custom.css位置：</p><blockquote><p>\User Data\Default\User StyleSheets\Custom.css</p></blockquote><h3>Firefox for Android</h3><p>和桌面版一样，ABP几乎快成为Firefox的标配了。Adblock Plus扩展手机版也不支持自定义。<br />Root后也可以编辑规则文件:</p><blockquote><p>/data/data/org.mozilla.firefox/files/mozilla/xxxxxxx.dafault/adblockplus/patterns.ini</p></blockquote><p>当然还有其他支持过滤的扩展，NoScript、Stylish也都支持手机版。</p><h3>Opera Mobile(欧朋HD)</h3><p>Opera Mobile可以看作是PC端的Opera，广告过滤也继承了urlfilter.ini和custom.css（全局），设置方法：</p><ul><li>opera:config &ndash; network- url filter file，选择urlfilter.ini文件位置 &ndash; 保存；</li><li>opera:config &ndash; user prefs &ndash; local css file，选择custom.css文件位置 &ndash; 保存。</li></ul><p>网络上也有不少过滤规则订阅源，比如《<a title="《Opera Mobile广告过滤列表订阅源》" rel="external nofollow" jquery180024469958605934644="7" href="http://www.enkoo.net/adblock-in-opera-mobile.html">Opera Mobile广告过滤列表订阅源</a>》。</p><h3>PC端浏览器伪装手机上网</h3><p>正如开篇所说，很多网站有PC版，也有手机版，两个版本的代码是不同的。而且一些网站在不同的浏览器下CSS代码也不同，比如Google在Chrome和Opera Mobile中就有明显区别。因此不能直接套用PC版的过滤规则，还是根据自己浏览习惯自定义规则比较好。</p><p>PC端编写过滤规则也简单，只是多了一个浏览器伪装手机上网的步骤。</p><p>以Firefox为例，可以通过User Agent Switcher扩展，或者是建立&ldquo;general.useragent.override&rdquo;字符串等方法更改浏览器的UserAgent。详细方法参考《<a title="《Firefox手动更改UserAgent，伪装成手机或其他浏览器》" rel="external nofollow" jquery180024469958605934644="8" href="http://www.enkoo.net/useragent-in-firefox.html">Firefox手动更改UserAgent，伪装成手机或其他浏览器</a>》。</p><p>常用浏览器的User Agent String可以查阅：<a title="User Agent String" rel="external nofollow" jquery180024469958605934644="9" href="http://www.useragentstring.com/pages/useragentstring.php"><span style="text-decoration: underline">http://www.useragentstring.com/pages/useragentstring.php</span></a></p><p>Google官方也说明了Chrome for Android的User-Agent：<a title=" Chrome for Android User-Agent" rel="external nofollow" jquery180024469958605934644="10" href="https://developers.google.com/chrome/mobile/docs/user-agent"><span style="text-decoration: underline">https://developers.google.com/chrome/mobile/docs/user-agent</span></a></p><p>编写广告过滤规则的方法这里不再赘述。Opera mini和UC等采用云端压缩的浏览器不在讨论之列。</p><p>来源：投稿，作者：沙丘，<a target="_blank" href="http://www.enkoo.net/adblock-in-android-browser.html">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Android.jpg" alt="Android上Chrome、Firefox和Opera广告过滤" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3302"></span><a href="javascript:commYea(3302);" id="dig3302">顶一下 ▲</a>(<span id="sdig3302"><Script language="javascript" type="text/javascript">showDig("3302");</script></span>) &nbsp; <a href="javascript:commNay(3302);" id="down3302">踩一下 ▼</a>(<span id="sdown3302"><Script language="javascript" type="text/javascript">showDown("3302");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3301.html" title="百度2012年度搜索排行榜发布">百度2012年度搜索排行榜发布</a></div><div class="next_content">下一篇 » <a href="/archives/3303.html" title="Google+推出“社群”服务">Google+推出“社群”服务</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3202.html">iOS与Android开发者谁挣的多</a></p><p class="mutualitylist"><a href="/archives/3194.html">警惕新型Android手机病毒</a></p><p class="mutualitylist"><a href="/archives/3173.html">Android，盗版的天堂？</a></p><p class="mutualitylist"><a href="/archives/3141.html">Android高清播放器评测</a></p><p class="mutualitylist"><a href="/archives/3139.html">谷歌Nexus Q播放器解析</a></p><p class="mutualitylist"><a href="/archives/3137.html">谷歌发布Android 4.1系统</a></p><p class="mutualitylist"><a href="/archives/3134.html">揪出Android手机下乱弹广告的流氓</a></p><p class="mutualitylist"><a href="/archives/3095.html">Android是个好系统</a></p><p class="mutualitylist"><a href="/archives/3060.html">让游戏在Google Play排最前的10个免费策略</a></p><p class="mutualitylist"><a href="/archives/3054.html">开发商对Android兴趣持续下降</a></p><p class="mutualitylist"><a href="/archives/3020.html">解析Android Market更名Google Play Store</a></p><p class="mutualitylist"><a href="/archives/3017.html">使Android开发方便快捷的8个好工具</a></p><p class="mutualitylist"><a href="/archives/3003.html">Android能否引领移动互联网革命</a></p><p class="mutualitylist"><a href="/archives/2993.html">保护你的隐私，五种控制Android应用的权限的方法</a></p><p class="mutualitylist"><a href="/archives/2966.html">为什么Android平板电脑已经失败</a></p><p class="mutualitylist"><a href="/archives/2964.html">谷歌中国Android Market前景暗淡</a></p><p class="mutualitylist"><a href="/archives/2962.html">同为Android手机，为何HTC拼不过三星</a></p><p class="mutualitylist"><a href="/archives/2918.html">为什么Android没有iOS那么顺滑 </a></p><p class="mutualitylist"><a href="/archives/2845.html">谷歌Android电子市场在中国恢复</a></p><p class="mutualitylist"><a href="/archives/2842.html">iPhone和Android生活类应用盘点</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

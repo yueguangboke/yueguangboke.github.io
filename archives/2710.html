@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2710.html"/>
+	<title>Web应用程序的开发步骤-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>Web应用程序的开发步骤</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2710.html" rel="bookmark">Web应用程序的开发步骤</a></h1>
+	<div class="post-meta">
+		2011-6-22 17:20:5 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 32 | 
+		浏览: <span class="AddView" id="spn2710" data-id="2710"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a><p>如今已进入了web2.0高速发展的互联网时代，各种互联网的Web应用程序如雨后春笋般出现。那么作为一名Web开发人员，怎样去开发一款优秀的Web应用程序呢？这个问题没有一个简单的答案，甚至那些教育机构都未必能清楚的知道。所以，像大多数在这个领域里的web开发人员一样，我们只是通过去做，去实验才学会了这些。没有人告诉我们如何去做，我们从给自己做点什么东西开始，学会如何开发web应用程序是在这个过程中的一个副产品。这是学习任何语言的一个非常有效的方法。</p><p><strong>Web应用程序与网站之间的区别</strong></p><p>首先，我要说明，开发一个web应用程序跟开发一个网站是不一样的。虽然在总体上有很大相似之处，但开发它们所需要的时间有巨大的差别。那究竟web应用程序和网站有什么不同呢？通常，<a href="/tag/Wiki.html" title="维基百科"  Target="_blank" >维基百科</a>能帮助我们解释这个问题，让我们来看看维基百科是如何定义应用软件的：</p><blockquote><p>应用软件，通常也被称作应用，指的是专门为帮助用户去执行一个或多个相关特定任务而设计的计算机软件。企业软件，会计软件，办公套件，绘图软件，媒体播放器等都属于这种软件。</p><p>跟应用软件相对照的是系统软件和中间件，它们管理计算机效能，管理如何跟计算机集成，但通常这些工作并不会直接反映到使用户受益的任务执行上。举个例子，一个不是很恰当的实体类比，应用软件跟系统软件之间的关系就好比一个电灯泡和一个发电厂之间的关系，发电厂(系统软件)只是产生电能，它自己没有任何真正的用途，除非利用一个电灯泡这样的应用工具才能为用户提供服务。</p></blockquote><p><strong>Web应用程序的开发过程</strong></p><p>现在特征已经弄清楚了，我们就可以开始定义开发一个web应用程序的整个过程了。当然，这依赖于工程的大小，过程中的某些步骤可能很小，在你的脑海里就能完成这种工作，但把事情整个的了解一下总是有好处的。同时还有一点很重要的你要明白，这篇文章并不会对每个步骤进行深层次的描述。</p><p><strong>步骤一：分析</strong></p><p>开发一个web应用的第一步是分析你的需求。你此时应该定义出一个尽量周全的你的应用应该提供的功能清单。如果是你为一个客户做这些工作，你需要明白他们想要什么(要确保你们对方都知道对方在说些什么)。从你们的讨论中，你能总结出需求和软件规格。你即使是为自己开发，我也建议你把希望这个web应用能够做的功能写下来。</p><p><strong>步骤二：设计</strong></p><p>一旦你弄清楚了这个web应用需要做哪些事情，你就可以开始设计了。这个步骤通常会反反复复进行很多次，每一次都把设计细化一些。你第一要做的是画出页面流程图(画在纸上，或使用软件工具，凭各自所好吧。我喜欢用纸，这样我可以做更快速的改变)。页面流程图通常是很抽象的黑白绘画，画出你将要实现的web应用的样子(你可以加一些色彩，但尽量保持简单)。</p><p style="text-align: center"><a href="http://leiphone.com/wp-content/uploads/2011/06/webapp.jpg"><img title="webapp" class="alignnone size-full wp-image-13180" border="0" alt="开发" src="/upload/2710_1.jpg" /></a></p><p>这个步骤能够让你知道你的应用最终会是个什么样子。跟37signals倡导的相反，我建议使用一些词语描述，适度细化。当我想到一个很好的想法时，或想到事情该如何做时，我会把它标注到纸上(例如，当点击这个按钮时应该使另外一个元素改变或隐藏，我会把这写在流程图上)。</p><p>当你对做出的草图满意后，你可以开始制作实体模型了。<br />实体模型仍然是些图案，但有色彩和细节。最终的实体模型看起来应该像你将要实现的web应用的一个截屏图。如果你为一个客户开发，他会看看这些东西，并给你他的认可。然而，很多人都喜欢跳过这一步(大多数都是非设计人员)，他们喜欢直接奔向网页原型。</p><p>原型是用HTML开发出来，使用CSS渲染(有时也是有Javascript)。页面布局要做出来，链接能够点，颜色，字体，字体大小要设定好(如果你做了实体模型，这个会很容易)。这一步非常的重要，因为这里所有的东西都能用于你最终的应用中。如果允许的话，在你的原型上做一些可用性测试，从长期的效果来看，这能使你避免大量的失误。</p><p>在这个步骤的最后，你基本上就知道了你的web应用是如何组织到一起的了。登录页面有些什么，用户如何从主页转向到各个页面。</p><p><strong>步骤三：实现</strong> <strong>选择一个框架</strong></p><p>现在我们已经知道了要去开发什么东西，那就要把它做出来。这一部分的工作很多，你大部分的时间都要花在这个上面。你第一个要做的决定是如何着手，采用什么样的技术，什么框架。你有很多选择的余地，你需要选出一个适合你的。下面是一个最常用的框架的列表:</p><ul><li>ASP.NET</li><li>PHP 上的任何一个流程的框架</li><li>Python with Django</li><li>Ruby on Rails</li></ul><p>没有一个明确的标准说哪个框架最好。它们都各有不同，每个都有自己的长处。最重要的是你要知道它们任何一个都能让你开发出好用的web应用。</p><p><strong>开发</strong></p><p>一旦你知道了如何去开发，那就要甩开臂膀开干了。这个开发工作可以看作有很多块，但说到底，这都是标准的编程活动了。在后台，你要创建类，对象，服务，过程，以及持久层来把这些对象保存到数据库中。后台是整个应用的核心，对任何应用来说，它跟普通的编程没有什么区别。接着是前台的开发，你现在编写的代码才是真正给用户使用的操作界面。你把后台的程序和原型界面集成到一起，把系统各部分集成到一起。你还可以把你在开发过程中想到的一些很炫的小功能用JavaScript实现。</p><p>再说一次，有很多种途径可以实现后台程序。建议你去读一读跟你选择的框架相关的资料，弄清楚如何实现这一部分的工作。通常，这些知识会跟面向对象编程有关，但有些框架正在慢慢的向领域驱动设计发展。</p><p><strong>步骤四：打磨抛光</strong></p><p>现在应用程序已经开发出来，各个独立的模块也集成到了一起。你需要通过测试来确保你在步骤一中定义的需求和软件规格是否被实现(这个问题在你开发的整个过程中都要记在脑中)。你要确保那些愚蠢的用户不能通过试图做一些你还没有实现的操作而把你的应用弄坏(参考白盒和黑盒测试)。你同时还要确保你的程序能够在各种浏览器里(希望不是IE6)都能正确的运行。</p><p>现在也是你做一些小的调整，改进你的应用程序给人的感觉的时候，让它趋于完美。</p><p><strong>步骤五：发布和后续工作</strong></p><p>这最后一步(但不是就此完结)是发布你的应用，让用户能够真正使用它(如果这个应用是个公众开发的应用，别忘了做新闻宣传)。如果你愿意，先发布一个Beta版，这样只有一小部分用户能够发现你的应用里的大问题(因为你的程序里肯定会有bug)，他们会帮助你改进程序的质量。不要忙着增加功能，要专注于把你目前的程序变的稳固。</p><p>当经过了beta阶段，你的程序已经变得十分的稳固，听取用户反馈的意见，自己试用一下自己的应用，你可以开始思考如何使应用变的更好。找出不和谐的地方，消除掉。以后每次的迭代都要经过上面所说的五个步骤，但就像我最初说的，你现在已经有了一个可以运行的应用程序，你很容易直接在心里完成这些步骤，直接奔向在代码里测试你的功能。</p><p>恭喜，你已经自豪的成为一个web应用程序的作者了。</p><p>英文原文：<a rel="nofollow" href="http://www.crossbrowser.net/436/how-to-develop-web-applications/">How to develop web applications</a></p><p>中文翻译：晨露博客，<a href="http://www.chenlublog.com/post/How-to-develop-web-applications.html">原文链接</a></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="Web应用程序的开发步骤" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2710"></span><a href="javascript:commYea(2710);" id="dig2710">顶一下 ▲</a>(<span id="sdig2710"><Script language="javascript" type="text/javascript">showDig("2710");</script></span>) &nbsp; <a href="javascript:commNay(2710);" id="down2710">踩一下 ▼</a>(<span id="sdown2710"><Script language="javascript" type="text/javascript">showDown("2710");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2709.html" title="Facebook的审查制度">Facebook的审查制度</a></div><div class="next_content">下一篇 » <a href="/archives/2711.html" title="中国成仅次于美国的第二大iOS应用消费市场">中国成仅次于美国的第二大iOS应用消费市场</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2700.html">写给新手程序员的一封信</a></p><p class="mutualitylist"><a href="/archives/2697.html">老板会因为你拼命写代码而感谢你吗？ </a></p><p class="mutualitylist"><a href="/archives/2489.html">PhoneGap移动开发框架</a></p><p class="mutualitylist"><a href="/archives/2460.html">开源史上的八大交易</a></p><p class="mutualitylist"><a href="/archives/2453.html">成为高效程序员的搜索技巧</a></p><p class="mutualitylist"><a href="/archives/2425.html">编程给程序员带来哪些坏习惯</a></p><p class="mutualitylist"><a href="/archives/2424.html">明星软件工程师的十种特质 </a></p><p class="mutualitylist"><a href="/archives/2405.html">我所积累的20条编程经验</a></p><p class="mutualitylist"><a href="/archives/2308.html">非技术人员无法理解的十个软件概念</a></p><p class="mutualitylist"><a href="/archives/2162.html">你有重构的勇气么？</a></p><p class="mutualitylist"><a href="/archives/2144.html">互联网常见Open API文档资源</a></p><p class="mutualitylist"><a href="/archives/2134.html">获得来自搜索引擎的关键字</a></p><p class="mutualitylist"><a href="/archives/1926.html">也谈目前大学生的学习和就业</a></p><p class="mutualitylist"><a href="/archives/1879.html">轻松搭建一个Windows SVN服务器</a></p><p class="mutualitylist"><a href="/archives/1878.html">TortoiseSVN使用帮助和下载</a></p><p class="mutualitylist"><a href="/archives/1874.html">关闭博客留言本功能</a></p><p class="mutualitylist"><a href="/archives/1872.html">报表工具的价值和发展浅析</a></p><p class="mutualitylist"><a href="/archives/1839.html">中文分词和TF-IDF</a></p><p class="mutualitylist"><a href="/archives/1826.html">基于JavaScript的REST客户端框架</a></p><p class="mutualitylist"><a href="/archives/1814.html">“开架式”软件设计是未来之路</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

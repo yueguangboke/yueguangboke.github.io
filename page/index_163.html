@@ -1,0 +1,824 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/" />
+	<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="月光博客" />
+	<title>月光博客-关注互联网和搜索引擎的IT科技博客</title>
+	<meta name="description" content="月光博客，是专注于业界、互联网、搜索引擎优化、社会化网络、IT技术、谷歌地图、建站、软件等领域的原创IT科技博客，作者龙威廉。" />
+	<meta name="keywords" content="月光,博客,月光博客,科技博客,IT博客,谷歌地图,谷歌地球" />
+</head>
+<body class="home blog">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+
+	<div id="main" class="container">
+		<div class="content alpha">
+			<div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/733.html" rel="bookmark">Google Translate机器翻译错误的技术分析</a></h1>	
+	<div class="post-meta">
+		2006年12月24日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/seo.html" title="搜索引擎" rel="category tag">搜索引擎</a> | 
+		评论: 62 | 
+		浏览: 33306
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Google.html" rel="tag"><img src="/logo/Google.gif" alt="谷歌" class="thumb" width="80" height="80" /></a>前几天又发生了一次针对Google的所谓“辱华事件”，一篇号召网民“抵制Google翻译工具”的帖子在某著名论坛上出现，帖子指责Google的翻译工具出现离奇的“张冠李戴”现象，甚至有伤害中国人感情的嫌疑，对Google的不正确翻译，该文列举了一些例子，如“I thought this was shame”（我认为这是耻辱）被译为“我认为这是中国的耻辱”等等。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/732.html" rel="bookmark">防止PayPal帐号冻结和解冻的经验</a></h1>	
+	<div class="post-meta">
+		2006年12月23日 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 17 | 
+		浏览: 37284
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/PayPal.html" rel="tag"><img src="/logo/PayPal.gif" alt="贝宝" class="thumb" width="80" height="80" /></a>根据<a href="/tag/Wiki.html" title="维基百科"  Target="_blank" >维基百科</a>的介绍，<a href="/tag/PayPal.html" title="PayPal"  Target="_blank" >PayPal</a>是目前全球最大的在线支付提供商，PayPal在多个国家的业务被视作属于金钱传送，有不少用者在不知情下被PayPal冻结账户，账户内的钱也随之被PayPal扣押。通常的情况是：PayPal通过电子邮件通知客户账户由于风险安全问题受到限制，希望客户提供一些资料（通常为但不限于客户的身份证明和账户注册地址证明）；在PayPal通过审查相关信息并做出客户是否有悖于PayPal公司规定或法律规定的判断后，PayPal会采取解除限制、终止向该客户提供服务或其他的解决方法。PayPal公司会最终将冻结资金归还给客户，除非由司法机关认定客户涉嫌洗钱或其他金融犯罪。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/731.html" rel="bookmark">Feedburner推出新Del.icio.us的FeedFlare</a></h1>	
+	<div class="post-meta">
+		2006年12月22日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/tech.html" title="业界动态" rel="category tag">业界动态</a> | 
+		评论: 8 | 
+		浏览: 1499
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/FeedBurner.html" rel="tag"><img src="/logo/FeedBurner.gif" alt="FeedBurner" class="thumb" width="80" height="80" /></a>Feedburner今天在其FeedFlare功能中优化更新了Del.icio.us的功能，使得Feedburner用户可以更方便的进行Del.icio.us的操作。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/730.html" rel="bookmark">Z-Blog高效计数器插件</a></h1>	
+	<div class="post-meta">
+		2006年12月21日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 11 | 
+		浏览: 4637
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Zblog.html" rel="tag"><img src="/logo/Zblog.gif" alt="Zblog" class="thumb" width="80" height="80" /></a>这个插件的名称虽然叫高效计数器，但含义是这样的：文章计数器的功能不直接操纵数据库，而是写入缓存文件，等一定时候手动将缓存文件的计数器内容写入数据库。从而实现了Z-Blog普通浏览不访问数据库的功能。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/729.html" rel="bookmark">城市吧的街景地图简评</a></h1>	
+	<div class="post-meta">
+		2006年12月20日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/map.html" title="网络地图" rel="category tag">网络地图</a> | 
+		评论: 17 | 
+		浏览: 25514
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Streetview.html" rel="tag"><img src="/logo/Streetview.gif" alt="街景地图" class="thumb" width="80" height="80" /></a>城市吧的阮薇薇又给我发来邮件，说城市吧这次进行了改版，邀请我评测一下。今天我就谈一下城市吧这个新兴的电子地图服务网站。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/728.html" rel="bookmark">十大高明的Google搜索技巧</a></h1>	
+	<div class="post-meta">
+		2006年12月19日 | 
+		作者: 翻译 | 
+		分类: <a href="/cat/seo.html" title="搜索引擎" rel="category tag">搜索引擎</a> | 
+		评论: 44 | 
+		浏览: 170056
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Searching.html" rel="tag"><img src="/logo/Searching.gif" alt="搜索技巧" class="thumb" width="80" height="80" /></a>前言：多数人在使用Google搜索的过程是非常低效和无谓的，如果你只是输入几个关键词，然后按搜索按钮，你将是那些无法得到Google全部信息的用户，在这篇文章中，Google搜索专家迈克尔.米勒将向您展示如何更智能、更高效地进行Google的系列搜索。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/727.html" rel="bookmark">数码相机和拍照手机的选购</a></h1>	
+	<div class="post-meta">
+		2006年12月18日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/life.html" title="生活感悟" rel="category tag">生活感悟</a> | 
+		评论: 13 | 
+		浏览: 9510
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Mobile.html" rel="tag"><img src="/logo/Mobile.gif" alt="手机" class="thumb" width="80" height="80" /></a>购买数码相机或者拍照手机的确是一件很麻烦的事情，至少对于我来说是这样的，数码相机和手机的品种繁多，网上介绍的文章虽多，但不少是软文，参考价值有限，看的多了，也很难确定到底那一款最合适，这实在是一件令人头疼的事。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/726.html" rel="bookmark">Feedburner的RSS广告简介</a></h1>	
+	<div class="post-meta">
+		2006年12月17日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 10 | 
+		浏览: 3658
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/FeedBurner.html" rel="tag"><img src="/logo/FeedBurner.gif" alt="FeedBurner" class="thumb" width="80" height="80" /></a>Feed广告是Blog的一种盈利方式，和 <a href="/tag/Adsense.html" title="Google Adsense"  Target="_blank" >Google Adsense</a> for Feeds 一样，目前大多数Feed广告都不支持中文用户，目前我发现的支持中文Blog的Feed广告，只有 Feedburner Ad Networks ，我也申请使用了这个服务，下面我就介绍一下使用这个服务的一些经验。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/725.html" rel="bookmark">使用Google Earth搜索圣诞礼物</a></h1>	
+	<div class="post-meta">
+		2006年12月16日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/map.html" title="网络地图" rel="category tag">网络地图</a> | 
+		评论: 5 | 
+		浏览: 11101
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/GoogleEarth.html" rel="tag"><img src="/logo/GoogleEarth.gif" alt="谷歌地球" class="thumb" width="80" height="80" /></a><a href="/tag/GoogleEarth.html" title="Google Earth"  Target="_blank" >Google Earth</a>又推出一个好玩的游戏，就是通过Google Earth来搜索圣诞礼物。是的，圣诞老人已经将宝物藏在Google Earth的某个角落，从12月12日到圣诞节前夕，会在圣诞老人的北极工作间上出现一条线索，如果你能找到答案并解决，你的Google Earth上就会出现一个圣诞礼物。每天，前一天的礼物都会自动暴露。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/724.html" rel="bookmark">Google专利搜索服务发布</a></h1>	
+	<div class="post-meta">
+		2006年12月15日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/seo.html" title="搜索引擎" rel="category tag">搜索引擎</a> | 
+		评论: 9 | 
+		浏览: 4204
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/GoogleSearch.html" rel="tag"><img src="/logo/GoogleSearch.gif" alt="谷歌搜索" class="thumb" width="80" height="80" /></a>据CNETNews.com报道，本周三晚，Google正式发布了Google专利搜索服务，用户通过输入关键词、专利号、发明者和文件日期就可以搜索美国的专利产品。用户还可以浏览原始专利文件的扫描图像，并可以进行放大。Google的专利搜索涵盖了700万个专利文件。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/723.html" rel="bookmark">Firefox的Google工具栏中文版发布</a></h1>	
+	<div class="post-meta">
+		2006年12月15日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 27 | 
+		浏览: 9752
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Firefox.html" rel="tag"><img src="/logo/Firefox.gif" alt="火狐" class="thumb" width="80" height="80" /></a>今天，收到Google发来的一个消息，说针对<a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>用户的Google工具栏中文（简体中文和繁体中文）3.0 Beta版已经发布了，于是我就开始下载试用一个看看。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/722.html" rel="bookmark">通过PayPal实现美元现钞转换为现汇</a></h1>	
+	<div class="post-meta">
+		2006年12月14日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/life.html" title="生活感悟" rel="category tag">生活感悟</a> | 
+		评论: 21 | 
+		浏览: 26061
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/PayPal.html" rel="tag"><img src="/logo/PayPal.gif" alt="贝宝" class="thumb" width="80" height="80" /></a>中国是汇率管制的国家，居民手中的美元现汇可以转换为美元现钞和人民币现钞，但是美元现钞和人民币现钞却很难转换为美元现汇，今天我介绍一个方法，可以令没有美元的用户也拥有美元现汇的帐户。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/721.html" rel="bookmark">南京大屠杀纪念日</a></h1>	
+	<div class="post-meta">
+		2006年12月13日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/life.html" title="生活感悟" rel="category tag">生活感悟</a> | 
+		评论: 114 | 
+		浏览: 23579
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/History.html" rel="tag"><img src="/logo/History.gif" alt="历史" class="thumb" width="80" height="80" /></a>今天是12月13日，是南京大屠杀六十九周年纪念日，南京大屠杀指的是日军于1937年12月13日攻陷中国首都南京之后进行的大规模屠杀、抢掠、强奸等战争罪行。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/720.html" rel="bookmark">Sentinel SuperPro加密锁编程开发指南</a></h1>	
+	<div class="post-meta">
+		2006年12月12日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 6 | 
+		浏览: 6289
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a>本文将简要介绍Sentinel SuperPro软件加密锁的编程开发知识，可供需要进行软件加密锁开发的软件开发商快速学习掌握这种类型的加密锁的编程开发，快速保护自己的软件不受侵害，防止加密狗被破解。本文资源来源于Sentinel SuperPro加密锁开发套件中的开发手册，仅供大家学习，文字版权属于Sentinel SuperPro所有。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/719.html" rel="bookmark">软加密网上激活解决方案</a></h1>	
+	<div class="post-meta">
+		2006年12月11日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 7 | 
+		浏览: 7147
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a>前一段时间我介绍了不少软件加密技术和软件加密锁厂商，使用软件加密锁的确可以方便的保护软件开发商的应用软件，但是需要多付出加密锁的成本，并且也未必能够保证永远不会出现加密锁被破解的情况。今天，我将介绍一种不需要加密锁的新产品技术：软加密产品激活技术，这种技术也能保护软件产品的技术，还可以节省大量的加密锁费用，能加快物流、渠道的供货速度，是一个成本低廉、功能强大且高效的软件保护技术。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/718.html" rel="bookmark">百度尝试竞价广告新模式</a></h1>	
+	<div class="post-meta">
+		2006年12月10日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/seo.html" title="搜索引擎" rel="category tag">搜索引擎</a> | 
+		评论: 20 | 
+		浏览: 6563
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/BaiduAds.html" rel="tag"><img src="/logo/BaiduAds.gif" alt="百度广告" class="thumb" width="80" height="80" /></a>有一个姓朱的读者发邮件告诉我，说他在百度中搜索某些关键字的时候，意外的发现了百度的一个竞价广告新模式：&ldquo;类似Google的赞助商链接&rdquo;，于是推测这可能是百度在悄悄测试新的广告模式。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/717.html" rel="bookmark">软件盗版的产业链</a></h1>	
+	<div class="post-meta">
+		2006年12月9日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 26 | 
+		浏览: 6440
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Software.html" rel="tag"><img src="/logo/Software.gif" alt="软件" class="thumb" width="80" height="80" /></a>在中国这样的国家，开发软件是一件痛苦的事情，因为除了和同行之间相互竞争之外，还要和另外一个对手——“盗版”来竞争，使得软件开发商精力分散，并付出很多不必要的成本。而盗版做为一个特殊产业，在中国这个特殊国情下，也逐渐形成一个成熟的产业链。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/716.html" rel="bookmark">百度博客搜索的收录</a></h1>	
+	<div class="post-meta">
+		2006年12月8日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/seo.html" title="搜索引擎" rel="category tag">搜索引擎</a> | 
+		评论: 41 | 
+		浏览: 24766
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/BlogSearch.html" rel="tag"><img src="/logo/BlogSearch.gif" alt="博客搜索" class="thumb" width="80" height="80" /></a>百度博客搜索发布后，引起了很多人的讨论，其中对于百度博客搜索的收录问题存在不少争论，我这里就说一下我关于百度博客搜索的收录问题的看法。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/715.html" rel="bookmark">百度博客搜索服务正式发布</a></h1>	
+	<div class="post-meta">
+		2006年12月7日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/seo.html" title="搜索引擎" rel="category tag">搜索引擎</a> | 
+		评论: 23 | 
+		浏览: 4935
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/BlogSearch.html" rel="tag"><img src="/logo/BlogSearch.gif" alt="博客搜索" class="thumb" width="80" height="80" /></a>刚刚推出百度搜藏进军网络书签领域没多久，今天，百度正式推出百度博客搜索服务，正式进军博客搜索市场，用户可以通过这个服务迅速找到中文博客更新的内容。这个服务的推出也完善了百度目前的搜索体系。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/714.html" rel="bookmark">百度和Google的编程接口比较</a></h1>	
+	<div class="post-meta">
+		2006年12月6日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 35 | 
+		浏览: 16399
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/BaiduGoogle.html" rel="tag"><img src="/logo/BaiduGoogle.gif" alt="百度和谷歌" class="thumb" width="80" height="80" /></a>百度和Google做为知名的搜索引擎，有非常丰富的搜索资源信息，很多人都希望编写程序调用搜索引擎的宝贵数据，昨天我写的那个程序是调用百度的搜索接口，为什么使用百度的呢，这中间其实也是有原因的。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/713.html" rel="bookmark">防止文章被复制的网络分析软件</a></h1>	
+	<div class="post-meta">
+		2006年12月5日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 46 | 
+		浏览: 15178
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Script.html" rel="tag"><img src="/logo/Script.gif" alt="源代码" class="thumb" width="80" height="80" /></a>很多Blogger都遇到过自己文章被其他人非法复制的情况，为了让大家能快速将恶意转载者找出来，我根据搜索引擎的一些原理，利用百度搜索引擎的数据，开发了一个可以自动分析查找那些对自己有“实质伤害”的复制人的地址。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/712.html" rel="bookmark">申请Google AdSense for Feeds</a></h1>	
+	<div class="post-meta">
+		2006年12月4日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 15 | 
+		浏览: 6226
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Money.html" rel="tag"><img src="/logo/Money.gif" alt="广告" class="thumb" width="80" height="80" /></a>今天从困兽那里听到一个消息，说“Google已经开始接受AdSense for Feeds申请，只要你的网站 feed 订阅数在100以上，并且拥有 AdSense 帐户，就可以参加 AdSense for feeds （BETA）。申请地址：https://services.google.com/ads_inquiry/aff 。”
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/711.html" rel="bookmark">通过Web Service调用Google SOAP Search API</a></h1>	
+	<div class="post-meta">
+		2006年12月3日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 6 | 
+		浏览: 19288
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a>我曾经介绍过&ldquo;使用Axis开发Web Service程序&rdquo;的一些步骤，做为一个更有特色的应用范例，本次我将介绍使用Axis通过Web Service调用Google SOAP Search API，实现Google搜索、Google快照、Google拼写这三项功能，包括示例源代码。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/710.html" rel="bookmark">Google Blogger Beta中文界面启用</a></h1>	
+	<div class="post-meta">
+		2006年12月2日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/tech.html" title="业界动态" rel="category tag">业界动态</a> | 
+		评论: 16 | 
+		浏览: 5998
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Blogger.html" rel="tag"><img src="/logo/Blogger.gif" alt="谷歌博客" class="thumb" width="80" height="80" /></a>昨天ReallyFindIt留言给我一个消息，说<a href="/tag/Blogger.html" title="Google Blogger"  Target="_blank" >Google Blogger</a> Beta的后台管理的中文界面已经全面启用了。由于我以前一直用Email发帖子，登录后台较少，所以我立刻登录了一下Blogger Beta，发现界面的确已经全部是中文了。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/709.html" rel="bookmark">PayPal支持电汇提现</a></h1>	
+	<div class="post-meta">
+		2006年12月1日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/tech.html" title="业界动态" rel="category tag">业界动态</a> | 
+		评论: 33 | 
+		浏览: 27361
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/PayPal.html" rel="tag"><img src="/logo/PayPal.gif" alt="贝宝" class="thumb" width="80" height="80" /></a>今天，收到一封邮件提示我的<a href="/tag/PayPal.html" title="PayPal"  Target="_blank" >PayPal</a>帐户收到了Review Me上次的50美元，于是登录了一下PayPal的英文网站，果然发现收到了50美元，同时我还发现另外一个有趣的东西，PayPal的英文网站居然用中文写了一个很大的广告，上书&ldquo;最快3天，美元到您手-PayPal电汇提现&rdquo;。这说明PayPal开通了对中国地区的电汇提现功能，中国人收美元又有了一个新方法。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/708.html" rel="bookmark">百度搜藏的功能缺陷</a></h1>	
+	<div class="post-meta">
+		2006年11月30日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/seo.html" title="搜索引擎" rel="category tag">搜索引擎</a> | 
+		评论: 60 | 
+		浏览: 19645
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Baidu.html" rel="tag"><img src="/logo/Baidu.gif" alt="百度" class="thumb" width="80" height="80" /></a>百度的网络收藏夹服务&ldquo;百度搜藏&rdquo;已经发布了，我也第一时间试用了一下，感觉百度搜藏有不少功能上的缺陷令人感到很遗憾，社会化功能很弱，速度也不是很快，不过搜索功能的确是做的不错。下面我就说一下我个人发现的一些百度搜藏的功能缺陷。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/707.html" rel="bookmark">软件加密锁编程技巧</a></h1>	
+	<div class="post-meta">
+		2006年11月29日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 12 | 
+		浏览: 34185
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a>本文将介绍软件加密锁的一些编程技巧，以及软件开发者将如何编写安全可靠的代码，如何对付各种各样的加密狗破解，编写加密程序时应该尽量避免的一些问题等等。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/706.html" rel="bookmark">软件加密狗破解思路和方法</a></h1>	
+	<div class="post-meta">
+		2006年11月28日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 28 | 
+		浏览: 239316
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a>本文介绍的是软件加密狗破解的一般思路和方法，大家可能奇怪，昨天刚刚介绍完“软件加密锁产品评测”，怎么今天就介绍加密狗破解知识？其实做为软件开发者，研究好软件加密的确很重要，不过也很有必要多了解一些关于加密狗解密和破解的知识，加密和破解就像矛和盾一样，对于解密知识了解的越多，那么编写的加密代码就越好，要知道加密永远都比解密要容易的多，只有知己知彼，方能百战百胜。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/705.html" rel="bookmark">国内软件加密锁产品评测</a></h1>	
+	<div class="post-meta">
+		2006年11月27日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 465 | 
+		浏览: 59156
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a>昨天讲述的“软件加密技术和注册机制”是一些软件加密的基本概念，在中国，开发和销售软件离不开加密，因为我国的软件保护法制还不太健全，人们的法制观念也比较淡薄，盗版软件有着丰富的土壤，并且因为软件是一种非常特殊的商品，很容易复制，就其功能来讲，正版和盗版的区别很小，如果开发出来的软件不进行加密的话，那么在中国就无法销售出去，人们乐意使用盗版软件而没有一些道德罪孽感，因此软件开发商有必要使用一些加密产品来保护软件开发者的利益，防止软件被盗版。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/704.html" rel="bookmark">软件加密技术和注册机制</a></h1>	
+	<div class="post-meta">
+		2006年11月26日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 28 | 
+		浏览: 37373
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a>本文是一篇软件加密技术的基础性文章，简要介绍了软件加密的一些基本常识和一些加密产品，适用于国内软件开发商或者个人共享软件开发者阅读参考。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/703.html" rel="bookmark">真三国无双系列游戏片头</a></h1>	
+	<div class="post-meta">
+		2006年11月25日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 6 | 
+		浏览: 16021
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Game.html" rel="tag"><img src="/logo/Game.gif" alt="游戏" class="thumb" width="80" height="80" /></a>真三国无双系列是PS2上很少见的3D动作游戏，日本的光荣（KOEI）在2002年发布，其二代、三代、四代的销量均突破了百万套。可以说，真三国无双系列游戏是PS2游戏机上必玩的ACT经典大作。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/702.html" rel="bookmark">提高浏览体验的五十个最佳FireFox扩展插件</a></h1>	
+	<div class="post-meta">
+		2006年11月24日 | 
+		作者: 翻译 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 56 | 
+		浏览: 498414
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Firefox.html" rel="tag"><img src="/logo/Firefox.gif" alt="火狐" class="thumb" width="80" height="80" /></a><a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>的扩展插件有成百上千，你要用哪个呢？这里收集了50个流行的扩展插件，下载后安装，会让你的FireFox浏览更轻松。请注意，大多数扩展插件可以在FireFox2.0上使用，如果无法使用，那么使用Nightly Tester Tools扩展来让他们工作。当一个新的FireFox版本发布后，这个扩展插件可以允许你轻松更新这些已经存在的扩展。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/701.html" rel="bookmark">使用Axis开发Web Service程序</a></h1>	
+	<div class="post-meta">
+		2006年11月23日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 41 | 
+		浏览: 89064
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a>今天是感恩节，差点又要在公司加班了。好在Web Service程序并不是特别难搞，下午终于在eclipse下调通过了，正确产生了服务器端和客户端的Java代码，apache的东西的确很不错。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/700.html" rel="bookmark">百度搜藏即将发布</a></h1>	
+	<div class="post-meta">
+		2006年11月22日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/seo.html" title="搜索引擎" rel="category tag">搜索引擎</a> | 
+		评论: 12 | 
+		浏览: 3964
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Baidu.html" rel="tag"><img src="/logo/Baidu.gif" alt="百度" class="thumb" width="80" height="80" /></a>百度即将发布一个全新的中文网摘服务：百度搜藏，名字感觉比较怪。现在百度搜藏的主页已经能访问，上面写的是“即将发布，敬请关注”，据说这个服务将在本月底之前开发完成并上线。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/699.html" rel="bookmark">BlogSpot模版资源列表</a></h1>	
+	<div class="post-meta">
+		2006年11月21日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 37 | 
+		浏览: 27552
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Blogger.html" rel="tag"><img src="/logo/Blogger.gif" alt="谷歌博客" class="thumb" width="80" height="80" /></a>首先是关于<a href="/tag/Blogger.html" title="Google Blogger"  Target="_blank" >Google Blogger</a>的一则快讯，我站一位杨读者首先发现，今天下午17点的时候，BlogSpot又可以正常访问了，我于是立刻尝试了一下，证实深圳电信和上海电信都可以正常访问BlogSpot，这对于大多数人来说都是一个好消息。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/698.html" rel="bookmark">FireFox导入导出Cookies和收藏夹的方法</a></h1>	
+	<div class="post-meta">
+		2006年11月20日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 16 | 
+		浏览: 28932
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Firefox.html" rel="tag"><img src="/logo/Firefox.gif" alt="火狐" class="thumb" width="80" height="80" /></a><a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>是一个常用的浏览器，扩展插件众多，和IE相比有很多优点，不过有些细小的地方似乎考虑的不太好，比如用户经常会碰到系统重新安装等问题，这就需要导入导出FireFox浏览器的Cookies和收藏夹，然而遗憾的是，FireFox默认只提供了导入IE的Cookies和收藏夹的功能，经过一些尝试，我这里找到一个手动导入导出FireFox的Cookies和收藏夹的方法。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/697.html" rel="bookmark">Yahoo卫星地图服务发布</a></h1>	
+	<div class="post-meta">
+		2006年11月19日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/map.html" title="网络地图" rel="category tag">网络地图</a> | 
+		评论: 21 | 
+		浏览: 31931
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Yahoo.html" rel="tag"><img src="/logo/Yahoo.gif" alt="雅虎" class="thumb" width="80" height="80" /></a>继Google的地图服务<a href="/tag/GoogleMaps.html" title="Google Maps"  Target="_blank" >Google Maps</a>和<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>的地图MSN Maps之后，Yahoo周三宣布新推出了正式版本的包含卫星图像的Yahoo Maps。<a href="/tag/Yahoo.html" title="雅虎"  Target="_blank" >雅虎</a>宣称，与竞争对手相比，他们的这项服务现在提供了&ldquo;最好的全球地图数据媒体解决方案&rdquo;。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/696.html" rel="bookmark">锵锵三人行谈论百度贴吧</a></h1>	
+	<div class="post-meta">
+		2006年11月18日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/life.html" title="生活感悟" rel="category tag">生活感悟</a> | 
+		评论: 16 | 
+		浏览: 6409
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Culture.html" rel="tag"><img src="/logo/Culture.gif" alt="文化" class="thumb" width="80" height="80" /></a>晚上浏览Blog，看到百度官方博客时候，发现一则电视预告消息，说今晚凤凰卫视的《锵锵三人行》会一起聊一下百度的贴吧。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/695.html" rel="bookmark">防火长城真是神仙啊</a></h1>	
+	<div class="post-meta">
+		2006年11月17日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 68 | 
+		浏览: 19934
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Wiki.html" rel="tag"><img src="/logo/Wiki.gif" alt="维基百科" class="thumb" width="80" height="80" /></a>今天发现几天前刚刚能够正常访问的<a href="/tag/Wiki.html" title="维基百科"  Target="_blank" >维基百科</a>又无法访问了，才知道，原来防火长城真是神仙啊。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/694.html" rel="bookmark">再论SaaS的的实施风险</a></h1>	
+	<div class="post-meta">
+		2006年11月16日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 7 | 
+		浏览: 4187
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/SaaS.html" rel="tag"><img src="/logo/SaaS.gif" alt="软件即服务" class="thumb" width="80" height="80" /></a>昨天我讨论的《SaaS的前途和命运》的文章，icemanpro有一些不同看法，他认为SaaS会成功，所以今天我就再详细论证一下SaaS（Software-as-a-Service，软件即服务）的实施风险问题。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/693.html" rel="bookmark">SaaS的前途和命运</a></h1>	
+	<div class="post-meta">
+		2006年11月15日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 17 | 
+		浏览: 12228
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/SaaS.html" rel="tag"><img src="/logo/SaaS.gif" alt="软件即服务" class="thumb" width="80" height="80" /></a>SaaS（Software-as-a-Service，软件即服务）是目前一种新型软件服务形式，是从ASP（Application Service Provider，应用服务提供商）模式演变而来。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+ <div class="entry clearfix">
+	<h1><a class="post-title" href="/archives/692.html" rel="bookmark">Blog广告新创意：Review Me</a></h1>	
+	<div class="post-meta">
+		2006年11月14日 | 
+		作者: 月光 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 24 | 
+		浏览: 9139
+	</div>
+
+	<div class="clear"></div>
+	<div class="entry-content">
+		<a href="/tag/Blog.html" rel="tag"><img src="/logo/Blog.gif" alt="博客" class="thumb" width="80" height="80" /></a>最近，不少Blog都在谈论一个名叫“Review Me”的新型广告发布系统。
+	</div>
+	<!-- END post-bottom -->
+</div><!-- END entry -->
+
+
+			<div class="pagination clearfix">
+				<a class='page-numbers' href="/"><span class="page first-page">&laquo;</span></a><a class='page-numbers' href="/page/index_162.html"><span class="page">162</span></a><span class="page now-page">163</span><a class='page-numbers next-page' href="/page/index_164.html"><span class="page">164</span></a><a class='page-numbers' href="/page/index_165.html"><span class="page">165</span></a><a class='page-numbers' href="/page/index_166.html"><span class="page">166</span></a><a class='page-numbers' href="/page/index_167.html"><span class="page">167</span></a><a class='page-numbers' href="/page/index_168.html"><span class="page">168</span></a><a class='page-numbers' href="/page/index_169.html"><span class="page">169</span></a><a class='page-numbers' href="/page/index_170.html"><span class="page">170</span></a><a class='page-numbers' href="/page/index_171.html"><span class="page">171</span></a><a class='page-numbers' href="/page/index_172.html"><span class="page">172</span></a><a class='page-numbers' href="/page/index_173.html"><span class="page">173</span></a><a class='page-numbers' href="/page/index_174.html"><span class="page">174</span></a><a class='page-numbers' href="/page/index_175.html"><span class="page">175</span></a><a class='page-numbers' href="/page/index_176.html"><span class="page">176</span></a><a class='page-numbers' href="/page/index_180.html"><span class="page last-page">&raquo;</span></a>
+			</div>
+		</div><!-- END content --> 
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.yueguangboke.com" /><input type="hidden" name="sitesearch" value="www.yueguangboke.com" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (525)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (939)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3182)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (676)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7557.html" title="推特推出全新“原创内容奖励计划”">推特推出全新“原创内容奖励计划”(183)</a></li>
+<li><a href="/archives/7555.html" title="大学教授出奇招抓AI作弊，35名学生32人中招">大学教授出奇招抓AI作弊，35名学生32(470)</a></li>
+<li><a href="/archives/7556.html" title="《生化危机9安魂曲》游戏评测">《生化危机9安魂曲》游戏评测(48)</a></li>
+<li><a href="/archives/7554.html" title="申真谞九段让子棋战胜KataGo">申真谞九段让子棋战胜KataGo(428)</a></li>
+<li><a href="/archives/7553.html" title="豆包千问宣布下线智能体功能">豆包千问宣布下线智能体功能(591)</a></li>
+<li><a href="/archives/7552.html" title="申真谞九段受让两子挑战KataGo">申真谞九段受让两子挑战KataGo(1071)</a></li>
+<li><a href="/archives/7550.html" title="《网络测评活动规范》出台">《网络测评活动规范》出台(653)</a></li>
+<li><a href="/archives/7551.html" title="韩红帮冯小刚新片《抓特务》“走个面”引争议">韩红帮冯小刚新片《抓特务》“走个面”引争(58)</a></li>
+<li><a href="/archives/7549.html" title="粉笔科技的人大讲座事件的说明与致歉">粉笔科技的人大讲座事件的说明与致歉(1105)</a></li>
+<li><a href="/archives/7548.html" title="《国务院关于对外投资的规定》自7月1日起施行">《国务院关于对外投资的规定》自7月1日起(1083)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7557</li><li>评论总数:199551</li><li>浏览总数:74064538</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

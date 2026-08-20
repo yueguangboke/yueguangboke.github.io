@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3005.html"/>
+	<title>谷歌到底怎么绕过浏览器的隐私设定-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>谷歌到底怎么绕过浏览器的隐私设定</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3005.html" rel="bookmark">谷歌到底怎么绕过浏览器的隐私设定</a></h1>
+	<div class="post-meta">
+		2012-2-21 22:14:7 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 15 | 
+		浏览: <span class="AddView" id="spn3005" data-id="3005"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Security.html" rel="tag"><img src="/logo/Security.gif" alt="安全" class="thumb" width="80" height="80" /></a><p>剧情回顾：最近几篇新闻都在讲述Google，Apple，Microsoft的神仙战争。为什么叫神仙战争，因为你根本看不懂这五篇报道。</p><p>1,《<a target="_blank" href="http://www.cnbeta.com/articles/173285.htm">谷歌被曝绕过Safari隐私设定追踪用户浏览记录</a>》</p><p>2,《<a target="_blank" href="http://www.cnbeta.com/articles/173124.htm">谷歌因Safari隐私问题遭用户起诉侵权</a>》</p><p>3,《<a target="_blank" href="http://news.mydrivers.com/1/218/218095.htm">微软打击Google和苹果称IE9是&ldquo;不被第三方浏览的浏览器&rdquo;</a>》</p><p>4,《<a target="_blank" href="http://www.cnbeta.com/articles/173561.htm">微软宣称谷歌秘密记录IE用户</a>》</p><p>5,《<a target="_blank" href="http://www.cnbeta.com/articles/173569.htm">Google回应微软称P3P隐私策略已不适用</a>》</p><p>在前几篇文章中，笔者介绍了网络信息收集，广告流通手段，以及可行的阻断方法。这篇文章目的则是解释这些&ldquo;神仙&rdquo;之间到底发生了什么。所以，专业人士可以无视它。</p><p>我们就来看看这些和外交辞令没什么区别的新闻，到底在说什么。</p><p>报道-1：</p><p style="text-align: center"><img alt="谷歌到底怎么绕过浏览器的隐私设定" src="/upload/3005_1.jpg" /></p><p style="text-align: center">图1，Google Plus同时使用<a href="/tag/GoogleAnalytics.html" title="Google Analytics"  Target="_blank" >Google Analytics</a>与Doubleclick收集用户信息</p><p>在最早一起报道中，有人指责当使用Apple Safari访问Google Plus服务时，谷歌绕过了Safari的Cookie策略，进行了追踪用户的行为。</p><p>事实：</p><p>Google是最大的互联网广告商，它通过Google Analytics，Doubleclick，<a href="/tag/Adsense.html" title="Google Adsense"  Target="_blank" >Google Adsense</a>，Google Admob等一系列业务进行广泛的用户兴趣爱好收集，和相应的广告投放业务。</p><p>使用浏览器访问Google Plus时，会从一系列域名请求不同的内容，以组成Google Plus的网页，其中，有两个域名对达成Google Plus本身的页面，功能而言是完全不必要的：它们分别是doubleclick.com和google-analytics.com。</p><p>google-analytics的内容用于给当前用户进行编号(这个编号与用户当前使用的Google帐号有关联，但不等同)，并收集该网站(这里就是Google Plus)的用户行为；doubleclick.com的作用也类似，但侧重于让谷歌的广告系统在别的网站上也能认出该用户，以投放精准广告。这些编号存储在cookie中。然而，Safari默认不允许第三方网站设置cookie，也就是说，在本例中，只有.google.com域名的网站可以设置cookie。为了达成跟踪的目的，谷歌就把原本应该放在doubleclick.com域名下的跟踪工具转移到了.google.com域名下------这就是所谓的&ldquo;绕过Safari隐私设置&rdquo;。</p><p style="text-align: center"><img alt="谷歌到底怎么绕过浏览器的隐私设定" src="/upload/3005_2.jpg" /></p><p style="text-align: center">图2，Apple Safari默认不允许来自第三方域名的内容设置cookie</p><p>报道没有提到(隐瞒)的事实：</p><p>1，所有的浏览器都提供了是否允许第三方Cookie的选项。只有Safari默认完全不允许第三方Cookie操作。IE默认对Cookie有弱于Safari的限制。其它浏览器一般默认允许所有Cookie(主要的反例在于，有的浏览器是借助IE核心运行的，它们往往和IE使用同一个Cookie配置设定)。</p><p>2，谷歌这次的行为对所有设置了&ldquo;不允许第三方cookie&rdquo;的浏览器都是有效的</p><p>报道-2：</p><p>没过几天，<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>的Internet Explorer爆出了&ldquo;被Google绕过&rdquo;的新闻。这次则是&ldquo;谷歌绕过了IE中关于Cookie设定的P3P规范&rdquo;</p><p>事实：</p><p>在IE6刚推出的时候，浏览器往往支持一个由W3C设立的，基于P3P标准的Cookie控制规范。P3P的全称是&ldquo;The Platform for Privacy Preferences Project&rdquo;，它要求第三方网站在需要跟踪用户时，向浏览器提出相应级别的请求。浏览器会比照用户设定的隐私级别，当双方不一致时，浏览器就会提醒用户是否愿意接受网站的条款，若用户不愿意，则浏览器将不会允许网站记录超出用户当前许可范围的内容。然而，事实上浏览器最多只能在Cookie的程度支持P3P。</p><p style="text-align: center"><img alt="谷歌到底怎么绕过浏览器的隐私设定" src="/upload/3005_3.jpg" /></p><p>P3P的本意是想达到一种&ldquo;明码标价&rdquo;的作用，一方面通过网页代码让浏览器识别，另一方面通过该系统给出可供人阅读的实际隐私策略文本。可是业界对这套系统并不领情，目前只有IE系列(6,7,8,9)浏览器强制开启了P3P，并要求第三方只有在提供精简隐私政策的情况下才能设置Cookie。考虑到兼容性，当网站给出的精简隐私政策不符合规范时，IE依然会允许该网站读写Cookie。</p><p>因此，和Apple的不同，当用户使用Internet Explorer(不启用跟踪保护功能)访问Google Plus时，谷歌会&ldquo;明目张胆&rdquo;地通过doubleclick.com植入标记用户的cookie。</p><p>另一方面，事实上P3P是普遍不被接受的，但是为了与IE保持兼容，广告公司可能会给出P3P条款，但其它网站通常会&ldquo;伪造&rdquo;一份P3P协议，类似于Flash使用跨域名内容时必需的crossdomain.xml，这些&ldquo;伪造&rdquo;的协议只包括了浏览器能阅读的部分，并没有可供人阅读的正式文本。</p><p>不被(第三方)浏览的浏览器</p><p>微软在其中的一篇新闻稿中声称Internet Explorer(8和9)是&ldquo;&lsquo;Browse Without Being Browsed&rsquo;，拥有业界最强悍的隐私保护能力，尤其是其独特的追踪保护功能可以让用户掌握自己的在线活动&rdquo;<br />笔者在之前的文章中提到过IE追踪保护功能的亮点：自动识别用于收集信息的第三方内容，并加以阻止。</p><p>更好的选择</p><p>和P3P一样，现在W3C又推出了一个&rdquo;Do Not Track&rdquo;的标准，允许用户在不希望网站记录用户行踪时，向网站发送一个&rdquo;Do Not Track&rdquo;标记。笔者觉得这种毫无强制力的工具比P3P更没用。也就是说，如果你真的想控制信息的流出，你就应该在你的主场，也就是你的浏览器上下手，而不是像慈禧太后那样&ldquo;量中华之物力，结与国之欢心&rdquo;，把责任推给对方。</p><p>真正有用的，是跟踪保护，以及各种形形色色浏览器扩展所提供的功能。特别是后者，它们不站在大公司的角度，是真正的接受用户&ldquo;用脚投票&rdquo;的工具，自然会卖力地帮助用户减少信息泄漏。当然，其中的大部分又是业余时间的兴趣之作，没有质保。</p><p><a target="_blank" href="http://www.tianya.cn/publicforum/content/itinfo/1/167066.shtml">UC浏览器访问HTTPS网页的泄漏问题</a></p><p>这个就比较严重了。前面的&ldquo;神仙大战&rdquo;和它比起来简直微不足道。</p><p style="text-align: center"><img alt="UC浏览器" src="/upload/3005_4.jpg" /></p><p>事实</p><p>UC浏览器有一项引以为傲的功能(其它的同类产品也提供同样功能)：通过代理服务器将网页重新排版、压缩，使得页面适应手机屏幕，并减少流量消耗。对于一般的明文连接，这没有问题。但是这项功能不兼容加密的HTTPS连接，唯一的方法是让代理服务器负责与目标网站进行HTTPS握手，这样代理服务器才能知道HTTPS连接中被加密的内容，从而将其重排版、压缩而转交给用户。</p><p>这么做有巨大风险：</p><p>1，HTTPS保证了只要服务方和证书提供方没有问题，则只有用户和服务方本身才能知晓双方通讯的内容，有很高的保密性。UC浏览器破坏了这套安全系统，导致信息在UC方的代理服务器与用户之间的传递变成明文，如同公厕。</p><p>2，用户和最终服务方之间的通信全部让UC给知道了(显然用户是不知情的)，光是这一点就已是涉嫌犯罪的行为了。</p><p>报道没有提到的事实：</p><p>UC强调&ldquo;<a target="_blank" href="http://www.cnbeta.com/articles/173479.htm">因访问钓鱼WIFI</a>&rdquo;，却有意忽略了问题的本质：UC浏览器本身破坏了HTTPS连接的安全性，导致了原本即便经过钓鱼WIFI热点传输，也依然安全的连接，变成了明文的，谁都可以看到的无线数据。</p><p>我们知道，公共WIFI热点一般都是不加密的，这就意味着一个掌握相关技能(无非就是会使用破解WEP加密的BackTrack操作系统程度)的犯罪分子，完全不需要辛苦地钓鱼，只要拿一台笔记本电脑，在有公共WIFI热点的地方坐上几个小时，就能截获大量因为UC浏览器自身设计不当而明文传输的账户密码。</p><p>为什么UC会&ldquo;<a target="_blank" href="http://www.tianya.cn/publicforum/content/itinfo/1/167198.shtml">本末倒置</a>&rdquo;？</p><p>如果UC要确保用户的安全，就必须放弃对HTTPS网页进行云端加速，站在UC的角度，这也许是不可接受的。同样的，千方百计地通知用户：进行云端加速则会失去HTTPS页面的安全性，同样也可能是无法接受的。如同最近的熊胆事件一样，如果你把一生都放在熊胆提取上，你会允许别人&ldquo;说三道四&rdquo;吗？</p><p>笔者认为，应该避免通过任何使用&ldquo;云端加速&rdquo;的手机浏览器访问HTTPS网页，直到这些软件提供明确的说明。这样，在保护自己的同时，也不会触犯任何一方的利益。</p><p>原则</p><p>第一方记录你的浏览历史是无可非议的，当然你总是可以不提供任何信息(通常而言，这总是意味着你无法使用该服务)</p><p>所有第三方内容都可以被阻止，只要不影响你的正常使用(第三方需要为自己负责)</p><p>但是一个网站(特别是大型站点)需要把内容分别放在不同的域名中，以便均衡负载压力，分类不同内容，或是因为确实需要由第三方向用户提供服务。这个时候，用户就需要一些知识才能分辨出用于CDN(内容分发)的域名与用于收集信息的第三方之间的区别。</p><p>有人觉得，因为国情，大家都不注重个人隐私，以上内容都是空谈。</p><p>事实：所有你的信息最初一定都是由你提供的，除非碰到病毒(其实，病毒也是你&lsquo;不小心&rsquo;，或这是&lsquo;默认地&rsquo;请进来的)或者是刑侦需要，所以你总是能决定不提供哪些和个人关联的信息。无非是有的地区很注重程序正义，广告商往往需要为某一项具体行为付出一定的责任，用户在提交信息时更有信心；而在这里，你更需要依靠自己。</p><p>无论在哪里，早起的鸟儿有果子吃。如果不愿意早起，还是等天上的掉下的馅饼更好。</p><p>Google在一份声明中说&ldquo;需要强调的是，这些广告Cookie不会收集个人信息，这一点很重要&rdquo;。</p><p>那么笔者也学着&ldquo;强调&rdquo;一下：只要是收集信息的内容，不管它和个人有多深的关联，用户总是可以阻止，这一点很重要。</p><p>来源：fcerebel投稿。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Security.jpg" alt="谷歌到底怎么绕过浏览器的隐私设定" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3005"></span><a href="javascript:commYea(3005);" id="dig3005">顶一下 ▲</a>(<span id="sdig3005"><Script language="javascript" type="text/javascript">showDig("3005");</script></span>) &nbsp; <a href="javascript:commNay(3005);" id="down3005">踩一下 ▼</a>(<span id="sdown3005"><Script language="javascript" type="text/javascript">showDown("3005");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3004.html" title="移动开发中HTML5能否替代本地程序？">移动开发中HTML5能否替代本地程序？</a></div><div class="next_content">下一篇 » <a href="/archives/3006.html" title="UC浏览器被指明文传输用户密码">UC浏览器被指明文传输用户密码</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3001.html">是谁在偷窥我们的网络隐私</a></p><p class="mutualitylist"><a href="/archives/2986.html">由拖库攻击谈口令字段的加密策略</a></p><p class="mutualitylist"><a href="/archives/2961.html">泄密门事件背后的真相</a></p><p class="mutualitylist"><a href="/archives/2960.html">国信办公布泄密门事件查处结果</a></p><p class="mutualitylist"><a href="/archives/2943.html">电子商务和政府网站用户资料泄漏</a></p><p class="mutualitylist"><a href="/archives/2942.html">标本兼治方能关上“泄密门”</a></p><p class="mutualitylist"><a href="/archives/2939.html">泄密门升级：天涯四千万用户数据外泄</a></p><p class="mutualitylist"><a href="/archives/2938.html">从泄密门分析中国网民习惯</a></p><p class="mutualitylist"><a href="/archives/2937.html">个人密码安全策略</a></p><p class="mutualitylist"><a href="/archives/2935.html">知名程序员网站CSDN被黑</a></p><p class="mutualitylist"><a href="/archives/2934.html">多家网站百万用户信息泄露</a></p><p class="mutualitylist"><a href="/archives/2933.html">CSDN网站六百万用户信息外泄</a></p><p class="mutualitylist"><a href="/archives/2754.html">Google两步验证安装使用方法</a></p><p class="mutualitylist"><a href="/archives/2706.html">中国黑客是流氓</a></p><p class="mutualitylist"><a href="/archives/2366.html">细数网络上十七种安全威胁</a></p><p class="mutualitylist"><a href="/archives/2201.html">个人电脑信息安全指南</a></p><p class="mutualitylist"><a href="/archives/2058.html">破解Google Gmail的https新思路</a></p><p class="mutualitylist"><a href="/archives/1954.html">防火墙技巧——忽略RESET报文</a></p><p class="mutualitylist"><a href="/archives/1942.html">解决SSL攻击的方法</a></p><p class="mutualitylist"><a href="/archives/1941.html">微软免费杀毒软件Microsoft Security Essentials</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

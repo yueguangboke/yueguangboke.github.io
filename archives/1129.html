@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/1129.html"/>
+	<title>中国网上银行的USB Key安全评测-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth2">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>中国网上银行的USB Key安全评测</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/1129.html" rel="bookmark">中国网上银行的USB Key安全评测</a></h1>
+	<div class="post-meta">
+		2007-11-8 23:56:36 | 
+		作者: 月光 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 52 | 
+		浏览: <span class="AddView" id="spn1129" data-id="1129"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>USB Key是一种USB接口的硬件存储设备。USB Key的模样跟普通的U盘差不多，不同的是它里面存放了单片机或智能卡芯片，USB Key有一定的存储空间，可以存储用户的私钥以及数字证书，利用USB Key内置的公钥算法可以实现对用户身份的认证。目前USB Key被广泛应用于国内的网上银行领域，是公认的较为安全的身份认证技术。</p>
+
+<p>USB Key在网上银行中，被用作客户数字证书和私有密钥的载体，在网络上鉴别用户身份处于极其关键的地位。<a href="/archives/751.html" target="_blank">而网上银行首要的关键问题就是安全</a>，安全是所有一切的基础，没有安全的网银还不如没有网银。一些新闻报道的国内某某银行几十万资金通过网银被盗，都给网上银行带来巨大的负面影响，让人对于<a href="/archives/753.html" target="_blank">USB Key的网上银行认证</a>的安全性产生怀疑和顾虑。</p>
+
+<p>本文将从技术的角度出发，详细论述一下目前中国网上银行使用的USB Key的安全性以及可能存在的风险和漏洞。当然，一个网银系统的安全，涉及到的理论知识非常多，不仅仅要懂得大学课程《密码学》的全面知识，还要知道最新加密锁和USB Key的产品动态，进行全面的网银评测并不是那么简单的事情。本文也仅仅起个抛砖引玉的作用，欢迎各方高手继续补充和讨论。</p>
+
+<p>行业安全专家基本都公认USB Key是安全可靠的，那么USB Key为什么是安全的呢？目前有几个重要的性能指标能够说明USB Key的安全性。</p>
+
+<p><strong>1、硬件PIN码保护</strong></p>
+
+<p>黑客需要同时取得用户的USB Key硬件以及用户的PIN码，才可以登录系统。即使用户的PIN码被泄漏，只要用户持有的USB Key不被盗取，合法用户的身份就不会被仿冒；如果用户的USB Key遗失，拾到者由于不知道用户PIN码，也无法仿冒合法用户的身份。</p>
+
+<p><strong>2、安全的存储介质</strong></p>
+
+<p>USB Key的密钥存储于安全的介质之中，外部用户无法直接读取，对密钥文件的读写和修改都必须由USB Key内的程序调用。从USB Key接口的外面，没有任何一条命令能够对密钥区的内容进行读出、修改、更新和删除。</p>
+
+<p><strong>3、公钥密码体制</strong></p>
+
+<p><a href="/archives/837.html" target="_blank">公钥密码体制</a>和数字证书从密码学的角度上保证了USB Key的安全性，在USB Key初始化的时候，先将密码算法程序烧制在ROM中，然后通过产生公私密钥对的程序生成一对公私密钥，公私密钥产生后，公钥可以导出到USB Key外，而私钥则存储于密钥区，不允许外部访问。进行数字签名时以及非对称解密运算时，有私钥参与的密码运算只在芯片内部即可完成，全过程中私钥可以不出USB Key介质，以此来保证以USB Key为存储介质的数字证书认证在安全上无懈可击。</p>
+
+<p><strong>4、硬件实现加密算法</strong></p>
+
+<p>USB Key内置CPU或智能卡芯片，可以实现数据摘要、数据加解密和签名的各种算法，加解密运算在USB Key内进行，保证了用户密钥不会出现在计算机内存中。</p>
+
+<p>以上几点是USB Key在理论上安全性的技术保证，但是从技术角度分析，这些安全性能指标往往也存在一些容易被忽视的漏洞。</p>
+
+<p><strong>1、硬件PIN码就绝对安全吗？</strong></p>
+
+<p>目前的大多数银行使用的USB Key的PIN吗都是从电脑上输入的，因此黑客可以通过木马程序直接拦截到USB Key的PIN码，这也是目前大多数USB Key存在的一个漏洞。知道了PIN码后，如果用户忘记将USB Key从电脑上取出，那么黑客还可以进一步通过PIN码来操作USB Key.一个非常极端的情况，当个人用户的电脑已经完全被黑客远程控制，并且所有键盘和屏幕的操作都会被拦截的时候，目前的USB Key是否还能保证安全交易呢？我看未必，因为此时USB Key的PIN码已经完全可能会被黑客拦截，当用户操作完一次USB Key后，假如没有立即拔出USB Key，那么黑客完全可能在这个间歇期伪造一次交易，而此时USB Key以及PIN码都可以验证通过。</p>
+
+<p><strong>2、外部真的无法读取Key内部的密钥吗？</strong></p>
+
+<p>USB Key的密钥从&ldquo;理论&rdquo;上讲是无法从外部直接读取的，这个&ldquo;理论&rdquo;上指的是设计上要绝对安全，如果设计和编写USB Key操作系统COS的人在COS上留了后门，那么这个人就可以从外部读取Key内部的密钥。</p>
+
+<p><strong>3、数字证书</strong></p>
+
+<p>公钥密码体制的确是很安全的，通过复杂的证书管理体系来增加破解的难度，但是数字证书是否是第三方CA机构发放的呢？有些银行的数字证书竟然是银行自己发放的，这就让PKI安全认证大打折扣了。</p>
+
+<p><strong>4、如何保证通讯安全</strong></p>
+
+<p>虽然USB Key内置CPU或智能卡芯片可以完成加密运算，但是数据从电脑上传入USB Key的过程中还是有可能被拦截和修改，USB Key内置的CPU只能保证自身的运算安全，却难以保证数据传入前不被修改。</p>
+
+<p>那么，理想中安全的USB Key应该是什么样子的呢？</p>
+
+<p><strong>1、针对现有USB Key的键盘输入PIN码的漏洞，可以使用生物技术（例如个人指纹）来替换键盘录入PIN码。</strong></p>
+
+<p>也就是说，交易时候接入USB Key，我们不需要再到键盘录入PIN码来验证身份，我们只需要在USB Key的设备上按一下指纹，就能自动验证个人身份，这种身份验证机制带来的安全性和实用性是一种跨时代的提高，用户不可能再忘记密码了，只需要验证指纹即可，指纹的验证实在外部设备上进行的，电脑即使被黑客完全控制也无法截取到用户的指纹，从而保证了PIN码的唯一性和安全性。</p>
+
+<p><strong>2、通过管理或者审计防止COS在设计上留有后门。</strong></p>
+
+<p><strong>3、数字证书应该由独立于用户和银行以外的权威的第三方安全认证机构CA发放，不能由银行自己发放。</strong></p>
+
+<p><strong>4、交易金额从USB Key上录入，以防止数据在传入USB Key之前被篡改。</strong></p>
+
+<p>如果采用了以上我所说的这些安全措施，那么USB Key的安全就可以说达到了&ldquo;无懈可击&rdquo;的地步了，实际的安全性可以得到本质上的提高。</p>
+
+<p>当然我也知道，更加安全的USB Key必然会导致其成本的上升，不利于大规模的推广应用，目前智能卡的USB KEY成本已经超过50元，商业银行发布给最终客户的USB Key的价格则会更高，比如招商银行的USB Key需要88元的费用，而工商银行的USB Key需要76元的费用，增加这些新的安全措施带来的成本还是相当大的，在实际应用中需要低成本的替代方案才是现实可行的。</p>
+
+<p>那么，对于现有USB Key，如何更安全的操作呢？我的建议如下：</p>
+
+<p><strong>1、和银行确认存在USB Key中的数字证书是唯一的，用户应该把USB Key随身携带。</strong></p>
+
+<p><strong>2、经常扫描一下电脑是否有木马病毒或者被远程控制。</strong></p>
+
+<p><strong>3、没事不要在电脑接入USB Key，只有在交易的时候接入。</strong></p>
+
+<p><strong>4、交易的时候接入USB Key，输入PIN码交易完成后，立即取走USB Key。</strong></p>
+
+<p>如果用户使用招行和工行的USB Key时候能够像我建议的这样操作，那么也可以在现有的硬件基础上，安全性会得到进一步提高。</p>
+
+<p>总而言之，目前的USB Key的主要优点是具有CPU，类似<a href="/archives/705.html" target="_blank">加密锁</a>或<a href="/archives/706.html" target="_blank">加密狗</a>，能够进行RSA等加密算法运算，私钥无法读取，成本上有一定优势，因此在网络认证等领域得到广泛的应用，越来越多的人将会采用USB Key作为日常理财或进行其它网络交易的工具，而作为国内在此领域应用最早、最成熟且最具潜力的网上银行应用，在技术和应用方面都应该先人一步，及时找到USB Key潜在安全漏洞的补救方法。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Encryption.jpg" alt="中国网上银行的USB Key安全评测" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note1129"></span><a href="javascript:commYea(1129);" id="dig1129">顶一下 ▲</a>(<span id="sdig1129"><Script language="javascript" type="text/javascript">showDig("1129");</script></span>) &nbsp; <a href="javascript:commNay(1129);" id="down1129">踩一下 ▼</a>(<span id="sdown1129"><Script language="javascript" type="text/javascript">showDown("1129");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/1128.html" title="微软正式推出Windows Live Suite">微软正式推出Windows Live Suite</a></div><div class="next_content">下一篇 » <a href="/archives/1130.html" title="Panoramio和Google Earth同步照片数据">Panoramio和Google Earth同步照片数据</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/927.html">USB Key的安全漏洞</a></p><p class="mutualitylist"><a href="/archives/880.html">加密算法中私钥的安全性</a></p><p class="mutualitylist"><a href="/archives/837.html">数据公钥加密和认证中的私钥公钥</a></p><p class="mutualitylist"><a href="/archives/823.html">网站的安全登录认证设计</a></p><p class="mutualitylist"><a href="/archives/753.html">中国网银安全分析：USB Key</a></p><p class="mutualitylist"><a href="/archives/752.html">中国网银安全分析：动态密码锁</a></p><p class="mutualitylist"><a href="/archives/751.html">中国网上银行系统安全性分析</a></p><p class="mutualitylist"><a href="/archives/720.html">Sentinel SuperPro加密锁编程开发指南</a></p><p class="mutualitylist"><a href="/archives/719.html">软加密网上激活解决方案</a></p><p class="mutualitylist"><a href="/archives/707.html">软件加密锁编程技巧</a></p><p class="mutualitylist"><a href="/archives/706.html">软件加密狗破解思路和方法</a></p><p class="mutualitylist"><a href="/archives/705.html">国内软件加密锁产品评测</a></p><p class="mutualitylist"><a href="/archives/704.html">软件加密技术和注册机制</a></p><p class="mutualitylist"><a href="/archives/500.html">加密技术在企业数据安全中的应用</a></p><p class="mutualitylist"><a href="/archives/499.html">密码学基础</a></p><p class="mutualitylist"><a href="/archives/347.html">破解图片验证码限制的一般思路</a></p><p class="mutualitylist"><a href="/archives/315.html">巧用WinZip进行定时加密备份</a></p><p class="mutualitylist"><a href="/archives/272.html">银行应用USB Key身份认证方案</a></p><p class="mutualitylist"><a href="/archives/242.html">JAVASCRIPT加密解密终级指南</a></p><p class="mutualitylist"><a href="/archives/83.html">USB Key身份认证产品的产生与发展</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

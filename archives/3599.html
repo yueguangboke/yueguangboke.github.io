@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3599.html"/>
+	<title>新浪微博信息流的设计问题-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>新浪微博信息流的设计问题</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3599.html" rel="bookmark">新浪微博信息流的设计问题</a></h1>
+	<div class="post-meta">
+		2013-9-15 21:20:24 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 1 | 
+		浏览: <span class="AddView" id="spn3599" data-id="3599"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Weibo.html" rel="tag"><img src="/logo/Weibo.gif" alt="微博" class="thumb" width="80" height="80" /></a><p>以前，我们玩新浪微博；之后，我们被新浪微博玩；而现在，大家慢慢逃离新浪微博。究其原因，还是感觉微博太累，信息流太重。在<a title="web2.0信息流，别吵" target="_blank" href="/archives/3554.html">web2.0信息流，别吵</a>一文中，其实已经讲到Feed动态流、私信、关注体系对web2.0信息流的严重干扰。而在新浪微博上，我们面对的是比较严重的三大问题：大爆炸、环流、碎片。</p><p>问题一：大爆炸</p><p>在新浪微博的Feed动态流中，以秒计的信息汹涌而至，倘若你想和它比速度，劝你还是放弃吧。</p><p>面对信息大爆炸，该如何清理？这个话题，之前我在<a title="UGC社区类产品系列1：违规内容的处理" target="_blank" href="/archives/3437.html">UGC社区类产品系列1：违规内容的处理</a>里面重点谈到了垃圾信息的处理，只代表了对垃圾信息&ldquo;堵&rdquo;住的策略。现在我们再说一下两个阶段策略：拦截、分流。</p><p>阶段一：拦截</p><p>内容源头拦截。新浪微博内容源的发布行为和发布内容，需要微博平台过滤机制进行。发布行为，可以表现在发布频率、发布时间、发布地点、发布账号的变化规律，产生过滤机制；发布内容，可以表现在内容关键词、URL链接、图片内容等。</p><p>内容显示拦截。现在各大浏览器应用商店中，微博浏览器过滤插件大受欢迎。比如<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a> Web Store中的&ldquo;<a title="眼不见心不烦" target="_blank" href="https://chrome.google.com/webstore/detail/%E7%9C%BC%E4%B8%8D%E8%A7%81%E5%BF%83%E4%B8%8D%E7%83%A6%EF%BC%88%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%EF%BC%89%E5%AE%98%E6%96%B9%E7%89%88/aognaapdfnnldnjglanfbbklaakbpejm?utm_source=chrome-ntp-icon">眼不见心不烦</a>&rdquo;，设置简单屏蔽效果好，干干净净那叫一个畅快。当然，此类关键词过滤插件，需要多调教几次。</p><p>现在腾讯微博也有了类似插件的微博管家，但新浪微博至今还未免费出来，屏蔽设置功能只开放给收费会员。基础功能啊，收费，节操何在。而且，该功能入口太深了，建议放在Feed信息流旁边。</p><p>阶段二：分流</p><p>新浪微博最让人恐慌的莫过于盯着一条信息流去玩&ldquo;消除&rdquo;游戏了。此刻为了消除信息压力，只能进行信息分流。最初Google+抛出Circle圈子的概念。将关注的人分为几个圈，然后在信息流进行分组阅读。</p><p>一个信息流模块下的分组阅读。设计方式上，采用Google+的置顶滚动分组设计，而不是新浪微博的左侧分组阅读设计。左侧设计太容易误解为分组功能管理了，而实际上分组阅读功能被忽视。既然上分组阅读，就应该放在正常的阅读视线上，而且分组阅读功能需要被强化显示。</p><p>多个信息流模块下的主次阅读。保留现在的Feed信息流为主要阅读，开辟另一纬度的次级信息流，比如热门话题、热门搜索等等。主信息流，可以是亲密关系的推送；次信息流，可以是全站热点推送或者精选内容让用户发现，也可以是单向关注关系的推送。总之，要突出和区分信息流的主次，为目前单一信息流分流。</p><p>问题二：环流</p><p>或许你会发现某条微博（你自己发的或者别人发的），转发着转了个圈又出现在你的Feed信息流中，如同环形流动一样，总在你眼前重复出现。而造成信息环流的功能，就是转发。</p><p>转发功能的最大特点：</p><p> 1、你发的微博，你的所有粉丝可见：</p><p> 2、你的粉丝转发你的微博，他的所有粉丝也可见；</p><p> 3、你的粉丝的粉丝转发你的微博，他的所有也粉丝可见；</p><p>在新浪微博现行的转发功能规则定义中，这条微博可以经历一层一层关系无休止的往下转发传播开去。这就如同一传十，十传百的次方传播，很惊人也很吓人。</p><p>按照正常的生活现象，每个人说的话都有一个传播目的，我们把信息传播达到目的定义为达到传播效果。如果我们将这条微博传播经历过N层关系后达到传播效果，继续传播下去则理解为信息泛滥。那在新浪微博信息传播体系里面，N层关系传播才是新浪微博需要的，而后的继续传播则是需要抑制的。</p><p>社交网络中有个经典理论-六度空间理论，即最多通过六个人你就能够认识任何一个陌生人。而这里提到的六个人，也就是六层关系。而新浪微博，我们可以理解为：你发了一条微博，最多经历了6层关系传播，就可以传播到任何一个微博用户。</p><p>借助生活中信息传播和学术理论支持，我们大致确定了对转发功能的优化方向。而新浪微博的产品经理同学只需要分析一下转发数据，即可以确定N层关系的有效传播中的&ldquo;N&rdquo;，到底为数字多少合适，切勿拍大腿决定。</p><p>对信息环流问题，优化&ldquo;转发&rdquo;功能方案：</p><p> 1、分析新浪微博转发功能中信息传播效果与层级关系数的关系；</p><p> 2、根据线下传播效果与层级关系数，确定N层关系产波达到有效传播效果的N的具体数字；</p><p> 3、根据N具体的数字，确定&ldquo;转发功能&rdquo;转发规则，定义每条微博发布后，可经历的传播层级关系数；</p><p> 4、确定超过N层关系后该微博转发功能的交互文案，告知微博用户为何不能继续转发了；</p><p>说明：新浪微博即将推出的个人信用体系，用户传谣将会扣分，限制转发，但后续可以做任务提升信用分数。对此，Gauin认为此信用体系设计对转发功能的影响甚微，并不能改善信息环流现象。</p><p>问题三：碎片</p><p>微博碎片表现在微博内容属性的碎片，而需要解决微博碎片化的问题，就需要对微博进行重新组织。</p><div id="attachment_1131"><p>新浪微博信息碎片</p></div><p>新浪微博有的组织功能：</p><p>微博赞，使用最便捷，最轻便级别的功能；</p><p>微博标签，需要手动给微博贴标签，使用太麻烦，用户思考成本太高；</p><p>微博收藏，目前新浪微博暂未对用户收藏的微博进行数据挖掘；</p><p>企业微博分类，在企业微博主页上作阅读导航作用；</p><p>我要提到的组织形式为：</p><p>关系微博，即互相关注用户之间的微博，两人之间强关系才产生互相关注行为。</p><p>兴趣微博，即单向关注用户之间的微博，两人之间强兴趣才发生单向关注行为。</p><p>即便新浪微博是靠纯兴趣建立了现在的互相关注，或者是单纯的亲朋好友建立了互相关注，但无论是何种互相关注，都可以得出毋庸置疑的结论：关系微博阅读级别高于兴趣微博。</p><p>而这个结论也将是新浪微博新的组织体系设计原则，而下方给出的设计方案，不作为对此原则的代表，仅作为一个参考方案。按照现在新浪微博的Page发展战略，以个人用户作为单元互动中心，以上的关系微博阅读级别高于兴趣微博的结论，将更加重要。</p><p>Feed信息流中碎片组织设计方案：</p><p> 1、在Feed信息流顶部设计&ldquo;关系微博&rdquo;模块，显示互相关注用户的微博；</p><p> 2、在&ldquo;关系微博&rdquo;中增加轻级别互动方式和预览效果，制定该模块自动更新规则；</p><p> 3、在&ldquo;关系模块&rdquo;下方的自然时间流微博，同一时间更新的微博，排名靠前展示关系微博；</p><p>扩展问题：如何看待新浪微博Timeline设计相比QQ空间的优劣势？</p><p>关于新浪微博信息流问题，本文重在阐述解决的思路和原则，希望能给各位碰触了火花。至于具体实施方案，请慎重使用，同时请按照思路进行数据求证和挖掘。欢迎和Gauin深入沟通信息流产品设计。</p><p>来源：投稿，作者Gauin &nbsp;微信公众账号GauinBlog &nbsp;&nbsp;<a target="_blank" href="http://www.gauin.com/sina-weibo-feed.html">原文链接</a></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Weibo.jpg" alt="新浪微博信息流的设计问题" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3599"></span><a href="javascript:commYea(3599);" id="dig3599">顶一下 ▲</a>(<span id="sdig3599"><Script language="javascript" type="text/javascript">showDig("3599");</script></span>) &nbsp; <a href="javascript:commNay(3599);" id="down3599">踩一下 ▼</a>(<span id="sdown3599"><Script language="javascript" type="text/javascript">showDown("3599");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3598.html" title="Windows 8开始菜单中的商机">Windows 8开始菜单中的商机</a></div><div class="next_content">下一篇 » <a href="/archives/3600.html" title="不看好百度电视棒产品：百度影棒">不看好百度电视棒产品：百度影棒</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3485.html">新浪微博下一个豆瓣</a></p><p class="mutualitylist"><a href="/archives/3483.html">微博亟需新的商业模式实现盈利</a></p><p class="mutualitylist"><a href="/archives/3375.html">彩票O2O新浪微博源创新</a></p><p class="mutualitylist"><a href="/archives/3355.html">李开复微博抗议封锁GitHub</a></p><p class="mutualitylist"><a href="/archives/3249.html">微博在企业营销战略中价值几何</a></p><p class="mutualitylist"><a href="/archives/3242.html">希望新浪微博不要向facebook更新</a></p><p class="mutualitylist"><a href="/archives/3216.html">微博软植入营销案例</a></p><p class="mutualitylist"><a href="/archives/3212.html">问诊微博</a></p><p class="mutualitylist"><a href="/archives/3189.html">如何引导微博中的话题</a></p><p class="mutualitylist"><a href="/archives/3179.html">过滤变成广告的微博背景</a></p><p class="mutualitylist"><a href="/archives/3159.html">数据分析在微博营销中的应用</a></p><p class="mutualitylist"><a href="/archives/3158.html">微博的搜索竞价广告模式分析</a></p><p class="mutualitylist"><a href="/archives/3146.html">微博营销的时效性很重要</a></p><p class="mutualitylist"><a href="/archives/3113.html">微博加速因果报应</a></p><p class="mutualitylist"><a href="/archives/3093.html">腾讯微博为何打不过新浪</a></p><p class="mutualitylist"><a href="/archives/3046.html">新浪微博与腾讯微博暂停评论</a></p><p class="mutualitylist"><a href="/archives/3023.html">三思微博</a></p><p class="mutualitylist"><a href="/archives/3019.html">微博实名制：微博将形成公民社会中心化</a></p><p class="mutualitylist"><a href="/archives/3010.html">中国微博市场2011年度数据分析</a></p><p class="mutualitylist"><a href="/archives/2991.html">微博实名制，谁是受益者</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

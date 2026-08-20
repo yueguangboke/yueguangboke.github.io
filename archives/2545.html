@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2545.html"/>
+	<title>基于云计算的通讯录产品设计-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth2">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>基于云计算的通讯录产品设计</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2545.html" rel="bookmark">基于云计算的通讯录产品设计</a></h1>
+	<div class="post-meta">
+		2011-2-21 9:49:48 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 69 | 
+		浏览: <span class="AddView" id="spn2545" data-id="2545"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/WebPlan.html" rel="tag"><img src="/logo/WebPlan.gif" alt="网站策划" class="thumb" width="80" height="80" /></a><p>通讯录是一种记录用户联系人的联系方法、地址等信息的服务，做为一种实名的社交网络，以通讯录为基础，可以衍生出不少热门的互联网应用，如即时通讯、邮件、社交网络等等，以及不少本地应用，例如用户的电脑Outlook、手机通讯录等。</p><p>随着信息社会的高速发展，人与人之间的联系越来越频繁，通讯方式越来越多样化，如何保证与朋友、同学、同事、领导、亲戚等之间的联系，并能方便快捷的查找、记录、修改其相关通讯信息，仅依靠手工的方法已经无法满足管理日益膨胀的通讯录的需要。</p><p><strong>通讯录产品市场现状</strong></p><p>目前具有通讯录的产品非常多，包括纯粹的通讯录产品（plaxo）、社交网站附带的通讯录（人人网，新浪微博等）、即时通讯附带的通讯录（如QQ、MSN）、邮箱附带通讯录（<a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a>，网易信箱）、个人电脑的通讯录（Outlook通讯录）、手机通讯录（火种通讯录应用）、通讯录增值服务（Kik，微信）等，每个社交产品都具有自己的通讯录，大部分都毫无关联，大量的通讯录导致用户管理通讯录的工作量越来越大，各个通讯录的数据又不同步，导致用户维护通讯录成为一场噩梦。</p><p>如何解决目前通讯录管理的混乱局面呢？类似的情况我们以前曾经遇到过，就是个人文档管理的问题。很多人工作使用一台电脑，回家用一台电脑，出差用笔记本电脑，如何在不同的电脑同步和更新自己的工作文档是一个很棘手的问题，早先人们为了同步文件，通常要用U盘将文件拷贝粘贴，非常麻烦，版本管理混乱，很容易出错，最终以<a target="_blank" href="/archives/2173.html">Dropbox</a>为首的云存储同步服务出现了，用户使用Dropbox可以实现多台电脑上文件的自动同步和更新，自动完成这所有的更新和版本管理操作，几台电脑之间的文件同步和更新均自动完成，每天电脑都自动下载最新版本的文档，在任何一台电脑更新文档之后，都会自动上传到云存储服务器端，接着同步到其他电脑，从而通过工具完美地解决了多台电脑同步文档的问题。</p><p style="text-align: center"><img alt="图：通讯录产品设计" src="/upload/2545_1.jpg" /></p><p>既然Dropbox可以成功的管理多台电脑的文件同步，那么对于通讯录来说，我们也可以通过云计算的方法，将用户散布在各个终端（电脑、邮箱、手机等）的通讯录有机地整合在一起，方便、快捷、灵活的管理个人、公司及相关人员的通讯信息，了解联系人最新联系方法。</p><p>以下是月光博客构思的一个新型的云存储服务，该服务类似Dropbox，但是以通讯录为核心，通过一个所谓的&ldquo;云通讯录&rdquo;来同步和管理用户所有的通讯录信息。</p><p style="text-align: center"><img alt="图：通讯录产品设计" src="/upload/2545_2.jpg" /></p><p><strong>云通讯录的特点</strong></p><p>云通讯录是基于云计算的通讯录产品，做为一个基础服务，具有以下的特点：</p><p>1）基于云存储、云计算。</p><p>2）可以实现多平台同步（例如Outlook、Gmail联系人、其他邮箱联系人、手机通讯录、人人网好友、开心网好友等）。</p><p>3）自动备份，数据安全性得到保障，用户的联系人不会发生丢失情况。</p><p>4）建立关系网（用户可联系通讯录成员，确认后双方即为好友）。</p><p>5）社会化通讯录，用户的联系人信息变更由联系人自动维护，联系人更改的联系信息可以自动更新给所有好友的通讯录。</p><p>6）集成邮件、短信、即时通讯功能。</p><p>7）采用vCard标准交换通讯录数据。</p><p style="text-align: center"><a target="_blank" href="/upload/2545_4.jpg"><img alt="图：云通讯录的特点" border="0" src="/upload/2545_3.jpg" /></a></p><p><strong>云通讯录的盈利模式</strong></p><p>任何一项服务，如果没有很好的盈利模式，都很难运营成功，类似Dropbox这样的优秀服务都提供了个性化收费服务，云通讯录的盈利模式可以参考以下几点：</p><p>1）功能限制：免费用户功能限制（例如只能免费发送M条短信），部分功能只限于收费用户使用（收费短信）</p><p>2）通过联系人数量限制：例如，免费用户少于N个联系人，收费用户多于N个联系人。</p><p>3）平台限制：Web端免费、手机端收费。</p><p>4）采用奖励引导用户操作：建立类似Dropbox的邀请机制，每邀请一个用户，给予空间或容量上的奖励。</p><p><strong>云通讯录SWOT分析</strong></p><p style="text-align: center"><a target="_blank" href="/upload/2545_6.jpg"><img alt="图：云通讯录SWOT分析" border="0" src="/upload/2545_5.jpg" /></a></p><p>1）劣势：</p><p>1.1 不同平台同步需要大量开发工作</p><p>1.2 后期维护较为困难</p><p>1.3 第三方平台可能会出现数据格式变动</p><p>2）优势</p><p>2.1 数据安全，自动备份</p><p>2.2 多平台通讯录同步</p><p>2.3 可支持定制平台</p><p>2.4 SNS好友通讯录的同步</p><p>3）威胁</p><p>3.1 Google已实现Gmail和手机同步通讯录</p><p>3.2 企业对信息安全的顾虑</p><p>3.3 用户对通讯录的同步需求不高</p><p>4）机遇</p><p>4.1 国内没有同类产品</p><p>4.2 国外的同类产品plaxo从国内访问速度慢，且同步通讯录功能收费</p><p>4.3 Google不支持对于国内SNS应用的同步</p><p><strong>云通讯录的接口设计</strong></p><p>1）导入Gmail联系人</p><p>使用 <a target="_blank" href="http://code.google.com/intl/zh-CN/apis/contacts/">Google 通讯录API</a>&nbsp;导入Gmail联系人。</p><p>2）导入Hotmail联系人</p><p>通过 <a target="_blank" href="http://msdn.microsoft.com/en-us/library/bb463989.aspx">Windows Live Contacts API</a>&nbsp;来实现导入Hotmail联系人。</p><p>3）导入Yahoo联系人</p><p>通过 <a target="_blank" href="http://developer.yahoo.com/addressbook/">Yahoo API</a> 导入Yahoo联系人。</p><p>4）手机联系人同步</p><p>可用协议 <a target="_blank" href="http://en.wikipedia.org/wiki/Exchange_ActiveSync">Exchange ActiveSync</a> 或 <a target="_blank" href="http://en.wikipedia.org/wiki/SyncML">SyncML</a>&nbsp;，SyncML servers 可以使用开源产品搭建。支持诺基亚手机和Outlook。Exchange ActiveSync 支持iPhone\iPad,Android手机和Outlook。两者均有现成服务器端和客户端软件。</p><p>5）Outlook同步</p><p>可用协议SyncML进行同步。<a target="_blank" href="http://www.syncfriend.com/MixedPages/Outlook-SyncML-Client.aspx">参考工具</a>。</p><p>6）与人人网同步</p><p>使用 <a target="_blank" href="http://wiki.dev.renren.com/wiki/API">人人网API</a> 连接人人网的好友联系人。</p><p>7）与新浪微博同步</p><p>使用 <a target="_blank" href="http://open.t.sina.com.cn/">新浪微博API</a> 连接新浪微博的好友联系人。</p><p>8）国内邮箱的同步</p><p>国内的主流邮箱，如网易邮箱、QQ邮箱等，均不提供API服务，因此无法像Gmail、Hotmail那样方便的获取联系人信息，只能通过模拟用户登录的方式抓取该邮箱联系人。</p><p><strong>云通讯录实例分析：Plaxo</strong></p><p>Plaxo是一家专业的在线通讯录提供商，公司位于美国加州山景城，据该网站介绍，他们有4000万用户，该通讯录提供付费同步方案，可以实现与Outlook、Gmail等邮箱的自动同步。Plaxo还具有部分社交网络的功能，用户可以发布微博、博客、上传照片等。</p><p>1）首页</p><p>Plaxo首页界面显示通讯录主要核心功能，非常简洁，以大字体描述了Plaxo通讯录是什么，能做什么事情。</p><p style="text-align: center"><a target="_blank" href="/upload/2545_8.jpg"><img alt="图：Plaxo首页" border="0" src="/upload/2545_7.jpg" /></a></p><p>2）登录后界面</p><p>Plaxo登陆之后，会显示通讯录的统计信息，Plaxo可以连接到社交网站（<a href="/tag/Facebook.html" title="Facebook"  Target="_blank" >Facebook</a>、<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>、<a href="/tag/GoogleReader.html" title="Google Reader"  Target="_blank" >Google Reader</a>等），用户可以在Plaxo里看到各个社交网站的聚合信息。</p><p style="text-align: center"><img alt="图：Plaxo登录后页面" border="0" src="/upload/2545_9.jpg" /></p><p>对于这个功能，我觉得比较多余，如果在中国运营的话会带来不少额外的风险。</p><p>3）连接社交网络</p><p>Plaxo支持的社交网站包括Facebook、Twitter、Google Reader等，但是不支持国内流行的社交网站和微博。</p><p style="text-align: center"><img alt="图：连接社交网络" border="0" src="/upload/2545_10.jpg" /></p><p>4）导入其他通讯录</p><p>Plaxo可以导入Yahoo、Gmail、Hotmail、AOL、Outlook、Linkdin等网站的联系人，支持CSV等格式的文件导入，不支持国内邮箱和社交网站联系人的导入。导入其他邮箱联系人会提示输入邮箱密码，你敢在下面的提示框中输入你的Gmail密码吗？</p><p style="text-align: center"><img alt="图：导入其他通讯录" border="0" src="/upload/2545_11.jpg" /></p><p>此外，Plaxo还可以自动寻找用户可能认识的人，并提示给用户&ldquo;您可能认识的人&rdquo;。</p><p>5）导出通讯录</p><p>Plaxo开放的一点在于，提供通讯录导出为CSV、VCF等格式，用户可以随时随地将网络通讯录下载到本地。</p><p>6）联系人管理</p><p>Plaxo可以维护个人通讯录的基础数据，基础数据包括个人档案、通讯信息数据等。用户可以手动录入联系人信息，并且能够进行修改、删除等操作。查询方面，可以按照名称等字段信息进行搜索。通讯录包括姓名、公司、群组、电话、手机、Email、类型等字段，通讯录可以进行分组操作。</p><p>用户还可以维护自己的个人档案，即进行修改、删除等操作。个人信息修改之后，好友的通讯录数据会自动更新。</p><p>7）群组管理</p><p>除了联系人信息之外，Plaxo还实现了新建、编辑、删除群组功能。</p><p><strong>总结</strong></p><p>以上就是我对于云存储通讯录产品的构思，这个构思对于国外已经有了一个产品Plaxo，但我个人感觉Plaxo并不是很好用，并且其核心的同步功能均无法免费使用，通讯录做为一项基础服务，短期内可能赚不到钱，但通讯录对于企业来说有着至关重要的意义，在通讯录基础上可以轻而易举地实现真实关系SNS以及类似<a target="_blank" href="/archives/2422.html">Kik Messenger</a>这样的社交短信服务，这也就是很多人对通讯录的觊觎的原因了。</p><p>不过，社交短信已经有了Kik、微信这样的产品，手机通讯录则有友录通讯录、火种通讯录等，iPhone通讯录有i通讯录等，基于手机和网站的通讯录同步有人人同步免费版（同步人人网和手机联系人）、QQ手机同步（同步QQ邮箱和手机），总的看来，手机通讯录上的产品已经很多了，不少产品已经非常完善，创业公司再开发同类产品的难度较大。而对于通讯录同步的产品则较少有公司介入，其发展和实现同样具有手机通讯录的功能，从这一点介入通讯录市场也算是一个不错的创新。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/WebPlan.jpg" alt="基于云计算的通讯录产品设计" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2545"></span><a href="javascript:commYea(2545);" id="dig2545">顶一下 ▲</a>(<span id="sdig2545"><Script language="javascript" type="text/javascript">showDig("2545");</script></span>) &nbsp; <a href="javascript:commNay(2545);" id="down2545">踩一下 ▼</a>(<span id="sdown2545"><Script language="javascript" type="text/javascript">showDown("2545");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2544.html" title="Panoramio支持谷歌纵横自动标记">Panoramio支持谷歌纵横自动标记</a></div><div class="next_content">下一篇 » <a href="/archives/2546.html" title="智能手机的中文输入法统计">智能手机的中文输入法统计</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2537.html">社交网络应故意设计得“不够完善”</a></p><p class="mutualitylist"><a href="/archives/2512.html">互联网时代的版权博弈</a></p><p class="mutualitylist"><a href="/archives/2508.html">迎合用户，更酷一点</a></p><p class="mutualitylist"><a href="/archives/2507.html">人力资源的长尾</a></p><p class="mutualitylist"><a href="/archives/2359.html">创业团队如何进行股权分配</a></p><p class="mutualitylist"><a href="/archives/2355.html">如何寻找创业机会？</a></p><p class="mutualitylist"><a href="/archives/2273.html">程序员怎么选择发展方向</a></p><p class="mutualitylist"><a href="/archives/2248.html">使用博客进行企业网络营销</a></p><p class="mutualitylist"><a href="/archives/2202.html">中小企业博客营销实战</a></p><p class="mutualitylist"><a href="/archives/2050.html">众包——大众力量推动商业未来</a></p><p class="mutualitylist"><a href="/archives/1712.html">中国企业博客营销的思考</a></p><p class="mutualitylist"><a href="/archives/951.html">六个衡量你博客价值的方法</a></p><p class="mutualitylist"><a href="/archives/599.html">超级链接在博客中的作用</a></p><p class="mutualitylist"><a href="/archives/555.html">博客可用性：十大错误设计</a></p><p class="mutualitylist"><a href="/archives/340.html">优秀博客是如何炼成的？</a></p><p class="mutualitylist"><a href="/archives/304.html">把个人Blog作成一个成功品牌的10个策略步骤</a></p><p class="mutualitylist"><a href="/archives/184.html">如何从一个准博客升级为真正的博客！</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

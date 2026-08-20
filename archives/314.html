@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/314.html"/>
+	<title>Z-BLOG相关文章的修改方法-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>Z-BLOG相关文章的修改方法</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/314.html" rel="bookmark">Z-BLOG相关文章的修改方法</a></h1>
+	<div class="post-meta">
+		2005-11-8 19:27:8 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 15 | 
+		浏览: <span class="AddView" id="spn314" data-id="314"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Zblog.html" rel="tag"><img src="/logo/Zblog.gif" alt="Zblog" class="thumb" width="80" height="80" /></a><p>本来想写一个ZBLOG的&ldquo;相关文章&rdquo;插件，但上网一搜索，发现已经有人写过了。我就直接拿来用了。粗略用了一下，发现其耗费资源很大，每生成一篇文章都要多执行2条数据库查询，使得重建文章速度更慢了。这和我以前想的方法不一样，我想的方法应该是先将全部TAG生成独立的临时文件 ，在文章重建的时候再进行文本替换，这样执行的数据库查询就很少了，不会占用太多系统资源，可惜现在没时间去实现。</p> <p>下面是七夜发布的Z-blog&ldquo;相关文章&rdquo;修改方法，其中Export_Mutuality处代码我进行了一些修改，使得TAG为空的时候该代码也能正常运行。原文地址参见：<a href="http://www.h2o.name/post/661.html">http://www.h2o.name/post/661.html</a></p>
+<p>1.新增加一个模板，名字为b_article_mutuality.html，文章扩展名根据情况修改，内容<br/><p class="code">&nbsp;&nbsp;&lt;li&nbsp;class=&quot;mutualityurl&quot;&gt;&lt;a&nbsp;&nbsp;href=&quot;&lt;#article/mutuality/url#&gt;.html&quot;&gt;&lt;#article/mutuality/name#&gt;&lt;/a&gt;&amp;nbsp;(&lt;#article/mutuality/posttime#&gt;)&lt;/li&gt;</p><br/>2.b_article-single.html增加如下内容，具体位置自己选<br/><p class="code">&lt;ul&nbsp;class=&quot;msg&nbsp;trackback&quot;&gt;<br/>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;tbname&quot;&gt;&amp;#x76F8;&amp;#x5173;&amp;#x6587;&amp;#x7AE0;&lt;/li&gt;<br/>&lt;#template:article_mutuality#&gt;<br/>&lt;/ul&gt;</p><br/>3.CSS样式增加一个，具体根据自己喜好修改，内容如下<br/><p class="code">li.mutualityurl{<br/>&nbsp;&nbsp;text-align:left;<br/>&nbsp;&nbsp;padding:3px&nbsp;10px&nbsp;0px&nbsp;10px;<br/>&nbsp;&nbsp;margin:0;<br/>&nbsp;&nbsp;background:#F6F4EE;<br/>&nbsp;&nbsp;line-height:150%;<br/>}<br/></p><br/>4.c_system_base.asp的Function LoadGlobeCache()部分，原来的几处27改为28，增加<br/><p class="code">&nbsp;&nbsp;aryFileName(28)=&quot;/TEMPLATE/b_article_mutuality.html&quot;<br/>&nbsp;&nbsp;aryFileName_Variable(28)=&quot;TEMPLATE_ARTICLE_mutuality&quot;</p><br/>5.c_system_lib.asp<br/>Class TArticle增加一行<br/><p class="code">Public&nbsp;Template_Article_Mutuality</p><br/>Public Function Export(intType)增加两行，注意Call Export_Mutuality一定要放在Call Export_Tag的前面，否则会出错。<br/><p class="code">&nbsp;&nbsp;&nbsp;&nbsp;Call&nbsp;Export_Mutuality<br/></p><p class="code">&nbsp;&nbsp;&nbsp;&nbsp;Template_Article_Single=Replace(Template_Article_Single,&quot;&lt;#template:article_mutuality#&gt;&quot;,Template_Article_Mutuality)<br/></p><br/>以下部分找个地方放下就可以了<br/><p class="code"><code>&nbsp;&nbsp;'相关文章的生成<br/>&nbsp;&nbsp;Function&nbsp;Export_Mutuality()<br/><br/>&nbsp;&nbsp;Call&nbsp;CheckParameter(ID,"int",0)<br/>&nbsp;&nbsp;If&nbsp;(ID=0)&nbsp;Then&nbsp;Del=False:Exit&nbsp;Function<br/>&nbsp;&nbsp;If&nbsp;Tag&lt;&gt;""&nbsp;Then<br/><br/>&nbsp;&nbsp;Dim&nbsp;strCC_Count,strCC_ID,strCC_Name,strCC_Url,strCC_PostTime,strCC_Title<br/>&nbsp;&nbsp;Dim&nbsp;strCC<br/>&nbsp;&nbsp;Dim&nbsp;i<br/>&nbsp;&nbsp;Dim&nbsp;j<br/>&nbsp;&nbsp;Dim&nbsp;objTNode<br/>&nbsp;&nbsp;Dim&nbsp;objCNode<br/>&nbsp;&nbsp;Dim&nbsp;objSingleNode<br/>&nbsp;&nbsp;Dim&nbsp;objNodeText<br/>&nbsp;&nbsp;Dim&nbsp;objMutArticle<br/>&nbsp;&nbsp;Dim&nbsp;objRS<br/>&nbsp;&nbsp;Dim&nbsp;strSQL<br/><br/>&nbsp;&nbsp;Set&nbsp;objRS=Server.CreateObject("ADODB.Recordset")<br/><br/>&nbsp;&nbsp;strSQL="SELECT&nbsp;top&nbsp;30[log_ID],[log_Tag],[log_CateID],[log_Title],[log_Level],[log_AuthorID],[log_PostTime],[log_Url]&nbsp;FROM&nbsp;[blog_Article]&nbsp;WHERE&nbsp;([log_Level]&gt;2)&nbsp;AND&nbsp;[log_ID]&lt;&gt;"&&nbsp;ID&nbsp;&"&nbsp;"<br/><br/>&nbsp;&nbsp;Dim&nbsp;aryTAGs<br/>&nbsp;&nbsp;If&nbsp;InStr(Tag,"}{")&nbsp;&gt;&nbsp;0&nbsp;Then<br/>&nbsp;&nbsp;&nbsp;&nbsp;aryTAGs&nbsp;=&nbsp;Split(Tag,"}{")<br/>&nbsp;&nbsp;Else<br/>&nbsp;&nbsp;&nbsp;&nbsp;ReDim&nbsp;aryTAGs(0)<br/>&nbsp;&nbsp;&nbsp;&nbsp;aryTAGs(0)&nbsp;=&nbsp;Tag<br/>&nbsp;&nbsp;End&nbsp;If<br/>&nbsp;&nbsp;strSQL&nbsp;=&nbsp;strSQL&nbsp;&&nbsp;"&nbsp;AND&nbsp;("<br/>&nbsp;&nbsp;For&nbsp;j&nbsp;=&nbsp;0&nbsp;To&nbsp;UBound(aryTAGs)<br/>&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;Not&nbsp;(IsNull(aryTAGs(j))&nbsp;Or&nbsp;IsEmpty(aryTAGs(j))&nbsp;Or&nbsp;aryTAGs(j)&nbsp;=&nbsp;""&nbsp;Or&nbsp;Len(aryTAGs(j))&nbsp;&lt;&nbsp;1)&nbsp;Then<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aryTAGs(j)&nbsp;=&nbsp;Replace(Replace(aryTAGs(j),"}",""),"{","")<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;IsNumeric(aryTAGs(j))&nbsp;Then<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;j&nbsp;&gt;&nbsp;0&nbsp;Then&nbsp;strSQL&nbsp;=&nbsp;strSQL&nbsp;&&nbsp;"&nbsp;OR&nbsp;"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strSQL&nbsp;=&nbsp;strSQL&nbsp;&&nbsp;"([log_Tag]&nbsp;Like&nbsp;'%{"&aryTAGs(j)&"}%')"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End&nbsp;If<br/>&nbsp;&nbsp;&nbsp;&nbsp;End&nbsp;If<br/>&nbsp;&nbsp;Next<br/>&nbsp;&nbsp;strSQL&nbsp;=&nbsp;strSQL&nbsp;&&nbsp;")"<br/>&nbsp;&nbsp;strSQL&nbsp;=&nbsp;strSQL&nbsp;+&nbsp;"&nbsp;ORDER&nbsp;BY&nbsp;[log_PostTime]&nbsp;DESC&nbsp;"&nbsp;<br/><br/>&nbsp;&nbsp;Set&nbsp;objRS=Server.CreateObject("ADODB.Recordset")<br/>&nbsp;&nbsp;objRS.CursorType&nbsp;=&nbsp;adOpenKeyset<br/>&nbsp;&nbsp;objRS.LockType&nbsp;=&nbsp;adLockReadOnly<br/>&nbsp;&nbsp;objRS.ActiveConnection=objConn<br/>&nbsp;&nbsp;objRS.Source=strSQL<br/>&nbsp;&nbsp;objRS.Open()<br/>&nbsp;&nbsp;If&nbsp;(not&nbsp;objRS.bof)&nbsp;And&nbsp;(not&nbsp;objRS.eof)&nbsp;Then<br/><br/>&nbsp;&nbsp;For&nbsp;i=1&nbsp;To&nbsp;30&nbsp;'相关文章数目，可自行设定<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC_Count=strCC_Count+1<br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC_ID=objRS("log_ID")<br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC_Url=objRS("log_Url")<br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC_PostTime=objRS("log_PostTime")<br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC_Title=objRS("log_Title")<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;Application.Lock<br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC=Application(ZC_BLOG_CLSID&nbsp;&&nbsp;"TEMPLATE_ARTICLE_Mutuality")<br/>&nbsp;&nbsp;&nbsp;&nbsp;Application.UnLock<br/>&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;IsNull(strCC_Url)&nbsp;Or&nbsp;IsEmpty(strCC_Url)&nbsp;Or&nbsp;strCC_Url=""&nbsp;Then<br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC_Url=strCC_ID<br/>&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;if<br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC=Replace(strCC,"&lt;#article/mutuality/id#&gt;",strCC_ID)<br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC=Replace(strCC,"&lt;#article/mutuality/url#&gt;",strCC_Url)<br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC=Replace(strCC,"&lt;#article/mutuality/posttime#&gt;",strCC_PostTime)<br/>&nbsp;&nbsp;&nbsp;&nbsp;strCC=Replace(strCC,"&lt;#article/mutuality/name#&gt;",strCC_Title)<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;Template_Article_Mutuality=Template_Article_Mutuality&nbsp;&&nbsp;strCC<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;objRS.MoveNext<br/>&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;objRS.eof&nbsp;Then&nbsp;Exit&nbsp;For<br/>&nbsp;&nbsp;Next<br/><br/>&nbsp;&nbsp;End&nbsp;if<br/><br/>&nbsp;&nbsp;objRS.Close()<br/>&nbsp;&nbsp;Set&nbsp;objRS=Nothing<br/><br/>&nbsp;&nbsp;End&nbsp;If<br/><br/>&nbsp;&nbsp;Export_Mutuality=True<br/><br/>&nbsp;&nbsp;End&nbsp;Function<br/></code></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Zblog.jpg" alt="Z-BLOG相关文章的修改方法" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note314"></span><a href="javascript:commYea(314);" id="dig314">顶一下 ▲</a>(<span id="sdig314"><Script language="javascript" type="text/javascript">showDig("314");</script></span>) &nbsp; <a href="javascript:commNay(314);" id="down314">踩一下 ▼</a>(<span id="sdown314"><Script language="javascript" type="text/javascript">showDown("314");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/313.html" title="Z-BLOG常用技巧汇总">Z-BLOG常用技巧汇总</a></div><div class="next_content">下一篇 » <a href="/archives/315.html" title="巧用WinZip进行定时加密备份">巧用WinZip进行定时加密备份</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/313.html">Z-BLOG常用技巧汇总</a></p><p class="mutualitylist"><a href="/archives/305.html">Z-BLOG屏蔽敏感关键字功能的代码</a></p><p class="mutualitylist"><a href="/archives/300.html">Z-Blog 1.4 SP3全静态补丁插件下载</a></p><p class="mutualitylist"><a href="/archives/268.html">Z-Blog 1.4 SP2全静态补丁和插件下载</a></p><p class="mutualitylist"><a href="/archives/245.html">ZBLOG 1.4 SP1的静态补丁和插件发布</a></p><p class="mutualitylist"><a href="/archives/226.html">ZBLOG的升级和静态补丁的发布</a></p><p class="mutualitylist"><a href="/archives/205.html">从7LOG迁移到ZBLOG</a></p><p class="mutualitylist"><a href="/archives/163.html">测试ASP的BLOG程序</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2044.html"/>
+	<title>Dropbox免费网盘高级使用技巧-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth2">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>Dropbox免费网盘高级使用技巧</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2044.html" rel="bookmark">Dropbox免费网盘高级使用技巧</a></h1>
+	<div class="post-meta">
+		2010-1-4 21:56:41 | 
+		作者: 月光 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 65 | 
+		浏览: <span class="AddView" id="spn2044" data-id="2044"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Software.html" rel="tag"><img src="/logo/Software.gif" alt="软件" class="thumb" width="80" height="80" /></a><p><a target="_blank" href="http://www.dropbox.com/">Dropbox</a>和<a target="_blank" href="http://www.mesh.com/">Live Mesh</a>都是常用的网络存储服务，可以实现多台电脑上<a target="_blank" href="/archives/1385.html">文件共享</a>和同步文件，<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>的Live Mesh提供的空间是5GB空间，而Dropbox提供的初始免费空间是2GB，可以通过邀请增大到5GB，两个网络同步软件各有千秋，但我感觉Dropbox更为好用一些，这里，我就介绍一下我在使用Dropbox的过程中总结的几个小技巧。</p><p><strong>1、同步任意文件夹</strong></p><p>Dropbox安装完成之后，通常会在你电脑上建立一个My Dropbox文件夹，放到这个文件夹里的文件才进行同步。这点不如Live Mesh好用，至少Mesh可以同步例如&ldquo;桌面&rdquo;等指定的文件夹，而Dropbox只能同步固定文件夹，为了解决同步其他文件夹的问题，需要使用junction/mklink工具来解决。</p><p>对于<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> XP用户来说，<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>就提供了一个小工具junction，可以在NTFS系统中创建和删除一个junction目录，该目录和原始目录的内容一模一样，如果你对其中任意一个文件夹里面的内容做修改，另一个也会相应的改变，junction目录是NTFS文件系统的一个特性，但<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> XP没有工具对其进行操作，需要<a href="http://download.sysinternals.com/files/Junction.zip">点这里下载</a>一个exe文件才能使用。</p><p>例如，我们可以执行junction &quot;E:\My Documents&quot; &quot;E:\My Dropbox\My Documents&quot; ，命令的意思是创建一个名为E:\My Documents的junction目录，指向E:\My Dropbox\My Documents，该命令瞬间执行完成，而两个目录则完全相同，这样我们就可以使用E:\My Dropbox\My Documents这个目录来替代&ldquo;我的文档&rdquo;中的目录。</p><p>在Windows 7系统下已经内部支持junction，其命令为mklink，使用方法基本和junction相同。在Windows 7系统下使用类似的命令为： mklink /d &quot;C:\Users\Administrator\Dropbox&quot; &quot;E:\Dropbox&quot;</p><p>对于Dropbox来说，只能按照如上的命令建立junction目录，而不能在My Dropbox目录里创建junction目录，经过我的测试，My Dropbox目录里面的junction目录只能同步一次，之后修改加文件都不同步，无法实现同步更新。</p><p style="text-align: center"><img alt="Dropbox免费网盘" src="/upload/2044_1.jpg" /></p><p><strong>2、同步MSN和QQ记录</strong></p><p>如果我们同时在家里和公司上MSN和QQ，就会遇到一个麻烦问题，就是聊天记录不同步，公司一处，家里一处，使用Dropbox可以实现两地的聊天记录同步。</p><p>首先按照上面的操作将My Documents我的文档目录设置为junction目录，实际文件放到My Dropbox目录中，接着，在QQ和MSN中设置默认保存文件和聊天记录的位置在&ldquo;我的文档&rdquo;中，这样，用户所有聊天记录都会自动被Dropbox同步，从而实现了家中和公司两处聊天记录的同步更新。</p><p><strong>3、同步文档</strong></p><p>&ldquo;我的文档&rdquo;里保存了用户很多重要文档，很多人都有同步&ldquo;我的文档&rdquo;的需要。同步的方法是，右点&ldquo;我的文档&rdquo;属性，修改&ldquo;我的文档&rdquo;的目标文件夹位置，将其修改到Dropbox目录下即可。</p><p>4<strong>、同步桌面</strong></p><p>除了&ldquo;我的文档&rdquo;，很多人希望将多台电脑的桌面文件进行同步，有两种解决方案，一种是修改注册表中关于桌面的位置，将文件夹修改到Dropbox目录里，注册表修改的位置是： HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders 和 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders 中关于Desktop的路径；另一种方法，可以通过在桌面创建一个junction目录的方式实现同步，这样桌面上就会多一个实际为junction类型的&ldquo;文件夹&rdquo;，将工作文档或者其他文档复制到这个文件夹中，即可实现同步。</p><p>5<strong>、同步IE收藏夹</strong></p><p>默认情况下IE的收藏夹路径为： C:\Documents and Settings\Administrator\Favorites ，我们可以通过修改注册表的方式来修改收藏夹的路径，打开注册表： HKEY_USERs\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders ，而后把&ldquo;Favorites&rdquo;键值修改成My Dropbox目录下的一个文件夹路径即可。在多台电脑都进行这样的操作，就可以实现多台电脑自动同步IE收藏夹的功能。</p><p>6<strong>、网站自动备份</strong></p><p>如果你也拥有一个类似&ldquo;月光博客&rdquo;的网站，你也会为数据的安全性而头疼，如何安全地自动备份网站数据呢？有了Dropbox，我们就有了一个网站自动备份的新方案。</p><p>对于使用SQL Server的网站来说，可以在SQL Server中设置一个自动执行任务，每天自动将数据库文件备份到My Dropbox目录里即可。</p><p>对于使用Access的网站来说，频繁读写的Access文件不宜直接放到Dropbox目录里，而采用定时复制的方法更好一些。具体操作是，建立一个BAT文件，内容是&ldquo;xcopy &quot;E:\website&quot; &quot;E:\My Dropbox\website&quot; /s/e/y&rdquo;，在&ldquo;系统工具 - 任务计划&rdquo;中新建一个计划任务，选择这个批处理文件，设置每天临晨自动执行，就可以定时自动把website目录下的网站文件（包括ACCESS文件）一起复制到Dropbox目录中的website文件夹。</p><p>这样，就实现了使用Dropbox可以自动将网站上的文件和数据库进行备份，无需手动操作。缺点是最多5G空间，不适合大网站的备份。</p><p>好了，以上就是我在使用Dropbox过程中总结的一些小技巧，总的来说，Dropbox是一个非常不错的网络同步工具，Live Mesh相比Dropbox来说有几个缺点，比如只支持Windows，不支持Linux、Mac，兼容性较差（例如在我公司的电脑上安装Live Mesh就报错，无法安装），另外Live Mesh的界面有待进一步优化。</p><p>Dropbox的默认空间是2G，如果你也想使用Dropbox，<a target="_blank" href="https://www.dropbox.com/">点这里</a>注册Dropbox帐号，如果你邀请其他用户使用的话，每邀请一个用户注册也可获得250M空间，最大到5G空间封顶。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Software.jpg" alt="Dropbox免费网盘高级使用技巧" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2044"></span><a href="javascript:commYea(2044);" id="dig2044">顶一下 ▲</a>(<span id="sdig2044"><Script language="javascript" type="text/javascript">showDig("2044");</script></span>) &nbsp; <a href="javascript:commNay(2044);" id="down2044">踩一下 ▼</a>(<span id="sdown2044"><Script language="javascript" type="text/javascript">showDown("2044");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2043.html" title="从译言预测有道谷歌的云翻译">从译言预测有道谷歌的云翻译</a></div><div class="next_content">下一篇 » <a href="/archives/2045.html" title="新网停止多个知名网站域名解析">新网停止多个知名网站域名解析</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2012.html">迅雷跃居全球BT市场第一</a></p><p class="mutualitylist"><a href="/archives/1808.html">反思暴风影音断网风波</a></p><p class="mutualitylist"><a href="/archives/1800.html">十个常用浏览器书签工具</a></p><p class="mutualitylist"><a href="/archives/1755.html">企业邮件沟通技巧</a></p><p class="mutualitylist"><a href="/archives/1721.html">禁用Adobe Updater的自动升级</a></p><p class="mutualitylist"><a href="/archives/1719.html">免费Flash图表工具FusionChart</a></p><p class="mutualitylist"><a href="/archives/1715.html">软件下载站如何应对迅雷的P2SP流量</a></p><p class="mutualitylist"><a href="/archives/1700.html">迅雷联盟推送狗狗流量</a></p><p class="mutualitylist"><a href="/archives/1656.html">Photoshop的GIF透明图片插件</a></p><p class="mutualitylist"><a href="/archives/1652.html">停止暴风影音自动运行的方法</a></p><p class="mutualitylist"><a href="/archives/1648.html">迅雷统计系统开始测试</a></p><p class="mutualitylist"><a href="/archives/1281.html">常见的WAMP集成环境</a></p><p class="mutualitylist"><a href="/archives/1210.html">十个装机必备的免费软件</a></p><p class="mutualitylist"><a href="/archives/1208.html">十大免费软件替换盗版软件</a></p><p class="mutualitylist"><a href="/archives/1082.html">软件许可证的歧义</a></p><p class="mutualitylist"><a href="/archives/717.html">软件盗版的产业链</a></p><p class="mutualitylist"><a href="/archives/681.html">中国企业管理软件的发展简评</a></p><p class="mutualitylist"><a href="/archives/680.html">微软的免费企业管理软件</a></p><p class="mutualitylist"><a href="/archives/569.html">软件盗版和中国游戏产业</a></p><p class="mutualitylist"><a href="/archives/523.html">对于迅雷事件的思考</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

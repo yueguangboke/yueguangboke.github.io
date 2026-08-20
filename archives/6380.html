@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/6380.html"/>
+	<title>通过gzip和nginx来提高网站打开速度-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>通过gzip和nginx来提高网站打开速度</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/6380.html" rel="bookmark">通过gzip和nginx来提高网站打开速度</a></h1>
+	<div class="post-meta">
+		2021-3-20 18:7:34 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn6380" data-id="6380"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>要知道，网站的打开速度取决于浏览器打开下载的网页文件大小。如果传输的页面内容文件减少，那你网站的打开速度一定会加快。特别是手机端的用户，打开网站速度受限于移动端网络，所以压缩网站页面内容显得至关重要。</p>
+
+<p>gzip是一种非常流行的数据压缩方式。你可以在nginx配置中开启gzip来压缩网页文件。然后，这些文件又由浏览器解压缩，文件不会受任何。但是压缩文件是会占用服务器资源，所以最好压缩那些效果比较好的文件。比如文本文件压缩效果非常好，通常会缩小两倍多。而JPG或PNG这类文件，本身就已经进行格式压缩，所以再做二次压缩，效果并不是特别明显。</p>
+
+<p>本文主要讲一下如何配置nginx来开启gzip压缩。</p>
+
+<p>环境</p>
+
+<p>ubuntu 20.04服务器</p>
+
+<p>root权限或具有sudo特权的非root用户</p>
+
+<p>一、创建测试文件</p>
+
+<p>在这一步中，我们将在默认的Nginx目录中创建几个测试文件。稍后我们将使用这些文件来检查Nginx的默认行为是否进行gzip压缩，并测试配置更改是否具有预期的效果。</p>
+
+<p>首先，创建几个测试文件，这些文件主要用来查看我们的gzip压缩效果。gzip是不会分析文件内容的，它主要通过文件扩展名来判断文件类型，如果还分析文件内容，那整个效率就会大大降低。所以我们可以创建一些图像文件、html文件和一些样式文件。</p>
+
+<blockquote>
+<p>sudo truncate -s 1k /var/www/html/test.html<br />
+sudo truncate -s 1k /var/www/html/test.jpg<br />
+sudo truncate -s 1k /var/www/html/test.css<br />
+sudo truncate -s 1k /var/www/html/test.js</p>
+</blockquote>
+
+<p>下一步是检查Nginx在使用我们刚创建的文件在全新安装中压缩请求的文件时的行为。</p>
+
+<p>二、命令方式查看压缩效果</p>
+
+<p>使用curl命令方式，添加标头Accept-Encoding:&nbsp;gzip，来查看各文件的压缩结果。</p>
+
+<blockquote>
+<p>curl -H &quot;Accept-Encoding:&nbsp;gzip&quot; -I http://localhost/test.html</p>
+</blockquote>
+
+<p>可以看到以下结果：</p>
+
+<blockquote>
+<p>Output</p>
+
+<p>HTTP/1.1 200 OK</p>
+
+<p>Server: nginx/1.18.0 (Ubuntu)</p>
+
+<p>Date: Tue, 09 Feb 2021 19:04:25 GMT</p>
+
+<p>Content-Type:&nbsp;text/html</p>
+
+<p>Last-Modified: Tue, 09 Feb 2021 19:03:41 GMT</p>
+
+<p>Connection: keep-alive</p>
+
+<p>ETag: W/&quot;6022dc8d-400&quot;</p>
+
+<p>Content-Encoding:&nbsp;gzip</p>
+</blockquote>
+
+<p>在最后一行，出现Content-Encoding:&nbsp;gzip字样。说明服务器正在用gzip压缩来发送文件。默认情况下，nginx仅压缩html文件。所有在这个命令中可以看到文件做了压缩处理。但其它的文件格式，并未做压缩处理。</p>
+
+<p>可以通过下面这条命令来验证我们刚才的说法。</p>
+
+<blockquote>
+<p>curl -H &quot;Accept-Encoding:&nbsp;gzip&quot; -I http://localhost/test.jpg</p>
+</blockquote>
+
+<p>再看一下结果，和之前的有所不同：</p>
+
+<blockquote>
+<p>Output</p>
+
+<p>HTTP/1.1 200 OK</p>
+
+<p>Server: nginx/1.18.0 (Ubuntu)</p>
+
+<p>Date: Tue, 09 Feb 2021 19:05:49 GMT</p>
+
+<p>Content-Type: image/jpeg</p>
+
+<p>Content-Length: 1024</p>
+
+<p>Last-Modified: Tue, 09 Feb 2021 19:03:45 GMT</p>
+
+<p>Connection: keep-alive</p>
+
+<p>ETag: &quot;6022dc91-400&quot;</p>
+
+<p>Accept-Ranges: bytes</p>
+</blockquote>
+
+<p>输出结果中没有出现Content-Encoding:&nbsp;gzip，这意味着该文件并没有做任何的压缩。</p>
+
+<p>你也可以使用这个方法来测试css等样式文件。</p>
+
+<blockquote>
+<p>curl -H &quot;Accept-Encoding:&nbsp;gzip&quot; -I http://localhost/test.css</p>
+</blockquote>
+
+<p>结果一样，没有出现Content-Encoding:&nbsp;gzip</p>
+
+<blockquote>
+<p>Output</p>
+
+<p>HTTP/1.1 200 OK</p>
+
+<p>Server: nginx/1.18.0 (Ubuntu)</p>
+
+<p>Date: Tue, 09 Feb 2021 19:06:04 GMT</p>
+
+<p>Content-Type:&nbsp;text/css</p>
+
+<p>Content-Length: 1024</p>
+
+<p>Last-Modified: Tue, 09 Feb 2021 19:03:45 GMT</p>
+
+<p>Connection: keep-alive</p>
+
+<p>ETag: &quot;6022dc91-400&quot;</p>
+
+<p>Accept-Ranges: bytes</p>
+</blockquote>
+
+<p>三、配置Nginx开启gzip功能</p>
+
+<p>本节主要操作相关配置，让gzip可以处理其它几种文件格式的压缩。</p>
+
+<p>你可以使用nano或vim编辑nginx的配置文件。</p>
+
+<blockquote>
+<p>sudo nano /etc/nginx/nginx.conf</p>
+</blockquote>
+
+<p>找到gzip设置部分，如下所示：</p>
+
+<p>/etc/nginx/nginx.conf</p>
+
+<blockquote>
+<p>. . .<br />
+##<br />
+# `gzip` Settings<br />
+#<br />
+#<br />
+gzip on;<br />
+gzip_disable &quot;msie6&quot;;<br />
+# gzip_vary on;<br />
+# gzip_proxied any;<br />
+# gzip_comp_level 6;<br />
+# gzip_buffers 16 8k;<br />
+# gzip_http_version 1.1;<br />
+# gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;<br />
+. . .</p>
+</blockquote>
+
+<p>因为我们用的是ubuntu 20.04。所以默认情况下，gzip是开启的。但有些设置无效，所以我们需要做一些修改：</p>
+
+<p>通过取消注释行前面的#来启用其他设置（即，删除#符号）</p>
+
+<p>添加gzip_min_length 256;参数，该参数是告诉nginx，不要去压缩小于256字节的文件，因为很小的文件没有太必要。压缩这类文件反而影响服务器效率。</p>
+
+<p>在gzip_types参数中添加其他文件类型扩展名，这些文件类型可以是Web字体，图片、XML、JSON结构化数据或SVG图片文件。</p>
+
+<p>应用这些更改之后，设置部分应如下所示：</p>
+
+<p>/etc/nginx/nginx.conf</p>
+
+<blockquote>
+<p>. . .<br />
+##<br />
+# `gzip` Settings<br />
+#<br />
+#<br />
+gzip on;<br />
+gzip_disable &quot;msie6&quot;;<br />
+gzip_vary on;<br />
+gzip_proxied any;<br />
+gzip_comp_level 6;<br />
+gzip_buffers 16 8k;<br />
+gzip_http_version 1.1;<br />
+gzip_min_length 256;<br />
+gzip_types<br />
+application/atom+xml<br />
+application/geo+json<br />
+application/javascript<br />
+application/x-javascript<br />
+application/json<br />
+application/ld+json<br />
+application/manifest+json<br />
+application/rdf+xml<br />
+application/rss+xml<br />
+application/xhtml+xml<br />
+application/xml<br />
+font/eot<br />
+font/otf<br />
+font/ttf<br />
+image/svg+xml<br />
+text/css<br />
+text/javascript<br />
+text/plain<br />
+text/xml;<br />
+. . .</p>
+</blockquote>
+
+<p>保存并关闭文件以退出。要启用新配置，需要重新启动Nginx：</p>
+
+<blockquote>
+<p>sudo systemctl restart nginx</p>
+</blockquote>
+
+<p>四、确保所有的配置正确</p>
+
+<p>重复之前的测试步骤，执行相应的命令请求：</p>
+
+<blockquote>
+<p>curl -H &quot;Accept-Encoding:&nbsp;gzip&quot; -I http://localhost/test.html</p>
+</blockquote>
+
+<p>因为html文件，之前已经默认开启压缩，所以这个命令执行结果保持不变：</p>
+
+<blockquote>
+<p>Output</p>
+
+<p>HTTP/1.1 200 OK</p>
+
+<p>Server: nginx/1.18.0 (Ubuntu)</p>
+
+<p>Date: Tue, 09 Feb 2021 19:04:25 GMT</p>
+
+<p>Content-Type:&nbsp;text/html</p>
+
+<p>Last-Modified: Tue, 09 Feb 2021 19:03:41 GMT</p>
+
+<p>Connection: keep-alive</p>
+
+<p>ETag: W/&quot;6022dc8d-400&quot;</p>
+
+<p>Content-Encoding:&nbsp;gzip</p>
+</blockquote>
+
+<p>然后我们来测试一下之前未压缩的css样式表，看看结果会有什么变化：</p>
+
+<blockquote>
+<p>curl -H &quot;Accept-Encoding:&nbsp;gzip&quot; -I http://localhost/test.css</p>
+</blockquote>
+
+<p>可以看到gzip正在压缩文件：</p>
+
+<blockquote>
+<p>Output</p>
+
+<p>HTTP/1.1 200 OK</p>
+
+<p>Server: nginx/1.18.0 (Ubuntu)</p>
+
+<p>Date: Tue, 09 Feb 2021 19:21:54 GMT</p>
+
+<p>Content-Type:&nbsp;text/css</p>
+
+<p>Last-Modified: Tue, 09 Feb 2021 19:03:45 GMT</p>
+
+<p>Connection: keep-alive</p>
+
+<p>Vary: Accept-Encoding</p>
+
+<p>ETag: W/&quot;6022dc91-400&quot;</p>
+
+<p>Content-Encoding:&nbsp;gzip</p>
+</blockquote>
+
+<p>我们可以用相同的方式测试一下jpg文件：</p>
+
+<blockquote>
+<p>curl -H &quot;Accept-Encoding:&nbsp;gzip&quot; -I http://localhost/test.jpg</p>
+</blockquote>
+
+<p>没有看到gzip压缩：</p>
+
+<blockquote>
+<p>Output</p>
+
+<p>HTTP/1.1 200 OK</p>
+
+<p>Server: nginx/1.18.0 (Ubuntu)</p>
+
+<p>Date: Tue, 09 Feb 2021 19:25:40 GMT</p>
+
+<p>Content-Type: image/jpeg</p>
+
+<p>Content-Length: 1024</p>
+
+<p>Last-Modified: Tue, 09 Feb 2021 19:03:45 GMT</p>
+
+<p>Connection: keep-alive</p>
+
+<p>ETag: &quot;6022dc91-400&quot;</p>
+
+<p>Accept-Ranges: bytes</p>
+</blockquote>
+
+<p>因为在之前的配置中，我们并没有添加 image/jpeg。</p>
+
+<p>在这种情况下，我们已经在Nginx中成功配置了gzip。</p>
+
+<p>结论</p>
+
+<p>可以看出，gzip很容易配置，而且带来的速度提升也非常明显，搜索引擎也非常喜欢这类加载方式，如果想提高搜索引擎的排名，增加gzip是非常有必要的。</p>
+
+<p>来源：投稿。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="通过gzip和nginx来提高网站打开速度" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note6380"></span><a href="javascript:commYea(6380);" id="dig6380">顶一下 ▲</a>(<span id="sdig6380"><Script language="javascript" type="text/javascript">showDig("6380");</script></span>) &nbsp; <a href="javascript:commNay(6380);" id="down6380">踩一下 ▼</a>(<span id="sdown6380"><Script language="javascript" type="text/javascript">showDown("6380");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/6379.html" title="网信办就语音社交软件安全约谈11家企业">网信办就语音社交软件安全约谈11家企业</a></div><div class="next_content">下一篇 » <a href="/archives/6381.html" title="苹果警告不要尝试绕过隐私功能，否则将被下架">苹果警告不要尝试绕过隐私功能，否则将被下架</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/6287.html">Windows IIS日志文件分析神器</a></p><p class="mutualitylist"><a href="/archives/6051.html">十大网站创业方向</a></p><p class="mutualitylist"><a href="/archives/6022.html">谷歌提醒网站管理：疫情期间切勿关站 会影响后续排名</a></p><p class="mutualitylist"><a href="/archives/5780.html">IIS子目录web.config与主站冲突解决方法</a></p><p class="mutualitylist"><a href="/archives/5611.html">SSL的安全配置和检测</a></p><p class="mutualitylist"><a href="/archives/5594.html">IIS通过URL重写实现防盗链</a></p><p class="mutualitylist"><a href="/archives/5571.html">BT天堂站长被判刑三年罚款八十万</a></p><p class="mutualitylist"><a href="/archives/5523.html">WordPress Hestia主题的定制和优化</a></p><p class="mutualitylist"><a href="/archives/5520.html">阿里云服务器迁移</a></p><p class="mutualitylist"><a href="/archives/5505.html">不带www域名重定向到带www域名</a></p><p class="mutualitylist"><a href="/archives/5463.html">IIS和Apache实现HTTP重定向到HTTPS</a></p><p class="mutualitylist"><a href="/archives/5408.html">IIS服务器多域名部署多个HTTPS的方法</a></p><p class="mutualitylist"><a href="/archives/5401.html">IIS自动申请部署免费SSL证书服务</a></p><p class="mutualitylist"><a href="/archives/5353.html">IIS实现反向代理</a></p><p class="mutualitylist"><a href="/archives/5081.html">在Apache下部署SSL证书实现HTTPS</a></p><p class="mutualitylist"><a href="/archives/5080.html">在IIS下部署SSL证书实现HTTPS</a></p><p class="mutualitylist"><a href="/archives/5075.html">Chrome将在网站上显示不安全警告</a></p><p class="mutualitylist"><a href="/archives/5061.html">个人用户网站备案的方法</a></p><p class="mutualitylist"><a href="/archives/4880.html">水木清华站长：水木清华十五年辛酸成败</a></p><p class="mutualitylist"><a href="/archives/4853.html">网站遭政府官员恐吓 干部被停职</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	<div id="comment-form">
+<div id="respond" class="respond">
+<h3 id="comments-respond">发表留言</h3>
+<div class="cancel-comment-reply">
+<a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">点击这里取消回复。</a>
+</div>
+<form action="/zb_system/cmd.asp?act=cmt&amp;key=1aa07506" method="post" id="frmSumbit" target="_self">
+<input type="hidden" name="inpId" id="inpId" value="6380" />
+	<input type="hidden" name="inpArticle" id="inpArticle" value="" />
+	<input type="hidden" name="inpRevID" id="inpRevID" value="" />
+<input type="text" name="inpName" id="inpName"  value="名称" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="1" />
+<input type="text" name="inpEmail" id="inpEmail" value="邮箱" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="2" />
+<input type="text" name="inpHomePage" id="inpHomePage" value="网站链接" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="3" />
+
+<textarea name="txaArticle" id="txaArticle" cols="100%" rows="10" tabindex="5"  onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('commentSubmit').click();return false};"></textarea>
+<br />
+<p style="display: none;"><input type="checkbox" name="chkRemember" checked="true" id="chkRemember" /> <label for="chkRemember">记住我,下次回复时不用重新输入个人信息</label></p>
+<input name="btnSumbit" type="submit" id="commentSubmit" tabindex="6" value="提交 (Ctrl+Enter)" onclick="JavaScript:return VerifyMessage()"/>
+</form>
+</div>
+</div>
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

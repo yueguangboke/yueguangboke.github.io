@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/1650.html"/>
+	<title>八个有用的WordPress的SQL语句-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth3">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>八个有用的WordPress的SQL语句</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/1650.html" rel="bookmark">八个有用的WordPress的SQL语句</a></h1>
+	<div class="post-meta">
+		2009-1-9 22:56:22 | 
+		作者: 翻译 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 41 | 
+		浏览: <span class="AddView" id="spn1650" data-id="1650"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/WordPress.html" rel="tag"><img src="/logo/WordPress.gif" alt="WordPress" class="thumb" width="80" height="80" /></a><p>在过去的十年中，MySQL已经成为广受欢迎的数据库，而<a href="/tag/WordPress.html" title="WordPress"  Target="_blank" >WordPress</a>博客使用的是MySQL数据库，虽然使用插件可以解决一些问题，但是实现某些特殊任务的时候，在phpMyAdmin中执行SQL语句是最简洁的方法，这里就总结八个有用的WordPress系统的SQL语句，用于解决一些实际碰到的问题。</p><p><strong>1、创建备份数据库</strong></p><p>备份数据库是首先要做的事情，只需要通过以下方法就可以简单备份数据库：</p><p>登录phpMyAdmin后。选择你的WordPress数据库，然后点击&ldquo;导出&rdquo;按钮，选择一种压缩方式（可以使用gzip）并单击&ldquo;执行&rdquo;按钮，当浏览器提示是否下载的时候，点&ldquo;是&rdquo;，将数据库文件下载到本地。</p><p><strong>2、批量删除文章修订</strong></p><p>WordPress2.6以后的版本增加了一个Post revisions功能，虽然有点用，但文章修订增加了你数据库的大小，我们可以选择批量删除。</p><p>登录phpMyAdmin后执行下面的SQL语句即可批量删除。</p><div class="code">DELETE FROM wp_posts WHERE post_type = &quot;revision&quot;;&nbsp;</div><p><strong>3、批量删除垃圾评论</strong></p><p>一个真实的故事是，我的一个朋友在网上建立了一个博客，有次他花了几天时间外出度假，没有上网，当他回来的时候，登录自己的博客，看到有5000多条评论等待审核，当然，大多数都是垃圾评论，要手动删除这些评论要花大量时间，因此我们可以使用以下办法。</p><p>登录phpMyAdmin后执行下面的SQL语句。</p><div class="code">DELETE from wp_comments WHERE comment_approved = '0';</div><p>要小心，虽然这种解决方案对于处理数百万的垃圾平邮非常有用，但是也会清除未经批准的评论，因此最好还是安装使用Akismet来对付垃圾评论。</p><p><strong>4、修改文章属性</strong></p><p>你安装WordPress后，admin账户就创建了，不少人都错误的使用这个帐号来写博客，直到他们认识到，这并不是个人帐号。</p><p>解决的方法，每篇文章修改作者属性需要大量的时间，下面的这个SQL语句可以帮你快速完成这个功能。</p><p>首先你要找到你正确的用户名，使用下面的SQL语句可以找到你的用户ID号。</p><div class="code">SELECT ID, display_name FROM wp_users;</div><p>假设这个ID为NEW_AUTHOR_ID，而管理员admin的ID为OLD_AUTHOR_ID，接着，运行下面的SQL语句。</p><div class="code">UPDATE wp_posts SET post_author=NEW_AUTHOR_ID WHERE post_author=OLD_AUTHOR_ID;</div><p><strong>5、手动重设密码</strong></p><p>很多人为了保护自己的博客不被人黑掉，使用了很复杂的密码，这虽然是一件好事，但也经常会发生遗忘管理员密码的事情。</p><p>当然，通过电子邮件可以发送给你WordPress重设密码的链接，但如果你无法访问你的邮件地址，那么就只好使用下面的SQL语句来重设你的密码了。</p><div class="code">UPDATE wp_users SET user_pass = MD5('PASSWORD') WHERE wp_users.user_login ='admin' LIMIT 1;</div><p>MD5是MySQL内置的哈希函数，用于将密码转换为散列值。</p><p><strong>6、更改WordPress的域名</strong></p><p>你可能有时候会想要更改你博客的域名，但是WordPress会将你的域名存储在数据库中，因此你要使用下面的SQL语句来修改。</p><div class="code">UPDATE wp_options SET option_value = replace(option_value, 'http://www.oldsite.com', 'http://www.newsite.com') WHERE option_name = 'home' OR option_name = 'siteurl';</div><p>接着，你还要使用下面的SQL将文章的GUID也进行修改。</p><div class="code">UPDATE wp_posts SET guid = replace(guid, 'http://www.oldsite.com','http://www.newsite.com');</div><p>最后，使用下面的语句将文章里所有旧域名替换为新域名。</p><div class="code">UPDATE wp_posts SET post_content = replace(post_content, 'http://www.oldsite.com', 'http://www.newsite.com');</div><p><strong>7、显示SQL查询数量</strong></p><p>在你有话博客性能的时候，了解到查询数据库的数量是非常重要的，为了减少数据库查询，我们需要知道在一个页面上到底有多少个查询。</p><p>这一次，不需要登录phpMyAdmin了，你只需要修改footer.php文件，在文件结尾增加下面几行代码即可。</p><div class="code">&lt;?php if (is_user_logged_in()) { ?&gt;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; &lt;?php echo get_num_queries(); ?&gt; queries in &lt;?php timer_stop(1); ?&gt; seconds.&nbsp;&nbsp; <br />&lt;?php } ?&gt;</div><p><strong>8、恢复你的WordPress数据库</strong></p><p>当你的数据库因为某些原因（黑客或者升级错误）被损坏或者丢失了，如果你有备份的话，那可以恢复你的WordPress数据库。</p><p>登录phpMyAdmin，选择你的WordPress数据库，点&ldquo;导入&rdquo;按钮，点&ldquo;浏览&rdquo;按钮，然后从你的硬盘选择备份文件，点&ldquo;执行&rdquo;按钮就可以将数据库导入。</p><p>如果顺利的话，你的WordPress功能将会恢复正常。</p><p>英文原文：<a target="_blank" href="http://www.smashingmagazine.com/2008/12/18/8-useful-wordpress-sql-hacks/">8 Useful WordPress SQL Hacks</a><br />中文翻译：<a target="_blank" href="/">William Long</a><br />中文译文：<a target="_blank" href="/archives/1650.html">八个有用的WordPress的SQL语句</a></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/WordPress.jpg" alt="八个有用的WordPress的SQL语句" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note1650"></span><a href="javascript:commYea(1650);" id="dig1650">顶一下 ▲</a>(<span id="sdig1650"><Script language="javascript" type="text/javascript">showDig("1650");</script></span>) &nbsp; <a href="javascript:commNay(1650);" id="down1650">踩一下 ▼</a>(<span id="sdown1650"><Script language="javascript" type="text/javascript">showDown("1650");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/1649.html" title="电影赤壁下集观后感">电影赤壁下集观后感</a></div><div class="next_content">下一篇 » <a href="/archives/1651.html" title="Google Chrome推出2.0测试版">Google Chrome推出2.0测试版</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/1617.html">十大WordPress安全设置技巧</a></p><p class="mutualitylist"><a href="/archives/1612.html">WordPress 2.7中文版评测</a></p><p class="mutualitylist"><a href="/archives/1608.html">WordPress 2.7正式版发布</a></p><p class="mutualitylist"><a href="/archives/1498.html">WordCamp China 2008报名开始</a></p><p class="mutualitylist"><a href="/archives/1491.html">解决WordPress 2.6日志ID不连续的方法</a></p><p class="mutualitylist"><a href="/archives/1416.html">禁用WordPress自动保存的插件</a></p><p class="mutualitylist"><a href="/archives/1415.html">WordPress 2.6发布</a></p><p class="mutualitylist"><a href="/archives/1355.html">在Windows IIS下配置WordPress MU环境</a></p><p class="mutualitylist"><a href="/archives/1322.html">十大最佳WordPress插件推荐</a></p><p class="mutualitylist"><a href="/archives/1316.html">WordPress 2.5宽屏版</a></p><p class="mutualitylist"><a href="/archives/1309.html">WP-PostViews的静态JavaScript版更新</a></p><p class="mutualitylist"><a href="/archives/1290.html">WordPress 2.5发布，宽屏显示异常</a></p><p class="mutualitylist"><a href="/archives/1283.html">WordPress系统的安装和使用简介</a></p><p class="mutualitylist"><a href="/archives/1248.html">WordPress静态化插件的BUG修改</a></p><p class="mutualitylist"><a href="/archives/1244.html">WordPress子目录Rewrite的404问题</a></p><p class="mutualitylist"><a href="/archives/1215.html">WordPress MU优化表的脚本</a></p><p class="mutualitylist"><a href="/archives/1211.html">关于WordPress的静态化方法</a></p><p class="mutualitylist"><a href="/archives/1198.html">建立自定义的WordPress数据库错误页面</a></p><p class="mutualitylist"><a href="/archives/1189.html">WordPress年度博客统计插件</a></p><p class="mutualitylist"><a href="/archives/1185.html">WordPress SimpleTags的修改建议</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

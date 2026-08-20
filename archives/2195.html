@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2195.html"/>
+	<title>如何区分国内上网环境中不同的人为网络故障-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth7">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>如何区分国内上网环境中不同的人为网络故障</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2195.html" rel="bookmark">如何区分国内上网环境中不同的人为网络故障</a></h1>
+	<div class="post-meta">
+		2010-5-31 22:24:47 | 
+		作者: 音乐天堂 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 72 | 
+		浏览: <span class="AddView" id="spn2195" data-id="2195"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Censorship.html" rel="tag"><img src="/logo/Censorship.gif" alt="审查" class="thumb" width="80" height="80" /></a><p>众所周知，在国内上网会遇到各种各样不同的人为网络故障，使得我们无法正常访问很多网站。但由于很多人并不熟悉网络，很多时候会无法区分不同的网络故障，导致明明是网络故障，却认为是服务器故障；或明明是服务器故障，却认为是网络故障的情况。我觉得有必要说明一下不同网络故障的特征，以及区分它们并解决它们的方法。</p><p>在国内上网环境中，我们经常遇到的网络故障有：DNS劫持、DNS污染、IP封锁、服务器防火墙IP过滤、服务器宕机、基于关键词的TCP连接重置、无状态的TCP连接重置、SSL证书过滤、SSL劫持、HTTP会话劫持等网络故障。下面我就依次进行说明：</p><p><strong>1、DNS劫持</strong></p><p>DNS劫持会导致我们访问了一些不存在的或不稳定的网站的时候，访问到的却是电信114搜索（详见月光博客《<a target="_blank" href="/archives/738.html">断网后互联星空的浏览器劫持</a>》）或访问Google却显示了Baidu的主页（详见月光博客《<a target="_blank" href="/archives/1100.html">Google博客搜索摇身一变成百度</a>》）。</p><p>如果需要确认自己是否处在DNS劫持的环境中，我们可以在<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>命令行cmd中使用Windows自带的网络诊断工具nslookup查找一个不存在或不稳定的域名进行一下网络诊断：</p><p>C:\&gt;nslookup www.SomeRandomDomainName.com</p><p>Server: ns-pd.online.sh.cn</p><p>Address: 202.96.209.133</p><p>Non-authoritative answer:</p><p>Name: www.SomeRandomDomainName.com</p><p>Address: 218.83.175.155</p><p>我们看到，www.SomeRandomDomainName.com本应该是一个不存在的域名，DNS服务器应该告诉我们这个域名不存在，但我们却看到DNS服务器告诉我们这个域名的IP为218.83.175.155（不同地区的114搜索的IP都不同，可能得到的IP并不是218.83.175.155，而是自己所在地区的114搜索的服务器IP地址），而这个IP却是114搜索的IP，导致我们在浏览器中访问这个网站时看到的是114搜索的网页。</p><p>如果需要解决DNS劫持的问题，可以把自己的域名解析服务器换乘国外的，比如OpenDNS（详见月光博客《<a target="_blank" href="/archives/1101.html">使用OpenDNS解决DNS域名劫持</a>》）或Google DNS（详见月光博客《<a target="_blank" href="/archives/2009.html">Google推出免费DNS服务</a>》）。</p><p>解决之后我们再次使用nslookup查找一下这个网站：</p><p>C:\&gt;nslookup www.SomeRandomDomainName.com</p><p>Server: google-public-dns-a.google.com</p><p>Address: 8.8.8.8</p><p>*** google-public-dns-a.google.com can't find www.SomeRandomDomainName.com: Non-existent domain</p><p>我们看到DNS服务器正确的告诉了我们这个域名不存在，我们不会被劫持到114搜索了。</p><p>不过，正如《<a target="_blank" href="/archives/1101.html">使用OpenDNS解决DNS域名劫持</a>》中最后一段所说的那样，&ldquo;但是对于<a target="_blank" href="/archives/1113.html">DNS污染</a>的劫持，使用OpenDNS也无法解决问题&rdquo;。那么接下来，我就介绍一下DNS污染。</p><p><strong>2、DNS污染</strong></p><p>由于DNS劫持可以通过把域名解析服务器更换为国外的来解决问题，所以系统需要使用DNS污染来封锁一些域名。这样，即使使用国外的域名服务器也得不到服务器的正确IP，所以也就无法访问这些服务器了。比如现在著名的微博客始祖<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>主页就遭到了DNS污染。</p><p>如果需要确认域名遭到了DNS污染而不是其他的故障，首先要了解，DNS劫持是由国内的域名服务器完成的，所以我们把域名服务器换成国外的就可以解决问题；而DNS污染是由系统完成的，所以即使更换了域名服务器，系统仍旧可以发送伪造的域名解析结果替换正确的解析结果。所以我们可以通过使用一个不存在的国外IP作为我们的域名服务器进行诊断究竟是DNS劫持还是DNS污染。我们仍旧通过使用nslookup进行网络诊断，选一个不存在的国外IP为144.223.234.234：</p><p>C:\&gt;nslookup twitter.com 144.223.234.234</p><p>DNS request timed out.</p><p>timeout was 2 seconds.</p><p>*** Can't find server name for address 144.223.234.234: Timed out</p><p>Server: UnKnown</p><p>Address: 144.223.234.234</p><p>Name: twitter.com</p><p>Address: 93.46.8.89</p><p>我们看到，由于144.223.234.234不存在，理应没有任何返回。但我们却得到了一个错误的IP：93.46.8.89。我们再测试一下刚才被DNS劫持的IP的情况：</p><p>C:\&gt;nslookup www.SomeRandomDomainName.com 144.223.234.234</p><p>DNS request timed out.</p><p>timeout was 2 seconds.</p><p>*** Can't find server name for address 144.223.234.234: Timed out</p><p>Server: UnKnown</p><p>Address: 144.223.234.234</p><p>DNS request timed out.</p><p>timeout was 2 seconds.</p><p>DNS request timed out.</p><p>timeout was 2 seconds.</p><p>*** Request to UnKnown timed-out</p><p>我们看到，www.SomeRandomDomainName.com 没有返回结果，那么它没有被DNS污染。</p><p>如果要解决DNS污染，我们只能使用各种加密代理进行远程DNS解析、VPN或利用<a target="_blank" href="/archives/2184.html">系统的漏洞</a>了。</p><p><strong>3、IP封锁</strong></p><p>这里IP封锁指的是国内把国外服务器的IP加入了系统的黑名单，导致大部分地区甚至全国无法直接访问服务器。由于系统是分布式的，所以有可能出现部分地区可以访问，部分地区不能访问的情况。比如现在知名的云存储服务<a target="_blank" href="/archives/2174.html">Dropbox</a>的主页，就是遭到了IP封锁。</p><p>首先我们把域名服务器设置为国外的，排除了DNS劫持的问题。之后我们诊断一下dropbox的域名是否遭到了DNS污染：</p><p>C:\&gt;nslookup www.dropbox.com 144.223.234.234</p><p>DNS request timed out.</p><p>timeout was 2 seconds.</p><p>*** Can't find server name for address 144.223.234.234: Timed out</p><p>Server: UnKnown</p><p>Address: 144.223.234.234</p><p>DNS request timed out.</p><p>timeout was 2 seconds.</p><p>DNS request timed out.</p><p>timeout was 2 seconds.</p><p>*** Request to UnKnown timed-out</p><p>显然也没有遭到DNS污染。那么接下去我们可以在没有过滤ICMP协议的网络环境中（有些小区宽带和有些公司的内部网络过滤了ICMP协议，无法使用tracert），我们可以在<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>命令行cmd中使用Windows自带的网络诊断工具tracert进行一下网络诊断是网站遭到了IP封锁还是其他的故障：</p><p>C:\&gt;tracert -d www.dropbox.com</p><p>Tracing route to www.dropbox.com [174.36.30.70]</p><p>over a maximum of 30 hops:</p><p>1 18 ms 19 ms 26 ms 58.35.240.1</p><p>2 15 ms 20 ms 29 ms 58.35.240.1</p><p>3 13 ms 10 ms 14 ms 124.74.20.45</p><p>4 14 ms 14 ms 15 ms 124.74.209.137</p><p>5 10 ms 15 ms 14 ms 61.152.86.58</p><p>6 * * * Request timed out.</p><p>7 * * * Request timed out.</p><p>8 * * * Request timed out.</p><p> &hellip;&hellip;</p><p>我们看到，最后一个IP为61.152.86.58（不同地区的IP不一样），之后就不通了，显然在61.152.86.58附近遭到了IP封锁。那么我们打开ip138查一下61.152.86.58是谁在掌控：</p><p>您查询的IP:61.152.86.58</p><p>* 本站主数据：上海市 电信</p><p>* 参考数据一：上海市 电信</p><p>* 参考数据二：上海市 电信</p><p>显然，问题在上海电信这里（其他地区可能是地区的本地电信），而不是dropbox服务器的问题。</p><p><strong>4、服务器防火墙IP过滤和服务器宕机</strong></p><p>把这两点放在一起写是因为这两种情况的对外表现是一样的。但和IP封锁却有很大区别。IP封锁的最后一个可达IP是中国的，而服务器防火墙IP过滤和服务器当机时的最后一个可达IP却是国外的。比如我们拿75.101.142.137做试验，之前在上面部署过alexa的网站，现在这个IP上暂时没有服务器（可以看成服务器宕机）：</p><p>C:\&gt;tracert -d 75.101.142.237</p><p>Tracing route to 75.101.142.237 over a maximum of 30 hops</p><p>1 25 ms 18 ms 18 ms 58.35.240.1</p><p>2 25 ms 42 ms 27 ms 58.35.240.1</p><p>3 10 ms 15 ms 14 ms 124.74.37.9</p><p>4 49 ms 59 ms 12 ms 124.74.209.129</p><p>5 14 ms 14 ms 14 ms 61.152.86.142</p><p>6 10 ms 14 ms 15 ms 202.97.35.154</p><p>7 14 ms 15 ms 14 ms 202.97.34.126</p><p>8 194 ms 195 ms 194 ms 202.97.51.138</p><p>9 171 ms 170 ms 173 ms 202.97.50.54</p><p>10 215 ms 179 ms 175 ms 63.146.27.133</p><p>11 279 ms 280 ms 278 ms 67.14.36.6</p><p>12 * * * Request timed out.</p><p>13 249 ms 249 ms 244 ms 72.21.199.40</p><p>14 254 ms 254 ms 254 ms 72.21.222.157</p><p>15 250 ms 250 ms 249 ms 216.182.232.53</p><p>16 270 ms 270 ms 273 ms 216.182.224.22</p><p>17 272 ms 269 ms 289 ms 75.101.160.35</p><p>18 * * * Request timed out.</p><p>19 * * * Request timed out.</p><p>20 * * * Request timed out.</p><p>我们看到最后一个可达IP为75.101.160.35，然后我们查一下这个IP是谁的呢：</p><p>您查询的IP:75.101.160.35</p><p>* 本站主数据：美国</p><p>* 参考数据一：美国</p><p>* 参考数据二：美国 华盛顿州金县西雅图市亚马逊公司</p><p>显然，这个是服务器故障。</p><p>如果要解决IP封锁，我们只能通过加密代理、VPN或利用系统的漏洞进行访问这些网站了。</p><p><strong>5、基于关键词的TCP连接重置</strong></p><p>国内的系统在人们通过http协议访问国外网站时会记录所有的内容，一旦出现某些比较&ldquo;敏感&rdquo;的关键词时，就会强制断开TCP连接，记录双方IP并保留一段时间 （1分钟左右），我们的浏览器也就会显示&ldquo;连接被重置&rdquo;。之后在这一段时间内（1分钟左右），由于我们和服务器的IP被摄查系统记录，我们就无法再次访问这个网站了。我们必须停止访问这个网站，过了这段时间再次访问没有这些关键词的网页，就又能访问这个网站了。</p><p>由于这些特征，我们判断是否遭到了基于关键词的TCP连接重置的情况也比较容易。如果浏览器显示&ldquo;连接被重置&rdquo;，并且在一段时间内无法再次访问这个网站，之后过了这段时间访问这个网站上没有这些关键词的网页又能访问的时候，我们就是遭到了基于关键词的TCP连接重置的故障。</p><p>正是因为http协议是明文传输的，所以才能基于关键词进行TCP连接重置。所以如果网站支持https加密访问，我们可以通过https方式访问网站，从而解决这个问题。但如果网站不支持https方式访问，我们只能通过加密代理、VPN或利用系统的漏洞进行访问了。而且国内的系统对付https也不是没有其他手段了。除了IP封锁外，还有无状态的TCP连接重置、SSL证书过滤、SSL劫持等手段，下面进行依次介绍。</p><p><strong>6、无状态的TCP连接重置</strong></p><p>由于https是加密传输数据的协议，系统无法知道通过https协议传输了什么内容，但又不允许民众使用https访问&ldquo;有害信息&rdquo;，所以系统只要监测到（系统只是知道访问了这个网站的https协议，并不知道其中传输的内容）访问了指定网站的https协议（比如Google Docs的https访问方式），就会强制断开TCP连接。这样，这些网站的https协议在国内就无法直接使用了，很多人被迫使用http协议，从而传输的所有内容被系统所记录。</p><p>无状态的TCP连接重置的结果也是浏览器显示&ldquo;连接被重置&rdquo;，只不过无论访问这个服务器上的任何网页都会被重置。如果要解决这个问题，也只能依靠加密代理、VPN或利用系统的漏洞了。</p><p><strong>7、SSL证书过滤</strong></p><p>和无状态的TCP连接重置一样，由于https是加密传输数据的协议，系统无法知道通过https协议传输了什么内容，但又不允许民众使用https访问&ldquo;有害信息&rdquo;，除了域名污染和无状态的TCP连接重置防止无法审查内容外，还有SSL证书过滤的审查手段。由于https传输过程中，SSL证书却是明文传输的，所以可以监测SSL证书是否掰发给指定域名的。如果确实如此，那么就强制断开TCP连接，浏览器也会显示&ldquo;连接被重置&rdquo;。SSL证书过滤只发生在使用https访问网站的时候。</p><p>SSL证书过滤的情况比较少。如果需要解决这个问题，也只能依靠加密代理、VPN或利用系统的漏洞了。</p><p><strong>8、SSL劫持</strong></p><p>断开https连接虽然能阻止民众访问&ldquo;有害信息&rdquo;，但并不知道访问了什么有害信息。基于这一点，针对https的弱点（信任所有证书颁发机构CA），CNNIC申请成为了顶级证书颁发机构（Root CA），从而可以发假证书进行中间人攻击，从而破解https传输的内容。详见月光博客《<a target="_blank" href="/archives/2058.html">破解Google Gmail的https新思路</a>》。</p><p>如果遭到了SSL劫持，很难发现。我们通过https访问国外网站的时候必须每次检查一下证书是否为国内的证书颁发机构颁发。如果为国内的证书颁发机构颁发，那么很可能遭到了SSL劫持，必须马上停止继续访问。</p><p>如果要解决SSL劫持，我们可以去浏览器中禁止比如CNNIC那样的国内证书颁发机构的证书（比如《<a target="_blank" href="http://www.spookzang.net/article/1241">CNNIC，我不信任你</a>》）。但这并不能完全解决问题，如果某一天一个不知名的国内证书颁发机构参与了SSL劫持就很难发现。最终我们还需要依赖加密代理或VPN。</p><p><strong>9、HTTP会话劫持</strong></p><p>HTTP会话劫持是修改正常的http返回结果，可以在其中加入广告，甚至是病毒木马。而一般上网被http会话劫持加入广告，很有可能认为是网站自己的广告。由于http协议是明文传输的，http会话劫持也就可以做到。月光博客中《<a target="_blank" href="/archives/335.html">电信级的网络弹出广告</a>》、《<a target="_blank" href="/archives/369.html">获取了电信恶意弹出广告的罪证</a>》和《<a target="_blank" href="/archives/439.html">谁控制了我们的浏览器？</a>》也有详细介绍http会话劫持。HTTP会话劫持通常是ISP为了推送广告而实施的，但并不排除这一手段今后会被系统所利用。</p><p>要解决HTTP会话劫持，月光博客中也提供了一种解决思路&mdash;&mdash;《<a target="_blank" href="/archives/604.html">解除ADSL弹出广告的方法</a>》。使用浏览器插件屏蔽广告能解决部分问题，也不能完全解决问题。如果要从技术手段解决HTTP会话劫持，一种办法是使用加密代理和VPN访问所有的网站，包括国内的，但也不能完全解决问题，如果HTTP会话劫持是在服务器附近的路由器上设置的，这种方法也无法解决；另一种办法是针对不同的HTTP会话劫持，我们通过刷路由器固件的方式再劫持回来（dd-wrt和tomato路由器固件支持自定义，可能可以把HTTP会话再劫持回原来的数据），或者针对不同的HTTP会话劫持，使用不同的本地应用层代理服务器进行广告过滤。</p><p>在国内常见的人为网络故障都介绍完了，同学们都可以区分不同的故障了并加以解决吗？</p><p>来源：读者投稿。 作者<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>：@davidsky2012，作者Google Reader： <a target="_blank" href="https://www.google.com/reader/shared/lehui99">https://www.google.com/reader/shared/lehui99</a></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Censorship.jpg" alt="如何区分国内上网环境中不同的人为网络故障" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2195"></span><a href="javascript:commYea(2195);" id="dig2195">顶一下 ▲</a>(<span id="sdig2195"><Script language="javascript" type="text/javascript">showDig("2195");</script></span>) &nbsp; <a href="javascript:commNay(2195);" id="down2195">踩一下 ▼</a>(<span id="sdown2195"><Script language="javascript" type="text/javascript">showDown("2195");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2194.html" title="招不招新人？IT经理很纠结">招不招新人？IT经理很纠结</a></div><div class="next_content">下一篇 » <a href="/archives/2196.html" title="富士康：尊重劳动，让教育回归原点">富士康：尊重劳动，让教育回归原点</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2174.html">纪念Dropbox君</a></p><p class="mutualitylist"><a href="/archives/2173.html">Dropbox无法访问</a></p><p class="mutualitylist"><a href="/archives/2061.html">IPV6和网络实名制</a></p><p class="mutualitylist"><a href="/archives/1670.html">FriendFeed被低俗了</a></p><p class="mutualitylist"><a href="/archives/1457.html">专业性技术网站CSDN被关闭</a></p><p class="mutualitylist"><a href="/archives/1429.html">SourceForge可正常访问</a></p><p class="mutualitylist"><a href="/archives/1404.html">全部国外网站均无法访问</a></p><p class="mutualitylist"><a href="/archives/1392.html">SourceForge无法访问</a></p><p class="mutualitylist"><a href="/archives/1315.html">网络入侵检测系统的主动响应技术</a></p><p class="mutualitylist"><a href="/archives/1123.html">我无法访问的国外优秀网站</a></p><p class="mutualitylist"><a href="/archives/1078.html">Google Pages Creator暂时恢复</a></p><p class="mutualitylist"><a href="/archives/937.html">Google Pages Creator又恢复正常了</a></p><p class="mutualitylist"><a href="/archives/913.html">Google Pages Creator又无法访问了</a></p><p class="mutualitylist"><a href="/archives/908.html">Google的ghs解封了</a></p><p class="mutualitylist"><a href="/archives/493.html">如果有一天</a></p><p class="mutualitylist"><a href="/archives/422.html">英文技术网站全部解封了？</a></p><p class="mutualitylist"><a href="/archives/408.html">难道连PHP也要封吗？</a></p><p class="mutualitylist"><a href="/archives/406.html">关于FreeBSD被封的进一步调查</a></p><p class="mutualitylist"><a href="/archives/405.html">慨叹FreeBSD和SourceForge被封</a></p><p class="mutualitylist"><a href="/archives/231.html">好多网站上不去了</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

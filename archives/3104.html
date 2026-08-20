@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3104.html"/>
+	<title>移动应用设计中应避免的十种错误-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth10">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>移动应用设计中应避免的十种错误</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3104.html" rel="bookmark">移动应用设计中应避免的十种错误</a></h1>
+	<div class="post-meta">
+		2012-5-26 23:11:58 | 
+		作者: 伯乐在线 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 5 | 
+		浏览: <span class="AddView" id="spn3104" data-id="3104"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a><p>导读：本文是来自移动应用开发公司<a target="_blank" rel="nofollow" href="http://www.sourcebits.com/">Sourcebits</a>系列文章<a target="_blank" rel="nofollow" href="http://mashable.com/follow/topics/mobile-app-trends-series">Mobile App Trends Series</a>（译者：此网站要梯子）中的一篇，文章内容适合初涉此领域的读者，现翻译如下。</p><p>在了解了跨平台移动应用设计的利弊和移动应用开发常见错误之后，你想到了一个不错的应用创意，你甚至连应用的名字都想好了，接下来该干什么？</p><p>现在，我们要谈谈设计了。你需要考虑移动应用的功能结构、用户流程等问题，而这些并不是那么容易。考虑到进入开发阶段我们会涉及到诸如需求变动、项目管理等棘手的问题，所以在设计阶段，我们需要给自己制定一些原则，并且要切合实际的开展工作。这样我们才能开发出一款好用又有趣的应用。忽略这些潜在的问题而盲目瞎干，你很有可能在此后的开发阶段陷入灾难。</p><p>本文试图帮助移动应用设计者在工作中避免一些难缠的麻烦，希望你的应用以及你的设计思路均能因此受益。</p><p><strong>错误1. 在弄清用户流程之前匆忙开始界面（草图）设计</strong></p><p>在开始界面设计前，我们要先把完整的用户流程详细的走通顺走清楚。哪怕是再简单的应用，为了确保用户流程逻辑正确、界面布局合理，我们需要反复推敲用户流程并绘制类似上面的流程图。另外值得注意的是，最好把关键功能绘制在流程图靠近顶部的地方，而不是被层层分支淹没在底部。</p><p>跳过此环节而草率的开始界面设计，最终开发出的应用很可能在使用流程上不够清晰合理，用户上手后不得其解，兴趣索然。</p><p><strong>错误2. 低估开发成本</strong></p><p>设计师在Photoshop中画出的任何东西，最终都需要通过开发人员的代码在屏幕上表现。原本只需几小时开发的功能，由于设计师的一个看似细微的改动，可能会多耗费几天的开发时间。所以，在设计过程中要避免画蛇添足。</p><p>换句话说，如果设计师主导了移动应用功能的取舍，那后果会很严重。举个搜索框的例子，原本相对简单的一个功能，设计师灵光乍现&mdash;&mdash;在用户输入关键词的同时不断给出实时的搜索结果。这个看似细节的改动，很可能让开发人员当场吐血。像这种的功能改动最好经过多方讨论后做出决策，而不是任由设计师自说自话。</p><p><strong>错误3. 在低分辨率下设计，使用位图文件</strong></p><p>始终坚持为Retina屏幕的高分辨率绘制设计图，然后以此输出低分辨率版本图片。这对于老手来说是常识，我们在这里再啰嗦几句。大家都知道，移动设备的常见屏幕尺寸是越来越五花八门（以iOS平台 为例，迄今需要考虑的就有4种分辨率)。所以，绘制高分辨率版本的图片，甚至是使用矢量图而不是位图，这些有助于设计师效率最大化，以及更好的应对未来的新硬件。</p><p><strong>错误4. 触摸区域太小</strong></p><p>普通人的食指触摸面积在1.6至2厘米见方，而且在使用移动应用的大多数时间里，他们的手指飞快的掠过屏幕。设计移动应用界面需要时刻提醒自己这一点，用户的触摸并不能像鼠标点击一样精确。看看你的设计是不是在一屏里包含了太多的按钮等功能触发点，按钮是不是足够大，间距是不是足够宽，会不会发生用户点选不到或者误按其它按钮的问题？</p><p><strong>错误5. 滥用开场动画</strong></p><p>在启动时播放一段精致的动画似乎是个不错的想法，但切忌不要为了动画而动画。Path和Thrillist&rsquo;s JackThreads使用很酷的开场动画是因为这些应用启动需要一些时间，在程序完成加载之前用户什么也不能做<span style="color: #888888">（译者：Path启动貌似没有啥动画，难道是针对老版本说的？）</span>。这种情况下，为用户准备一段简短愉悦的动画以消除等待的焦虑就显得很合时宜了。</p><p>由于应用启动时必须首先显示一张静待图片<span style="color: #888888">（译者：如iOS应用的Default.png）</span>，然后才能切换到动画，所以务必确保这个切换看起来天衣无缝。一些不好的例子在处理这个环节的时候产生了不协调的跳转或者闪屏，这都是需要避免的。<span style="color: #888888">（译者：优酷iPad应用的早期版本存在这种切换，处理中有一闪而过的黑屏，现在的版本把动画直接去掉了）</span></p><p><strong>错误6. 让用户不知所措的原地等待</strong></p><p>在程序加载、处理数据、或者等待网络反馈时不给用户及时的反馈，会让用户误认为应用挂了，这也是一种不好的用户体验。</p><p>举例来说：通过网络加载数据的同时，不要让用户傻傻的盯着一个空白的屏幕等待，显示一个转菊花或者动画特效什么的，让用户明白应用运行正常，只不过是在等待网络数据。如果能显示数据读取的进度条那就更好了，不过事先和开发人员商量一下开发难度（参考本文第二点）。</p><p><strong>错误7. 盲目借鉴其它移动平台风格</strong></p><center><img title="verizon_phones" alt="移动应用设计中应避免的10种错误" src="/upload/3104_1.jpg" /></center><p>糟糕的抄袭只会让用户感到疑惑和愤怒。每一个移动平台都有自己的风格，平台厂商也已经依据其平台自身的审美诉求撰写类似苹果的Human Interface Guidelines之类的指导性文档（译者：Android现在也有类似的文档）。在iPhone上开发类似<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> Phone 7的Metro风格应用就很可能让习惯了iOS的用户感到无从下手。</p><p>我想说的是，你的应用并不一定要和官方应用一模一样，但也不能看起来另类到像不属于这个平台一样。</p><p><strong>错误8. 过分拥挤的界面</strong></p><p>在高PPI下设计移动应用界面，你可能不知不觉中就在一个屏幕里放了太多的东西。在27&Prime;的iMac屏幕上看设计图，你的设计是那么的赏心悦目。请在移动设备上再多看一眼（哪怕仅仅是把设计图导入手机相册看），可能就不是那么回事了。在一个屏幕内塞太多的元素，会让用户操作起来费力，甚至淹没了最重要的信息。</p><p><strong>错误9. 认为所有用户都和你一样的使用应用</strong></p><p>无论你的应用界面看起来有多赞，都要做可用性测试。你可以在熟人圈内开展小规模的beta测试，记住让一些资深的设计师也参加。根据他们的反馈，在最终发布前调整界面。你也可以在Craigslist上发布广告，邀请一些学生来试用新产品，记得提供比萨或者一点报酬什么的。</p><p><strong>错误10. 忘记使用或者滥用手势操作</strong></p><p>记住并不是所有界面元素都必须直观的被用户看到，有时我们可以隐藏一些惊喜。</p><p>拿iPhone上面的官方邮件应用 <span style="color: #808080">(译者：又是老生常谈的例子)</span>，用户可以在收件箱中通过横扫邮件标题激活删除功能，这就免去了用户点击&ldquo;编辑&rdquo;、选择邮件、选择删除的麻烦。这里我们发现有个平衡点：老用户可能发觉出用手势完成快速删除，同时保留&ldquo;编辑&rdquo;按钮以便不熟悉的用户完成删除、标记等其它操作。所以，善用手势但不能过分倚重手势，一般来说要最好不要用手势操作替代菜单等需要点选操作的界面元素。</p><p><strong>总结</strong></p><p>如果要用一句话概括文本提到的点点滴滴，那就是：好的设计是经过深思熟虑的。带着审慎的态度全面的考察你的设计，真正的从用户的角度出发想问题。不要试图走走捷径，也不要跳过测试，不要设计出连你自己都拿不出手的东西。</p><p>英文原文：<a class="external" target="_blank" rel="nofollow" href="http://mashable.com/2012/04/11/mobile-app-design-tips/">mashable</a>&nbsp;&nbsp; 中文编译：<a target="_blank" href="http://www.jobbole.com/"><span class="wp_keywordlink">伯乐</span>在线</a></p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="移动应用设计中应避免的十种错误" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3104"></span><a href="javascript:commYea(3104);" id="dig3104">顶一下 ▲</a>(<span id="sdig3104"><Script language="javascript" type="text/javascript">showDig("3104");</script></span>) &nbsp; <a href="javascript:commNay(3104);" id="down3104">踩一下 ▼</a>(<span id="sdown3104"><Script language="javascript" type="text/javascript">showDown("3104");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3103.html" title="Windows发展历程和展望">Windows发展历程和展望</a></div><div class="next_content">下一篇 » <a href="/archives/3105.html" title="产品与人性的思考">产品与人性的思考</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3097.html">MGC：机器生成内容</a></p><p class="mutualitylist"><a href="/archives/3088.html">互联网项目管理要点</a></p><p class="mutualitylist"><a href="/archives/3077.html">构建移动Web应用程序的技术堆栈</a></p><p class="mutualitylist"><a href="/archives/3067.html">一个杀手移动用户界面的七个步骤</a></p><p class="mutualitylist"><a href="/archives/3063.html">HTML5能取代Android和iOS应用程序吗？</a></p><p class="mutualitylist"><a href="/archives/3062.html">程序员真的很懒</a></p><p class="mutualitylist"><a href="/archives/3061.html">开发一个iOS应用没有那么容易</a></p><p class="mutualitylist"><a href="/archives/3028.html">国外程序员推荐：每个程序员都应读的书</a></p><p class="mutualitylist"><a href="/archives/3026.html">十六个快速启动项目样板</a></p><p class="mutualitylist"><a href="/archives/3024.html">使用HTML5的十大原因</a></p><p class="mutualitylist"><a href="/archives/3011.html">如何在Google成为一名优秀的产品经理？</a></p><p class="mutualitylist"><a href="/archives/3004.html">移动开发中HTML5能否替代本地程序？</a></p><p class="mutualitylist"><a href="/archives/2989.html">技术演讲的技巧和经验</a></p><p class="mutualitylist"><a href="/archives/2970.html">怎样打造高性能的移动用户体验</a></p><p class="mutualitylist"><a href="/archives/2954.html">为什么程序员的社会地位不高？</a></p><p class="mutualitylist"><a href="/archives/2924.html">HTML5未来发展的六大趋势</a></p><p class="mutualitylist"><a href="/archives/2912.html">IT工作者是21世纪的矿工吗？</a></p><p class="mutualitylist"><a href="/archives/2907.html">程序员的本质</a></p><p class="mutualitylist"><a href="/archives/2769.html">关于编程，大学没有传授的十件事</a></p><p class="mutualitylist"><a href="/archives/2717.html">一个软件工程师在北京的反省</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

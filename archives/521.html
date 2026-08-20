@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/521.html"/>
+	<title>热文排行的算法进行了优化-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/program.html" title="查看 编程开发 中的全部文章">编程开发</a> &raquo; <span>热文排行的算法进行了优化</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/521.html" rel="bookmark">热文排行的算法进行了优化</a></h1>
+	<div class="post-meta">
+		2006-6-3 10:51:54 | 
+		作者: 月光 | 
+		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
+		评论: 38 | 
+		浏览: <span class="AddView" id="spn521" data-id="521"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Script.html" rel="tag"><img src="/logo/Script.gif" alt="源代码" class="thumb" width="80" height="80" /></a><p>今天打算更改一下我的Blog的文章排行算法。</p><p>以前的算法是根据点击数目来排行，有很多不足的地方，比如没有考虑时间因素，没有考虑用户对其的推荐等因素，最近使用抓虾系统的时候，对抓虾的&ldquo;热文排行&rdquo;算法产生了兴趣，因此我也打算使用类似的排行来进行我的Blog的文章排行。</p><p>其中的积分算法是比较难确定的，我打算以文章浏览次数，评论次数，引用次数以及文章的日期来生成。把用户的评论数目作为推荐次数，文章的发表日期到今天的时间做为时间因素。</p><p>1条评论和100次浏览有相同积分。</p><p>1条Traceback等于2条评论的积分。评论和引用的增长是线性的。</p><p>浏览次数增大，取得的积分以开平方根的方式增长，即数字越大，变化越小。</p><p>文章的日期做为负积分，以指数方式增长，越老的文章，会变为越来越大的负数积分。</p><p>用数学算法表示即：log_CommNums*100 + log_TrackBackNums*200 + sqr(log_ViewNums)*10 - (date()-Log_PostTime)*(date()-Log_PostTime)</p><p>从这个算法中，引用和评论对积分的增加影响最大，时间因素对积分的减少影响最大。以这个算法产生的&ldquo;热文排行&rdquo;见左边，其每天会自动更新，我将观察一段时间，看看这个算法的效果如何。</p><p>具体的修改方法如下：</p><p>在c_system_event.asp中加入下面的函数：</p><p>'*********************************************************<br />' 目的：&nbsp;&nbsp;&nbsp; 重建排行<br />'*********************************************************<br />Function BlogReBuild_Toplist()</p><p>&nbsp;Dim i<br />&nbsp;Dim objRS<br />&nbsp;Dim objStream<br />&nbsp;Dim objArticle<br />&nbsp;Dim strLogUrl</p><p>&nbsp;Dim strPrevious<br />&nbsp;Set objRS=objConn.Execute(&quot;SELECT [log_ID],[log_Url],[log_Title] FROM [blog_Article] WHERE [log_Level]&gt;1 ORDER BY log_CommNums*100 + log_TrackBackNums*200 + sqr(log_ViewNums)*10 - (date()-Log_PostTime)*(date()-Log_PostTime) DESC&quot;)</p><p>&nbsp;If (Not objRS.bof) And (Not objRS.eof) Then<br />&nbsp;&nbsp;For i=1 to ZC_PREVIOUS_COUNT<br />&nbsp;&nbsp;&nbsp;strLogUrl=objRS(&quot;log_Url&quot;)<br />&nbsp;&nbsp;&nbsp;If IsNull(strLogUrl) Or IsEmpty(strLogUrl) Or strLogUrl=&quot;&quot; Then<br />&nbsp;&nbsp;&nbsp;&nbsp;strLogUrl=objRS(&quot;log_ID&quot;)<br />&nbsp;&nbsp;&nbsp;End If<br />&nbsp;&nbsp;&nbsp;strLogUrl=ZC_BLOG_HOST &amp; ZC_STATIC_DIRECTORY &amp; &quot;/&quot; &amp; strLogUrl &amp; &quot;.&quot; &amp; ZC_STATIC_TYPE<br />&nbsp;&nbsp;&nbsp;strPrevious=strPrevious &amp; &quot;&lt;li&gt;&lt;a href=&quot;&quot;&quot;&amp; strLogUrl &amp; &quot;&quot;&quot;&gt;&quot; &amp; objRS(&quot;log_Title&quot;) &amp; &quot;&lt;/a&gt;&lt;/li&gt;&quot;<br />&nbsp;&nbsp;&nbsp;objRS.MoveNext<br />&nbsp;&nbsp;&nbsp;If objRS.eof Then Exit For<br />&nbsp;&nbsp;Next<br />&nbsp;End If<br />&nbsp;objRS.close</p><p>&nbsp;strPrevious=TransferHTML(strPrevious,&quot;[no-asp]&quot;)</p><p>&nbsp;Set objStream = Server.CreateObject(&quot;ADODB.Stream&quot;)<br />&nbsp;With objStream<br />&nbsp;.Type = adTypeText<br />&nbsp;.Mode = adModeReadWrite<br />&nbsp;.Open<br />&nbsp;.Charset = &quot;utf-8&quot;<br />&nbsp;.Position = objStream.Size<br />&nbsp;.WriteText = strPrevious<br />&nbsp;.SaveToFile BlogPath &amp; &quot;/include/toplist.asp&quot;,adSaveCreateOverWrite<br />&nbsp;.Close<br />&nbsp;End With<br />&nbsp;Set objStream = Nothing</p><p>&nbsp;BlogReBuild_Toplist=True</p><p>End Function<br />'*********************************************************</p><p>然后在MakeBlogReBuild函数的BlogReBuild_Categorys后面加上一行BlogReBuild_Toplist。</p><p>修改c_html_js.asp，在f=&quot;TRACKBACKS&quot;后面增加<br />&nbsp;ElseIf f=&quot;toplist&quot; Then<br />&nbsp;&nbsp;f=&quot;TOPLIST&quot;</p><p>修改single.html模板文件，在合适的位置增加下面几行。<br />&lt;div class=&quot;function&quot; id=&quot;divTopList&quot;&gt;<br />&lt;h3&gt;热文排行&lt;/h3&gt;<br />&lt;ul&gt;<br />&lt;script language=&quot;JavaScript&quot; src=&quot;&lt;#ZC_BLOG_HOST#&gt;c_html_js.asp?include=toplist&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />&lt;/ul&gt;<br />&lt;/div&gt;</p><p>最后，重建索引，重建文件，就完成了。</p><p>具体效果参见本页左边的&ldquo;热文排行&rdquo;栏目。</p><p>更新：<strong>在Z-BLOG 1.7下的修改方法</strong></p><p>前面修改代码不变，之后，修改TEMPLATE\default.html模板，在适当位置加入以下语句：</p><p>&lt;div class=&quot;function&quot; id=&quot;divTopList&quot;&gt;<br />&lt;h3&gt;热文排行&lt;/h3&gt;<br />&lt;ul&gt;<br />&lt;#CACHE_INCLUDE_TOPLIST#&gt;<br />&lt;/ul&gt;<br />&lt;/div&gt;</p><p>修改TEMPLATE\single.html模板，在适当位置加入以下语句：</p><p>&lt;div class=&quot;function&quot; id=&quot;divTopList&quot;&gt;<br />&lt;h3&gt;热文排行&lt;/h3&gt;<br />&lt;ul id=&quot;ulToplist&quot;&gt;<br />&lt;script language=&quot;JavaScript&quot; type=&quot;text/javascript&quot;&gt;strBatchInculde+=&quot;ulToplist=toplist,&quot;&lt;/script&gt;<br />&lt;/ul&gt;<br />&lt;/div&gt;</p><p>最后重建索引即可。</p><p>参考文章：抓虾指数的热文排行的产生</p><p>来源：http://www.zhuaxia.com/blog/?p=20</p><p>抓虾的热门文章是大家&ldquo;顶&rdquo;上来的。对于每篇文章，每个人有且仅有一票（包括我们虾米自己也一样，只有一票）。推荐出来的文章，按下面的规则排列顺序，希望能够兼顾文章的新鲜（按时间）和价值（按票数）。</p><p>1、两天之内推荐的文章，优先于超过两天的；</p><p>2、同样是两天之内推荐的文章，票数高的优先；</p><p>3、同样是两天之内，且同样票数的文章，最近被推荐过的优先。</p><p>也就是说，假如一篇文章在两天内无人继续推荐，估计大家对它的兴趣就不大了，或者说它有点&ldquo;过时&rdquo;了，它就应该被排在后边。</p><p>&ldquo;两天&rdquo;的窗口期是暂时拟定的，以后也许会调整。另外，每个人的那一票，以后的权重可能会不一样（比如，如果小虾推荐的文章总是被大家认可，那末小虾以后的推荐会更有分量。）总的想法，还是希望平衡文章的新鲜和价值。以后会加分类，搜索，和过滤功能，让大家更方便地看到自己喜爱的文章。<br />&nbsp;</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Script.jpg" alt="热文排行的算法进行了优化" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note521"></span><a href="javascript:commYea(521);" id="dig521">顶一下 ▲</a>(<span id="sdig521"><Script language="javascript" type="text/javascript">showDig("521");</script></span>) &nbsp; <a href="javascript:commNay(521);" id="down521">踩一下 ▼</a>(<span id="sdown521"><Script language="javascript" type="text/javascript">showDown("521");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/520.html" title="Google打不开的解决方法">Google打不开的解决方法</a></div><div class="next_content">下一篇 » <a href="/archives/522.html" title="无花的蔷薇">无花的蔷薇</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/447.html">Google和百度、雅虎的站内搜索代码</a></p><p class="mutualitylist"><a href="/archives/426.html">让广告代码不再影响你的网页加载速度</a></p><p class="mutualitylist"><a href="/archives/380.html">ASP无组件上传的原理</a></p><p class="mutualitylist"><a href="/archives/372.html">多个绑定多域名的PHP代码</a></p><p class="mutualitylist"><a href="/archives/206.html">ASP脚本生成GUID的实现</a></p><p class="mutualitylist"><a href="/archives/201.html">多个绑定多域名的ASP代码</a></p><p class="mutualitylist"><a href="/archives/193.html">40种网页常用小技巧</a></p><p class="mutualitylist"><a href="/archives/149.html">提交表单后PHP不能获取提交内容</a></p><p class="mutualitylist"><a href="/archives/134.html">在HTML文件引入其它HTML文件的几种方法</a></p><p class="mutualitylist"><a href="/archives/128.html">中英文网页切换</a></p><p class="mutualitylist"><a href="/archives/120.html">IIS的ASP程序不能浏览的解决方法</a></p><p class="mutualitylist"><a href="/archives/105.html">自动打开最快镜像站</a></p><p class="mutualitylist"><a href="/archives/98.html">去掉免费空间广告的方法</a></p><p class="mutualitylist"><a href="/archives/95.html">WEBS上自动下载控件的实现方法</a></p><p class="mutualitylist"><a href="/archives/91.html">在 HTM 中插入文件</a></p><p class="mutualitylist"><a href="/archives/90.html">在ASP中切换NT系统用户权限</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

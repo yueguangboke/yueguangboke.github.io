@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin>
+<id>HtmlDefault</id>
+<name>静态首页生成插件</name>
+<note>静态生成Blog的首页，并将原defalult.asp改名，此插件无需管理，启用即生效。禁用此插件会自动改回defalult.asp，并删除掉之前生成的静态文件。</note>
+<type>inline</type>
+<path>main.asp</path>
+<include>include.asp</include>
+<level>4</level>
+<author>
+	<name>zx.asd</name>
+	<url>http://www.zdevo.com/</url>
+	<email></email>
+</author>
+<version>1.3</version>
+<modified>2008-5-4</modified>
+</plugin>

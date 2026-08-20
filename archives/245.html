@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/245.html"/>
+	<title>ZBLOG 1.4 SP1的静态补丁和插件发布-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>ZBLOG 1.4 SP1的静态补丁和插件发布</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/245.html" rel="bookmark">ZBLOG 1.4 SP1的静态补丁和插件发布</a></h1>
+	<div class="post-meta">
+		2005-8-31 20:45:52 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 11 | 
+		浏览: <span class="AddView" id="spn245" data-id="245"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Zblog.html" rel="tag"><img src="/logo/Zblog.gif" alt="Zblog" class="thumb" width="80" height="80" /></a><p>今天花了些时间将ZBLOG升级到1.4 SP1，静态化补丁也同时升级到SP1，并支持插件方式的运行。</p> <p>静态化补丁代码部分的变化还是只修改了c_system_event.asp和c_system_lib.asp两个文件，同时提供的PLUGIN功能新增加两个文件。因此一共是四个文件。</p>
+<p>使用和安装这个补丁很简单，先下载<a href="/download/Z-Blog_1_4_sp1_50824.zip">Z-Blog 1.4 SP1正式版</a>，然后下载<a href="/download/zblog-patch0824.zip">Z-Blog 1.4 SP1月光静态版补丁</a>，注意此补丁只能在这个版本上使用，不要在其他版本上使用。将补丁里的两个ASP文件覆盖到原版目录下，catbuild目录放到PLUGIN目录下即可。</p>
+<p>一般用户使用下面3个操作就可以安装好静态化补丁：</p>
+<p>1、下载<a href="/download/Z-Blog_1_4_sp1_50824.zip">原版Z-Blog 1.4 SP1</a>。</p>
+<p>2、下载<a href="/download/zblog-patch0824.zip">月光静态化补丁1.4 SP1</a>。将其中2个文件覆盖原版文件。同时安装PLUGIN。</p>
+<p>3、重新进行文件重建操作。</p>
+<p>此时Z-BLOG的目录文件应该被静态化了。</p>
+<p>如果你的ZBLOG是自己修改过的版本，那么可以使用下面的操作手动进行静态化修改。其操作较为复杂，不建议使用。</p>
+<p>c_system_event.asp 文件修改:</p>
+<p>648行修改为：</p>
+<p>strArchives=strArchives &amp; &quot;&lt;li&gt;&lt;a href=&quot;&quot;&quot;&amp; ZC_BLOG_HOST &amp; ZC_STATIC_DIRECTORY &amp; &quot;/&quot; &amp; Year(dtmYM(i)) &amp; &quot;_&quot; &amp; Right(&quot;00&quot;&amp;Month(dtmYM(i)),2) &amp;&nbsp; &quot;.&quot; &amp; ZC_STATIC_TYPE &amp; &quot;&quot;&quot;&gt;&quot; &amp; Year(dtmYM(i)) &amp; &quot; &quot; &amp; ZVA_Month(Month(dtmYM(i))) &amp; &quot; (&quot; &amp; objRS(0) &amp; &quot;)&quot; +&quot;&lt;/a&gt;&lt;/li&gt;&quot;</p>
+<p><br/>
+1643-1646行修改为：</p>
+<p>&nbsp;s=ZC_STATIC_DIRECTORY &amp; &quot;/&quot; &amp;y&amp;&quot;_&quot;&amp;Right(&quot;00&quot;&amp;(m-1),2) &amp; &quot;.&quot; &amp; ZC_STATIC_TYPE<br/>
+&nbsp;t=ZC_STATIC_DIRECTORY &amp; &quot;/&quot; &amp;y&amp;&quot;_&quot;&amp;Right(&quot;00&quot;&amp;(m+1),2) &amp; &quot;.&quot; &amp; ZC_STATIC_TYPE<br/>
+&nbsp;If m=1 Then s=ZC_STATIC_DIRECTORY &amp; &quot;/&quot; &amp;(y-1)&amp;&quot;_12&quot; &amp; &quot;.&quot; &amp; ZC_STATIC_TYPE<br/>
+&nbsp;If m=12 Then t=ZC_STATIC_DIRECTORY &amp; &quot;/&quot; &amp;(y+1)&amp;&quot;_01&quot; &amp; &quot;.&quot; &amp; ZC_STATIC_TYPE</p>
+<p>1649行修改为：</p>
+<p>&nbsp;strCalendar=strCalendar &amp; &quot;&lt;p class=&quot;&quot;y&quot;&quot;&gt;&lt;a href=&quot;&quot;&quot;&amp;ZC_BLOG_HOST &amp;s&amp;&quot;&quot;&quot;&gt;&amp;lt;&amp;lt;&lt;/a&gt;&nbsp; &lt;a href=&quot;&quot;&quot;&amp; ZC_BLOG_HOST &amp;ZC_STATIC_DIRECTORY &amp; &quot;/&quot;&amp;y&amp;&quot;_&quot;&amp;right(&quot;00&quot;&amp;m,2)&amp; &quot;.&quot; &amp; ZC_STATIC_TYPE&amp;&quot;&quot;&quot;&gt;&quot;&amp;y&amp;&quot;&middot;&quot;&amp;m&amp;&quot;&lt;/a&gt;&nbsp; &lt;a href=&quot;&quot;&quot;&amp;ZC_BLOG_HOST &amp;t&amp;&quot;&quot;&quot;&gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&quot;</p>
+<p><br/>
+之后属于增加的代码部分：</p>
+<p>在1201行前增加一行：<br/>
+&nbsp;MakeCatReBuild</p>
+<p>在1206行后增加以下代码：</p>
+<p>'*********************************************************<br/>
+' 目的：&nbsp;&nbsp;&nbsp; All Category ReBuild<br/>
+'*********************************************************<br/>
+Function MakeCatReBuild()</p>
+<p>&nbsp;Dim objPage<br/>
+&nbsp;Dim objRS<br/>
+&nbsp;Dim ArtList<br/>
+&nbsp;Dim cate_id,cate_year,cate_month</p>
+<p>&nbsp;'生成分类目录文件开始<br/>
+&nbsp;Set objRS=objConn.Execute(&quot;SELECT cate_id FROM blog_Category ORDER BY cate_id &quot;)<br/>
+&nbsp;While Not objRS.eof<br/>
+&nbsp;&nbsp;'取得目录ID<br/>
+&nbsp;&nbsp;cate_id=cstr(objRS(&quot;cate_id&quot;))<br/>
+&nbsp;&nbsp;'生成一个分类目录文件<br/>
+&nbsp;&nbsp;Set ArtList=New TArticleList<br/>
+&nbsp;&nbsp;ArtList.LoadCache<br/>
+&nbsp;&nbsp;ArtList.template=&quot;CATALOG&quot;<br/>
+&nbsp;&nbsp;If ArtList.ExportByCache(Request.QueryString(&quot;page&quot;),cate_id,Request.QueryString(&quot;auth&quot;),Request.QueryString(&quot;date&quot;),Request.QueryString(&quot;tags&quot;),ZC_DISPLAY_MODE_ALL) Then<br/>
+&nbsp;&nbsp;&nbsp;ArtList.Build<br/>
+&nbsp;&nbsp;&nbsp;ArtList.FileName=&quot;cat_&quot; &amp; cate_id<br/>
+&nbsp;&nbsp;&nbsp;ArtList.Save<br/>
+&nbsp;&nbsp;End If<br/>
+&nbsp;&nbsp;Set ArtList=Nothing<br/>
+&nbsp;&nbsp;objRS.MoveNext<br/>
+&nbsp;Wend<br/>
+&nbsp;objRS.Close<br/>
+&nbsp;Set objRS=Nothing<br/>
+&nbsp;'生成分类目录文件结束</p>
+<p>&nbsp;'生成日期目录文件开始<br/>
+&nbsp;Set objRS=objConn.Execute(&quot;SELECT year(log_posttime) as cate_year,month(log_posttime) as cate_month FROM blog_Article group by year(log_posttime),month(log_posttime) &quot;)<br/>
+&nbsp;While Not objRS.eof<br/>
+&nbsp;&nbsp;'取得目录ID<br/>
+&nbsp;&nbsp;cate_year=cstr(objRS(&quot;cate_year&quot;))<br/>
+&nbsp;&nbsp;cate_month=cstr(objRS(&quot;cate_month&quot;))<br/>
+&nbsp;&nbsp;'生成一个日期目录文件<br/>
+&nbsp;&nbsp;Set ArtList=New TArticleList<br/>
+&nbsp;&nbsp;ArtList.LoadCache<br/>
+&nbsp;&nbsp;ArtList.template=&quot;CATALOG&quot;<br/>
+&nbsp;&nbsp;If ArtList.ExportByCache(Request.QueryString(&quot;page&quot;),Request.QueryString(&quot;cate&quot;),Request.QueryString(&quot;auth&quot;),cate_year &amp; &quot;-&quot; &amp; cate_month,Request.QueryString(&quot;tags&quot;),ZC_DISPLAY_MODE_ALL) Then<br/>
+&nbsp;&nbsp;&nbsp;ArtList.Build<br/>
+&nbsp;&nbsp;&nbsp;ArtList.FileName=cate_year &amp; &quot;_&quot; &amp; right(&quot;00&quot;&amp;cate_month,2)<br/>
+&nbsp;&nbsp;&nbsp;ArtList.Save<br/>
+&nbsp;&nbsp;End If<br/>
+&nbsp;&nbsp;Set ArtList=Nothing<br/>
+&nbsp;&nbsp;objRS.MoveNext<br/>
+&nbsp;Wend<br/>
+&nbsp;objRS.Close<br/>
+&nbsp;Set objRS=Nothing<br/>
+&nbsp;'生成日期目录文件结束</p>
+<p>&nbsp;MakeCatReBuild=True</p>
+<p>End Function<br/>
+'*********************************************************</p>
+<p>c_system_lib.asp修改:</p>
+<p>110行修改为：<br/>
+Url = ZC_BLOG_HOST &amp; ZC_STATIC_DIRECTORY &amp; &quot;/&quot; &amp; &quot;cat_&quot; &amp; ID &amp; &quot;.&quot; &amp; ZC_STATIC_TYPE</p>
+<p>1346行修改为：<br/>
+s=ZC_BLOG_HOST &amp; &quot;catalog.asp?&quot;&amp; t &amp;&quot;page=1&quot;</p>
+<p>1365行修改为：<br/>
+s=ZC_BLOG_HOST &amp; &quot;catalog.asp?&quot;&amp; t &amp;&quot;page=&quot;&amp; i</p>
+<p>1376行修改为：<br/>
+s=ZC_BLOG_HOST &amp; &quot;catalog.asp?&quot;&amp; t &amp;&quot;page=&quot;&amp; intAllPage</p>
+<p>如果有不愿意手工修改的，就直接下载下面的文件覆盖就可以了。<br/>
+</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Zblog.jpg" alt="ZBLOG 1.4 SP1的静态补丁和插件发布" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note245"></span><a href="javascript:commYea(245);" id="dig245">顶一下 ▲</a>(<span id="sdig245"><Script language="javascript" type="text/javascript">showDig("245");</script></span>) &nbsp; <a href="javascript:commNay(245);" id="down245">踩一下 ▼</a>(<span id="sdown245"><Script language="javascript" type="text/javascript">showDown("245");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/244.html" title="超级女声是民主启蒙还是为颜色革命做准备？">超级女声是民主启蒙还是为颜色革命做准备？</a></div><div class="next_content">下一篇 » <a href="/archives/246.html" title="关于碟仙的回忆">关于碟仙的回忆</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/226.html">ZBLOG的升级和静态补丁的发布</a></p><p class="mutualitylist"><a href="/archives/205.html">从7LOG迁移到ZBLOG</a></p><p class="mutualitylist"><a href="/archives/163.html">测试ASP的BLOG程序</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

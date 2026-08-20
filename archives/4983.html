@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4983.html"/>
+	<title>AlphaGo深度揭秘-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>AlphaGo深度揭秘</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4983.html" rel="bookmark">AlphaGo深度揭秘</a></h1>
+	<div class="post-meta">
+		2017-5-24 22:2:38 | 
+		作者: 月光 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 1 | 
+		浏览: <span class="AddView" id="spn4983" data-id="4983"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/GO.html" rel="tag"><img src="/logo/GO.gif" alt="围棋" class="thumb" width="80" height="80" /></a><p>&nbsp;今日，在乌镇围棋峰会人工智能高峰论坛上，AlphaGo之父、DeepMind创始人戴密斯&middot;哈萨比斯(Demis Hassabis)和DeepMind首席科学家大卫&middot;席尔瓦（David Silver）在论坛上透露了关于AlphaGo的重要信息，以及AlphaGo究竟意味着什么？让人们能详细了解到AlphaGo背后的秘密。</p>
+
+<p><strong>AlphaGo是什么？</strong></p>
+
+<p>AlphaGo 是第一个击败人类职业围棋选手并战胜围棋世界冠军的程序，是围棋史上最具实力的选手之一。2016 年 3 月，在全世界超过一亿观众的关注下，AlphaGo 经过5局对弈，最终以 4 比 1 的总比分战胜了围棋世界冠军李世石，这场比赛成为了人工智能领域的一个重要里程碑。过去曾有专家预测人工智能需要十年的时间才有可能战胜人类职业选手，在这场比赛之后，AlphaGo 凭借其&ldquo;充满创意而又机智&rdquo;的下法，跻身围棋界最高职业称号&mdash;&mdash;职业九段行列，成为历史上首个获得这一荣誉的非人类棋手。</p>
+
+<p><strong>AlphaGo如何进行训练？</strong></p>
+
+<p>一直以来，围棋就被认为是传统游戏中对人工智能最具挑战性的项目。这不仅仅是因为围棋包含了庞大的搜索空间，更是因为对于落子位置的评估难度已远远超过了简单的启发式算法。</p>
+
+<p>为了应对围棋的巨大复杂性，AlphaGo 采用了一种新颖的机器学习技术，结合了监督学习和强化学习的优势。通过训练形成一个策略网络（policy network），将棋盘上的局势作为输入信息，并对所有可行的落子位置生成一个概率分布。然后，训练出一个价值网络（value network）对自我对弈进行预测，以 -1（对手的绝对胜利）到1（AlphaGo的绝对胜利）的标准，预测所有可行落子位置的结果。这两个网络自身都十分强大，而 AlphaGo将这两种网络整合进基于概率的蒙特卡罗树搜索（MCTS）中，实现了它真正的优势。最后，新版的AlphaGo 产生大量自我对弈棋局，为下一代版本提供了训练数据，此过程循环往复。</p>
+
+<p><strong>AlphaGo 如何决定落子？</strong></p>
+
+<p>在获取棋局信息后，AlphaGo 会根据策略网络探索哪个位置同时具备高潜在价值和高可能性，进而决定最佳落子位置。在分配的搜索时间结束时，模拟过程中被系统最频繁考察的位置将成为 AlphaGo 的最终选择。在经过先期的全盘探索和过程中对最佳落子的不断揣摩后，AlphaGo的搜索算法就能在其计算能力之上加入近似人类的直觉判断。</p>
+
+<p><strong>历代AlphaGo的数据对比</strong></p>
+
+<p>DeepMind把AlphaGo粗略分成几个版本：</p>
+
+<p>第一代，是击败樊麾的AlphaGo Fan。与Zen/Crazy Stone等之前的围棋软件相比，棋力要高出4子。</p>
+
+<p>第二代，是击败李世石的AlphaGo Lee。与上一代相比，棋力高出3子。</p>
+
+<p>第三代，是柯洁如今的对手，也是年初60连胜的：AlphaGo Master。相比于击败李世石的版本，棋力又再次提升3子。</p>
+
+<p style="text-align:center"><img alt="Alphago" src="/upload/4983_1.jpg" /></p>
+
+<p>新版AlphaGo比旧版AlphaGo要&ldquo;强三子&rdquo;令柯洁十分惊讶，江铸久和芮乃伟特意找到哈萨比斯确认这个&ldquo;三子&rdquo;到底是什么意思，哈萨比斯明确表示是在棋盘上先摆上三颗子。芮乃伟私下笑说自己愿意被让三个与AlphaGo一战。 </p>
+
+<p>AlphaGo Lee和AlphaGo Master有着根本不同。</p>
+
+<p>新版AlphaGo Master使用单TPU运算，拥有更强的策略/价值网络，由于应用了更高效的算法，运算量只有上一代AlphaGo Lee的十分之一。所以单个TPU机器足以支撑。</p>
+
+<p>旧版的AlphaGo Lee使用50个TPU进行计算，每次搜索计算后续50步，计算速度为10000个位置/秒。</p>
+
+<p>作为对比，20年前击败卡斯帕罗夫的IBM深蓝，可以搜索计算一亿个位置。席尔瓦表示，AlphaGo并不需要搜索那么多位置。</p>
+
+<p>根据公开资料推测，此次AlphaGo2.0的技术原理与之前有着巨大不同：</p>
+
+<p>1. 放弃了监督学习，没有再用人的3000万局棋谱进行训练。这本是AlphaGo最亮眼的算法，也是今天主流机器学习不可避免的核心条件：依赖于优质的数据，在这个特定问题下就这么被再次突破了。</p>
+
+<p>2. 放弃了蒙特卡洛树搜索，不再进行暴力计算。理论上，算法越笨，就越需要暴力计算做补充。算法越聪明，就可以大大减少暴力计算。从AlphaGo 2.0的&ldquo;马甲&rdquo;Master的历史行为看，走棋非常迅速，约在每10秒钟就走棋一步，如此速度很可能是放弃了暴力的计算。</p>
+
+<p>3. 极大地强化了增强学习的作用，之前敲边鼓的算法，正式成为扛把子主力。想想看有多励志：两台白痴机器，遵守走棋和获胜规则，从随机走棋开始日夜切磋，总结经验，不断批评和自我批评，一周后终成大器。</p>
+
+<p>在这样的算法下，AlphaGo 2.0对计算资源开销极小，把当前棋局输入神经网络，电流流过，输出就是最佳的走棋方案。我猜测如此算法下，有可能仅仅依靠一个GPU工作，每一步棋消耗的能源接近人的大脑。</p>
+
+<p>换句话说，DeepMind的目标是构建通用人工智能。所谓通用人工智能，首先AI具备学习的能力，其次能举一反三，执行各种不同的任务。如何抵达这个目标？哈萨比斯说有两个工具：深度学习、强化学习。</p>
+
+<p>AlphaGo就是深度学习和强化学习的结合。AlphaGo也是DeepMind迈向通用人工智能目标的一步，尽管现在它更多的专注于围棋领域。</p>
+
+<p>哈萨比斯表示，希望通过AlphaGo的研究，让机器获得直觉和创造力。</p>
+
+<p>这里所谓的直觉，是通过体验直接获得的初步感知。无法表达出来，可通过行为确认其存在和正误。</p>
+
+<p>而创造力，是通过组合已有知识产生新颖或独特想法的能力。AlphaGo显然已展示出了这些能力，尽管领域有限。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/GO.jpg" alt="AlphaGo深度揭秘" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4983"></span><a href="javascript:commYea(4983);" id="dig4983">顶一下 ▲</a>(<span id="sdig4983"><Script language="javascript" type="text/javascript">showDig("4983");</script></span>) &nbsp; <a href="javascript:commNay(4983);" id="down4983">踩一下 ▼</a>(<span id="sdown4983"><Script language="javascript" type="text/javascript">showDown("4983");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4982.html" title="人机大战第一局AlphaGo战胜柯洁">人机大战第一局AlphaGo战胜柯洁</a></div><div class="next_content">下一篇 » <a href="/archives/4984.html" title="人机大战第二局：柯洁中盘认输 AlphaGo获胜">人机大战第二局：柯洁中盘认输 AlphaGo获胜</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/4982.html">人机大战第一局AlphaGo战胜柯洁</a></p><p class="mutualitylist"><a href="/archives/4981.html">柯洁挑战AlphaGo 中国乌镇围棋峰会启动</a></p><p class="mutualitylist"><a href="/archives/4980.html">AlphaGo的创新</a></p><p class="mutualitylist"><a href="/archives/4965.html">柯洁与AlphaGo人机大战第二季</a></p><p class="mutualitylist"><a href="/archives/4945.html">AlphaGo：人类数千年的围棋下法是错的</a></p><p class="mutualitylist"><a href="/archives/4943.html">围棋国手与人工智能</a></p><p class="mutualitylist"><a href="/archives/4942.html">AlphaGo人机大战电影纪录片发布</a></p><p class="mutualitylist"><a href="/archives/4939.html">人机大战第二季 中国棋手与AlphaGo对决</a></p><p class="mutualitylist"><a href="/archives/4917.html">AlphaGo为何缺席计算机围棋赛</a></p><p class="mutualitylist"><a href="/archives/4865.html">谷歌推出真正2.0版本AlphaGo</a></p><p class="mutualitylist"><a href="/archives/4843.html">Master真实身份揭晓 来自谷歌AlphaGo</a></p><p class="mutualitylist"><a href="/archives/4820.html">柯洁：目前无法战胜AlphaGo</a></p><p class="mutualitylist"><a href="/archives/4802.html">日本“围棋人机大战”人类战胜人工智能</a></p><p class="mutualitylist"><a href="/archives/4785.html">AlphaGo棋力大涨，明年将再下围棋</a></p><p class="mutualitylist"><a href="/archives/4627.html">中国围棋协会：柯洁或年内战谷歌AlphaGo</a></p><p class="mutualitylist"><a href="/archives/4626.html">AlphaGo是怎样教棋手重新做人的</a></p><p class="mutualitylist"><a href="/archives/4556.html">李开复：AlphaGo证明了人工智能发展超过我们想象</a></p><p class="mutualitylist"><a href="/archives/4547.html">阿尔法围棋与深蓝到底有什么不同</a></p><p class="mutualitylist"><a href="/archives/4544.html">AlphaGo最终局战胜李世石</a></p><p class="mutualitylist"><a href="/archives/4543.html">AlphaGo因输棋获世界第四排名</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.yueguangboke.com" /><input type="hidden" name="sitesearch" value="www.yueguangboke.com" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (520)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (927)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3172)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7539.html" title="湖北男子家中用荣耀手机浏览TikTok与X被罚">湖北男子家中用荣耀手机浏览TikTok与(1186)</a></li>
+<li><a href="/archives/7538.html" title="国家互联网应急中心发布关于OpenClaw安全应用的风险提示">国家互联网应急中心发布关于OpenCla(601)</a></li>
+<li><a href="/archives/7537.html" title="腾讯QQ开放OpenClaw官方接入">腾讯QQ开放OpenClaw官方接入(664)</a></li>
+<li><a href="/archives/7536.html" title="Mac电脑安装OpenClaw教程">Mac电脑安装OpenClaw教程(547)</a></li>
+<li><a href="/archives/7535.html" title="电脑无法启动的修复案例">电脑无法启动的修复案例(195)</a></li>
+<li><a href="/archives/7532.html" title="公安部就网络犯罪防治法公开征求意见">公安部就网络犯罪防治法公开征求意见(719)</a></li>
+<li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(6140)</a></li>
+<li><a href="/archives/7529.html" title="关于规范网络名人账号行为管理的通知">关于规范网络名人账号行为管理的通知(510)</a></li>
+<li><a href="/archives/7528.html" title="2025年财经年度总结">2025年财经年度总结(807)</a></li>
+<li><a href="/archives/7527.html" title="月光博客2025年推荐阅读文章">月光博客2025年推荐阅读文章(937)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7539</li><li>评论总数:199533</li><li>浏览总数:72396867</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

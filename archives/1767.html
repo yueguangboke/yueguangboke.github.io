@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/1767.html"/>
+	<title>网站服务器发生故障-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate1 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/weblog.html" title="查看 网络日志 中的全部文章">网络日志</a> &raquo; <span>网站服务器发生故障</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/1767.html" rel="bookmark">网站服务器发生故障</a></h1>
+	<div class="post-meta">
+		2009-4-17 21:54:39 | 
+		作者: 月光 | 
+		分类: <a href="/cat/weblog.html" title="网络日志" rel="category tag">网络日志</a> | 
+		评论: 47 | 
+		浏览: <span class="AddView" id="spn1767" data-id="1767"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/WebEvent.html" rel="tag"><img src="/logo/WebEvent.gif" alt="网站维护事件" class="thumb" width="80" height="80" /></a><p>今天一早，我发现托管在厦门的一台服务器出现了故障，导致网站无法访问，服务器重新启动后还是无法访问，后来IDC的技术人员亲自跑去机房查看服务器，我等待的时候比较忐忑不安，因为如果是硬盘坏掉的话，将丢失几个月的数据，还好技术人员说是操作系统坏了，要重新安装系统。</p><p>快到中午的时候，操作系统重装完成后，我终于可以远程访问服务器了，于是我就开始了全新的配置，痛苦的一次配置啊。安装常用的软件，安装<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> Server 2003的最新补丁，原先的Apache和MySQL还有PHP都无法运行，我也要重新安装。我选择了较高版本的AppServer来安装，下载安装完成后，Apache下的PHP和MySQL一切正常，而IIS下的<a href="/tag/WordPress.html" title="WordPress"  Target="_blank" >WordPress</a>一个劲的提示我&ldquo;您的 PHP 似乎没有安装运行 WordPress 必须的 MySQL 拓展&rdquo;，搞的我莫名其妙，上网找了半天也没找到解决方法，后来我将<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>目录下的php.ini复制到PHP目录下，然后配置了一下环境变量，复制了一些基于IIS的PHP的动态库到PHP目录下，才提示正常。</p><p>之后又发现另一个大问题，就是MySQL完蛋了，我是直接将数据库复制过来，MySQL版本发生了一些变化，结果一直提示我&ldquo;Incorrect information in file： .\wp_comments.frm&rdquo;，后来发现，原来我一直使用的是默认的INNODB的表，而不是使用MYISAM的表，全部数据都放到了ibdata1文件里了，接近一个G的容量，折腾了好几次，也无法修复这些表，上网搜索一下，也没看见如何修复的方法，我恨死INNODB引擎了。</p><p>最后，我将整个数据库文件下载到本地，然后安装一个旧的MySQL系统，覆盖一下文件，终于成功了，然后将文件导出，再在服务器端导入，终于将原先的MySQL数据全部恢复过来。</p><p>接近晚上十点的时候，终于一切都搞好了，整个系统恢复竟然花了这么长时间，真是想不到啊，不过我也感到一些庆幸，还好这次只是操作系统坏掉了，硬盘还没坏，真算我走运，只是浪费一些时间进行修复而已，要真是硬盘坏掉了，所有数据就都没啦，我花再多的时间也无法恢复了，数据一丢就是全丢了。</p><p>看来，对于网站来说，数据的异地备份真是一个重要的环节，不发生故障的时候，没人会在乎备份的重要性，真出了一些异想不到的问题，才会感觉到经常备份是一件多么重要的事情啊。虽然麻烦一些，但终究要放心的多。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/WebEvent.jpg" alt="网站服务器发生故障" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note1767"></span><a href="javascript:commYea(1767);" id="dig1767">顶一下 ▲</a>(<span id="sdig1767"><Script language="javascript" type="text/javascript">showDig("1767");</script></span>) &nbsp; <a href="javascript:commNay(1767);" id="down1767">踩一下 ▼</a>(<span id="sdown1767"><Script language="javascript" type="text/javascript">showDown("1767");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/1766.html" title="Google OpenSocial中文开发API资源">Google OpenSocial中文开发API资源</a></div><div class="next_content">下一篇 » <a href="/archives/1768.html" title="Google工具栏和拼音输入法冲突">Google工具栏和拼音输入法冲突</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/1266.html">对于月光博客版权信息的重申</a></p><p class="mutualitylist"><a href="/archives/786.html">服务器被黑了</a></p><p class="mutualitylist"><a href="/archives/519.html">郁闷的儿童节</a></p><p class="mutualitylist"><a href="/archives/364.html">服务器又出现故障</a></p><p class="mutualitylist"><a href="/archives/360.html">主机迁移中</a></p><p class="mutualitylist"><a href="/archives/349.html">网站被百度封了</a></p><p class="mutualitylist"><a href="/archives/284.html">博客的虚拟主机又出故障</a></p><p class="mutualitylist"><a href="/archives/261.html">网站被人陷害中</a></p><p class="mutualitylist"><a href="/archives/239.html">唧唧歪歪的香港佬</a></p><p class="mutualitylist"><a href="/archives/190.html">博客又被BAIDU收录了</a></p><p class="mutualitylist"><a href="/archives/178.html">博客系统换成国外的虚拟主机了</a></p><p class="mutualitylist"><a href="/archives/145.html">又一个网站地址被封了</a></p><p class="mutualitylist"><a href="/archives/135.html">网站更换主机商和网站修改</a></p><p class="mutualitylist"><a href="/archives/132.html">我的博客网站首次被封了</a></p><p class="mutualitylist"><a href="/archives/126.html">月光博客站重新被收录了</a></p><p class="mutualitylist"><a href="/archives/80.html">网络广告的寒冬</a></p><p class="mutualitylist"><a href="/archives/75.html">网站的广告收入剧减</a></p><p class="mutualitylist"><a href="/archives/73.html">一年来的创业总结</a></p><p class="mutualitylist"><a href="/archives/48.html">新建立了英文个人主页</a></p><p class="mutualitylist"><a href="/archives/45.html">想再申请个域名了</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

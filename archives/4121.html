@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4121.html"/>
+	<title>服务器安装上网软件教程-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth2">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>服务器安装上网软件教程</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4121.html" rel="bookmark">服务器安装上网软件教程</a></h1>
+	<div class="post-meta">
+		2015-1-22 15:31:49 | 
+		作者: 月光 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 115 | 
+		浏览: <span class="AddView" id="spn4121" data-id="4121"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Proxy.html" rel="tag"><img src="/logo/Proxy.gif" alt="代理服务器" class="thumb" width="80" height="80" /></a><p>通常我们购买了一个便宜的云服务器例如VPS，会安装一些上网软件，对于上网软件的安装方案，我建议有几种，系统自带了SSH，花几分钟就能安装上VPN（PPTP）和ShadowSocks，相当于花一笔钱买了3个不同功能的上网工具。另外VPN和SSH还可以开多个帐号，供好友使用，自己有空的话，还可以在上面搭个网站赚钱，可谓一举多得。</p>
+
+<p>一、<strong><a href="/archives/1952.html" target="_blank">SSH上网方案</a></strong></p>
+
+<p>对于与SSH、VPN和ShadowSocks来说，SSH是最简单的，开通VPS后即可使用SSH帐号，服务器端不用设置。</p>
+
+<p>SSH客户端有两种方案，一种是<a href="/download/myentunnel.zip" target="_blank">MyEnTunnel</a>+<a href="http://www.putty.org/" target="_blank">PuTTY</a>，一种是<a href="http://www.bitvise.com/" target="_blank">Bitvise SSH Client</a>，MyEnTunnel支持自动登录，Bitvise SSH Client要自动登录需要添加参数-loginOnStartup，这样也可以自动登录。</p>
+
+<p>在设置上，MyEnTunnel设置很简单，按照中文界面全填写即可。BitviseSSH设置相对比较麻烦，需要多加注意，&ldquo;Login&rdquo;页签Inital meth选password，然后写密码，&ldquo;Option&rdquo;页签选择Always reconnect automatically，On Login处不要选择Open Terminal和Open SFTP。&ldquo;Services&rdquo;页签选中Enable Socks Https Proxy Forwarding，在&ldquo;Listen Port&rdquo;这里，根据自身需求填写本地端口号（一般写1080即可）。</p>
+
+<p>设置好了后，通过SSH上网的方案是，电脑启动组里添加MyEnTunnel或BitviseSSH，然后Dropbox等各类应用通过SOCK5连接，<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>安装Proxy SwitchySharp或Proxy SwitchyOmega，代理服务器协议为SOCKS5，代理服务器地址127.0.0.1，代理端口1080，选自动切换模式，这样访问国内国外都是高速。对于<a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>用户来说可<a href="/archives/1952.html" target="_blank">参考此文</a>配置。</p>
+
+<p>不过，SSH手机不太方便，如果单个IP地址用的多了有可能会被干扰，不要局域网很多人一起用，因此最好备用个VPN，或者选择ShadowSocks也可。</p>
+
+<p style="text-align:center"><img alt="科学上网" src="/upload/4121_1.jpg" /></p>
+
+<p>二、<strong><a href="/archives/4680.html" target="_blank">ShadowSocks上网方案</a></strong></p>
+
+<p>ShadowSocks也是和SSHD类似的Socks5代理，是一个开源项目。ShadowSocks使用自定义协议，屏蔽和干扰就更为困难，因此相对来说稳定一些。</p>
+
+<p>有网友做了个服务器端一键安装ShadowSocks的脚本，使用root用户登录，运行以下命令：</p>
+
+<p>wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</p>
+
+<p>chmod +x shadowsocks.sh</p>
+
+<p>./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</p>
+
+<p>安装完成后，得到的服务器端口：8989，客户端端口：1080，密码为自己设定的密码。</p>
+
+<p>如果想要安装shadowsocksR，将上面的一键安装脚本的shadowsocks替换为shadowsocksR即可。</p>
+
+<p>卸载方法：使用 root 用户登录，运行以下命令：</p>
+
+<p>./shadowsocks.sh uninstall</p>
+
+<p>安装完成后即已后台启动 shadowsocks ，运行：</p>
+
+<p>ps -ef | grep ss-server | grep -v ps | grep -v grep</p>
+
+<p>可以查看进程是否存在。此脚本安装完成后，会将 shadowsocks 加入开机自启动。</p>
+
+<p>使用命令：</p>
+
+<p>启动：/etc/init.d/shadowsocks start</p>
+
+<p>停止：/etc/init.d/shadowsocks stop</p>
+
+<p>重启：/etc/init.d/shadowsocks restart</p>
+
+<p>查看状态：/etc/init.d/shadowsocks status</p>
+
+<p>卸载：./shadowsocks.sh uninstall</p>
+
+<p>修改端口和加密方式：编辑修改配置文件 /etc/shadowsocks/config.json</p>
+
+<p>每隔1小时重启服务：crontab -u root -e 输入&nbsp;0 */1 * * * /etc/init.d/shadowsocks restart</p>
+
+<p>ShadowSocks的<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>客户端可以<a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank">点这里</a>下载。安装完成后，配置客户端参数。</p>
+
+<p>如果有智能路由器的话，在路由器上安装ShadowSocks，可以不需要在电脑安装客户端。</p>
+
+<p>设置好了后，通过ShadowSocks上网的方案是，设置Shadowsocks为自动启动，其他设置和SSH几乎完全一样，在Dropbox等各类应用通过SOCK5连接，<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>安装Proxy SwitchySharp或Proxy SwitchyOmega，代理服务器协议为SOCKS5，代理服务器地址127.0.0.1，代理端口1080，选自动切换模式。</p>
+
+<p>ShadowSocks在iOS和Android上也有客户端，对于未越狱的iOS来说，ShadowSocks客户端可以支持全局代理。</p>
+
+<p>三、<strong><a href="/blog/archives/397.html" target="_blank">VPN上网方案</a></strong></p>
+
+<p>对于未越狱的iOS来说，VPN支持全局代理的方式可以让用户方便地上网。</p>
+
+<p>对于不同的操作系统，安装VPN方法也不太相同，下面是以CentOS为例介绍一个VPN一键安装包。</p>
+
+<p>可以选择执行下面任何一个示例脚本，即可安装成功。</p>
+
+<p>安装PPTP脚本</p>
+
+<blockquote>
+<p>wget --no-check-certificate https://raw.githubusercontent.com/teddysun/across/master/pptp.sh<br />
+chmod +x pptp.sh<br />
+bash pptp.sh</p>
+</blockquote>
+
+<p>安装ipsec脚本</p>
+
+<blockquote>
+<p>wget https://raw.githubusercontent.com/quericy/one-key-ikev2-vpn/master/one-key-ikev2.sh<br />
+chmod +x one-key-ikev2.sh<br />
+bash one-key-ikev2.sh</p>
+</blockquote>
+
+<p>（vps类型选2，其他不填，一路回车到底）</p>
+
+<p>安装L2TP脚本</p>
+
+<blockquote>
+<p>wget --no-check-certificate https://raw.githubusercontent.com/teddysun/across/master/l2tp.sh<br />
+chmod +x l2tp.sh<br />
+./l2tp.sh</p>
+</blockquote>
+
+<p>如果你要想对用户进行操作，可以使用如下命令：</p>
+
+<p>l2tp -a 新增用户</p>
+
+<p>l2tp -d 删除用户</p>
+
+<p>l2tp -m 修改现有的用户的密码</p>
+
+<p>l2tp -l 列出所有用户名和密码</p>
+
+<p>l2tp -h 列出帮助信息</p>
+
+<p>使用命令：</p>
+
+<p>ipsec status （查看 IPSec 运行状态）</p>
+
+<p>ipsec verify （查看 IPSec 检查结果）</p>
+
+<p>/etc/init.d/ipsec start|stop|restart|status （CentOS6 下使用）</p>
+
+<p>/etc/init.d/xl2tpd start|stop|restart （CentOS6 下使用）</p>
+
+<p>systemctl start|stop|restart|status ipsec （CentOS7 下使用）</p>
+
+<p>systemctl start|stop|restart xl2tpd （CentOS7 下使用）</p>
+
+<p>service ipsec start|stop|restart|status （Debian/Ubuntu 下使用）</p>
+
+<p>service xl2tpd start|stop|restart （Debian/Ubuntu 下使用）</p>
+
+<p>其他事项：</p>
+
+<p>1、脚本在安装完成后，已自动启动进程，并加入了开机自启动。</p>
+
+<p>2、脚本会改写 iptables 或 firewalld 的规则。</p>
+
+<p>3、脚本安装时，会即时将安装日志写到 /root/l2tp.log 文件里，如果你安装失败，可以通过此文件来寻找错误信息。</p>
+
+<p><strong>防火墙上需要开放的端口</strong> ：</p>
+
+<p>L2TP （UDP 1701）</p>
+
+<p>IPSEC_ISAKMP （UDP 500） （IKE）</p>
+
+<p>NAT-T （UDP 4500）</p>
+
+<p>ESP （IP 50）</p>
+
+<p>AH （IP 51）</p>
+
+<p>PPTP 需要 （TCP 1723）</p>
+
+<p><strong>Windows电脑VPN设置</strong></p><p>VPN没有客户端，在电脑上进行几个配置即可，打开控制面板、点击&ldquo;查看网络状态和任务&rdquo;进入网络和共享中心，点击&ldquo;设置新的连接或网络&rdquo;，选择&ldquo;连接到工作区&rdquo;，单击&ldquo;下一步&rdquo;按钮，在&ldquo;您想如何连接？&rdquo;选项中选择&ldquo;使用我的虚拟专用网络（VPN）&rdquo;，单击&ldquo;下一步&rdquo;按钮，公司名随便写，下一步&ldquo;不拨初始连接&rdquo;，接下来的主机名(地址)，输入主机地址后完成VPN创建，用户、密码选择为自己的帐号密码，然后点击&ldquo;创建&rdquo;按钮即可完成创建。</p><p>在&ldquo;网络连接&rdquo;里双击这个VPN，此时会弹出一个连接VPN的用户登录窗口，输入你的VPN帐号和密码，并点击&ldquo;连接&rdquo;。连接成功后会在屏幕右下角的任务栏会有一个VPN连接的图标，这时就可以用VPN连接来上网了。</p><p><strong>iOS手机VPN设置</strong></p><p>1，点击手机中的设置-通用-VPN-添加VPN设置；</p><p>2，添加VPN地址、VPN帐号和VPN密码；</p><p>3，点击存储，打开VPN开关，看到手机顶部显示有VPN字样就代表连上啦。</p><p><strong>Android手机VPN设置</strong></p><p>1，点击设置-更多；</p><p>2，点击VPN，选择右上角的加号添加VPN；</p><p>3，添加VPN地址、VPN帐号和VPN密码；名称随便填，服务器地址就是在VPN所找到的服务器主机名或者IP地址，填好后点保存；点击刚刚保存的VPN，弹出菜单，填写用户名和密码，勾选保存账户信息，点击连接；</p><p>4，左上角出现一个钥匙标记也表明vpn连接成功了，点击刚刚的vpn账号可以随时断开连接，长按则可以修改刚刚的设置。</p><p>至于VPS服务器的购买，有高帅富VPS之称的Linode，当然还有一些OpenVZ类型的屌丝VPS，不同价格的VPS提供流量不同，可以根据自己的具体需要来选择。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Proxy.jpg" alt="服务器安装上网软件教程" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4121"></span><a href="javascript:commYea(4121);" id="dig4121">顶一下 ▲</a>(<span id="sdig4121"><Script language="javascript" type="text/javascript">showDig("4121");</script></span>) &nbsp; <a href="javascript:commNay(4121);" id="down4121">踩一下 ▼</a>(<span id="sdown4121"><Script language="javascript" type="text/javascript">showDown("4121");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4120.html" title="互联网公司PR的自我修养">互联网公司PR的自我修养</a></div><div class="next_content">下一篇 » <a href="/archives/4122.html" title="微软称Outlook电子邮件在中国遭遇黑客攻击">微软称Outlook电子邮件在中国遭遇黑客攻击</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3882.html">GoAgent的安全风险</a></p><p class="mutualitylist"><a href="/archives/3814.html">OpenVPN的配置和使用</a></p><p class="mutualitylist"><a href="/archives/3739.html">中国用户使用代理软件的分析</a></p><p class="mutualitylist"><a href="/archives/2764.html">内网用户轻松穿越外网</a></p><p class="mutualitylist"><a href="/archives/2696.html">I2P不完全使用手册</a></p><p class="mutualitylist"><a href="/archives/2283.html">网络访问攻防战之代理服务器篇</a></p><p class="mutualitylist"><a href="/archives/2232.html">网络访问攻防战</a></p><p class="mutualitylist"><a href="/archives/2210.html">使用HTTP代理服务器的安全性简评</a></p><p class="mutualitylist"><a href="/archives/2057.html">如何使用代理服务器上网</a></p><p class="mutualitylist"><a href="/archives/2024.html">SocksCap代理使用教程</a></p><p class="mutualitylist"><a href="/archives/1952.html">SSH加密通道配置</a></p><p class="mutualitylist"><a href="/archives/1697.html">开源代理软件GAppProxy</a></p><p class="mutualitylist"><a href="/archives/760.html">FireFox代理服务器扩展</a></p><p class="mutualitylist"><a href="/archives/739.html">免费代理服务器的使用设置</a></p><p class="mutualitylist"><a href="/archives/524.html">代理服务器的功能</a></p><p class="mutualitylist"><a href="/archives/424.html">TOR使用说明和介绍</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

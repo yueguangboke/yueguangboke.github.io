@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3050.html"/>
+	<title>解决Dropbox中国无法及时自动同步的问题-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>解决Dropbox中国无法及时自动同步的问题</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3050.html" rel="bookmark">解决Dropbox中国无法及时自动同步的问题</a></h1>
+	<div class="post-meta">
+		2012-4-4 23:46:10 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 18 | 
+		浏览: <span class="AddView" id="spn3050" data-id="3050"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Software.html" rel="tag"><img src="/logo/Software.gif" alt="软件" class="thumb" width="80" height="80" /></a><p>最近由于想要使用<a target="_blank" href="/archives/2044.html">Dropbox</a>的多人协作功能，就发现Dropbox不能自动同步其他机器上产生的文件变化，经过一番搜索，发现原来是GFW在作怪（GFW和GD的性质和用心我们心知肚明，就不在这里评价了）。月光博客发布了<a href="/archives/2585.html">解决Dropbox无法实时更新的问题</a>分析了产生这个问题的原因并提出一个有效的解决方案。但是在使用时我发现，我找不到一个优良稳定的代理服务器，也没工夫去学习privoxy软件的配置和使用，而且我要将解决方案提供给我的合伙人，一个复杂的方案是不能接受的。经过一番研究，提出如下比较<font face="Helvetica" color="#333333">简单</font>的办法。</p><h3>分析</h3><p>我发现Dropbox向notify8发出的请求很简单，回应也很简单，一共有两种：<code><span class="pun"><font face="Arial" color="#000000">{&quot;ret&quot;:&quot;new&quot;}和{&quot;ret&quot;:&quot;punt&quot;}</font></span></code></p><p>分别表示云端有变化和无变化，然后客户端考虑去下载文件列表并同步。</p><p>经过一番痛苦的失败，我发现这个请求的其实是一个comet请求，服务器端并不马上回应，而是会挂起，如果有变化，则马上回应，如果一直没有变化，大约一分钟超时回应punt，然后客户端再连接服务器。在我分析Dropbox的过程中一直不解：为什么Dropbox的其他请求都是https，而只有这一个请求是http的。现在找到了答案：因为它是comet请求，长连接，而且连接频率非常高，如果使用https代价太大，而且影响效率。如果这个请求返回new，客户端就会使用https连接服务器端。</p><h3>解决</h3><p>由此提出一个完美的解决方案，不仅可以解决本机的问题，而且可以解决朋友的问题，只要让朋友修改hosts为我的ip地址：</p><ul><li>修改hosts将notify8对应的ip地址改为本机</li><li>在本机建立一个http服务，代理notify8得到dropbox的返回值，再原封不动地返回给本机dropbox客户端</li></ul><p>具体方法是使用tornado，进行一步http请求，这样只占用很少一部分系统资源。贴出代码。</p><h3>代码</h3><p>#!/usr/bin/env python<br /># -*- coding: utf-8 -*-</p><p>import tornado.httpserver<br />import tornado.ioloop<br />import tornado.options<br />import tornado.web<br />from tornado.options import define, options<br />from tornado import httpclient</p><p><br />define(&quot;port&quot;, default=8888, help=&quot;run on the given port&quot;, type=int)</p><p><br />class Application(tornado.web.Application):<br />&nbsp;&nbsp;&nbsp; def __init__(self):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; handlers = [<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (r&quot;/subscribe&quot;, NotifyHandler),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (r&quot;/.*&quot;, HomeHandler),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; settings = dict(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; debug=True,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.debug = True<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tornado.web.Application.__init__(self, handlers, **settings)</p><p><br />class HomeHandler(tornado.web.RequestHandler):<br />&nbsp;&nbsp;&nbsp; def get(self):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.set_header(&quot;Content-Type&quot;, &quot;text/plain&quot;)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.write(&quot;Hello from Tornado!&quot;)</p><p><br />class NotifyHandler(tornado.web.RequestHandler):<br />&nbsp;&nbsp;&nbsp; @tornado.web.asynchronous<br />&nbsp;&nbsp;&nbsp; def get(self):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.set_header(&quot;Content-Type&quot;, &quot;text/plain&quot;)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url = xxxxx #关键代码还是不贴出来了，人怕出名猪怕壮，要是大多数人会用了，估计这个方法死期不远矣!<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; http_client = httpclient.AsyncHTTPClient()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; http_client.fetch(url, self.handle_response, request_timeout=100.0)</p><p>&nbsp;&nbsp;&nbsp; def handle_response(self, response):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if response.error:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print &quot;Can not connect.&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.write(&quot;{\&quot;ret\&quot;: \&quot;new\&quot;}&quot;)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print &quot;Connect Successfull.&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.write(response.body)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.finish()</p><p><br />def main():<br />&nbsp;&nbsp;&nbsp; tornado.options.parse_command_line()<br />&nbsp;&nbsp;&nbsp; http_server = tornado.httpserver.HTTPServer(Application())<br />&nbsp;&nbsp;&nbsp; http_server.listen(options.port)<br />&nbsp;&nbsp;&nbsp; tornado.ioloop.IOLoop.instance().start()</p><p>if __name__ == &quot;__main__&quot;:<br />&nbsp;&nbsp;&nbsp; main()</p><p>来源：投稿，<a target="_blank" href="http://giveuptech.com/post/the-solution-of-dropbox-syncronize-automatically-in-china">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Software.jpg" alt="解决Dropbox中国无法及时自动同步的问题" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3050"></span><a href="javascript:commYea(3050);" id="dig3050">顶一下 ▲</a>(<span id="sdig3050"><Script language="javascript" type="text/javascript">showDig("3050");</script></span>) &nbsp; <a href="javascript:commNay(3050);" id="down3050">踩一下 ▼</a>(<span id="sdown3050"><Script language="javascript" type="text/javascript">showDown("3050");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3049.html" title="互联网公司为何要推自己的智能手机">互联网公司为何要推自己的智能手机</a></div><div class="next_content">下一篇 » <a href="/archives/3051.html" title="戴尔云手机D43评测">戴尔云手机D43评测</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2913.html">企业即时通讯市场研究</a></p><p class="mutualitylist"><a href="/archives/2786.html">欧朋浏览器试用体验</a></p><p class="mutualitylist"><a href="/archives/2675.html">软件下载站的转型之路</a></p><p class="mutualitylist"><a href="/archives/2672.html">下载站的寿命时日不长</a></p><p class="mutualitylist"><a href="/archives/2612.html">离线下载：QQ旋风对比迅雷</a></p><p class="mutualitylist"><a href="/archives/2585.html">解决Dropbox无法实时更新的问题</a></p><p class="mutualitylist"><a href="/archives/2564.html">词典软件市场互联网词典成主流</a></p><p class="mutualitylist"><a href="/archives/2550.html">浅谈WebOS与HP TouchPad</a></p><p class="mutualitylist"><a href="/archives/2522.html">论应用程序商店：软件销售模式的变革</a></p><p class="mutualitylist"><a href="/archives/2452.html">安全卫士的个性化</a></p><p class="mutualitylist"><a href="/archives/2415.html">破釜沉舟之金山毒霸</a></p><p class="mutualitylist"><a href="/archives/2306.html">开源史上最成功的八个开源软件</a></p><p class="mutualitylist"><a href="/archives/2222.html">虚拟主机安装Dropbox备份网站的教程</a></p><p class="mutualitylist"><a href="/archives/2170.html">Dropbox的运营模式分析</a></p><p class="mutualitylist"><a href="/archives/2103.html">MySQL会消失么？</a></p><p class="mutualitylist"><a href="/archives/2079.html">Dropbox、Live Mesh非专业评测</a></p><p class="mutualitylist"><a href="/archives/2044.html">Dropbox免费网盘高级使用技巧</a></p><p class="mutualitylist"><a href="/archives/2012.html">迅雷跃居全球BT市场第一</a></p><p class="mutualitylist"><a href="/archives/1808.html">反思暴风影音断网风波</a></p><p class="mutualitylist"><a href="/archives/1800.html">十个常用浏览器书签工具</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

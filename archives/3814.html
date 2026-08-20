@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/3814.html"/>
+	<title>OpenVPN的配置和使用-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>OpenVPN的配置和使用</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/3814.html" rel="bookmark">OpenVPN的配置和使用</a></h1>
+	<div class="post-meta">
+		2014-4-6 23:48:24 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 0 | 
+		浏览: <span class="AddView" id="spn3814" data-id="3814"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Proxy.html" rel="tag"><img src="/logo/Proxy.gif" alt="代理服务器" class="thumb" width="80" height="80" /></a><p>OpenVPN是一个用于创建虚拟专用网络加密通道的软件包，允许创建的VPN使用公开密钥、数字证书、或者用户名／密码来进行身份验证。OpenVPN能在Solaris、Linux、OpenBSD、FreeBSD、NetBSD、Mac OS X与<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> 2000/XP/Vista/7以及Android和iOS上运行，并包含了许多安全性的功能。</p>
+
+<p>配置OpenVPN 2.0的第一步是建立一个PKI(public key infrastructure 公钥基础设施)。PKI包括:</p>
+
+<ul>
+	<li>服务端和每个客户端都有一个证书(也称做公钥)和私钥</li>
+	<li>一个认证机构(CA)的证书和私钥，用来为每一个服务端和客户端颁发证书(sign each of the server and client certificates)。</li>
+</ul>
+
+<p>OpenVPN 支持基于证书的双向认证，也就是说客户端需认证服务端，服务端也要认证客户端，</p>
+
+<p>服务端和客户端验证对方的第一步是验证对方提供的证书是由认证机构(CA)颁发的。然后测试第一步认证通过的证书的头部信息，如：证书的common name，证书的类型(客户端还是服务端)。</p>
+
+<p>从VPN的观点来看，这一安全模式满足一系列要求:</p>
+
+<ul>
+	<li>服务端仅仅需要它自己的证书/私钥对 -- 它不需要知道客户端的证书。</li>
+	<li>服务端仅仅接受拥有CA颁发的证书的客户端。因为服务端检查证书是否由CA颁发时并不需要访问 CA的私钥，这样就可以将CA的私钥(整个PKI中最重要的私钥)放在另一台机子上。</li>
+	<li>如果一个私钥(is compromised)，通过将它的证书加入CRL(证书吊销列表)可以禁止这一私钥。 CRL允许有选择地拒绝compromised 证书而不需要重建整个PKI。</li>
+	<li>基于嵌入的证书域比如Vommon Name，服务端能够加强客户端待定(client-specific)访问权限 (access fights)。</li>
+</ul>
+
+<h4>生成认证机构(master Certificate Authority(CA))证书 &amp; 私钥</h4>
+
+<p>在这一节我们生成一个认证机构(master CA)证书/私钥，一个服务端证书/私钥，两个客户端的证书/私钥。</p>
+
+<p>我们使用OpenVPN捆绑的一组脚本。</p>
+
+<p>在Linux下打开一个Sehll，进入OpenVPN下的easy-rsa目录。如果OpenVPN是从RPM包安装的，easy-rsa目录通常在/usr/share/doc/packages/openvpn或/usr/share/doc/openvpn-2.0目录下(最好在改动之前将这一目录拷到别的地方，比如/etc/openvpn，以免以后OpenVPN的升级覆盖所做的改动)。</p>
+
+<p>在Windows下，打开一个命令行窗口进入\Program Files\OpenVPN\easy-rsa目录，运行下面的批处理文件将配置文件拷到正确的位置(这一命令会覆盖先前存在的vars.bat和openssl.cnf文件)。</p>
+
+<blockquote>
+<pre>
+init-config</pre>
+</blockquote>
+
+<p>编辑vars文件(在Windows下是vars.bat)设置KEY_COUNTRY、KEY_PROVINCE、 KEY_CITY, KEY_ORG和KEY_EMAIL参数，这些参数不能有一个是空白。</p>
+
+<p>下一步，初始化PKI，Linux下：</p>
+
+<blockquote>
+<pre>
+. ./vars
+./clean-all
+./build-ca
+</pre>
+</blockquote>
+
+<p>Windows下:</p>
+
+<blockquote>
+<pre>
+vars
+clean-all
+build-ca
+</pre>
+</blockquote>
+
+<p>最后命令(build-ca)通过调用交互地openssl命令生成认证机构(CA)的证书和私钥。</p>
+
+<blockquote>
+<pre>
+ai:easy-rsa # ./build-ca
+Generating RSA private key
+............++++++
+...........++++++
+writing new private key to &#39;ca.key&#39;
+-----
+...........
+</pre>
+</blockquote>
+
+<p>上面的序列中，大多数询问参数的默认值是在vars或vars.bat文件中设定的值。唯一一个需要明确输入的参数是Common Name，上面的例子中输入的是&quot;OpenVPN-CA&quot;。</p>
+
+<h4>为服务端生成证书&amp;私钥</h4>
+
+<p>为服务端生成证书和私钥。Linux/BSD/Unix:</p>
+
+<blockquote>
+<pre>
+./build-key-server server</pre>
+</blockquote>
+
+<p>Windows:</p>
+
+<blockquote>
+<pre>
+build-key-server server</pre>
+</blockquote>
+
+<p>和前面的一步类似，大多数参数可以保持默认值。当询问Common Name时，输入&quot;server&quot; 。另外两个回答&quot;y&quot;的问题，&quot;Sign the certificate? [y/n]&quot;和&quot;1 out of 1 certificate requests certified, commit? [y/n]&quot;。<br />
+Two other queries require positive responses, &quot;Sign the certificate? [y/n]&quot; and &quot;1 out of 1 certificate requests certified, commit? [y/n]&quot;.</p>
+
+<h4>为3个客户端生成证书&amp;私钥</h4>
+
+<p>生成客户端证书和前一步类似。Linux/BSD/Unix:</p>
+
+<blockquote>
+<pre>
+./build-key client1
+./build-key client2
+./build-key client3</pre>
+</blockquote>
+
+<p>Windows:</p>
+
+<blockquote>
+<pre>
+build-key client1
+build-key client2
+build-key client3</pre>
+</blockquote>
+
+<p>如果你想使用口令保护你的客户端私钥，则使用build-key-pass脚本而不是build-key。</p>
+
+<p>为每个客户端输入适合的Common Name，也就是&quot;client1&quot;, &quot;client2&quot;, &quot;client3&quot;。总是为每个客户端指定一个独一无二的名字。</p>
+
+<h4>生成 Diffie Hellman 参数</h4>
+
+<p>必须为OpenVPN服务端生成&nbsp;Diffie Hellman&nbsp;参数。Linux/BSD/Unix:</p>
+
+<blockquote>
+<pre>
+./build-dh</pre>
+</blockquote>
+
+<p>Windows:</p>
+
+<blockquote>
+<pre>
+build-dh</pre>
+</blockquote>
+
+<p>输出:</p>
+
+<blockquote>
+<pre>
+ai:easy-rsa # ./build-dh
+Generating DH parameters
+This is going to take a long time
+.................+...........................................
+...................+.............+.................+.........
+......................................</pre>
+</blockquote>
+
+<h3>密钥文件</h3>
+
+<p>在keys目录下生成的私钥和证书。下面是这些文件的解释：</p>
+
+<p></p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+	<tbody>
+		<tr>
+			<td>文件名</td>
+			<td>需要者<br />
+			Needed By</td>
+			<td>说明<br />
+			Purpose</td>
+			<td>秘密<br />
+			Secret</td>
+		</tr>
+		<tr>
+			<td>ca.crt</td>
+			<td>服务端和所有客户端<br />
+			server + all clients</td>
+			<td>根证书<br />
+			Root CA certificate</td>
+			<td>否<br />
+			NO</td>
+		</tr>
+		<tr>
+			<td>ca.key</td>
+			<td>签发私钥的机器&nbsp;<br />
+			key signing machine only</td>
+			<td>根私钥&nbsp;<br />
+			Root CA key</td>
+			<td>是<br />
+			YES</td>
+		</tr>
+		<tr>
+			<td>dh{n}.pem</td>
+			<td>服务器<br />
+			server only</td>
+			<td>Diffie Hellman parameters</td>
+			<td>否<br />
+			NO</td>
+		</tr>
+		<tr>
+			<td>server.crt</td>
+			<td>服务器<br />
+			server only</td>
+			<td>服务器证书<br />
+			Server Certificate</td>
+			<td>否<br />
+			NO</td>
+		</tr>
+		<tr>
+			<td>server.key</td>
+			<td>服务器<br />
+			server only</td>
+			<td>服务器私钥<br />
+			Server Key</td>
+			<td>是<br />
+			YES</td>
+		</tr>
+		<tr>
+			<td>client1.crt</td>
+			<td>client1 only</td>
+			<td>Clinet1的证书<br />
+			Client1 Certificate</td>
+			<td>否<br />
+			NO</td>
+		</tr>
+		<tr>
+			<td>client1.key</td>
+			<td>client1 only</td>
+			<td>Clinet1的私钥<br />
+			Client1 Key</td>
+			<td>是<br />
+			YES</td>
+		</tr>
+		<tr>
+			<td>client2.crt</td>
+			<td>client2 only</td>
+			<td>Client2的证书<br />
+			Client2 Certificate</td>
+			<td>否<br />
+			NO</td>
+		</tr>
+		<tr>
+			<td>client2.key</td>
+			<td>client2 only</td>
+			<td>Client2的私钥<br />
+			Client2 Key</td>
+			<td>是<br />
+			YES</td>
+		</tr>
+		<tr>
+			<td>client3.crt</td>
+			<td>client3 only</td>
+			<td>Client3的证书<br />
+			Client3 Certificate</td>
+			<td>否<br />
+			NO</td>
+		</tr>
+		<tr>
+			<td>client3.key</td>
+			<td>client3 only</td>
+			<td>Client3的私钥<br />
+			Client3 Key</td>
+			<td>是<br />
+			YES</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>生成密钥的最后一步是将密钥文件拷到需要它们的机器上。</p>
+
+<hr />
+<h4>为服务端和客户端创建配置文件</h4>
+
+<h4>得到例子配置文件 Getting the sample config files</h4>
+
+<p>最好用OpenVPN的例子配置文件作为你自己配置文件的起点。 这些文件在以下目录</p>
+
+<ul>
+	<li>OpenVPN源代码包的sample-config-files目录</li>
+	<li>如果从RPM安装，/usr/share/doc/packages/openvpn&nbsp;或&nbsp;/usr/share/doc/openvpn-2.0目录下的&nbsp;sample-config-files目录</li>
+	<li>Windows，Start Menu -&gt; All Programs -&gt; OpenVPN -&gt; OpenVPN Sample Configuration Files</li>
+</ul>
+
+<p>在Linux, BSD, or unix操作系统中，样例配置文件是server.conf和client.conf。 在Windows下是server.ovpn&nbsp;and&nbsp;client.ovpn。</p>
+
+<h4>编写服务端配置文件</h4>
+
+<p>样例配置文件使用虚拟TUN网络接口(路由模式for routing)创建一个VPN，它在&nbsp;UDP端口1194(OpenVPN的官方端口)上监听客户端连接请求，并且从10.8.0.0/24&nbsp;子网为连接的客户端分配虚拟地址。</p>
+
+<p>使用样例配置文件之前，首先要编辑ca、cert、key&nbsp;和dh&nbsp;参数，使之指向你在上一节PKI中生成的文件。</p>
+
+<p>这时服务端配置文件就可以使用了，也可以进一步修改它：</p>
+
+<ul>
+	<li>如果你使用以太网桥，则必须使用&nbsp;server-bridge和dev tap而不是&nbsp;server和dev tun。</li>
+	<li>如果想让OpenVPN服务端监听一个TCP端口而不是UDP端口， 使用proto tcp而不是proto udp</li>
+	<li>如果你想使用不同于10.8.0.0/24的一个虚拟IP地址范围，则修改&nbsp;server项。记住这一虚拟IP地址范围必须是在你的网络上没有使用的。</li>
+	<li>如果想让连接的客户端可以通过VPN互相访问，将client-to-client的注释去掉。 默认情况下客户端只能访问服务端。</li>
+	<li>如果你使用的是Linux、BSD或Unix，则可以将user nobody和group nobody&nbsp;的注释去掉以增强安全性。</li>
+</ul>
+
+<p>如果想在同一台机器上运行多个OpenVPN，每个VPN使用一个不同的配置文件， 是可以做到的:</p>
+
+<ul>
+	<li>每个VPN实例使用一个不同的port号(UDP和TCP使用不同的端口空间，所以 可以让一个VPN监听UDP-1194，另一个监听TCP-1194)。</li>
+	<li>如果在Windows下运行，则每一个OpenVPN配置都需要有一个自己的TAP-Win32虚拟网卡。可以使用Start Menu -&gt; All Programs -&gt; OpenVPN -&gt; Add a new TAP-Win32 virtual ethernet adapter来增加TAP-Win32虚拟网卡。</li>
+	<li>如果你运行了多个OpenVPN，记住编辑指定输出文件的指令，避免一个VPN覆盖另一个VPN 的输出文件。这些指令包括log、log-append、&nbsp;status和ifconfig-pool-persist。</li>
+</ul>
+
+<h4>编写客户端配置文件</h4>
+
+<p>客户端配置文件的例子(client.conf&nbsp;Linux/BSD/Unix或client.ovpn&nbsp;Windows) 和服务端配置文件的例子相对应。</p>
+
+<ul>
+	<li>
+	<p>象服务端配置文件一样，首先编辑ca、cert和key&nbsp;参数使之指向你在上一节PKI生成的文件。每一个客户端有自己的cert/key对。只有ca文件在服务端和所有客户端之间是通用的。</p>
+	</li>
+	<li>
+	<p>下一步，编辑remote指令使之指向服务端的主机名/IP地址和端口号。 (如果OpenVPN服务端运行在firewall/NAT-gateway之后的一台单网卡机子上，则使用网关的公用IP地址，和你在网关上配置的向OpenVPN服务端转发的端口)。</p>
+	</li>
+	<li>
+	<p>最后，确保客户端配置文件和服务端配置文件中指令的的一致性。主要检查的是&nbsp;dev(tun/tap)和proto(udp/tcp)。还有comp-lzo和&nbsp;fragment(如果使用了)则在客户端和服务端的配置文件中都必须提供。</p>
+	</li>
+</ul>
+
+<hr />
+<h4>启动并测试VPN的初始连接</h4>
+
+<h4>启动服务端</h4>
+
+<p>首先，确保OpenVPN服务端能从internet访问。这意味着:</p>
+
+<ul>
+	<li>防火墙打开UDP端口1194(或者你配置的任意TCP/UDP端口)。</li>
+	<li>设置一个端口转发规则，将UDP端口1194从防火墙/网关转发到运行OpenVPN服务端的机子。&nbsp;<br />
+	&nbsp;</li>
+</ul>
+
+<p>下一步，确保TUN/TAP虚拟网卡没有被屏蔽。&nbsp;</p>
+
+<p>为了减少错误，最好从命令行启动OpenVPN服务端(或者在Windows下，右击.ovpn文件)， 不要将其作为后台或服务运行。&nbsp;</p>
+
+<h4>启动客户端</h4>
+
+<p>和服务端一样，最好从命令行(或在Windows下右击client.ovpn文件)启动OpenVPN。</p>
+
+<blockquote>Windows下客户端的启动和上面的服务端启动类似，并且最后以&nbsp;Initialization Sequence Completed&nbsp;消息结束。</blockquote>
+
+<p>现在，从客户端通过VPN发送ping包，如果你使用路由模式(服务端配置文件里是dev tun)，输入下面命令:&nbsp;</p>
+
+<p>如果使用桥接模式(服务端配置文件是dev tap)，尝试ping服务端所在子网的某台机子的IP地址。&nbsp;</p>
+
+<p>如果ping成功，祝贺你！你已经有了一个能正常工作的VPN。　&nbsp;</p>
+
+<h4>常见问题</h4>
+
+<p>如果ping失败，或者OpenVPN客户端初始化失败，请检查下列现象和解决办法：&nbsp;&nbsp;</p>
+
+<ul>
+	<li>
+	<p>错误信息:&nbsp;TLS Error: TLS key negotiation failed to occur within 60 seconds (check your network connectivity). 这个错误表示客户端不能和服务端建立网络连接。</p>
+
+	<p>解决方法:</p>
+
+	<ul>
+		<li>保证客户端使用允许其访问到OpenVPN服务端的主机名/IP地址和端口号。</li>
+		<li>如果OpenVPN服务端是受保护的LAN内的单网卡机子，确保在服务端网关防火墙上使用了正确的端口转发规则。假如你的OpenVPN的IP地址是防火墙内的192.168.4.4，在UDP端口1194上监听客户端连接。服务于192.168.4.x子网上的NAT网关应该有一条端口转发规则：&nbsp;forward UDP port 1194 from my public IP address to 192.168.4.4。&nbsp;<br />
+		&nbsp;</li>
+		<li>打开服务端的防火墙允许到UDP端口1194(或者别的你在服务端配置文件中指定的TCP/UDP端口)的连接。&nbsp;<br />
+		&nbsp;</li>
+	</ul>
+	</li>
+	<li>
+	<p>错误信息:&nbsp;Initialization Sequence Completed with errors&nbsp;-- 这一错误可能出现在<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> 下，(a)DHCP客户端服务没有运行，(b)在XP SP2上使用了第三方的个人防火墙。&nbsp;&nbsp;</p>
+
+	<p>解决办法: 启动DHCP客户端服务，确保使用的个人防火墙和XP SP2能正常工作。&nbsp;&nbsp;</p>
+	</li>
+	<li>
+	<p>得到了Initialization Sequence Completed消息，但是ping失败了 -- 这通常是服务端或客户端上的防火墙过滤了TUN/TAP网络接口从而阻止了VPN网络的流量。&nbsp;&nbsp;</p>
+
+	<p>解决办法: 禁止客户端的防火墙(如果有的话)过滤TUN/TAP网络接口。例如在<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>下，你可以到Windows Security Center -&gt; Windows Firewall -&gt; Advanced取消对应于TAP-Win32网卡的选择(禁止客户端防火墙过滤TUN/TAP网卡从安全角度来看通常是合理的，因为你本来已经告诉防火墙不要阻止授权的VPN流量)。同样确保服务端TUN/TAP接口没有被防火墙过滤，&nbsp;&nbsp;</p>
+	</li>
+	<li>
+	<p>当使用proto udp时，连接在启动时停止，服务端的日志文件中有如下一行:&nbsp;&nbsp;</p>
+
+	<blockquote>
+	<pre>
+TLS: Initial packet from x.x.x.x:x</pre>
+	</blockquote>
+
+	<p>但是在客户端的日志中却并没有等价的一行。&nbsp; &nbsp;</p>
+
+	<p>解决办法: 你有客户端到服务端的单向连接。服务端到客户端的连接被防火墙(通常是在客户端一侧)阻止了。防火墙可能是(a)客户端上运行个人软件防火墙，或者(b)是对客户端的NAT路由网关。修改防火墙设置允许服务端返回的UDP包到达客户端。&nbsp;</p>
+	</li>
+</ul>
+
+<p style="text-align:center"><img alt="OpenVPN" src="/upload/3814_1.jpg" /></p>
+
+<p>来源：guest_server投稿。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Proxy.jpg" alt="OpenVPN的配置和使用" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note3814"></span><a href="javascript:commYea(3814);" id="dig3814">顶一下 ▲</a>(<span id="sdig3814"><Script language="javascript" type="text/javascript">showDig("3814");</script></span>) &nbsp; <a href="javascript:commNay(3814);" id="down3814">踩一下 ▼</a>(<span id="sdown3814"><Script language="javascript" type="text/javascript">showDown("3814");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/3813.html" title="DNS攻击原理与防范">DNS攻击原理与防范</a></div><div class="next_content">下一篇 » <a href="/archives/3815.html" title="DD-WRT刷机完整教程">DD-WRT刷机完整教程</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/3739.html">中国用户使用代理软件的分析</a></p><p class="mutualitylist"><a href="/archives/2764.html">内网用户轻松穿越外网</a></p><p class="mutualitylist"><a href="/archives/2696.html">I2P不完全使用手册</a></p><p class="mutualitylist"><a href="/archives/2283.html">网络访问攻防战之代理服务器篇</a></p><p class="mutualitylist"><a href="/archives/2232.html">网络访问攻防战</a></p><p class="mutualitylist"><a href="/archives/2210.html">使用HTTP代理服务器的安全性简评</a></p><p class="mutualitylist"><a href="/archives/2057.html">如何使用代理服务器上网</a></p><p class="mutualitylist"><a href="/archives/2024.html">SocksCap代理使用教程</a></p><p class="mutualitylist"><a href="/archives/1952.html">SSH加密通道配置</a></p><p class="mutualitylist"><a href="/archives/1697.html">开源代理软件GAppProxy</a></p><p class="mutualitylist"><a href="/archives/760.html">FireFox代理服务器扩展</a></p><p class="mutualitylist"><a href="/archives/739.html">免费代理服务器的使用设置</a></p><p class="mutualitylist"><a href="/archives/524.html">代理服务器的功能</a></p><p class="mutualitylist"><a href="/archives/424.html">TOR使用说明和介绍</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

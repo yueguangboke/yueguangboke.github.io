@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/1146.html"/>
+	<title>网站登录的加密传输安全-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>网站登录的加密传输安全</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/1146.html" rel="bookmark">网站登录的加密传输安全</a></h1>
+	<div class="post-meta">
+		2007-11-24 17:40:6 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 30 | 
+		浏览: <span class="AddView" id="spn1146" data-id="1146"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>刚才看到了两篇文章，分别是&ldquo;<a target="_blank" href="http://www.cnbeta.com/articles/43687.htm">QQ网站登录的RSA加密传输缺陷分析</a>&rdquo;和&ldquo;<a target="_blank" href="http://www.icylife.net/yunshu/show.php?id=471">RSA非对称加密的一些非常规应用</a>&rdquo;，我这里谈一下我的一些看法。</p><p>我以前曾经写过一篇文章&ldquo;<a target="_blank" href="/archives/823.html">网站的安全登录认证设计</a>&rdquo;，对于QQ登录使用RSA进行加密传输，的确是一种低成本的替代SSL的方法，因为SSL本身需要数字证书颁发机构(CA)的介入，还需要一定费用，因此对于安全程度不高的系统使用RSA加密进行&ldquo;网络传输&rdquo;上的加密安全也是一种选择。</p><p>然而，不使用SSL带来的后果就是安全性的降低，相当于网站自己当CA，自己颁发数字证书。数字证书颁发机构(CA)在互联网安全生态链中扮演一个非常重要的角色，因为CA充当可信任的第三方在验证申请者的真实身份后才颁发SSL证书。因此，CA从一定程度上保护了最终用户的信息安全，并预防了网站自己&ldquo;内鬼&rdquo;从中窃取用户信息的可能性。因此，使用RSA并不能完全替代SSL的作用。</p><p>不过如果黑客通过arp欺骗的方法伪造的RSA密钥的话，我觉得也不一定能窃取用户的密码。因为用户验证密码并非将客户端用户的密码传到服务器上进行验证，通常情况下只要客户端用户密码的&ldquo;消息摘要算法（Hash function)&rdquo;和服务器端的一致即可，因此，验证的方法可以这样进行：客户端将用户密码的HASH数值（MD5或者SHA1）使用服务器端生成的公钥进行RSA加密，并传输到服务器端，服务器端接收到以后，使用私钥进行解谜，解密出HASH码后和数据库中计算出的HASH码进行比较，从而进行认证。</p><p>这样，即使黑客使用arp欺骗窃取了用户传输的数据，也仅仅窃取了用户密码的HASH值，并不是用户的密码明文，而从密码的HASH值反推用户密码则是十分困难的，详见&ldquo;<a target="_blank" href="/archives/499.html">密码学基础</a>&rdquo;一文，因此得到的数据也没有多大用处。</p><p>总的来说，增强QQ登录密码的安全强度的方法还有很多种，最安全的方法可以使用类似网上银行的USB Key进行登录验证，那样的安全性就基本达到了相当高的程度了，不过使用成本也达到很高的程度了。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Encryption.jpg" alt="网站登录的加密传输安全" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note1146"></span><a href="javascript:commYea(1146);" id="dig1146">顶一下 ▲</a>(<span id="sdig1146"><Script language="javascript" type="text/javascript">showDig("1146");</script></span>) &nbsp; <a href="javascript:commNay(1146);" id="down1146">踩一下 ▼</a>(<span id="sdown1146"><Script language="javascript" type="text/javascript">showDown("1146");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/1145.html" title="腾讯QQ拼音输入法试用">腾讯QQ拼音输入法试用</a></div><div class="next_content">下一篇 » <a href="/archives/1147.html" title="Flickr测试新版上传工具">Flickr测试新版上传工具</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/1129.html">中国网上银行的USB Key安全评测</a></p><p class="mutualitylist"><a href="/archives/927.html">USB Key的安全漏洞</a></p><p class="mutualitylist"><a href="/archives/880.html">加密算法中私钥的安全性</a></p><p class="mutualitylist"><a href="/archives/837.html">数据公钥加密和认证中的私钥公钥</a></p><p class="mutualitylist"><a href="/archives/823.html">网站的安全登录认证设计</a></p><p class="mutualitylist"><a href="/archives/753.html">中国网银安全分析：USB Key</a></p><p class="mutualitylist"><a href="/archives/752.html">中国网银安全分析：动态密码锁</a></p><p class="mutualitylist"><a href="/archives/751.html">中国网上银行系统安全性分析</a></p><p class="mutualitylist"><a href="/archives/720.html">Sentinel SuperPro加密锁编程开发指南</a></p><p class="mutualitylist"><a href="/archives/719.html">软加密网上激活解决方案</a></p><p class="mutualitylist"><a href="/archives/707.html">软件加密锁编程技巧</a></p><p class="mutualitylist"><a href="/archives/706.html">软件加密狗破解思路和方法</a></p><p class="mutualitylist"><a href="/archives/705.html">国内软件加密锁产品评测</a></p><p class="mutualitylist"><a href="/archives/704.html">软件加密技术和注册机制</a></p><p class="mutualitylist"><a href="/archives/500.html">加密技术在企业数据安全中的应用</a></p><p class="mutualitylist"><a href="/archives/499.html">密码学基础</a></p><p class="mutualitylist"><a href="/archives/347.html">破解图片验证码限制的一般思路</a></p><p class="mutualitylist"><a href="/archives/315.html">巧用WinZip进行定时加密备份</a></p><p class="mutualitylist"><a href="/archives/272.html">银行应用USB Key身份认证方案</a></p><p class="mutualitylist"><a href="/archives/242.html">JAVASCRIPT加密解密终级指南</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/4125.html"/>
+	<title>CNNIC证书的清除方法 -月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate4 auth4">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/internet.html" title="查看 互联网络 中的全部文章">互联网络</a> &raquo; <span>CNNIC证书的清除方法 </span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/4125.html" rel="bookmark">CNNIC证书的清除方法 </a></h1>
+	<div class="post-meta">
+		2015-1-26 23:55:39 | 
+		作者: 投稿 | 
+		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
+		评论: 44 | 
+		浏览: <span class="AddView" id="spn4125" data-id="4125"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Security.html" rel="tag"><img src="/logo/Security.gif" alt="安全" class="thumb" width="80" height="80" /></a><p>最近1-2周，关于 CNNIC 的 CA 证书问题，网上搞得沸沸扬扬。但是，即使是一些 IT 行业的技术人员，也搞不太明白该问题的严重性（至于不懂技术的傻瓜用户，就更甭提了）。主要在于 CA 证书是一个相对专业的东东，大伙儿平时接触不多。那电脑中有了CNNIC的证书，会出现啥事呢？</p><p>◇&ldquo;中间人攻击&rdquo;的风险</p><p>中间人攻击的风险，是最危险的，也是最经常被提及。</p><p>CA证书对于https协议的重要性（可以防止攻击者伪造虚假网站）不用多说。既然CNNIC已经成为合法的CA，那它就能堂而皇之地制作并发布CA证书。然后，再配合进行DNS的域名污染。那就可以轻松搞定任何网站的HTTPS加密传输。</p><p>◇ActiveX控件的风险</p><p>另外一个大伙儿不太关注的风险，是关于ActiveX控件的问题。前几年，很多恶意软件（包括流氓软件、木马）都是通过IE控件的技术，安装到大伙儿的电脑上。后来<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>加强了多ActiveX控件的验证：在IE的默认设置下，对于没有数字签名的ActiveX控件，是拒绝安装滴；而对于有数字签名的控件，则会给出提示。</p><p>因此，CNNIC可以很轻松地给自己的ActiveX控件制作数字证书。然后把控件放到网上。某些粗心的电脑用户看到IE跳出的安装控件提示，多半没细看，直接就点了&ldquo;确定&rdquo;按钮。</p><p>★如何清理门户？</p><p>其实网上关于如何去掉证书的操作指南，多如牛毛，所以就简单说一下。</p><p>有些浏览器（IE、<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>、Safari）使用的是操作系统的证书体系。这种情况下，你需要把CNNIC证书从操作系统的证书体系中去掉。还有些浏览器（比如<a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>、Opera）是自己带了一套证书体系。你只要在其配置界面，把不要的证书去除即可。下面分不同的浏览器，不同的操作系统，分别介绍。</p><p>◇清理<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>的证书（适用IE、Chrome、Safari）</p><p>对于使用Windows下的IE或Chrome或Safari浏览器，则需要执行如下步骤：</p><p>1. 运行Windows的证书管理器（到命令行执行certmgr.msc）。</p><p>2. 选中&ldquo;受信任的根证书颁发机构&rdquo;=&gt;&ldquo;证书&rdquo;。</p><p>3. 查看右边的证书列表。如果里面已经有CNNIC的证书，直接跳到第7步。</p><p>4. 先翻墙到&ldquo;<a target="_blank" href="https://code.google.com/p/program-think/downloads/detail?name=cnnic.7z">这个页面</a>&rdquo;下载现成的CNNIC证书（要解压缩出来）。</p><p>5. 鼠标在&ldquo;受信任的根证书颁发机构&rdquo;=&gt;&ldquo;证书&rdquo;上点右键。在右键菜单中点&ldquo;所有任务&rdquo;=&gt;&ldquo;导入&rdquo;。</p><p>6. 出现一个导入向导，根据先导一步步的提示，把上述CNNIC证书导入到证书列表中。</p><p>7. 选中CNNIC证书，点右键。在右键菜单中点&ldquo;属性&rdquo;。</p><p>8. 在跳出的属性对话框中，选中&ldquo;停用这个证书的所有目的&rdquo;，然后确定。</p><p>9. 最后，为了保险起见，再把这三个证书，导入到&ldquo;不信任的证书&rdquo;中（方法和上述类似）。</p><p>注：上述操作仅对当前用户生效。如果你的Windows系统中有多个常用的用户帐号，要对每一个用户进行上述设置。</p><p>◇清理苹果Mac OS的证书（适用Safari、Chrome）</p><p>对于使用Mac OS下的Safari或Chrome浏览器，则需要执行如下步骤：请到&ldquo;实用工具&rdquo;=&gt;&ldquo;钥匙串访问&rdquo;=&gt;&ldquo;系统根证书&rdquo;=&gt;&ldquo;证书&rdquo;，找到CNNIC的证书并双击，改为&ldquo;永不信任&rdquo;。</p><p>◇清理Linux的证书（适用Chrome、Safari）</p><p>对于Debian和Ubuntu系统，以管理员权限进行如下操作：</p><p>方法1：运行命令：dpkg-reconfigure ca-certificates 会出现一个图形界面，把CNNIC证书不选，并确认。</p><p>方法2：编辑 /etc/ca-certificates.conf 文件，把CNNIC证书对应的行删除或注释掉。然后用命令 update-ca-certificates 使之生效。</p><p>注：对于其它Linux发行版本，操作类似。</p><p>◇清理Firefox的证书</p><p>不论是在哪个操作系统下，只要你用的是Firefox浏览器（它的证书体系独立于操作系统的），则需要执行如下步骤：</p><p>1. 从菜单&ldquo;工具&rdquo;=&gt;&ldquo;选项&rdquo; ，打开选项对话框</p><p>2. 切换到&ldquo;高级&rdquo;部分，选中&ldquo;加密&rdquo;标签页，点&ldquo;查看证书&rdquo;按钮。</p><p>3. 在证书对话框中，切换到&ldquo;证书机构&rdquo;。</p><p>4. 里面的证书列表是按字母排序的。把CNNIC打头的都删除。</p><p>注：如果某个证书是Firefox自带的，则删除之后，下次再打开该对话框，此证书还在。不过不要紧，它的所有&ldquo;信任设置&rdquo;，都已经被清空了。</p><p>◇清理Opera的证书</p><p>不论是在哪个操作系统下，只要你用的是Opera浏览器（它的证书体系独立于操作系统的），则需要执行如下步骤：</p><p>1. 从菜单&ldquo;工具&rdquo;=&gt;&ldquo;首选项&rdquo; ，打开首选项对话框</p><p>2. 切换到&ldquo;高级&rdquo;标签页，在左边选择&ldquo;安全性&rdquo;这项。</p><p>3. 点&ldquo;管理证书&rdquo;按钮，出来一个证书的对话框。切换到&ldquo;证书颁发机构&rdquo;标签页。</p><p>4. 找到CNNIC的证书并选中，点&ldquo;查看&rdquo;按钮，在证书属性对话框中，把&ldquo;允许连接到使用此证书的网站&rdquo;的打勾去掉</p><p>注：这是基于Opera 10.10进行操作。新版本的界面可能略有差异。</p><p>★如何确认门户已经清理干净？</p><p>为了保险起见，在完成上述的清除工作之后，你需要用浏览器访问一下老流氓的一个网站，地址是 https://www.cnnic.cn 记得用 HTTPS 协议哦。</p><p>如果你的浏览器报告该网站的证书有问题，那恭喜你，你的门户清理干净了 ：-）</p><p>如果该网站的页面顺利打开，那你就要重新检查一下，看上述操作是否出了差错。</p><p>★可能的副作用</p><p>有些国内网站已经开始使用CNNIC的证书，目前已经知道的有163邮箱（真鄙视网易）。但是甭担心。去除证书后，浏览器在访问上述网站时，会给出一个证书的安全警告。你只需添加一个安全例外即可。</p><p style="text-align: center"><img alt="CNNIC" src="/upload/4125_1.jpg" /></p><p>作者：编程随想，<a target="_blank" href="http://program-think.blogspot.com/2010/02/remove-cnnic-cert.html">原文链接</a>。 （注释：因国内网络环境问题的影响，原文的部分内容经过了删减。）</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Security.jpg" alt="CNNIC证书的清除方法 " /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note4125"></span><a href="javascript:commYea(4125);" id="dig4125">顶一下 ▲</a>(<span id="sdig4125"><Script language="javascript" type="text/javascript">showDig("4125");</script></span>) &nbsp; <a href="javascript:commNay(4125);" id="down4125">踩一下 ▼</a>(<span id="sdown4125"><Script language="javascript" type="text/javascript">showDown("4125");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/4124.html" title="2014年互联网大事件大盘点">2014年互联网大事件大盘点</a></div><div class="next_content">下一篇 » <a href="/archives/4126.html" title="工商总局披露白皮书指淘宝存五大问题">工商总局披露白皮书指淘宝存五大问题</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/4118.html">国际杀毒巨头McAfee曝光搜狗输入法漏洞</a></p><p class="mutualitylist"><a href="/archives/4115.html">我们应该安装什么样的杀毒软件？</a></p><p class="mutualitylist"><a href="/archives/4090.html">多家抢票软件回应12306数据泄漏</a></p><p class="mutualitylist"><a href="/archives/4089.html">12306大量用户资料泄露</a></p><p class="mutualitylist"><a href="/archives/4086.html">朝鲜网络攻击事件</a></p><p class="mutualitylist"><a href="/archives/4009.html">大数据时代，厂商该如何协调安全与隐私</a></p><p class="mutualitylist"><a href="/archives/3912.html">乌云网遭到DDOS攻击</a></p><p class="mutualitylist"><a href="/archives/3899.html">防止SSL劫持的终极方法</a></p><p class="mutualitylist"><a href="/archives/3864.html">使用Chroot解决PHP的运行安全问题</a></p><p class="mutualitylist"><a href="/archives/3818.html">OpenSSL曝重大安全漏洞</a></p><p class="mutualitylist"><a href="/archives/3813.html">DNS攻击原理与防范</a></p><p class="mutualitylist"><a href="/archives/3797.html">个人网站服务器防火墙软件评测</a></p><p class="mutualitylist"><a href="/archives/3750.html">巨头收保护费的新工具—安全联盟</a></p><p class="mutualitylist"><a href="/archives/3738.html">域名解析故障是因为根服务器遭攻击吗？</a></p><p class="mutualitylist"><a href="/archives/3700.html">RSA否认在加密算法中添加后门</a></p><p class="mutualitylist"><a href="/archives/3699.html">路透社称NSA向RSA加密算法中放置后门</a></p><p class="mutualitylist"><a href="/archives/3674.html">硬盘的寿命有多久？</a></p><p class="mutualitylist"><a href="/archives/3660.html">设计自己的密码规则，实现强壮的自我保护</a></p><p class="mutualitylist"><a href="/archives/3635.html">警惕USB键盘记录器</a></p><p class="mutualitylist"><a href="/archives/3591.html">斯诺登称NSA攻破互联网加密技术 </a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

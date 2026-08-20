@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/2763.html"/>
+	<title>浏览器内核WebKit编年史-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate3 auth11">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/software.html" title="查看 软件应用 中的全部文章">软件应用</a> &raquo; <span>浏览器内核WebKit编年史</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/2763.html" rel="bookmark">浏览器内核WebKit编年史</a></h1>
+	<div class="post-meta">
+		2011-8-6 23:10:22 | 
+		作者: 雷锋 | 
+		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
+		评论: 29 | 
+		浏览: <span class="AddView" id="spn2763" data-id="2763"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/IE.html" rel="tag"><img src="/logo/IE.gif" alt="浏览器" class="thumb" width="80" height="80" /></a><p>回首六年前，2005年，网络和现在完全不同。那时，浏览器大战已告尾声，虽然Netscape战斗英勇，但<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>和Internet Explorer 的地位看起来越来越稳固。看起来互联网正要落入这个邪恶帝国手上，还有一点，地球人已经阻止不了微软了。</p><p>然后在2005年6月7日，在WWDC上，Bertrand Serlet走上讲演台推出了并不被人看好的产品&mdash;&mdash;苹果的浏览器的灵魂&mdash;&mdash;Safari，它是开源产品。它被称为WebKit。看起来，苹果仍然无法阻止微软作威作福，但是之后，他们走上了一个那时没人预料到的完全不同的方式。</p><p>略想一下：苹果公司是出了名的神秘兮兮，为什么他们主导一个开源项目？要回答这个问题，要正确地看待这个开源如何成功的，我们必须回头看看WebKit的根源。但如果我没触碰到WebKit的现状，未来的发展，那就是我的失职。过去的知识很重要，因为它可以帮助我们了解现在，并更好地为未来作好准备。</p><p><strong>诞生于开源</strong></p><p>瞧瞧，现在几乎所有人都认为WebKit来源于苹果公司，它是Safari浏览器的灵魂，不是吗？但这些代码的确不是在苹果总部的秘密巢穴里码出来的。它实际上源于他处，早在1998年，这些后来成为WebKit的代码其实是KDE开源项目的KHTML和KJS引擎的一部分。最初，KHTML和KJS是较早采用khtmlw（The KDE HTML Widget）引擎的项目。虽然之前发布的程序引擎W3C将&ldquo;DOM&rdquo;和&ldquo;CSS&rdquo;两者都标准化了，但仍有不少工作要做，因此支持这些功能成为一个重要的优先事项。</p><p>几乎整个1999年，由Lars Knoll牵头，掀起了一个KHTML风潮。尽管需要不少艰巨的工作，KHTML的支持者和开发人员都不希望轻易地放弃这个项目。但这些艰苦的工作带回了丰厚的回报。到2000年的春天，出现了一套崭新的浏览器内核&mdash;&mdash;KHTML和KJS &mdash;&mdash;准备在新版本的KDE上实施。他们就是后来被某个位于Cupertino的&ldquo;水果&rdquo;公司采摘的开源项目。</p><p><strong>苹果式待遇</strong></p><p style="text-align: center"><img title="MacworldBoston" alt="浏览器内核WebKit编年史" src="/upload/2763_1.jpg" /></p><p>2003年1月，在旧金山的Macworld Expo主题演讲中，Steve Jobs宣布苹果KHTML引擎的移植&mdash;&mdash;WebCore开放源代码。同一天，Safari的首席设计师Don Melton给公布于KDE开发者邮件名单上的KHTML和KJS &ndash; KDE的首席开发员发送了一封邮件。之后便成立了苹果的Safari团队，而且很显然两方面对于能使用这个开源代码来创建Safari都感到高兴和自豪。对代码的效率以及开发员所实现的技术，Melton信件中充满了溢美之词。它看起来像一个美妙婚姻的开始。</p><p>然而，时间快进到两年前，我们发现这场婚姻似乎也开始触礁。</p><p>开源社区是建筑于激情，善意，自我牺牲之上。它并不适合每一个人。要想在此取得成功&mdash;&mdash;或者在这个社区成为一个腕&mdash;&mdash;你必须要了解这些性格特征，并将自己置身其中。苹果也是一个社区，但它有自己的文化和目标。KHTML和苹果公司的WebCore的尝试合作出现问题，也是可以理解的。</p><p>与苹果公司经常在WebCore做出一些变化不同，KDE社区似乎对KHTML引擎&ldquo;端口&rdquo;上的改变所需的时间和精力无动于衷。2005年春，合作于KHTML的两个开发者Zack Rusin 和Carewolf都在博客文章表达了他们的挫折感，不仅在于苹果的&ldquo;合作&rdquo;方式，而且也针对KDE社区关于合作关系的看法。</p><p>那时，苹果公司现有的合作建立的开源项目开展得并不顺利。他们努力想成为开源社区的好公民，但它在KDE社区的眼中确是不足。看起来苹果的开放源码的尝试是失败的。KHTML和KJS是苹果创造的伟大基甸，但这也证明苹果几乎不可能以社区为所用所享的方式去&ldquo;回馈&rdquo;社区。</p><p><strong>开源，以苹果的方式</strong></p><p>细细观察苹果公司的运作方式，其方法看起来非常简单。他们精美的创作其实就是不断重复的细化打磨过程。他们有一个对他们来说运转良好的系统。回想起来，也难怪试图融入开源世界对他们来说并不成功。</p><p>但苹果并不是一个完全无情的公司。他们知道，他们目前在Web技术的进步的核心就是开源社区的工作成果。所以到这里我们就回到了故事的开头， 2005年6月7日苹果宣布WebKit开放源代码。</p><p>WebKit起初就是WebCore和JavaScriptCore代码库，后来还加入一些东西。连同源代码控制树以及错误跟踪工具，所有用来创建有效的Web浏览器的代码是开源的。即使从哲学的角度看，这种粘性似乎让苹果更具团队精神变得理所当然。这个由苹果组织和驱动的项目，不定期发布一些代码供所有人使用，让苹果在保持其臭名昭著的&ldquo;控制欲&rdquo;的同时，还为其在媒体界赢得了开源之名。</p><p>而且还将此名声充分利用。</p><p><strong>崛起，出局和离开</strong></p><p>从那时起，事情开始了微妙的变化。这虽非吹枯拉朽的态势，但确是渐进而不可逆转的过程。 WebKit开始掠夺浏览器市场。当然，它不纯粹关乎市场份额数字&mdash;&mdash;至少不会是第一关注点。</p><p>WebKit正赢得网民们的心。而苹果，这家一直以设计界的倡导者和伙伴的身份所世人所知的公司，也开始到处讨好网页设计师。WebKit非常灵活，十分迅捷，能够实现新的标准和技术，仿佛是为它们的构想和发明而生。这与Internet Explorer非常不同。而Web社区钟情于此。这是从未间断过的传统。最近，我们还看到WebKit的诸多创新，推动许多新的CSS3规范，并率先采认HTML5规范。</p><p>WebKit开始出现Safari以外的在其他地方。2005年11月，诺基亚为其S60平台发布了一个基于WebKit的网页浏览器。随着iPhone在2007年1月发布，WebKit手机应用方面声势更加壮大。其在iOS平台上得到的增长，更是前所未有。而且苹果公司将其宠儿WebKit作为Mobile Safari的基础非常具有意义。而杀红了眼的手机厂商后来的所作所为更是亘古未有。</p><p>2007年11月，也就是iPhone亮相的10个月后，谷歌发布了收购的一项成果：Android操作系统。虽然无论在苹果及其iPhone所涉及哪个领域，Android都想跟它拼个你死我活，但它还是那么一点点的别扭&mdash;&mdash;其浏览器也是由WebKit支持的。这个两个竞争对手都受益于这个开源项目。但真正的惊喜是，苹果正是这个开源项目的幕后主导者。而且他们干得还真漂亮。</p><p>显然，谷歌很喜欢WebKit里面的东西，因为2008年秋天，谷歌自主开发的浏览器<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>测试版开始受到互联网的热捧。没错，这也是基于WebKit的。你现在应该能看到WebKit所描绘的宏伟蓝图了吧？</p><p>2009年7月7日，这是一个有趣的命运转机，因为谷歌宣布了一项新的项目。他们已经开始启动了其称作&ldquo;Chrome操作系统&rdquo;的项目运作。它的诞生就是为了争夺<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>和苹果的市场的，而它却是由&mdash;&mdash;你猜对了，WebKit支持的。这也是WebKit故事最吸引人的方面之一。 WebKit由开源出生，经过极具竞争力的苹果制作和打磨，而现在却是谷歌用于与苹果竞争的未来计划的基础。是不是开源软件都那么吸引人呢？</p><p>一年后，也就是2010年，黑莓也进入到手机WebKit行列，并宣布为黑莓第六版操作系统提供新浏览器。同样，耐人寻味的是：智能手机市场的三个巨头&mdash;&mdash;苹果，谷歌和RIM &mdash;&mdash;都将WebKit作为任何智能手机的关键功能&mdash;&mdash;网页浏览器的骨干应该有任何智能手机。想来，谷歌和RIM都需要为此感谢苹果。苹果，你知道的，这个来自Cupertino的神秘兮兮的公司。</p><p>当然，不仅仅是那些地位显赫的公司充分利用了这个WebKit开源项目。还有不少其他小公司的浏览器也是建筑于WebKit之上，例如Midori，Shiira和Epiphany。</p><p>但最迷人的地方之一还是WebKit的应用还不仅严格限于浏览器。一个高质量，开放源码的浏览器的存在，让许多独立的应用程序开发人员将基于浏览器的功能纳入到应用程序。OS X上最好的在线RSS阅读器&mdash;&mdash;Reeder，就是使用WebKit代码提供feeds阅读时的无缝体验。或者还可以更具创造性的方式使用它，就像Valve的Steam平台使用WebKit来渲染其用户界面。</p><p><strong>亦敌亦友</strong><br />&nbsp;</p><p style="text-align: center"><img class="alignnone size-full wp-image-24132" title="MacworldBoston" alt="浏览器内核WebKit编年史" src="/upload/2763_2.jpg" /></p><p>现在，RIM公司采用WebKit非常有趣。谷歌将其今后的成长和规划明显的押宝在它之上更是真正的迷人之处。但苹果还有另一个竞争对手，其竞争关系也是越演越烈，也在狠狠地挖掘WebKit：Adobe。</p><p aptureproxy="31">是的，甚至连iOS的死敌&mdash;&mdash;Flash&mdash;&mdash;也已接受该渲染引擎，将其纳入其应用程序的Creative Suite，而且甚至还给这个代码库添砖加瓦。</p><p>不过，苹果和Adobe之间的关系，可以在另外一篇文章中进行讨论。我只是觉得像Adobe这种关于网络建于什么之上都有不同意识形态的公司也可以在WebKit中找到共同点。这是WebKit项目之所以伟大的一种见证：其维护，质量及其最初开发者所采用的和今天编写和维护代码的工艺。</p><p><strong>国王已死，国王万岁！</strong></p><p>还记得我先前总结的苹果之所以致力于开源的WebKit的首要原因吗？对了，就是要将微软拉下马，撼动其浏览器市场的王座。不过确实没有那么&ldquo;确凿的证据&rdquo;。当然也没有关于苹果高管或Safari浏览器开发者之间交流了如何干掉IE浏览器的秘密图谋。这只是我的直觉，我的猜测，不过我认为这还是蛮合理的。更重要的是，我还可以提供一些冰冷生硬的数字证明，即使这不是其开源WebKit的背后初衷，它也肯定是最终的结果。</p><p>来自Net Applications的数据显示，Internet Explorer在2005年占据着惊人惊艳的89％的浏览器市场份额，而当年WebKit刚刚开源。现在，这个数字下降到相对并不起眼的54％。相比之下，2005年，唯一的基于WebKit的浏览器&mdash;&mdash;Safari仅有可怜的1.7％的市场份额。但到如今，基于WebKit的浏览器占近20％。</p><p>不过，这些统计数字很明显地偏向于桌面浏览器。手机操作系统的网页浏览器状况如何？又说明什么问题呢？好吧，手机浏览器中基于WebKit的浏览器占超过62％的市场份额。 Opera Mini以22％的份额占据第二的位置，微软的那个浏览器甚至没有足够的使用量，无法纳入统计。而&ldquo;其他&rdquo;浏览器的市场份额为15％。</p><p>如今，你很难找到对高新技术产业感兴趣的人否认手机领域才是未来真正的王国。而且Webkit已经有一个强大的存在，很难想象WebKit团队持续创新的努力会很快改变。</p><p><strong>总结</strong></p><p>当然，关于WebKit，还有不少本文未有涉及到的。如果你读到了最后，我得承认倍感荣幸。我已尽我所能去完整而准确地讲诉这个故事，但仍然有很多细节未被纳入其中。</p><p>要想获得KHTML的原编码者中的两人的观点和想法，以及WebKit开源后一年他们的立场，你可以在<a href="/tag/Yahoo.html" title="雅虎"  Target="_blank" >雅虎</a>上观看他们的介绍。想要跟上有关WebKit项目的最新进展，没有比Surfin&rsquo;Safari的博客更好的地方啦。</p><p>最后，亲爱的读者，如果你喜欢这篇文章，请发表评论。我很想听到有关这个领域&mdash;&mdash;比如网页方面的历史&mdash;&mdash;你更多的见解。或者，也许你讨厌它，认为它过于累赘。如果你认为有需要，也不妨直言。</p><p>英文原文：<a target="_blank" href="http://web.appstorm.net/general/opinion/the-history-of-webkit/">The History of WebKit</a></p><p>中文翻译：<a target="_blank" href="http://leiphone.com/webkit-history.html">雷锋网</a>编译。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/IE.jpg" alt="浏览器内核WebKit编年史" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note2763"></span><a href="javascript:commYea(2763);" id="dig2763">顶一下 ▲</a>(<span id="sdig2763"><Script language="javascript" type="text/javascript">showDig("2763");</script></span>) &nbsp; <a href="javascript:commNay(2763);" id="down2763">踩一下 ▼</a>(<span id="sdown2763"><Script language="javascript" type="text/javascript">showDown("2763");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/2762.html" title="创意手机APP汇总">创意手机APP汇总</a></div><div class="next_content">下一篇 » <a href="/archives/2764.html" title="内网用户轻松穿越外网">内网用户轻松穿越外网</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/2540.html">浏览器的战略意义</a></p><p class="mutualitylist"><a href="/archives/2525.html">你还在用IE6浏览器吗？</a></p><p class="mutualitylist"><a href="/archives/2443.html">怎样在中国消灭IE6浏览器</a></p><p class="mutualitylist"><a href="/archives/1763.html">微软将自动更新IE8浏览器</a></p><p class="mutualitylist"><a href="/archives/1738.html">微软IE8浏览器使用评测</a></p><p class="mutualitylist"><a href="/archives/1737.html">微软正式推出IE 8浏览器</a></p><p class="mutualitylist"><a href="/archives/1241.html">微软开始强行升级IE7</a></p><p class="mutualitylist"><a href="/archives/1217.html">微软强行升级浏览器到IE7</a></p><p class="mutualitylist"><a href="/archives/1206.html">IE7的未验证的发行者MSXML 5.0安全问题</a></p><p class="mutualitylist"><a href="/archives/666.html">IE7的发布和FireFox的未来</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
+<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
+<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
+<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
+<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
+<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
+<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
+<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
+<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
+<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<style type="text/css">.divContorPanel{display:none}</style>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>
