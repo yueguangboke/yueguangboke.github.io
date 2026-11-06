@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/7559.html"/>
+	<title>Hugo搭建静态网站教程-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>Hugo搭建静态网站教程</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/7559.html" rel="bookmark">Hugo搭建静态网站教程</a></h1>
+	<div class="post-meta">
+		2026-8-30 22:14:30 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 1 | 
+		浏览: <span class="AddView" id="spn7559" data-id="7559"></span>
+	</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>之前我介绍了Cloudflare Pages，GitHub Pages等静态网站托管平台，那么，用户如果想搭建一个静态网站，还需要一个静态网站生成软件，在大量的同类工具里，例如Hexo、Jekyll等等，Hugo是速度最快，而且上手也最容易的一个选择，由于Hugo是Go语言编写，速度极快，几千页的网站能在几秒钟生成完毕，这也是目前个人网站搭建平台最优的选择之一，下面我就介绍一下如何使用Hugo搭建一个静态网站。</p>
+
+<p><strong>第一步：安装Hugo</strong></p>
+
+<p>安装Hugo之前，首先要先从下面的两个地址来安装Git和Go：</p>
+
+<p>Git下载地址：https://git-scm.com/install/</p>
+
+<p>Go下载地址：https://go.dev/dl/</p>
+
+<p>安装完成之后，就可以从下面的地址来安装Hugo：</p>
+
+<p>Hugo下载地址：https://github.com/gohugoio/hugo/releases/latest</p>
+
+<p>地址里有很多个Hugo版本，建议选择下载 Hugo Extended 这个版本，大多数包管理器默认安装的就是这个版本。</p>
+
+<p>对于<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>系统来说，Hugo本身只有一个EXE文件，下载后将其放在任意目录均可，但该目录需要在&ldquo;系统变量&rdquo;的Path里才行，比如C:\Windows目录。</p>
+
+<p>之后，打开cmd或者powershell，输入hugo version可以查看当前Hugo程序的版本号。</p>
+
+<p><strong>第二步：创建站点</strong></p>
+
+<p>安装好之后，就可以使用Hugo来搭建网站了。</p>
+
+<p>先创建一个目录，然后用一条命令就能生成一个新静态网站的基础目录结构：（本例创建的站点名为mysite，大家可以自定义）：</p>
+
+<p>hugo new site mysite</p>
+
+<p>之后，我们会看到当前目录新增了一个mysite的文件夹，这个文件夹就是Hugo的工作目录。</p>
+
+<p>下面简单说明几个关键目录的作用：</p>
+
+<p>content/：存放你的文章和页面内容（Markdown 文件）</p>
+
+<p>layouts/：网站模板文件</p>
+
+<p>static/：静态资源，比如图片、字体，会原样复制到最终生成的网站中</p>
+
+<p>themes/：主题存放目录</p>
+
+<p>hugo.toml：站点的核心配置文件</p>
+
+<p>修改 hugo.toml 文件，可以修改网站的语言、标题、网址、分页、permalinks等功能。</p>
+
+<p><strong>第三步：安装主题样式</strong></p>
+
+<p>Hugo 本身不自带任何样式，需要单独安装主题。这里以轻量、简洁著称的 PaperMod 主题为例，用 Git 子模块的方式引入：</p>
+
+<p>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod</p>
+
+<p>之后编辑 hugo.toml ，在文件中加入下面这一行，指定使用这个主题：</p>
+
+<p>theme = &quot;PaperMod&quot;</p>
+
+<p>如果不用Git子模块，也可以直接从GitHub仓库下载该主题的压缩包，解压到 themes/ 目录下即可，效果是一样的。</p>
+
+<p><strong>第四步：写文章</strong></p>
+
+<p>创建好了站点后，现在网站中还什么内容都没有，执行下方命令创建一篇markdown格式的文章：</p>
+
+<p>hugo new posts/hello-world.md</p>
+
+<p>生成的文件位于 content/posts/hello-world.md，打开后大致长这样：</p>
+
+<p>---<br />
+title: &quot;Hello World&quot;<br />
+date: 2026-08-30T10:00:00+08:00<br />
+draft: true<br />
+---</p>
+
+<p>顶部用 --- 包裹起来的部分是文章的配置信息，用来定义标题、发布时间、是否为草稿、标签、目录等元信息。正文部分使用标准 Markdown 语法编写就可以了，支持标题、列表、代码块、图片等常见格式。</p>
+
+<p>在顶部加入 tags 和 categories 字段，配合主题自带的归档页面，可以自动生成标签云和分类列表。</p>
+
+<p>默认新建文章为草稿状态，必须将 draft 改为 false，上线后才能正常展示。</p>
+
+<p>把图片放进 static/images/ 目录，在文章中用 /images/xxx.png 的相对路径引用即可。</p>
+
+<p><strong>第五步：预览并生成静态文件</strong></p>
+
+<p>一切准备就绪后，可以使用下面的命令，启动本地开发服务器，实时预览效果：</p>
+
+<p>hugo server</p>
+
+<p>命令执行后，在浏览器打开 http://localhost:1313 就能看到网站了。修改任何文件保存后，页面会自动刷新，不需要手动重启服务。</p>
+
+<p>确认内容和样式都没问题之后，执行下面的命令生成最终的静态网站：</p>
+
+<p>hugo</p>
+
+<p>Hugo会把所有内容编译到 public/ 目录下，这里面的文件就是可以直接部署的完整网站，全是纯 HTML、CSS 和 JS，不依赖任何后端服务。把这个目录发布到Cloudflare Pages或GitHub Pages等静态网站托管平台，即可完成部署上线，具体如何部署，可参考我之前的两篇文章。</p>
+
+<p>如果对于页面不满意，可以修改模板，强烈建议使用目前的Codex、Antigravity或Trae等AI编程工具来修改模板，效率非常高。</p>
+
+<p><strong>小结</strong></p>
+
+<p>总的来说，整个流程走下来其实并不复杂：安装 Hugo、初始化站点、装主题、写 Markdown、本地预览、生成静态文件、推送部署。相比传统的 CMS 建站方式，Hugo 的好处在于内容都是纯文本文件，可以用 Git 做版本管理，也不用操心数据库和服务器安全问题，特别适合个人博客、文档站点这类以内容为主的场景。</p>
+<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="Hugo搭建静态网站教程" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note7559"></span><a href="javascript:commYea(7559);" id="dig7559">顶一下 ▲</a>(<span id="sdig7559"><Script language="javascript" type="text/javascript">showDig("7559");</script></span>) &nbsp; <a href="javascript:commNay(7559);" id="down7559">踩一下 ▼</a>(<span id="sdown7559"><Script language="javascript" type="text/javascript">showDown("7559");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的308自动重定向问题</a></div><div class="next_content">下一篇 » <a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/7558.html">解决Cloudflare Pages的308自动重定向问题</a></p><p class="mutualitylist"><a href="/archives/7519.html">Cloudflare Pages搭建个人网站指南</a></p><p class="mutualitylist"><a href="/archives/7518.html">GitHub Pages搭建个人网站指南</a></p><p class="mutualitylist"><a href="/archives/7347.html">放弃百度站内搜索</a></p><p class="mutualitylist"><a href="/archives/7122.html">制作匿名举报网站的方法</a></p><p class="mutualitylist"><a href="/archives/7100.html">防止网站被黑帽SEO利用</a></p><p class="mutualitylist"><a href="/archives/6839.html">免费运营维护网站指南</a></p><p class="mutualitylist"><a href="/archives/6574.html">网站SSL证书出现错误和解决过程</a></p><p class="mutualitylist"><a href="/archives/6511.html">服务器启用HSTS协议</a></p><p class="mutualitylist"><a href="/archives/6510.html">服务器禁用TLS 1.0协议</a></p><p class="mutualitylist"><a href="/archives/6380.html">通过gzip和nginx来提高网站打开速度</a></p><p class="mutualitylist"><a href="/archives/6287.html">Windows IIS日志文件分析神器</a></p><p class="mutualitylist"><a href="/archives/6051.html">十大网站创业方向</a></p><p class="mutualitylist"><a href="/archives/6022.html">谷歌提醒网站管理：疫情期间切勿关站 会影响后续排名</a></p><p class="mutualitylist"><a href="/archives/5780.html">IIS子目录web.config与主站冲突解决方法</a></p><p class="mutualitylist"><a href="/archives/5611.html">SSL的安全配置和检测</a></p><p class="mutualitylist"><a href="/archives/5594.html">IIS通过URL重写实现防盗链</a></p><p class="mutualitylist"><a href="/archives/5571.html">BT天堂站长被判刑三年罚款八十万</a></p><p class="mutualitylist"><a href="/archives/5523.html">WordPress Hestia主题的定制和优化</a></p><p class="mutualitylist"><a href="/archives/5520.html">阿里云服务器迁移</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-250746">
+		<div id="div-comment-250746" class="comment-body">
+		<div class="comment-author vcard">
+		<div style="float:right">1</div><cite class="fn"><a name="cmt250746">阳光星河</a></cite> &nbsp; <span class="says">说道：</span>		</div>
+		<div class="comment-meta commentmetadata">		</div>
+		意思是我的虚拟主机玩不了呗 <!--rev250746--><a style="display:none;" id="AjaxCommentEnd250746"></a>
+		<div class="reply"><span style="float:left" class="comment-meta commentmetadata">2026/9/27 21:03:29</span>		
+		<span id="note250746"></span><a href="javascript:commDig(250746);">支持</a>(<span id="sdig250746">1</span>)&nbsp;<a href="javascript:commDown(250746);">反对</a>(<span id="sdown250746">0</span>)&nbsp;<a class='comment-reply-link' href='#respond' onclick="RevertComment('250746')">回复</a>		</div>
+		</div>
+	</li>
+</ol>
+<ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	<div id="comment-form">
+<div id="respond" class="respond">
+<h3 id="comments-respond">发表留言</h3>
+<div class="cancel-comment-reply">
+<a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">点击这里取消回复。</a>
+</div>
+<form action="/?act=cmt&amp;key=8f435ceb" method="post" id="frmSumbit" target="_self">
+<input type="hidden" name="inpId" id="inpId" value="7559" />
+	<input type="hidden" name="inpArticle" id="inpArticle" value="" />
+	<input type="hidden" name="inpRevID" id="inpRevID" value="" />
+<input type="text" name="inpName" id="inpName"  value="名称" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="1" />
+<input type="text" name="inpEmail" id="inpEmail" value="邮箱" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="2" />
+<input type="text" name="inpHomePage" id="inpHomePage" value="网站链接" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="3" />
+
+<textarea name="txaArticle" id="txaArticle" cols="100%" rows="10" tabindex="5"  onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('commentSubmit').click();return false};"></textarea>
+<br />
+<p style="display: none;"><input type="checkbox" name="chkRemember" checked="true" id="chkRemember" /> <label for="chkRemember">记住我,下次回复时不用重新输入个人信息</label></p>
+<input name="btnSumbit" type="submit" id="commentSubmit" tabindex="6" value="提交 (Ctrl+Enter)" onclick="JavaScript:return VerifyMessage()"/>
+</form>
+</div>
+</div>
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (680)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(262)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(184)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1028)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(684)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(690)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(691)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(987)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(601)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(403)</a></li>
+<li><a href="/archives/7557.html" title="推特推出全新“原创内容奖励计划”">推特推出全新“原创内容奖励计划”(688)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7567</li><li>评论总数:199563</li><li>浏览总数:74866202</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/?act=vrs">[查看权限]</a></span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>
