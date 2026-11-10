@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>页面不存在</title>
+  <style>
+    /* 全局重置 & 黑白灰基调，适配系统深浅色 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f8f9fa;  /* 浅色默认 */
+      color: #1e1e1e;
+      padding: 1.5rem;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* 深色模式 (系统偏好) */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #121212;
+        color: #e8e8e8;
+      }
+      .card {
+        background-color: #1e1e1e;
+        border-color: #333;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+      }
+      .divider {
+        background: #333;
+      }
+      .btn-home {
+        background: #2a2a2a;
+        color: #f0f0f0;
+        border-color: #444;
+      }
+      .btn-home:hover {
+        background: #3a3a3a;
+        border-color: #666;
+      }
+      .btn-home:active {
+        background: #222;
+      }
+      .status-code {
+        color: #d0d0d0;
+      }
+      .message {
+        color: #b0b0b0;
+      }
+      .glow-line {
+        background: linear-gradient(90deg, transparent, #666, transparent);
+      }
+    }
+
+    /* 卡片主体 — 干净、留白、细腻 */
+    .card {
+      max-width: 520px;
+      width: 100%;
+      background-color: #ffffff;
+      border-radius: 48px;
+      padding: 3rem 2.5rem;
+      border: 1px solid #e6e6e6;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+      transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      text-align: center;
+      backdrop-filter: blur(2px);
+    }
+
+    /* 大号 404 数字 — 极简且有力 */
+    .status-code {
+      font-size: 8rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #1e1e1e;
+      margin-bottom: 0.25rem;
+      transition: color 0.2s ease;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    /* 装饰性细线 — 体现质感 */
+    .divider {
+      width: 64px;
+      height: 2px;
+      background: #d0d0d0;
+      margin: 1rem auto 1.5rem auto;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 550;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+    }
+
+    .message {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4a4a4a;
+      max-width: 340px;
+      margin: 0 auto 2.2rem auto;
+      transition: color 0.2s ease;
+    }
+
+    /* 按钮 — 黑白系，轻量，有细微交互 */
+    .btn-home {
+      display: inline-block;
+      padding: 0.85rem 2.6rem;
+      background: #f0f0f0;
+      color: #1e1e1e;
+      border: 1px solid #ccc;
+      border-radius: 60px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-home:hover {
+      background: #e6e6e6;
+      border-color: #aaa;
+      box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.08);
+      transform: scale(1.01);
+    }
+
+    .btn-home:active {
+      background: #d5d5d5;
+      transform: scale(0.97);
+      border-color: #888;
+    }
+
+    /* 轻量装饰 — 一条淡淡的渐变线，增加层次 */
+    .glow-line {
+      width: 80px;
+      height: 2px;
+      margin: 2rem auto 0 auto;
+      background: linear-gradient(90deg, transparent, #bbb, transparent);
+      border-radius: 100%;
+      opacity: 0.5;
+      transition: background 0.2s ease;
+    }
+
+    /* 自动倒计时提示 — 细小，不抢眼 */
+    .footnote {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.4px;
+      opacity: 0.55;
+      font-weight: 400;
+      transition: opacity 0.2s ease;
+    }
+
+    .footnote span {
+      display: inline-block;
+      min-width: 1.2rem;
+      font-weight: 500;
+    }
+
+    /* 手机端精细调整 */
+    @media (max-width: 480px) {
+      .card {
+        padding: 2.5rem 1.8rem;
+        border-radius: 36px;
+      }
+      .status-code {
+        font-size: 6rem;
+      }
+      .title {
+        font-size: 1.3rem;
+      }
+      .message {
+        font-size: 0.9rem;
+        padding: 0 0.2rem;
+      }
+      .btn-home {
+        padding: 0.75rem 2.2rem;
+        width: 100%;
+        max-width: 260px;
+      }
+    }
+
+    /* 极窄屏幕或小折叠 */
+    @media (max-width: 380px) {
+      .card {
+        padding: 2rem 1.2rem;
+      }
+      .status-code {
+        font-size: 4.8rem;
+      }
+    }
+
+    /* 暗色模式额外微调 (仅针对卡片内部，已全局适配) */
+    @media (prefers-color-scheme: dark) {
+      .footnote {
+        opacity: 0.4;
+      }
+      .glow-line {
+        background: linear-gradient(90deg, transparent, #555, transparent);
+      }
+    }
+  </style>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4c883bb3fd82099c8817b0063a78be5f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+  <div class="card" role="main" aria-labelledby="error-heading">
+    <!-- 大号 404 数字 -->
+    <div class="status-code" aria-hidden="true">404</div>
+
+    <!-- 装饰分隔线 -->
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- 主标题 -->
+    <h1 id="error-heading" class="title">页面迷路了</h1>
+
+    <!-- 描述信息 -->
+    <p class="message">
+      您要找的页面可能已被移动、删除，或从未存在。<br>
+      不如回到首页重新开始？
+    </p>
+
+    <!-- 主要操作：返回首页（同时作为备用跳转） -->
+    <a href="/" class="btn-home" id="homeLink">← 返回首页</a>
+
+    <!-- 自动跳转倒计时提示 (仅文本，不干扰) -->
+    <div class="footnote" aria-live="polite">
+      <span id="countdownDisplay">5</span> 秒后自动跳转
+    </div>
+
+    <!-- 装饰性细线 (视觉平衡) -->
+    <div class="glow-line" aria-hidden="true"></div>
+  </div>
+
+<!-- 百度统计原有代码后面 -->
+<script>
+_hmt.push(['_setAutoPageview', false]); // 关闭自动PV统计
+_hmt.push(['_trackPageview', window.location.pathname + '?404']); 
+</script>
+
+  <script>
+    (function() {
+      "use strict";
+
+      // 目标首页 URL (默认根路径，可修改为具体地址)
+      const HOME_URL = '/';
+
+      // 倒计时秒数
+      let secondsLeft = 10;
+      const countdownElement = document.getElementById('countdownDisplay');
+      const homeLink = document.getElementById('homeLink');
+
+      // 更新倒计时显示
+      function updateCountdown() {
+        if (countdownElement) {
+          countdownElement.textContent = secondsLeft;
+        }
+      }
+
+      // 执行跳转
+      function redirectToHome() {
+        window.location.href = HOME_URL;
+      }
+
+      // 开始倒计时
+      function startCountdown() {
+        // 若秒数 <=0 直接跳转
+        if (secondsLeft <= 0) {
+          redirectToHome();
+          return;
+        }
+
+        // 初始显示
+        updateCountdown();
+
+        // 设定定时器 (每秒更新)
+        const timer = setInterval(function() {
+          secondsLeft -= 1;
+
+          if (secondsLeft <= 0) {
+            // 倒计时归零，清除定时器并跳转
+            clearInterval(timer);
+            updateCountdown();    // 显示 0
+            redirectToHome();
+          } else {
+            updateCountdown();
+          }
+        }, 1000);
+
+        // 将 timer 保存到 window 防止意外垃圾回收 (其实无妨)
+        window._countdownTimer = timer;
+      }
+
+      // 如果用户点击首页链接，取消倒计时，由链接默认行为跳转 (但仍可增强)
+      if (homeLink) {
+        homeLink.addEventListener('click', function(e) {
+          // 清除定时器，避免冲突 (但页面会跳转，清除是出于优雅)
+          if (window._countdownTimer) {
+            clearInterval(window._countdownTimer);
+            window._countdownTimer = null;
+          }
+          // 不阻止默认行为，让链接正常跳转
+        });
+      }
+
+      // 额外：如果用户使用键盘或辅助技术点击，同样可清除定时器 (但没必要)
+
+      // 启动倒计时
+      startCountdown();
+
+      // 可选的：页面卸载时清除定时器 (防止内存泄漏)
+      window.addEventListener('beforeunload', function() {
+        if (window._countdownTimer) {
+          clearInterval(window._countdownTimer);
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>

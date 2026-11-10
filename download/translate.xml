@@ -1,0 +1,10 @@
+<FeedFlareUnit>
+        <Catalog>
+            <Title>Translate Chinese into English</Title>
+            <Description>A static FeedFlare unit translates Chinese posts into English language</Description>
+        </Catalog>
+       <FeedFlare>
+            <Text>Translate into English</Text>
+            <Link href="http://64.233.179.104/translate_c?hl=en&amp;langpair=zh-CN%7Cen&amp;u=${link}" />
+        </FeedFlare>
+</FeedFlareUnit>
