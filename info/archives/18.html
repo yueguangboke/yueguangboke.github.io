@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="stylesheet" type="text/css" media="all" href="/info/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/info/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/info/archives/18.html"/>
+	<title>用VB编写键盘拦截程序-网站运营优化</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/info/" title="网站运营优化" rel="home bookmark">网站运营优化</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/info/" target="_self">首页</a></li><li><a href="/info/cat/news.html" target="_self">动态</a></li><li><a href="/info/cat/review.html" target="_self">评论</a></li><li><a href="/info/cat/plan.html" target="_self">策划</a></li><li><a href="/info/cat/design.html" target="_self">设计</a></li><li><a href="/info/cat/service.html" target="_self">运营</a></li><li><a href="/info/cat/seo.html" target="_self">SEO</a></li><li><a href="/info/cat/application.html" target="_self">应用</a></li><li><a href="/info/cat/server.html" target="_self">服务器</a></li><li><a href="/info/cat/program.html" target="_self">编程</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate9 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/info/">网站运营优化</a> &raquo; <a href="/info/cat/program.html" title="查看 编程 中的全部文章">编程</a> &raquo; <span>用VB编写键盘拦截程序</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/info/archives/18.html" rel="bookmark">用VB编写键盘拦截程序</a></h1>
+	<div class="post-meta">
+		2007年2月22日 | 
+		分类: <a href="/info/cat/program.html" title="编程" rel="category tag">编程</a> | 
+		评论: 0</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+<p style="text-align:center"><img src="/logo/Script.jpg" alt="用VB编写键盘拦截程序" /></p>
+		<p>我们知道，在一些程序中，有一些快捷方式(如：Shift键最小化、ESC键退出、Ctrl＋S存盘、Alt＋x退出等等)。以前有一些介绍使用Win32 API可以做到，但过于繁琐，其实VB本身已经给我们提供了这个功能。</p>
+<p>我们来新建一个窗体Form1，对于键盘操作可以看到有三个事件KeyPress()，KeyDown和KeyUp，下面我对它们分别介绍：</p>
+<p>KeyPress()事件是当用户按下和松开一个 ANSI 键时发生(ANSI是可见ASCII字符1－127)。</p>
+<p>语法</p>
+<p>Private Sub object_KeyPress([index As Integer,]keyascii As Integer)</p>
+<p>KeyPress 事件语法包含下列部分：</p>
+<p>部分 描述</p>
+<p>object 一个对象表达式，其值是&ldquo;应用于&rdquo;列表中的一个对象。</p>
+<p>index 一个整数，它用来唯一标识一个在控件数组中的控件（仅有控件数组时才有）。</p>
+<p>keyascii 是返回一个标准数字 ANSI 键代码的整数。Keyascii 通过引用传递，对它进行改变可给对象</p>
+<p>发送一个不同的字符。将 keyascii 改变为 0 时可取消击键，这样一来对象便接收不到字符。</p>
+<p>说明</p>
+<p>具有焦点的对象接收该事件。一个窗体仅在KeyPreview 属性被设置为 True 时才能接收该事件。一个 KeyPress 事件可以引用任何可打印的键盘字符，一个来自标准字母表的字符或少数几个特殊字符之一的字符与 CTRL 键的组合，以及 ENTER 或BACKSPACE键。KeyPress()事件过程在截取 TextBox 或 ComboBox 控件所输入的击键时是非常有用的。它可立即测试击键的有效性或在字符输入时对其进行格式处理。改变 keyascii 参数的值会改变所显示的字符。</p>
+<p>可使用下列表达式将 keyascii 参数转变为一个字符：</p>
+<p>Chr(KeyAscii)</p>
+<p>然后执行字符串操作，并将该字符反译成一个控件可通过该表达式解释的 ANSI 数字：</p>
+<p>KeyAscii = Asc(char)</p>
+<p>在KeyPress()处理不了的功能可以由KeyDown()和KeyUp()事件来处理：</p>
+<p>语法</p>
+<p>Private Sub object_KeyDown([index As Integer,]keycode As Integer, shift As Integer)</p>
+<p>Private Sub object_KeyUp([index As Integer,]keycode As Integer, shift As Integer)</p>
+<p>KeyDown 和 KeyUp 事件包括下列部分：</p>
+<p>部分 描述</p>
+<p>object 一个对象表达式，其值是&ldquo;应用于&rdquo;列表中的一个对象。</p>
+<p>index 是一个整数，它用来唯一标识一个在控件数组中的控件（仅有控件数组时才有）。</p>
+<p>keycode 是一个键代码，诸如 vbKeyF1 （ F1 键）或 vbKeyHome （ HOME 键）。</p>
+<p>shift 是在该事件发生时响应 SHIFT ,CTRL 和 ALT 键的状态的一个整数。shift、CTRL、ALT 键在这些位分别对应于值 1、2 和 4。例如：如果 CTRL 和 ALT 这两个键都被按下，则 shift 的值为 6。</p>
+<p>说明</p>
+<p>对于这两个事件来说，带焦点的对象都接收所有击键。一个窗体只有在不具有可视的和有效的控件时才可以获得焦点。虽然KeyDown()和KeyUp()事件可应用于大多数键，它们最经常地还是应用于：扩展的字符键如功能键、定位键、键盘修饰键和按键的组合、区别数字小键盘和常规数字键；在需要对按下和松开一个键都响应时，可使用 KeyDown 和 KeyUp 事件过程。</p>
+<p>下列情况不能引用 KeyDown 和 KeyUp 事件：窗体有一个 CommandButton 控件，并且 Default 属性设置为 True 时的 ENTER 键。窗体有一个 CommandButton 控件，并且 Cancel 属性设置为 True 时的 ESC 键、TAB键，KeyDown 和 KeyUp 用两种参数解释每个字符的大写形式和小写形式：keycode &mdash;显示物理的键（将 A 和 a 作为同一个键返回）和shift&mdash;显示shift＋key键的状态而且返回A或a其中之一。</p>
+<p>如果需要测试 shift 参数，可使用该参数中定义各位的 shift 常数。该常数有下列值：</p>
+<p>常数 值 描述</p>
+<p>vbShiftMask 1 HIFT 键的位</p>
+<p>屏蔽。</p>
+<p>VbCtrlMask 2 CTRL 键的</p>
+<p>位屏蔽。</p>
+<p>VbAltMask 4 ALT 键的位</p>
+<p>屏蔽。</p>
+<p>该常数用作位屏蔽，它可被用来测试任何键组合。</p>
+<p>注意：如果 KeyPreview 属性被设置为 True，则一个窗体先于该窗体上的控件接收到此事件。可用 KeyPreview 属性来创建全局键盘处理例程。</p>
+<p>了解了以上知识，我们可以制作出非常完美而且带有快捷键的程序，例如我们在一个程序中要用Ctrl＋S存盘，Shift最小化，Alt＋X和ESC退出：</p>
+<p>首先启动vb选择新建EXE文件，在Form1窗体上拉一个TextBox，并把Form1的KeyPreview属性设为True,双击Form1,选择Form的KeyPress事件，输入如下代码：</p>
+<p>Private Sub Form_KeyPress(KeyAscii as Integer) 'Esc键退出，VbEscape可以用27代替</p>
+<p>If KeyAscii=VbEscape then End</p>
+<p>End Sub</p>
+<p>在Form的KeyDown事件中输入如下代码：</p>
+<p>Private Sub Form_KeyDown(KeyCode as Integer,Shift as Integer) '处理Ctrl＋X,Shift,Alt＋X</p>
+<p>If Shift=2 And KeyCode=VbKeyS Then Print ＃FileNum,Form1.Text1.Text 'Ctrl＋S存盘，VbKeyS=83</p>
+<p>If shift=2 then Form1.WindowState=1 'Shift最小化</p>
+<p>If Shift=4 And KeyCode=VbKeyX Then End 'Alt＋X退出，VbkeyX=88</p>
+<p>End Sub</p>
+<p>在Form的Load事件中输入如下代码：</p>
+<p>Private Sub Form_load()</p>
+<p>Dim FileNum as integer</p>
+<p>FileNum=FreeFile</p>
+<p>Open App.Path＋&ldquo;\Sample.txt&quot; For Append As ＃FileNum</p>
+<p>End Sub</p>
+<p>运行它就可以实现我们所要求的功能了，举这个例子只是抛砖引玉的作用。</p>
+		</div>
+	<div class="post-bottom"><div class="post-tags-pig"><a href="/info/tag/Script.html" rel="tag">源代码</a></div></div><!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/info/archives/17.html" title="VB中使用系统注册表">VB中使用系统注册表</a></div><div class="next_content">下一篇 » <a href="/info/archives/19.html" title="VB下几个有用的函数">VB下几个有用的函数</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/info/archives/17.html">VB中使用系统注册表</a></p><p class="mutualitylist"><a href="/info/archives/16.html">VB编程中的一些经验</a></p><p class="mutualitylist"><a href="/info/archives/15.html">用VB学做“黑客”程序</a></p><p class="mutualitylist"><a href="/info/archives/14.html">用VB编写网络寻呼机</a></p><p class="mutualitylist"><a href="/info/archives/13.html">使用ASP产生安装向导的主页</a></p><p class="mutualitylist"><a href="/info/archives/6.html">ASP中的进度条功能</a></p><p class="mutualitylist"><a href="/info/archives/2.html">利用ASP开发Web应用</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.baidu.com/baidu"><input type="text" name="word" size="12" id="edtSearch" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="ie" type="hidden" value="utf-8" /><input name="tn" type="hidden" value="bds" /><input name="cl" type="hidden" value="3" /><input name="ct" type="hidden" value="2097152" /><input name="si" type="hidden" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/info/cat/news.html">动态<span class="article-nums"> (91)</span></a></li><li class="li-cate cate-2"><a href="/info/cat/review.html">评论<span class="article-nums"> (230)</span></a></li><li class="li-cate cate-3"><a href="/info/cat/service.html">运营<span class="article-nums"> (73)</span></a></li><li class="li-cate cate-4"><a href="/info/cat/application.html">应用<span class="article-nums"> (63)</span></a></li><li class="li-cate cate-5"><a href="/info/cat/server.html">服务器<span class="article-nums"> (22)</span></a></li><li class="li-cate cate-6"><a href="/info/cat/seo.html">搜索优化<span class="article-nums"> (80)</span></a></li><li class="li-cate cate-7"><a href="/info/cat/plan.html">策划<span class="article-nums"> (84)</span></a></li><li class="li-cate cate-8"><a href="/info/cat/design.html">设计<span class="article-nums"> (30)</span></a></li><li class="li-cate cate-9"><a href="/info/cat/program.html">编程<span class="article-nums"> (68)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/info/archives/742.html" title="互联网行业常用黑话">互联网行业常用黑话(3081)</a></li>
+<li><a href="/info/archives/741.html" title="中国互联网“铁王座”争夺史">中国互联网“铁王座”争夺史(1589)</a></li>
+<li><a href="/info/archives/740.html" title="李兴平：中国站长第一人">李兴平：中国站长第一人(5289)</a></li>
+<li><a href="/info/archives/739.html" title="10款B2B营销人员必备的社会化媒体工具">10款B2B营销人员必备的社会化媒体工具(3664)</a></li>
+<li><a href="/info/archives/738.html" title="大型网站SEO策划方案">大型网站SEO策划方案(8531)</a></li>
+<li><a href="/info/archives/737.html" title="友情链接的交换技巧">友情链接的交换技巧(3063)</a></li>
+<li><a href="/info/archives/736.html" title="传统企业网站的SEO诊断和优化">传统企业网站的SEO诊断和优化(3595)</a></li>
+<li><a href="/info/archives/735.html" title="搜索引擎算法不断迭变，黑帽排名优化将在劫难逃">搜索引擎算法不断迭变，黑帽排名优化将在劫(1326)</a></li>
+<li><a href="/info/archives/734.html" title="网站内链优化建设具有何重要意义？">网站内链优化建设具有何重要意义？(1329)</a></li>
+<li><a href="/info/archives/733.html" title="运营干货：101个最吸引人的文章标题模板">运营干货：101个最吸引人的文章标题模板(5647)</a></li>
+<li><a href="/info/archives/732.html" title="SEO引流技巧：内容+渠道方是推广优化的主导">SEO引流技巧：内容+渠道方是推广优化的(4189)</a></li>
+<li><a href="/info/archives/731.html" title="SEO干货：什么样的页面才算是高质量的页面">SEO干货：什么样的页面才算是高质量的页(2037)</a></li>
+<li><a href="/info/archives/730.html" title="互联网自媒体撰稿人付费阅读的特殊价值分析">互联网自媒体撰稿人付费阅读的特殊价值分析(1741)</a></li>
+<li><a href="/info/archives/729.html" title="SEO拼的就是高质量的原创文章">SEO拼的就是高质量的原创文章(3351)</a></li>
+<li><a href="/info/archives/728.html" title="SEO企业文案思路：给的再多，不如懂我">SEO企业文案思路：给的再多，不如懂我(1862)</a></li>
+<li><a href="/info/archives/727.html" title="从SEO角度出发做网站策划">从SEO角度出发做网站策划(1146)</a></li>
+<li><a href="/info/archives/726.html" title="教你12招，彻底解决选择SEO服务公司的难题">教你12招，彻底解决选择SEO服务公司的(971)</a></li>
+<li><a href="/info/archives/725.html" title="如果你是百度，你会让什么排在前面？">如果你是百度，你会让什么排在前面？(3909)</a></li>
+<li><a href="/info/archives/724.html" title="站长须知的14个健康生活细节">站长须知的14个健康生活细节(3219)</a></li>
+<li><a href="/info/archives/723.html" title="你的SEO博客有存在的必要吗？">你的SEO博客有存在的必要吗？(3501)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>最新留言</h4>
+	<ul class="divComments">
+	   <ul><li style="text-overflow:ellipsis;"><a href="/info/archives/440.html#cmt2273" title="2023/7/16 22:15:15 post by 牛逼">牛逼的文章，2023年居然还能看到。。不</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/725.html#cmt2267" title="2021/8/16 9:26:20 post by 未来人">现在的百度，不是什么最吸引人，不是什么最</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2265" title="2021/7/11 16:49:01 post by 梦易寒">可惜hao123和4399的时代都快褪去</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/737.html#cmt2262" title="2021/5/25 15:52:25 post by 山普">网站相关性，友情链接存在时间越长，越稳定</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/395.html#cmt2259" title="2020/11/30 13:15:34 post by 蜗牛TV">动态产生XML文档的几种ASP方式？</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2230" title="2019/8/9 22:16:40 post by XiGuaMP4">确实很牛逼的站长 </a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2229" title="2019/7/18 11:48:13 post by 爱吃">李兴平从一个一无所知的初中生，到hao1</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/664.html#cmt2223" title="2019/5/5 11:35:13 post by 李耀耀">域名也被盗了  做了10年的网站，现在焦</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2222" title="2019/2/16 16:09:11 post by 香蕉皮">现在的好123已经不能要了</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/263.html#cmt2213" title="2018/7/30 11:29:49 post by 礼品">谢谢指导,希望我的网页会有更好的成绩.</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>标签列表</h4>
+	<ul class="divTags">
+	   <ul><li class="tag-name tag-name-size-2"><a href="/info/tag/IE.html">浏览器<span class="tag-count"> (12)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Script.html">源代码<span class="tag-count"> (36)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Programming.html">教程<span class="tag-count"> (41)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Internet.html">网络<span class="tag-count"> (47)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Windows.html">视窗<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/News.html">动态<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-5"><a href="/info/tag/Seo.html">搜索优化<span class="tag-count"> (71)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/WebDesign.html">网站设计<span class="tag-count"> (34)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Resource.html">资源<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/BlogTips.html">博客技巧<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Blog.html">博客<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Tech.html">业界<span class="tag-count"> (63)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Software.html">软件<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/Money.html">广告<span class="tag-count"> (4)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Website.html">网站<span class="tag-count"> (15)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/WordPress.html">网志<span class="tag-count"> (6)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GoogleMaps.html">谷歌地图<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/GoogleEarth.html">谷歌地球<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Sns.html">社交网络<span class="tag-count"> (8)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Google.html">谷歌<span class="tag-count"> (33)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Baidu.html">百度<span class="tag-count"> (31)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microsoft.html">微软<span class="tag-count"> (16)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Firefox.html">火狐<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Twitter.html">推特<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Webmaster.html">站长技巧<span class="tag-count"> (30)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Chrome.html">谷歌浏览器<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/WebPlan.html">网站策划<span class="tag-count"> (55)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/QQ.html">腾讯<span class="tag-count"> (24)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Mobile.html">手机<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Ecommerce.html">电子商务<span class="tag-count"> (17)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/AdSense.html">网赚<span class="tag-count"> (9)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microblog.html">微博<span class="tag-count"> (20)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GooglePlus.html">谷歌社交<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Facebook.html">脸书<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Apple.html">苹果<span class="tag-count"> (9)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:742</li><li>评论总数:1368</li><li>浏览总数:1990522</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/info/" target="_blank">月光微博客</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/anni/" target="_blank">安妮宝贝的文集</a></li><li><a href="/werther/" target="_blank">少年维特的烦恼</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><script type="text/javascript" src="/script/stat.js"></script></ul>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/info/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/3686.html"/>
@@ -45,12 +45,10 @@
 		2013-12-7 21:8:41 | 
 		作者: 月光 | 
 		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
-		评论: 20 | 
-		浏览: <span class="AddView" id="spn3686" data-id="3686"></span>
-	</div><!-- END post-meta -->
+		评论: 20</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/WebDesign.html" rel="tag"><img src="/logo/WebDesign.gif" alt="网站设计" class="thumb" width="80" height="80" /></a><p>昨天中午Google进行了一次在线讲座，讲述自适应网页设计的概念和方法，维护同一个网页代码，即可使网站在多种浏览设备（从桌面电脑显示器到智能手机或其他移动产品设备）上具有更好的阅读体验，这里我将该讲座内容简要的整理一下。</p><p>1、在HTML头部增加viewport标签。</p><p>在网站HTML文件的开头，增加viewport meta标签告诉浏览器视口宽度等于设备屏幕宽度，且不进行初始缩放。代码如下：</p><p>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;</p><p>这段代码支持<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>、<a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>、IE9以上的浏览器，但不支持IE8以及低于IE8的浏览器。</p><p>2、在CSS文件尾部增加针对不同屏幕分辨率的规则。</p><p>例如使用如下的代码，可以让屏幕宽度低于480像素的设备（如iPhone等），网页侧栏隐藏中部内容栏宽度自动调节。以下代码针对Z-Blog，<a href="/tag/WordPress.html" title="WordPress"  Target="_blank" >WordPress</a>相关标签名称只需修改一下即可。</p><p>@media screen and (max-device-width: 480px) {<br />&nbsp; #divMain{<br />&nbsp; float: none;<br />&nbsp; width:auto;<br />&nbsp; }<br />&nbsp; #divSidebar {<br />&nbsp; display:none;<br />&nbsp; }<br />}</p><p>3、布局宽度使用相对宽度。</p><p>网页总体框架可以使用绝对宽度，但往下的内容框架、侧栏等最好使用相对宽度，这样针对不同分辨率进行修改就方便。当然也可以不用相对宽度，那就需要在 @media screen and (max-device-width: 480px) 里面增加各个div的针对小屏幕的宽度，实际上更麻烦。</p><p>4、页面使用相对字体（非必要）</p><p>在HTML页面上不要使用绝对字体（px），而要使用相对字体（em），对于大多数浏览器来说，通常用 em = px/16 换算，例如16px就等于1em。</p><p>5、图片自适应（非必要）</p><p>img标签的话，只需要设置 max-width: 100%;或width:100%; 语句为：img { max-width: 98%; }</p><p>css加载的background-image如何自适应大小呢，其实CSS3中是可以实现的，添加如下语句：background-size:100% 100%;</p><p>根据上面讲述的几点内容，我针对我博客的CSS进行了一些修改，发现可以从iPhone手机浏览到体验更佳的页面，但有一个问题没有解决，就是顶部导航栏navbar显示有问题，换行后被下面的文章盖住了，不知道怎样能更好地解决这个问题（更新：经过网友提示，在导航栏divNavbar的样式里，加入&nbsp;&nbsp;white-space:nowrap; overflow:hidden;&nbsp; 即可解决这个问题）。</p><p>下图是使用iPhone访问的，经过修改CSS为自适应网页后的月光博客首页页面，看起来比原始的未优化页面好多了吧。</p><p style="text-align: center"><img alt="月光博客" src="/upload/3686_1.jpg" /></p><p>总之，根据上面四步进行修改的话，可以很简单地将一个网站修改为适合多种设备浏览的页面，这对于通过手机访问网站的用户来说，的确是一件好事。</p><p>最后，分享一下Google关于自适应网页设计的讲座的视频地址，<a target="_blank" href="http://v.youku.com/v_show/id_XNjQ5ODkwODI0.html">在线观看请点这里</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/WebDesign.html" rel="tag"><img src="/logo/WebDesign.gif" alt="网站设计" class="thumb" width="80" height="80" /></a><p>昨天中午Google进行了一次在线讲座，讲述自适应网页设计的概念和方法，维护同一个网页代码，即可使网站在多种浏览设备（从桌面电脑显示器到智能手机或其他移动产品设备）上具有更好的阅读体验，这里我将该讲座内容简要的整理一下。</p><p>1、在HTML头部增加viewport标签。</p><p>在网站HTML文件的开头，增加viewport meta标签告诉浏览器视口宽度等于设备屏幕宽度，且不进行初始缩放。代码如下：</p><p>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;</p><p>这段代码支持<a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>、<a href="/tag/Firefox.html" title="Firefox"  Target="_blank" >Firefox</a>、IE9以上的浏览器，但不支持IE8以及低于IE8的浏览器。</p><p>2、在CSS文件尾部增加针对不同屏幕分辨率的规则。</p><p>例如使用如下的代码，可以让屏幕宽度低于480像素的设备（如iPhone等），网页侧栏隐藏中部内容栏宽度自动调节。以下代码针对Z-Blog，<a href="/tag/WordPress.html" title="WordPress"  Target="_blank" >WordPress</a>相关标签名称只需修改一下即可。</p><p>@media screen and (max-device-width: 480px) {<br />&nbsp; #divMain{<br />&nbsp; float: none;<br />&nbsp; width:auto;<br />&nbsp; }<br />&nbsp; #divSidebar {<br />&nbsp; display:none;<br />&nbsp; }<br />}</p><p>3、布局宽度使用相对宽度。</p><p>网页总体框架可以使用绝对宽度，但往下的内容框架、侧栏等最好使用相对宽度，这样针对不同分辨率进行修改就方便。当然也可以不用相对宽度，那就需要在 @media screen and (max-device-width: 480px) 里面增加各个div的针对小屏幕的宽度，实际上更麻烦。</p><p>4、页面使用相对字体（非必要）</p><p>在HTML页面上不要使用绝对字体（px），而要使用相对字体（em），对于大多数浏览器来说，通常用 em = px/16 换算，例如16px就等于1em。</p><p>5、图片自适应（非必要）</p><p>img标签的话，只需要设置 max-width: 100%;或width:100%; 语句为：img { max-width: 98%; }</p><p>css加载的background-image如何自适应大小呢，其实CSS3中是可以实现的，添加如下语句：background-size:100% 100%;</p><p>根据上面讲述的几点内容，我针对我博客的CSS进行了一些修改，发现可以从iPhone手机浏览到体验更佳的页面，但有一个问题没有解决，就是顶部导航栏navbar显示有问题，换行后被下面的文章盖住了，不知道怎样能更好地解决这个问题（更新：经过网友提示，在导航栏divNavbar的样式里，加入&nbsp;&nbsp;white-space:nowrap; overflow:hidden;&nbsp; 即可解决这个问题）。</p><p>下图是使用iPhone访问的，经过修改CSS为自适应网页后的月光博客首页页面，看起来比原始的未优化页面好多了吧。</p><p style="text-align: center"><img alt="月光博客" src="https://static.williamlong.info/upload/3686_1.jpg" /></p><p>总之，根据上面四步进行修改的话，可以很简单地将一个网站修改为适合多种设备浏览的页面，这对于通过手机访问网站的用户来说，的确是一件好事。</p><p>最后，分享一下Google关于自适应网页设计的讲座的视频地址，<a target="_blank" href="http://v.youku.com/v_show/id_XNjQ5ODkwODI0.html">在线观看请点这里</a>。</p>
 <p style="text-align:center"><img src="/logo/WebDesign.jpg" alt="自适应网页设计的方法" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note3686"></span><a href="javascript:commYea(3686);" id="dig3686">顶一下 ▲</a>(<span id="sdig3686"><Script language="javascript" type="text/javascript">showDig("3686");</script></span>) &nbsp; <a href="javascript:commNay(3686);" id="down3686">踩一下 ▼</a>(<span id="sdown3686"><Script language="javascript" type="text/javascript">showDown("3686");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

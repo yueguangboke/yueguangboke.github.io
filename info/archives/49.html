@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="stylesheet" type="text/css" media="all" href="/info/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/info/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/info/archives/49.html"/>
+	<title>SQL Server存储过程编程经验技巧-网站运营优化</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/info/" title="网站运营优化" rel="home bookmark">网站运营优化</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/info/" target="_self">首页</a></li><li><a href="/info/cat/news.html" target="_self">动态</a></li><li><a href="/info/cat/review.html" target="_self">评论</a></li><li><a href="/info/cat/plan.html" target="_self">策划</a></li><li><a href="/info/cat/design.html" target="_self">设计</a></li><li><a href="/info/cat/service.html" target="_self">运营</a></li><li><a href="/info/cat/seo.html" target="_self">SEO</a></li><li><a href="/info/cat/application.html" target="_self">应用</a></li><li><a href="/info/cat/server.html" target="_self">服务器</a></li><li><a href="/info/cat/program.html" target="_self">编程</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate5 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/info/">网站运营优化</a> &raquo; <a href="/info/cat/server.html" title="查看 服务器 中的全部文章">服务器</a> &raquo; <span>SQL Server存储过程编程经验技巧</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/info/archives/49.html" rel="bookmark">SQL Server存储过程编程经验技巧</a></h1>
+	<div class="post-meta">
+		2007年5月27日 | 
+		分类: <a href="/info/cat/server.html" title="服务器" rel="category tag">服务器</a> | 
+		评论: 0</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+<p style="text-align:center"><img src="/logo/Microsoft.jpg" alt="SQL Server存储过程编程经验技巧" /></p>
+		<p>MS SQL Server目前正日益成为WindowNT操作系统上面最为重要的一种数据库管理系统，随着MS　SQL　Server2000的推出，微软的这种数据库服务系统真正的实现了在WindowsNT／2000系列操作系统一统天下的局面，在微软的操作系统上面，没有任何一种数据库系统能与之相抗衡，包括数据库领域的领头羊甲骨文公司的看家数据库系统Oracle在内。不可否认，MS　SQL　Server最大的缺陷就是只能运行在微软自己的操作系统上面，这一点是MS　SQL　Server的致命伤口。但在另一方面却也成了最好的促进剂，促使MS　SQL　Server在自己仅有的&ldquo;土地&rdquo;上面将自己的功能发挥到了极至，最大限度的利用了WindowsNT系列操作系统的各种潜能！作为MS　SQL　Server数据库系统中很重要的一个概念就是存储过程，合理的使用存储过程，可以有效的提高程序的性能；并且将商业逻辑封装在数据库系统中的存储过程中，可以大大提高整个软件系统的可维护性，当你的商业逻辑发生了改变的时候，不再需要修改并编译客户端应用程序以及重新分发他们到为数众多的用户手中，你只需要修改位于服务器端的实现相应商业逻辑的存储过程即可。合理的编写自己需要的存储过程，可以最大限度的利用MS　SQL　Server的各种资源。下面我们来共同看看各种编写MS　SQL　Server存储过程和使用存储过程的技巧经验！</p>
+<p>下面我们讨论的前提都是您有过一定的MS　SQL　Server存储过程的编写经验，下面的各种技巧如果没有特别注明，则同时适用于MS　SQL　Server7．0和MS　SQL　Server2000。</p>
+<p>1、使用OUTPUT类型参数的存储过程的技巧</p>
+<p>一般的存储过程都是直接返回一段记录集给调用者，但是有的时候我们只需要一些存储过程返回的一些参数的值，这时候可以指定存储过程的OUTPUT参数，比如：</p>
+<p>Create　procedure　GetName</p>
+<p>＠uid　nvarchar（1），</p>
+<p>＠usernam　nvarchar（10）＝＇＇　output</p>
+<p>AS</p>
+<p>set　＠username＝＇hongchao＇</p>
+<p>GO</p>
+<p>在上面的存储过程当中我们传递进的参数是＠uid，而参数＠username则在调有的时候不需要传递进去。这样，存储过程会返回给我们参数＠username的值是&lsquo;hongchao&rsquo;。上面的都比较的容易，需要注意的是，当在SQL2000中的时候，如果你的存储过程只有一个参数，并且这个参数是OUTPUT类型的，你必须在调用这个存储过程的时候给这个参数一个初始的值，否则会出现调用错误的情况！</p>
+<p>2、在存储过程中的书写注意事项</p>
+<p>这一点在MS　SQL　Server7．0和MS　SQL　Server2000种有些地方是不一样的，也不知道是不是微软的遗漏，那就是有些系统的关键字在不同的版本之间有所不同，比如关键字level，同样的一句话：</p>
+<p>select　＊　from　users　where　level＝1</p>
+<p>在MS　SQL　Server7当中的存储过程当中运行没有丝毫的问题，但是到了MS　SQL　Server2000当中则会出现运行的错误，原因就是在于在MS　SQL　Server2000中&ldquo;level&rdquo;被当作了关键字（奇怪的是SQL7当中也同样是关键字，却没问题），所以在SQL2000当中，上面的语句应当改为：</p>
+<p>select　＊　from　users　where　［level］＝1</p>
+<p>从上面的例子中我们可以看到，在你编写存储过程的时候，最好在有可能和系统关键字的地方使用&ldquo;［&rdquo;和&ldquo;］&rdquo;将他包围起来，以避免在移植过程中出现的运行错误问题。</p>
+<p>3、在存储过程中使用系统存储过程SP＿Executesql的注意事项</p>
+<p>我们在编写自己的存储过程的时候，往往在很多的情况下，会使用到系统的存储过程SP＿Execute。但是需要的注意的是，如果你在这个存储过程的参数（一般是一段SQL语句）当中进行了临时Table的操作，那末对于调用者来说，这个临时Table是不可见的，也就是说你无法通过临时Table来在调用者和被调用者之间传递值。解决的方法是使用全局临时Table，也就是&ldquo;＃＃&rdquo;开头的Table。</p>
+<p>4、在存储过程中使用临时Table和游标的注意事项</p>
+<p>如果我们的商业逻辑比较复杂，在存储过程当中，就需要一些媒介作为中转台，这时候临时表舅发挥了作用，但是请务必记得在使用完之后，即使删除使用到的临时Table。</p>
+<p>而在存储过程当中想要依次遍历一个记录集的唯一方法就是使用系统游标，同样要注意的是，在使用完成之后及时关闭和销毁游标对象释放他用到的资源。并且不在万不得已的情况下，不要随意使用游标，因为他会占用较多的系统资源，尤其是对于大并发量的情况下，很容易使得系统资源耗尽而崩溃。</p>
+<p>使用临时Table和游标各有利弊，在使用的过程中要适当的利用即可！</p>
+<p>5、在存储过程中调用外部的ActiveX　DLL程序</p>
+<p>有些特殊的情况下，我们可能会需要调用外部的ActiveX　DLL程序，这个时候就需要使用到系统的存储过程sp＿OACreate以及其他的相关系统存储过程，都是以sp＿OA开头的存储过程，可以自由的在自己的存储过程当中调用ActiveX　DLL的各种方法和属性。比如下面的例子：</p>
+<p>DECLARE　＠object　int</p>
+<p>DECLARE　＠hr　int</p>
+<p>DECLARE　＠property　varchar（255）</p>
+<p>DECLARE　＠return　varchar（255）</p>
+<p>DECLARE　＠src　varchar（255），　＠desc　varchar（255）</p>
+<p>－－　建立一个对象（SQLDMO．SQLServer）．</p>
+<p>EXEC　＠hr　＝　sp＿OACreate　＇SQLDMO．SQLServer＇，　＠object OUT</p>
+<p>IF　＠hr　＜＞　0</p>
+<p>BEGIN</p>
+<p>EXEC　sp＿OAGetErrorInfo　＠object，　＠src　OUT，　＠desc　OUT</p>
+<p>SELECT　hr＝convert（varbinary（4），＠hr），　Source＝＠src，　Description＝＠desc</p>
+<p>RETURN</p>
+<p>END</p>
+<p>－－　设置对象的属性．</p>
+<p>EXEC　＠hr　＝　sp＿OASetProperty　＠object，　＇HostName＇，　＇Gizmo＇</p>
+<p>IF　＠hr　＜＞　0</p>
+<p>BEGIN</p>
+<p>EXEC　sp＿OAGetErrorInfo　＠object，　＠src　OUT，　＠desc　OUT</p>
+<p>SELECT　hr＝convert（varbinary（4），＠hr），　Source＝＠src，　Description＝＠desc</p>
+<p>RETURN</p>
+<p>END</p>
+<p>－－　通过OUTPUT参数获取对象的属性值．</p>
+<p>EXEC　＠hr　＝　sp＿OAGetProperty　＠object，　＇HostName＇，　＠property　OUT</p>
+<p>IF　＠hr　＜＞　0</p>
+<p>BEGIN</p>
+<p>EXEC　sp＿OAGetErrorInfo　＠object，　＠src　OUT，　＠desc　OUT</p>
+<p>SELECT　hr＝convert（varbinary（4），＠hr），　Source＝＠src，　Description＝＠desc</p>
+<p>RETURN</p>
+<p>END</p>
+<p>PRINT　＠property</p>
+<p>－－　调用对象的方法</p>
+<p>EXEC　＠hr　＝　sp＿OAMethod　＠object，　＇Connect＇，　NULL，　＇my＿server＇，　＇my＿login＇，　＇my＿password＇</p>
+<p>IF　＠hr　＜＞　0</p>
+<p>BEGIN</p>
+<p>EXEC　sp＿OAGetErrorInfo　＠object，　＠src　OUT，　＠desc　OUT</p>
+<p>SELECT　hr＝convert（varbinary（4），＠hr），　Source＝＠src，　Description＝＠desc</p>
+<p>RETURN</p>
+<p>END</p>
+<p>－－　销毁已经创建的ActiveX对象</p>
+<p>EXEC　＠hr　＝　sp＿OADestroy　＠object</p>
+<p>IF　＠hr　＜＞　0</p>
+<p>BEGIN</p>
+<p>EXEC　sp＿OAGetErrorInfo　＠object，　＠src　OUT，　＠desc　OUT</p>
+<p>SELECT　hr＝convert（varbinary（4），＠hr），　Source＝＠src，　Description＝＠desc</p>
+<p>RETURN</p>
+<p>END</p>
+<p>6、在存储过程中使用数据库事务处理</p>
+<p>在很多的情况下，我们在存储过程中都会遇到需要同时操作多个表的情况，这时候就需要避免在操作的过程中由于以外而造成的数据的不一致性。这时候就需要将操作多个表的操作放入到事务中进行处理。</p>
+<p>但是需要注意的是，不能在事务中使用return语句强行退出，这样会引发事务的非正常错误，不能保证数据的一致性。</p>
+<p>并且，一旦将多个处理放入事务当中，系统的处理速度会有所降低，所以应当将频繁操作的多个可分割的处理过程放入到多个存储过程当中，这样会大大提高系统的响应速度，但是前提是不违背数据的一致性。</p>
+<p>看完了上面的这些编写SQL Server存储过程当中的技巧，相信对您或多或少会有些帮助，也希望通过上面的一些经验总结，可以使得您在应用SQL Server存储过程的时候，有意识的可以避免一些弯路。</p>
+<p>（以上所有程序在Windows Advance Server2000中文版+MS SQL Server7.0/2000中文版测试通过）</p>
+<p>作者:苏红超<br /></p>
+		</div>
+	<div class="post-bottom"><div class="post-tags-pig"><a href="/info/tag/Microsoft.html" rel="tag">微软</a></div></div><!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/info/archives/48.html" title="提高ADO性能的优秀经验">提高ADO性能的优秀经验</a></div><div class="next_content">下一篇 » <a href="/info/archives/50.html" title="SQL Server的Inner Join及Outer Join">SQL Server的Inner Join及Outer Join</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/info/archives/28.html">VB开发应用程序答疑</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.baidu.com/baidu"><input type="text" name="word" size="12" id="edtSearch" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="ie" type="hidden" value="utf-8" /><input name="tn" type="hidden" value="bds" /><input name="cl" type="hidden" value="3" /><input name="ct" type="hidden" value="2097152" /><input name="si" type="hidden" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/info/cat/news.html">动态<span class="article-nums"> (91)</span></a></li><li class="li-cate cate-2"><a href="/info/cat/review.html">评论<span class="article-nums"> (230)</span></a></li><li class="li-cate cate-3"><a href="/info/cat/service.html">运营<span class="article-nums"> (73)</span></a></li><li class="li-cate cate-4"><a href="/info/cat/application.html">应用<span class="article-nums"> (63)</span></a></li><li class="li-cate cate-5"><a href="/info/cat/server.html">服务器<span class="article-nums"> (22)</span></a></li><li class="li-cate cate-6"><a href="/info/cat/seo.html">搜索优化<span class="article-nums"> (80)</span></a></li><li class="li-cate cate-7"><a href="/info/cat/plan.html">策划<span class="article-nums"> (84)</span></a></li><li class="li-cate cate-8"><a href="/info/cat/design.html">设计<span class="article-nums"> (30)</span></a></li><li class="li-cate cate-9"><a href="/info/cat/program.html">编程<span class="article-nums"> (68)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/info/archives/742.html" title="互联网行业常用黑话">互联网行业常用黑话(3081)</a></li>
+<li><a href="/info/archives/741.html" title="中国互联网“铁王座”争夺史">中国互联网“铁王座”争夺史(1589)</a></li>
+<li><a href="/info/archives/740.html" title="李兴平：中国站长第一人">李兴平：中国站长第一人(5289)</a></li>
+<li><a href="/info/archives/739.html" title="10款B2B营销人员必备的社会化媒体工具">10款B2B营销人员必备的社会化媒体工具(3664)</a></li>
+<li><a href="/info/archives/738.html" title="大型网站SEO策划方案">大型网站SEO策划方案(8531)</a></li>
+<li><a href="/info/archives/737.html" title="友情链接的交换技巧">友情链接的交换技巧(3063)</a></li>
+<li><a href="/info/archives/736.html" title="传统企业网站的SEO诊断和优化">传统企业网站的SEO诊断和优化(3595)</a></li>
+<li><a href="/info/archives/735.html" title="搜索引擎算法不断迭变，黑帽排名优化将在劫难逃">搜索引擎算法不断迭变，黑帽排名优化将在劫(1326)</a></li>
+<li><a href="/info/archives/734.html" title="网站内链优化建设具有何重要意义？">网站内链优化建设具有何重要意义？(1329)</a></li>
+<li><a href="/info/archives/733.html" title="运营干货：101个最吸引人的文章标题模板">运营干货：101个最吸引人的文章标题模板(5647)</a></li>
+<li><a href="/info/archives/732.html" title="SEO引流技巧：内容+渠道方是推广优化的主导">SEO引流技巧：内容+渠道方是推广优化的(4189)</a></li>
+<li><a href="/info/archives/731.html" title="SEO干货：什么样的页面才算是高质量的页面">SEO干货：什么样的页面才算是高质量的页(2037)</a></li>
+<li><a href="/info/archives/730.html" title="互联网自媒体撰稿人付费阅读的特殊价值分析">互联网自媒体撰稿人付费阅读的特殊价值分析(1741)</a></li>
+<li><a href="/info/archives/729.html" title="SEO拼的就是高质量的原创文章">SEO拼的就是高质量的原创文章(3351)</a></li>
+<li><a href="/info/archives/728.html" title="SEO企业文案思路：给的再多，不如懂我">SEO企业文案思路：给的再多，不如懂我(1862)</a></li>
+<li><a href="/info/archives/727.html" title="从SEO角度出发做网站策划">从SEO角度出发做网站策划(1146)</a></li>
+<li><a href="/info/archives/726.html" title="教你12招，彻底解决选择SEO服务公司的难题">教你12招，彻底解决选择SEO服务公司的(971)</a></li>
+<li><a href="/info/archives/725.html" title="如果你是百度，你会让什么排在前面？">如果你是百度，你会让什么排在前面？(3909)</a></li>
+<li><a href="/info/archives/724.html" title="站长须知的14个健康生活细节">站长须知的14个健康生活细节(3219)</a></li>
+<li><a href="/info/archives/723.html" title="你的SEO博客有存在的必要吗？">你的SEO博客有存在的必要吗？(3501)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>最新留言</h4>
+	<ul class="divComments">
+	   <ul><li style="text-overflow:ellipsis;"><a href="/info/archives/440.html#cmt2273" title="2023/7/16 22:15:15 post by 牛逼">牛逼的文章，2023年居然还能看到。。不</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/725.html#cmt2267" title="2021/8/16 9:26:20 post by 未来人">现在的百度，不是什么最吸引人，不是什么最</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2265" title="2021/7/11 16:49:01 post by 梦易寒">可惜hao123和4399的时代都快褪去</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/737.html#cmt2262" title="2021/5/25 15:52:25 post by 山普">网站相关性，友情链接存在时间越长，越稳定</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/395.html#cmt2259" title="2020/11/30 13:15:34 post by 蜗牛TV">动态产生XML文档的几种ASP方式？</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2230" title="2019/8/9 22:16:40 post by XiGuaMP4">确实很牛逼的站长 </a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2229" title="2019/7/18 11:48:13 post by 爱吃">李兴平从一个一无所知的初中生，到hao1</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/664.html#cmt2223" title="2019/5/5 11:35:13 post by 李耀耀">域名也被盗了  做了10年的网站，现在焦</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2222" title="2019/2/16 16:09:11 post by 香蕉皮">现在的好123已经不能要了</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/263.html#cmt2213" title="2018/7/30 11:29:49 post by 礼品">谢谢指导,希望我的网页会有更好的成绩.</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>标签列表</h4>
+	<ul class="divTags">
+	   <ul><li class="tag-name tag-name-size-2"><a href="/info/tag/IE.html">浏览器<span class="tag-count"> (12)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Script.html">源代码<span class="tag-count"> (36)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Programming.html">教程<span class="tag-count"> (41)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Internet.html">网络<span class="tag-count"> (47)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Windows.html">视窗<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/News.html">动态<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-5"><a href="/info/tag/Seo.html">搜索优化<span class="tag-count"> (71)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/WebDesign.html">网站设计<span class="tag-count"> (34)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Resource.html">资源<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/BlogTips.html">博客技巧<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Blog.html">博客<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Tech.html">业界<span class="tag-count"> (63)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Software.html">软件<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/Money.html">广告<span class="tag-count"> (4)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Website.html">网站<span class="tag-count"> (15)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/WordPress.html">网志<span class="tag-count"> (6)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GoogleMaps.html">谷歌地图<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/GoogleEarth.html">谷歌地球<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Sns.html">社交网络<span class="tag-count"> (8)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Google.html">谷歌<span class="tag-count"> (33)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Baidu.html">百度<span class="tag-count"> (31)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microsoft.html">微软<span class="tag-count"> (16)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Firefox.html">火狐<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Twitter.html">推特<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Webmaster.html">站长技巧<span class="tag-count"> (30)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Chrome.html">谷歌浏览器<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/WebPlan.html">网站策划<span class="tag-count"> (55)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/QQ.html">腾讯<span class="tag-count"> (24)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Mobile.html">手机<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Ecommerce.html">电子商务<span class="tag-count"> (17)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/AdSense.html">网赚<span class="tag-count"> (9)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microblog.html">微博<span class="tag-count"> (20)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GooglePlus.html">谷歌社交<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Facebook.html">脸书<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Apple.html">苹果<span class="tag-count"> (9)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:742</li><li>评论总数:1368</li><li>浏览总数:1990522</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/info/" target="_blank">月光微博客</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/anni/" target="_blank">安妮宝贝的文集</a></li><li><a href="/werther/" target="_blank">少年维特的烦恼</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><script type="text/javascript" src="/script/stat.js"></script></ul>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/info/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

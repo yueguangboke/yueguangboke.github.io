@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/7569.html"/>
+	<title>折腾博客：Z-Blog静态化改造，从Windows换到Linux-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>折腾博客：Z-Blog静态化改造，从Windows换到Linux</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/7569.html" rel="bookmark">折腾博客：Z-Blog静态化改造，从Windows换到Linux</a></h1>
+	<div class="post-meta">
+		2026-11-10 23:22:43 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 0</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>最近我把自己的博客完成了服务器迁移，在上周正式从 <a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> 服务器搬迁到了 Linux 服务器。这台服务器配置为 2 核 CPU、40G 硬盘以及 2G 运行内存，Debian 12 操作系统，环境上只装了宝塔面板 12 版本，搭配 Nginx1.30.6，专门用来存放网站的 HTML 静态文件。</p>
+
+<p>按照我的估算，这套配置应对每日 30 万 PV 的访问是完全绰绰有余的，再加上我的站点本身就是纯静态网站，本身抗压能力就更强，短时间之内基本不用担忧流量带来的性能压力。</p>
+
+<p>最开始我的计划，是把整个博客程序从 Z-Blog 迁移到 Hugo，前期绝大部分迁移工作其实都已经做完了。Hugo 生成出来的站点页面效果看着很不错，但有一个很大的短板：它没有可视化的网站后台，不像原来的 Z-Blog，自带集成后台，写文章、管理旧博文、发布内容都能在后台直接操作。习惯了后台操作之后，改用 Hugo 这种模式，没有便捷的管理入口，用起来处处别扭，实在适应不来。</p>
+
+<p>我对于Hugo的编辑和管理界面感觉不太习惯，打算还是用原来的ZBlog进行文章管理，本地Windows11搭建了一个IIS，让AI装上SSL证书，用SwitchHosts切换域名到本地，在本地域名下新建和管理文章，然后让AI编写了一个WinSCP的同步命令，同步本地html到服务器上。</p>
+
+<p>权衡过后，我放弃直接完整迁移到 Hugo，换成一套更加平滑过渡的折中方案，依旧沿用 Z-Blog 原有的内容生成逻辑，整套工作流程是这样的：</p>
+
+<p>在我自己日常使用的 Windows11 本机电脑上，开启系统自带的 IIS 组件，本地搭建一套完整的博客站点，让AI装上SSL证书，再借助 SwitchHosts 工具，把我的博客域名做本地映射，访问域名就会指向本机搭建的网站，在本地域名下新建和管理文章，之后所有写稿、编辑旧文章、发布新内容，全都在本地这套环境里完成。文章编辑发布完毕，Z-Blog 就会在本地生成整套完整的静态页面，之后我再通过 WinSCP 工具，把生成好的静态文件同步上传到远端的 Linux 服务器。这还需要让AI编写了一个 WinSCP 的同步命令，排除本地的asp、mdb等文件，不要将那些文件同步到服务器上。</p>
+
+<p>整套流程实操下来不算复杂，不过中间有一些关键细节需要处理，也是这次折腾耗费心思的地方。</p>
+
+<p>Z-Blog 通过 YTBuild 生成静态页面的时候，输出的 HTML 里面还会残留不少 ASP 相关的代码片段。这些残余代码放到纯静态 Nginx 环境下完全没有用处，还会让页面源码变得杂乱，并且引发大量404日志错误。我去 Z-Blog 官方插件站翻找一圈，并没有现成插件可以清理这类残留，没有现成工具，我就把这个定制化需求交给 AI，让 AI 帮我开发对应的清理插件。</p>
+
+<p>不得不感慨现在 AI 的编程能力确实很厉害，Z-Blog ASP算是一个很冷门的软件，AI接到我的需求之后，先去 GitHub 拉取了 Z-Blog 的完整源码，读懂内部逻辑之后，根据我的需求直接写代码，十几分钟就完成了插件代码编写，然后AI自己用VBS测试通过。</p>
+
+<p>我把写好的插件放到本地站点启用测试，没想到直接一次就运行成功，没有出现任何错误。装上这个插件之后，生成出来的 HTML 源码干干净净，彻底清除掉全部 ASP 遗留标记，效果完全达到我的预期。如果有同样需求的朋友，也可以<a href="/download/noasp.zip">点击这里下载</a>这个插件使用。</p>
+
+<p>生成完成之后，就是 WinSCP 的同步策略。在配置 WinSCP 同步任务的时候，我设置了文件过滤规则，禁止把 *.asp;*.mdb;*.bat;*.config 这类服务器配置与数据库类文件上传到线上，只同步页面所需的其余文件。</p>
+
+<p>我不想每次发布都把全站文件完整重传一遍，因此走命令行模式实现增量同步，已经上传过、没有改动的文件直接跳过，只同步发生修改的文件，整个同步命令让AI帮我编写出来。</p>
+
+<p>第一次执行全量同步的时候，因为文件数量多，速度会偏慢。但后续更新发布就十分轻快，没有改动的文件直接跳过，只传输新增和修改过的资源，效率很高。</p>
+
+<p>这套发布模式，虽说多了本地搭建环境这一步，本地写内容再同步上传，对比直接在线后台发布要稍微多了几道手续，但收益十分可观，线上服务器不需要再跑 ASP、PHP，也不用部署数据库服务，线上机器的CPU、内存资源得到极大释放，开销被压到很低，可以用来承接更大的并发连接，整个服务器的安全性也大幅提高，整体来看这笔代价非常值得。</p>
+
+<p>实际使用感受下来，新服务器的响应速度十分惊艳，打开页面如同行云流水一般畅快，体验感非常好。这次服务器迁移改造整体算是相当成功，我甚至有点后悔没有早几年做这件事，要是早点完成切换，就能避开过去一大堆服务器维护上的糟心事。再加上现在可以借助 AI 辅助处理开发、调试工作，博客整体的管理、维护成本都下降了一大截。</p>
+
+<p>最后遗留下来的问题是，由于博客全部切换为静态 HTML ，因此评论功能和打分功能暂时无法实现，需要稍后研究研究通过什么方法能够实现替代。</p>
+
+<p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="折腾博客：Z-Blog静态化改造，从Windows换到Linux" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note7569"></span><a href="javascript:commYea(7569);" id="dig7569">顶一下 ▲</a>(<span id="sdig7569"><Script language="javascript" type="text/javascript">showDig("7569");</script></span>) &nbsp; <a href="javascript:commNay(7569);" id="down7569">踩一下 ▼</a>(<span id="sdown7569"><Script language="javascript" type="text/javascript">showDown("7569");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定</a></div><div class="next_content">下一篇 » <a href="/archives/7570.html" title="老树发新芽：九年老服务器焕新记">老树发新芽：九年老服务器焕新记</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/7568.html">个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定</a></p><p class="mutualitylist"><a href="/archives/7562.html">使用PagesCMS和GitHub打造免费CMS网站</a></p><p class="mutualitylist"><a href="/archives/7561.html">使用VS Code和Github打造免费网站系统</a></p><p class="mutualitylist"><a href="/archives/7559.html">Hugo搭建静态网站教程</a></p><p class="mutualitylist"><a href="/archives/7558.html">解决Cloudflare Pages的308自动重定向问题</a></p><p class="mutualitylist"><a href="/archives/7519.html">Cloudflare Pages搭建个人网站指南</a></p><p class="mutualitylist"><a href="/archives/7518.html">GitHub Pages搭建个人网站指南</a></p><p class="mutualitylist"><a href="/archives/7347.html">放弃百度站内搜索</a></p><p class="mutualitylist"><a href="/archives/7122.html">制作匿名举报网站的方法</a></p><p class="mutualitylist"><a href="/archives/7100.html">防止网站被黑帽SEO利用</a></p><p class="mutualitylist"><a href="/archives/6839.html">免费运营维护网站指南</a></p><p class="mutualitylist"><a href="/archives/6574.html">网站SSL证书出现错误和解决过程</a></p><p class="mutualitylist"><a href="/archives/6511.html">服务器启用HSTS协议</a></p><p class="mutualitylist"><a href="/archives/6510.html">服务器禁用TLS 1.0协议</a></p><p class="mutualitylist"><a href="/archives/6380.html">通过gzip和nginx来提高网站打开速度</a></p><p class="mutualitylist"><a href="/archives/6287.html">Windows IIS日志文件分析神器</a></p><p class="mutualitylist"><a href="/archives/6051.html">十大网站创业方向</a></p><p class="mutualitylist"><a href="/archives/6022.html">谷歌提醒网站管理：疫情期间切勿关站 会影响后续排名</a></p><p class="mutualitylist"><a href="/archives/5780.html">IIS子目录web.config与主站冲突解决方法</a></p><p class="mutualitylist"><a href="/archives/5611.html">SSL的安全配置和检测</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (682)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7569.html" title="折腾博客：Z-Blog静态化改造，从Windows换到Linux">折腾博客：Z-Blog静态化改造，从Wi(0)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7569</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

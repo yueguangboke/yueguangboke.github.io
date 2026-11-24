@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="stylesheet" type="text/css" media="all" href="/info/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/info/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/info/archives/2.html"/>
+	<title>利用ASP开发Web应用-网站运营优化</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/info/" title="网站运营优化" rel="home bookmark">网站运营优化</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/info/" target="_self">首页</a></li><li><a href="/info/cat/news.html" target="_self">动态</a></li><li><a href="/info/cat/review.html" target="_self">评论</a></li><li><a href="/info/cat/plan.html" target="_self">策划</a></li><li><a href="/info/cat/design.html" target="_self">设计</a></li><li><a href="/info/cat/service.html" target="_self">运营</a></li><li><a href="/info/cat/seo.html" target="_self">SEO</a></li><li><a href="/info/cat/application.html" target="_self">应用</a></li><li><a href="/info/cat/server.html" target="_self">服务器</a></li><li><a href="/info/cat/program.html" target="_self">编程</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate9 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/info/">网站运营优化</a> &raquo; <a href="/info/cat/program.html" title="查看 编程 中的全部文章">编程</a> &raquo; <span>利用ASP开发Web应用</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/info/archives/2.html" rel="bookmark">利用ASP开发Web应用</a></h1>
+	<div class="post-meta">
+		2007年1月4日 | 
+		分类: <a href="/info/cat/program.html" title="编程" rel="category tag">编程</a> | 
+		评论: 1</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+<p style="text-align:center"><img src="/logo/Script.jpg" alt="利用ASP开发Web应用" /></p>
+		<p>通常情况下，用户通过浏览器看到的网页大多是静态的，而随着Web 应用的发展，用户希望能够看到根据要求而动态生成的主页，例如响应用户查询数据库的要求、生成报表等。</p>
+<p>根据用户请求生成动态主页的传统方法有CGI、ISAPI 等。CGI 是根据浏览器端的http 请求激活响应进程，每一个请求对应一个进程。当同时有很多请求时，程序挤占系统资源，造成效率低下；ISAPI 针对这一缺点进行改进，利用dll（动态链接库）技术，以线程代替进程，提高了性能和速度，但要考虑线程的同步问题，而且开发步骤烦琐。这两种技术和另一普遍使用的开发动态网页的技术Java 都还存在着另外一个问题，那就是开发困难，程序的开发和HTML 写作是两个完全不同的过程，需要专门的程序员开发。而较简单的开发技术如JavaScript 和IDC(Internet Database Connector) 等功能有限，不敷使用。</p>
+<p>ASP 即ActiveX Server Page，是微软公司的新一代开发动态网页的技术，具有开发简单、功能强大等优点，可以非常直观简易地实现复杂的Web 应用。本文将介绍ASP 的基本概念、特点、开发要素，并通过两个典型的例子介绍利用ASP 开发Web 应用的具体实现。</p>
+<p>ASP 概念和工作流程</p>
+<p>ASP 是一个Web 服务器端的开发环境，利用它可以产生和运行动态的、交互的、高性能的Web 服务应用程序。</p>
+<p>ASP 属于ActiveX 技术中的Server 端技术。与常见的在Client 端实现动态主页的技术如Java applet、ActiveX Control、VB Script、JavaScript 等不同，ASP 中的命令和Script 语句都是由服务器来解释执行的，执行结果产生动态生成的Web 页面并送到浏览器；而Client 端技术的Script 命令则是由浏览器来解释执行。由于ASP 是在服务器端解释执行，开发者可以不必考虑浏览器是否支持ASP；同时由于它在服务器端执行，开发者也不必担心别人下载程序从而窃取编程逻辑。</p>
+<p>ASP 通过后缀名为.asp 的ASP 文件来实现，一个ASP 文件相当于一个可执行文件，因此必须放在Web 服务器上有可执行权限的目录下。</p>
+<p>当浏览器向Web Server 请求调用ASP 文件时，就启动了ASP。Web Server 开始调用ASP，将被请求的.asp 文件从头读到底，执行每一个命令，然后动态生成一个HTML 页面并送到浏览器。ASP 文件的制作和HTML 类似，且和HTML 开发集成，可以在同一个过程完成。通过ASP 内置的对象、服务器组件（Server Component）可以完成非常复杂的任务，而且用户还可以自己开发或利用别人开发的服务器组件完成专门的任务。</p>
+<p>ASP 具有以下特征：</p>
+<p>完全和HTML 集成；</p>
+<p>易于生成，无需手工编译和连接；</p>
+<p>面向对象，可扩展ActiveX Server 组件。</p>
+<p>目前ASP 只适用于下列Web Server：</p>
+<p>IIS 3.0 on Windows NT；</p>
+<p>Microsoft Peer Web Server v3.0 on NT Workstation；</p>
+<p>Microsoft Personal Web Server on Win95。</p>
+<p>ASP 文件</p>
+<p>1.ASP 文件制作</p>
+<p>ASP 文件即后缀名为.asp 的文件，是一个文本文件，可以包括下列元素的任意组合：</p>
+<p>文本（text）</p>
+<p>HTML 标志（tags）</p>
+<p>Script 命令</p>
+<p>制作ASP 文件非常简单，可以用任何无格式的文本编辑工具（笔者一直使用Notepad）, 也可用专门的主页开发工具和ASP 开发工具如Visual InetDev 等。请看下面的例子：</p>
+<p>现在时间：&lt; ％= Now ％&gt; 将其存成一后缀为.asp 的文件，放在一个Web Server 指定的有执行权的目录下，链接上后，它就能把服务器的当前时间输出。要注意：asp 文件不能通过打开的方式来执行，而必须是链接，例如，假定asp 是Web Server( 主机名host) 上有执行权限的一个虚拟目录，要执行该目录下的hello.asp，调用方式应该是：</p>
+<p>http://host/asp/hello.asp</p>
+<p>2.ASP 语法</p>
+<p>ASP 并不是一种语言，它只是提供一个环境来运行ASP 文件中的Script。为了顺利使用ASP，必须遵守ASP 的语法规则。ASP 的语法由下面几个元素组成：</p>
+<p>定界符</p>
+<p>定界符是用来界定一个标志单元的符号，如HTML 里的&ldquo;&lt;&rdquo;和&ldquo;&gt;&rdquo;。</p>
+<p>同样，ASP Script 的命令和输出表达也有定界符，同text 和HTML 都不同，它的命令定界符是&ldquo;&lt; ％&rdquo;和&ldquo;％&gt;&rdquo;。例如下面是一条赋值语句：</p>
+<p>&lt; ％name=&ldquo;Timeout&rdquo;％&gt;</p>
+<p>ASP 使用&ldquo;&lt; ％&rdquo;= 和&ldquo;％&gt;&rdquo;来向浏览器输出表达式，例如：</p>
+<p>&lt; ％= name ％&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 将在浏览器上输出&ldquo;Timeout&rdquo;。</p>
+<p>Script 标志</p>
+<p>ASP 可以使用任何Script 语言，只要提供相应的脚本驱动（engine）即可，ASP 自身提供了VBScript 和JScript 的驱动。它缺省的Script 语言是VBScript，当然开发者也可以改变这一缺省设置，例如要改为Jscript，只需在文件开头注明&lt; ％@Language=JScript ％&gt; 即可。中的部分就是描述语言程序，和HTML 类似。不同的是在HTML 中这一部分由浏览器解释执行，在ASP 里却是由Web Server 解释执行。</p>
+<p>可以在一个.asp 文件里使用几个不同的Script 语言，只需把每段用和括起来即可。也可以包含在浏览器端执行的Script，将描述语句注释起来，该段程序就由浏览器来解释执行。</p>
+<p>HTML 标记：</p>
+<p>在ASP 文件中可以包含HTML 语言的各种表达。</p>
+<p>ASP 内建对象</p>
+<p>ASP 提供了五个内建对象来提供更高一级的Web 功能，它们是：</p>
+<p>Request：从使用者获取信息；</p>
+<p>Response：将信息送给使用者；</p>
+<p>Server：提供Web Server 工具；</p>
+<p>Session：存储在一个Session 内使用者的信息；</p>
+<p>Application：在一个ASP 应用内让不同使用者共享信息。</p>
+<p>用的最多的是前三个对象。Request 和Response 是用来实现Web Server 与浏览器交互。Request 的一个重要方法是Form()，其作用是提取浏览器的用户输入信息。例如主页中有一个文本编辑框，已指定它的变量名为&ldquo;name&rdquo;，form 的action 为某asp 文件。下面的语句就可以取得用户填在里面的内容：</p>
+<p>Request.Form(&ldquo;name&rdquo;)</p>
+<p>显然，这避免了CGI 等方法中所需要的复杂编程。</p>
+<p>输出要用到Response 的一个重要方法Write：</p>
+<p>Response.Write &ldquo;your message&rdquo;</p>
+<p>该语句向用户浏览器输出了一条消息。</p>
+<p>Server 对象有两个重要方法：MapPath 和CreateObject。MapPath 用来将Web Server 的虚拟路径还原成实际路径；CreateObject 可能是最重要的一个方法，用来产生服务器组件的对象实例，详细介绍见下文。</p>
+<p>服务器组件</p>
+<p>通过服务器端的Script 和HTML，可以很容易地生成动态网页，但功能有限，例如不能连接服务器数据库、使用网络功能或访问服务器文件系统等。为了解决这一问题，就要用到COM 技术，即Component Object Model。几乎所有的ActiveX 技术都是以此为基础，通过COM，可以轻易地使用其它COM 组件，这种对于Web 可共享的COM 组件，就是服务器组件。一个服务器组件就相当一个对象，提供属性和方法来使用服务器资源。服务器组件可以由支持ActiveX 的任何第三方开发，ASP 本身也自带了五个服务器组件，可以直接使用，并能完成大部分服务器端的工作。</p>
+<p>要调用服务器组件，必须先利用Server 对象中的方法CreateObject 产生服务器组件对象实例, 如下所示：</p>
+<p>Server.CreateObject(ProgID)</p>
+<p>这里，ProgID 指定了构件标识，构件可以是各种形式的可执行程序（DLL、EXE 等），也不必考虑它的位置，只要在Windows NT（或95）中登记注册这些程序，COM 就会在系统资料库(Registry) 里维护这些资料，同时以ProgID 方式让程序员调用。登记用regsvr32 程序，可以用RegEdit 程序来看ProgID。构件产生后，就可以使用它的方法和属性进行工作。</p>
+<p>一般使用Server 构件的程序片段如下：</p>
+<p>' 产生构件</p>
+<p>Setobj = Server.CreateObject(&ldquo;ProgID&rdquo;)</p>
+<p>' 使用它的方法</p>
+<p>obj.Method</p>
+<p>ASP 提供了5 个服务器组件，其中最重要的两个是数据库访问构件ADODB 和文件访问构件FileSystemObject，本文的例子将说明它们的使用。</p>
+<p>对于一些特殊的需求，开发者还可以自己开发服务器构件，利用VB 或VC 可以很方便地开发出一些构件，然后登记这些构件，就可以用Server.CreateObject 来调用。另外还有许多站点上有开发好的构件供下载，只要在自己的机器上将它们登记就可以使用。</p>
+<p>ASP 应用实例</p>
+<p>1. 利用文件访问组件制作主页访问计数器</p>
+<p>现在许多主页上都有一个计数器来记录该主页被访问的次数，通常计数器通过CGI 实现，开发过程比较复杂，一些非专业的程序员难以实现。而通过ASP 的文件访问组件File Access Component (Scripting.FileSystemObject)，可以很方便地产生一个计数器。下面是一个例子，其原理是：根据page hits 生成计数文件，读出计数文件中的数字，再根据它动态地调出代表1、2、3 等数字的图像。其基本过程和CGI 差不多，但在送出图像时不同，CGI 是通过程序来动态生成一整幅图像，而我们的方法是将已存在于机器中的图像一张一张地调出，这样就可以制作非常精美的数字图像。其程序片段为：</p>
+<p>&lt; ％</p>
+<p>CountFile = Server.MapPath(&ldquo;/gjy&rdquo;＋&ldquo;/count.txt&rdquo;)</p>
+<p>&lsquo;计数文件</p>
+<p>Set FileObj = Server.CreateObject(&ldquo;Scripting.FileSystemObject&rdquo;) &lsquo;产生文件访问构件</p>
+<p>Set Out=FileObj.OpenTextFile(CountFile,1,FALSE,FALSE) &lsquo;打开文件</p>
+<p>visitors = Out.ReadLine &lsquo;读出访问记录</p>
+<p>visitors = visitors ＋1 &lsquo;加一</p>
+<p>Length = Len(visitors) &lsquo;该调出的图像数目</p>
+<p>strURL=&ldquo;&lt;IMG SRC=/img/&rdquo;＋Mid(visitors,Length,1) ＋&ldquo;.gif&gt;&rdquo;＋strURL</p>
+<p>Do While Length&gt;=1</p>
+<p>strURL=&ldquo;&rdquo;＋strURL</p>
+<p>Length=Length －1</p>
+<p>Loop &lsquo;生成图像URL</p>
+<p>Set Out=FileObject.CreateTextFile(CountFile,TRUE,TRUE)</p>
+<p>Out.WriteLine(visitors) &lsquo;记录数写回</p>
+<p>％&gt;</p>
+<p>&lt; ％=strURL ％&gt; &lsquo;输出图像</p>
+<p>注：读者可以根据自己服务器的情况设置图像文件路径。</p>
+<p>2. 利用Data Access Component (ADODB .Connection) 访问服务器数据库</p>
+<p>让用户通过浏览器查询服务器的后端数据库是许多Web 服务提供者必需有的服务，ASP 通过内置的ADODB 组件来实现这一功能。ADO 即Active Data Object，同DAO 和RDO 一样，属于数据库应用的COM 构件，不同的是，ADO 是专门针对Internet 和Web 开发的，并对此进行了优化。利用ADO 查询数据库的步骤是：</p>
+<p>设置DSN</p>
+<p>ADODB 通过ODBC 工作，因此要在ODBC 中设置DSN（数据源名）。</p>
+<p>生成ADODB 组件实例</p>
+<p>Set Connect=Server.CreateObject(&ldquo;ADODB.Connection&rdquo;)</p>
+<p>连接数据库</p>
+<p>利用ADODB 的成员函数Open 和先前设定的DSN 与数据库连接：</p>
+<p>Connect.Open(&ldquo;DSN=dsnname;UID=userID; PWD=password&rdquo;)</p>
+<p>执行查询</p>
+<p>指定SQL 查询语句：</p>
+<p>SQL= select ＊ from tablename</p>
+<p>执行查询：</p>
+<p>Set RS=Connect.Execute(SQL)</p>
+<p>显示结果</p>
+<p>完整的程序片段：</p>
+<p>&lt; ％</p>
+<p>Set Connect=Server.CreateObject(&ldquo;ADODB. Connection&rdquo;) &lsquo;产生组件实例</p>
+<p>Connect.Open(&ldquo;DSN=dsnname;UID=userID; PWD=password&rdquo;) &lsquo;连接数据库</p>
+<p>SQL= select ＊from tablename</p>
+<p>Set RS=Connect.Execute(SQL) &lsquo;执行查询</p>
+<p>％&gt;</p>
+<p>&lt; ％Do While Not RS.EOF ％&gt;&lsquo;显示结果</p>
+<p>&lt; ％=RS(fieldname) ％&gt;</p>
+<p>&lt; ％</p>
+<p>Rs.MoveNext</p>
+<p>Loop</p>
+<p>％&gt;</p>
+<p>结论</p>
+<p>ASP 的开发简单而直观，开发过程可以方便地和HTML 集成；利用COM 技术，还可以实现更强大更复杂的功能。</p>
+<p>作者：华中理工大学图像识别与人工智能研究所　龚建勇</p>
+<p>&nbsp;</p>
+		</div>
+	<div class="post-bottom"><div class="post-tags-pig"><a href="/info/tag/Script.html" rel="tag">源代码</a></div></div><!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/info/archives/1.html" title="Google网站优化设计指南">Google网站优化设计指南</a></div><div class="next_content">下一篇 » <a href="/info/archives/3.html" title="OLE DB的概念与编程">OLE DB的概念与编程</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-725">
+		<div id="div-comment-725" class="comment-body">
+		<div class="comment-author vcard">
+		<cite class="fn">1. <a name="cmt725">你好</a></cite> <span class="says">说道：</span>		<span class="comment-meta commentmetadata" style="float:right">2009/2/21 11:26:50</span></div>
+		<div class="comment-meta commentmetadata">		</div>
+		支持！希望有更多的资料<!--rev725--><a style="display:none;" id="AjaxCommentEnd725"></a>
+		</div>
+	</li>
+</ol><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.baidu.com/baidu"><input type="text" name="word" size="12" id="edtSearch" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="ie" type="hidden" value="utf-8" /><input name="tn" type="hidden" value="bds" /><input name="cl" type="hidden" value="3" /><input name="ct" type="hidden" value="2097152" /><input name="si" type="hidden" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/info/cat/news.html">动态<span class="article-nums"> (91)</span></a></li><li class="li-cate cate-2"><a href="/info/cat/review.html">评论<span class="article-nums"> (230)</span></a></li><li class="li-cate cate-3"><a href="/info/cat/service.html">运营<span class="article-nums"> (73)</span></a></li><li class="li-cate cate-4"><a href="/info/cat/application.html">应用<span class="article-nums"> (63)</span></a></li><li class="li-cate cate-5"><a href="/info/cat/server.html">服务器<span class="article-nums"> (22)</span></a></li><li class="li-cate cate-6"><a href="/info/cat/seo.html">搜索优化<span class="article-nums"> (80)</span></a></li><li class="li-cate cate-7"><a href="/info/cat/plan.html">策划<span class="article-nums"> (84)</span></a></li><li class="li-cate cate-8"><a href="/info/cat/design.html">设计<span class="article-nums"> (30)</span></a></li><li class="li-cate cate-9"><a href="/info/cat/program.html">编程<span class="article-nums"> (68)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/info/archives/742.html" title="互联网行业常用黑话">互联网行业常用黑话(3081)</a></li>
+<li><a href="/info/archives/741.html" title="中国互联网“铁王座”争夺史">中国互联网“铁王座”争夺史(1589)</a></li>
+<li><a href="/info/archives/740.html" title="李兴平：中国站长第一人">李兴平：中国站长第一人(5289)</a></li>
+<li><a href="/info/archives/739.html" title="10款B2B营销人员必备的社会化媒体工具">10款B2B营销人员必备的社会化媒体工具(3664)</a></li>
+<li><a href="/info/archives/738.html" title="大型网站SEO策划方案">大型网站SEO策划方案(8531)</a></li>
+<li><a href="/info/archives/737.html" title="友情链接的交换技巧">友情链接的交换技巧(3063)</a></li>
+<li><a href="/info/archives/736.html" title="传统企业网站的SEO诊断和优化">传统企业网站的SEO诊断和优化(3595)</a></li>
+<li><a href="/info/archives/735.html" title="搜索引擎算法不断迭变，黑帽排名优化将在劫难逃">搜索引擎算法不断迭变，黑帽排名优化将在劫(1326)</a></li>
+<li><a href="/info/archives/734.html" title="网站内链优化建设具有何重要意义？">网站内链优化建设具有何重要意义？(1329)</a></li>
+<li><a href="/info/archives/733.html" title="运营干货：101个最吸引人的文章标题模板">运营干货：101个最吸引人的文章标题模板(5647)</a></li>
+<li><a href="/info/archives/732.html" title="SEO引流技巧：内容+渠道方是推广优化的主导">SEO引流技巧：内容+渠道方是推广优化的(4189)</a></li>
+<li><a href="/info/archives/731.html" title="SEO干货：什么样的页面才算是高质量的页面">SEO干货：什么样的页面才算是高质量的页(2037)</a></li>
+<li><a href="/info/archives/730.html" title="互联网自媒体撰稿人付费阅读的特殊价值分析">互联网自媒体撰稿人付费阅读的特殊价值分析(1741)</a></li>
+<li><a href="/info/archives/729.html" title="SEO拼的就是高质量的原创文章">SEO拼的就是高质量的原创文章(3351)</a></li>
+<li><a href="/info/archives/728.html" title="SEO企业文案思路：给的再多，不如懂我">SEO企业文案思路：给的再多，不如懂我(1862)</a></li>
+<li><a href="/info/archives/727.html" title="从SEO角度出发做网站策划">从SEO角度出发做网站策划(1146)</a></li>
+<li><a href="/info/archives/726.html" title="教你12招，彻底解决选择SEO服务公司的难题">教你12招，彻底解决选择SEO服务公司的(971)</a></li>
+<li><a href="/info/archives/725.html" title="如果你是百度，你会让什么排在前面？">如果你是百度，你会让什么排在前面？(3909)</a></li>
+<li><a href="/info/archives/724.html" title="站长须知的14个健康生活细节">站长须知的14个健康生活细节(3219)</a></li>
+<li><a href="/info/archives/723.html" title="你的SEO博客有存在的必要吗？">你的SEO博客有存在的必要吗？(3501)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>最新留言</h4>
+	<ul class="divComments">
+	   <ul><li style="text-overflow:ellipsis;"><a href="/info/archives/440.html#cmt2273" title="2023/7/16 22:15:15 post by 牛逼">牛逼的文章，2023年居然还能看到。。不</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/725.html#cmt2267" title="2021/8/16 9:26:20 post by 未来人">现在的百度，不是什么最吸引人，不是什么最</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2265" title="2021/7/11 16:49:01 post by 梦易寒">可惜hao123和4399的时代都快褪去</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/737.html#cmt2262" title="2021/5/25 15:52:25 post by 山普">网站相关性，友情链接存在时间越长，越稳定</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/395.html#cmt2259" title="2020/11/30 13:15:34 post by 蜗牛TV">动态产生XML文档的几种ASP方式？</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2230" title="2019/8/9 22:16:40 post by XiGuaMP4">确实很牛逼的站长 </a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2229" title="2019/7/18 11:48:13 post by 爱吃">李兴平从一个一无所知的初中生，到hao1</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/664.html#cmt2223" title="2019/5/5 11:35:13 post by 李耀耀">域名也被盗了  做了10年的网站，现在焦</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2222" title="2019/2/16 16:09:11 post by 香蕉皮">现在的好123已经不能要了</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/263.html#cmt2213" title="2018/7/30 11:29:49 post by 礼品">谢谢指导,希望我的网页会有更好的成绩.</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>标签列表</h4>
+	<ul class="divTags">
+	   <ul><li class="tag-name tag-name-size-2"><a href="/info/tag/IE.html">浏览器<span class="tag-count"> (12)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Script.html">源代码<span class="tag-count"> (36)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Programming.html">教程<span class="tag-count"> (41)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Internet.html">网络<span class="tag-count"> (47)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Windows.html">视窗<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/News.html">动态<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-5"><a href="/info/tag/Seo.html">搜索优化<span class="tag-count"> (71)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/WebDesign.html">网站设计<span class="tag-count"> (34)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Resource.html">资源<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/BlogTips.html">博客技巧<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Blog.html">博客<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Tech.html">业界<span class="tag-count"> (63)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Software.html">软件<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/Money.html">广告<span class="tag-count"> (4)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Website.html">网站<span class="tag-count"> (15)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/WordPress.html">网志<span class="tag-count"> (6)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GoogleMaps.html">谷歌地图<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/GoogleEarth.html">谷歌地球<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Sns.html">社交网络<span class="tag-count"> (8)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Google.html">谷歌<span class="tag-count"> (33)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Baidu.html">百度<span class="tag-count"> (31)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microsoft.html">微软<span class="tag-count"> (16)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Firefox.html">火狐<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Twitter.html">推特<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Webmaster.html">站长技巧<span class="tag-count"> (30)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Chrome.html">谷歌浏览器<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/WebPlan.html">网站策划<span class="tag-count"> (55)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/QQ.html">腾讯<span class="tag-count"> (24)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Mobile.html">手机<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Ecommerce.html">电子商务<span class="tag-count"> (17)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/AdSense.html">网赚<span class="tag-count"> (9)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microblog.html">微博<span class="tag-count"> (20)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GooglePlus.html">谷歌社交<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Facebook.html">脸书<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Apple.html">苹果<span class="tag-count"> (9)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:742</li><li>评论总数:1368</li><li>浏览总数:1990522</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/info/" target="_blank">月光微博客</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/anni/" target="_blank">安妮宝贝的文集</a></li><li><a href="/werther/" target="_blank">少年维特的烦恼</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><script type="text/javascript" src="/script/stat.js"></script></ul>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/info/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

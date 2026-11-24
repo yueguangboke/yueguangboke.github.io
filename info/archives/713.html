@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="stylesheet" type="text/css" media="all" href="/info/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/info/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/info/archives/713.html"/>
+	<title>百度自动提交链接的方法-网站运营优化</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/info/" title="网站运营优化" rel="home bookmark">网站运营优化</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/info/" target="_self">首页</a></li><li><a href="/info/cat/news.html" target="_self">动态</a></li><li><a href="/info/cat/review.html" target="_self">评论</a></li><li><a href="/info/cat/plan.html" target="_self">策划</a></li><li><a href="/info/cat/design.html" target="_self">设计</a></li><li><a href="/info/cat/service.html" target="_self">运营</a></li><li><a href="/info/cat/seo.html" target="_self">SEO</a></li><li><a href="/info/cat/application.html" target="_self">应用</a></li><li><a href="/info/cat/server.html" target="_self">服务器</a></li><li><a href="/info/cat/program.html" target="_self">编程</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate6 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/info/">网站运营优化</a> &raquo; <a href="/info/cat/seo.html" title="查看 搜索优化 中的全部文章">搜索优化</a> &raquo; <span>百度自动提交链接的方法</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/info/archives/713.html" rel="bookmark">百度自动提交链接的方法</a></h1>
+	<div class="post-meta">
+		2015年12月1日 | 
+		分类: <a href="/info/cat/seo.html" title="搜索优化" rel="category tag">搜索优化</a> | 
+		评论: 0</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+<p style="text-align:center"><img src="/logo/Seo.jpg" alt="百度自动提交链接的方法" /></p>
+		<p>怎样才能使新更新的文章更快的被百度收录，是所有站长最头疼的事情之一，而百度在这一块问题上为了我们站点也算是煞费苦心，如若不然也不会提供了&ldquo;链接提交&rdquo;工具。</p><p>百度给出的链接提交方式有以四下种</p><p>1、主动推送：最为快速的提交方式，推荐您将站点当天新产出链接立即通过此方式推送给百度，以保证新链接可以及时被百度收录。</p><p>2、自动推送：最为便捷的提交方式，请将自动推送的JS代码部署在站点的每一个页面源代码中，部署代码的页面在每次被浏览时，链接会被自动推送给百度。可以与主动推送配合使用。</p><p>3、sitemap：您可以定期将网站链接放到sitemap中，然后将sitemap提交给百度。百度会周期性的抓取检查您提交的sitemap，对其中的链接进行处理，但收录速度慢于主动推送。</p><p>4、手动提交：一次性提交链接给百度，可以使用此种方式。</p><p>优缺点：</p><p>由于手工提交有点累人，效果慢所以不推荐、sitemap则方便轻松些，适合比较&ldquo;懒惰&rdquo;或者时间紧迫的站长、而主动推送虽然是实时的，也能保证新链接可以及时被百度收录，但对于新手站长会比较麻烦，也有很多站长在根据百度给出的示例，在制作推送工具时却一直不成功，所以也不推荐这个。</p><p>自动推送是最为便捷的提交方式，只要把自动推送的JS代码部署在站点的每一个页面源代码中，部署代码的页面在每次被浏览时，链接会被自动推送给百度，这方法既方便又简单，再配合sitemap定时提交效果特別好的，所以推荐这个。</p><p>自动推送代码如何安装使用？</p><p>站长需要在每个页面的HTML代码中包含以下自动推送JS代码：<br />&lt;script&gt;</p><p>(function(){</p><p>&nbsp;&nbsp;&nbsp; var bp = document.createElement('script');</p><p>&nbsp;&nbsp;&nbsp; bp.src = '//push.zhanzhang.baidu.com/push.js';</p><p>&nbsp;&nbsp;&nbsp; var s = document.getElementsByTagName(&quot;script&quot;)[0];</p><p>&nbsp;&nbsp;&nbsp; s.parentNode.insertBefore(bp, s);</p><p>})();</p><p>&lt;/script&gt;</p><p>如果站长使用PHP语言开发的网站，可以按以下步骤操作：</p><p>1、创建名为&ldquo;baidu_js_push.php&rdquo;的文件，文件内容是上述自动推送JS代码；</p><p>2、在每个PHP模板页文件中的 &lt;body&gt; 标记后面添加一行代码：<br />&lt;?php include_once(&quot;baidu_js_push.php&quot;) ?&gt;</p><p>为什么自动推送可以更快的将页面推送给百度搜索？</p><p>基于自动推送的实现原理问题，当新页面每次被浏览时，页面URL会自动推送给百度，无需站长汇总URL再进行主动推送操作。</p><p>借助用户的浏览行为来触发推送动作，省去了站长人工操作的时间。</p><p>自动推送和链接提交有什么区别？</p><p>已经在使用链接提交的网站还需要再部署自动推送代码吗？</p><p>二者之间互不冲突，互为补充。已经使用主动推送的站点，依然可以部署自动推送的JS代码，二者一起使用。</p><p>什么样的网站更适合使用自动推送？</p><p>自动推送由于实现便捷和后续维护成本低的特点，适合技术能力相对薄弱，无能力支持全天候实时主动推送程序的站长。</p><p>站长仅需一次部署自动推送JS代码的操作，就可以实现新页面被浏览即推送的效果，低成本实现链接自动提交。</p><p>同时，主动推送和自动推送代码配合使用，二者互不影响。</p><p>来源： 李明 投稿。</p>
+		</div>
+	<div class="post-bottom"><div class="post-tags-pig"><a href="/info/tag/Seo.html" rel="tag">搜索优化</a></div></div><!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/info/archives/712.html" title="SEO外链策略之链接诱饵的制作需知">SEO外链策略之链接诱饵的制作需知</a></div><div class="next_content">下一篇 » <a href="/info/archives/714.html" title="分析网站优化的站群策略注意事项">分析网站优化的站群策略注意事项</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/info/archives/712.html">SEO外链策略之链接诱饵的制作需知</a></p><p class="mutualitylist"><a href="/info/archives/708.html">了解搜索引擎来进行SEO</a></p><p class="mutualitylist"><a href="/info/archives/707.html">百度与SEO行业的斗智斗勇</a></p><p class="mutualitylist"><a href="/info/archives/701.html">大型网站如何做301重定向的策略</a></p><p class="mutualitylist"><a href="/info/archives/698.html">如何选取网站关键词</a></p><p class="mutualitylist"><a href="/info/archives/697.html">新站增加百度收录的诀窍</a></p><p class="mutualitylist"><a href="/info/archives/673.html">SEO已死</a></p><p class="mutualitylist"><a href="/info/archives/661.html">网站被惩罚后的SEO策略</a></p><p class="mutualitylist"><a href="/info/archives/658.html">利用百度产品线实施SEO</a></p><p class="mutualitylist"><a href="/info/archives/655.html">解读SEO行业乱象</a></p><p class="mutualitylist"><a href="/info/archives/649.html">最有效的外部链接标准：SEO外链专员操作规范</a></p><p class="mutualitylist"><a href="/info/archives/643.html">浅谈SEO和搜索引擎</a></p><p class="mutualitylist"><a href="/info/archives/640.html">Google Sitelink 之浅析实践</a></p><p class="mutualitylist"><a href="/info/archives/626.html">在搜搜问问上做反链的技巧心得</a></p><p class="mutualitylist"><a href="/info/archives/624.html">百度收录减少的几个原因</a></p><p class="mutualitylist"><a href="/info/archives/623.html">Keyword标签没有任何作用了 </a></p><p class="mutualitylist"><a href="/info/archives/621.html">百度为什么要推SEO建议？</a></p><p class="mutualitylist"><a href="/info/archives/584.html">做SEO容易忽略的细节</a></p><p class="mutualitylist"><a href="/info/archives/581.html">SEO价值判断的方法</a></p><p class="mutualitylist"><a href="/info/archives/577.html">网络推广中的“五把利器”</a></p><p class="mutualitylist"><a href="/info/archives/565.html">如何和搜索引擎爬虫对话</a></p><p class="mutualitylist"><a href="/info/archives/533.html">SEO与社交媒体博弈论</a></p><p class="mutualitylist"><a href="/info/archives/521.html">企业网站十大搜索引擎优化通病</a></p><p class="mutualitylist"><a href="/info/archives/503.html">搜索引擎降权与网站排名恢复</a></p><p class="mutualitylist"><a href="/info/archives/437.html">SEO从业者应该系统的学习哪些知识</a></p><p class="mutualitylist"><a href="/info/archives/409.html">以用户为中心的SEO网站优化</a></p><p class="mutualitylist"><a href="/info/archives/404.html">博客营销之百度空间实战</a></p><p class="mutualitylist"><a href="/info/archives/391.html">网站优化与SEO的误区</a></p><p class="mutualitylist"><a href="/info/archives/331.html">大型网站SEO优化技巧</a></p><p class="mutualitylist"><a href="/info/archives/329.html">慧聪网SEO案例分析</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.baidu.com/baidu"><input type="text" name="word" size="12" id="edtSearch" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="ie" type="hidden" value="utf-8" /><input name="tn" type="hidden" value="bds" /><input name="cl" type="hidden" value="3" /><input name="ct" type="hidden" value="2097152" /><input name="si" type="hidden" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/info/cat/news.html">动态<span class="article-nums"> (91)</span></a></li><li class="li-cate cate-2"><a href="/info/cat/review.html">评论<span class="article-nums"> (230)</span></a></li><li class="li-cate cate-3"><a href="/info/cat/service.html">运营<span class="article-nums"> (73)</span></a></li><li class="li-cate cate-4"><a href="/info/cat/application.html">应用<span class="article-nums"> (63)</span></a></li><li class="li-cate cate-5"><a href="/info/cat/server.html">服务器<span class="article-nums"> (22)</span></a></li><li class="li-cate cate-6"><a href="/info/cat/seo.html">搜索优化<span class="article-nums"> (80)</span></a></li><li class="li-cate cate-7"><a href="/info/cat/plan.html">策划<span class="article-nums"> (84)</span></a></li><li class="li-cate cate-8"><a href="/info/cat/design.html">设计<span class="article-nums"> (30)</span></a></li><li class="li-cate cate-9"><a href="/info/cat/program.html">编程<span class="article-nums"> (68)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/info/archives/742.html" title="互联网行业常用黑话">互联网行业常用黑话(3081)</a></li>
+<li><a href="/info/archives/741.html" title="中国互联网“铁王座”争夺史">中国互联网“铁王座”争夺史(1589)</a></li>
+<li><a href="/info/archives/740.html" title="李兴平：中国站长第一人">李兴平：中国站长第一人(5289)</a></li>
+<li><a href="/info/archives/739.html" title="10款B2B营销人员必备的社会化媒体工具">10款B2B营销人员必备的社会化媒体工具(3664)</a></li>
+<li><a href="/info/archives/738.html" title="大型网站SEO策划方案">大型网站SEO策划方案(8531)</a></li>
+<li><a href="/info/archives/737.html" title="友情链接的交换技巧">友情链接的交换技巧(3063)</a></li>
+<li><a href="/info/archives/736.html" title="传统企业网站的SEO诊断和优化">传统企业网站的SEO诊断和优化(3595)</a></li>
+<li><a href="/info/archives/735.html" title="搜索引擎算法不断迭变，黑帽排名优化将在劫难逃">搜索引擎算法不断迭变，黑帽排名优化将在劫(1326)</a></li>
+<li><a href="/info/archives/734.html" title="网站内链优化建设具有何重要意义？">网站内链优化建设具有何重要意义？(1329)</a></li>
+<li><a href="/info/archives/733.html" title="运营干货：101个最吸引人的文章标题模板">运营干货：101个最吸引人的文章标题模板(5647)</a></li>
+<li><a href="/info/archives/732.html" title="SEO引流技巧：内容+渠道方是推广优化的主导">SEO引流技巧：内容+渠道方是推广优化的(4189)</a></li>
+<li><a href="/info/archives/731.html" title="SEO干货：什么样的页面才算是高质量的页面">SEO干货：什么样的页面才算是高质量的页(2037)</a></li>
+<li><a href="/info/archives/730.html" title="互联网自媒体撰稿人付费阅读的特殊价值分析">互联网自媒体撰稿人付费阅读的特殊价值分析(1741)</a></li>
+<li><a href="/info/archives/729.html" title="SEO拼的就是高质量的原创文章">SEO拼的就是高质量的原创文章(3351)</a></li>
+<li><a href="/info/archives/728.html" title="SEO企业文案思路：给的再多，不如懂我">SEO企业文案思路：给的再多，不如懂我(1862)</a></li>
+<li><a href="/info/archives/727.html" title="从SEO角度出发做网站策划">从SEO角度出发做网站策划(1146)</a></li>
+<li><a href="/info/archives/726.html" title="教你12招，彻底解决选择SEO服务公司的难题">教你12招，彻底解决选择SEO服务公司的(971)</a></li>
+<li><a href="/info/archives/725.html" title="如果你是百度，你会让什么排在前面？">如果你是百度，你会让什么排在前面？(3909)</a></li>
+<li><a href="/info/archives/724.html" title="站长须知的14个健康生活细节">站长须知的14个健康生活细节(3219)</a></li>
+<li><a href="/info/archives/723.html" title="你的SEO博客有存在的必要吗？">你的SEO博客有存在的必要吗？(3501)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>最新留言</h4>
+	<ul class="divComments">
+	   <ul><li style="text-overflow:ellipsis;"><a href="/info/archives/440.html#cmt2273" title="2023/7/16 22:15:15 post by 牛逼">牛逼的文章，2023年居然还能看到。。不</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/725.html#cmt2267" title="2021/8/16 9:26:20 post by 未来人">现在的百度，不是什么最吸引人，不是什么最</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2265" title="2021/7/11 16:49:01 post by 梦易寒">可惜hao123和4399的时代都快褪去</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/737.html#cmt2262" title="2021/5/25 15:52:25 post by 山普">网站相关性，友情链接存在时间越长，越稳定</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/395.html#cmt2259" title="2020/11/30 13:15:34 post by 蜗牛TV">动态产生XML文档的几种ASP方式？</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2230" title="2019/8/9 22:16:40 post by XiGuaMP4">确实很牛逼的站长 </a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2229" title="2019/7/18 11:48:13 post by 爱吃">李兴平从一个一无所知的初中生，到hao1</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/664.html#cmt2223" title="2019/5/5 11:35:13 post by 李耀耀">域名也被盗了  做了10年的网站，现在焦</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2222" title="2019/2/16 16:09:11 post by 香蕉皮">现在的好123已经不能要了</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/263.html#cmt2213" title="2018/7/30 11:29:49 post by 礼品">谢谢指导,希望我的网页会有更好的成绩.</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>标签列表</h4>
+	<ul class="divTags">
+	   <ul><li class="tag-name tag-name-size-2"><a href="/info/tag/IE.html">浏览器<span class="tag-count"> (12)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Script.html">源代码<span class="tag-count"> (36)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Programming.html">教程<span class="tag-count"> (41)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Internet.html">网络<span class="tag-count"> (47)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Windows.html">视窗<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/News.html">动态<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-5"><a href="/info/tag/Seo.html">搜索优化<span class="tag-count"> (71)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/WebDesign.html">网站设计<span class="tag-count"> (34)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Resource.html">资源<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/BlogTips.html">博客技巧<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Blog.html">博客<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Tech.html">业界<span class="tag-count"> (63)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Software.html">软件<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/Money.html">广告<span class="tag-count"> (4)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Website.html">网站<span class="tag-count"> (15)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/WordPress.html">网志<span class="tag-count"> (6)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GoogleMaps.html">谷歌地图<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/GoogleEarth.html">谷歌地球<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Sns.html">社交网络<span class="tag-count"> (8)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Google.html">谷歌<span class="tag-count"> (33)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Baidu.html">百度<span class="tag-count"> (31)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microsoft.html">微软<span class="tag-count"> (16)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Firefox.html">火狐<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Twitter.html">推特<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Webmaster.html">站长技巧<span class="tag-count"> (30)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Chrome.html">谷歌浏览器<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/WebPlan.html">网站策划<span class="tag-count"> (55)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/QQ.html">腾讯<span class="tag-count"> (24)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Mobile.html">手机<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Ecommerce.html">电子商务<span class="tag-count"> (17)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/AdSense.html">网赚<span class="tag-count"> (9)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microblog.html">微博<span class="tag-count"> (20)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GooglePlus.html">谷歌社交<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Facebook.html">脸书<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Apple.html">苹果<span class="tag-count"> (9)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:742</li><li>评论总数:1368</li><li>浏览总数:1990522</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/info/" target="_blank">月光微博客</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/anni/" target="_blank">安妮宝贝的文集</a></li><li><a href="/werther/" target="_blank">少年维特的烦恼</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><script type="text/javascript" src="/script/stat.js"></script></ul>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/info/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

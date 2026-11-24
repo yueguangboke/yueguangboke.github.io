@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/4075.html"/>
@@ -45,12 +45,10 @@
 		2014-12-12 9:42:3 | 
 		作者: 月光 | 
 		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
-		评论: 28 | 
-		浏览: <span class="AddView" id="spn4075" data-id="4075"></span>
-	</div><!-- END post-meta -->
+		评论: 28</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Gmail.html" rel="tag"><img src="/logo/Gmail.gif" alt="Gmail" class="thumb" width="80" height="80" /></a><p><a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a>对于很多中国用户来说是很难舍弃的服务，现在虽然Gmail服务被封，但对于电脑用户来说，只要设置一下<a target="_blank" href="/archives/3983.html">Google Hosts文件</a>即可重新在浏览器上打开Gmail，但是，对于iPhone手机来说，未越狱的iPhone是无法修改Hosts的，那么iPhone用户如何安全地使用Gmail呢？下面月光博客就介绍几种从iPhone上访问Gmail的方法。</p><p><strong>1、VPN + iOS Gmail客户端</strong></p><p>使用VPN的话，Gmail、<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>、<a href="/tag/Facebook.html" title="Facebook"  Target="_blank" >Facebook</a>应该都可以打开了，这里访问<a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a>体验最佳的还是iOS的Gmail客户端，其使用体验几乎和电脑端Gmail相同，邮件搜索也完全正常，如果哪天Gmail解封，建议用户也首选iOS Gmail客户端。</p><p>iOS Gmail客户端的下载方法，在AppStore中搜索Gmail即可找到（<a target="_blank" href="/apps/archives/186.html">下载链接地址</a>），不过目前还不支持中国市场，要用美国市场的帐号下载才行。</p><p style="text-align: center"><img alt="Gmail：谷歌邮件应用" src="/apps/upload/186_1.jpg" /></p><p><strong>2、iOS内置邮件系统</strong></p><p>没错，虽然Gmail被封，但iOS内置的邮件系统还是可以访问到Gmail，为什么iOS的Gmail客户端打不开，却能用iOS内置的邮件系统打开Gmail，原因很简单，iOS内置的邮件系统使用的是IMAP和SMTP来访问Gmail，其端口目前还没被封，而Gmail的iOS应用估计是使用https来访问Gmail，其端口443已经被封了。</p><p>首先在Gmail设置里开启IMAP，然后在iPhone上设置帐号，设置方法，进入&ldquo;设置&rdquo;&mdash;&mdash;&ldquo;邮件、通讯录、日历&rdquo;&mdash;&mdash;&ldquo;添加账户&hellip;&rdquo;，然后选择&ldquo;Google&rdquo;，输入帐号信息和密码，填写完成之后点击下一步即可。</p><p style="text-align: center"><img alt="如何在iPhone上安全使用Gmail" src="/upload/4075_1.jpg" /></p><p>在这里，强烈建议用户启用<a target="_blank" href="/archives/2754.html">Google的两步验证</a>，然后生成一个iPhone&ldquo;应用专用密码&rdquo;，这样，我们在iPhone上只需要输入这个生成的密码即可，一旦iPhone丢失，我们在Google的两步验证界面上删除该&ldquo;应用专用密码&rdquo;即可阻止该iPhone继续访问Gmail邮件。</p><p>通过IMAP访问Gmail的话，新邮件处理还算正常，但是对于老邮件搜索就不太正常了，如果经常使用Gmail的搜索功能，建议还是使用iOS Gmail客户端或电脑浏览器。</p><p>在iPhone里的设置方法是，新建一个邮件帐号，邮件类型选择&ldquo;其他&rdquo;，设置里选用IMAP的方式，在输入IMAP地址的时候写imap域名，用户名为Gmail地址，密码为Gmail密码。</p><p style="text-align: center"><img alt="通过客户端软件访问Gmail的方法" src="/upload/4455_3.jpg" /></p><p>在SMTP设置里，服务器填smtp域名，选择使用SSL，端口为465，点&ldquo;完成&rdquo;。</p><p style="text-align: center"><img alt="通过客户端软件访问Gmail的方法" src="/upload/4455_4.jpg" /></p><p>在邮件设置&ldquo;账户&rdquo;高级里，收件设置里选择使用SSL，端口993，此外，还可以设置一下Gmail邮件的归档，邮件设置&ldquo;账户&rdquo;高级里，存档邮件修改为Gmail所有邮件，将丢弃邮件转移到归档邮件，即可在手机上方便使用Gmail的邮件归档功能。</p><p style="text-align: center"><img alt="通过客户端软件访问Gmail的方法" src="/upload/4455_5.jpg" /></p><p><strong>3、第三方iOS邮件系统</strong></p><p>既然Gmail的IMAP端口没被封，那么理论上任何第三方iOS邮件客户端都可以通过IMAP访问Gmail，经过我的测试，国内主要的邮件APP（例如<a target="_blank" href="/apps/archives/181.html">腾讯QQ邮箱</a>和<a target="_blank" href="/apps/archives/315.html">网易邮箱大师</a>）都能正常通过IMAP访问Gmail邮箱，不过邮件搜索功能还是不太正常。从国内的第三方邮件系统上访问Gmail，普通网民玩玩可以，对于国内公共知识分子，还是建议使用iOS内置的邮件系统，原因你懂的。</p><p>总的来说，如果用户Gmail邮件非常多，经常需要搜索功能，那么建议VPN+iOS Gmail客户端方式，如果只是处理新邮件，使用iOS内置系统通过IMAP访问Gmail也能凑合用用。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Gmail.html" rel="tag"><img src="/logo/Gmail.gif" alt="Gmail" class="thumb" width="80" height="80" /></a><p><a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a>对于很多中国用户来说是很难舍弃的服务，现在虽然Gmail服务被封，但对于电脑用户来说，只要设置一下<a target="_blank" href="/archives/3983.html">Google Hosts文件</a>即可重新在浏览器上打开Gmail，但是，对于iPhone手机来说，未越狱的iPhone是无法修改Hosts的，那么iPhone用户如何安全地使用Gmail呢？下面月光博客就介绍几种从iPhone上访问Gmail的方法。</p><p><strong>1、VPN + iOS Gmail客户端</strong></p><p>使用VPN的话，Gmail、<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>、<a href="/tag/Facebook.html" title="Facebook"  Target="_blank" >Facebook</a>应该都可以打开了，这里访问<a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a>体验最佳的还是iOS的Gmail客户端，其使用体验几乎和电脑端Gmail相同，邮件搜索也完全正常，如果哪天Gmail解封，建议用户也首选iOS Gmail客户端。</p><p>iOS Gmail客户端的下载方法，在AppStore中搜索Gmail即可找到（<a target="_blank" href="/apps/archives/186.html">下载链接地址</a>），不过目前还不支持中国市场，要用美国市场的帐号下载才行。</p><p style="text-align: center"><img alt="Gmail：谷歌邮件应用" src="/apps/upload/186_1.jpg" /></p><p><strong>2、iOS内置邮件系统</strong></p><p>没错，虽然Gmail被封，但iOS内置的邮件系统还是可以访问到Gmail，为什么iOS的Gmail客户端打不开，却能用iOS内置的邮件系统打开Gmail，原因很简单，iOS内置的邮件系统使用的是IMAP和SMTP来访问Gmail，其端口目前还没被封，而Gmail的iOS应用估计是使用https来访问Gmail，其端口443已经被封了。</p><p>首先在Gmail设置里开启IMAP，然后在iPhone上设置帐号，设置方法，进入&ldquo;设置&rdquo;&mdash;&mdash;&ldquo;邮件、通讯录、日历&rdquo;&mdash;&mdash;&ldquo;添加账户&hellip;&rdquo;，然后选择&ldquo;Google&rdquo;，输入帐号信息和密码，填写完成之后点击下一步即可。</p><p style="text-align: center"><img alt="如何在iPhone上安全使用Gmail" src="https://static.williamlong.info/upload/4075_1.jpg" /></p><p>在这里，强烈建议用户启用<a target="_blank" href="/archives/2754.html">Google的两步验证</a>，然后生成一个iPhone&ldquo;应用专用密码&rdquo;，这样，我们在iPhone上只需要输入这个生成的密码即可，一旦iPhone丢失，我们在Google的两步验证界面上删除该&ldquo;应用专用密码&rdquo;即可阻止该iPhone继续访问Gmail邮件。</p><p>通过IMAP访问Gmail的话，新邮件处理还算正常，但是对于老邮件搜索就不太正常了，如果经常使用Gmail的搜索功能，建议还是使用iOS Gmail客户端或电脑浏览器。</p><p>在iPhone里的设置方法是，新建一个邮件帐号，邮件类型选择&ldquo;其他&rdquo;，设置里选用IMAP的方式，在输入IMAP地址的时候写imap域名，用户名为Gmail地址，密码为Gmail密码。</p><p style="text-align: center"><img alt="通过客户端软件访问Gmail的方法" src="https://static.williamlong.info/upload/4455_3.jpg" /></p><p>在SMTP设置里，服务器填smtp域名，选择使用SSL，端口为465，点&ldquo;完成&rdquo;。</p><p style="text-align: center"><img alt="通过客户端软件访问Gmail的方法" src="https://static.williamlong.info/upload/4455_4.jpg" /></p><p>在邮件设置&ldquo;账户&rdquo;高级里，收件设置里选择使用SSL，端口993，此外，还可以设置一下Gmail邮件的归档，邮件设置&ldquo;账户&rdquo;高级里，存档邮件修改为Gmail所有邮件，将丢弃邮件转移到归档邮件，即可在手机上方便使用Gmail的邮件归档功能。</p><p style="text-align: center"><img alt="通过客户端软件访问Gmail的方法" src="https://static.williamlong.info/upload/4455_5.jpg" /></p><p><strong>3、第三方iOS邮件系统</strong></p><p>既然Gmail的IMAP端口没被封，那么理论上任何第三方iOS邮件客户端都可以通过IMAP访问Gmail，经过我的测试，国内主要的邮件APP（例如<a target="_blank" href="/apps/archives/181.html">腾讯QQ邮箱</a>和<a target="_blank" href="/apps/archives/315.html">网易邮箱大师</a>）都能正常通过IMAP访问Gmail邮箱，不过邮件搜索功能还是不太正常。从国内的第三方邮件系统上访问Gmail，普通网民玩玩可以，对于国内公共知识分子，还是建议使用iOS内置的邮件系统，原因你懂的。</p><p>总的来说，如果用户Gmail邮件非常多，经常需要搜索功能，那么建议VPN+iOS Gmail客户端方式，如果只是处理新邮件，使用iOS内置系统通过IMAP访问Gmail也能凑合用用。</p>
 <p style="text-align:center"><img src="/logo/Gmail.jpg" alt="如何在iPhone上安全使用Gmail" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note4075"></span><a href="javascript:commYea(4075);" id="dig4075">顶一下 ▲</a>(<span id="sdig4075"><Script language="javascript" type="text/javascript">showDig("4075");</script></span>) &nbsp; <a href="javascript:commNay(4075);" id="down4075">踩一下 ▼</a>(<span id="sdown4075"><Script language="javascript" type="text/javascript">showDown("4075");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

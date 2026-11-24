@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/3882.html"/>
@@ -45,9 +45,7 @@
 		2014-6-12 16:15:41 | 
 		作者: 投稿 | 
 		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
-		评论: 52 | 
-		浏览: <span class="AddView" id="spn3882" data-id="3882"></span>
-	</div><!-- END post-meta -->
+		评论: 52</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
 		<a href="/tag/Proxy.html" rel="tag"><img src="/logo/Proxy.gif" alt="代理服务器" class="thumb" width="80" height="80" /></a><p>GoAgent 利用 Google App Engine (GAE) 来实现安全上网，以免费、快速、稳定的特点深受网民的欢迎。但是，GoAgent 的安装和配置中存在两点严重安全风险的问题却鲜为人知。这两点安全风险都可能被攻击者利用进行 &ldquo;中间人攻击（man-in-the-middle attack）&rdquo; 来窃取 GoAgent 用户的网络帐号密码等敏感信息，其概括描述如下：</p>
@@ -104,9 +102,9 @@
 
 <p>这一证书随后被 <code>proxy.py</code> 用来作为 HTTPS 中间人来避免浏览器在访问 HTTPS 网站时出现报警。GoAgent 的工作原理如下：首先 <code>proxy.py</code> 将浏览器的 HTTP 请求进行编码并转发给 <code>gae.py</code>，<code>gae.py</code> 完成收到的请求然后将结果进行编码后返回给 <code>proxy.py</code>，最后 <code>proxy.py</code> 将结果转发给浏览器来完成 &ldquo;翻墙&rdquo; 过程。由于 GAE 的限制 （免费 app 无法使用 socket 接口），对于 HTTPS 请求，<code>proxy.py</code> 无法进行透明转发，只能作为中间人先和浏览器完成连接，然后获得其中的明文请求以后在转发给 <code>gae.py</code>。当收到 <code>CONNECT</code> 请求（这意味着浏览器正在浏览一个 HTTPS 网站）， <code>proxy.py</code> 首先利用 GoAgent CA 签发一个假的证书来和浏览器完成握手，从用户的角度，所有的 HTTPS 网站的证书都是由事先导入的 &ldquo;GoAgent CA&rdquo; 认证的，所以不会报警。有些浏览器会对少数网站的证书进行特别的检查（Certificate Pinning），这种情况下 &quot;GoAgent CA&rdquo; 所签发的证书可能会触发证书不安全的报警。GoAgent 的这种工作方式导致 HTTPS 不再是浏览器到网站的端到端安全通信，而变成了 <code>proxy.py</code> 到 GAE，以及 GAE 到网站两段独立的 HTTPS 连接，GAE 能够看到请求和应答的明文。</p>
 
-<p style="text-align:center"><img alt="GoAgent的安全风险" src="/upload/3882_1.jpg" /></p>
+<p style="text-align:center"><img alt="GoAgent的安全风险" src="https://static.williamlong.info/upload/3882_1.jpg" /></p>
 
-<p style="text-align:center"><img alt="GoAgent的安全风险" src="/upload/3882_2.jpg" /></p>
+<p style="text-align:center"><img alt="GoAgent的安全风险" src="https://static.williamlong.info/upload/3882_2.jpg" /></p>
 
 <h3>测试页面</h3>
 
@@ -130,7 +128,7 @@
 
 <p>Firefox 中，打开 &ldquo;preferences&rdquo;，&rdquo;Advanced&rdquo;, &ldquo;Certificates&rdquo;, &ldquo;View Certificates&rdquo;, &ldquo;Authorities&rdquo;，然后在证书列表中找到 &ldquo;GoAgent CA&rdquo;，选中并点击 &ldquo;Delete or Distrust...&rdquo; 按钮，然后确认。</p>
 
-<p style="text-align:center"><img alt="GoAgent的安全风险" src="/upload/3882_3.jpg" /></p>
+<p style="text-align:center"><img alt="GoAgent的安全风险" src="https://static.williamlong.info/upload/3882_3.jpg" /></p>
 
 <p>Ubuntu 下，删除 <code>/usr/local/share/ca-certificates/GoAgent.crt</code> 然后执行</p>
 
@@ -138,15 +136,15 @@
 
 <p><a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> 下，请参考以下链接：</p>
 
-<blockquote><a href="http://technet.microsoft.com/en-us/library/cc754841.aspx#BKMK_addlocal" rel="nofollow">http://technet.microsoft.com/en-us/library/cc754841.aspx#BKMK_addlocal</a></blockquote>
+<blockquote>http://technet.microsoft.com/en-us/library/cc754841.aspx#BKMK_addlocal</blockquote>
 
 <p>中 &quot;Adding certificates to the Trusted Root Certification Authorities store for a local computer&quot; 的步骤，但是在 step 8 时右键选中 &quot;GoAgent CA&quot; 然后选择 &quot;Delete&quot;。</p>
 
-<p style="text-align:center"><img alt="GoAgent的安全风险" src="/upload/3882_4.jpg" /></p>
+<p style="text-align:center"><img alt="GoAgent的安全风险" src="https://static.williamlong.info/upload/3882_4.jpg" /></p>
 
 <p>在 Mac OS X下，打开 &ldquo;Keychain Access&rdquo; 应用，点击锁图标并输入密码解锁。在边上的控制面板中，选择 &quot;System&quot; 以及 &quot;Certificates&quot;，选中 &quot;GoAgent CA&quot; 然后按 &ldquo;Delete&rdquo; 键，点击 &quot;Delete&quot; 按钮并输入你的密码确认。</p>
 
-<p style="text-align:center"><img alt="GoAgent的安全风险" src="/upload/3882_5.jpg" /></p>
+<p style="text-align:center"><img alt="GoAgent的安全风险" src="https://static.williamlong.info/upload/3882_5.jpg" /></p>
 
 <h3>GoAgent 没有进行正确的 TLS 验证，存在中间人攻击的风险</h3>
 
@@ -171,7 +169,7 @@
 <p>确认在 <code>proxy.ini</code> 中设置了 <code>gae.mode=https</code> （默认），并且启用了证书验证 <code>gae.validate=1</code>（非默认）。这样的设定基本上能够防止 <code>proxy.py</code> 和 GAE 服务器，以及 GAE 服务器和网站服务器之间的 HTTPS 中间人攻击。由于 <code>proxy.py</code> 中没有对证书的主机名进行严格匹配，<code>proxy.py</code> 和 GAE 服务器的通信仍存在（相对较小的）风险，如果有人能够申请到 organizationName 字段以 &ldquo;Google &rdquo; 开头的证书，仍然能够成功进行HTTPS 中间人攻击。</p>
 
 <p>来源：bamsoftware，<a href="https://www.bamsoftware.com/sec/goagent-advisory.html" rel="nofollow" target="_blank">原文链接</a>。</p>
-<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+
 <p style="text-align:center"><img src="/logo/Proxy.jpg" alt="GoAgent的安全风险" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note3882"></span><a href="javascript:commYea(3882);" id="dig3882">顶一下 ▲</a>(<span id="sdig3882"><Script language="javascript" type="text/javascript">showDig("3882");</script></span>) &nbsp; <a href="javascript:commNay(3882);" id="down3882">踩一下 ▼</a>(<span id="sdown3882"><Script language="javascript" type="text/javascript">showDown("3882");</script></span>)
@@ -210,12 +208,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -225,16 +223,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -244,24 +242,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/1212.html"/>
@@ -45,12 +45,10 @@
 		2008-1-18 17:56:10 | 
 		作者: 月光 | 
 		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
-		评论: 24 | 
-		浏览: <span class="AddView" id="spn1212" data-id="1212"></span>
-	</div><!-- END post-meta -->
+		评论: 24</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>今天<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>的几个工程师来到我们公司，演示他们开发的一套软件加密系统：微软软件授权保护系统（SLP/Software License Protection），在这个系统上还有软件许可及保护服务（SLP Services），听他们讲了一些相关的知识和技术，感觉大有收获。</p><p><strong>SLP代码保护器（SLP Code Protector）</strong></p><p>众所周知，使用微软的.NET开发的应用软件，编译之后的EXE和DLL文件，可以使用Lutz Roeder's .NET Reflector很方便的进行反编译，使得一些核心代码的安全性受到威胁。这时就可以使用&ldquo;SLP代码保护器&rdquo;（SLP Code Protector）对.NET的代码进行保护，使得其核心的函数经过了加密，无法使用反编译工具进行反编译。</p><p>SLP代码保护器是免费产品，可以免费在.NET开发中使用。</p><p><strong>SLP置换器（SLP Permutation）</strong></p><p>如果要进行加密商用加密处理，需要和各个不同的企业使用不同的算法，因此使用SLP置换器（SLP Permutation），把现有代码通过置换算法转换为安全虚拟机（SVM，Secure Virtual Machine）语言，然后代码的入口处就会增加一小段代码，也就是SVM，代码无论是被浏览还是被执行都要先执行这段代码，这就实现了将关键核心的算法的代码进行了内容上的替换，实现了软件许可的认证和保护功能。</p><p><strong>SLP在线服务（SLP Online Service）</strong></p><p>软件被保护后，软件的许可证可以通过在线服务进行动态打包，SLP服务网站定义了产品许可证的不同特性（Feature），可以针对不同的个人进行灵活发放。</p><p><strong>SLP服务器（SLP Server）</strong></p><p>软件开发商需要单独搭建一台自己的服务器并创建软件授权-基于机器、时间（软件订阅和试用）、用户或功能-针对它们的产品。服务器会创建激活码，用户可以通过激活码进行数字授权，激活他们的软件。</p><p><strong>SLP激活（SLP Activation）</strong></p><p>客户软件的激活可以通过两种方式激活：在线激活和离线激活方式。激活时候客户输入激活码，然后SLP会收集客户的硬件信息（硬盘、CPU、主板等），通过这些硬件信息生成一个客户独有的硬件指纹，然后连接到SLP服务器上获取License文件并引入客户软件系统。</p><p>总的来说，微软的这一套软件授权保护系统还是比较完善的，从产品开发、许可管理到销售等主要的业务流程都可以走通，是软件企业用于保护自身软件的一个不错的工具，价格也不算贵，好像只有几万美元的价格。以微软的技术实力来看，这套软件的安全性应该也是不错的，不过其安全性还是低于硬件<a target="_blank" href="/archives/705.html">加密锁</a>（加密狗），虽然<a target="_blank" href="/archives/706.html">加密狗被破解也是很常见的</a>。</p><p>不过从另一个方面上来看，微软的<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>几乎每个版本都被破解过，因为<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>花费巨大精力研究的最尖端的反盗版技术用于保护<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>和Office，但同时全世界最顶级的黑客和破解者也在研究微软的这套加密保护系统，破解了Windows的加密系统，那么用SLP开发的所有加密系统都会面临被破解的风险，而一些冷门的加密产品由于利益较少，被关注的也较少，因此可能反而更少人去对其进行破解。</p><p>微软软件授权保护服务的网站地址是：<a target="_blank" href="http://www.microsoft.com/slps">http://www.microsoft.com/slps</a> ，有兴趣的话可与去看看。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>今天<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>的几个工程师来到我们公司，演示他们开发的一套软件加密系统：微软软件授权保护系统（SLP/Software License Protection），在这个系统上还有软件许可及保护服务（SLP Services），听他们讲了一些相关的知识和技术，感觉大有收获。</p><p><strong>SLP代码保护器（SLP Code Protector）</strong></p><p>众所周知，使用微软的.NET开发的应用软件，编译之后的EXE和DLL文件，可以使用Lutz Roeder's .NET Reflector很方便的进行反编译，使得一些核心代码的安全性受到威胁。这时就可以使用&ldquo;SLP代码保护器&rdquo;（SLP Code Protector）对.NET的代码进行保护，使得其核心的函数经过了加密，无法使用反编译工具进行反编译。</p><p>SLP代码保护器是免费产品，可以免费在.NET开发中使用。</p><p><strong>SLP置换器（SLP Permutation）</strong></p><p>如果要进行加密商用加密处理，需要和各个不同的企业使用不同的算法，因此使用SLP置换器（SLP Permutation），把现有代码通过置换算法转换为安全虚拟机（SVM，Secure Virtual Machine）语言，然后代码的入口处就会增加一小段代码，也就是SVM，代码无论是被浏览还是被执行都要先执行这段代码，这就实现了将关键核心的算法的代码进行了内容上的替换，实现了软件许可的认证和保护功能。</p><p><strong>SLP在线服务（SLP Online Service）</strong></p><p>软件被保护后，软件的许可证可以通过在线服务进行动态打包，SLP服务网站定义了产品许可证的不同特性（Feature），可以针对不同的个人进行灵活发放。</p><p><strong>SLP服务器（SLP Server）</strong></p><p>软件开发商需要单独搭建一台自己的服务器并创建软件授权-基于机器、时间（软件订阅和试用）、用户或功能-针对它们的产品。服务器会创建激活码，用户可以通过激活码进行数字授权，激活他们的软件。</p><p><strong>SLP激活（SLP Activation）</strong></p><p>客户软件的激活可以通过两种方式激活：在线激活和离线激活方式。激活时候客户输入激活码，然后SLP会收集客户的硬件信息（硬盘、CPU、主板等），通过这些硬件信息生成一个客户独有的硬件指纹，然后连接到SLP服务器上获取License文件并引入客户软件系统。</p><p>总的来说，微软的这一套软件授权保护系统还是比较完善的，从产品开发、许可管理到销售等主要的业务流程都可以走通，是软件企业用于保护自身软件的一个不错的工具，价格也不算贵，好像只有几万美元的价格。以微软的技术实力来看，这套软件的安全性应该也是不错的，不过其安全性还是低于硬件<a target="_blank" href="/archives/705.html">加密锁</a>（加密狗），虽然<a target="_blank" href="/archives/706.html">加密狗被破解也是很常见的</a>。</p><p>不过从另一个方面上来看，微软的<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>几乎每个版本都被破解过，因为<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>花费巨大精力研究的最尖端的反盗版技术用于保护<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>和Office，但同时全世界最顶级的黑客和破解者也在研究微软的这套加密保护系统，破解了Windows的加密系统，那么用SLP开发的所有加密系统都会面临被破解的风险，而一些冷门的加密产品由于利益较少，被关注的也较少，因此可能反而更少人去对其进行破解。</p><p>微软软件授权保护服务的网站地址是：<a target="_blank" href="http://www.microsoft.com/slps">http://www.microsoft.com/slps</a> ，有兴趣的话可与去看看。</p>
 <p style="text-align:center"><img src="/logo/Encryption.jpg" alt="微软的SLP软件加密保护服务" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note1212"></span><a href="javascript:commYea(1212);" id="dig1212">顶一下 ▲</a>(<span id="sdig1212"><Script language="javascript" type="text/javascript">showDig("1212");</script></span>) &nbsp; <a href="javascript:commNay(1212);" id="down1212">踩一下 ▼</a>(<span id="sdown1212"><Script language="javascript" type="text/javascript">showDown("1212");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

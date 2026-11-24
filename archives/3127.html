@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/3127.html"/>
@@ -45,12 +45,10 @@
 		2012-6-18 19:23:7 | 
 		作者: 投稿 | 
 		分类: <a href="/cat/seo.html" title="搜索引擎" rel="category tag">搜索引擎</a> | 
-		评论: 8 | 
-		浏览: <span class="AddView" id="spn3127" data-id="3127"></span>
-	</div><!-- END post-meta -->
+		评论: 8</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Adwords.html" rel="tag"><img src="/logo/Adwords.gif" alt="Adwords" class="thumb" width="80" height="80" /></a><p>介绍用户一方可以对精准广告定向进行的审查。这样有一个平衡：广告商是自由的，用户也是自由的，双方都能，且应该对它们手上的信息进行审查。那么，用户如何反制互联网精准广告定向？</p><p>这篇投稿是补充牛国柱的《<a target="_blank" href="/archives/3125.html">互联网精准广告定向技术</a>》，在作者前一篇文章《<a target="_blank" href="/archives/3001.html">是谁在偷窥我们的网络隐私</a>》已简单介绍了广告统计的原理，《<a target="_blank" href="/archives/3125.html">互联网精准广告定向技术</a>》则给出了详细说明。</p><p>放任追踪的后果：</p><p>作者在某个社交网站用目前使用的邮箱注册了帐号a。有一天用老的email注册了账户b并登入，该社交网站第一个提醒我应该加的好友就是a。</p><p>它其实知道b和a是同一个人。</p><p>这就是社交图谱，更广泛地说，是用户(没有注意到而提供的)信息价值。</p><p>再回到牛国柱的文章，这篇文章脉络很好，按照广告追踪所涉及的不同&ldquo;门路&rdquo;进行分类。</p><p>本文也以同样的分类，来介绍根据&ldquo;门路&rdquo;不同，用户如何对它受到的追踪进行审查。</p><p>1，Http Header之User-Agent</p><p>有了UA，网站才能根据你希望的语言，版面(手机版？桌面版？)向你提供网页。它在广告上的用途无非是大致统计使用者的浏览器，操作系统，语言等元信息。</p><p>UA只是一个明文字符串，浏览器通常都允许将其自定义。通过扩展程序，可以按照网站域名(或其它几乎任何条件)伪造不同的UA</p><p>2，Cookie(包括flash cookie)</p><p>在广告行业以外，Cookie也是必不可少的东西。它几乎是让服务器记住你的唯一方法：登录，记住你最后一次访问的页面(为什么优酷记得你上次把视频播放到哪里？)，账户鉴权保密(支付宝怎么确保你是按照自己的意愿付款？)......都需要用到它。</p><p>单纯地禁止cookie往往会造成灾难。</p><p>所以审查cookie需要一些技能和工具：</p><p>第一方/第三方：</p><p>为了营销而进行的用户追踪功能通常是第三方(的域名)提供的，所以第三方cookie更可能用于追踪。但是对于一个特大号的服务/系统而言，第一方和第三方的区别就会模糊。</p><p>用户信息和服务内容可能会分别存放在不同的域名下。</p><p>如，在阻止所有第三方cookie时，可能会在登录hotmail/skydrive等<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>live服务时出现困难。这种情况下，可以通过设定按照域名、第一方第三方、是否一旦退出浏览器时便抛弃等不同来区分黑/白名单，</p><p>提供追踪与其它功能的代码来自同一个域名。这种情况下，审查就会变得困难，往往需要直接针对特定cookie进行处理。目前的网页设计都推崇内容和样式分离的异步模式，因此，执行不同任务的javascript通常也会分开，以.js文件的形式发放。这时可以通过阻止特定javascript代码文件的方法以进行来自用户的审查。</p><p>Adobe公司和浏览器开发商进行了合作，以确保用户可以轻松地审查flash cookie；现代的浏览器可以审查flash(原生的点击播放功能，或通过扩展程序)，以及flash cookie等(其它的plugin也是一样)</p><p>3，定向技术</p><p>a，所有通过UA的来源都是可以伪造的</p><p>b，通过地域(ip地址)的定向难以伪造，只能通过使用代理服务器进行匿名化。</p><p>c，回头客，频次定向是利用cookie的，因此第三方的回头客定向比较容易排除，但那些需要用户登录的站点，几乎不可能审查。因为明确标明了&ldquo;你的&rdquo;登录历史一定会出现在对方的服务器日志里。但基于网页异步执行的特点，通过审查javascript，还是有机会能减少被搜集的信息量。</p><p>d，人群定向是难以审查的，因为这种定向主要来源于你的活动历史，以及你周围(同一类)用户的活动历史</p><p>e，并发/时段/网页/关键词定向，这些内容往往是由服务器完成，除非用户能阻断用于提交信息的可执行代码(通常是javascript)，否则不太可能审查它们。</p><p>4，Do Not Track Header(不要追踪)</p><p>DNT也是现代浏览器的一项功能。(唯一的例外是所有源自Chromium的浏览器，包括Google <a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>均不支持)</p><p>如果你是<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>的用户，则可以放心地使用DNT功能，twitter已经宣布支持识别DNT。</p><p>为什么？技术上，Do-Not-Track做了这些事情：</p><p>当浏览器访问一个网站时，它在向目标网站发送的HTTP header中增加了一句&ldquo;DNT: 1&rdquo;</p><p>所以是否将带有DNT header请求的用户做别的处理，完全是服务商单方面的事务。</p><p>5，浏览器</p><p>以上的方法通常都能用于桌面浏览器。移动终端上的浏览器，特别是应用(APP)中内置的统计是难以审查的。</p><p>相对简单的方法是，在移动设备的host中，将用于追踪的服务器域名导向一个无效的Ip地址(如指代本地的127.0.0.1)。显然这么做，至少会丧失设备的保修。</p><p>如果和广告过不去，记得把它的追踪部分也审查掉，虽然你不会马上感到差异，但这是广告的命根。</p><p>来源：fcerebel投稿</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Adwords.html" rel="tag"><img src="/logo/Adwords.gif" alt="Adwords" class="thumb" width="80" height="80" /></a><p>介绍用户一方可以对精准广告定向进行的审查。这样有一个平衡：广告商是自由的，用户也是自由的，双方都能，且应该对它们手上的信息进行审查。那么，用户如何反制互联网精准广告定向？</p><p>这篇投稿是补充牛国柱的《<a target="_blank" href="/archives/3125.html">互联网精准广告定向技术</a>》，在作者前一篇文章《<a target="_blank" href="/archives/3001.html">是谁在偷窥我们的网络隐私</a>》已简单介绍了广告统计的原理，《<a target="_blank" href="/archives/3125.html">互联网精准广告定向技术</a>》则给出了详细说明。</p><p>放任追踪的后果：</p><p>作者在某个社交网站用目前使用的邮箱注册了帐号a。有一天用老的email注册了账户b并登入，该社交网站第一个提醒我应该加的好友就是a。</p><p>它其实知道b和a是同一个人。</p><p>这就是社交图谱，更广泛地说，是用户(没有注意到而提供的)信息价值。</p><p>再回到牛国柱的文章，这篇文章脉络很好，按照广告追踪所涉及的不同&ldquo;门路&rdquo;进行分类。</p><p>本文也以同样的分类，来介绍根据&ldquo;门路&rdquo;不同，用户如何对它受到的追踪进行审查。</p><p>1，Http Header之User-Agent</p><p>有了UA，网站才能根据你希望的语言，版面(手机版？桌面版？)向你提供网页。它在广告上的用途无非是大致统计使用者的浏览器，操作系统，语言等元信息。</p><p>UA只是一个明文字符串，浏览器通常都允许将其自定义。通过扩展程序，可以按照网站域名(或其它几乎任何条件)伪造不同的UA</p><p>2，Cookie(包括flash cookie)</p><p>在广告行业以外，Cookie也是必不可少的东西。它几乎是让服务器记住你的唯一方法：登录，记住你最后一次访问的页面(为什么优酷记得你上次把视频播放到哪里？)，账户鉴权保密(支付宝怎么确保你是按照自己的意愿付款？)......都需要用到它。</p><p>单纯地禁止cookie往往会造成灾难。</p><p>所以审查cookie需要一些技能和工具：</p><p>第一方/第三方：</p><p>为了营销而进行的用户追踪功能通常是第三方(的域名)提供的，所以第三方cookie更可能用于追踪。但是对于一个特大号的服务/系统而言，第一方和第三方的区别就会模糊。</p><p>用户信息和服务内容可能会分别存放在不同的域名下。</p><p>如，在阻止所有第三方cookie时，可能会在登录hotmail/skydrive等<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>live服务时出现困难。这种情况下，可以通过设定按照域名、第一方第三方、是否一旦退出浏览器时便抛弃等不同来区分黑/白名单，</p><p>提供追踪与其它功能的代码来自同一个域名。这种情况下，审查就会变得困难，往往需要直接针对特定cookie进行处理。目前的网页设计都推崇内容和样式分离的异步模式，因此，执行不同任务的javascript通常也会分开，以.js文件的形式发放。这时可以通过阻止特定javascript代码文件的方法以进行来自用户的审查。</p><p>Adobe公司和浏览器开发商进行了合作，以确保用户可以轻松地审查flash cookie；现代的浏览器可以审查flash(原生的点击播放功能，或通过扩展程序)，以及flash cookie等(其它的plugin也是一样)</p><p>3，定向技术</p><p>a，所有通过UA的来源都是可以伪造的</p><p>b，通过地域(ip地址)的定向难以伪造，只能通过使用代理服务器进行匿名化。</p><p>c，回头客，频次定向是利用cookie的，因此第三方的回头客定向比较容易排除，但那些需要用户登录的站点，几乎不可能审查。因为明确标明了&ldquo;你的&rdquo;登录历史一定会出现在对方的服务器日志里。但基于网页异步执行的特点，通过审查javascript，还是有机会能减少被搜集的信息量。</p><p>d，人群定向是难以审查的，因为这种定向主要来源于你的活动历史，以及你周围(同一类)用户的活动历史</p><p>e，并发/时段/网页/关键词定向，这些内容往往是由服务器完成，除非用户能阻断用于提交信息的可执行代码(通常是javascript)，否则不太可能审查它们。</p><p>4，Do Not Track Header(不要追踪)</p><p>DNT也是现代浏览器的一项功能。(唯一的例外是所有源自Chromium的浏览器，包括Google <a href="/tag/Chrome.html" title="Chrome"  Target="_blank" >Chrome</a>均不支持)</p><p>如果你是<a href="/tag/Twitter.html" title="Twitter"  Target="_blank" >Twitter</a>的用户，则可以放心地使用DNT功能，twitter已经宣布支持识别DNT。</p><p>为什么？技术上，Do-Not-Track做了这些事情：</p><p>当浏览器访问一个网站时，它在向目标网站发送的HTTP header中增加了一句&ldquo;DNT: 1&rdquo;</p><p>所以是否将带有DNT header请求的用户做别的处理，完全是服务商单方面的事务。</p><p>5，浏览器</p><p>以上的方法通常都能用于桌面浏览器。移动终端上的浏览器，特别是应用(APP)中内置的统计是难以审查的。</p><p>相对简单的方法是，在移动设备的host中，将用于追踪的服务器域名导向一个无效的Ip地址(如指代本地的127.0.0.1)。显然这么做，至少会丧失设备的保修。</p><p>如果和广告过不去，记得把它的追踪部分也审查掉，虽然你不会马上感到差异，但这是广告的命根。</p><p>来源：fcerebel投稿</p>
 <p style="text-align:center"><img src="/logo/Adwords.jpg" alt="如何反制互联网精准广告定向" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note3127"></span><a href="javascript:commYea(3127);" id="dig3127">顶一下 ▲</a>(<span id="sdig3127"><Script language="javascript" type="text/javascript">showDig("3127");</script></span>) &nbsp; <a href="javascript:commNay(3127);" id="down3127">踩一下 ▼</a>(<span id="sdown3127"><Script language="javascript" type="text/javascript">showDown("3127");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

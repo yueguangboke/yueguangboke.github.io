@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="stylesheet" type="text/css" media="all" href="/info/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/info/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/info/archives/48.html"/>
+	<title>提高ADO性能的优秀经验-网站运营优化</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/info/" title="网站运营优化" rel="home bookmark">网站运营优化</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/info/" target="_self">首页</a></li><li><a href="/info/cat/news.html" target="_self">动态</a></li><li><a href="/info/cat/review.html" target="_self">评论</a></li><li><a href="/info/cat/plan.html" target="_self">策划</a></li><li><a href="/info/cat/design.html" target="_self">设计</a></li><li><a href="/info/cat/service.html" target="_self">运营</a></li><li><a href="/info/cat/seo.html" target="_self">SEO</a></li><li><a href="/info/cat/application.html" target="_self">应用</a></li><li><a href="/info/cat/server.html" target="_self">服务器</a></li><li><a href="/info/cat/program.html" target="_self">编程</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate5 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/info/">网站运营优化</a> &raquo; <a href="/info/cat/server.html" title="查看 服务器 中的全部文章">服务器</a> &raquo; <span>提高ADO性能的优秀经验</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/info/archives/48.html" rel="bookmark">提高ADO性能的优秀经验</a></h1>
+	<div class="post-meta">
+		2007年5月24日 | 
+		分类: <a href="/info/cat/server.html" title="服务器" rel="category tag">服务器</a> | 
+		评论: 0</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+<p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="提高ADO性能的优秀经验" /></p>
+		<p><strong>一、概述</strong> </p>
+<p>&ldquo;性能&rdquo;这一术语有着几种不同的、差异微妙的含义。当人们谈到某个东西性能多少好时，他们想要表达的意思可能就是在一定的时间之内它完成了多少工作。例如，一个性能好的发动机运行起来更稳定，产生的动力更强大。对于开发小组，你同样也可能应用这个判断标准：一个性能好的开发小组工作时比较安静，而且能够生产出大量高质量的代码。对我来说，性能至少意味着两件事情&mdash;&mdash;我的代码运行起来有多好，我的开发小组和我本人工作效率怎么样。无论哪一方面，本文介绍的技巧都将起到一定的帮助作用：帮助你更快地编写代码，帮助你编写更快的代码&mdash;&mdash;安静地完成这一切，减少这样那样的错误。本文介绍的技巧主要面向ADO，特别是如何通过ADO访问SQL Server。但与此同时，我还将涉及一些适用范围更广的COM技巧，它们适用于你所编写的所有Visual Basic代码。 </p>
+<p>为了了解从哪些SQL Server数据访问代码编写技术、哪些体系、哪些开发习惯可以得到最好的性能，我已经花了不少时间。一些情况下，对于应用的整体性能来说，单一的技术意义很小，除非我们通过循环将性能的改善程度成倍放大。例如，在一个客户机/服务器应用中，当我们不是通过指定ODBC数据源（DSN）的方式连接数据库时，大约能够节省一到二秒的时间。对于应用整体的适用性或性能来说，这部分节省的时间所产生的影响很小。但是，如果我们在一个中间层组件上应用这种技术，这个组件每分钟（或每小时，每天）都要建立和关闭数据库连接数百（甚至数千）次，那么，这种技术将显著地影响系统的性能表现。因此，对于我在这里讨论的每一种技术，请务必考虑这个倍数因子&mdash;&mdash;即，在一定的时间周期内，你的系统将执行同一段代码多少次。 </p>
+<p>当你开始寻求改进性能的方案时，请考虑一下你的应用（组件，或者是ASP代码）大部份的等待和处理时间花在什么地方。如果你发现应用程序把大量的时间花在等待Open或Execute方法执行完成，那么，你应该认真地检查一下服务器端的查询策略。包括ADO在内，所有的数据访问接口等待查询结果的时间都相同。例如，如果你有一个查询，SQL Server需要20秒才能完成它，不论用来执行该查询的是什么接口，没有一种接口能够比其他接口以更快的速度返回结果。虽然有些接口打开连接的速度比较快，有些接口处理结果集的速度比较快，但没有一种接口能够影响数据库引擎编译和执行查询的速度。因此，如果你的查询具有太高的&ldquo;挑战性&rdquo;&mdash;&mdash;例如你没有对索引进行优化，你没有使用存储过程，服务器负载过重，或者你要求返回的记录数量太多&mdash;&mdash;那么，世界上没有一种ADO技术能够帮助你提高性能。除非你解决了这些基本的查询问题，否则没有一种性能调整技术能够显著地改善整体性能。SQL Server的Query Analyzer是一个分析查询性能的优秀工具。它能够用图形的方式显示查询的执行过程，并对改进性能的方法提出建议。 </p>
+<p>如果你能够确信查询具有较高的效率，那么，你可以使用本文介绍的技术进一步调整ADO代码的性能。这里介绍的技巧将从各个方面帮助你简化和改进ADO编程，包括：建立和维护连接，构造和提交执行速度更快的查询，提高处理查询结果的效率，等等。 </p>
+<p><strong>二、建立连接</strong> </p>
+<p>在一个客户机/服务器应用中，我们可以用好几种方法把建立和初始化数据库连接所需要的时间隐藏起来，使得应用程序既能够打开连接，又不需要用户等待应用程序启动。首先，我们可以尝试异步连接。使用异步连接时，ADO启动连接操作之后，不等待连接完成就把控制权返回给应用程序&mdash;&mdash;这样，应用程序就能够接着执行大部份初始化操作，以更快的速度完成form_load事件处理。如果关闭并重新建立连接的时间小于连接池释放连接的时间，那么这个连接实际上是即时的。但在许多情况下（特别是用户数量不多时），让连接保持打开状态更具有现实意义。在中间层组件或ASP页面内部，如果数据库查询多次重复出现，我建议你让Connection对象保持打开状态。 </p>
+<p>另外一个改进连接性能的办法是，避免使用带有DSN的ODBC。在Microsoft，ODBC已经转入了Quick Fix Engineering（QFE，快速修理工程）状态，它意味着：除非发现重大BUG，该公司将不再在ODBC或它的驱动程序上花时间。另外，考虑性能和部署问题时，ODBC DSN也是一个必须关注的问题。DSN必须安装到客户系统上，要求进行注册表查找，与OLE DB连接相比，它建立连接所需要的时间更长&mdash;&mdash;特别是当你用直接编码的方式指定ConnectionString时，这一点尤其突出。从实际效果来看，避免使用DSN降低的系统开销很有限：如果完全取消连接建立过程，对于每个连接，你也许能够剩下二到五秒时间（假设数据库连接池中已经没有连接）。然而，如果你的应用程序需要频繁地建立连接，节省的时间累计起来就很可观了。 </p>
+<p>建立数据库连接的时候，你要选择一个数据提供者。Microsoft建议我们使用OLE DB提供者替代默认的ODBC提供者。对比最新的OLE DB本地提供者和功能类似但较早的ODBC提供者，我感到前者令人不愉快的意外之事较少。但无论是哪种情况，你都应该在决定使用某个新的提供者之前对应用进行完整地测试&mdash;&mdash;代码的性能、支持的功能、行为方式都有可能发生变化。 </p>
+<p>在中间层和ASP中，在保持连接打开的情况下，我们不能（从实践来看）创建出可伸缩的组件&mdash;&mdash;至少在多次调用之间是这样的。一般地，当IIS引用和释放组件、ASP页面的实例时，组件和ASP页面被频繁地装入、丢弃。由于基于ADO的代码每次执行时都必须建立、使用、释放数据库连接，最小化连接复杂程度的策略对性能的提高程度达到了可明显测量的程度。在这些情形下，对于我们连接数据库的速度来说，连接/会话池有着重要的意义。如果你为Command对象的ConnectionString属性指定合适的值（即，每次使用同样的服务器、初始目录、登录ID和其他参数），那么，连接已经打开且处于可用状态的机会很大。如果连接池中能够找到匹配的连接，连接（或重新连接）的时间将接近0（通常小于250 ms）。 </p>
+<p>然而，如果ADO（或VB）代码不释放Connection对象，或者，我们在不同的实例之间改换了ConnectionString，OLE DB必须每次建立一个新的连接。如果出现了这种情况，我们将很快耗尽连接池内可用连接的数量。要确保连接被释放，我们必须在关闭连接之后把Connection对象设置为Nothing。另外，不要在Recordset Open方法中使用ConnectionString，而是以独立的方式打开Connection对象；这样，当我们要关闭Connection对象以及要把它设置成Nothing的时候，引用它就很方便了。 </p>
+<p><strong>三、构造和提交查询</strong> </p>
+<p>在构造查询的时候，要搞清楚为什么必须这么做、为什么不能那么做是一个很复杂的问题。然而，一些基本的指导方针能够让构造高效查询的过程更加流畅、轻松。一般地，你不应该让查询浪费服务器时间。下面几个技巧能够帮助你构造出更好、更高效的查询。 </p>
+<p><strong>不要强制SQL Server每次执行查询的时候重新编译和构造查询执行计划</strong>。避免这种重复操作的一种简单方法是使用带有参数的存储过程。注意尽量不要使用ADO Command对象的Prepare属性&mdash;&mdash;有时它不能正确工作。如果使用存储过程，你还可以通过消除不必要的&ldquo;受影响行数&rdquo;返回值进一步提高ADO性能&mdash;&mdash;只需在存储过程中加入SET NOCOUNT ON就可以了。 </p>
+<p><strong>尽量减少与服务器的通信次数</strong>。如果你有几个相关的操作要执行，请把它们合并为一个存储过程，或者是一个可以在服务器上作为脚本执行的复合查询。避免使用方法（比如Refresh）和不适当的Parameters集合引用，它们会强制ADO增加额外的服务器通信过程。 </p>
+<p>在客户机/服务器应用中，只构造Command对象一次，而不是每次使用Command对象的时候重新构造。你可以重新设置Command的参数值，然后在需要时执行它。 </p>
+<p><strong>当查询返回的不是一个记录集时，确保使用了adExecuteNoRecords选项，告诉ADO越过所有那些用来接收和构造记录集（Recordset格式）的代码</strong>。你可以把adExecuteNoRecords选项传递给Execute方法，或把它作为Command的选项。 </p>
+<p><strong>执行返回简单记录集的存储过程时，不要使用Command对象</strong>。所有的存储过程（以及Command对象）可以作为Connection对象的COM方法出现。让存储过程作为Connection对象的方法出现有着显著的性能优势，同时它也简化了代码。尽管这种技术对于那些有Return Status值或Output参数的存储过程没有什么帮助，但对于动作查询（INSERT、DELETE等）以及那些返回一个或多个记录的查询来说，这种技术很有用。把存储过程作为Connection的方法之后，你可以用方法参数的形式传入存储过程的输入参数；如果调用存储过程返回了一个记录集，你可以通过方法调用中最后一个参数引用该Recordset。例如，下面的ADO语句执行一个名为&ldquo;Fred&rdquo;的存储过程，Fred存储过程有两个输入参数，返回一个Recordset： </p>
+<p>
+<table cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="80%" bgcolor="#dbdbdb" bordercolorlight="#000000" border="1">
+<tbody>
+<tr>
+<td>
+<pre><p>
+MyConnection.Fred&quot;InputArg1&quot;, 2, myRecordset
+</p></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>编写代码的时候，不要寄希望于VB的自动完成功能会把存储过程或Command对象名字视为合法的Connection对象的方法。在正式运行之前，COM不会解析这类名字。 </p>
+<p><strong>除非绝对必要，否则不要返回记录集</strong>。当正在执行的查询返回记录时，ADO就会构造一个Recordset对象。构造Recordset对象的开销很大，因此你应该尽量避免使用Recordset对象。注意有时候执行查询虽然返回结果，但不是返回记录。例如，你可以通过Return Status参数返回整数值。另外，你可以返回Output参数来替代需要构造Recordset对象的记录集，SQL Server允许返回的Output参数多达1000个。 </p>
+<p>只要有可能，请用动作查询（INSERT，UPDATE，DELETE和执行这些操作的存储过程）替代可更新的Recordset游标。此时，你应该使用Execute方法和它的adExecuteNoRecords选项，确保ADO能够知道查询不需要构造Recordset对象。 </p>
+<p><strong>除非必要，否则不要请求服务器进行排序</strong>。大多数情况下，对于一个适度大小的Recordset对象，当它被发送到客户端之后，排序速度将更快。另外，如果让ADO客户程序排序Recordset中的记录，则客户应用程序能够按照用户选择的次序排序，从而提高了灵活性。 </p>
+<p><strong>在编写查询之前了解索引的结构</strong>。创建合适的索引，调整查询的语法以利用这些索引，你将能够提高记录提取的速度。Query Analyzer能够帮助你决定是否有必要添加更多的索引。 </p>
+<p><strong>不要一次性返回太多的记录</strong>。很多时候，容量太大的记录集会严重地影响应用程序的性能。只返回那些当前你需要的记录，如果客户程序需要更多的记录，则以后随时提取。通过带有参数的WHERE子句，或者灵活地运用TOP N查询，限制查询的范围。 </p>
+<p><strong>不要返回太多的列</strong>。避免使用SELECT *。SELECT *语句告诉SQL Server返回所有的列，不管实际存在的列有多少。只选择那些你需要的列，这样，当有人为表增加了更多的列时，你不会得到大得出奇的结果集。 </p>
+<p><strong>避免使用游标</strong>。如果你必须使用游标，那么不要使用那些所需资源数量超过必要的游标类型。如果没有必要，不要要求游标提供滚动、更新和数据缓冲能力。 </p>
+<p><strong>详细地告诉ADO你想要它做些什么</strong>。打开Recordset或者构造Command对象时，不要忘了设置CommandType选项。它避免了ADO&ldquo;猜测&rdquo;你的意图，你将能够减少与服务器的通信，而且使得代码更加稳定。 </p>
+<p>另外，学习使用诊断工具，测定运行在服务器上的代码和应用程序的代码占用了多少时间&mdash;&mdash;以及这些时间花在哪里。在这方面，SQL Server Profiler是一个宝贵的工具。它能够阐明你的代码在要求服务器做些什么，能够在草率构造的查询中或对于错误选择的命令属性突出显示。另外，Query Analyzer还能够用图示的方式显示出SQL Server将如何执行查询，提出改进查询的建议，帮助你调整查询。Query Analyzer甚至还能够执行它提出的建议（例如，添加或者删除索引），你只需点击一下按钮就可以完成。 </p>
+<p><strong>四、处理查询结果</strong> </p>
+<p>查询结果记录发送到客户端之后，客户端应用程序可能需要相当可观的时间去处理结果集。每一种体系（客户机/服务器，多层体系中的中间层，以及ASP）都为优化这个阶段的代码提供了相应的技术。下面是几个能够显著改善性能的技巧。 </p>
+<p>我在代码中看到最多的错误之一是：在引用Recordset Field.Value的时候，使用延迟绑定（Late Binding）。由于代码需要频繁地引用Value属性，而且通常要引用的Field对象有很多，本文前面提到的倍数因子将起到重要影响&mdash;&mdash;因此，所有这里介绍的技巧能够显著地改善性能。一些开发者使用延迟绑定技术的原因在于，他们想要明确地标识出SELECT语句选择了哪些行。为了这个目标，许多人使用了用引号包围字符串的做法。例如，为了引用记录集RS字段集合中的&ldquo;Cows&rdquo;字段，你可能使用： </p>
+<p>
+<table cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="80%" bgcolor="#dbdbdb" bordercolorlight="#000000" border="1">
+<tbody>
+<tr>
+<td>
+<pre><p>
+RS(&quot;Cows&quot;)
+
+或者：
+
+RS.Fields(&quot;Cows&quot;).Value
+</p></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>后面这种方法显式地引用了记录集内Fields集合中指定成员的Value属性。这种方法要稍微快一点，而且当你把这些代码向Visual Basic.NET迁移时，它的向上兼容性也要好一些。上述方法的一种变化是使用感叹号（!）操作符： </p>
+<p>
+<table cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="80%" bgcolor="#dbdbdb" bordercolorlight="#000000" border="1">
+<tbody>
+<tr>
+<td>
+<pre><p>
+RS!Cows 
+</p></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>与先行绑定（Early-Binding）相比，采用上述方法时COM进行解析的时间要长得多，这是因为它们强制COM在运行时（而不是在编译时）解析对Value属性的引用，每一次对该对象的引用都要求有一系列类似的、后台进行的查找过程。 </p>
+<p>然而，使用延迟绑定时，不存在代码引用的是哪一个列这类问题。如果你完全按照下列方式编写代码： </p>
+<p>
+<table cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="80%" bgcolor="#dbdbdb" bordercolorlight="#000000" border="1">
+<tbody>
+<tr>
+<td>
+<pre><p>
+RS(0) ' 指向第一个列（Fields集合的成员）
+</p></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>这时，COM能够在编译时解析Value属性地址，代码的运行速度将加快。但是，只有那些了解查询所返回的列以及返回次序的人能够理解这行代码到底指向了哪一个列。如果开发者不具备控制查询数据源的权限（这是很常见的情况），这种方法可能带来问题。为了确定RS(0)引用了哪一个SELECT列，你必须找出生成该Recordset的是哪一个SELECT语句、搞清楚SELECT语句所返回的各个列。 </p>
+<p>然而，有几种技术允许你既能够实现快速地运行时引用，同时保证代码的可读性。其中一种方法的要求如下：开发者必须创建一个查询所返回列的枚举列表。如果查询被改变，比如返回更多的列，或者列的次序发生变化，开发者必须修改和重新部署枚举列表。遗憾的是，要保持枚举列表与查询的匹配，对于管理者来说是一个有些困难的任务。例如，为了快速、明白地标识出ADO代码引用的是哪一个列，你可以结合下面的SELECT语句和枚举列表： </p>
+<p>
+<table cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="80%" bgcolor="#dbdbdb" bordercolorlight="#000000" border="1">
+<tbody>
+<tr>
+<td>
+<pre><p>
+SELECT CatName, CatType, CatSize from Cats Where...
+Enum enuCatsQuery
+CatName
+CatType
+CatSize
+End Enum
+</p></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>注意，SELECT语句返回的列与枚举列表中声明的列完全匹配。此后，当你需要引用Recordset的Fields集合时，可以使用下面的代码： </p>
+<p>
+<table cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="80%" bgcolor="#dbdbdb" bordercolorlight="#000000" border="1">
+<tbody>
+<tr>
+<td>
+<pre><p>
+StrMyName = Rs(enuCatsQuery.CatName)
+</p></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>按照这种方法，代码不仅具有较好的可读性，而且它仍旧是编译时绑定，代码的运行速度明显加快。 </p>
+<p>然而，要避免延迟绑定，你还可以使用另外一种方法。vbdata-l@peach.ease.lsoft.com列表服务上一场长时间的讨论得出了一种我称之为预先绑定（Prebinding）的方法，它结合了两种技术。当你只需引用Field对象一次时，这种技术没有什么帮助；但在客户机/服务器应用中，预先绑定方法非常理想。使用这种方法时，你要创建多个独立的、命名的Field对象，并把这些对象设置为Recordset对象Fields集合中的成员。编写代码的时候，你首先要为每一个想要使用的字段创建一个命名的Field对象，例如： </p>
+<p>
+<table cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="80%" bgcolor="#dbdbdb" bordercolorlight="#000000" border="1">
+<tbody>
+<tr>
+<td>
+<pre><p>
+Dim fldName as ADODB.Field
+Dim fldType as ADODB.Field
+Dim fldSize as ADODB.Field
+</p></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>创建这些Field对象需要一定的开销。然而，你应该估量一下，这是一次性的开销，但它却能够戏剧性地改善性能。 </p>
+<p>打开Recordset之后，你只需一次性地把这些命名的Field对象设置为SELECT查询选择出来的列： </p>
+<p>
+<table cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="80%" bgcolor="#dbdbdb" bordercolorlight="#000000" border="1">
+<tbody>
+<tr>
+<td>
+<pre><p>
+If fldName is Nothing then
+Set fldName = RS!CatName
+Set fldType = RS!CatType
+Set fldSize = RS!CatSize
+End if
+</p></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>你可以在这里用引号包围字符串的方法引用列，甚至也可以使用感叹号操作符。由于这里的代码只运行一次，不论使用什么方法，性能的差异都不大。接下来，当你需要引用Field对象（查询之后）时，只需使用预先绑定的变量即可： </p>
+<p>
+<table cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="80%" bgcolor="#dbdbdb" bordercolorlight="#000000" border="1">
+<tbody>
+<tr>
+<td>
+<pre><p>
+strName = fldName
+strType = fldType
+strSize = fldSize
+</p></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>这种预先绑定方法的性能甚至比序数引用方式（例如RS(0)）都要好。 </p>
+<p><strong>五、客户机/服务器、中间层和ASP策略</strong> </p>
+<p>在编写代码的时候，你还必须考虑到其他一些影响性能的因素。其中一些因素与ADO没有什么关系&mdash;&mdash;它们与COM有关。Microsoft最近的一份白皮书指出，在Windows 2000 ASP页面中执行ADO操作（连接，查询，处理）要比调用COM组件执行同样的代码更快。这个结论并不令人奇怪：当我们从VB调用一个外部COM组件（处于当前进程之外的一些代码），访问COM组件以及把控制传递给它时在后台进行的操作复杂得出奇，而且速度很慢。虽然我们没有必要刻意避免调用COM组件去运行ADO代码。但是，我们不应该简单地把多个独立的ADO操作封装成大量的小型COM组件，然后在需要的时候每次都去调用它们。相反，我们应该尽量把全部逻辑封装到一个COM组件里面，使得程序只需一次调用，COM就能够完成大多数（如果不是全部）操作。我相信，你已经发现运行二进制形式的（例如COM组件）ADO代码要比运行ASP之类的解释执行代码要快。因此，你应该寻找一些方法，减少进入COM组件和从COM组件返回所需要的昂贵开销。 </p>
+<p>如果你离不开Command对象，或者不能预先绑定Field对象并在必要时重用，那么你应该考虑避免多余的对象创建操作的技术。在这种情况下，把存储过程作为Connection对象的方法调用有着更重要的意义。另外，用先行绑定的方式引用Field属性也有助于改善性能。记住操作完成后必须进行的清理工作：关闭Connection和Recordset对象，然后把它们设置成Nothing。 </p>
+<p>为了让代码和代码编写者都表现出最好的性能，请记住以下基本规则：利用连接池和异步连接；减少ADO代码和数据库服务器通信的次数；选用一种COM-先行绑定技术；除非必要，尽量避免使用代价昂贵的ADO对象，例如Recordset和Command对象；如有可能，用Return Status和Output参数替代记录集。尽可能地提高查询的效率，如有可能，不要忘了利用存储过程。详细地告诉ADO你想要它做些什么，避免让ADO猜测你的意图&mdash;&mdash;显式地指定ADO CommandType，使用adExecuteNoRecords之类的选项。 </p>
+<p>对于本文所介绍的所有技巧和其他文章提出的编程忠告，我建议你以审视的目光看待它们。我们所做的工作、所编写的代码、所构造的系统，都属于非常复杂的东西，许多不断变化的因素影响着它们。理解了这一点之后，如果你对本文所讨论的某一项技术感兴趣，可以先进行一下试验。如果它确实有效，那么就正式实现它，然后再进行测试。如果这时它仍旧有效，那么恭喜你。如果它不再有效，你得看看是否违反了应用该技术的必要条件。 </p>
+<p>作者：仙人掌工作室</p>
+		</div>
+	<div class="post-bottom"><div class="post-tags-pig"><a href="/info/tag/Webmaster.html" rel="tag">站长技巧</a></div></div><!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/info/archives/47.html" title="Google发布开源版OCR软件">Google发布开源版OCR软件</a></div><div class="next_content">下一篇 » <a href="/info/archives/49.html" title="SQL Server存储过程编程经验技巧">SQL Server存储过程编程经验技巧</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/info/archives/12.html">提高ASP页面显示速度的秘技</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.baidu.com/baidu"><input type="text" name="word" size="12" id="edtSearch" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="ie" type="hidden" value="utf-8" /><input name="tn" type="hidden" value="bds" /><input name="cl" type="hidden" value="3" /><input name="ct" type="hidden" value="2097152" /><input name="si" type="hidden" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/info/cat/news.html">动态<span class="article-nums"> (91)</span></a></li><li class="li-cate cate-2"><a href="/info/cat/review.html">评论<span class="article-nums"> (230)</span></a></li><li class="li-cate cate-3"><a href="/info/cat/service.html">运营<span class="article-nums"> (73)</span></a></li><li class="li-cate cate-4"><a href="/info/cat/application.html">应用<span class="article-nums"> (63)</span></a></li><li class="li-cate cate-5"><a href="/info/cat/server.html">服务器<span class="article-nums"> (22)</span></a></li><li class="li-cate cate-6"><a href="/info/cat/seo.html">搜索优化<span class="article-nums"> (80)</span></a></li><li class="li-cate cate-7"><a href="/info/cat/plan.html">策划<span class="article-nums"> (84)</span></a></li><li class="li-cate cate-8"><a href="/info/cat/design.html">设计<span class="article-nums"> (30)</span></a></li><li class="li-cate cate-9"><a href="/info/cat/program.html">编程<span class="article-nums"> (68)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/info/archives/742.html" title="互联网行业常用黑话">互联网行业常用黑话(3081)</a></li>
+<li><a href="/info/archives/741.html" title="中国互联网“铁王座”争夺史">中国互联网“铁王座”争夺史(1589)</a></li>
+<li><a href="/info/archives/740.html" title="李兴平：中国站长第一人">李兴平：中国站长第一人(5289)</a></li>
+<li><a href="/info/archives/739.html" title="10款B2B营销人员必备的社会化媒体工具">10款B2B营销人员必备的社会化媒体工具(3664)</a></li>
+<li><a href="/info/archives/738.html" title="大型网站SEO策划方案">大型网站SEO策划方案(8531)</a></li>
+<li><a href="/info/archives/737.html" title="友情链接的交换技巧">友情链接的交换技巧(3063)</a></li>
+<li><a href="/info/archives/736.html" title="传统企业网站的SEO诊断和优化">传统企业网站的SEO诊断和优化(3595)</a></li>
+<li><a href="/info/archives/735.html" title="搜索引擎算法不断迭变，黑帽排名优化将在劫难逃">搜索引擎算法不断迭变，黑帽排名优化将在劫(1326)</a></li>
+<li><a href="/info/archives/734.html" title="网站内链优化建设具有何重要意义？">网站内链优化建设具有何重要意义？(1329)</a></li>
+<li><a href="/info/archives/733.html" title="运营干货：101个最吸引人的文章标题模板">运营干货：101个最吸引人的文章标题模板(5647)</a></li>
+<li><a href="/info/archives/732.html" title="SEO引流技巧：内容+渠道方是推广优化的主导">SEO引流技巧：内容+渠道方是推广优化的(4189)</a></li>
+<li><a href="/info/archives/731.html" title="SEO干货：什么样的页面才算是高质量的页面">SEO干货：什么样的页面才算是高质量的页(2037)</a></li>
+<li><a href="/info/archives/730.html" title="互联网自媒体撰稿人付费阅读的特殊价值分析">互联网自媒体撰稿人付费阅读的特殊价值分析(1741)</a></li>
+<li><a href="/info/archives/729.html" title="SEO拼的就是高质量的原创文章">SEO拼的就是高质量的原创文章(3351)</a></li>
+<li><a href="/info/archives/728.html" title="SEO企业文案思路：给的再多，不如懂我">SEO企业文案思路：给的再多，不如懂我(1862)</a></li>
+<li><a href="/info/archives/727.html" title="从SEO角度出发做网站策划">从SEO角度出发做网站策划(1146)</a></li>
+<li><a href="/info/archives/726.html" title="教你12招，彻底解决选择SEO服务公司的难题">教你12招，彻底解决选择SEO服务公司的(971)</a></li>
+<li><a href="/info/archives/725.html" title="如果你是百度，你会让什么排在前面？">如果你是百度，你会让什么排在前面？(3909)</a></li>
+<li><a href="/info/archives/724.html" title="站长须知的14个健康生活细节">站长须知的14个健康生活细节(3219)</a></li>
+<li><a href="/info/archives/723.html" title="你的SEO博客有存在的必要吗？">你的SEO博客有存在的必要吗？(3501)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>最新留言</h4>
+	<ul class="divComments">
+	   <ul><li style="text-overflow:ellipsis;"><a href="/info/archives/440.html#cmt2273" title="2023/7/16 22:15:15 post by 牛逼">牛逼的文章，2023年居然还能看到。。不</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/725.html#cmt2267" title="2021/8/16 9:26:20 post by 未来人">现在的百度，不是什么最吸引人，不是什么最</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2265" title="2021/7/11 16:49:01 post by 梦易寒">可惜hao123和4399的时代都快褪去</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/737.html#cmt2262" title="2021/5/25 15:52:25 post by 山普">网站相关性，友情链接存在时间越长，越稳定</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/395.html#cmt2259" title="2020/11/30 13:15:34 post by 蜗牛TV">动态产生XML文档的几种ASP方式？</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2230" title="2019/8/9 22:16:40 post by XiGuaMP4">确实很牛逼的站长 </a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2229" title="2019/7/18 11:48:13 post by 爱吃">李兴平从一个一无所知的初中生，到hao1</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/664.html#cmt2223" title="2019/5/5 11:35:13 post by 李耀耀">域名也被盗了  做了10年的网站，现在焦</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2222" title="2019/2/16 16:09:11 post by 香蕉皮">现在的好123已经不能要了</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/263.html#cmt2213" title="2018/7/30 11:29:49 post by 礼品">谢谢指导,希望我的网页会有更好的成绩.</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>标签列表</h4>
+	<ul class="divTags">
+	   <ul><li class="tag-name tag-name-size-2"><a href="/info/tag/IE.html">浏览器<span class="tag-count"> (12)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Script.html">源代码<span class="tag-count"> (36)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Programming.html">教程<span class="tag-count"> (41)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Internet.html">网络<span class="tag-count"> (47)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Windows.html">视窗<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/News.html">动态<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-5"><a href="/info/tag/Seo.html">搜索优化<span class="tag-count"> (71)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/WebDesign.html">网站设计<span class="tag-count"> (34)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Resource.html">资源<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/BlogTips.html">博客技巧<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Blog.html">博客<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Tech.html">业界<span class="tag-count"> (63)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Software.html">软件<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/Money.html">广告<span class="tag-count"> (4)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Website.html">网站<span class="tag-count"> (15)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/WordPress.html">网志<span class="tag-count"> (6)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GoogleMaps.html">谷歌地图<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/GoogleEarth.html">谷歌地球<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Sns.html">社交网络<span class="tag-count"> (8)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Google.html">谷歌<span class="tag-count"> (33)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Baidu.html">百度<span class="tag-count"> (31)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microsoft.html">微软<span class="tag-count"> (16)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Firefox.html">火狐<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Twitter.html">推特<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Webmaster.html">站长技巧<span class="tag-count"> (30)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Chrome.html">谷歌浏览器<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/WebPlan.html">网站策划<span class="tag-count"> (55)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/QQ.html">腾讯<span class="tag-count"> (24)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Mobile.html">手机<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Ecommerce.html">电子商务<span class="tag-count"> (17)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/AdSense.html">网赚<span class="tag-count"> (9)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microblog.html">微博<span class="tag-count"> (20)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GooglePlus.html">谷歌社交<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Facebook.html">脸书<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Apple.html">苹果<span class="tag-count"> (9)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:742</li><li>评论总数:1368</li><li>浏览总数:1990522</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/info/" target="_blank">月光微博客</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/anni/" target="_blank">安妮宝贝的文集</a></li><li><a href="/werther/" target="_blank">少年维特的烦恼</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><script type="text/javascript" src="/script/stat.js"></script></ul>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/info/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

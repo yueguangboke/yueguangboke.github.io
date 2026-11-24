@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/2944.html"/>
@@ -45,12 +45,10 @@
 		2011-12-30 21:24:41 | 
 		作者: 月光 | 
 		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
-		评论: 58 | 
-		浏览: <span class="AddView" id="spn2944" data-id="2944"></span>
-	</div><!-- END post-meta -->
+		评论: 58</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>这次&ldquo;<a target="_blank" href="/archives/2942.html">泄密门事件</a>&rdquo;对用户影响最大的恐怕是明文保存密码的<a target="_blank" href="/archives/2933.html">CSDN</a>和<a target="_blank" href="/archives/2939.html">天涯社区</a>，如果当初他们使用散列算法将密码进行处理，就不会有这么大的影响，而对于散列算法，就不得不说一下MD5这个算法。</p><p>散列算法（Hash Function）中，最为常用的是MD5（Message-Digest Algorithm 5）算法，MD5是一个较为古老的算法，一度被广泛应用于安全领域。比如在UNIX系统中用户的密码就是以MD5（或其它类似的算法）经加密后存储在文件系统中。当用户登录的时候，系统把用户输入的密码计算成MD5值，然后再去和保存在文件系统中的MD5值进行比较，进而确定输入的密码是否正确。</p><p>通过这样的步骤，系统在并不知道用户密码的明码的情况下就可以确定用户登录系统的合法性。这不但可以避免用户的密码被具有系统管理员权限的用户知道，而且还在一定程度上增加了密码被破解的难度。</p><p>不过，由于MD5的弱点被不断发现以及计算机能力不断的提升，通过碰撞的方法有可能构造两个具有相同MD5的信息，使MD5算法在目前的安全环境下有一点落伍。从实践角度，不同信息具有相同MD5的可能性还是非常低的，通常认为是不可能的，通过碰撞的方法也很难碰撞出复杂信息的MD5数值。</p><p>因此，MD5算法还是被广泛的用作检验文件是否变化的散列函数，很多类似迅雷、旋风这样的下载工具，都可以通过MD5来验证，用户下载下来的文件是否被修改。</p><p style="text-align: center"><img alt="MD5的安全性" src="/upload/2944_1.jpg" /></p><p>在用户密码的处理方面，MD5总的来看还算是安全的，至少比明文保存密码要好的多，目前破解MD5主要依靠大型字典的方法，将常用密码进行MD5后建立数据库，然后和MD5数值进行对比，通过这样的方法来&ldquo;破解&rdquo;MD5，因此，通常直接将密码进行MD5处理的话，一些弱密码很容易可以通过这种手段&ldquo;破解&rdquo;出来。</p><p>不过，如果在散列的过程中，加入足够长的salt（即干扰字符串），并且salt加入一些动态信息，例如username、随机码等，这样生成的MD5还是很难被破解的，因为仅仅从数据库无法看到MD5具体的处理过程，必须同时看到处理时的源代码才可以，这就给破解MD5带来相当大的难度。</p><p>还有一个方法，既然简单密码的MD5是不安全的，网站的开发者只需要一个简单的技巧就能提高密码的安全度：在用户注册的时候，录入新密码后进行判断，强制密码必须8位以上，并包含字母和数字，否则不让注册，这样用户注册后使用的密码就都是不容易被破解的密码了。</p><p>如果需要更安全的算法，建议不用MD5，而使用SHA-256， SHA（Secure Hash Algorithm，安全散列算法）是美国国家安全局（NSA）设计，美国国家标准与技术研究院（NIST）发布的一系列密码散列函数。目前还没有出现针对SHA-256算法的有效碰撞攻击方法，该算法也是开源算法，在很多地方可以找到，是MD5的一个不错的后继者。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>这次&ldquo;<a target="_blank" href="/archives/2942.html">泄密门事件</a>&rdquo;对用户影响最大的恐怕是明文保存密码的<a target="_blank" href="/archives/2933.html">CSDN</a>和<a target="_blank" href="/archives/2939.html">天涯社区</a>，如果当初他们使用散列算法将密码进行处理，就不会有这么大的影响，而对于散列算法，就不得不说一下MD5这个算法。</p><p>散列算法（Hash Function）中，最为常用的是MD5（Message-Digest Algorithm 5）算法，MD5是一个较为古老的算法，一度被广泛应用于安全领域。比如在UNIX系统中用户的密码就是以MD5（或其它类似的算法）经加密后存储在文件系统中。当用户登录的时候，系统把用户输入的密码计算成MD5值，然后再去和保存在文件系统中的MD5值进行比较，进而确定输入的密码是否正确。</p><p>通过这样的步骤，系统在并不知道用户密码的明码的情况下就可以确定用户登录系统的合法性。这不但可以避免用户的密码被具有系统管理员权限的用户知道，而且还在一定程度上增加了密码被破解的难度。</p><p>不过，由于MD5的弱点被不断发现以及计算机能力不断的提升，通过碰撞的方法有可能构造两个具有相同MD5的信息，使MD5算法在目前的安全环境下有一点落伍。从实践角度，不同信息具有相同MD5的可能性还是非常低的，通常认为是不可能的，通过碰撞的方法也很难碰撞出复杂信息的MD5数值。</p><p>因此，MD5算法还是被广泛的用作检验文件是否变化的散列函数，很多类似迅雷、旋风这样的下载工具，都可以通过MD5来验证，用户下载下来的文件是否被修改。</p><p style="text-align: center"><img alt="MD5的安全性" src="https://static.williamlong.info/upload/2944_1.jpg" /></p><p>在用户密码的处理方面，MD5总的来看还算是安全的，至少比明文保存密码要好的多，目前破解MD5主要依靠大型字典的方法，将常用密码进行MD5后建立数据库，然后和MD5数值进行对比，通过这样的方法来&ldquo;破解&rdquo;MD5，因此，通常直接将密码进行MD5处理的话，一些弱密码很容易可以通过这种手段&ldquo;破解&rdquo;出来。</p><p>不过，如果在散列的过程中，加入足够长的salt（即干扰字符串），并且salt加入一些动态信息，例如username、随机码等，这样生成的MD5还是很难被破解的，因为仅仅从数据库无法看到MD5具体的处理过程，必须同时看到处理时的源代码才可以，这就给破解MD5带来相当大的难度。</p><p>还有一个方法，既然简单密码的MD5是不安全的，网站的开发者只需要一个简单的技巧就能提高密码的安全度：在用户注册的时候，录入新密码后进行判断，强制密码必须8位以上，并包含字母和数字，否则不让注册，这样用户注册后使用的密码就都是不容易被破解的密码了。</p><p>如果需要更安全的算法，建议不用MD5，而使用SHA-256， SHA（Secure Hash Algorithm，安全散列算法）是美国国家安全局（NSA）设计，美国国家标准与技术研究院（NIST）发布的一系列密码散列函数。目前还没有出现针对SHA-256算法的有效碰撞攻击方法，该算法也是开源算法，在很多地方可以找到，是MD5的一个不错的后继者。</p>
 <p style="text-align:center"><img src="/logo/Encryption.jpg" alt="MD5算法的安全性" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note2944"></span><a href="javascript:commYea(2944);" id="dig2944">顶一下 ▲</a>(<span id="sdig2944"><Script language="javascript" type="text/javascript">showDig("2944");</script></span>) &nbsp; <a href="javascript:commNay(2944);" id="down2944">踩一下 ▼</a>(<span id="sdown2944"><Script language="javascript" type="text/javascript">showDown("2944");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

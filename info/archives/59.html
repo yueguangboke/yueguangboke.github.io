@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="stylesheet" type="text/css" media="all" href="/info/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/info/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/info/archives/59.html"/>
+	<title>使用SQL Server 2000索引视图提高性能-网站运营优化</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/info/" title="网站运营优化" rel="home bookmark">网站运营优化</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/info/" target="_self">首页</a></li><li><a href="/info/cat/news.html" target="_self">动态</a></li><li><a href="/info/cat/review.html" target="_self">评论</a></li><li><a href="/info/cat/plan.html" target="_self">策划</a></li><li><a href="/info/cat/design.html" target="_self">设计</a></li><li><a href="/info/cat/service.html" target="_self">运营</a></li><li><a href="/info/cat/seo.html" target="_self">SEO</a></li><li><a href="/info/cat/application.html" target="_self">应用</a></li><li><a href="/info/cat/server.html" target="_self">服务器</a></li><li><a href="/info/cat/program.html" target="_self">编程</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate5 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/info/">网站运营优化</a> &raquo; <a href="/info/cat/server.html" title="查看 服务器 中的全部文章">服务器</a> &raquo; <span>使用SQL Server 2000索引视图提高性能</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/info/archives/59.html" rel="bookmark">使用SQL Server 2000索引视图提高性能</a></h1>
+	<div class="post-meta">
+		2007年6月26日 | 
+		分类: <a href="/info/cat/server.html" title="服务器" rel="category tag">服务器</a> | 
+		评论: 0</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+<p style="text-align:center"><img src="/logo/Microsoft.jpg" alt="使用SQL Server 2000索引视图提高性能" /></p>
+		<p>作者：Gail Erickson</p>
+<p>摘要：本文档介绍 SQL Server 2000 企业版的新功能 - 索引视图。讲解索引视图并讨论一些提高性能的具体方案。</p>
+<p>什么是索引视图？</p>
+<p>许多年来，Microsoft？ SQL Server？ 一直都提供创建虚拟表（称为视图）的功能。在过去，这些视图主要有两种用途：</p>
+<p>提供安全机制，将用户限制在一个或多个基表中的数据的某个子集。</p>
+<p>提供一种机制，允许开发人员定制用户如何才能以逻辑方式查看存储在基表中的数据。</p>
+<p>SQL Server 2000 已经扩展了 SQL Server 视图的功能，以提高系统性能。它可以在一个视图上创建唯一的群集索引和非群集索引，可以改进最复杂查询的数据访问性能。在 SQL Server 2000 中，拥有唯一群集索引的视图被称为索引视图。</p>
+<p>注意：&nbsp;&nbsp; 索引视图只是 SQL Server 2000 企业版和 SQL Server 2000 开发人员版的一个功能。</p>
+<p>从数据库管理系统 （DBMS） 的观点来看，视图是数据（元数据）的说明。创建典型视图时，通过 SELECT 语句（定义一个显示为虚拟表的结果集）来定义元数据。当其它查询的 FROM 子句中引用了某个视图时，将从系统目录中检索该元数据，并对其进行扩展以代替该视图的引用。在视图扩展之后，查询优化器会为正在执行的查询编译单个执行计划。</p>
+<p>如果是非索引视图，视图在运行时将被实体化。任何计算（如联接或聚合）都在为每个引用该视图的查询执行查询期间进行。（视图并不总需要被完全实体化。查询可以包含其它一些谓词、联接或聚合，以应用于该视图所引用的表和视图。）在视图上创建了唯一的群集索引之后，视图的结果集会立即被实体化并持续保存在数据库的物理存储空间中，以便节省这种操作所占用的大量资源。</p>
+<p>在执行查询时，有两种方法可以使用索引视图。查询可直接引用索引视图，更重要的是，如果查询优化器确定视图能够替换为查询的部分或全部，而且这是低成本的查询计划，则可以选择索引视图。第二种情况是使用索引视图代替基础表及其普通索引。此时，不需要在查询中引用视图，查询优化器即可在执行查询期间使用该视图。这样，现有的应用程序无需更改即可从新建的索引视图中获益。</p>
+<p>通过索引视图提高的性能</p>
+<p>使用索引来提高查询性能并不是什么新观念，不过，索引视图还具有使用标准索引不能获得的其它性能优点。索引视图能够在以下方面提高查询性能：</p>
+<p>能够预先计算聚合并将其存储在索引中，从而最大限度地减少在执行查询期间进行成本很高的计算。</p>
+<p>能够预先联接表并存储生成的数据集。</p>
+<p>能够存储联接或聚合的组合。</p>
+<p>使用视图的辅助索引</p>
+<p>视图的辅助性非群集索引可以提高其它查询性能。与表的辅助索引类似，视图的辅助索引也可以提供更多选项，以便查询优化器在编译过程中从中进行选择。例如，如果查询包括群集索引未涉及的列，优化器可以在计划中选择一个或多个辅助索引，从而避免对索引视图或基表进行费时的全局扫描。</p>
+<p>由于索引需要不断维护，所以为架构添加索引会增加数据库的额外开销。因此应该认真考虑，找到索引和维护额外开销之间的平衡点。</p>
+<p>使用索引视图的好处</p>
+<p>实现索引视图之前，请先分析数据库的工作量。运用自己对查询以及各种工具（例如 SQL 分析器）的知识来鉴别使用索引视图可以获益的查询。如果经常进行聚合和联接，最好使用索引视图。</p>
+<p>并非所有查询都会从索引视图中获益。与普通索引类似，如果未使用索引视图，就没有好处可言。在此情况下，不但不能提高性能，还会加大磁盘空间的占用、增加维护和优化的成本。但是，如果使用了索引视图，它们可以（成数量级地）明显地提高数据访问的性能。这是因为查询优化器使用存储在索引视图中的预先计算的结果，从而大大降低了执行查询的成本。</p>
+<p>查询优化器只在查询的成本比较大时才考虑使用索引视图。这样可以避免在查询优化成本超出因使用索引视图而节省的成本时，试图使用各种索引视图。当查询成本低于 1 时，几乎不使用索引视图。</p>
+<p>使用索引视图可以受益的应用包括：</p>
+<p>决定支持工作量</p>
+<p>数据集市</p>
+<p>联机分析处理 （OLAP） 库和源</p>
+<p>数据挖掘工作量</p>
+<p>从查询的类型和模式的角度来看，受益的应用可被归纳为包含以下内容的应用：</p>
+<p>大表的联接和聚合</p>
+<p>查询的重复模式</p>
+<p>重复聚合相同或重叠的列集</p>
+<p>针对相同关键字重复联接相同的表</p>
+<p>上述的组合</p>
+<p>相反，包含许多写入的联机事务处理 （OLTP） 系统或更新频繁的数据库，可能会因为要同时更新视图和根本基表而使维护成本增加，所以不能利用索引视图。</p>
+<p>查询优化器如何使用索引视图</p>
+<p>SQL Server 查询优化器可自动确定何时可以将索引视图用于给定的查询执行中。查询中无需直接引用视图，优化器就可以将该视图用于查询执行计划。因此，无需对现有的应用程序本身进行任何更改，这些应用程序即可利用索引视图。唯一需要做的就是创建索引视图。</p>
+<p>优化器的考虑因素</p>
+<p>查询优化器会考虑几个条件来确定索引视图能涵盖部分查询还是整个查询。这些条件符合查询中的单个 FROM 子句并包含以下内容：</p>
+<p>查询 FROM 子句中的表必须是索引视图 FROM 子句中的表的超集。</p>
+<p>查询中的联接条件必须是视图中联接条件的超集。</p>
+<p>查询中的聚合列必须是视图中的聚合列的子集。</p>
+<p>查询选择列表中的所有表达式都必须源自于视图选择列表或源自于不包括在视图定义中的表。</p>
+<p>查询搜索条件谓词必须是视图定义中搜索条件谓词的超集。视图搜索谓词中的每个合取项都必须以同样的形式出现在查询搜索谓词中。</p>
+<p>查询搜索条件谓词中的所有列（属于视图定义中的表）都必须出现在下列一项或多项中：</p>
+<p>视图定义中的同一个谓词。</p>
+<p>GROUP BY 列表。</p>
+<p>视图选择列表（若没有 GROUP BY 列表）。</p>
+<p>如果查询包含多个 FROM 子句（子查询、派生表、UNION），优化器可以选择多个索引视图来管理含有多个 FROM 子句的查询。</p>
+<p>注意：&nbsp;&nbsp; 也存在例外情形，即优化器可能将两个 FROM 子句折叠成一个（将子查询折叠成联接或将派生表折叠成联接变体）。如果出现此类情况，索引视图替换可能会涵盖原查询中的多个 FROM 子句。</p>
+<p>本文档结尾介绍了演示这些条件的查询示例。而建议的最佳方法就是：让查询优化器来确定在查询执行计划中使用哪些索引（如果有的话）。</p>
+<p>使用 NOEXPAND 选项</p>
+<p>NOEXPAND 选项强制查询优化器象对待包含群集索引的普通表一样对待视图。在此情况下，必须在 FROM 子句中直接引用索引视图。例如：</p>
+<p>SELECT Column1， Column2， .。。 FROM Table1， View1 WITH （NOEXPAND）WHERE .。。</p>
+<p>使用 EXPAND VIEWS 选项</p>
+<p>另外，用户可以在查询结束时通过使用 EXPAND VIEWS 选项，明确地将索引视图排除在考虑之外。例如：</p>
+<p>SELECT Column1， Column2， .。。 FROM Table1， View1 WHERE .。。OPTION （EXPAND VIEWS）</p>
+<p>如果使用该选项，查询优化器在评估低成本的方法（该方法涉及查询中引用的列）时将忽略所有视图索引。</p>
+<p>设计的考虑因素</p>
+<p>为数据库系统找到适当的索引集是相当复杂的。尽管在设计普通索引时要考虑许多可能性，但将索引视图添加到架构会极大地增加设计和潜在结果的复杂性。例如，索引视图可用于：</p>
+<p>查询中所引用表的任何子集。</p>
+<p>查询中条件的任何子集（属于表的上述子集）</p>
+<p>分组列。</p>
+<p>聚合函数，如 SUM.</p>
+<p>应同时设计表的索引和索引视图，以便从各个结构中获得最佳结果。由于索引和索引视图都可能对给定的查询有用，所以单独设计它们会导致多余的建议方案，以致存储和维护开销较高。在调整数据库的物理设计时，必须均衡考虑各种查询集的性能要求与数据库系统必须支持的更新操作。因此，为索引视图找到一种合理的物理设计是一项很具挑战性的任务，因而应该尽可能地使用&ldquo;索引微调向导&rdquo;。</p>
+<p>如果存在许多索引视图可供查询优化器考虑用于特定查询，查询优化成本会显著增加。查询优化器可能考虑为查询中表的任意子集定义的所有索引视图。拒绝每一个视图之前，必须对它进行语法分析，然后研究其是否可能成为潜在的替换体。这可能需要一些时间，尤其是在有数百个此类的视图用于给定的查询时。</p>
+<p>视图必须符合几项要求，您才能为其创建唯一的群集索引。在设计阶段，请考虑以下要求：</p>
+<p>视图以及视图中引用的所有表都必须在同一数据库中，并具有同一个所有者。</p>
+<p>索引视图无需包含要供优化器使用的查询中引用的所有表。</p>
+<p>必须先为视图创建唯一群集索引，然后才可以创建其它索引。</p>
+<p>创建基表、视图和索引以及修改基表和视图中的数据时，必须正确设置某些 SET 选项（在本文档的后文中讨论）。另外，如果这些 SET 选项正确，查询优化器将不考虑索引视图。</p>
+<p>视图必须使用架构绑定创建，视图中引用的任何用户定义的函数必须使用 SCHEMABINDING 选项创建。</p>
+<p>另外，还要求有一定的磁盘空间来存放由索引视图定义的数据。</p>
+<p>设计准则</p>
+<p>设计索引视图时，请考虑以下准则：</p>
+<p>设计的索引视图必须能用于多个查询或多个计算。</p>
+<p>例如，包含某列的 SUM 和某列的 COUNT_BIG 的索引视图可用于包含函数 SUM、COUNT、COUNT_BIG 或 AVG 的查询。由于只需检索视图中的少数几行，而不是基表中的所有行，且执行 AVG 函数要求的部分计算已经完成，所以查询将比较快。</p>
+<p>使索引保持紧凑。</p>
+<p>通过使用最少的列数和尽可能少的字节数，优化器在查找行数据时可获得最高的效率。相反，如果定义了大的群集索引关键字，则为视图定义的任何辅助性非群集索引都将明显增大，这是因为非群集索引项除包含索引定义的列之外，还将包含群集关键字。</p>
+<p>考虑生成的索引视图的大小。</p>
+<p>在单纯的聚合情况下，如果索引视图的大小类似于原表的大小，使用索引视图可能无法明显提高任何性能。</p>
+<p>设计多个较小的索引视图来加快部分进程的速度。</p>
+<p>有时可能无法设计出能满足整个查询需要的索引视图。此时即可考虑创建这样一些索引视图，每个索引视图执行一部分查询。</p>
+<p>考虑以下示例：</p>
+<p>经常执行的查询会聚合一个数据库中的数据，再聚合另一个数据库中的数据，然后联接结果。由于索引视图不能引用多个数据库中的表，所以您不能设计一个视图来执行整个进程。不过，可以为要进行聚合的每个数据库创建索引视图。如果优化器能够将索引视图与现有查询相匹配，至少聚合处理将会因为不必记录现有查询而提高速度。尽管联接处理不会加快，整个查询的速度却因使用了存储在索引视图中的聚合而加快。</p>
+<p>经常执行的查询会聚合多个表中的数据，然后使用 UNION 来将结果结合起来。UNION 不允许在索引视图中使用。您可以设计一些视图来执行每个单独的聚合运算。然后优化器可以选择索引视图来加快查询的速度，而无需记录查询。尽管 UNION 处理没有改进，单个聚合进程却得以改进。</p>
+<p>使用&ldquo;索引微调向导&rdquo;</p>
+<p>&ldquo;索引微调向导&rdquo;除建议使用基表的索引之外，还建议使用索引视图。使用该向导可提高管理员确定索引和索引视图相结合的能力，从而优化针对数据库执行的典型混合查询的性能。</p>
+<p>由于&ldquo;索引微调向导&rdquo;强制使用所有必需的 SET 选项（以确保结果集的正确性），其索引视图将会成功创建。不过，如果您的应用程序的选项没有按照要求设置，可能无法利用这些视图。对那些参与索引视图定义的表执行的插入、更新或删除操作可能会失败。</p>
+<p>维护索引视图</p>
+<p>SQL Server 自动维护索引视图，这与维护任何其它索引的情况类似。对于普通索引而言，每个索引都直接连接到单个表。通过对基础表执行每个 INSERT、UPDATE 或 DELETE 操作，索引相应地进行了更新，以便使存储在该索引中的值始终与表一致。</p>
+<p>索引视图的维护与此类似。不过，如果视图引用了多个表，则对这些表中的任何一个进行更新都需要更新索引视图。与普通索引不同的是，对任何一个参与的表执行一次行插入操作都可能导致在索引视图中进行多次行插入操作。更新和删除操作的情况也是如此。因此，较之于维护表的索引，维护索引视图的代价更为高昂。</p>
+<p>在 SQL Server 2000 中，某些视图可以更新。如果某个视图可以更新，则使用 INSERT、UPDATE 和 DELETE 语句可通过该视图直接修改根本基表。为某个视图创建索引并不会妨碍该视图的更新。有关可更新视图的详细信息，请参阅关于 SQL Server 2000 的&ldquo;SQL Server 联机图书&rdquo;中的&ldquo;通过视图修改数据（英文）&rdquo;。</p>
+<p>维护成本的考虑因素</p>
+<p>设计索引视图时应该考虑以下几点：</p>
+<p>数据库中需要有一个额外的存储空间用于索引视图。索引视图的结果集以类似于典型表存储空间的方式物理保存在数据库中。</p>
+<p>SQL Server 自动维护视图。因此，对定义视图所据的基表的任何更改都可能引起视图索引的一处或多处更改，从而导致维护开销的增加。</p>
+<p>一个视图获得的净性能提高就是视图提供的查询执行节约总计与存储和维护该视图耗费的成本之间的差。</p>
+<p>估计视图将占用的所需存储空间要相对简单一些。用 SQL 查询分析器的&ldquo;显示估计的执行计划&rdquo;工具求视图定义中 SELECT 语句的值。该工具将得出查询返回的行数和行大小的近似值。将这两个值相乘，即可估计出视图的可能大小。不过这只是一个近似值。视图索引的实际大小只能通过创建视图索引来精确得出。</p>
+<p>从 SQL Server 执行的自动维护考虑因素的观点出发，&ldquo;显示估计的执行计划&rdquo;的功能可能会对此开销的影响有所了解。如果用 SQL 查询分析器评估修改视图的语句（针对视图的 UPDATE 语句、针对基表的 INSERT 语句），SHOWPLAN 将包括该语句的维护操作。同时考虑此成本和此操作将在生产环境中发生的次数，可以指示视图维护的可能成本。</p>
+<p>通常建议对视图或基表进行的任何修改和更新都应该尽可能地成批执行，而不要单独进行。这样可以减少视图维护的某些开销。</p>
+<p>创建索引视图</p>
+<p>创建索引视图所需的步骤与视图的成功实现密不可分。</p>
+<p>确保将在视图中引用的所有现有表的 SET 选项都正确。</p>
+<p>创建任何新表和视图之前，确保会话的 SET 选项已正确设置。</p>
+<p>确保视图定义是确定的。</p>
+<p>使用 WITH SCHEMABINDING 选项创建视图。</p>
+<p>创建视图的唯一群集索引。</p>
+<p>使用 SET 选项以获得一致的结果</p>
+<p>如果在执行查询时启用不同的 SET 选项，则在 SQL Server 中对同一个表达式求值会产生不同的结果。例如，将 SET 选项 CONCAT_NULL_YIELDS_NULL 设置为 ON 之后，表达式 'abc' + NULL 返回的值是 NULL.而将 CONCAT_NULL_YIEDS_NULL 设置为 OFF 之后，该表达式得出的结果却是 'abc'.索引视图要求多个 SET 选项的值都固定，以确保这些视图能够得到正确维护并返回一致的结果。</p>
+<p>只要出现以下情况，就必须将下表中的 SET 选项设置为要求的值列中所示的值：</p>
+<p>创建了索引视图。</p>
+<p>对索引视图中引用的任何表执行了任何 INSERT、UPDATE 或 DELETE 操作。</p>
+<p>查询优化器使用索引视图来生成查询计划。</p>
+<p>如果使用的是 OLE DB 或 ODBC 服务器连接，唯一必须修改的值是 ARITHABORT 的设置。所有 DB LIB 值都必须使用 sp_configure 在服务器级上正确设置或使用 SET 命令从应用程序正确设置。有关 SET 选项的详细信息，请参阅关于 SQL Server 2000 的&ldquo;SQL Server 联机图书&rdquo;中的&ldquo;使用 SQL Server 中的选项（英文）&rdquo;。</p>
+<p>使用确定性函数</p>
+<p>索引视图的定义必须是确定性的。如果选择列表中的所有表达式以及 WHERE 和 GROUP BY 子句都是确定性的，则视图就是确定性的。只要用特定的一组输入值对确定性表达式进行求值，一定会返回同一个结果。只有确定性函数可以加入确定性表达式。例如，DATEADD 是确定性函数，因为将任何给定的一组变量值赋予它的三个参数进行求值，返回的总是同一个结果。而 GETDATE 则不是确定性函数，因为始终用同一个变量调用它，而它每次执行后返回的值都不相同。有关详细信息，请参阅关于 SQL Server 2000 的&ldquo;SQL Server 联机图书&rdquo;中的&ldquo;确定性和非确定性函数&rdquo;。</p>
+<p>即便某个表达式是确定性的，但如果其中包含浮动表达式，确切的结果就可能取决于处理器的体系结构或微代码的版本。要确保 SQL Server 2000 中数据的完整性，此类表达式只能加入索引视图的非关键列。不包含浮动表达式的确定性表达式被称为精确的表达式。只有精确的确定性表达式可以加入索引视图的关键列和 WHERE 或 GROUP BY 子句。</p>
+<p>使用 COLUMNPROPERTY 函数和 IsDeterministic 属性来确定视图列是否是确定性的。使用 COLUMNPROPERTY 函数和 IsPrecise 属性来确定包含架构绑定的视图中的确定性列是否是精确的。如果为 TRUE，则 COLUMNPROPERTY 会返回 1，如果为 FALSE，则返回 0，如果是无效的输入（列不是确定性的），则返回 NULL.例如，SELECT COLUMNPROPERTY（Object_Id（'Vdiscount1'），'SumDiscountPrice'，'IsPrecise'） 返回的是 0，因为 SumDiscountPrice 列引用了表 Order Details 中的浮动列 Discount.而同一视图中的列 SumPrice 既是确定性的又是精确的。</p>
+<p>注意：&nbsp;&nbsp; 该 SELECT 语句所基于的视图能够在示例部分找到（视图 1）。</p>
+<p>其它要求</p>
+<p>除&ldquo;设计准则&rdquo;、&ldquo;使用 SET 选项以获得一致的结果&rdquo;和&ldquo;使用确定性函数&rdquo;部分中列出的要求之外，还必须符合以下要求。</p>
+<p>基表要求</p>
+<p>基表在创建时必须正确设置 SET 选项，否则就不能被包含架构绑定的视图引用。</p>
+<p>表必须通过视图定义中的两部分名称（所有者。表名）引用。</p>
+<p>函数要求</p>
+<p>用户定义的函数必须使用 WITH SCHEMABINDING 选项创建。</p>
+<p>用户定义的函数必须通过两部分名称（所有者。函数）引用。</p>
+<p>视图要求</p>
+<p>视图必须使用 WITH SCHEMABINDING 选项创建。</p>
+<p>视图必须只引用同一数据库中的基表，而不能引用其它视图。</p>
+<p>语法限制</p>
+<p>对视图定义的语法有几个限制。视图定义不能包含以下内容：</p>
+<p>COUNT（*）</p>
+<p>ROWSET 函数</p>
+<p>派生表</p>
+<p>自联接</p>
+<p>DISTINCT</p>
+<p>STDEV、VARIANCE、AVG</p>
+<p>Float* 列、文本列、ntext 列、图像列</p>
+<p>子查询</p>
+<p>全文谓词（CONTAIN、FREETEXT）</p>
+<p>可空表达式的 SUM</p>
+<p>MIN、MAX</p>
+<p>TOP</p>
+<p>OUTER 联接</p>
+<p>UNION</p>
+<p>注意：&nbsp;&nbsp; 索引视图可以包含浮动列，不过，此类列不能包含在群集索引关键字中。</p>
+<p>GROUP BY 限制</p>
+<p>如果未使用 GROUP BY，表达式不能在选择列表中使用。</p>
+<p>如果使用了 GROUP BY，则 VIEW 定义：</p>
+<p>必须包含 COUNT_BIG（*）。</p>
+<p>不得包含 HAVING、CUBE 或 ROLLUP.</p>
+<p>这些限制只适用于索引视图定义。查询可以在其执行计划中使用索引视图，即便该索引视图并不符合这些 GROUP BY 限制。</p>
+<p>索引要求</p>
+<p>执行 CREATE INDEX 语句的用户必须是视图所有者。</p>
+<p>如果视图定义中包含 GROUP BY 子句，唯一群集索引的关键字只能引用 GROUP BY 子句中指定的列。</p>
+<p>示例</p>
+<p>本部分的示例阐述索引视图在两种主要查询（聚合和联接）中的使用问题。同时还说明查询优化器在确定某个索引视图是否可用时使用的条件。有关这些条件的完整列表，请参阅查询优化器如何使用索引视图。</p>
+<p>查询基于 Northwind（SQL Server 2000 中提供的数据库样本）中的表，并可以写入的方式执行。创建视图的前后，最好使用 SQL 查询优化器中的&ldquo;显示执行计划&rdquo;工具来查看查询优化器选定的计划。尽管示例中阐述了优化器是如何选择成本最低的执行计划的，但因为 Northwind 数据库样本太小，因此无法体现性能的提高。</p>
+<p>以下查询显示如何从 Order Details 表中返回具有最大总折扣的五种产品的两个方法。</p>
+<p>查询 1</p>
+<p>SELECT TOP 5 ProductID， SUM（UnitPrice*Quantity） -</p>
+<p>SUM（UnitPrice*Quantity*（1.00-Discount））AS Rebate</p>
+<p>FROM [Order Details]</p>
+<p>GROUP BY ProductID</p>
+<p>ORDER BY Rebate DESC</p>
+<p>查询 2</p>
+<p>SELECT TOP 5 ProductID， SUM（UnitPrice*Quantity*Discount）AS Rebate</p>
+<p>FROM [Order Details]</p>
+<p>GROUP BY ProductID</p>
+<p>ORDER BY Rebate DESC</p>
+<p>查询优化器选定的执行计划包含：</p>
+<p>对 Order Details 表的群集索引扫描，估计有 2，155 行。</p>
+<p>哈希匹配/聚合运算符，该运算符基于 GROUP BY 列将选定的行放入哈希表，然后计算每行的 SUM 聚合。</p>
+<p>基于 ORDER BY 子句的 TOP 5 排序运算符。</p>
+<p>添加包括 Rebate 列所需聚合的索引视图将更改查询 1 的查询执行计划。在数百万行的大表上，查询的性能也将明显提高。</p>
+<p>CREATE VIEW Vdiscount1 WITH SCHEMABINDING</p>
+<p>AS</p>
+<p>SELECT SUM（UnitPrice*Quantity）AS SumPrice，</p>
+<p>SUM（UnitPrice*Quantity*（1.00-Discount））</p>
+<p>AS SumDiscountPrice， COUNT_BIG（*） AS Count， ProductID</p>
+<p>FROM dbo.[Order Details]</p>
+<p>GROUP BY ProductID</p>
+<p>GO</p>
+<p>CREATE UNIQUE CLUSTERED INDEX VDiscountInd ON Vdiscount1 （ProductID）</p>
+<p>第一个查询的执行计划显示 Vdiscount1 视图由查询优化器使用。不过，由于该视图不包含 SUM（UnitPrice*Quantity*Discount） 聚合，因此不会被第二个查询使用。可以创建另一个可以同时满足上述两个查询的索引视图。</p>
+<p>CREATE VIEW Vdiscount2 WITH SCHEMABINDING</p>
+<p>AS</p>
+<p>SELECT SUM（UnitPrice*Quantity）AS SumPrice，</p>
+<p>SUM（UnitPrice*Quantity*（1.00-Discount））AS SumDiscountPrice，</p>
+<p>SUM（UnitPrice*Quantity*Discount）AS SumDiscountPrice2， COUNT_BIG（*）</p>
+<p>AS Count， ProductID</p>
+<p>FROM dbo.[Order Details]</p>
+<p>GROUP BY ProductID</p>
+<p>GO</p>
+<p>CREATE UNIQUE CLUSTERED INDEX VDiscountInd ON Vdiscount2 （ProductID）</p>
+<p>有了该索引视图，现在两个查询的查询执行计划包含：</p>
+<p>对 Vdiscount2 视图的群集索引扫描，估计有 77 行</p>
+<p>基于 ORDER BY 子句的 TOP 5 排序函数</p>
+<p>查询优化器选择该视图是因为它提供了最低的执行成本，尽管在查询中并未引用该视图。</p>
+<p>查询 3</p>
+<p>查询 3 类似于前几个查询，只是 ProductID 已被 OrderID 所取代，视图定义中没有包括该列。这违背了以下条件：查询选择列表中的所有表达式都必须能从未包括在视图定义内的表的视图选择列表中派生。</p>
+<p>SELECT TOP 3 OrderID， SUM（UnitPrice*Quantity*Discount） OrderRebate</p>
+<p>FROM dbo.[Order Details]</p>
+<p>GROUP BY OrderID</p>
+<p>ORDER BY OrderRebate desc</p>
+<p>要求单独的索引视图来满足该查询。可以对 Vdiscount2 进行修改，使它包括 OrderID，但是所生成视图的行数将与原表的行数相同，因此，提供的性能也不会高于使用基表所提供的性能。</p>
+<p>查询 4</p>
+<p>该查询可生成每个产品的平均价格。</p>
+<p>SELECT ProductName， od.ProductID，</p>
+<p>AVG（od.UnitPrice*（1.00-Discount）） AS AvgPrice， SUM（od.Quantity） AS Units</p>
+<p>FROM [Order Details] od， Products p</p>
+<p>WHERE od.ProductID=p.ProductID</p>
+<p>GROUP BY ProductName， od.ProductID</p>
+<p>索引视图的定义中不能包括复杂的聚合（例如，STDEV、VARIANCE、AVG），不过，如果索引视图中包括几个联合起来执行复杂聚合的简单聚合函数，即可用于执行包含 AVG 的查询。</p>
+<p>视图 3</p>
+<p>该索引视图包含执行 AVG 函数所需的简单聚合函数。在创建了视图 3 后执行查询 4 时，执行计划会显示正被使用的视图。优化器可以从视图的简单聚合列 Price 和 Count 中导出 AVG 表达式。</p>
+<p>CREATE VIEW View3 WITH SCHEMABINDING</p>
+<p>AS</p>
+<p>SELECT ProductID， SUM（UnitPrice*（1.00-Discount））AS Price，</p>
+<p>COUNT_BIG（*）AS Count， SUM（Quantity）AS Units</p>
+<p>FROM dbo.[Order Details]</p>
+<p>GROUP BY ProductID</p>
+<p>Go</p>
+<p>CREATE UNIQUE CLUSTERED INDEX iv3 ON View3 （ProductID）</p>
+<p>查询 5</p>
+<p>该查询与查询 4 相同，只不过包括一个附加搜索条件。即使该附加搜索条件只引用未包括在视图定义内的表中的列，视图 3 也将用于该查询。</p>
+<p>SELECT ProductName， od.ProductID， AVG（od.UnitPrice*（1.00-Discount））</p>
+<p>AS AvgPrice， SUM（od.Quantity）AS Units</p>
+<p>FROM [Order Details] AS od， Products AS p</p>
+<p>WHERE od.ProductID=p.ProductID</p>
+<p>AND p.ProductName like '%Tofu%'</p>
+<p>GROUP BY ProductName， od.ProductID</p>
+<p>查询 6</p>
+<p>查询优化器不能将视图 3 用于该查询。附加搜索条件 od.UnitPrice&gt;10 包含视图定义内的表中的列，而该列却不出现在 GROUP BY 列表中，搜索谓词也不出现在视图定义中。</p>
+<p>SELECT ProductName， od.ProductID， AVG（od.UnitPrice*（1.00-Discount））</p>
+<p>AS AvgPrice， SUM（od.Quantity） AS Units</p>
+<p>FROM [Order Details] od， Products p</p>
+<p>WHERE od.ProductID = p.ProductID</p>
+<p>AND od.UnitPrice &gt; 10</p>
+<p>GROUP BY ProductName， od.ProductID</p>
+<p>查询 7</p>
+<p>相反，查询优化器可以将视图 3 用于查询 7，原因是新搜索条件 od.ProductID in （1，2，13，41） 中定义的列包括在视图定义内的 GROUP BY 子句中。</p>
+<p>SELECT ProductName， od.ProductID， AVG（od.UnitPrice*（1.00-Discount））</p>
+<p>AS AvgPrice， SUM（od.Quantity） AS Units</p>
+<p>FROM [Order Details] AS od， Products AS p</p>
+<p>WHERE od.ProductID = p.ProductID</p>
+<p>AND od.ProductID in （1，2，13，41）</p>
+<p>GROUP BY ProductName， od.ProductID</p>
+<p>视图 4</p>
+<p>该视图在视图定义中包括了列 od.Discount，可以满足查询 6 的条件。</p>
+<p>CREATE VIEW View4 WITH SCHEMABINDING</p>
+<p>AS</p>
+<p>SELECT ProductName， od.ProductID， SUM（od.UnitPrice*（1.00-Discount））</p>
+<p>AS AvgPrice， SUM（od.Quantity） AS Units， COUNT_BIG（*） AS Count</p>
+<p>FROM dbo.[Order Details] AS od， dbo.Products AS p</p>
+<p>WHERE od.ProductID = p.ProductID</p>
+<p>AND od.UnitPrice &gt; 10</p>
+<p>GROUP BY ProductName， od.ProductID</p>
+<p>GO</p>
+<p>CREATE UNIQUE CLUSTERED INDEX VdiscountInd on View4 （ProductName， ProductID）</p>
+<p>查询 8</p>
+<p>视图 4 的同一个索引还将用于一个添加了与表 Orders 的联接的查询。该查询符合以下条件：查询 FROM 子句中列出的表是索引视图的 FROM 子句中表的超集。</p>
+<p>SELECT ProductName， od.ProductID， AVG（od.UnitPrice*（1.00-Discount））</p>
+<p>AS AvgPrice， SUM（od.Quantity） AS Units</p>
+<p>FROM dbo.[Order Details] AS od， dbo.Products AS p， dbo.Orders AS o</p>
+<p>WHERE od.ProductID = p.ProductID and o.OrderID = od.OrderID</p>
+<p>AND od.UnitPrice &gt; 10</p>
+<p>GROUP BY ProductName， od.ProductID</p>
+<p>最后两个查询是查询 8 的变体。每个变体都违背了一个优化器条件，因此与查询 8 不同，不能使用视图 4.</p>
+<p>查询 8a</p>
+<p>由于视图定义中的 UnitPrice &gt; 10 与查询中的 UnitPrice &gt; 25 之间的 WHERE 子句不匹配，所以 Q8a 不能使用索引视图。查询搜索条件谓词必须是视图定义中搜索条件谓词的超集。</p>
+<p>SELECT ProductName， od.ProductID， AVG（od.UnitPrice*（1.00-Discount）） AvgPrice，</p>
+<p>SUM（od.Quantity） AS Units</p>
+<p>FROM dbo.[Order Details] AS od， dbo.Products AS p， dbo.Orders AS o</p>
+<p>WHERE od.ProductID = p.ProductID and o.OrderID = od.OrderID</p>
+<p>AND od.UnitPrice &gt; 25</p>
+<p>GROUP BY ProductName， od.ProductID</p>
+<p>查询 8b</p>
+<p>注意，表 Orders 没有参与索引视图 V4 的定义。尽管如此，在该表中添加谓词将禁止使用索引视图，原因是添加的谓词可能会消除聚合中的其它行（如查询 8b 中所示）。</p>
+<p>SELECT ProductName， od.ProductID， AVG（od.UnitPrice*（1.00-Discount））</p>
+<p>AS AvgPrice， SUM（od.Quantity） AS Units</p>
+<p>FROM dbo.[Order Details] AS od， dbo.Products AS p， dbo.Orders AS o</p>
+<p>WHERE od.ProductID = p.ProductID and o.OrderID = od.OrderID</p>
+<p>AND od.UnitPrice &gt; 10</p>
+<p>AND o.OrderDate &gt; '01/01/1998'</p>
+<p>GROUP BY ProductName， od.ProductID</p>
+<p>有关详细信息</p>
+<p>Microsoft SQL Server 2000 联机图书包含索引视图的详细信息。有关其它信息，请参阅以下资源：</p>
+<p>Microsoft SQL Server Web 站点（英文）。</p>
+<p>Microsoft SQL Server 开发人员中心（英文）。</p>
+<p>SQL Server 杂志（英文）。</p>
+<p>Microsoft.public.sqlserver.server 和 microsoft.public.sqlserver.datawarehouse 新闻组，其站点是：news://news.microsoft.com（英文）。</p>
+<p>关于 SQL Server 的 Microsoft 正式课程。有关最新的课程信息，请参阅 Microsoft 培训和服务站点（英文）。<br /></p>
+		</div>
+	<div class="post-bottom"><div class="post-tags-pig"><a href="/info/tag/Microsoft.html" rel="tag">微软</a></div></div><!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/info/archives/58.html" title="EJB编程模型">EJB编程模型</a></div><div class="next_content">下一篇 » <a href="/info/archives/60.html" title="Google的补充结果,网页的坟墓？">Google的补充结果,网页的坟墓？</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/info/archives/52.html">如何避免ASP的SQL的执行效率低</a></p><p class="mutualitylist"><a href="/info/archives/51.html">关于SQL Server的若干注意事项</a></p><p class="mutualitylist"><a href="/info/archives/50.html">SQL Server的Inner Join及Outer Join</a></p><p class="mutualitylist"><a href="/info/archives/49.html">SQL Server存储过程编程经验技巧</a></p><p class="mutualitylist"><a href="/info/archives/28.html">VB开发应用程序答疑</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.baidu.com/baidu"><input type="text" name="word" size="12" id="edtSearch" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="ie" type="hidden" value="utf-8" /><input name="tn" type="hidden" value="bds" /><input name="cl" type="hidden" value="3" /><input name="ct" type="hidden" value="2097152" /><input name="si" type="hidden" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/info/cat/news.html">动态<span class="article-nums"> (91)</span></a></li><li class="li-cate cate-2"><a href="/info/cat/review.html">评论<span class="article-nums"> (230)</span></a></li><li class="li-cate cate-3"><a href="/info/cat/service.html">运营<span class="article-nums"> (73)</span></a></li><li class="li-cate cate-4"><a href="/info/cat/application.html">应用<span class="article-nums"> (63)</span></a></li><li class="li-cate cate-5"><a href="/info/cat/server.html">服务器<span class="article-nums"> (22)</span></a></li><li class="li-cate cate-6"><a href="/info/cat/seo.html">搜索优化<span class="article-nums"> (80)</span></a></li><li class="li-cate cate-7"><a href="/info/cat/plan.html">策划<span class="article-nums"> (84)</span></a></li><li class="li-cate cate-8"><a href="/info/cat/design.html">设计<span class="article-nums"> (30)</span></a></li><li class="li-cate cate-9"><a href="/info/cat/program.html">编程<span class="article-nums"> (68)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/info/archives/742.html" title="互联网行业常用黑话">互联网行业常用黑话(3081)</a></li>
+<li><a href="/info/archives/741.html" title="中国互联网“铁王座”争夺史">中国互联网“铁王座”争夺史(1589)</a></li>
+<li><a href="/info/archives/740.html" title="李兴平：中国站长第一人">李兴平：中国站长第一人(5289)</a></li>
+<li><a href="/info/archives/739.html" title="10款B2B营销人员必备的社会化媒体工具">10款B2B营销人员必备的社会化媒体工具(3664)</a></li>
+<li><a href="/info/archives/738.html" title="大型网站SEO策划方案">大型网站SEO策划方案(8531)</a></li>
+<li><a href="/info/archives/737.html" title="友情链接的交换技巧">友情链接的交换技巧(3063)</a></li>
+<li><a href="/info/archives/736.html" title="传统企业网站的SEO诊断和优化">传统企业网站的SEO诊断和优化(3595)</a></li>
+<li><a href="/info/archives/735.html" title="搜索引擎算法不断迭变，黑帽排名优化将在劫难逃">搜索引擎算法不断迭变，黑帽排名优化将在劫(1326)</a></li>
+<li><a href="/info/archives/734.html" title="网站内链优化建设具有何重要意义？">网站内链优化建设具有何重要意义？(1329)</a></li>
+<li><a href="/info/archives/733.html" title="运营干货：101个最吸引人的文章标题模板">运营干货：101个最吸引人的文章标题模板(5647)</a></li>
+<li><a href="/info/archives/732.html" title="SEO引流技巧：内容+渠道方是推广优化的主导">SEO引流技巧：内容+渠道方是推广优化的(4189)</a></li>
+<li><a href="/info/archives/731.html" title="SEO干货：什么样的页面才算是高质量的页面">SEO干货：什么样的页面才算是高质量的页(2037)</a></li>
+<li><a href="/info/archives/730.html" title="互联网自媒体撰稿人付费阅读的特殊价值分析">互联网自媒体撰稿人付费阅读的特殊价值分析(1741)</a></li>
+<li><a href="/info/archives/729.html" title="SEO拼的就是高质量的原创文章">SEO拼的就是高质量的原创文章(3351)</a></li>
+<li><a href="/info/archives/728.html" title="SEO企业文案思路：给的再多，不如懂我">SEO企业文案思路：给的再多，不如懂我(1862)</a></li>
+<li><a href="/info/archives/727.html" title="从SEO角度出发做网站策划">从SEO角度出发做网站策划(1146)</a></li>
+<li><a href="/info/archives/726.html" title="教你12招，彻底解决选择SEO服务公司的难题">教你12招，彻底解决选择SEO服务公司的(971)</a></li>
+<li><a href="/info/archives/725.html" title="如果你是百度，你会让什么排在前面？">如果你是百度，你会让什么排在前面？(3909)</a></li>
+<li><a href="/info/archives/724.html" title="站长须知的14个健康生活细节">站长须知的14个健康生活细节(3219)</a></li>
+<li><a href="/info/archives/723.html" title="你的SEO博客有存在的必要吗？">你的SEO博客有存在的必要吗？(3501)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>最新留言</h4>
+	<ul class="divComments">
+	   <ul><li style="text-overflow:ellipsis;"><a href="/info/archives/440.html#cmt2273" title="2023/7/16 22:15:15 post by 牛逼">牛逼的文章，2023年居然还能看到。。不</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/725.html#cmt2267" title="2021/8/16 9:26:20 post by 未来人">现在的百度，不是什么最吸引人，不是什么最</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2265" title="2021/7/11 16:49:01 post by 梦易寒">可惜hao123和4399的时代都快褪去</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/737.html#cmt2262" title="2021/5/25 15:52:25 post by 山普">网站相关性，友情链接存在时间越长，越稳定</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/395.html#cmt2259" title="2020/11/30 13:15:34 post by 蜗牛TV">动态产生XML文档的几种ASP方式？</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2230" title="2019/8/9 22:16:40 post by XiGuaMP4">确实很牛逼的站长 </a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2229" title="2019/7/18 11:48:13 post by 爱吃">李兴平从一个一无所知的初中生，到hao1</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/664.html#cmt2223" title="2019/5/5 11:35:13 post by 李耀耀">域名也被盗了  做了10年的网站，现在焦</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2222" title="2019/2/16 16:09:11 post by 香蕉皮">现在的好123已经不能要了</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/263.html#cmt2213" title="2018/7/30 11:29:49 post by 礼品">谢谢指导,希望我的网页会有更好的成绩.</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>标签列表</h4>
+	<ul class="divTags">
+	   <ul><li class="tag-name tag-name-size-2"><a href="/info/tag/IE.html">浏览器<span class="tag-count"> (12)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Script.html">源代码<span class="tag-count"> (36)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Programming.html">教程<span class="tag-count"> (41)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Internet.html">网络<span class="tag-count"> (47)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Windows.html">视窗<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/News.html">动态<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-5"><a href="/info/tag/Seo.html">搜索优化<span class="tag-count"> (71)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/WebDesign.html">网站设计<span class="tag-count"> (34)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Resource.html">资源<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/BlogTips.html">博客技巧<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Blog.html">博客<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Tech.html">业界<span class="tag-count"> (63)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Software.html">软件<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/Money.html">广告<span class="tag-count"> (4)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Website.html">网站<span class="tag-count"> (15)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/WordPress.html">网志<span class="tag-count"> (6)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GoogleMaps.html">谷歌地图<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/GoogleEarth.html">谷歌地球<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Sns.html">社交网络<span class="tag-count"> (8)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Google.html">谷歌<span class="tag-count"> (33)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Baidu.html">百度<span class="tag-count"> (31)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microsoft.html">微软<span class="tag-count"> (16)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Firefox.html">火狐<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Twitter.html">推特<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Webmaster.html">站长技巧<span class="tag-count"> (30)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Chrome.html">谷歌浏览器<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/WebPlan.html">网站策划<span class="tag-count"> (55)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/QQ.html">腾讯<span class="tag-count"> (24)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Mobile.html">手机<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Ecommerce.html">电子商务<span class="tag-count"> (17)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/AdSense.html">网赚<span class="tag-count"> (9)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microblog.html">微博<span class="tag-count"> (20)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GooglePlus.html">谷歌社交<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Facebook.html">脸书<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Apple.html">苹果<span class="tag-count"> (9)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:742</li><li>评论总数:1368</li><li>浏览总数:1990522</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/info/" target="_blank">月光微博客</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/anni/" target="_blank">安妮宝贝的文集</a></li><li><a href="/werther/" target="_blank">少年维特的烦恼</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><script type="text/javascript" src="/script/stat.js"></script></ul>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/info/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

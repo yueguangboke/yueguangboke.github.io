@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/1814.html"/>
@@ -45,12 +45,10 @@
 		2009-5-31 22:42:12 | 
 		作者: 投稿 | 
 		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
-		评论: 30 | 
-		浏览: <span class="AddView" id="spn1814" data-id="1814"></span>
-	</div><!-- END post-meta -->
+		评论: 30</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a><p>早期的国内应用软件产品，其扩展性都是相对较差的，尽管开发商也为此作过很多工作，包括二次开发工具包等等。主要原因就是这些应用本身框架的局限性，不具有可扩展性，在设计时我们关注的只是应用程序的实现，没有关注我们的应用应该构建在一种开放的框架上。（当然开发语言本身也有一定的局限性）</p><p>&ldquo;开架式&rdquo;软件设计是基于应用程序的可扩充性提出来的，是一种软件底层架构的实现方式。他更关注应用程序底层架构的实现，与具体应用程序的实现无关，或者说具体的应用程序是构建在这种架构定义的范畴之内的。</p><p>在这种设计思想下，我们的应用程序框架可形象比喻成书架一样，我们提供一个架子（规范），书架内容的不断丰富，就好像将不同的书（功能/插件）放在架子上一样，当然书需要满足我书架尺寸的要求。</p><p>在这种框架下，提供的是一堆服务和资源以及调用和扩展这些服务及资源的规范，而这些服务和资源也是可扩展的，你可以在一个组件中编写一些服务和资源由框架加载并与其他的组件分享。组件的功能是由框架加载并执行，它可以访问框架提供的资源和服务，如可以访问界面元素，访问数据库、文件，调用日志服务写入日志、访问多语言信息等等。</p><p>大概的运行时框架如下：</p><p style="text-align: center"><img alt="&ldquo;开架式&rdquo;软件设计是未来之路" src="/upload/1814_1.jpg" /></p><p>图中的组件A和B可理解为系统提供的组件或者应用程序功能性组件。</p><p>其中的关键就是要提供一种机制：</p><p>1、&nbsp;保证组件可以被框架加载并运行，</p><p>2、&nbsp;将组件中包含的资源和服务注册到该框架中，</p><p>3、&nbsp;组件访问框架中的资源和服务的透明性。（也表现出组件间、组件和框架间的协作性和可访问性）。</p><p>有了这样的应用程序框架，我们可以任意扩展应用程序的功能组件，只要他遵循框架定义的规范。我们可以新增加一个组件，可以提供新的资源和服务（如果愿意），可以访问框架中的资源和服务就好像这些都是该组件自身具有的，而组件中提供的功能可以通过配置插入到恰当的菜单或工具条供用户调用。而这些对用户是透明的，他们不知道界面中的某个功能究竟来自于那一个组件。组件和组件之间是彼此独立的离散的。</p><p>远景：</p><p>将产品发布成为这样一套框架（标准）和预先提供的功能组件，用户可以到网上直接下载组件进行程序的升级，用户可以根据框架定义的规范自行开发，甚至有第三方软件公司根据框架的内容和标准专门开发特有的功能，如软件对GPRS、视频会议的支持等等。也可以支持OpenSource，开放标准提供给网上大量的开发者开发功能组件，作为用户可以在网上找到需要的功能组件。这些或多或少已经是一种商业模式的问题了。</p><p>优点：</p><p>1、&nbsp;扩展性极强，可以到甚至</p><p>2、&nbsp;因为组件和组件之间是彼此独立的离散的，带来的升级也是方便的，</p><p>3、&nbsp;程序更新只需要下载和替换相关的组件即可，</p><p>4、&nbsp;程序的架构是严密的，</p><p>5、&nbsp;架构本身的升级比较容易。</p><p>缺点：</p><p>1、&nbsp;性能的影响。高扩展性必然以牺牲一定性能作为代价的。</p><p>2、&nbsp;功能扩展的不定性。</p><p>3、&nbsp;高度共享带来的安全性也是一个要考虑的问题。</p><p>（注：本文为我同事杨舰的几年前的稿件，该文从项目经理的角度提出了一种新的开发框架，供大家参考）</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Programming.html" rel="tag"><img src="/logo/Programming.gif" alt="编程" class="thumb" width="80" height="80" /></a><p>早期的国内应用软件产品，其扩展性都是相对较差的，尽管开发商也为此作过很多工作，包括二次开发工具包等等。主要原因就是这些应用本身框架的局限性，不具有可扩展性，在设计时我们关注的只是应用程序的实现，没有关注我们的应用应该构建在一种开放的框架上。（当然开发语言本身也有一定的局限性）</p><p>&ldquo;开架式&rdquo;软件设计是基于应用程序的可扩充性提出来的，是一种软件底层架构的实现方式。他更关注应用程序底层架构的实现，与具体应用程序的实现无关，或者说具体的应用程序是构建在这种架构定义的范畴之内的。</p><p>在这种设计思想下，我们的应用程序框架可形象比喻成书架一样，我们提供一个架子（规范），书架内容的不断丰富，就好像将不同的书（功能/插件）放在架子上一样，当然书需要满足我书架尺寸的要求。</p><p>在这种框架下，提供的是一堆服务和资源以及调用和扩展这些服务及资源的规范，而这些服务和资源也是可扩展的，你可以在一个组件中编写一些服务和资源由框架加载并与其他的组件分享。组件的功能是由框架加载并执行，它可以访问框架提供的资源和服务，如可以访问界面元素，访问数据库、文件，调用日志服务写入日志、访问多语言信息等等。</p><p>大概的运行时框架如下：</p><p style="text-align: center"><img alt="&ldquo;开架式&rdquo;软件设计是未来之路" src="https://static.williamlong.info/upload/1814_1.jpg" /></p><p>图中的组件A和B可理解为系统提供的组件或者应用程序功能性组件。</p><p>其中的关键就是要提供一种机制：</p><p>1、&nbsp;保证组件可以被框架加载并运行，</p><p>2、&nbsp;将组件中包含的资源和服务注册到该框架中，</p><p>3、&nbsp;组件访问框架中的资源和服务的透明性。（也表现出组件间、组件和框架间的协作性和可访问性）。</p><p>有了这样的应用程序框架，我们可以任意扩展应用程序的功能组件，只要他遵循框架定义的规范。我们可以新增加一个组件，可以提供新的资源和服务（如果愿意），可以访问框架中的资源和服务就好像这些都是该组件自身具有的，而组件中提供的功能可以通过配置插入到恰当的菜单或工具条供用户调用。而这些对用户是透明的，他们不知道界面中的某个功能究竟来自于那一个组件。组件和组件之间是彼此独立的离散的。</p><p>远景：</p><p>将产品发布成为这样一套框架（标准）和预先提供的功能组件，用户可以到网上直接下载组件进行程序的升级，用户可以根据框架定义的规范自行开发，甚至有第三方软件公司根据框架的内容和标准专门开发特有的功能，如软件对GPRS、视频会议的支持等等。也可以支持OpenSource，开放标准提供给网上大量的开发者开发功能组件，作为用户可以在网上找到需要的功能组件。这些或多或少已经是一种商业模式的问题了。</p><p>优点：</p><p>1、&nbsp;扩展性极强，可以到甚至</p><p>2、&nbsp;因为组件和组件之间是彼此独立的离散的，带来的升级也是方便的，</p><p>3、&nbsp;程序更新只需要下载和替换相关的组件即可，</p><p>4、&nbsp;程序的架构是严密的，</p><p>5、&nbsp;架构本身的升级比较容易。</p><p>缺点：</p><p>1、&nbsp;性能的影响。高扩展性必然以牺牲一定性能作为代价的。</p><p>2、&nbsp;功能扩展的不定性。</p><p>3、&nbsp;高度共享带来的安全性也是一个要考虑的问题。</p><p>（注：本文为我同事杨舰的几年前的稿件，该文从项目经理的角度提出了一种新的开发框架，供大家参考）</p>
 <p style="text-align:center"><img src="/logo/Programming.jpg" alt="“开架式”软件设计是未来之路" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note1814"></span><a href="javascript:commYea(1814);" id="dig1814">顶一下 ▲</a>(<span id="sdig1814"><Script language="javascript" type="text/javascript">showDig("1814");</script></span>) &nbsp; <a href="javascript:commNay(1814);" id="down1814">踩一下 ▼</a>(<span id="sdown1814"><Script language="javascript" type="text/javascript">showDown("1814");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

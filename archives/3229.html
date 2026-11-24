@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/3229.html"/>
@@ -45,12 +45,10 @@
 		2012-9-23 22:27:10 | 
 		作者: 投稿 | 
 		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
-		评论: 19 | 
-		浏览: <span class="AddView" id="spn3229" data-id="3229"></span>
-	</div><!-- END post-meta -->
+		评论: 19</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>MD5即Message-Digest Algorithm 5（信息-摘要算法 5），是网络上广泛使用的散列（Hash）算法之一，可以实现将任意长度的数值映射为固定长度的较小数值。</p><p>MD5是一种常用的单向Hash算法。它被广泛用于以下几个用途：</p><p><strong>1、检查数据是否一致。</strong>将两地存储的数据进行哈希，比较结果，如果结果一致就无需再进行数据比对。这是利用了其&ldquo;抵抗冲突&rdquo;(collision- resistant)的能力，两个不同的数据，其哈希值只有很小的几率一致。相当多数据服务，尤其是网盘服务，利用类似的做法来检测重复数据，避免重复上传。</p><p><strong>2、存储用户密码。</strong>将密码哈希后的结果存储在数据库中，以做密码匹配。这是利用了其做为单向哈希的特点，从计算后的哈希值不能得到密码。</p><p><strong>3、校验数据正确性。</strong>将数据和数据哈希后的结果一并传输，用于检验传输过程中数据是否有损坏。这是利用了很难找到两个不同的数据，其哈希结果一致的特点。</p><p>下面我们将说明为什么对于上面三种用途, MD5都不适用。</p><p>第一个用途尤其可怕。这个用途的最大的问题是，MD5在现实中已经被发现有相当多的数据都可能导致冲突。<a href="http://marc-stevens.nl/research/md5-1block-collision/md5-1block-collision.pdf">举例而言</a>，如下两段数据的MD5哈希值就是完全一样的。</p><blockquote><p>&nbsp;&nbsp;&nbsp; 数据 1&nbsp;</p><p>&nbsp;&nbsp;&nbsp; 4d c9 68 ff 0e e3 5c 20 95 72 d4 77 7b 72 15 87<br />&nbsp;&nbsp;&nbsp; d3 6f a7 b2 1b dc 56 b7 4a 3d c0 78 3e 7b 95 18<br />&nbsp;&nbsp;&nbsp; af bf a2 <strong><span style="color: #ff0000">00</span></strong> a8 28 4b f3 6e 8e 4b 55 b3 5f 42 75<br />&nbsp;&nbsp;&nbsp; 93 d8 49 67 6d a0 d1 <strong><span style="color: #ff0000">55</span></strong> 5d 83 60 fb 5f 07 fe a2</p><p>&nbsp;&nbsp;&nbsp; 数据 2</p><p>&nbsp;&nbsp;&nbsp; 4d c9 68 ff 0e e3 5c 20 95 72 d4 77 7b 72 15 87<br />&nbsp;&nbsp;&nbsp; d3 6f a7 b2 1b dc 56 b7 4a 3d c0 78 3e 7b 95 18<br />&nbsp;&nbsp;&nbsp; af bf a2 <strong><span style="color: #ff0000">02</span></strong> a8 28 4b f3 6e 8e 4b 55 b3 5f 42 75<br />&nbsp;&nbsp;&nbsp; 93 d8 49 67 6d a0 d1 <strong><span style="color: #ff0000">d5</span></strong> 5d 83 60 fb 5f 07 fe a2</p><p>&nbsp;&nbsp;&nbsp; 输出相同的MD5 哈希</p><p>&nbsp;&nbsp;&nbsp; 008ee33a9d58b51cfeb425b0959121c9</p></blockquote><p>这意味着，如果用户提供数据 1，服务器已经存储数据 2。通过简单的MD5哈希方式检查重复，服务器上为用户保存的数据就是2。 接下来发生的事情大家都知道了，就是用户数据丢了！</p><p>第二个用途很容易遭到rainbow table攻击，和明文存储密码的实质区别不大。更详细的分析可以察看<a href="/archives/3224.html">这篇文章</a>。</p><p>第三个用途里一般会在需要哈希的数据中混入某些秘密，也就是计算公式为md5(secret key + data)。 但这样并不适合用于验证数据的完整性。这是因为，从理论上上来说，如果知道md5(secret key +X)，即使不知道secret key的内容, 仍然可能通过对X的分析，计算得到md5(secret key +Y），从而将X成功的替换成Y，导致接收方仍然认为数据是正确的。</p><p>来源：坚果云投稿，坚果云是一款类似Dropbox的云存储服务。<a target="_blank" href="">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>MD5即Message-Digest Algorithm 5（信息-摘要算法 5），是网络上广泛使用的散列（Hash）算法之一，可以实现将任意长度的数值映射为固定长度的较小数值。</p><p>MD5是一种常用的单向Hash算法。它被广泛用于以下几个用途：</p><p><strong>1、检查数据是否一致。</strong>将两地存储的数据进行哈希，比较结果，如果结果一致就无需再进行数据比对。这是利用了其&ldquo;抵抗冲突&rdquo;(collision- resistant)的能力，两个不同的数据，其哈希值只有很小的几率一致。相当多数据服务，尤其是网盘服务，利用类似的做法来检测重复数据，避免重复上传。</p><p><strong>2、存储用户密码。</strong>将密码哈希后的结果存储在数据库中，以做密码匹配。这是利用了其做为单向哈希的特点，从计算后的哈希值不能得到密码。</p><p><strong>3、校验数据正确性。</strong>将数据和数据哈希后的结果一并传输，用于检验传输过程中数据是否有损坏。这是利用了很难找到两个不同的数据，其哈希结果一致的特点。</p><p>下面我们将说明为什么对于上面三种用途, MD5都不适用。</p><p>第一个用途尤其可怕。这个用途的最大的问题是，MD5在现实中已经被发现有相当多的数据都可能导致冲突。<a href="http://marc-stevens.nl/research/md5-1block-collision/md5-1block-collision.pdf">举例而言</a>，如下两段数据的MD5哈希值就是完全一样的。</p><blockquote><p>&nbsp;&nbsp;&nbsp; 数据 1&nbsp;</p><p>&nbsp;&nbsp;&nbsp; 4d c9 68 ff 0e e3 5c 20 95 72 d4 77 7b 72 15 87<br />&nbsp;&nbsp;&nbsp; d3 6f a7 b2 1b dc 56 b7 4a 3d c0 78 3e 7b 95 18<br />&nbsp;&nbsp;&nbsp; af bf a2 <strong><span style="color: #ff0000">00</span></strong> a8 28 4b f3 6e 8e 4b 55 b3 5f 42 75<br />&nbsp;&nbsp;&nbsp; 93 d8 49 67 6d a0 d1 <strong><span style="color: #ff0000">55</span></strong> 5d 83 60 fb 5f 07 fe a2</p><p>&nbsp;&nbsp;&nbsp; 数据 2</p><p>&nbsp;&nbsp;&nbsp; 4d c9 68 ff 0e e3 5c 20 95 72 d4 77 7b 72 15 87<br />&nbsp;&nbsp;&nbsp; d3 6f a7 b2 1b dc 56 b7 4a 3d c0 78 3e 7b 95 18<br />&nbsp;&nbsp;&nbsp; af bf a2 <strong><span style="color: #ff0000">02</span></strong> a8 28 4b f3 6e 8e 4b 55 b3 5f 42 75<br />&nbsp;&nbsp;&nbsp; 93 d8 49 67 6d a0 d1 <strong><span style="color: #ff0000">d5</span></strong> 5d 83 60 fb 5f 07 fe a2</p><p>&nbsp;&nbsp;&nbsp; 输出相同的MD5 哈希</p><p>&nbsp;&nbsp;&nbsp; 008ee33a9d58b51cfeb425b0959121c9</p></blockquote><p>这意味着，如果用户提供数据 1，服务器已经存储数据 2。通过简单的MD5哈希方式检查重复，服务器上为用户保存的数据就是2。 接下来发生的事情大家都知道了，就是用户数据丢了！</p><p>第二个用途很容易遭到rainbow table攻击，和明文存储密码的实质区别不大。更详细的分析可以察看<a href="/archives/3224.html">这篇文章</a>。</p><p>第三个用途里一般会在需要哈希的数据中混入某些秘密，也就是计算公式为md5(secret key + data)。 但这样并不适合用于验证数据的完整性。这是因为，从理论上上来说，如果知道md5(secret key +X)，即使不知道secret key的内容, 仍然可能通过对X的分析，计算得到md5(secret key +Y），从而将X成功的替换成Y，导致接收方仍然认为数据是正确的。</p><p>来源：坚果云投稿，坚果云是一款类似Dropbox的云存储服务。<a target="_blank" href="">原文链接</a>。</p>
 <p style="text-align:center"><img src="/logo/Encryption.jpg" alt="为什么应该放弃或减少使用MD5" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note3229"></span><a href="javascript:commYea(3229);" id="dig3229">顶一下 ▲</a>(<span id="sdig3229"><Script language="javascript" type="text/javascript">showDig("3229");</script></span>) &nbsp; <a href="javascript:commNay(3229);" id="down3229">踩一下 ▼</a>(<span id="sdown3229"><Script language="javascript" type="text/javascript">showDown("3229");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

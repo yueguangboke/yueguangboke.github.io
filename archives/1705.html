@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/1705.html"/>
@@ -45,12 +45,10 @@
 		2009-2-23 22:33:16 | 
 		作者: 月光 | 
 		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
-		评论: 40 | 
-		浏览: <span class="AddView" id="spn1705" data-id="1705"></span>
-	</div><!-- END post-meta -->
+		评论: 40</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Script.html" rel="tag"><img src="/logo/Script.gif" alt="源代码" class="thumb" width="80" height="80" /></a><p>这是一个很和谐很实用的网站管理程序，和我以前介绍的<a target="_blank" href="/archives/1278.html">服务器管理程序</a>不同的是，这个程序只有一个功能，就是实现远程Web方式删除文件（实际上是重命名文件，但效果和删除一样）的操作。功能简单实用，适合所有的支持ASP的中文网站。</p><p>这个程序是基于这样一个应用场景：假如工作几个月好不容易有了一个放假的日子，周末的时候你随旅游团去千里之外的张家界旅游，当你正在登山索道上观赏周边风景的时候，电话响了，你接到你托管服务器机房IDC的电话，说你的网站上有一条有害信息，需要立刻删除，并将该信息的链接地址发送给你，如果半小时内不删除的话，你的服务器就要被立刻拔网线。</p><p>而此时，你在深山老林里找到最近的一个能上网的场所也要好几个小时，并且这会将你原来兴致勃勃的旅行计划全盘打乱，多么令人扫兴和烦恼的事情啊。</p><p>如果你在网站上安装了这个小程序就轻松多了，打开手机，输入这个程序的地址，登录后，输入要处理链接的&ldquo;相对地址&rdquo;，然后点&ldquo;删除&rdquo;，就可以将这个文件删除了（实际上是重命名操作），并且留有备份，以备将来处理。</p><p>使用方法很简单，将下面的代码复制出来，命名为一个ASP文件，修改用户登录密码password为你自己记得住的一个密码，然后上传到你网站的根目录下，之后就可以使用手机远程操作了。</p><p>程序的源代码如下：</p><div class="code" lang="asp">Response.Charset=&quot;GB2312&quot;<br />Response.Buffer = True<br />FileName = request.ServerVariables(&quot;URL&quot;)<br />'=====用户登录密码<br />userpass = &quot;password&quot;<br />'=====验证登录密码<br />If request.querystring(&quot;action&quot;) = &quot;login&quot; Then<br />&nbsp;&nbsp;&nbsp; If request.Form(&quot;loginpass&quot;) = userpass Then<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; session(&quot;password&quot;) = userpass<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.redirect FileName<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;验证未通过.&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.end<br />&nbsp;&nbsp;&nbsp; End If<br />ElseIf request.querystring(&quot;action&quot;) = &quot;do&quot; and session(&quot;password&quot;)&lt;&gt;&quot;&quot; Then<br />'=====重命名文件操作<br />&nbsp;&nbsp;&nbsp; Set fs = Server.CreateObject(&quot;Scripting.FileSystemObject&quot;)<br />&nbsp;&nbsp;&nbsp; SFile = Server.MapPath(request.Form(&quot;filename&quot;))<br />&nbsp;&nbsp;&nbsp; NFile = SFile &amp; &quot;.bak&quot;<br />&nbsp;&nbsp;&nbsp; On Error Resume Next<br />&nbsp;&nbsp;&nbsp; fs.MoveFile SFile, NFile<br />&nbsp;&nbsp;&nbsp; If Err.Number = 53 Then<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write SFile &amp; &quot;文件不存在.&quot;<br />&nbsp;&nbsp;&nbsp; ElseIf Err.Number &lt;&gt; 0 Then<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;发生错误. 请查看错误信息：&quot; &amp; Err.Number &amp; &quot; &quot; &amp; Err.Description<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Err.Clear<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;成功重命名文件 &quot; &amp; SFile &amp; &quot; 为 &quot; &amp; NFile &amp; &quot;&quot;<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; response.end<br />'=====录入登陆密码<br />Else<br />&nbsp;&nbsp;&nbsp; If session(&quot;password&quot;) &lt;&gt; userpass Then<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;&lt;form action=&quot; &amp; FileName &amp; &quot;?action=login method='post'&gt;需要密码：&lt;input name='loginpass' type='password'&gt;&amp;nbsp&lt;input type='submit' value='登录'&gt;&lt;/form&gt;&quot;<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;&lt;form action=&quot; &amp; FileName &amp; &quot;?action=do method='post'&gt; &quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;&lt;input type=text name=filename&gt;&lt;br&gt;&lt;input type=submit value='删除'&gt;&lt;/form&gt;&quot;<br />&nbsp;&nbsp;&nbsp; End If<br />End If<br />&nbsp;</div><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Script.html" rel="tag"><img src="/logo/Script.gif" alt="源代码" class="thumb" width="80" height="80" /></a><p>这是一个很和谐很实用的网站管理程序，和我以前介绍的<a target="_blank" href="/archives/1278.html">服务器管理程序</a>不同的是，这个程序只有一个功能，就是实现远程Web方式删除文件（实际上是重命名文件，但效果和删除一样）的操作。功能简单实用，适合所有的支持ASP的中文网站。</p><p>这个程序是基于这样一个应用场景：假如工作几个月好不容易有了一个放假的日子，周末的时候你随旅游团去千里之外的张家界旅游，当你正在登山索道上观赏周边风景的时候，电话响了，你接到你托管服务器机房IDC的电话，说你的网站上有一条有害信息，需要立刻删除，并将该信息的链接地址发送给你，如果半小时内不删除的话，你的服务器就要被立刻拔网线。</p><p>而此时，你在深山老林里找到最近的一个能上网的场所也要好几个小时，并且这会将你原来兴致勃勃的旅行计划全盘打乱，多么令人扫兴和烦恼的事情啊。</p><p>如果你在网站上安装了这个小程序就轻松多了，打开手机，输入这个程序的地址，登录后，输入要处理链接的&ldquo;相对地址&rdquo;，然后点&ldquo;删除&rdquo;，就可以将这个文件删除了（实际上是重命名操作），并且留有备份，以备将来处理。</p><p>使用方法很简单，将下面的代码复制出来，命名为一个ASP文件，修改用户登录密码password为你自己记得住的一个密码，然后上传到你网站的根目录下，之后就可以使用手机远程操作了。</p><p>程序的源代码如下：</p><div class="code" lang="asp">Response.Charset=&quot;GB2312&quot;<br />Response.Buffer = True<br />FileName = request.ServerVariables(&quot;URL&quot;)<br />'=====用户登录密码<br />userpass = &quot;password&quot;<br />'=====验证登录密码<br />If request.querystring(&quot;action&quot;) = &quot;login&quot; Then<br />&nbsp;&nbsp;&nbsp; If request.Form(&quot;loginpass&quot;) = userpass Then<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; session(&quot;password&quot;) = userpass<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.redirect FileName<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;验证未通过.&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.end<br />&nbsp;&nbsp;&nbsp; End If<br />ElseIf request.querystring(&quot;action&quot;) = &quot;do&quot; and session(&quot;password&quot;)&lt;&gt;&quot;&quot; Then<br />'=====重命名文件操作<br />&nbsp;&nbsp;&nbsp; Set fs = Server.CreateObject(&quot;Scripting.FileSystemObject&quot;)<br />&nbsp;&nbsp;&nbsp; SFile = Server.MapPath(request.Form(&quot;filename&quot;))<br />&nbsp;&nbsp;&nbsp; NFile = SFile &amp; &quot;.bak&quot;<br />&nbsp;&nbsp;&nbsp; On Error Resume Next<br />&nbsp;&nbsp;&nbsp; fs.MoveFile SFile, NFile<br />&nbsp;&nbsp;&nbsp; If Err.Number = 53 Then<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write SFile &amp; &quot;文件不存在.&quot;<br />&nbsp;&nbsp;&nbsp; ElseIf Err.Number &lt;&gt; 0 Then<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;发生错误. 请查看错误信息：&quot; &amp; Err.Number &amp; &quot; &quot; &amp; Err.Description<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Err.Clear<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;成功重命名文件 &quot; &amp; SFile &amp; &quot; 为 &quot; &amp; NFile &amp; &quot;&quot;<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; response.end<br />'=====录入登陆密码<br />Else<br />&nbsp;&nbsp;&nbsp; If session(&quot;password&quot;) &lt;&gt; userpass Then<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;&lt;form action=&quot; &amp; FileName &amp; &quot;?action=login method='post'&gt;需要密码：&lt;input name='loginpass' type='password'&gt;&amp;nbsp&lt;input type='submit' value='登录'&gt;&lt;/form&gt;&quot;<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;&lt;form action=&quot; &amp; FileName &amp; &quot;?action=do method='post'&gt; &quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.write &quot;&lt;input type=text name=filename&gt;&lt;br&gt;&lt;input type=submit value='删除'&gt;&lt;/form&gt;&quot;<br />&nbsp;&nbsp;&nbsp; End If<br />End If<br />&nbsp;</div>
 <p style="text-align:center"><img src="/logo/Script.jpg" alt="手机版远程网站文件删除程序" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note1705"></span><a href="javascript:commYea(1705);" id="dig1705">顶一下 ▲</a>(<span id="sdig1705"><Script language="javascript" type="text/javascript">showDig("1705");</script></span>) &nbsp; <a href="javascript:commNay(1705);" id="down1705">踩一下 ▼</a>(<span id="sdown1705"><Script language="javascript" type="text/javascript">showDown("1705");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/archives/7570.html"/>
+	<title>老树发新芽：九年老服务器焕新记-月光博客</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/" title="月光博客" rel="home bookmark">月光博客</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/" title="首页">首页</a></li><li><a href="/archives/2.html" title="推荐阅读的文章">推荐</a></li><li><a href="/cat/tech.html" title="业界新闻,信息产业,软件硬件">业界</a></li><li><a href="/cat/internet.html" title="行业动态,网络发展,网络报道">互联网</a></li><li><a href="/cat/software.html" title="软件使用,软件评测,软件推荐">软件</a></li><li><a href="/cat/program.html" title="软件编程,开发知识,开发技巧">编程</a></li><li><a href="/cat/webmaster.html" title="网站开发,网站维护,网站管理">建站</a></li><li><a href="/cat/seo.html" title="搜索技术,搜索优化,搜索动态">引擎</a></li><li><a href="/cat/map.html" title="卫星地图,谷歌地图,谷歌地球">地图</a></li><li><a href="/google/" title="谷歌地图" target="_blank">观察</a></li><li><a href="/weibo/" title="月光微博客" target="_blank">微博</a></li><li><a href="/movie/" title="电影评论" target="_blank">影评</a></li><li><a href="/archives/" title="更多">更多</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate7 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/">月光博客</a> &raquo; <a href="/cat/webmaster.html" title="查看 网站建设 中的全部文章">网站建设</a> &raquo; <span>老树发新芽：九年老服务器焕新记</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/archives/7570.html" rel="bookmark">老树发新芽：九年老服务器焕新记</a></h1>
+	<div class="post-meta">
+		2026-11-18 23:15:47 | 
+		作者: 月光 | 
+		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
+		评论: 0</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>最近，我把一台已经购买使用了 9 年的美国云服务器彻底折腾了一遍：重新安装了操作系统，升级了各种软件，还顺便把一些服务也换成了新版。整个过程还算顺利，趁着刚刚升级的这点劲头，把这次折腾的经历记录下来。</p>
+
+<p>这台服务器是我在 2017 年购买的，当时的价格是每年 19 美元，后来涨到了每年 28 美元。价格虽然便宜，硬件配置也比较低：1 核 CPU、512MB 内存、10GB 硬盘，以及每月 500GB 的流量。</p>
+
+<p>服务器上原来安装的软件也比较简单，底层操作系统是 CentOS 7.6，管理面板使用的是宝塔面板 7.7，同时部署了 Nginx 和 V2Ray 等相关程序。</p>
+
+<p>这些年来，我对服务器进行过不少优化，整体运行状态一直非常不错。日常 CPU 占用率基本保持在 2% 左右，内存占用率大约 38%，服务器负载非常低。</p>
+
+<p>最开始我还在上面搭过 <a href="/tag/WordPress.html" title="WordPress"  Target="_blank" >WordPress</a> 网站，装了 PHP 与 MySQL 环境。不过，后来发现这两个服务实在太占用资源，对于只有 512MB 内存的服务器来说，多少有些力不从心。经过一番折腾，最终还是放弃了动态网站，卸载 PHP 和 MySQL，改成了 Hugo 系统，只托管纯 HTML 静态网站，这样整个服务器负载就大幅降低，就这套硬件，即使日访问量达到 10 万 PV，也完全能够应付。对于这种小配置的服务器来说，静态网站简直就是最好的解决方案。</p>
+
+<p>一直就这么平稳跑着，直到我尝试借助 AI 工具运维这台服务器时，AI 上来就给我提出了一个建议：升级服务器操作系统。它提醒我：这台服务器对外开了 7 个端口，托管了 5 个站点，却两年没有打过补丁。</p>
+
+<p>我被说服了。</p>
+
+<p>于是，开始研究如何升级操作系统，以及应该换成哪个版本。</p>
+
+<p>原来的 CentOS 被红帽收购了之后，整个 CentOS 7全系列已经在2024年停止维护，继续使用显然不是长久之计。而且 CentOS 7.6 本身也没有什么直接升级到新版本的简单途径，与其在原有系统上折腾，不如直接重装一个新的操作系统。</p>
+
+<p>经过一番研究，我最终选择了 Debian 12。</p>
+
+<p>Debian 一直以稳定、轻量著称，作为服务器操作系统非常合适。对于我这台只有 512MB 内存的老服务器来说，Debian 也是一个不错的选择。相比原来的 CentOS，资源占用不会有明显增加，完全可以胜任目前的工作。</p>
+
+<p>接下来就是软件方面的升级。</p>
+
+<p>原来使用的宝塔面板是 7.7 版本，一直没有升级，因为高于这个版本的宝塔面板会强制收集手机号，给用户隐私泄露以及服务器安全造成严重威胁，后来我才知道，宝塔面板 12 和 7.7 版一样，不会强制收集手机号，于是我决定升级安装宝塔面板 12。新旧版本在基本使用方式上比较接近，日常管理应该不会有什么太大区别，预计资源占用也不会增加太多。</p>
+
+<p>原来的 V2Ray 也已经停止迭代更新了，现在主流的替代方案是 Xray，于是也决定趁这次机会一起换掉。</p>
+
+<p>至于 Nginx，就没有太多需要操心的地方了，它的兼容性一直很好，资源占用也非常低，直接安装新版即可。</p>
+
+<p>准备工作完成之后，就开始动手了。</p>
+
+<p>我的服务器服务商提供了一键重装操作系统的功能，操作起来倒是非常方便。我先将服务器关机，然后进入管理后台，选择重新安装操作系统，选择 Debian 12 发起重装，没过多久，一个全新的操作系统就安装完成了。</p>
+
+<p>系统安装好之后，先进行系统更新，下载并安装最新的补丁，然后安装宝塔面板 12。接着通过宝塔面板安装 Nginx 1.30.6，最后再安装一个一键部署 Xray 的软件。</p>
+
+<p>到这里，服务器的基础软件环境就算全部安装完成了。</p>
+
+<p>部署完毕我查看整机的 CPU 和内存占用情况，发现结果还挺令人满意：CPU 依然保持在 2% 左右，内存占用率也只有 40% 左右，与之前相比并没有增加多少。</p>
+
+<p>也就是说，在几乎没有增加硬件资源消耗的情况下，整个服务器的软件环境已经全部更新到了新版本。从 CentOS 7.6 到 Debian 12，从宝塔 7.8 到宝塔 12，再从 V2Ray 到 Xray，这台服役了九年的老服务器，算是完成了一次软件层面的脱胎换骨，彻底焕然一新了。</p>
+
+<p>当然，软件安装并不意味着所有事情都已经完成。其中比较复杂的就算 Xray 的配置了，Xray 本身配置逻辑看着不算复杂，但实际上手调试我还是一头雾水。服务器上明明已经一键安装好了 Hysteria 2 协议，客户端却一直不通，我估计这涉及到了协议、端口和防火墙设置，自己还是有些搞不明白。于是，索性把任务交给 AI，让它直接登录服务器帮我配置。</p>
+
+<p>不得不说，现在的 AI 做运维调试确实方便多了，授予登录权限之后，AI 便开始在我服务器玩命折腾，又是开端口，又是改配置，忙得不亦乐乎，没费多长时间，就把 Hysteria 2 协议给调试通了，问题根源其实就是服务器防火墙的 UDP 端口没有正确开放。</p>
+
+<p>至此整台服务器的软件环境全部就位，往后我就可以借助 AI，便捷实时地管理这台机器，不用再耗费大量精力手动折腾各类配置，我自己要是对某些问题不太熟悉，也能让 AI 帮忙分析、测试和排查问题。</p>
+
+<p>最后再感慨一下，这台美国云服务器，每个月的成本只有 2.5 美元，实在是物超所值，每个月只要花 2.5 美元，就能拥有一台运行着 Linux、Nginx、Xray，还能托管多个网站的海外云服务器，而且已经连续使用了九年，这性价比，实在是有点离谱了。我唯一遗憾的是，要是我能早一点有强大的 AI 帮助管理服务器就太好了，那能省多少时间啊，现在的新入门的网站服务器管理员真是太幸福了。</p>
+
+<p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="老树发新芽：九年老服务器焕新记" /></p>
+<div id="article_dig" style="text-align: right">
+<span id="note7570"></span><a href="javascript:commYea(7570);" id="dig7570">顶一下 ▲</a>(<span id="sdig7570"><Script language="javascript" type="text/javascript">showDig("7570");</script></span>) &nbsp; <a href="javascript:commNay(7570);" id="down7570">踩一下 ▼</a>(<span id="sdown7570"><Script language="javascript" type="text/javascript">showDown("7570");</script></span>)
+</div>
+<div id="share"></div>
+		</div>
+	<!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/archives/7569.html" title="折腾博客：Z-Blog静态化改造，从Windows换到Linux">折腾博客：Z-Blog静态化改造，从Windows换到Linux</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/archives/7569.html">折腾博客：Z-Blog静态化改造，从Windows换到Linux</a></p><p class="mutualitylist"><a href="/archives/7568.html">个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定</a></p><p class="mutualitylist"><a href="/archives/7562.html">使用PagesCMS和GitHub打造免费CMS网站</a></p><p class="mutualitylist"><a href="/archives/7561.html">使用VS Code和Github打造免费网站系统</a></p><p class="mutualitylist"><a href="/archives/7559.html">Hugo搭建静态网站教程</a></p><p class="mutualitylist"><a href="/archives/7558.html">解决Cloudflare Pages的308自动重定向问题</a></p><p class="mutualitylist"><a href="/archives/7519.html">Cloudflare Pages搭建个人网站指南</a></p><p class="mutualitylist"><a href="/archives/7518.html">GitHub Pages搭建个人网站指南</a></p><p class="mutualitylist"><a href="/archives/7347.html">放弃百度站内搜索</a></p><p class="mutualitylist"><a href="/archives/7122.html">制作匿名举报网站的方法</a></p><p class="mutualitylist"><a href="/archives/7100.html">防止网站被黑帽SEO利用</a></p><p class="mutualitylist"><a href="/archives/6839.html">免费运营维护网站指南</a></p><p class="mutualitylist"><a href="/archives/6574.html">网站SSL证书出现错误和解决过程</a></p><p class="mutualitylist"><a href="/archives/6511.html">服务器启用HSTS协议</a></p><p class="mutualitylist"><a href="/archives/6510.html">服务器禁用TLS 1.0协议</a></p><p class="mutualitylist"><a href="/archives/6380.html">通过gzip和nginx来提高网站打开速度</a></p><p class="mutualitylist"><a href="/archives/6287.html">Windows IIS日志文件分析神器</a></p><p class="mutualitylist"><a href="/archives/6051.html">十大网站创业方向</a></p><p class="mutualitylist"><a href="/archives/6022.html">谷歌提醒网站管理：疫情期间切勿关站 会影响后续排名</a></p><p class="mutualitylist"><a href="/archives/5780.html">IIS子目录web.config与主站冲突解决方法</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>订阅博客</h4>
+	<ul class="divSubscribe">
+	   <ul><li>订阅我的博客：<a href="/rss.xml" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_rss.gif" alt="订阅我的博客" /></a></li><li>邮件订阅博客：<a href="https://follow.it/83wyvz?action=followPub" target="_blank" rel="nofollow"><img style="border: medium none ; vertical-align:middle;" src="/images/sub_mail.gif" alt="邮件订阅博客" /></a></li><img src="/images/qrcode.gif" alt="月光博客" /></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (682)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/weibo/" target="_blank">月光微博客</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/movie/" target="_blank">电影评论</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/book/" target="_blank">短篇小说</a></li><script type="text/javascript" src="/script/stat.js"></script><script type="text/javascript" src="/script/sidebar.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7569.html" title="折腾博客：Z-Blog静态化改造，从Windows换到Linux">折腾博客：Z-Blog静态化改造，从Wi(0)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>推荐博客</h4>
+	<ul class="divLinkage">
+	   <ul><script type="text/javascript" src="/script/linkscript.js"></script></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:7569</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

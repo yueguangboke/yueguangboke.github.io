@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="stylesheet" type="text/css" media="all" href="/info/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/info/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/info/archives/386.html"/>
+	<title>Java Spring框架研究-网站运营优化</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/info/" title="网站运营优化" rel="home bookmark">网站运营优化</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/info/" target="_self">首页</a></li><li><a href="/info/cat/news.html" target="_self">动态</a></li><li><a href="/info/cat/review.html" target="_self">评论</a></li><li><a href="/info/cat/plan.html" target="_self">策划</a></li><li><a href="/info/cat/design.html" target="_self">设计</a></li><li><a href="/info/cat/service.html" target="_self">运营</a></li><li><a href="/info/cat/seo.html" target="_self">SEO</a></li><li><a href="/info/cat/application.html" target="_self">应用</a></li><li><a href="/info/cat/server.html" target="_self">服务器</a></li><li><a href="/info/cat/program.html" target="_self">编程</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate9 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/info/">网站运营优化</a> &raquo; <a href="/info/cat/program.html" title="查看 编程 中的全部文章">编程</a> &raquo; <span>Java Spring框架研究</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/info/archives/386.html" rel="bookmark">Java Spring框架研究</a></h1>
+	<div class="post-meta">
+		2010年3月18日 | 
+		分类: <a href="/info/cat/program.html" title="编程" rel="category tag">编程</a> | 
+		评论: 1</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="Java Spring框架研究" /></p>
+		<p>Spring是一个WEB Framework，和其他框架不同的是它更像一个组合其他框架的框架。</p><p>即他可以很快的将其他Open source组件快速集成到框架中，很快的构建应用系统，如，ORM、事物、对象连接池等。</p><p>他的理念就是避免重复开发。</p><p>之所以有这么多的framework出现，是因为寻求一种轻量级的解决方案，否则EJB即可以解决收有得问题。</p><p>Spring 非常容易上手，而且Spring 可以使你的构架更加得清晰和易于维护和测试。</p><p>简单的配置和易于集成的开发思想，可以使你不必像struts一样遵守那么多的规则和条条框框，而且，完全不会限制你的发挥。</p><p>还有，另一点需要说明的是，易于测试是软件开发中很重要的一环，在真正的软件项目开发中，可以具有良好的体现。</p><p>Spring是一个J2EE框架，管理整个J2EE Achitecture，从持久层直到展示层。</p><p>用TAPESTRY+SPRING+HIBERNATE这种组合应该是比较&ldquo;超前&rdquo;的组合，其中Spring+Hibernate已经有可参考的实现，不过用于项目可能还有点单薄。</p><p>这三者入门似乎都容易，可要真正用得好也真不容易，且Spring是1.0 M3，Tapestry是3.0 Beta3，如果真在实际项目中应用，可能要冒一定的风险。</p><p>Spring 可以给你带来良好的bean管理模式，你不需要去建立自己的factory等bean管理工具，只要通过xml配置文件来声明bean，以及beans之间的关系，这样你就可以简单的使用对象的实例了。</p><p>一个良好的J2EE application通常会需要一个&ldquo;软总线&rdquo;（soft bus）的architecture，软总线负责组件的生死、寻找、装配，应用开发者只需要在组件里实现业务逻辑就可以了。Spring就是这样的一个&ldquo;软总线&rdquo;&mdash;&mdash;在这个意义上，EJB是和Spring类似的，不过EJB的这条总线加入了更多的功能和限制。最典型的一个限制就是：如果使用EJB体系结构，所有组件必须是EJB.在我看来这就是一个巨大的缺陷，它迫使你的application绑定在EJB上面。而Spring对组件几乎是一无所求，只要是Java Bean就可以了，于是你的application将具有更大的灵活性和可移植性。</p><p>Spring的学习和使用可以说是简单到家了。和XP一样，Spring也不要求你全盘依赖它：你可以只使用它的一些utils；如果觉得合适，可以用bean factory作为你的配置管理和组件装配车间；如果再深入一点，可以用它的持久层框架；如果web层有需要，也可以用它的web框架。不像EJB，Spring并不是一个&ldquo;全有或全无&rdquo;的一揽子买卖，你可以选择最适合你的东西。</p><p>Spring Framework 是由《Expert One-on-One J2EE Design and Development》一书的作者Rod Johnson编写的一个J2EE应用框架。</p><p>Spring对View称的选择</p><p>Spring自己有一个MVC框架，另外现在已经可以把Spring与Tapestry和Tiles结合使用。我觉得Spring对MVC是没什么挑剔的。</p><p>对其中的IoC、AOP等概念很感兴趣。</p><p>IoC&mdash;&mdash;invsersion of control</p><p>通常的方式，组件必须自己管理自己与其他组件之间的关联。按照IoC的方式，组件之间互不依赖，只依赖于容器。这就是控制的反转。</p><p>IoC容器与一般框架的不同之处，是调用关系的倒置，从而也导致了依赖关系的倒置。</p><p>传统框架的做法是程序调用框架的服务接口来完成某些任务，但是程序组件的生死存灭是程序自己（或者透过垃圾回收）控制的。而IoC容器则反其道而行之，全盘控制组件的生命周期，根据组件的配置信息和依赖关系在不同的时间点调用组件的不同方法。容器成为主动方，而组件是被动方，胶合层则是配置信息。</p><p>这样，IoC让程序员专注于实际需要做的事情，而不是纠缠在依赖关系和生命周期的管理上；另一方面，则需要有专人来进行配置，细化了分工。</p><p>组件类之间的依赖关系是实际存在着的，IoC容器解放的是组件对象的依赖关系。此时，程序员不必因为组件之间的依赖关系硬编码初始化和调用的顺序，这些都通过配置信息来解决，从而极大的增大了灵活性（这一点给我非常棒的感觉）。</p><p>关于IoC的使用，我能想到的是在表现层和持久层中间加入服务层，这个服务层全部被封装成为组件，使用container注册、管理、调用，在表现层决不有一行调用持久层的代码，全部放在服务层中，这样表现层可以选择各种不同的框架，我们有很多对Struts很熟悉的人，当时我也是设计了这样的架构，不过没有container的概念，要想实现诸如缓存、灵活控制事务、认证、支持多种表现层、支持多种持久层等就做不到。如果有了container，我想是不是可以把这些功能全部放在container中来进行，开发的服务组件只由商业逻辑，其它一概不管，全部由container完成。</p><p>至于使用那个container，我还在看，有几个选择：</p><p>PicoContainer 超轻量级，可以随便嵌入到哪里，不过需要自己完成很多代码，来实现我需要的功能，不知道时间是否允许。使用Tape 3 IoC，要用constructor注册，这个也遭到一些非议，这些没有真正使用过，只是感觉，觉得可以省去配置文件，省去设置context，自动找到dependency，不用实现和pico相关的任何接口，方便单元测试（直接new就行啦，不用烦人的mock，呵呵），更多的好处可能仍需观察中。简单是不是一定就是最好的呢？如果够用，我想应该是吧。</p><p>Spring Framework 次轻量级，这个框架就复杂些了，有从头到脚的DIY方案，提供了一个IoC的容器，有很好的和持久层继承的功能，特别对hibernate有参考实现了。他的文档也有比较详细地介绍，不过他采用的是Type 1 IOC，使用xml来注册管理组件，想一下tapestry就要那么多配置文件，就够烦了，还要再来，还没有工具，真是比较头大。</p><p>作者：杨舰</p>
+		</div>
+	<div class="post-bottom"><div class="post-tags-pig"><a href="/info/tag/Programming.html" rel="tag">教程</a></div></div><!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/info/archives/385.html" title="二三级城市中小企业的生存法则">二三级城市中小企业的生存法则</a></div><div class="next_content">下一篇 » <a href="/info/archives/387.html" title="Google Voice免费向公众开放">Google Voice免费向公众开放</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/info/archives/383.html">十四条实用的MySQL 查询语句</a></p><p class="mutualitylist"><a href="/info/archives/342.html">十个JavaScript页面布局技巧</a></p><p class="mutualitylist"><a href="/info/archives/321.html">十个最著名的JavaScript 库</a></p><p class="mutualitylist"><a href="/info/archives/306.html">常见的开源软件许可证协议介绍</a></p><p class="mutualitylist"><a href="/info/archives/305.html">开源软件许可证知识产权问题</a></p><p class="mutualitylist"><a href="/info/archives/292.html">应用最广的十大Javascript框架</a></p><p class="mutualitylist"><a href="/info/archives/289.html">Java程序的加密和反加密</a></p><p class="mutualitylist"><a href="/info/archives/288.html">在Java中编程实现数字签名系统</a></p><p class="mutualitylist"><a href="/info/archives/281.html">PHP开发框架的现状和展望</a></p><p class="mutualitylist"><a href="/info/archives/273.html">Java将成为甲骨文王牌产品</a></p><p class="mutualitylist"><a href="/info/archives/198.html">网站标准重构的基础知识</a></p><p class="mutualitylist"><a href="/info/archives/197.html">Linux扫盲篇：CentOS、Ubuntu、Gentoo</a></p><p class="mutualitylist"><a href="/info/archives/189.html">PHP发送UTF-8编码中文邮件标题乱码的解决</a></p><p class="mutualitylist"><a href="/info/archives/159.html">每个PHP开发者应该知道的五个开发要点</a></p><p class="mutualitylist"><a href="/info/archives/96.html">如何在您的网站中加入“搜索本站功能”</a></p><p class="mutualitylist"><a href="/info/archives/92.html">花十二个月建立一个成功的网站</a></p><p class="mutualitylist"><a href="/info/archives/91.html">经典正则表达式</a></p><p class="mutualitylist"><a href="/info/archives/85.html">正则表达式中的特殊字符</a></p><p class="mutualitylist"><a href="/info/archives/83.html">PHP字符串操作入门教程</a></p><p class="mutualitylist"><a href="/info/archives/58.html">EJB编程模型</a></p><p class="mutualitylist"><a href="/info/archives/57.html">Java JDBC概述</a></p><p class="mutualitylist"><a href="/info/archives/56.html">Java JSP白皮书</a></p><p class="mutualitylist"><a href="/info/archives/55.html">EJB体系结构的历史和目标</a></p><p class="mutualitylist"><a href="/info/archives/54.html">基于NT/2000建立安全WEB站点的解决方案</a></p><p class="mutualitylist"><a href="/info/archives/11.html">防止ASP Session丢失的方法</a></p><p class="mutualitylist"><a href="/info/archives/10.html">在ASP程序中调用Web Service</a></p><p class="mutualitylist"><a href="/info/archives/9.html">使用ASP重启服务器</a></p><p class="mutualitylist"><a href="/info/archives/8.html">在Linux上使用ASP</a></p><p class="mutualitylist"><a href="/info/archives/7.html">在Flash中使用ASP技术</a></p><p class="mutualitylist"><a href="/info/archives/5.html">如何限制同一表单被多次提交</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ol class="commentlist">
+	<li class="comment even thread-even depth-1 parent" id="comment-836">
+		<div id="div-comment-836" class="comment-body">
+		<div class="comment-author vcard">
+		<cite class="fn">1. <a name="cmt836">开源</a></cite> <span class="says">说道：</span>		<span class="comment-meta commentmetadata" style="float:right">2010/6/16 18:32:57</span></div>
+		<div class="comment-meta commentmetadata">		</div>
+		Spring框架核心的确轻量级的<!--rev836--><a style="display:none;" id="AjaxCommentEnd836"></a>
+		</div>
+	</li>
+</ol><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.baidu.com/baidu"><input type="text" name="word" size="12" id="edtSearch" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="ie" type="hidden" value="utf-8" /><input name="tn" type="hidden" value="bds" /><input name="cl" type="hidden" value="3" /><input name="ct" type="hidden" value="2097152" /><input name="si" type="hidden" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/info/cat/news.html">动态<span class="article-nums"> (91)</span></a></li><li class="li-cate cate-2"><a href="/info/cat/review.html">评论<span class="article-nums"> (230)</span></a></li><li class="li-cate cate-3"><a href="/info/cat/service.html">运营<span class="article-nums"> (73)</span></a></li><li class="li-cate cate-4"><a href="/info/cat/application.html">应用<span class="article-nums"> (63)</span></a></li><li class="li-cate cate-5"><a href="/info/cat/server.html">服务器<span class="article-nums"> (22)</span></a></li><li class="li-cate cate-6"><a href="/info/cat/seo.html">搜索优化<span class="article-nums"> (80)</span></a></li><li class="li-cate cate-7"><a href="/info/cat/plan.html">策划<span class="article-nums"> (84)</span></a></li><li class="li-cate cate-8"><a href="/info/cat/design.html">设计<span class="article-nums"> (30)</span></a></li><li class="li-cate cate-9"><a href="/info/cat/program.html">编程<span class="article-nums"> (68)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/info/archives/742.html" title="互联网行业常用黑话">互联网行业常用黑话(3081)</a></li>
+<li><a href="/info/archives/741.html" title="中国互联网“铁王座”争夺史">中国互联网“铁王座”争夺史(1589)</a></li>
+<li><a href="/info/archives/740.html" title="李兴平：中国站长第一人">李兴平：中国站长第一人(5289)</a></li>
+<li><a href="/info/archives/739.html" title="10款B2B营销人员必备的社会化媒体工具">10款B2B营销人员必备的社会化媒体工具(3664)</a></li>
+<li><a href="/info/archives/738.html" title="大型网站SEO策划方案">大型网站SEO策划方案(8531)</a></li>
+<li><a href="/info/archives/737.html" title="友情链接的交换技巧">友情链接的交换技巧(3063)</a></li>
+<li><a href="/info/archives/736.html" title="传统企业网站的SEO诊断和优化">传统企业网站的SEO诊断和优化(3595)</a></li>
+<li><a href="/info/archives/735.html" title="搜索引擎算法不断迭变，黑帽排名优化将在劫难逃">搜索引擎算法不断迭变，黑帽排名优化将在劫(1326)</a></li>
+<li><a href="/info/archives/734.html" title="网站内链优化建设具有何重要意义？">网站内链优化建设具有何重要意义？(1329)</a></li>
+<li><a href="/info/archives/733.html" title="运营干货：101个最吸引人的文章标题模板">运营干货：101个最吸引人的文章标题模板(5647)</a></li>
+<li><a href="/info/archives/732.html" title="SEO引流技巧：内容+渠道方是推广优化的主导">SEO引流技巧：内容+渠道方是推广优化的(4189)</a></li>
+<li><a href="/info/archives/731.html" title="SEO干货：什么样的页面才算是高质量的页面">SEO干货：什么样的页面才算是高质量的页(2037)</a></li>
+<li><a href="/info/archives/730.html" title="互联网自媒体撰稿人付费阅读的特殊价值分析">互联网自媒体撰稿人付费阅读的特殊价值分析(1741)</a></li>
+<li><a href="/info/archives/729.html" title="SEO拼的就是高质量的原创文章">SEO拼的就是高质量的原创文章(3351)</a></li>
+<li><a href="/info/archives/728.html" title="SEO企业文案思路：给的再多，不如懂我">SEO企业文案思路：给的再多，不如懂我(1862)</a></li>
+<li><a href="/info/archives/727.html" title="从SEO角度出发做网站策划">从SEO角度出发做网站策划(1146)</a></li>
+<li><a href="/info/archives/726.html" title="教你12招，彻底解决选择SEO服务公司的难题">教你12招，彻底解决选择SEO服务公司的(971)</a></li>
+<li><a href="/info/archives/725.html" title="如果你是百度，你会让什么排在前面？">如果你是百度，你会让什么排在前面？(3909)</a></li>
+<li><a href="/info/archives/724.html" title="站长须知的14个健康生活细节">站长须知的14个健康生活细节(3219)</a></li>
+<li><a href="/info/archives/723.html" title="你的SEO博客有存在的必要吗？">你的SEO博客有存在的必要吗？(3501)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>最新留言</h4>
+	<ul class="divComments">
+	   <ul><li style="text-overflow:ellipsis;"><a href="/info/archives/440.html#cmt2273" title="2023/7/16 22:15:15 post by 牛逼">牛逼的文章，2023年居然还能看到。。不</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/725.html#cmt2267" title="2021/8/16 9:26:20 post by 未来人">现在的百度，不是什么最吸引人，不是什么最</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2265" title="2021/7/11 16:49:01 post by 梦易寒">可惜hao123和4399的时代都快褪去</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/737.html#cmt2262" title="2021/5/25 15:52:25 post by 山普">网站相关性，友情链接存在时间越长，越稳定</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/395.html#cmt2259" title="2020/11/30 13:15:34 post by 蜗牛TV">动态产生XML文档的几种ASP方式？</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2230" title="2019/8/9 22:16:40 post by XiGuaMP4">确实很牛逼的站长 </a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2229" title="2019/7/18 11:48:13 post by 爱吃">李兴平从一个一无所知的初中生，到hao1</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/664.html#cmt2223" title="2019/5/5 11:35:13 post by 李耀耀">域名也被盗了  做了10年的网站，现在焦</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2222" title="2019/2/16 16:09:11 post by 香蕉皮">现在的好123已经不能要了</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/263.html#cmt2213" title="2018/7/30 11:29:49 post by 礼品">谢谢指导,希望我的网页会有更好的成绩.</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>标签列表</h4>
+	<ul class="divTags">
+	   <ul><li class="tag-name tag-name-size-2"><a href="/info/tag/IE.html">浏览器<span class="tag-count"> (12)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Script.html">源代码<span class="tag-count"> (36)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Programming.html">教程<span class="tag-count"> (41)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Internet.html">网络<span class="tag-count"> (47)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Windows.html">视窗<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/News.html">动态<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-5"><a href="/info/tag/Seo.html">搜索优化<span class="tag-count"> (71)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/WebDesign.html">网站设计<span class="tag-count"> (34)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Resource.html">资源<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/BlogTips.html">博客技巧<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Blog.html">博客<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Tech.html">业界<span class="tag-count"> (63)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Software.html">软件<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/Money.html">广告<span class="tag-count"> (4)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Website.html">网站<span class="tag-count"> (15)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/WordPress.html">网志<span class="tag-count"> (6)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GoogleMaps.html">谷歌地图<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/GoogleEarth.html">谷歌地球<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Sns.html">社交网络<span class="tag-count"> (8)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Google.html">谷歌<span class="tag-count"> (33)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Baidu.html">百度<span class="tag-count"> (31)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microsoft.html">微软<span class="tag-count"> (16)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Firefox.html">火狐<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Twitter.html">推特<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Webmaster.html">站长技巧<span class="tag-count"> (30)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Chrome.html">谷歌浏览器<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/WebPlan.html">网站策划<span class="tag-count"> (55)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/QQ.html">腾讯<span class="tag-count"> (24)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Mobile.html">手机<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Ecommerce.html">电子商务<span class="tag-count"> (17)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/AdSense.html">网赚<span class="tag-count"> (9)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microblog.html">微博<span class="tag-count"> (20)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GooglePlus.html">谷歌社交<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Facebook.html">脸书<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Apple.html">苹果<span class="tag-count"> (9)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:742</li><li>评论总数:1368</li><li>浏览总数:1990522</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/info/" target="_blank">月光微博客</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/anni/" target="_blank">安妮宝贝的文集</a></li><li><a href="/werther/" target="_blank">少年维特的烦恼</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><script type="text/javascript" src="/script/stat.js"></script></ul>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/info/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

@@ -23,15 +23,13 @@ gtag('config', 'UA-272027-5');
 
 
 // baidu tongji
-<script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?4c883bb3fd82099c8817b0063a78be5f";
+  hm.src = "//hm.baidu.com/hm.js?4c883bb3fd82099c8817b0063a78be5f";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
-</script>
 
 // cloudflare tongji
 (function() {

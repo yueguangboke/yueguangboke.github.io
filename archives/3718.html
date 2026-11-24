@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/3718.html"/>
@@ -45,12 +45,10 @@
 		2014-1-4 23:28:29 | 
 		作者: 月光 | 
 		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
-		评论: 9 | 
-		浏览: <span class="AddView" id="spn3718" data-id="3718"></span>
-	</div><!-- END post-meta -->
+		评论: 9</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Adsense.html" rel="tag"><img src="/logo/Adsense.gif" alt="Adsense" class="thumb" width="80" height="80" /></a><p>早先我们在《<a target="_blank" href="/archives/3686.html">自适应网页设计的方法</a>》一文中说明了网站自适应的修改方法，今天我们将着重讨论<a href="/tag/Adsense.html" title="Google Adsense"  Target="_blank" >Google Adsense</a>广告的自适应设计方法。</p><p>所谓自适应网页设计，就是让同一个网页代码，能够在不同设备上（从桌面电脑显示器到智能手机或其他移动产品设备）都能有更好的浏览体验，基本上对于双栏网站来说修改最简便，只要在HTML头部增加viewport标签，在CSS文件尾部增加针对不同屏幕分辨率的规则，布局宽度使用相对宽度，隐藏侧栏，半小时就能提升网站的手机移动浏览体验。</p><p>但是网站修改完成后，我们会发现原先的Google AdSense广告单元并没有实现自适应，浏览体验并不好，实际上，只要简单的几步操作，就能让Google AdSense广告实现自适应设计。</p><p>最简单的方法是新建一个广告单元，在&ldquo;广告尺寸&rdquo;里选择&ldquo;自适应广告单元&rdquo;即可，如下图所示，这个我们就不多讨论。</p><p style="text-align: center"><img alt="实现Google AdSense广告自适应设计" src="/upload/3718_1.jpg" /></p><p>现在主要讨论一下原有的旧广告单元如何实现自适应设计。</p><p>首先，如果原有的Google AdSense广告代码类型为&ldquo;同步&rdquo;，则必须先将代码修改为&ldquo;异步&rdquo;代码，登录Google AdSense后台，在相应的广告单元里，点击&ldquo;获取代码&rdquo;，目前默认的代码就是异步代码。</p><p>之后，我们需要对代码进行一些修改，修改的方法有两种：</p><p>原有的示例代码：</p><p>&lt;ins class=&quot;adsbygoogle&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; style=&quot;display:inline-block;width:300px;height:250px&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-client=&quot;ca-pub-00000&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-slot=&quot;00000&quot;&gt;&lt;/ins&gt;</p><p>方法1、智能调整尺寸</p><p>将中间一行ins代码里的style=&quot;display:inline-block;width:300px;height:250px&quot;替换为style=&quot;display:block&quot;，并在后面增加data-ad-format=&quot;auto&quot;这个属性。</p><p>修改后的代码变为：</p><p>&lt;ins class=&quot;adsbygoogle&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; style=&quot;display:block&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-client=&quot;ca-pub-00000&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-slot=&quot;00000&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-format=&quot;auto&quot;&gt;&lt;/ins&gt;</p><p>方法2、高级调整尺寸</p><p>在整段代码前增加&lt;style&gt;样式内容，针对不同分辨率的屏幕展示不同尺寸的广告。</p><p>修改后的代码变为：</p><p>&lt;style&gt;<br />.my_adslot { width: 320px; height: 50px; }<br />@media(min-width: 500px) { .my_adslot { width: 468px; height: 60px; } }<br />@media(min-width: 800px) { .my_adslot { width: 728px; height: 90px; } }<br />&lt;/style&gt;</p><p>&lt;ins class=&quot;adsbygoogle my_adslot&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; style=&quot;display:inline-block&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-client=&quot;ca-pub-00000&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-slot=&quot;00000&quot;&gt;&lt;/ins&gt;</p><p>上面两种方法都可以，建议用方法1，简单易用。</p><p>经过这样的修改，原有的Google AdSense广告单元即可实现自适应网页设计。</p><p>有些用户可能会疑虑，这种方法修改了<a href="/tag/Adsense.html" title="Google Adsense"  Target="_blank" >Google Adsense</a>的广告代码是否符合Google的政策，根据<a target="_blank" href="https://support.google.com/adsense/answer/1354736?hl=zh-Hans">Google AdSense的官方网页介绍</a>，如上的自适应设计的代码修改是可以接受的修改，因此与网站相适宜的广告修改并不违反<a href="/tag/Adsense.html" title="Google Adsense"  Target="_blank" >Google Adsense</a>的政策。</p><p>经过这样的修改，最终网站在手机上的展示形式如下图所示，AdSense广告内容也可以正常在手机上展示了。</p><p style="text-align: center"><img alt="月光博客" src="/upload/3686_1.jpg" /></p><p>最后，分享一下Google关于自适应网页设计的讲座的视频地址，在线观看<a target="_blank" href="http://v.youku.com/v_show/id_XNjQ5ODkwODI0.html">请点这里</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Adsense.html" rel="tag"><img src="/logo/Adsense.gif" alt="Adsense" class="thumb" width="80" height="80" /></a><p>早先我们在《<a target="_blank" href="/archives/3686.html">自适应网页设计的方法</a>》一文中说明了网站自适应的修改方法，今天我们将着重讨论<a href="/tag/Adsense.html" title="Google Adsense"  Target="_blank" >Google Adsense</a>广告的自适应设计方法。</p><p>所谓自适应网页设计，就是让同一个网页代码，能够在不同设备上（从桌面电脑显示器到智能手机或其他移动产品设备）都能有更好的浏览体验，基本上对于双栏网站来说修改最简便，只要在HTML头部增加viewport标签，在CSS文件尾部增加针对不同屏幕分辨率的规则，布局宽度使用相对宽度，隐藏侧栏，半小时就能提升网站的手机移动浏览体验。</p><p>但是网站修改完成后，我们会发现原先的Google AdSense广告单元并没有实现自适应，浏览体验并不好，实际上，只要简单的几步操作，就能让Google AdSense广告实现自适应设计。</p><p>最简单的方法是新建一个广告单元，在&ldquo;广告尺寸&rdquo;里选择&ldquo;自适应广告单元&rdquo;即可，如下图所示，这个我们就不多讨论。</p><p style="text-align: center"><img alt="实现Google AdSense广告自适应设计" src="https://static.williamlong.info/upload/3718_1.jpg" /></p><p>现在主要讨论一下原有的旧广告单元如何实现自适应设计。</p><p>首先，如果原有的Google AdSense广告代码类型为&ldquo;同步&rdquo;，则必须先将代码修改为&ldquo;异步&rdquo;代码，登录Google AdSense后台，在相应的广告单元里，点击&ldquo;获取代码&rdquo;，目前默认的代码就是异步代码。</p><p>之后，我们需要对代码进行一些修改，修改的方法有两种：</p><p>原有的示例代码：</p><p>&lt;ins class=&quot;adsbygoogle&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; style=&quot;display:inline-block;width:300px;height:250px&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-client=&quot;ca-pub-00000&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-slot=&quot;00000&quot;&gt;&lt;/ins&gt;</p><p>方法1、智能调整尺寸</p><p>将中间一行ins代码里的style=&quot;display:inline-block;width:300px;height:250px&quot;替换为style=&quot;display:block&quot;，并在后面增加data-ad-format=&quot;auto&quot;这个属性。</p><p>修改后的代码变为：</p><p>&lt;ins class=&quot;adsbygoogle&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; style=&quot;display:block&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-client=&quot;ca-pub-00000&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-slot=&quot;00000&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-format=&quot;auto&quot;&gt;&lt;/ins&gt;</p><p>方法2、高级调整尺寸</p><p>在整段代码前增加&lt;style&gt;样式内容，针对不同分辨率的屏幕展示不同尺寸的广告。</p><p>修改后的代码变为：</p><p>&lt;style&gt;<br />.my_adslot { width: 320px; height: 50px; }<br />@media(min-width: 500px) { .my_adslot { width: 468px; height: 60px; } }<br />@media(min-width: 800px) { .my_adslot { width: 728px; height: 90px; } }<br />&lt;/style&gt;</p><p>&lt;ins class=&quot;adsbygoogle my_adslot&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; style=&quot;display:inline-block&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-client=&quot;ca-pub-00000&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp; data-ad-slot=&quot;00000&quot;&gt;&lt;/ins&gt;</p><p>上面两种方法都可以，建议用方法1，简单易用。</p><p>经过这样的修改，原有的Google AdSense广告单元即可实现自适应网页设计。</p><p>有些用户可能会疑虑，这种方法修改了<a href="/tag/Adsense.html" title="Google Adsense"  Target="_blank" >Google Adsense</a>的广告代码是否符合Google的政策，根据<a target="_blank" href="https://support.google.com/adsense/answer/1354736?hl=zh-Hans">Google AdSense的官方网页介绍</a>，如上的自适应设计的代码修改是可以接受的修改，因此与网站相适宜的广告修改并不违反<a href="/tag/Adsense.html" title="Google Adsense"  Target="_blank" >Google Adsense</a>的政策。</p><p>经过这样的修改，最终网站在手机上的展示形式如下图所示，AdSense广告内容也可以正常在手机上展示了。</p><p style="text-align: center"><img alt="月光博客" src="https://static.williamlong.info/upload/3686_1.jpg" /></p><p>最后，分享一下Google关于自适应网页设计的讲座的视频地址，在线观看<a target="_blank" href="http://v.youku.com/v_show/id_XNjQ5ODkwODI0.html">请点这里</a>。</p>
 <p style="text-align:center"><img src="/logo/Adsense.jpg" alt="实现Google AdSense广告自适应设计" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note3718"></span><a href="javascript:commYea(3718);" id="dig3718">顶一下 ▲</a>(<span id="sdig3718"><Script language="javascript" type="text/javascript">showDig("3718");</script></span>) &nbsp; <a href="javascript:commNay(3718);" id="down3718">踩一下 ▼</a>(<span id="sdown3718"><Script language="javascript" type="text/javascript">showDown("3718");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

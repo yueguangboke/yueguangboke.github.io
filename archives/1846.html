@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/1846.html"/>
@@ -45,12 +45,10 @@
 		2009-6-29 22:55:43 | 
 		作者: 月光 | 
 		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
-		评论: 28 | 
-		浏览: <span class="AddView" id="spn1846" data-id="1846"></span>
-	</div><!-- END post-meta -->
+		评论: 28</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>在<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> IIS 6.0下配置PHP，通常有CGI、ISAPI和FastCGI三种配置方式，这三种模式都可以在IIS 6.0下成功运行，下面我就讲一下这三种方式配置的区别和性能上的差异。</p><p>1、CGI（通用网关接口/Common Gateway Interface）一般是可执行程序，例如EXE文件，和WEB服务器各自占据着不同的进程,而且一般一个CGI程序只能处理一个用户请求。这样，当用户请求数量非常多时，会大量占用系统的资源，如内存、CPU时间等，造成效能低下。</p><p>2、ISAPI（Internet Server Application Program Interface）是<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>提供的一套面向WEB服务的API接口，它能实现CGI提供的全部功能，并在此基础上进行了扩展，如提供了过滤器应用程序接口。ISAPI应用大多数以DLL动态库的形式使用，可以在被用户请求后执行，，在处理完一个用户请求后不会马上消失，而是继续驻留在内存中等待处理别的用户输入。此外,ISAPI的DLL应用程序和WEB服务器处于同一个进程中，效率要显著高于CGI。</p><p>在<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> Server 2003的IIS6下配置ISAPI方式的PHP，配置方法是，在IIS的&ldquo;WEB服务扩展&rdquo;中，添加一个新的WEB服务扩展，程序后缀为PHP，ISAPI程序为php5isapi.dll，然后再&ldquo;环境变量&rdquo;-&ldquo;系统变量&rdquo;中增加变量名PHPRC，数值为php.ini的路径，在Internet信息服务管理器中，选择网站或应用程序的根目录，打开目录属性页（右键选择&ldquo;属性&rdquo;），再选择&ldquo;主目录&rdquo;。点击&ldquo;配置&rdquo;按钮，选择&ldquo;映射&rdquo;Tab页。点击&ldquo;添加...&rdquo;，在&ldquo;可执行文件&rdquo;设为: c:\php\php5isapi.dll，扩展名设为.php，选择&ldquo;确认文件是否存在&rdquo;，然后&ldquo;确定&rdquo;保存设置。重启服务器即可完成PHP的配置。</p><p>3、FastCGI是可伸缩架构的CGI开放扩展，其主要行为是将CGI解释器进程保持在内存中并因此获得较高的性能。传统的CGI解释器的反复加载是CGI性能低下的主要原因，如果CGI解释器保持在内存中并接受FastCGI进程管理器调度，则可以提供良好的性能、伸缩性等。</p><p>FastCGI已经集成于IIS7，也支持IIS6，在IIS6中的安装方法可参见<a target="_blank" href="http://learn.iis.net/page.aspx/247/using-fastcgi-to-host-php-applications-on-iis-60/">微软的官方文档</a>，我这里简单翻译一下。</p><p>先<a target="_blank" href="http://www.iis.net/downloads/default.aspx?tabid=34&amp;g=6&amp;i=1521">点这里</a>下载一个32位的FastCGI extension for IIS，然后将其安装，安装后的文件应该放到system32\inetsrv目录下。</p><p>之后打开system32\inetsrv目录，执行下面的语句，其中c:\php为你的PHP目录，可以修改为其他数值。</p><p>cscript fcgiconfig.js -add -section:&quot;PHP&quot; -extension:php -path:&quot;c:\php\php-cgi.exe&quot;</p><p>在Internet信息服务管理器中，选择网站或应用程序的根目录，打开目录属性页（右键选择&ldquo;属性&rdquo;），再选择&ldquo;主目录&rdquo;。点击&ldquo;配置&rdquo;按钮，选择&ldquo;映射&rdquo;Tab页。点击&ldquo;添加...&rdquo;，在&ldquo;可执行文件&rdquo;设为: c:\<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>\system32\inetsrv\fcgiext.dll，扩展名设为.php，选择&ldquo;确认文件是否存在&rdquo;，然后&ldquo;确定&rdquo;保存设置。</p><p>修改php.ini文件，增加如下语句：</p><p>fastcgi.impersonate = 1<br />cgi.fix_pathinfo = 1<br />cgi.force_redirect = 0</p><p>之后打开system32\inetsrv目录，执行以下语句：</p><p>cscript fcgiconfig.js -set -section:&quot;PHP&quot; -InstanceMaxRequests:10000<br />cscript fcgiconfig.js -set -section:&quot;PHP&quot; -EnvironmentVars:PHP_FCGI_MAX_REQUESTS:10000</p><p>最后，配置c:\php目录的安全性，使得IIS_WPG组对于这个目录有读取和执行的权限。</p><p>这时候，基于FastCGI的PHP就成功配置到IIS6上了。</p><p>不过根据我自己的测试，FastCGI的性能比ISAPI的好像高不了多少，不知道Windows Server 2008下的IIS7是不是会好一些。<a target="_blank" href="http://learn.iis.net/page.aspx/375/setting-up-fastcgi-for-php/">这里</a>是微软提供的基于内置FastCGI的IIS7安装PHP的方法。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>在<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> IIS 6.0下配置PHP，通常有CGI、ISAPI和FastCGI三种配置方式，这三种模式都可以在IIS 6.0下成功运行，下面我就讲一下这三种方式配置的区别和性能上的差异。</p><p>1、CGI（通用网关接口/Common Gateway Interface）一般是可执行程序，例如EXE文件，和WEB服务器各自占据着不同的进程,而且一般一个CGI程序只能处理一个用户请求。这样，当用户请求数量非常多时，会大量占用系统的资源，如内存、CPU时间等，造成效能低下。</p><p>2、ISAPI（Internet Server Application Program Interface）是<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>提供的一套面向WEB服务的API接口，它能实现CGI提供的全部功能，并在此基础上进行了扩展，如提供了过滤器应用程序接口。ISAPI应用大多数以DLL动态库的形式使用，可以在被用户请求后执行，，在处理完一个用户请求后不会马上消失，而是继续驻留在内存中等待处理别的用户输入。此外,ISAPI的DLL应用程序和WEB服务器处于同一个进程中，效率要显著高于CGI。</p><p>在<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> Server 2003的IIS6下配置ISAPI方式的PHP，配置方法是，在IIS的&ldquo;WEB服务扩展&rdquo;中，添加一个新的WEB服务扩展，程序后缀为PHP，ISAPI程序为php5isapi.dll，然后再&ldquo;环境变量&rdquo;-&ldquo;系统变量&rdquo;中增加变量名PHPRC，数值为php.ini的路径，在Internet信息服务管理器中，选择网站或应用程序的根目录，打开目录属性页（右键选择&ldquo;属性&rdquo;），再选择&ldquo;主目录&rdquo;。点击&ldquo;配置&rdquo;按钮，选择&ldquo;映射&rdquo;Tab页。点击&ldquo;添加...&rdquo;，在&ldquo;可执行文件&rdquo;设为: c:\php\php5isapi.dll，扩展名设为.php，选择&ldquo;确认文件是否存在&rdquo;，然后&ldquo;确定&rdquo;保存设置。重启服务器即可完成PHP的配置。</p><p>3、FastCGI是可伸缩架构的CGI开放扩展，其主要行为是将CGI解释器进程保持在内存中并因此获得较高的性能。传统的CGI解释器的反复加载是CGI性能低下的主要原因，如果CGI解释器保持在内存中并接受FastCGI进程管理器调度，则可以提供良好的性能、伸缩性等。</p><p>FastCGI已经集成于IIS7，也支持IIS6，在IIS6中的安装方法可参见微软的官方文档，我这里简单翻译一下。</p><p>先点这里下载一个32位的FastCGI extension for IIS，然后将其安装，安装后的文件应该放到system32\inetsrv目录下。</p><p>之后打开system32\inetsrv目录，执行下面的语句，其中c:\php为你的PHP目录，可以修改为其他数值。</p><p>cscript fcgiconfig.js -add -section:&quot;PHP&quot; -extension:php -path:&quot;c:\php\php-cgi.exe&quot;</p><p>在Internet信息服务管理器中，选择网站或应用程序的根目录，打开目录属性页（右键选择&ldquo;属性&rdquo;），再选择&ldquo;主目录&rdquo;。点击&ldquo;配置&rdquo;按钮，选择&ldquo;映射&rdquo;Tab页。点击&ldquo;添加...&rdquo;，在&ldquo;可执行文件&rdquo;设为: c:\<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>\system32\inetsrv\fcgiext.dll，扩展名设为.php，选择&ldquo;确认文件是否存在&rdquo;，然后&ldquo;确定&rdquo;保存设置。</p><p>修改php.ini文件，增加如下语句：</p><p>fastcgi.impersonate = 1<br />cgi.fix_pathinfo = 1<br />cgi.force_redirect = 0</p><p>之后打开system32\inetsrv目录，执行以下语句：</p><p>cscript fcgiconfig.js -set -section:&quot;PHP&quot; -InstanceMaxRequests:10000<br />cscript fcgiconfig.js -set -section:&quot;PHP&quot; -EnvironmentVars:PHP_FCGI_MAX_REQUESTS:10000</p><p>最后，配置c:\php目录的安全性，使得IIS_WPG组对于这个目录有读取和执行的权限。</p><p>这时候，基于FastCGI的PHP就成功配置到IIS6上了。</p><p>不过根据我自己的测试，FastCGI的性能比ISAPI的好像高不了多少，不知道Windows Server 2008下的IIS7是不是会好一些。这里是微软提供的基于内置FastCGI的IIS7安装PHP的方法。</p>
 <p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="IIS下PHP的ISAPI和FastCGI比较" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note1846"></span><a href="javascript:commYea(1846);" id="dig1846">顶一下 ▲</a>(<span id="sdig1846"><Script language="javascript" type="text/javascript">showDig("1846");</script></span>) &nbsp; <a href="javascript:commNay(1846);" id="down1846">踩一下 ▼</a>(<span id="sdown1846"><Script language="javascript" type="text/javascript">showDown("1846");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

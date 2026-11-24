@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="stylesheet" type="text/css" media="all" href="/info/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/info/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/info/archives/55.html"/>
+	<title>EJB体系结构的历史和目标-网站运营优化</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/info/" title="网站运营优化" rel="home bookmark">网站运营优化</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/info/" target="_self">首页</a></li><li><a href="/info/cat/news.html" target="_self">动态</a></li><li><a href="/info/cat/review.html" target="_self">评论</a></li><li><a href="/info/cat/plan.html" target="_self">策划</a></li><li><a href="/info/cat/design.html" target="_self">设计</a></li><li><a href="/info/cat/service.html" target="_self">运营</a></li><li><a href="/info/cat/seo.html" target="_self">SEO</a></li><li><a href="/info/cat/application.html" target="_self">应用</a></li><li><a href="/info/cat/server.html" target="_self">服务器</a></li><li><a href="/info/cat/program.html" target="_self">编程</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate9 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/info/">网站运营优化</a> &raquo; <a href="/info/cat/program.html" title="查看 编程 中的全部文章">编程</a> &raquo; <span>EJB体系结构的历史和目标</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/info/archives/55.html" rel="bookmark">EJB体系结构的历史和目标</a></h1>
+	<div class="post-meta">
+		2007年6月14日 | 
+		分类: <a href="/info/cat/program.html" title="编程" rel="category tag">编程</a> | 
+		评论: 0</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="EJB体系结构的历史和目标" /></p>
+		<p>本文概述 Enterprise JavaBeans （EJB） 技术，旨在让读者快速理解基本概念。第 1 部分讲述 EJB 技术的历史和某些目标、优点和技术。为了简洁明了，有选择地讲述 EJB 技术的一些关键要素。请注意，虽然 EJB 组件依赖于一些基础的 Java 服务（如 Java Transaction Service），但使用 EJB 组件及认识这些组件的好处并不需要掌握这些相关技术的知识。</p>
+<p>Enterprise JavaBeans 技术自 1998 年 3 月问世以来很受好评。下面这段话就是一个例子：</p>
+<p>&ldquo;自从两年多以前问世以来，Enterprise JavaBeanstm 技术在平台供应商和企业的开发小组中，同样都保持着空前的发展势头。这是因为 EJBtm 的服务器端组件模型简化了中间件组件的开发，这些中间组件都是事务性的、可伸缩的和可移植的。Enterprise JavaBeans 服务器通过为中间件服务（如事务处理、安全性、数据库连接及其他）提供自动支持，降低了开发中间件的复杂程度。&rdquo;（Sun Microsystems 网站）</p>
+<p>Enterprise JavaBeans 这一名称利用了 Java bean &mdash; 这种可移植、可重用的 Java 软件组件的声望。Enterprise JavaBeans 技术把 Java 组件的概念从客户机域扩展到了服务器域：这是 Java 技术成长过程中有重大意义的一步，它使 Java 技术发展成为一种强健的、可伸缩的环境，能够支持以任务为关键的企业信息系统。</p>
+<p>服务器上的 Java 应用程序</p>
+<p>Java 编程语言最初在 Web 开发人员中获得好评的一个原因是，它支持称为 applet 的可下载 Java 程序。对 Applet 的支持以 Applet 类的形式内置到了 1.0 版的 Java Development Kit （JDK） 中。按照 1.0 版的时间框架，Java 开发是以 applet 和应用程序作为中心的。基于 JDK 1.0 版的 Java 读物都是从 applet 和应用程序的角度来描述 Java 编程的：</p>
+<p>&ldquo;Java 程序由更多的类定义中的某一个组成，每个类定义均已编译成它自已的 Java 虚拟机对象代码的 .class 文件。这些类之一必须定义一个叫做 main（） 的方法，程序就是从这个方法开始运行的。想调用一个 Java 程序，需要运行 Java 解释器 java，并指定包含 main（） 方法的类的名称。请注意 Java applet 并不是一个应用程序 &mdash; 它是一个由已在运行的 Java 应用程序（如 Web 浏览器或 applet 查看器）装入并运行的 Java 类。&rdquo;（见 Flanagan 所著的 Java in a Nutshell）</p>
+<p>Java 应用程序可以在服务器上运行，但是不管是在客户机-服务器环境下，还是在基于 Web 的环境下，JDK 中都没有提供让 Java 应用程序专用于服务器机器的接口或包。认识到 Java 在 Web 环境下作为一种服务器语言的潜力，Sun Microsystems 编写了 Java Servlet 规范。servlet 在许多方面与 applet 相似，它是专门为在 Web 服务器机器上运行而设计的 Java 程序：</p>
+<p>&ldquo;servlet 是由容器管理的 Web 组件，可产生动态内容。servlet 是一种小型的、与平台无关的 Java 类，被编译成体系结构中立的字节代码，这种代码可以动态地加载到一个 web 服务器上，并由此 web 服务器运行。servlet 通过一种由 servlet 容器实现的请求-响应模型与 Web 客户机进行交互。这种请求-响应模型建立在超文本传输协议 （HTTP） 行为的基础之上。&rdquo;（见 JavaSoft 的&ldquo;Java Servlet API Specification&rdquo;）</p>
+<p>在一台 Web 服务器控制下，在多台服务器上运行若干小型用户程序，这种想法并不新鲜 &mdash; 一段时间以来，公共网关接口 （CGI） 程序（常被称为 CGI 脚本）一直起着这种作用，并推动了 Web 的普及。但 Java servlet 可以以更高的效率和可移植性来实现这一目的，因而可望最终会取代 CGI 程序。为 servlet 提供运行时环境的软件（通常被称为 servlet 引擎）可以添加到现有的、本身并不支持 Java 可执行程序的 Web 服务器上。</p>
+<p>Java servlet 的出现，为应用程序员使用 Java 来创建 Web 应用程序开辟了新的途径。但是，仅有 servlet 还不能为真正的企业计算提供完整的模型。CGI 应用程序本身往往不是完整的应用程序，在处理接收自 Web 浏览器上用户的信息请求时，CGI 只是整个处理过程中的一个中间步骤。例如，CGI 应用程序的一种常见用途是访问数据库。将它用于这种任务时，CGI 程序提供一种方法，将用户的数据请求连接到能满足这种请求的企业数据库。CGI 程序常常充当一种中间软件，从 Web 浏览器接收请求，决定必须调用哪些计算资源来满足这些请求，并向浏览器发回响应。Java servlet 与 CGI 程序一样，最适合充当连接前端 Web 请求与后端数据资源的中间层组件。</p>
+<p>三层体系结构</p>
+<p>Web 编程向服务器端 Java 应用程序的演化，也带来了体系结构的演化，使它脱离了常规的客户机-服务器两层模型，而向一种三层方法发展。两层模型当时曾经具有创新意义，因为它将一些计算任务从主处理器上卸载到灵巧的客户机。常规的基于 LAN 的数据库应用程序就是一个例子，其中数据库管理器服务器软件驻留在一个专用的服务器机器上，而用户则通过他们的工作站上的客户机代码来访问数据库。随着客户机-服务器模型成长到能付诸使用，就出现了对服务器可伸缩性和对客户机代码大小和复杂性的关注。于是提出了一种三层的体系结构，以避免在两层模型中已察觉到的弱点，使 Web 能成为一个计算平台：</p>
+<p>&ldquo;许多人。。。断言，传统的客户机/服务器两层体系结构不会有好的可伸缩性，因为用户连接和数据访问的数量无法预测，而且在一些系统管理上也存在问题。为处理两层体系结构的限制，许多开发集体都在转向三层体系结构。这种体系结构大致可以定义为：客户机层上的表示层、中间的服务器和后端的某种数据库。这种设想的目的就是缓和客户机或数据库服务器上的代码膨胀，集中管理业务逻辑，更灵活地使用数据库，而不仅是使用所存储的过程和触发器。&rdquo;（见 Kim 的&ldquo;Looking for a 3-Tier App Builder？&rdquo;）</p>
+<p>一个三层结构模型通常被想像成有一个 Web 浏览器作为客户层。Web 浏览器由于有可能成为一种真正的通用客户机，使它从观念上取代了两层结构的&ldquo;胖客户机&rdquo;。如果浏览器作为 Web 应用程序体系结构的标准瘦客户机获得认可，那么以前驻留在两层模型的胖客户机中的功能会怎么样呢？现在，应用程序专用的功能并不移植回服务器（例如数据库管理器），而是有意将它驻留在一个新的中间层上。中间层支持应用程序服务器软件，这种软件是中间件的一种形式，它处于第一层上瘦客户机的最小功能和第三层上服务器端业务系统的丰富功能之间。由于三层体系结构与 Web 处理模型有密切关系，所以中间层应用程序服务器常被视为 Web 服务器的一种功能扩展。现有的 Web 应用程序利用 CGI 程序，将来自 Web 浏览器的用户请求传送到不基于 Web 的业务系统，并向浏览器返回响应，就是三层模型的一种实现。这些应用程序逐渐向 servlet 技术的转移说明三层模型正在增强。</p>
+<p>JavaBeans 组件</p>
+<p>JavaBeans 规范将&ldquo;组件软件&rdquo;的概念引入到 Java 编程的领域。组件是自含的、可重用的软件单元；而 JavaBeans 组件，则可以使用可视的应用程序开发工具，可视地将它们编写到 Java 程序中。JavaBeans 规范为 Java 开发人员提供了一种&ldquo;组件化&rdquo;其 Java 类的方法：</p>
+<p>Bean 是一些 Java 类，可在一个可视的构建器工具中操作它们，并且可以将它们一起编写到应用程序中。任何具有某种特性和事件接口约定的 Java 类都可以是一个 Bean.（见 JavaSoft，&ldquo;Using the Beans Development Kit 1.0&rdquo;）</p>
+<p>如果软件重用是一个好主意，那么是否应该让每一个 Java 类都成为 Java bean 呢？如果 Java 类满足某些准则，它们就适于充当 bean 的角色：</p>
+<p>在开发任何新软件之前，都值得考虑是否用 JavaBean 的形式来开发它。如果软件模块要既能够可视地操作，又能够定制以达到某些效果，则这种软件模块就可能适于做成一个 JavaBean.为帮助您确定要开发的软件是否应该是一个 JavaBean，假定它应该是用 Java 编写的，请向您自已提出以下问题，并相应地作出决定：</p>
+<p>是否打算让它可重用？或者，它会是可重用的吗？</p>
+<p>是否希望将它与其他可重用的 Java 组件一起使用？</p>
+<p>是否预计会在 IDE 工具中使用它？</p>
+<p>如果上述问题的答案都是肯定的，则它应该作为 JavaBean 来开发。（见 developerWorks 的&ldquo;JavaBeans Guidelines&rdquo;）</p>
+<p>JavaBean 概念是为了在 Java 编程环境中支持可重用的组件，它是一种一般性的设计方法，适用于客户机或服务器机器上运行的 Java 程序。由于对可视的构建器工具的强调，也由于许多 Java bean 都是图形用户界面 （GUI） 组件，所以 JavaBean 组件可能被视为一种客户端技术。但是，并不要求 Java bean 都是可视的，并且它们也可以用于服务器环境中。</p>
+<p>编码为 Java bean 的 Java 类通常具有以下特征：</p>
+<p>使用设计模式。这些模式就是方法和接口的编码约定。</p>
+<p>支持可视的软件开发工具。类必须将变量（称为属性）、方法和事件展示出来。</p>
+<p>可以定制。定制包括能支持缺省的属性编辑器，或者提供单一的定制规则。定制使开发人员得以在不更改源代码的情况下更改 bean 的行为。</p>
+<p>支持自省 （introspection）。这指的是将属性、方法和事件公开给其他类，可以通过设计模式或通过创建 BeanInfo 类来完成这种自省。</p>
+<p>是持久的。这就允许在一个可视构建器中定制一个 bean，然后以其定制后的状态加以保存。</p>
+<p>Java 2 Platform， Enterprise Edition</p>
+<p>Sun Microsystems 发起了一项称为 Java 2 Platform， Enterprise Edition （J2EE） 的技术创新，旨在将 Java 平台的范围扩展到大规模服务器环境：</p>
+<p>&ldquo;1997 年 4 月 12 日，Sun 宣布了一项为企业环境开发 Java 平台的创新成果。使用开放式的 Java Community Process，Sun 促进了一组标准的 Java 扩展的开发，称为 Enterprise Java API.这些应用程序编程接口 （API） 为各种各样的中间件的实现提供了不依赖供应商的编程接口。Enterprise Java API 的要点是 Enterprise JavaBeans API，后者为 Java 应用程序服务器定义了一个服务器端组件模型，以及一个不依赖供应商的编程接口。&rdquo;（见 Thomas 的&ldquo;Java 2 Platform， Enterprise Edition： Ensuring Consistency， Portability， and Interoperability&rdquo;）</p>
+<p>J2EE 为 Enterprise JavaBeans 技术提供了工作环境。事实上，Sun 把若干项软件技术都设想为这样的构件块，它们将使大型企业能够把以任务为关键的业务系统移植到 Java 环境中，而 Enterprise JavaBeans 技术不过是这些技术之一。EJB 组件是按它们自己的规范定义的，但 EJB 技术并不是一项独立的技术。它建立在其他 Java 技术之上，这些技术由 Sun 和其他 IT 公司联合规定，它们一起提供了这个框架的内容，该框架就称为 Java 2 Platform， Enterprise Edition.</p>
+<p>J2EE 中包括以下技术：</p>
+<p>Enterprise JavaBeans （EJB） 技术</p>
+<p>Java Interface Definition Language （IDL）</p>
+<p>Java Message Service （JMS） API</p>
+<p>Java Naming and Directory Interface （JNDI）</p>
+<p>Java Remote Method Invocation （RMI） 和 Object Serialization</p>
+<p>Java Servlet API</p>
+<p>Java Transaction API （JTA）</p>
+<p>Java Transaction Service （JTS）</p>
+<p>JavaServer Pages （JSP） 技术</p>
+<p>JDBC 数据库访问 API</p>
+<p>参与到这个企业 Java 框架中，并不意味着每项技术都依赖于所有其他技术。单独的规范文档指出每项技术的相关性。例如，Enterprise JavaBeans 规范 1.0 发行版就指明了在定位各个组件时与 JNDI 的相关性，以及在编程中启动和停止事务处理时与 JTA 的相关性。</p>
+<p>EJB 技术的设计目标</p>
+<p>EJB 规范的第一版以初稿形式于 1997 年 12 月公布，并于 1998 年 3 月作为 1.0 版发行。规范作者为 EJB 体系结构制定了以下目标：</p>
+<p>Enterprise JavaBeans 体系结构将是标准的组件体系结构，用于以 Java 编程语言构建分布式的面向对象的商务应用程序。通过把使用不同供应商提供的工具开发出来的组件组合在一起，Enterprise JavaBeans 体系结构将有可能构建分布式的应用程序。</p>
+<p>Enterprise JavaBeans 体系结构将使编写应用程序变得容易：应用程序开发人员将不必了解低层次的事务和状态管理的细节、多线程、资源共享和其他复杂的低级 API.但是，将允许专家级的程序员直接访问低级 API.</p>
+<p>Enterprise JavaBeans 应用程序将遵循 Java 编程语言的&ldquo;一次编写，随处运行&rdquo;的原则。EJB 组件可以只开发一次，然后在多个平台上部署，而不需要重新编译或修改源代码。</p>
+<p>Enterprise JavaBeans 体系结构将处理企业应用程序生命周期中的开发、部署和运行等方面。</p>
+<p>Enterprise JavaBeans 体系结构将定义一些约定，这些约定使多个供应商提供的工具能够开发并部署可在运行时互操作的组件。</p>
+<p>Enterprise JavaBeans 体系结构将与现有的服务器平台兼容。供应商将能够扩展它们的现有产品，以支持 Enterprise JavaBeans 组件。</p>
+<p>Enterprise JavaBeans 体系结构将与 Java 编程语言编写的其他 API 兼容。</p>
+<p>Enterprise JavaBeans 体系结构将提供 EJB 组件和非 Java 编程语言应用程序之间的互操作性。</p>
+<p>Enterprise JavaBeans 体系结构将与 CORBA 兼容。</p>
+<p>使用 EJB 技术的好处</p>
+<p>这些设计目标会使企业和开发人员得到什么好处呢？下面列出了可望从采用 Enterprise JavaBeans 环境获得的好处：</p>
+<p>EJB 组件使编写应用程序更为简单。尽管 EJB 体系结构复杂，但应用程序开发人员一般都不必再编写用于访问系统服务的代码。一种称为 EJB 容器的系统组件使系统服务可用于 EJB 组件的任务。</p>
+<p>服务器端商务逻辑可以移植。除了 Java 语言固有的可移植性外，EJB 体系结构还在 bean 和支持该 bean 的容器之间提供了一套标准化的应用程序编程接口。这使开发人员能够将 bean 从一种操作环境移植到另一种操作环境，而无须重新编写其源代码。</p>
+<p>可以从现有的软件组件装配出服务器端应用程序，这与从现有的 Java bean 可以装配出客户端应用程序一样，从而使软件能够重用。</p>
+<p>EJB 体系结构内置了对典型企业级系统服务的支持，包括分布式对象、事务处理、数据库、安全和全局命名。</p>
+<p>多家 IT 供应商都采纳 EJB 体系结构，这是由于有这样的承诺：客户将能够从选定的供应商那里选购软件组件，如 EJB 组件、容器及 EJB 服务器；也由于承诺了不同供应商的产品，只要符合 EJB 体系结构，就都是可互操作的。</p>
+<p>用 EJB 组件构建的应用程序可以从一个服务器移植到另一个服务器，从而支持可伸缩性，这是因为在 EJB 模型中，各个软件组件都是严格分离的。</p>
+<p>EJB 体系结构能保障原有的 IT 投资，这是通过允许将现有的信息系统和资产&ldquo;包裹&rdquo;在这些应用程序中，而不要求客户更换现有技术。事实上，在关系数据库中存储数据的企业已经有了一套已有雏形的实体 bean，正等着通过 EJB 外壳去访问。</p>
+<p>进一步考察 JNDI</p>
+<p>Enterprise JavaBeans 组件使用 Java Naming and Directory Interface （JNDI） 来访问各种目录服务。JNDI 分两部分：应用程序编程接口 （API） 和服务供应商接口 （SPI）：</p>
+<p>&ldquo;JNDI 体系结构由 JNDI API 和 JNDI SPI 组成。JNDI API 允许 Java 应用程序访问各种命名和目录服务。JNDI SPI 则是设计来供任意一种服务的供应商（也包括目录服务供应商）使用。这使得各种各样的目录服务和命名服务能够透明地插入到使用 JNDI API 的 Java 应用程序中。（见 JavaSoft，&rdquo;JNDI： Java Naming and Directory Interface&ldquo;）</p>
+<p>JNDI API 并不同某种专用的命名技术或目录技术连在一起，也不同任何供应商的目录服务连在一起，因此它对 EJB 组件的可移植性有所贡献。例如，客户可以从多种不同的技术中选择，来为其 EJB 应用程序提供目录服务，这些技术包括：</p>
+<p>LDAP：Sun 的 LDAP 服务供应商支持 LDAP 协议的第 2 版和第 3 版。</p>
+<p>NIS：Sun 提供一个 NIS 服务供应商（NIS 即网络信息服务，以前称为黄页）。</p>
+<p>COS 命名：Sun 的 COS 命名服务供应商提供对 CORBA 命名服务的访问。</p>
+<p>文件系统：Sun 提供一个服务供应商来访问文件系统。</p>
+<p>RMI 注册：Sun 为 RMI 注册提供一个服务供应商。</p>
+<p>Novell：有几个服务供应商可提供对目录服务 NDS 的访问以及 NetWare 3X 连接库、Novell 文件系统和其他 Novell 服务（如扩展 NCP）的访问。</p>
+<p>虽然 JNDI 规范对供应商是中立的，但不应认为，实现 JNDI 接口的应用程序服务器一定要能访问来自多个供应商的服务供应商代码。</p>
+<p>JNDI 命名体系结构的关键概念包括：</p>
+<p>对象和名称之间的绑定。</p>
+<p>若干称为命名上下文的绑定集。</p>
+<p>命名系统，即若干组命名上下文。</p>
+<p>命名空间，指一个命名系统中的所有名称。</p>
+<p>名称分类为原子名称、复合名称和合成名称。原子名称是不可分割的，可以绑定到一个对象上。复合名称是原子名称的组合，而合成名称则跨越多个命名系统。</p>
+<p>命名上下文特别重要：所有的命名操作均是在上下文对象上进行的，并且名称解析过程总是从最初的命名上下文开始。</p>
+<p>EJB 应用程序是如何使用 JNDI 的呢？JNDI 的主要用途是检索对 EJB 组件的引用。因为 EJB 框架是一个分布式对象框架，所以 EJB 应用程序不应当假定 EJB 组件的位置。JNDI 就是获取对 bean 的起始引用的一种机制。当一个 bean 安装到一个 enterprise bean 服务器上时，一个被称为 EJB 容器的软件组件就负责创建各个名称-对象绑定，使所需的 Java 类文件能使用这个 bean.应用程序使用 JNDI 的查找方法来检索对象引用，如下例所示：</p>
+<p>Context initialContext = new InitialContext（ ）；</p>
+<p>CartHome cartHome = javax.rmi.PortableRemoteObject.narrow（initialContext.lookup（&quot;applications/shopping_cart&quot;）， CartHome.class）；</p>
+<p>应用程序有责任知道外部名称，应用程序就是通过这个名称才得以引用一个 enterprise bean，并通过 JNDI 来获取对该 bean 的引用的。</p>
+<p>进一步考察 JTA</p>
+<p>除 JNDI 以外，Enterprise JavaBeans 体系结构还使用 Java Transaction API （JTA）。因为事务对维护数据完整性和可靠性很重要，所以支持事务处理是 EJB 体系结构的一个基本部分。如果企业应用程序是分布式的，事务处理就会更加重要：</p>
+<p>&ldquo;事务的概念是一个重要的编程范例，其目的在于简化既要求可靠性又要求可用性的应用程序结构，特别是那些需要同时访问共享数据的应用程序。事务的概念最早是用在商务运作的应用程序中，其中它被用于保护集中式数据库中的数据。后来，事务的概念已扩展到分布式计算的更广泛的环境中。今天，事务是构建可靠的分布式应用程序的关键，这一点已得到广泛承认。&rdquo;（见对象管理组的&ldquo;Transaction Service Specification&rdquo;）</p>
+<p>有时将事务描述为具有下列特征的工作单元：</p>
+<p>原子性 &mdash; 如果因故障而中断，所有结果均撤销</p>
+<p>一致性 &mdash; 事务的结果保留不变的特性</p>
+<p>孤立性 &mdash; 中间状态对其他事务是不可见的</p>
+<p>持久性 &mdash; 已完成的事务的结果是持久的</p>
+<p>事务的终止有两种方式：提交一个事务会使其所有的更改永久不变，而回滚 （rolling back） 一个事务则撤销其所有的更改。</p>
+<p>对象管理组织 （OMG） 为一种面向对象的事务服务，即对象事务服务 （OTS），创建了一种规范。OTS 是 EJB 体系结构内的事务服务的基础。下列事务规范就是为 enterprise bean 所采用的事务模型而设：</p>
+<p>OMG 的对象事务服务 （OTS）</p>
+<p>Sun Microsystems 的 Transaction Service （JTS）</p>
+<p>Sun Microsystems 的 Java Transaction API （JTA）</p>
+<p>开放组 （X/Open） 的 XA 接口</p>
+<p>这种与语言无关的对象事务服务，为一个强健的分布式事务服务提供了基本概念、定义和功能。</p>
+<p>Java Transaction Service 是 OTS 的 Java 映射，在 org.omg.CosTransactions 和 org.omg.CosTSPortability 这两个包中定义。JTS 对事务分界和事务环境的传播之类的服务提供支持。JTS 功能由应用程序通过 Java Transaction API 访问。</p>
+<p>Java Transaction API 指定事务管理器与分布式事务中涉及的其他系统组件之间的各种高级接口，这些系统组件有应用程序、应用程序服务器和资源管理器等。JTA 功能允许事务由应用程序本身、由应用程序服务器或由一个外部事务管理器来管理。JTA 接口包含在 javax.transaction 和 javax.transaction.xa 这两个包中。</p>
+<p>XA 接口定义了资源管理器和分布式事务环境中外部事务管理器之间的约定。外部事务管理器可以跨多个资源协调事务。XA 的 Java 映射包含在 Java Transaction API 中。</p>
+<p>作者：Ken Nordby ，IBM 软件工程师</p>
+		</div>
+	<div class="post-bottom"><div class="post-tags-pig"><a href="/info/tag/Programming.html" rel="tag">教程</a></div></div><!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/info/archives/54.html" title="基于NT/2000建立安全WEB站点的解决方案">基于NT/2000建立安全WEB站点的解决方案</a></div><div class="next_content">下一篇 » <a href="/info/archives/56.html" title="Java JSP白皮书">Java JSP白皮书</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/info/archives/54.html">基于NT/2000建立安全WEB站点的解决方案</a></p><p class="mutualitylist"><a href="/info/archives/11.html">防止ASP Session丢失的方法</a></p><p class="mutualitylist"><a href="/info/archives/10.html">在ASP程序中调用Web Service</a></p><p class="mutualitylist"><a href="/info/archives/9.html">使用ASP重启服务器</a></p><p class="mutualitylist"><a href="/info/archives/8.html">在Linux上使用ASP</a></p><p class="mutualitylist"><a href="/info/archives/7.html">在Flash中使用ASP技术</a></p><p class="mutualitylist"><a href="/info/archives/5.html">如何限制同一表单被多次提交</a></p><p class="mutualitylist"><a href="/info/archives/4.html">几行代码防止表单重复提交</a></p><p class="mutualitylist"><a href="/info/archives/3.html">OLE DB的概念与编程</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.baidu.com/baidu"><input type="text" name="word" size="12" id="edtSearch" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="ie" type="hidden" value="utf-8" /><input name="tn" type="hidden" value="bds" /><input name="cl" type="hidden" value="3" /><input name="ct" type="hidden" value="2097152" /><input name="si" type="hidden" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/info/cat/news.html">动态<span class="article-nums"> (91)</span></a></li><li class="li-cate cate-2"><a href="/info/cat/review.html">评论<span class="article-nums"> (230)</span></a></li><li class="li-cate cate-3"><a href="/info/cat/service.html">运营<span class="article-nums"> (73)</span></a></li><li class="li-cate cate-4"><a href="/info/cat/application.html">应用<span class="article-nums"> (63)</span></a></li><li class="li-cate cate-5"><a href="/info/cat/server.html">服务器<span class="article-nums"> (22)</span></a></li><li class="li-cate cate-6"><a href="/info/cat/seo.html">搜索优化<span class="article-nums"> (80)</span></a></li><li class="li-cate cate-7"><a href="/info/cat/plan.html">策划<span class="article-nums"> (84)</span></a></li><li class="li-cate cate-8"><a href="/info/cat/design.html">设计<span class="article-nums"> (30)</span></a></li><li class="li-cate cate-9"><a href="/info/cat/program.html">编程<span class="article-nums"> (68)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/info/archives/742.html" title="互联网行业常用黑话">互联网行业常用黑话(3081)</a></li>
+<li><a href="/info/archives/741.html" title="中国互联网“铁王座”争夺史">中国互联网“铁王座”争夺史(1589)</a></li>
+<li><a href="/info/archives/740.html" title="李兴平：中国站长第一人">李兴平：中国站长第一人(5289)</a></li>
+<li><a href="/info/archives/739.html" title="10款B2B营销人员必备的社会化媒体工具">10款B2B营销人员必备的社会化媒体工具(3664)</a></li>
+<li><a href="/info/archives/738.html" title="大型网站SEO策划方案">大型网站SEO策划方案(8531)</a></li>
+<li><a href="/info/archives/737.html" title="友情链接的交换技巧">友情链接的交换技巧(3063)</a></li>
+<li><a href="/info/archives/736.html" title="传统企业网站的SEO诊断和优化">传统企业网站的SEO诊断和优化(3595)</a></li>
+<li><a href="/info/archives/735.html" title="搜索引擎算法不断迭变，黑帽排名优化将在劫难逃">搜索引擎算法不断迭变，黑帽排名优化将在劫(1326)</a></li>
+<li><a href="/info/archives/734.html" title="网站内链优化建设具有何重要意义？">网站内链优化建设具有何重要意义？(1329)</a></li>
+<li><a href="/info/archives/733.html" title="运营干货：101个最吸引人的文章标题模板">运营干货：101个最吸引人的文章标题模板(5647)</a></li>
+<li><a href="/info/archives/732.html" title="SEO引流技巧：内容+渠道方是推广优化的主导">SEO引流技巧：内容+渠道方是推广优化的(4189)</a></li>
+<li><a href="/info/archives/731.html" title="SEO干货：什么样的页面才算是高质量的页面">SEO干货：什么样的页面才算是高质量的页(2037)</a></li>
+<li><a href="/info/archives/730.html" title="互联网自媒体撰稿人付费阅读的特殊价值分析">互联网自媒体撰稿人付费阅读的特殊价值分析(1741)</a></li>
+<li><a href="/info/archives/729.html" title="SEO拼的就是高质量的原创文章">SEO拼的就是高质量的原创文章(3351)</a></li>
+<li><a href="/info/archives/728.html" title="SEO企业文案思路：给的再多，不如懂我">SEO企业文案思路：给的再多，不如懂我(1862)</a></li>
+<li><a href="/info/archives/727.html" title="从SEO角度出发做网站策划">从SEO角度出发做网站策划(1146)</a></li>
+<li><a href="/info/archives/726.html" title="教你12招，彻底解决选择SEO服务公司的难题">教你12招，彻底解决选择SEO服务公司的(971)</a></li>
+<li><a href="/info/archives/725.html" title="如果你是百度，你会让什么排在前面？">如果你是百度，你会让什么排在前面？(3909)</a></li>
+<li><a href="/info/archives/724.html" title="站长须知的14个健康生活细节">站长须知的14个健康生活细节(3219)</a></li>
+<li><a href="/info/archives/723.html" title="你的SEO博客有存在的必要吗？">你的SEO博客有存在的必要吗？(3501)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>最新留言</h4>
+	<ul class="divComments">
+	   <ul><li style="text-overflow:ellipsis;"><a href="/info/archives/440.html#cmt2273" title="2023/7/16 22:15:15 post by 牛逼">牛逼的文章，2023年居然还能看到。。不</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/725.html#cmt2267" title="2021/8/16 9:26:20 post by 未来人">现在的百度，不是什么最吸引人，不是什么最</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2265" title="2021/7/11 16:49:01 post by 梦易寒">可惜hao123和4399的时代都快褪去</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/737.html#cmt2262" title="2021/5/25 15:52:25 post by 山普">网站相关性，友情链接存在时间越长，越稳定</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/395.html#cmt2259" title="2020/11/30 13:15:34 post by 蜗牛TV">动态产生XML文档的几种ASP方式？</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2230" title="2019/8/9 22:16:40 post by XiGuaMP4">确实很牛逼的站长 </a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2229" title="2019/7/18 11:48:13 post by 爱吃">李兴平从一个一无所知的初中生，到hao1</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/664.html#cmt2223" title="2019/5/5 11:35:13 post by 李耀耀">域名也被盗了  做了10年的网站，现在焦</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2222" title="2019/2/16 16:09:11 post by 香蕉皮">现在的好123已经不能要了</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/263.html#cmt2213" title="2018/7/30 11:29:49 post by 礼品">谢谢指导,希望我的网页会有更好的成绩.</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>标签列表</h4>
+	<ul class="divTags">
+	   <ul><li class="tag-name tag-name-size-2"><a href="/info/tag/IE.html">浏览器<span class="tag-count"> (12)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Script.html">源代码<span class="tag-count"> (36)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Programming.html">教程<span class="tag-count"> (41)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Internet.html">网络<span class="tag-count"> (47)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Windows.html">视窗<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/News.html">动态<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-5"><a href="/info/tag/Seo.html">搜索优化<span class="tag-count"> (71)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/WebDesign.html">网站设计<span class="tag-count"> (34)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Resource.html">资源<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/BlogTips.html">博客技巧<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Blog.html">博客<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Tech.html">业界<span class="tag-count"> (63)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Software.html">软件<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/Money.html">广告<span class="tag-count"> (4)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Website.html">网站<span class="tag-count"> (15)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/WordPress.html">网志<span class="tag-count"> (6)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GoogleMaps.html">谷歌地图<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/GoogleEarth.html">谷歌地球<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Sns.html">社交网络<span class="tag-count"> (8)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Google.html">谷歌<span class="tag-count"> (33)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Baidu.html">百度<span class="tag-count"> (31)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microsoft.html">微软<span class="tag-count"> (16)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Firefox.html">火狐<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Twitter.html">推特<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Webmaster.html">站长技巧<span class="tag-count"> (30)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Chrome.html">谷歌浏览器<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/WebPlan.html">网站策划<span class="tag-count"> (55)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/QQ.html">腾讯<span class="tag-count"> (24)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Mobile.html">手机<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Ecommerce.html">电子商务<span class="tag-count"> (17)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/AdSense.html">网赚<span class="tag-count"> (9)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microblog.html">微博<span class="tag-count"> (20)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GooglePlus.html">谷歌社交<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Facebook.html">脸书<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Apple.html">苹果<span class="tag-count"> (9)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:742</li><li>评论总数:1368</li><li>浏览总数:1990522</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/info/" target="_blank">月光微博客</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/anni/" target="_blank">安妮宝贝的文集</a></li><li><a href="/werther/" target="_blank">少年维特的烦恼</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><script type="text/javascript" src="/script/stat.js"></script></ul>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/info/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/866.html"/>
@@ -45,15 +45,13 @@
 		2007-4-19 23:49:36 | 
 		作者: 月光 | 
 		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
-		评论: 23 | 
-		浏览: <span class="AddView" id="spn866" data-id="866"></span>
-	</div><!-- END post-meta -->
+		评论: 23</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
 		<a href="/tag/Gmail.html" rel="tag"><img src="/logo/Gmail.gif" alt="Gmail" class="thumb" width="80" height="80" /></a><p>上次我曾经介绍了<a target="_blank" href="/archives/860.html">Gmail接收Hotmail的方法</a>，经过验证该方法只能免费使用20天，很不爽。今天我就介绍一个免费将Hotmail和本地Outlook Express的邮件转换<a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a>的方法。将Hotmail的邮件导入到Gmail的原理是，利用Hotmail的HTTPMail先将Hotmail的邮件下载到Outlook Express中，然后在Outlook Express中建立一个IMAP邮箱，通过IMAP信箱将邮件上传到邮件服务器上，然后利用通过Gmail的&ldquo;从其他帐户获得邮件&rdquo;功能从IMAP信箱的POP3信箱下载邮件，就可以达到将本地Outlook Express内的邮件（包括Hotmail）上传到Gmail信箱，并且邮件的日期不会发生更改。</p>
 <p>这个方法的关键是IMAP邮箱，一般购买国外的虚拟主机都会免费赠送邮箱，有些就支持IMAP。如果邮件特别多，有数百兆，建议还是用国内的。如果有自己的服务器就简单多了，只要随便安装一个支持IMAP的邮件服务器软件即可，商业版的也可以，一般情况下商业版邮件服务器都支持试用的，比如我安装的<a target="_blank" href="http://www.magicwinmail.com/">Magic Winmail</a>，26M大小，可以自由使用30天，支持20个邮箱（实际我们使用一个信箱即可）。</p>
 <p>安装完成之后，还需要开放服务器的一些端口，SMTP 端口：25 POP3 端口：110 IMAP 端口：143. POP3-SSL 端口：995 IMAP-SSL 端口：993。ADSL用户也可以安装这个软件，只要保持ADSL不断线，通过Gmail设置连接本机的POP3即可下载邮件。这时我们就可以自己在服务器上建立一个IMAP信箱帐号，然后我们在本地的Outlook Express中配置这个信箱帐号，使用拖拽的方法将本地邮件上传到IMAP信箱中，具体界面如下图所示。</p>
-<p style="text-align:center"><img alt="将OutLook Express和Hotmail邮件上传到Gmail信箱" src="/upload/866_1.jpg" /></p>
+<p style="text-align:center"><img alt="将OutLook Express和Hotmail邮件上传到Gmail信箱" src="https://static.williamlong.info/upload/866_1.jpg" /></p>
 <p>接下来，我们就可以将本地邮件导入Gmail信箱了，目前的Gmail信箱已经有2.8G容量，Gmail信箱到底有没有这么大，通过备份本地邮件到Gmail信箱，我们就可以考验一下Gmail的真实空间，我本地2年时间的邮件就超过了2G，如果我将我所有邮件都上传上去，不知道会出现什么结果。</p>
 <p>当然，我们费力气将本地邮件导入Gmail，有不少好处。将邮件导入到Gmail的好处是：</p>
 <p>1、节省本地空间，安全备份。</p>
@@ -62,7 +60,7 @@
 <p>在任何地方，只要能上网，就可以查看以前所有的电子邮件。</p>
 <p>3、快速搜索</p>
 <p>Gmail的搜索速度非常快，瞬间就可以完成数G邮件的搜索。</p>
-<p>当然，这么导入邮件会花很多时间，需要选择较为稳定的服务器进行传输比较好，另外，传输过程中可能还会受到防火墙的影响，如果发现Gmail下载邮件出现错误，请使用支持SSL的POP3传输（995端口），这点大家要注意。如果中间传输出现错误，可以将出错的IMAP邮件删除，删除的方法是&ldquo;编辑&rdquo;里的&ldquo;清除已删除的邮件&rdquo;。 </p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+<p>当然，这么导入邮件会花很多时间，需要选择较为稳定的服务器进行传输比较好，另外，传输过程中可能还会受到防火墙的影响，如果发现Gmail下载邮件出现错误，请使用支持SSL的POP3传输（995端口），这点大家要注意。如果中间传输出现错误，可以将出错的IMAP邮件删除，删除的方法是&ldquo;编辑&rdquo;里的&ldquo;清除已删除的邮件&rdquo;。 </p>
 <p style="text-align:center"><img src="/logo/Gmail.jpg" alt="将OutLook Express和Hotmail邮件传到Gmail" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note866"></span><a href="javascript:commYea(866);" id="dig866">顶一下 ▲</a>(<span id="sdig866"><Script language="javascript" type="text/javascript">showDig("866");</script></span>) &nbsp; <a href="javascript:commNay(866);" id="down866">踩一下 ▼</a>(<span id="sdown866"><Script language="javascript" type="text/javascript">showDown("866");</script></span>)
@@ -101,12 +99,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -116,16 +114,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -135,24 +133,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

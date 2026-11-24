@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/3727.html"/>
@@ -45,12 +45,10 @@
 		2014-1-13 9:55:47 | 
 		作者: 月光 | 
 		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
-		评论: 4 | 
-		浏览: <span class="AddView" id="spn3727" data-id="3727"></span>
-	</div><!-- END post-meta -->
+		评论: 4</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/WebDesign.html" rel="tag"><img src="/logo/WebDesign.gif" alt="网站设计" class="thumb" width="80" height="80" /></a><p>智能手机和平板电脑的普及，产生了越来越多的移动端客户流量，尽管基于手机和平板电脑的网络浏览器种类繁多，功能也都越来越完善，但限于较小的终端屏幕以及网络流量的问题，移动设备并不适合直接浏览各种基于桌面电脑登陆的网站，因此，做为网站站长来说，有必要为自己的网站增加一个适合移动设备浏览的入口。</p><p>建立一个适合移动端浏览的网站有很多种方法，主流的方法有自适应网页设计、移动网站、移动app应用三类，通过这些方法，可以在短时间内将一个已有的桌面网站转换为适合移动设备访问的网站。</p><p><strong>一、自适应网页设计</strong></p><p>自适应网页设计，就是让同一个网页代码，能够在不同设备上（从桌面电脑显示器到智能手机或其他移动产品设备）都能有更好的浏览体验，因此，站长在建站前，就要考虑好页面布局如何能适应多屏幕浏览，这样移动设备可以通过原网址来浏览桌面站点，看到的是自动适应屏幕大小后的网站。尽管这种方式使得域名统一了，但如果对于结构复杂、页面反复的网站来说，代码设计具有相当高的难度。因此，通常自适应网页设计比较适合单栏或双栏等简单版面网站，对于复杂版面较难设计。</p><p>由于自适应设计的内容使用同一个网址，不会出现重定向，因此对于访问用户来说，不必花时间记忆另外网址，对于网站开发者来说，改造单栏或双栏网站为自适应网站的开发较为简单，只需对CSS进行不大的修改即可。</p><p>自适应网页需要手机浏览器支持css3，例如目前的iPhone和Android内置浏览器都支持css3，但诺基亚手机内置浏览器就不支持css3，考虑到老式的手机已经逐步淘汰，这部分用户也可以考虑忽略不计。同时，自适应网页需要展示更多的图片，较耗费流量，因此也不太适合2G网络用户访问。</p><p>对于网站的修改来说，只要在HTML头部增加viewport标签（控制显示尺寸、是否允许缩放、初始比例、上下限等）、MobileOptimized标签（<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>为IE Mobile版设置的定义宽度标记）和HandheldFriendly标签（是否对手持设备友好，只有true或者false），在CSS文件尾部增加针对不同屏幕分辨率的规则，布局宽度使用相对宽度，隐藏侧栏，半小时的开发量就可以提升网站的手机移动浏览体验。更为详细的网站修改方法请参见这篇文章《<a target="_blank" href="/archives/3686.html">自适应网页设计的方法</a>》，我这里就不再多说。下图是一个样例，利用自适应网页设计技术来建立的月光博客移动网站。</p><p style="text-align: center"><img alt="月光博客" src="/upload/3686_1.jpg" /></p><p style="text-align: center">自适应设计的月光博客移动网站</p><p><strong>二、移动网站</strong></p><p>移动网站是指对于现有的桌面网站，按照移动端的设计规则来重新建立一个移动网站，尽管内容和桌面网站一样，但却拥有两个不同网址。通常的移动网站使用子域名的方式实现，例如使用类似 wap.williamlong.info 或 m.williamlong.info 这样的地址，为移动用户专门定制，内容可以与桌面网站不同，桌面网站的网址检测到移动设备后自动重定向到移动网站页面。</p><p>移动网站可以支持非触屏智能手机和触屏智能手机，适合侧重移动设备或专门针对移动设备的网站，使用移动浏览器访问。</p><p>很多blog、cms建站程序都有桌面的移动页面入口，网站只需将移动设备用户引导到这个入口即可。通常有wap或HTML5等方式的建站方式。wap页面主要针对老式手机浏览器和2G用户，例如诺基亚手机用户，页面简洁，很省流量，但目前正处于淘汰过程中，下图是利用Z-blog自带的wap模块建造的月光博客移动网站。</p><p style="text-align: center"><img alt="月光博客" src="/upload/3727_3.jpg" /></p><p style="text-align: center">WAP建站的月光博客移动网站</p><p>HTML5的技术门槛较高，单独开发会有不少难度，很多站长采用移动建站工具来生成基于HTML5的移动网站。目前使用较多的移动建站工具是百度Site App，该工具使用地址<a target="_blank" href="http://zhanzhang.baidu.com/tools/siteapp">参见这里</a>，百度移动搜索会将大部分网站进行转码，转码后的内容比较适合手机移动等小屏幕设备访问，百度Site App这个工具可以支持站长将自己网站转码后的页面进行定制，并部署到自己独立子域名的网站，同时还支持通过百度联盟的方式在网页上加入针对移动设备的专用广告，以获得广告收益。下图是利用百度Site App来建立的月光博客移动网站。</p><p style="text-align: center"><img alt="月光博客" src="/upload/3727_4.jpg" /></p><p style="text-align: center">百度Site App建站的月光博客移动网站</p><p><strong>三、移动APP应用</strong></p><p>移动APP应用指的是专门在苹果和安卓应用商店里发布移动APP应用，安装后可以直接使用。移动APP应用的开发成本较高，针对苹果和安卓需要两套开发API，不过，移动APP可以允许用户离线使用，还可以访问移动设备的硬件信息，对于交互性强的应用来说较为适合。对于普通内容类网站来说，使用移动APP应用的好处并不明显。</p><p>由于移动APP应用开发门槛较高，因此站长可以使用相关工具来自动生成应用，百度Site App里也有这种功能，可以一键生成iOS和Android应用文件，但是需要网站站长自己去苹果和安卓应用商店提交应用。</p><p style="text-align: center"><a target="_blank" href="/upload/3727_2.jpg"><img border="0" alt="百度Site App网站" src="/upload/3727_1.jpg" /></a></p><p style="text-align: center">百度Site App网站</p><p>对于网站站长来说，通过这三种形式都可以打造适合移动设备访问的网站，自适应网页设计的开发难度小，手机浏览体验好，还支持<a target="_blank" href="/archives/3718.html">自适应AdSense广告</a>，但是目前百度搜索还不能很好地识别自适应网页，部分自适应页面会被百度移动搜索进行转码（主要是由于未携带移动网页特征），使得原有的页面设计和AdSense广告都无法显示。对于期待从百度移动搜索获取流量的网站，应该优先做单独的移动网站，百度对于移动网站的支持较好，在移动搜索结果中会优先显示移动网站，不过，随着智能手机的迅速普及，百度已经逐步开始支持自适应网页在移动搜索中的展现。对于Google来说，其没有对网页进行转码，因此对于自适应网站来说能够有较好的显示效果，但是对于未经改造的网页来说，会在移动设备展示桌面网站，可能会耗费更多的手机流量。</p><p>因此，对于网站站长来说，较为稳妥的移动化方案是，既能提供网站的自适应设计，同时又提供一个单独的移动网站，这样既能让用户得到良好的浏览体验，又能让搜索引擎较好收录。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/WebDesign.html" rel="tag"><img src="/logo/WebDesign.gif" alt="网站设计" class="thumb" width="80" height="80" /></a><p>智能手机和平板电脑的普及，产生了越来越多的移动端客户流量，尽管基于手机和平板电脑的网络浏览器种类繁多，功能也都越来越完善，但限于较小的终端屏幕以及网络流量的问题，移动设备并不适合直接浏览各种基于桌面电脑登陆的网站，因此，做为网站站长来说，有必要为自己的网站增加一个适合移动设备浏览的入口。</p><p>建立一个适合移动端浏览的网站有很多种方法，主流的方法有自适应网页设计、移动网站、移动app应用三类，通过这些方法，可以在短时间内将一个已有的桌面网站转换为适合移动设备访问的网站。</p><p><strong>一、自适应网页设计</strong></p><p>自适应网页设计，就是让同一个网页代码，能够在不同设备上（从桌面电脑显示器到智能手机或其他移动产品设备）都能有更好的浏览体验，因此，站长在建站前，就要考虑好页面布局如何能适应多屏幕浏览，这样移动设备可以通过原网址来浏览桌面站点，看到的是自动适应屏幕大小后的网站。尽管这种方式使得域名统一了，但如果对于结构复杂、页面反复的网站来说，代码设计具有相当高的难度。因此，通常自适应网页设计比较适合单栏或双栏等简单版面网站，对于复杂版面较难设计。</p><p>由于自适应设计的内容使用同一个网址，不会出现重定向，因此对于访问用户来说，不必花时间记忆另外网址，对于网站开发者来说，改造单栏或双栏网站为自适应网站的开发较为简单，只需对CSS进行不大的修改即可。</p><p>自适应网页需要手机浏览器支持css3，例如目前的iPhone和Android内置浏览器都支持css3，但诺基亚手机内置浏览器就不支持css3，考虑到老式的手机已经逐步淘汰，这部分用户也可以考虑忽略不计。同时，自适应网页需要展示更多的图片，较耗费流量，因此也不太适合2G网络用户访问。</p><p>对于网站的修改来说，只要在HTML头部增加viewport标签（控制显示尺寸、是否允许缩放、初始比例、上下限等）、MobileOptimized标签（<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>为IE Mobile版设置的定义宽度标记）和HandheldFriendly标签（是否对手持设备友好，只有true或者false），在CSS文件尾部增加针对不同屏幕分辨率的规则，布局宽度使用相对宽度，隐藏侧栏，半小时的开发量就可以提升网站的手机移动浏览体验。更为详细的网站修改方法请参见这篇文章《<a target="_blank" href="/archives/3686.html">自适应网页设计的方法</a>》，我这里就不再多说。下图是一个样例，利用自适应网页设计技术来建立的月光博客移动网站。</p><p style="text-align: center"><img alt="月光博客" src="https://static.williamlong.info/upload/3686_1.jpg" /></p><p style="text-align: center">自适应设计的月光博客移动网站</p><p><strong>二、移动网站</strong></p><p>移动网站是指对于现有的桌面网站，按照移动端的设计规则来重新建立一个移动网站，尽管内容和桌面网站一样，但却拥有两个不同网址。通常的移动网站使用子域名的方式实现，例如使用类似 wap.williamlong.info 或 m.williamlong.info 这样的地址，为移动用户专门定制，内容可以与桌面网站不同，桌面网站的网址检测到移动设备后自动重定向到移动网站页面。</p><p>移动网站可以支持非触屏智能手机和触屏智能手机，适合侧重移动设备或专门针对移动设备的网站，使用移动浏览器访问。</p><p>很多blog、cms建站程序都有桌面的移动页面入口，网站只需将移动设备用户引导到这个入口即可。通常有wap或HTML5等方式的建站方式。wap页面主要针对老式手机浏览器和2G用户，例如诺基亚手机用户，页面简洁，很省流量，但目前正处于淘汰过程中，下图是利用Z-blog自带的wap模块建造的月光博客移动网站。</p><p style="text-align: center"><img alt="月光博客" src="https://static.williamlong.info/upload/3727_3.jpg" /></p><p style="text-align: center">WAP建站的月光博客移动网站</p><p>HTML5的技术门槛较高，单独开发会有不少难度，很多站长采用移动建站工具来生成基于HTML5的移动网站。目前使用较多的移动建站工具是百度Site App，该工具使用地址<a target="_blank" href="http://zhanzhang.baidu.com/tools/siteapp">参见这里</a>，百度移动搜索会将大部分网站进行转码，转码后的内容比较适合手机移动等小屏幕设备访问，百度Site App这个工具可以支持站长将自己网站转码后的页面进行定制，并部署到自己独立子域名的网站，同时还支持通过百度联盟的方式在网页上加入针对移动设备的专用广告，以获得广告收益。下图是利用百度Site App来建立的月光博客移动网站。</p><p style="text-align: center"><img alt="月光博客" src="https://static.williamlong.info/upload/3727_4.jpg" /></p><p style="text-align: center">百度Site App建站的月光博客移动网站</p><p><strong>三、移动APP应用</strong></p><p>移动APP应用指的是专门在苹果和安卓应用商店里发布移动APP应用，安装后可以直接使用。移动APP应用的开发成本较高，针对苹果和安卓需要两套开发API，不过，移动APP可以允许用户离线使用，还可以访问移动设备的硬件信息，对于交互性强的应用来说较为适合。对于普通内容类网站来说，使用移动APP应用的好处并不明显。</p><p>由于移动APP应用开发门槛较高，因此站长可以使用相关工具来自动生成应用，百度Site App里也有这种功能，可以一键生成iOS和Android应用文件，但是需要网站站长自己去苹果和安卓应用商店提交应用。</p><p style="text-align: center"><a target="_blank" href="https://static.williamlong.info/upload/3727_2.jpg"><img border="0" alt="百度Site App网站" src="https://static.williamlong.info/upload/3727_1.jpg" /></a></p><p style="text-align: center">百度Site App网站</p><p>对于网站站长来说，通过这三种形式都可以打造适合移动设备访问的网站，自适应网页设计的开发难度小，手机浏览体验好，还支持<a target="_blank" href="/archives/3718.html">自适应AdSense广告</a>，但是目前百度搜索还不能很好地识别自适应网页，部分自适应页面会被百度移动搜索进行转码（主要是由于未携带移动网页特征），使得原有的页面设计和AdSense广告都无法显示。对于期待从百度移动搜索获取流量的网站，应该优先做单独的移动网站，百度对于移动网站的支持较好，在移动搜索结果中会优先显示移动网站，不过，随着智能手机的迅速普及，百度已经逐步开始支持自适应网页在移动搜索中的展现。对于Google来说，其没有对网页进行转码，因此对于自适应网站来说能够有较好的显示效果，但是对于未经改造的网页来说，会在移动设备展示桌面网站，可能会耗费更多的手机流量。</p><p>因此，对于网站站长来说，较为稳妥的移动化方案是，既能提供网站的自适应设计，同时又提供一个单独的移动网站，这样既能让用户得到良好的浏览体验，又能让搜索引擎较好收录。</p>
 <p style="text-align:center"><img src="/logo/WebDesign.jpg" alt="移动建站的方法和指南" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note3727"></span><a href="javascript:commYea(3727);" id="dig3727">顶一下 ▲</a>(<span id="sdig3727"><Script language="javascript" type="text/javascript">showDig("3727");</script></span>) &nbsp; <a href="javascript:commNay(3727);" id="down3727">踩一下 ▼</a>(<span id="sdown3727"><Script language="javascript" type="text/javascript">showDown("3727");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/7558.html"/>
@@ -45,9 +45,7 @@
 		2026-8-20 18:40:4 | 
 		作者: 月光 | 
 		分类: <a href="/cat/webmaster.html" title="网站建设" rel="category tag">网站建设</a> | 
-		评论: 0 | 
-		浏览: <span class="AddView" id="spn7558" data-id="7558"></span>
-	</div><!-- END post-meta -->
+		评论: 0</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
 		<a href="/tag/Webmaster.html" rel="tag"><img src="/logo/Webmaster.gif" alt="站长技巧" class="thumb" width="80" height="80" /></a><p>我在使用Cloudflare Pages的时候，发现了一个非常奇怪的问题，就是发布的带有.html后缀的网页，会自动308重定向到一个没有.html的地址，并且，这个行为是Cloudflare Pages底层硬编码，无法通过配置参数关闭。</p>
@@ -89,7 +87,7 @@
 <p>这种方法的原理是，当用户请求.html页面时，此中间件会捕获该请求，这个函数会在后台秘密地向 Cloudflare 请求不带扩展名的页面路径，然后，它会获取成功的HTML 响应，并将其直接发送回原始URL，这时候，旧永久链接将立即加载，无需任何重定向跳转。</p>
 
 <p>需要注意的是，这个功能并不是无限使用的，免费的Cloudflare Pages用户每天的额度是十万次，超过十万次以后当天该函数就停了，需要等到第二天重置额度。</p>
-<Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+
 <p style="text-align:center"><img src="/logo/Webmaster.jpg" alt="解决Cloudflare Pages的308自动重定向问题" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note7558"></span><a href="javascript:commYea(7558);" id="dig7558">顶一下 ▲</a>(<span id="sdig7558"><Script language="javascript" type="text/javascript">showDig("7558");</script></span>) &nbsp; <a href="javascript:commNay(7558);" id="down7558">踩一下 ▼</a>(<span id="sdown7558"><Script language="javascript" type="text/javascript">showDown("7558");</script></span>)
@@ -115,27 +113,7 @@
 <div id="commentsbox">
 	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
 	
-	<div id="comment-form">
-<div id="respond" class="respond">
-<h3 id="comments-respond">发表留言</h3>
-<div class="cancel-comment-reply">
-<a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">点击这里取消回复。</a>
-</div>
-<form action="/?act=cmt&amp;key=96801b2f" method="post" id="frmSumbit" target="_self">
-<input type="hidden" name="inpId" id="inpId" value="7558" />
-	<input type="hidden" name="inpArticle" id="inpArticle" value="" />
-	<input type="hidden" name="inpRevID" id="inpRevID" value="" />
-<input type="text" name="inpName" id="inpName"  value="名称" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="1" />
-<input type="text" name="inpEmail" id="inpEmail" value="邮箱" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="2" />
-<input type="text" name="inpHomePage" id="inpHomePage" value="网站链接" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" size="22" tabindex="3" />
-
-<textarea name="txaArticle" id="txaArticle" cols="100%" rows="10" tabindex="5"  onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('commentSubmit').click();return false};"></textarea>
-<br />
-<p style="display: none;"><input type="checkbox" name="chkRemember" checked="true" id="chkRemember" /> <label for="chkRemember">记住我,下次回复时不用重新输入个人信息</label></p>
-<input name="btnSumbit" type="submit" id="commentSubmit" tabindex="6" value="提交 (Ctrl+Enter)" onclick="JavaScript:return VerifyMessage()"/>
-</form>
-</div>
-</div>
+	
 </div>
 </div><!-- END content -->
 		   
@@ -153,7 +131,7 @@
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (680)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -163,16 +141,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(262)</a></li>
-<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(184)</a></li>
-<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1028)</a></li>
-<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(684)</a></li>
-<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(690)</a></li>
-<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(691)</a></li>
-<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(987)</a></li>
-<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(601)</a></li>
-<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(403)</a></li>
-<li><a href="/archives/7557.html" title="推特推出全新“原创内容奖励计划”">推特推出全新“原创内容奖励计划”(688)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -182,12 +160,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7567</li><li>评论总数:199563</li><li>浏览总数:74866202</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
@@ -199,7 +177,7 @@
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

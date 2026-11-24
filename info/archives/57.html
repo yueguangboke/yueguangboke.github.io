@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="stylesheet" type="text/css" media="all" href="/info/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/info/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/info/archives/57.html"/>
+	<title>Java JDBC概述-网站运营优化</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/info/" title="网站运营优化" rel="home bookmark">网站运营优化</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/info/" target="_self">首页</a></li><li><a href="/info/cat/news.html" target="_self">动态</a></li><li><a href="/info/cat/review.html" target="_self">评论</a></li><li><a href="/info/cat/plan.html" target="_self">策划</a></li><li><a href="/info/cat/design.html" target="_self">设计</a></li><li><a href="/info/cat/service.html" target="_self">运营</a></li><li><a href="/info/cat/seo.html" target="_self">SEO</a></li><li><a href="/info/cat/application.html" target="_self">应用</a></li><li><a href="/info/cat/server.html" target="_self">服务器</a></li><li><a href="/info/cat/program.html" target="_self">编程</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate9 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/info/">网站运营优化</a> &raquo; <a href="/info/cat/program.html" title="查看 编程 中的全部文章">编程</a> &raquo; <span>Java JDBC概述</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/info/archives/57.html" rel="bookmark">Java JDBC概述</a></h1>
+	<div class="post-meta">
+		2007年6月20日 | 
+		分类: <a href="/info/cat/program.html" title="编程" rel="category tag">编程</a> | 
+		评论: 0</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+<p style="text-align:center"><img src="/logo/Programming.jpg" alt="Java JDBC概述" /></p>
+		<p>1. 介绍</p>
+<p>许多开发者和用户都在寻找Java程序中访问数据库的便捷方法。由于Java是一个健壮，安全，易于使用的，易于理解且可以从网络中自动download ，所以它成为开发数据库应用的一种良好的语言基础。它提供了C， C++， Smalltalk， BASIC， COBOL， and 4GLs的许多优点。许多公司已经开始在Java与DBMS的连接方面做工作。</p>
+<p>许多Java应用开发者都希望能够编写独立于特定DBMS的程序，而我们也相信一个独立于DBMS的接口将使得与各种各样DBMS连接变得最为便捷，开发更加迅速。所以我们认为定义一个通用的SQL数据库存取框架，在各种各样的提供数据库连接模块上提供统一的界面是十分有意义的。这使程序员可以面对单一的数据库界面，使数据库无关的Java工具和产品成为可能，使得数据库连接的开发者可以提供各种各样的连接方案。我们看到我们定义一个通用低层的，支持基本SQL功能的Java DataBase Connectivity （JDBC）API的紧迫任务。</p>
+<p>幸运的是我们不必从头设计一个SQL API.我们可以把我们的工作建立在 X/Open SQL CLI （调用层接口）之上（它也是Microsoft's ODBC 的基础）。</p>
+<p>我们主要任务是定义一个自然的Java接口来与X/Open CLI中定义的基本的抽象层和概念连接。</p>
+<p>JDBC API得到数据库开发厂商，连接开发厂商，ISV，以及应用开发者的支持是十分重要的。我们相信把我们的工作建立在ODBC抽象层的基础上将JDBC更加容易得到大家的接受。而且从技术上来说，ODBC是我们设计工作的一个良好基础。</p>
+<p>因为ODBC是一个C语言接口，所以ODBC在Java中直接使用不适当。从Java中来调用C代码在安全性，健壮性，实现的方便，可移植性等等方面有许多不便。它使得Java在这些方面的许多优点得不到发挥。</p>
+<p>我们已经在短期里面实现了一个建立在ODBC上的API.长远来看，我们可以通过其他方式提供实现。</p>
+<p>1. 1.注意</p>
+<p>我们非常感谢在数据库，数据库连接和数据库工具领域的许多早期的工作者。他们为JDBC的早期草案提供了很好的意见和建议。他们的工作对本规范起了不可估量的作用。</p>
+<p>2. 目标与哲学</p>
+<p>这个部分描述了指引这个API开发的目标以及哲学。</p>
+<p>2. 1. SQL 级 API</p>
+<p>我们的主要目标是为Java定义一个&ldquo;调用级&rdquo;（call-level）的SQL接口。着意味着我们主要的注意力集中在执行原原本本的SQL语句并且取回结果。我们预计高层的API也将被定义，这些可能将建立在基层的接口上。</p>
+<p>这些高层接口包括象直接地、透明地把表里面的数据影射到Java类里面，用语法树表示更加通用的查询，以及Java内嵌的SQL语法。</p>
+<p>我们希望大量的应用开发工具将使用我们的API.然而我们也希望程序员能够使用我们的API，尤其是目前这样在Java里没有任何其他手段（应该是说数据库访问手段）的情况下。</p>
+<p>2. 2. 遵循SQL</p>
+<p>数据库系统支持各式各样的SQL语法和语义，它们相互之间在比较高级的功能例如外部连接，内嵌过程等方面并不一致，尽管我们能够盼望着随时间的推移这些部分的SQL可以获得标准化。同时我们采取这样的态度与立场：</p>
+<p>In fact， an application query need not even be SQL， or it may be a specialized derivative of SQL， e.g. for document or image queries， designed for specific DBMSs.</p>
+<p>In order to pass JDBC compliance tests and to be called &quot;JDBC COMPLIANT &quot; we require that a driver support at least ANSI SQL-2 Entry Level. This gives applications that want wide portability a guaranteed least common denominator. We believe ANSI SQL-2 Entry Level is reasonably powerful and is reasonably widely supported today.</p>
+<p>JDBC允许查询表达式直接传递到底层的数据驱动，这样一个程序可以获得尽量多的SQL功能，但是可能被DBMS拒绝。事实上，一个程序的查询甚至可以不是SQL的，或者是SQL的一个特殊演化，例如：为专门数据库设计的文本或者图形查询。</p>
+<p>为了通过JDBC兼容的测试，并且能够被称为JDBC兼容，我们要求一个驱动至少支持ANSI SQL-2的标准。这使得那些需要广泛移植性的程序获得一个最小的分母（这句话的原文是：This gives applications that want wide portability a guaranteed least common denominator.）。我们相信ANSI SQL-2是足够强大的，并且是得到足够支持的。</p>
+<p>2. 3. JDBC必须可以建立在现有的数据库接口上</p>
+<p>我们必须能够保证 JDBC SQL API 能够建立在普通的SQL API上，尤其是ODBC.这些要求已经对这个规范的一些部分产生了影响，尤其是对传出参数（OUT parameter）和大数据块的处理。</p>
+<p>2. 4. 必须保证这个接口与JAVA系统的其他部分保持一致</p>
+<p>目前对JAVA的积极回应已经十分热烈。很大程度上是由于这个语言标准以及标准运行时库被认为是一致，简单和强大的。我们将尽我们所能，提供这个Java数据库接口，这个接口将建立在Java内核现有的这种风格，并且将进一步加强它。</p>
+<p>2. 5. 保持简单</p>
+<p>We would prefer to keep this base API as simple as possible， at least initially. In general we would prefer to provide a single mechanism for performing a particular task， and avoid provid-ing duplicate mechanisms. We will extend the API later if any important functionality is miss-ing.</p>
+<p>我们将力争使得基本的API尽量简单，至少开始的时候是这样的。一般来说，我们希望对实现每个特定的任务只提供一种方案，而避免提供多种方案。如果一些重要的功能遗漏了，那么我们在晚些时候将扩充这个API.</p>
+<p>2. 6. 尽量保持强的、静态的类型</p>
+<p>我们希望这个JDBC API保持尽量强的类型检查，使得尽可能多的类型信息可以静态地表达。着使得尽可能多的错误可以在编译的时候被发现。</p>
+<p>由于SQL本身是动态类型的，所以我们可能会在程序运行的时候遇到类型不能匹配的问题。例如：当一个程序员在希望SELECT返回一个整数，但是实际返回的是一个字符串&ldquo;foo&rdquo;。 但是我们依然希望程序员把他们所希望的类型在编译的时候就能够表达清楚，这样我们可以做尽可能多的静态检查。我们也希望在必要的时候能够支持动态类型接口（见第四章）</p>
+<p>2. 7. 使普通任务简化</p>
+<p>我们希望普通的任务能够是简单的，而不一般的工作是可行的。</p>
+<p>一个普通任务是指一个程序员执行一个简单的没有参数的SQL语句（例如：SELECT，INSERT，UPDATE，DELETE），然后（例如SELECT）处理返回的具有简单类型的元组。一个具有传入参数（IN parameter）的SQL语句也是普通的。</p>
+<p>不那么普通但是也是十分重要的情形是当程序员使用有INOUT，OUT参数的SQL语句。我们也需要支持读写几兆字节对象的SQL语句，更特别一些的情形包括一个语句返回了多个结果集合。</p>
+<p>我们希望元数据（Meatdata）的使用很少的，只是那些熟练的程序员以及开发工具才需要处理的问题。元数据存取函数以及动态类型数据存取函数在这个文档末尾，一般的程序员可以不必关心这些章节。</p>
+<p>2. 8. 不同的功能让不同的方法（函数）来实现（&ldquo;方法&rdquo;的原文是：method，这样翻译是跟VB的）</p>
+<p>一种界面设计风格是使用很少的过程，提供许多作为参数传递的控制标志，这样它们可以用来影响很大一个范围内的各种行为。来表达不同的功能。这趋向与使用很多的方法，但是每个方法都比较同意理解。</p>
+<p>一般来说，Java内核类使用不同的方法（method）。这个步骤的主要优点是开始学习基本界面的程序员可以不必被那些与复杂功能相关的参数所困扰。我们力图在JDBC接口上也采用相同的策略。一般来说采用不同的方法而不是采用不同的标志和多用途的方法。</p>
+<p>3. 接口概貌</p>
+<p>接口分为两个层次，一个是面向程序开发人员的JDBC API.另外一个是底层的JDBC Driver API.</p>
+<p>3. 1. JDBC API</p>
+<p>JDBC API 被描述成为彝族抽象的Java接口，似的应用程序远可以对某个数据库打开连接，执行SQL语句并且处理结果。</p>
+<p>最重要的接口是：</p>
+<p>java.sql.DriverManager 处理驱动的调入并且对产生新的数据库连接提供支持。</p>
+<p>java.sql.Connection 代表对特定数据库的连接。</p>
+<p>java.sql.Statement代表一个特定的容器，来对一个特定的数据库执行SQL语句。</p>
+<p>java.sql.ResultSet控制对一个特定语句的行数据的存取。</p>
+<p>其中java.sql.Statement又有两个子类型：</p>
+<p>1. java.sql.PreparedStatement用于执行预编译的SQL语句。</p>
+<p>2. java.sql.CallableStatement用于执行对一个数据库内嵌过程的调用。</p>
+<p>下面的章节对JDBC是如何运行的提供了更多描述，整个定义见第13章。另外第15章描述了系统如果获取数据库的元数据信息。</p>
+<p>3. 2. JDBC Driver API</p>
+<p>java.sql.Driver在第9章有完整的定义了。大部分JDBC驱动只需要完成这些JDBC API所定义的抽象类就可以了。特别地，所有的driver必须提供对java.sql.Connection， java.sql. State-ment， java.sql.Prepared－Statement， and java.sql.ResultSet的实现。如果目标DBMS提供有OUT参数的内嵌过程，那么还必须提供java.sql.CallableStatement 接口。 每个database driver必须提供一个类：java.sql.Driver以使得系统可以由 java.sql.DriverManager来管理。</p>
+<p>一个显然的driver是在ODBC之上提供对JDBC的实现，从而提供与ODBC接口的JDBC-ODBC 桥，就象前面的图所显示的。由于JDBC放在ODBC之后，所以实现起来简单而且高效。</p>
+<p>另外一个有用的驱动直接接触数据库无关的网络协议。发布一个协议允许多个服务器实现的方法，例如在ODBC或者特定的DBMS上（尽管已经有了一些使用固定协议的产品，但是我们不打算对它们实现标准化。），是可取的。</p>
+<p>4. JDBC使用场合</p>
+<p>Before looking at specifics of the JDBC API， an understanding of typical use scenarios is help-ful. There are two common scenarios that must be treated differently for our purposes： applets and applications.</p>
+<p>在看JDBC API之前了解一下典型的使用场合是有帮助的。通常有两种情形必须分别对待：applet和application.</p>
+<p>4. 1. Applet</p>
+<p>目前Java使用的最多的从网络中下载的applet，它们作为web文件的一个部分。当中有数据库存取applet和能够使用JDBC来接触数据库的applet.</p>
+<p>例如，一个用户可能下载一个显示股票历史价格图的applet.这个applet通过internet来从关系数据库中获得股票历史价格。</p>
+<p>最一般的情况里面，对applet的使用是通过不可靠的边界的。例如从另外一个公司或者Internet上获得这些applet.于是称这个情况为&quot;Internet&quot;场合。然而applet也可能通过局域网下载。在这个情况里面，客户机的安全都还是一个问题。</p>
+<p>典型的applet在几个方面与传统的数据库应用程序有所不同：</p>
+<p>1）。 不可靠的applet被严格地限制在他们被允许执行的的操作上。特别地，不允许他们存取本地的文件，切不允许他们对任意的数据库建立网络连接。</p>
+<p>2）。 就标识和连接网上数据库来说，Internet环境里面的applet面临新的问题。</p>
+<p>3）。 当数据库可能与你相隔万里的时候，效率的考虑也有所不同了。与局域网相比，Internet上数据库applet可能会碰到十分不同的反应时间。</p>
+<p>4. 2. Application</p>
+<p>Java也可以用来建立普通的应用，从而想一般的应用一样在客户机上使用。我们相信随着开发工具越来越多，人们开始认识到提高程序生产效率的必要性，以及Java的其他优点，Java的这种用法将越来越流行。在这种方式里面，Java的代码是可以信赖的，且被允许读写文件打开网络连接等等，就想其他的应用程序代码一样。</p>
+<p>也许这些Java应用使用的最多的是在一个公司内部或者在Intranet上，所以不妨成为Intranet场合。例如一个公司希望利用Java及其GUI构件工具来建立他的基于合作数据模式的合作软件。这些应用程序将存取局域网或者广域网的数据。Java应用可以作到这些。</p>
+<p>Java应用程序场合和Intranet场合与applet场合有诸多不同。例如标定一个数据库最自然的方式是用一个数据库的名字，就象&quot;Customers&quot; 和&quot;Personnel&quot;这样。然后用户希望系统能够定位具体的机器，DBMS，JDBC driver，和Java应用程序。</p>
+<p>4. 3. 其他场合</p>
+<p>还有其他一些有趣的场合：</p>
+<p>1）。 已验证的applet（Trusted applets）是指那些已经被Java虚拟机器认定是可以信赖的applet.他们之所以被认为是可信的是因为他们已经对上了特定的密匙，或者用户认为从特定来源来的applet是可信的。在安全的方面上他们与应用（appliction）相同，但是其他方面（例如定位一个数据库）与则与applet相似。</p>
+<p>2）。 与直接从Java GUI出发用客户/服务器模式来度曲DBMS服务器不同，三层存取方式可能被使用。在这个场合里面，Java应用程序对中间层的服务发出调用，中间层的服务在网上，它又再去调用数据库。这些调用可能通过RPC （remote procedure call）或者ORB （object request broker ）。在这两种场合里面，中间层最好使用一个对象变化。我们希望三层结构会变得越来越普遍，因为对于MIS管理者来说，这可以使得他们有机会在公共数据库上显式地定义合法操作等。同时三层结构可以提供许多效率上的好处。</p>
+<p>目前中间层一般用C或者C++这样的语言来完成。通过优化编译器把把Java 字节代码翻译成为高效的机器代码，中间层也可以用Java来实现。Java有许多优良特性（健壮性，安全性，多线程）可以达到中间层需要达到的目的。</p>
+<p>5. 安全性考虑</p>
+<p>作为网络上的语言JAVA必须十分注安全性的考虑。基于上面的讨论，JDBC的两种主要使用场合里面，我们必须考虑安全性问题：</p>
+<p>在Java applications的场合里面Java代码是本地的，所以也是&quot;trusted&quot;</p>
+<p>没有验证的Java applet代码不可以存取本地的以及其他网络的数据。</p>
+<p>5. 1. JDBC 和未验证的applet</p>
+<p>JDBC首先必须符合JAVA的一般安全规则。另外：</p>
+<p>JDBC 必须认为没有验证的applets是不可靠的。</p>
+<p>JDBC 不可以让不可靠的applets存取本地数据库。</p>
+<p>一个已经向JDBC DriverManager注册的是JDBC Driver只能存取它所来的数据源。</p>
+<p>一个applet也只能向它所Download来的服务器来存取数据。</p>
+<p>如果JDBC驱动层如果完全确信对一个数据库服务器打开连接不会引起认证或者权限问题（可能由网上随机主机上运行的程序引起），那么它就允许applet打开这样的连接。数据库服务器不通过IP地址来限制存取是相当少的，主要是为了举例。（当心，这一段话我可能翻译反了！！！大家看看原文。）</p>
+<p>这些限制是相当烦琐的。不过他们与对一般applet的限制是一致的我们没有必要放开这些限制。</p>
+<p>5. 2. JDBC 和Java应用程序</p>
+<p>对于一个普通的Java应用程序（例如全部用Java代码而不是不可靠的applet ）JDBC将从本地的类路径里面获得驱动，并且允许应用程序自由存取文件，远程服务器等等。</p>
+<p>但是和applet一样，如果由于某些原因一个没有验证的sun.sql.Driver类从远程的来源里面获得，那么这个驱动只能和相同地方来的代码配合。</p>
+<p>5. 3. Driver的安全责任</p>
+<p>JDBC driver可能在各种情况下使用，所以驱动的编制者遵循一定的简单的安全规则，从而避免applet做非法的数据库连接。</p>
+<p>如果所有的驱动都象applet一样从网上下载，那么这些原则将是不必要的，因为普通的安全规则已经对它做了限制。但是驱动的编写者必须记住一旦他们的驱动获得成功，用户将在本地磁盘安装这些驱动，那么驱动将成为Java环境中一个被信任的部分，所以必须确信它不会被来访的applet所滥用。所以我们鼓励所有的驱动编写者必须遵循一定安全原则。</p>
+<p>所有这些原则都是在连接打开的时候使用。这正式驱动和虚拟机器检查当前调用者是否真的可以与指定的数据库连接的时刻。一旦连接建立就不必做更多的检查了。</p>
+<p>5. 3. 1. 分享TCP/IP连接的时候必须谨慎</p>
+<p>如果一个JDBC驱动试图打开一个 TCP 连接，那么这个打开会被Java 安全管理机制自动检查。这个机构会检查当前调用栈里面有没有applet，如果有那么就限定它可以访问的机器集合。所以一般地JDBC驱动可以把TCP建立检查留给Java虚拟机。</p>
+<p>但是如果一个JDBC驱动试图在多个数据库连接之间共享一个TCP连接，那么驱动就必须自己负责检查每个调用者是否真的被允许与目标数据库联系。例如如果我们为applet A打开了一个通往机器foobah 的TCP连接，这并不意味着applet B被自动允许来共享这个连接。applet B可能没有任何访问机器foobah的权力。所以在允许某个程序重用一个现成的TCP连接之前，JDBC 驱动必须通过安全机构来检查当前的的调用者是否可以访问这个连接。通过下面的代码可是实现这个功能。</p>
+<p>SecurityManager security = System.getSecurityManager（）；</p>
+<p>if （security ！= null）</p>
+<p>{</p>
+<p>security.checkConnect（hostName， portNumber）；</p>
+<p>}</p>
+<p>如果连接是不允许的，那么Security.checkConnect方法将产生一个java.lang.SecurityException.</p>
+<p>5. 3. 2. 检查所有的本地文件访问</p>
+<p>如果一个JDBC取得需要访问本地机器上的数据，那么他必须确信调用者是被允许打开这个文件的。例如：</p>
+<p>SecurityManager security = System.getSecurityManager（）；</p>
+<p>if （security ！= null）</p>
+<p>{</p>
+<p>security.checkRead（fileName）；</p>
+<p>}</p>
+<p>如果对特定文件的访问是不允许的，那么Security.checkRead方法将产生一个java.lang.SecurityException.</p>
+<p>5. 3. 3. 作好最坏的准备</p>
+<p>一些驱动可能使用本地的方法来桥接底层数据库程序。则这些情况里面判断那些本地文件将被底层函数所访问是困难的。</p>
+<p>在这些环境里面用户必须作好最坏的打算，并且否决所有下载applet所发出的数据库存取，除非驱动可能完全确信将要做存取是没有问题的。</p>
+<p>例如一个JDBC-ODBC桥接器必须检查ODBC数据源的的名称，确保applet只可以访问它的&ldquo;生源地&rdquo;。如果对有的名字中不能判断出数据源的主机名，那么只能否决这个访问。</p>
+<p>为了决定一个当前的调用者是可以信赖的应用还是一个applet，JDBC驱动必须能够检查这个调用者是否可以写一个随机的文件：</p>
+<p>SecurityManager security = System.getSecurityManager（）；</p>
+<p>if （security ！= null）</p>
+<p>{</p>
+<p>security.checkWrite（&quot;foobaz&quot;）；</p>
+<p>}</p>
+		</div>
+	<div class="post-bottom"><div class="post-tags-pig"><a href="/info/tag/Programming.html" rel="tag">教程</a></div></div><!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/info/archives/56.html" title="Java JSP白皮书">Java JSP白皮书</a></div><div class="next_content">下一篇 » <a href="/info/archives/58.html" title="EJB编程模型">EJB编程模型</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/info/archives/56.html">Java JSP白皮书</a></p><p class="mutualitylist"><a href="/info/archives/55.html">EJB体系结构的历史和目标</a></p><p class="mutualitylist"><a href="/info/archives/54.html">基于NT/2000建立安全WEB站点的解决方案</a></p><p class="mutualitylist"><a href="/info/archives/11.html">防止ASP Session丢失的方法</a></p><p class="mutualitylist"><a href="/info/archives/10.html">在ASP程序中调用Web Service</a></p><p class="mutualitylist"><a href="/info/archives/9.html">使用ASP重启服务器</a></p><p class="mutualitylist"><a href="/info/archives/8.html">在Linux上使用ASP</a></p><p class="mutualitylist"><a href="/info/archives/7.html">在Flash中使用ASP技术</a></p><p class="mutualitylist"><a href="/info/archives/5.html">如何限制同一表单被多次提交</a></p><p class="mutualitylist"><a href="/info/archives/4.html">几行代码防止表单重复提交</a></p><p class="mutualitylist"><a href="/info/archives/3.html">OLE DB的概念与编程</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.baidu.com/baidu"><input type="text" name="word" size="12" id="edtSearch" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="ie" type="hidden" value="utf-8" /><input name="tn" type="hidden" value="bds" /><input name="cl" type="hidden" value="3" /><input name="ct" type="hidden" value="2097152" /><input name="si" type="hidden" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/info/cat/news.html">动态<span class="article-nums"> (91)</span></a></li><li class="li-cate cate-2"><a href="/info/cat/review.html">评论<span class="article-nums"> (230)</span></a></li><li class="li-cate cate-3"><a href="/info/cat/service.html">运营<span class="article-nums"> (73)</span></a></li><li class="li-cate cate-4"><a href="/info/cat/application.html">应用<span class="article-nums"> (63)</span></a></li><li class="li-cate cate-5"><a href="/info/cat/server.html">服务器<span class="article-nums"> (22)</span></a></li><li class="li-cate cate-6"><a href="/info/cat/seo.html">搜索优化<span class="article-nums"> (80)</span></a></li><li class="li-cate cate-7"><a href="/info/cat/plan.html">策划<span class="article-nums"> (84)</span></a></li><li class="li-cate cate-8"><a href="/info/cat/design.html">设计<span class="article-nums"> (30)</span></a></li><li class="li-cate cate-9"><a href="/info/cat/program.html">编程<span class="article-nums"> (68)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/info/archives/742.html" title="互联网行业常用黑话">互联网行业常用黑话(3081)</a></li>
+<li><a href="/info/archives/741.html" title="中国互联网“铁王座”争夺史">中国互联网“铁王座”争夺史(1589)</a></li>
+<li><a href="/info/archives/740.html" title="李兴平：中国站长第一人">李兴平：中国站长第一人(5289)</a></li>
+<li><a href="/info/archives/739.html" title="10款B2B营销人员必备的社会化媒体工具">10款B2B营销人员必备的社会化媒体工具(3664)</a></li>
+<li><a href="/info/archives/738.html" title="大型网站SEO策划方案">大型网站SEO策划方案(8531)</a></li>
+<li><a href="/info/archives/737.html" title="友情链接的交换技巧">友情链接的交换技巧(3063)</a></li>
+<li><a href="/info/archives/736.html" title="传统企业网站的SEO诊断和优化">传统企业网站的SEO诊断和优化(3595)</a></li>
+<li><a href="/info/archives/735.html" title="搜索引擎算法不断迭变，黑帽排名优化将在劫难逃">搜索引擎算法不断迭变，黑帽排名优化将在劫(1326)</a></li>
+<li><a href="/info/archives/734.html" title="网站内链优化建设具有何重要意义？">网站内链优化建设具有何重要意义？(1329)</a></li>
+<li><a href="/info/archives/733.html" title="运营干货：101个最吸引人的文章标题模板">运营干货：101个最吸引人的文章标题模板(5647)</a></li>
+<li><a href="/info/archives/732.html" title="SEO引流技巧：内容+渠道方是推广优化的主导">SEO引流技巧：内容+渠道方是推广优化的(4189)</a></li>
+<li><a href="/info/archives/731.html" title="SEO干货：什么样的页面才算是高质量的页面">SEO干货：什么样的页面才算是高质量的页(2037)</a></li>
+<li><a href="/info/archives/730.html" title="互联网自媒体撰稿人付费阅读的特殊价值分析">互联网自媒体撰稿人付费阅读的特殊价值分析(1741)</a></li>
+<li><a href="/info/archives/729.html" title="SEO拼的就是高质量的原创文章">SEO拼的就是高质量的原创文章(3351)</a></li>
+<li><a href="/info/archives/728.html" title="SEO企业文案思路：给的再多，不如懂我">SEO企业文案思路：给的再多，不如懂我(1862)</a></li>
+<li><a href="/info/archives/727.html" title="从SEO角度出发做网站策划">从SEO角度出发做网站策划(1146)</a></li>
+<li><a href="/info/archives/726.html" title="教你12招，彻底解决选择SEO服务公司的难题">教你12招，彻底解决选择SEO服务公司的(971)</a></li>
+<li><a href="/info/archives/725.html" title="如果你是百度，你会让什么排在前面？">如果你是百度，你会让什么排在前面？(3909)</a></li>
+<li><a href="/info/archives/724.html" title="站长须知的14个健康生活细节">站长须知的14个健康生活细节(3219)</a></li>
+<li><a href="/info/archives/723.html" title="你的SEO博客有存在的必要吗？">你的SEO博客有存在的必要吗？(3501)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>最新留言</h4>
+	<ul class="divComments">
+	   <ul><li style="text-overflow:ellipsis;"><a href="/info/archives/440.html#cmt2273" title="2023/7/16 22:15:15 post by 牛逼">牛逼的文章，2023年居然还能看到。。不</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/725.html#cmt2267" title="2021/8/16 9:26:20 post by 未来人">现在的百度，不是什么最吸引人，不是什么最</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2265" title="2021/7/11 16:49:01 post by 梦易寒">可惜hao123和4399的时代都快褪去</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/737.html#cmt2262" title="2021/5/25 15:52:25 post by 山普">网站相关性，友情链接存在时间越长，越稳定</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/395.html#cmt2259" title="2020/11/30 13:15:34 post by 蜗牛TV">动态产生XML文档的几种ASP方式？</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2230" title="2019/8/9 22:16:40 post by XiGuaMP4">确实很牛逼的站长 </a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2229" title="2019/7/18 11:48:13 post by 爱吃">李兴平从一个一无所知的初中生，到hao1</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/664.html#cmt2223" title="2019/5/5 11:35:13 post by 李耀耀">域名也被盗了  做了10年的网站，现在焦</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2222" title="2019/2/16 16:09:11 post by 香蕉皮">现在的好123已经不能要了</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/263.html#cmt2213" title="2018/7/30 11:29:49 post by 礼品">谢谢指导,希望我的网页会有更好的成绩.</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>标签列表</h4>
+	<ul class="divTags">
+	   <ul><li class="tag-name tag-name-size-2"><a href="/info/tag/IE.html">浏览器<span class="tag-count"> (12)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Script.html">源代码<span class="tag-count"> (36)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Programming.html">教程<span class="tag-count"> (41)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Internet.html">网络<span class="tag-count"> (47)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Windows.html">视窗<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/News.html">动态<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-5"><a href="/info/tag/Seo.html">搜索优化<span class="tag-count"> (71)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/WebDesign.html">网站设计<span class="tag-count"> (34)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Resource.html">资源<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/BlogTips.html">博客技巧<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Blog.html">博客<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Tech.html">业界<span class="tag-count"> (63)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Software.html">软件<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/Money.html">广告<span class="tag-count"> (4)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Website.html">网站<span class="tag-count"> (15)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/WordPress.html">网志<span class="tag-count"> (6)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GoogleMaps.html">谷歌地图<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/GoogleEarth.html">谷歌地球<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Sns.html">社交网络<span class="tag-count"> (8)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Google.html">谷歌<span class="tag-count"> (33)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Baidu.html">百度<span class="tag-count"> (31)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microsoft.html">微软<span class="tag-count"> (16)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Firefox.html">火狐<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Twitter.html">推特<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Webmaster.html">站长技巧<span class="tag-count"> (30)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Chrome.html">谷歌浏览器<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/WebPlan.html">网站策划<span class="tag-count"> (55)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/QQ.html">腾讯<span class="tag-count"> (24)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Mobile.html">手机<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Ecommerce.html">电子商务<span class="tag-count"> (17)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/AdSense.html">网赚<span class="tag-count"> (9)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microblog.html">微博<span class="tag-count"> (20)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GooglePlus.html">谷歌社交<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Facebook.html">脸书<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Apple.html">苹果<span class="tag-count"> (9)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:742</li><li>评论总数:1368</li><li>浏览总数:1990522</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/info/" target="_blank">月光微博客</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/anni/" target="_blank">安妮宝贝的文集</a></li><li><a href="/werther/" target="_blank">少年维特的烦恼</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><script type="text/javascript" src="/script/stat.js"></script></ul>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/info/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

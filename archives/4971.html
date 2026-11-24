@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/4971.html"/>
@@ -45,12 +45,10 @@
 		2017-5-12 17:3:53 | 
 		作者: 投稿 | 
 		分类: <a href="/cat/internet.html" title="互联网络" rel="category tag">互联网络</a> | 
-		评论: 2 | 
-		浏览: <span class="AddView" id="spn4971" data-id="4971"></span>
-	</div><!-- END post-meta -->
+		评论: 2</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Baidu.html" rel="tag"><img src="/logo/Baidu.gif" alt="百度" class="thumb" width="80" height="80" /></a><p>有人发帖称在国外使用百度云网盘下载受版权保护的盗版影视剧资源时，被版权方发送警告邮件要求停止下载。曾经普遍认为，在国外使用百度云网盘等离线下载方式因不需要经过开放 P2P 网络，故可以回避影视剧版权方对盗版下载的监控。所谓的盗版的影视剧资源，即平时相当多的中国用户使用 BT 种子、电驴链接等免费下载到的盗版影视剧。</p><p>详情请看v2ex 上的<a rel="nofollow" target="_blank" href="http://www.v2ex.com/t/352558">原帖</a>。感谢 jininij 的观点。</p><h3>背景</h3><p>很多版权管理比较严格的国家，包括美国、日本之类，影视剧等作品的版权方都会监控 BT 、电驴网络下的下载。技术上，向 BT 和电驴发布资源是版权方是管不了的，但是他们会有专人挂在网络上来监视有谁想要下载这些资源。一旦发现有在自己能力范围内（如中国就是能力范围外，所以中国下 BT 基本没人管；美国之类就算范围内）的人试图下载，就会发邮件给这个 IP 的所有者，比如 ISP 或 IDC 机房，要求他们停止这些用户的服务。被警告的 ISP 或 IDC 机房采取的手段包括转发版权方的邮件给用户，甚至于断网、停止服务等。</p><p>所以，在 BT 、电驴客户端上往往少见美国 IP 连接，更常见的外国 IP 除了港台外，主要在欧洲。这些 IP 大多都是 IDC 机房还开着常见 VPN 端口的。正常欧美的 BT 用户下载时大多都会使用 VPN 。 Astrill 之类的外国 VPN 厂也会把能安全地 P2P 下载作为一个 VPN 服务的特点。在海盗湾之类的 BT 站上，会有 VPN 的广告，有些还会提示不挂 VPN 下载 BT 可能会有被断网的风险。而 Seedbox 等专用 BT 做种服务器则大多位于版权管理宽松的部分欧洲国家、乌克兰等地区。</p><p>由于中国普遍不管 BT 下载盗版资源的问题，导致一些中国人到国外后仍沿袭国内习惯，最后被警告乃至起诉的案例屡见不鲜。（可见诸&nbsp;<a rel="nofollow" target="_blank" href="https://www.google.com/search?q=%E5%A4%96%E5%9B%BD+%E4%B8%AD%E5%9B%BD+%E4%B8%8B%E8%BD%BD+BT&amp;oq=%E5%A4%96%E5%9B%BD+%E4%B8%AD%E5%9B%BD+%E4%B8%8B%E8%BD%BD+BT">Google 搜索</a>）。因此，有人会在国外使用迅雷离线下载、QQ 旋风离线下载或百度云网盘、115 网盘离线下载功能将内容离线下载。且在一些教程性质的文章里，亦有人这样建议。然而，就目前的观察和既有案例的合理推测，使用百度云网盘客户端下载 BT 等盗版资源在版权管控严格的国家会存在被起诉的风险；使用百度云网盘客户端，无论所在国家，亦存在所下载文件被泄露的风险。</p><h3>原理推测</h3><p>请注意：由于存在风险的场景难以在可控环境里再现，因此，下方仅基于已有事实做出合理推测。不对下方推测负任何责任。</p><p>由于带宽资源昂贵，而现在大量用户使用百度云网盘共享盗版影视剧等资源、亦有大量用户使用百度云网盘离线下载 BT 、电驴等 P2P 网络资源，因此，百度理所当然会尽可能地节约自己的带宽。而节约的手段就是依靠用户之间上传和向 BT 、ed2k 等其他 P2P 网络吸血这两种。这两种手段都属于 P2P 。</p><p>在百度云网盘客户端下载某些资源时，文件名上会出现一个英文字母 P 的图标。鼠标悬停在上面，会弹出提示。然而，考虑到平时 BT 做种时，几乎不会碰到百度云网盘客户端连接（当然，不排除百度云客户端伪造 User Agent 的可能），因此几乎可以确定的是，百度云网盘有自己的私有 P2P 网络。</p><p>电影等的版权方在监控如 BT、电驴等 P2P 网络下载时，是&ldquo;挂在&rdquo;网络上，看有哪些客户端试图连接自己下载文件。之后再调查这些客户端的来历。版权方肯定无法&ldquo;挂在&rdquo;百度云私有的 P2P 网络上面。既然版权方能发现，就说明百度云网盘客户端向公共 BT 网络上传了文件。</p><p>百度云在有自己 P2P 网络的同时，仍然连接其他公共 P2P 网络的意图很简单&mdash;&mdash;向公共 P2P 网络吸血可以获得更快的速度。但是，在向公共 P2P 网络吸血的同时，百度云网盘客户端很有可能会象征性地上传一部分文件。在 BT 和电驴等公共 P2P 网络中，正规客户端（即除了百度云网盘客户端、迅雷、QQ 旋风外的大多数客户端）会优先地给上传多的用户传文件。为达到尽可能快的速度，百度云网盘客户端很有可能会给其他部分客户端上传，而就在这时，电影等的版权方就能侦测到百度云网盘客户端。</p><p>抛开可能因版权问题引发的纷争，百度云网盘客户端直接使用 P2P 下载，且不提供关闭的渠道，势必会使得其他使用百度云网盘客户端的电脑得以知悉有哪些其他百度云用户在试图下载同样的文件；且技术上可能可以通过对某台电脑发出的 DHT 广播信息等类似信息的侦测，进而掌握某台特定电脑下载文件的信息。考虑到百度云网盘客户端似乎只会给一部分资源使用 P2P 加速，不是所有的文件都会被泄露。</p><h3>回避方法</h3><p>如果担心版权问题，那么应该尽可能避免使用 P2P 网络下载器，包括百度云网盘客户端、迅雷、QQ 旋风下载任何有侵犯版权可能的文件。使用旧版（ 3.9 及以前版本）可能没有问题，3.9 之后的 QQ 旋风在从离线服务器上下载的同时也会从公共 P2P 网络里吸血下载。迅雷亦可能可以。见客服在<a target="_blank" data-mce-href="https://i.imgur.com/Q3RuHDM.jpg" href="https://i.imgur.com/Q3RuHDM.jpg">截图</a>中的回复。但保险起见，不应使用任何网盘客户端或 P2P 网络客户端下载此类文件。</p><p>使用这些方法可以回避。</p><ul><li>使用网页版，或 IDM（ Internet Download Manager ）、<a rel="nofollow" target="_blank" href="https://github.com/acgotaku/BaiduExporter">BaiduExporter</a>&nbsp;等可以确定直接只从百度云中心服务器下载的方式。</li><li>也可以直接使用 VPN 下载 P2P 内容。所使用的 VPN 应该是针对公共 P2P 网络做过专门优化的，普通的 VPN 可能无法正常使用公共 P2P 网络。</li><li>使用来自其他版权管理较松地区的服务器，如 VPS 等作为跳板，通过 P2P 网络下载到这些服务器上后再下载到本地。</li></ul><p>来源：Techyan投稿，<a target="_blank" href="https://techyan.me/possible-risk-when-using-baiduyun-netdisk/">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Baidu.html" rel="tag"><img src="/logo/Baidu.gif" alt="百度" class="thumb" width="80" height="80" /></a><p>有人发帖称在国外使用百度云网盘下载受版权保护的盗版影视剧资源时，被版权方发送警告邮件要求停止下载。曾经普遍认为，在国外使用百度云网盘等离线下载方式因不需要经过开放 P2P 网络，故可以回避影视剧版权方对盗版下载的监控。所谓的盗版的影视剧资源，即平时相当多的中国用户使用 BT 种子、电驴链接等免费下载到的盗版影视剧。</p><p>详情请看v2ex 上的<a rel="nofollow" target="_blank" href="http://www.v2ex.com/t/352558">原帖</a>。感谢 jininij 的观点。</p><h3>背景</h3><p>很多版权管理比较严格的国家，包括美国、日本之类，影视剧等作品的版权方都会监控 BT 、电驴网络下的下载。技术上，向 BT 和电驴发布资源是版权方是管不了的，但是他们会有专人挂在网络上来监视有谁想要下载这些资源。一旦发现有在自己能力范围内（如中国就是能力范围外，所以中国下 BT 基本没人管；美国之类就算范围内）的人试图下载，就会发邮件给这个 IP 的所有者，比如 ISP 或 IDC 机房，要求他们停止这些用户的服务。被警告的 ISP 或 IDC 机房采取的手段包括转发版权方的邮件给用户，甚至于断网、停止服务等。</p><p>所以，在 BT 、电驴客户端上往往少见美国 IP 连接，更常见的外国 IP 除了港台外，主要在欧洲。这些 IP 大多都是 IDC 机房还开着常见 VPN 端口的。正常欧美的 BT 用户下载时大多都会使用 VPN 。 Astrill 之类的外国 VPN 厂也会把能安全地 P2P 下载作为一个 VPN 服务的特点。在海盗湾之类的 BT 站上，会有 VPN 的广告，有些还会提示不挂 VPN 下载 BT 可能会有被断网的风险。而 Seedbox 等专用 BT 做种服务器则大多位于版权管理宽松的部分欧洲国家、乌克兰等地区。</p><p>由于中国普遍不管 BT 下载盗版资源的问题，导致一些中国人到国外后仍沿袭国内习惯，最后被警告乃至起诉的案例屡见不鲜。（可见诸&nbsp;<a rel="nofollow" target="_blank" href="https://www.google.com/search?q=%E5%A4%96%E5%9B%BD+%E4%B8%AD%E5%9B%BD+%E4%B8%8B%E8%BD%BD+BT&amp;oq=%E5%A4%96%E5%9B%BD+%E4%B8%AD%E5%9B%BD+%E4%B8%8B%E8%BD%BD+BT">Google 搜索</a>）。因此，有人会在国外使用迅雷离线下载、QQ 旋风离线下载或百度云网盘、115 网盘离线下载功能将内容离线下载。且在一些教程性质的文章里，亦有人这样建议。然而，就目前的观察和既有案例的合理推测，使用百度云网盘客户端下载 BT 等盗版资源在版权管控严格的国家会存在被起诉的风险；使用百度云网盘客户端，无论所在国家，亦存在所下载文件被泄露的风险。</p><h3>原理推测</h3><p>请注意：由于存在风险的场景难以在可控环境里再现，因此，下方仅基于已有事实做出合理推测。不对下方推测负任何责任。</p><p>由于带宽资源昂贵，而现在大量用户使用百度云网盘共享盗版影视剧等资源、亦有大量用户使用百度云网盘离线下载 BT 、电驴等 P2P 网络资源，因此，百度理所当然会尽可能地节约自己的带宽。而节约的手段就是依靠用户之间上传和向 BT 、ed2k 等其他 P2P 网络吸血这两种。这两种手段都属于 P2P 。</p><p>在百度云网盘客户端下载某些资源时，文件名上会出现一个英文字母 P 的图标。鼠标悬停在上面，会弹出提示。然而，考虑到平时 BT 做种时，几乎不会碰到百度云网盘客户端连接（当然，不排除百度云客户端伪造 User Agent 的可能），因此几乎可以确定的是，百度云网盘有自己的私有 P2P 网络。</p><p>电影等的版权方在监控如 BT、电驴等 P2P 网络下载时，是&ldquo;挂在&rdquo;网络上，看有哪些客户端试图连接自己下载文件。之后再调查这些客户端的来历。版权方肯定无法&ldquo;挂在&rdquo;百度云私有的 P2P 网络上面。既然版权方能发现，就说明百度云网盘客户端向公共 BT 网络上传了文件。</p><p>百度云在有自己 P2P 网络的同时，仍然连接其他公共 P2P 网络的意图很简单&mdash;&mdash;向公共 P2P 网络吸血可以获得更快的速度。但是，在向公共 P2P 网络吸血的同时，百度云网盘客户端很有可能会象征性地上传一部分文件。在 BT 和电驴等公共 P2P 网络中，正规客户端（即除了百度云网盘客户端、迅雷、QQ 旋风外的大多数客户端）会优先地给上传多的用户传文件。为达到尽可能快的速度，百度云网盘客户端很有可能会给其他部分客户端上传，而就在这时，电影等的版权方就能侦测到百度云网盘客户端。</p><p>抛开可能因版权问题引发的纷争，百度云网盘客户端直接使用 P2P 下载，且不提供关闭的渠道，势必会使得其他使用百度云网盘客户端的电脑得以知悉有哪些其他百度云用户在试图下载同样的文件；且技术上可能可以通过对某台电脑发出的 DHT 广播信息等类似信息的侦测，进而掌握某台特定电脑下载文件的信息。考虑到百度云网盘客户端似乎只会给一部分资源使用 P2P 加速，不是所有的文件都会被泄露。</p><h3>回避方法</h3><p>如果担心版权问题，那么应该尽可能避免使用 P2P 网络下载器，包括百度云网盘客户端、迅雷、QQ 旋风下载任何有侵犯版权可能的文件。使用旧版（ 3.9 及以前版本）可能没有问题，3.9 之后的 QQ 旋风在从离线服务器上下载的同时也会从公共 P2P 网络里吸血下载。迅雷亦可能可以。见客服在<a target="_blank" data-mce-href="https://i.imgur.com/Q3RuHDM.jpg" href="https://i.imgur.com/Q3RuHDM.jpg">截图</a>中的回复。但保险起见，不应使用任何网盘客户端或 P2P 网络客户端下载此类文件。</p><p>使用这些方法可以回避。</p><ul><li>使用网页版，或 IDM（ Internet Download Manager ）、<a rel="nofollow" target="_blank" href="https://github.com/acgotaku/BaiduExporter">BaiduExporter</a>&nbsp;等可以确定直接只从百度云中心服务器下载的方式。</li><li>也可以直接使用 VPN 下载 P2P 内容。所使用的 VPN 应该是针对公共 P2P 网络做过专门优化的，普通的 VPN 可能无法正常使用公共 P2P 网络。</li><li>使用来自其他版权管理较松地区的服务器，如 VPS 等作为跳板，通过 P2P 网络下载到这些服务器上后再下载到本地。</li></ul><p>来源：Techyan投稿，<a target="_blank" href="https://techyan.me/possible-risk-when-using-baiduyun-netdisk/">原文链接</a>。</p>
 <p style="text-align:center"><img src="/logo/Baidu.jpg" alt="百度云网盘下载盗版资源的风险提示" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note4971"></span><a href="javascript:commYea(4971);" id="dig4971">顶一下 ▲</a>(<span id="sdig4971"><Script language="javascript" type="text/javascript">showDig("4971");</script></span>) &nbsp; <a href="javascript:commNay(4971);" id="down4971">踩一下 ▼</a>(<span id="sdown4971"><Script language="javascript" type="text/javascript">showDown("4971");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

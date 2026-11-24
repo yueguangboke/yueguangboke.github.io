@@ -3,22 +3,22 @@
 # Version 4.0.0
 #
 
-User-agent: *
+# Block AI
 
-Disallow: /zb_system/
-Disallow: /google/zb_system/
-Disallow: /weibo/zb_system/
-Disallow: /info/zb_system/
-Disallow: /anni/zb_system/
-Disallow: /apps/zb_system/
-Disallow: /story/zb_system/
-Disallow: /book/zb_system/
-Disallow: /xiaoshuo/zb_system/
-Disallow: /werther/zb_system/
-Disallow: /view.asp
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: PerplexityBot
+User-agent: Amazonbot
+User-agent: Meta-ExternalAgent
+User-agent: ElevenlabsCrawler
+User-agent: LinkupBot
+User-agent: ShapBot
+Disallow: /
 
+# Block
 
-# Block  MegaIndex.ru
 User-agent: MegaIndex.ru/2.0
 Disallow: /
 
@@ -34,4 +34,4 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-Sitemap: https://www.williamlong.info/sitemap.xml
+Sitemap: /sitemap.xml

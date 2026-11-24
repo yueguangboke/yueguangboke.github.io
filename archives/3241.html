@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/3241.html"/>
@@ -45,12 +45,10 @@
 		2012-10-5 22:43:32 | 
 		作者: 投稿 | 
 		分类: <a href="/cat/program.html" title="编程开发" rel="category tag">编程开发</a> | 
-		评论: 7 | 
-		浏览: <span class="AddView" id="spn3241" data-id="3241"></span>
-	</div><!-- END post-meta -->
+		评论: 7</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>前面<a href="/archives/3229.html">一篇文章</a>讲述了为什么应该放弃或减少使用MD5，意料之外的是，线上线下都有不少读者表示希望知道更多信息。也有一些专家级读者指出了文章中的一些不足和不够详细的地方。希望能在这篇文章中一并补充，如有错误，也烦请指正。</p><p>首先，原文是说MD5算法在很多场合都不再安全，应该避免使用，并不是全面否定其他安全哈希算法。SHA-2系列算法在最近几年应该还是足够安全和可靠的。另外，按照计划，SHA-3系列的哈希算法也即将在<a href="http://csrc.nist.gov/groups/ST/hash/timeline.html">近期公开发布</a>。</p><p>因此，对读者而言，这篇文章最有意义的提示是：&ldquo;<strong>在使用安全哈希算法时，考虑使用SHA-2系列算法乃至更高级别算法，而不是MD5</strong>&ldquo;。</p><p>MD5最大的问题在于，通过我国的王晓云教授等学者的<a href="http://www.iwms.net/n1016c43.aspx">工作</a>，md5已经被证明可以进行碰撞攻击。也就是说，攻击者可以产生两个应用程序，内容不一样，但是哈希值完全一样。</p><p>在云存储的应用场合中，这种危害表现为攻击者可以伪造一个<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> 的安装光盘，在其中嵌入木马，通过上述手段让MD5哈希值和<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>官方发布的光盘一致，抢先上传到分享类网盘中。如果该网盘采用MD5检查重复文件（例如离线下载服务）， 木马就会被植入到希望下载原版光盘用户的电脑中。</p><p>这种攻击形式不是天方夜谈，根据微软官方的<a href="http://blogs.technet.com/b/srd/archive/2012/06/06/more-information-about-the-digital-certificates-used-to-sign-the-flame-malware.aspx">报告</a>，一款名为Flame的木马就用了类似的手段。当然，这种方式目前还是非常高级的攻击手段。</p><p>另外，实际应用中我们也常需要验证对方发送的数据没有经过任何攻击者篡改。 例如，微博的API（应用接口）服务就需要验证请求来自于一个合法的授权方，而不是一个借用第三方名义的攻击者。</p><p>使用私钥加密，公钥解密验证的方式是完全可行的，但是因为非对称加密算法执行效率低下。因此，很多时候会用类似MD5的哈希算法验证哈希值和内容一致来保证数据未被篡改。</p><p>从前一篇文章的描述可以看出，MD5在这种场景是不安全的，不过需要额外注意的是，<strong>即使SHA-2系列的算法用于这个场景也是不安全的</strong>，这个时候应该考虑使用<a href="http://en.wikipedia.org/wiki/HMAC">HMAC系列</a>的对称验证算法。这个问题的根源是，从理论上上来说，如果知道hash(secret key +X)，即使不知道secret key的内容, 仍然可能通过对X的分析，计算得到hash(secret key +Y），从而将X成功的替换成Y，导致接收误以为Y就是X。而HMAC尽管基于安全哈希算法，却能避免这个类型的攻击。</p><p>从开放API的实例来看，Flickr的API在早期犯过<a href="http://blog.jianguoyun.com/netifera.com/research/flickr_api_signature_forgery.pdf">这个错误</a>。</p><p>当然，如果用于验证通信中的数据是否因为信道干扰损坏（而非攻击者人为干扰），或者将数据进行足够均匀的分布，MD5还是完全称职的，甚至是优秀的。关于这方面的内容，如果读者有兴趣，欢迎通过微博或者评论反馈，我们也可以再行补充。</p><p>来源：坚果云投稿（一个用于移动办公的安全云存储服务）。<a target="_blank" href="">原文链接</a>。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Encryption.html" rel="tag"><img src="/logo/Encryption.gif" alt="加密" class="thumb" width="80" height="80" /></a><p>前面<a href="/archives/3229.html">一篇文章</a>讲述了为什么应该放弃或减少使用MD5，意料之外的是，线上线下都有不少读者表示希望知道更多信息。也有一些专家级读者指出了文章中的一些不足和不够详细的地方。希望能在这篇文章中一并补充，如有错误，也烦请指正。</p><p>首先，原文是说MD5算法在很多场合都不再安全，应该避免使用，并不是全面否定其他安全哈希算法。SHA-2系列算法在最近几年应该还是足够安全和可靠的。另外，按照计划，SHA-3系列的哈希算法也即将在<a href="http://csrc.nist.gov/groups/ST/hash/timeline.html">近期公开发布</a>。</p><p>因此，对读者而言，这篇文章最有意义的提示是：&ldquo;<strong>在使用安全哈希算法时，考虑使用SHA-2系列算法乃至更高级别算法，而不是MD5</strong>&ldquo;。</p><p>MD5最大的问题在于，通过我国的王晓云教授等学者的工作，md5已经被证明可以进行碰撞攻击。也就是说，攻击者可以产生两个应用程序，内容不一样，但是哈希值完全一样。</p><p>在云存储的应用场合中，这种危害表现为攻击者可以伪造一个<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a> 的安装光盘，在其中嵌入木马，通过上述手段让MD5哈希值和<a href="/tag/Microsoft.html" title="微软"  Target="_blank" >微软</a>官方发布的光盘一致，抢先上传到分享类网盘中。如果该网盘采用MD5检查重复文件（例如离线下载服务）， 木马就会被植入到希望下载原版光盘用户的电脑中。</p><p>这种攻击形式不是天方夜谈，根据微软官方的报告，一款名为Flame的木马就用了类似的手段。当然，这种方式目前还是非常高级的攻击手段。</p><p>另外，实际应用中我们也常需要验证对方发送的数据没有经过任何攻击者篡改。 例如，微博的API（应用接口）服务就需要验证请求来自于一个合法的授权方，而不是一个借用第三方名义的攻击者。</p><p>使用私钥加密，公钥解密验证的方式是完全可行的，但是因为非对称加密算法执行效率低下。因此，很多时候会用类似MD5的哈希算法验证哈希值和内容一致来保证数据未被篡改。</p><p>从前一篇文章的描述可以看出，MD5在这种场景是不安全的，不过需要额外注意的是，<strong>即使SHA-2系列的算法用于这个场景也是不安全的</strong>，这个时候应该考虑使用<a href="http://en.wikipedia.org/wiki/HMAC">HMAC系列</a>的对称验证算法。这个问题的根源是，从理论上上来说，如果知道hash(secret key +X)，即使不知道secret key的内容, 仍然可能通过对X的分析，计算得到hash(secret key +Y），从而将X成功的替换成Y，导致接收误以为Y就是X。而HMAC尽管基于安全哈希算法，却能避免这个类型的攻击。</p><p>从开放API的实例来看，Flickr的API在早期犯过<a href="http://blog.jianguoyun.com/netifera.com/research/flickr_api_signature_forgery.pdf">这个错误</a>。</p><p>当然，如果用于验证通信中的数据是否因为信道干扰损坏（而非攻击者人为干扰），或者将数据进行足够均匀的分布，MD5还是完全称职的，甚至是优秀的。关于这方面的内容，如果读者有兴趣，欢迎通过微博或者评论反馈，我们也可以再行补充。</p><p>来源：坚果云投稿（一个用于移动办公的安全云存储服务）。<a target="_blank" href="">原文链接</a>。</p>
 <p style="text-align:center"><img src="/logo/Encryption.jpg" alt="续：为什么应该放弃或减少使用MD5" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note3241"></span><a href="javascript:commYea(3241);" id="dig3241">顶一下 ▲</a>(<span id="sdig3241"><Script language="javascript" type="text/javascript">showDig("3241");</script></span>) &nbsp; <a href="javascript:commNay(3241);" id="down3241">踩一下 ▼</a>(<span id="sdown3241"><Script language="javascript" type="text/javascript">showDown("3241");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

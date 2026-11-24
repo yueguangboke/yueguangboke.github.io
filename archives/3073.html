@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/3073.html"/>
@@ -45,12 +45,10 @@
 		2012-4-26 12:0:16 | 
 		作者: 月光 | 
 		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
-		评论: 79 | 
-		浏览: <span class="AddView" id="spn3073" data-id="3073"></span>
-	</div><!-- END post-meta -->
+		评论: 79</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/GoogleApps.html" rel="tag"><img src="/logo/GoogleApps.gif" alt="谷歌应用" class="thumb" width="80" height="80" /></a><p>随着Dropbox的走红，<a target="_blank" href="/archives/3071.html">微软</a>和<a target="_blank" href="/archives/3072.html">Google</a>都推出了云存储软件，这些云存储软件在美国等网络环境下是非常快的，但是在中国的网络环境下，究竟哪个软件的速度最快呢，我这里做了一个测试，实地比较一下Dropbox和Google Drive在中国网络环境下的上传速度。</p><p>整个测试思路和早先我<a target="_blank" href="/blog/archives/657.html">测试Dropbox和SugarSync</a>的一样，测试环境是，中国电信的100M共享宽带，在同一台<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>电脑上安装运行这两个软件（Dropbox和Google Drive客户端），不设置代理，不设置VPN。同步同一个文件夹，文件夹内共有191张个人拍摄照片，292M容量，保证全部是新内容上传，测试两个工具的实际上传同步速度。</p><p>在软件配置上，在Dropbox的上传控制中，选择&ldquo;不限制上传速度&rdquo;，Google Drive客户端并没有上传速度设置，因此默认设置，由于Google Drive客户端在正常网络环境下是被屏蔽的，因此在hosts文件中，增加了一条drive.google.com的IP数据，该IP使用的是北京的一个IP地址。</p><p style="text-align: center"><img alt="实测Dropbox和Google Drive上传速度对比" src="/upload/3073_1.jpg" /></p><p>我从11点10开始测试，将191个文件（293M大小）复制到指定的同步目录下，本以为要测试很长时间，但结果令人惊讶。</p><p>Google Drive在修改了Google的Hosts情况下，上传速度惊人，在不到10分钟的时间内，就上传完全部292M文件，而此时此刻，Dropbox的上传进度还没有进行到20%，两者上传速度相差非常悬殊，Google Drive的上传速度完胜Dropbox。</p><p>除了上传速度，晚上我又测试了一下Google Drive和Dropbox的下载速度对比，使用的是家里的12M中国电信ADSL网络进行测试，从18:45开始测试，293M文件，不出预料，Google Drive率先于18：51下载完毕。而此时Dropbox只传输了30%，并且还在慢慢地下载，看来Google Drive的下载速度也占优。</p><p>Google Drive的传输速度这么快，完全出乎了我的意料，我估计这里面的主要原因有：</p><p>1、和中国的Hosts设置有关，走国内网络速度加快。</p><p>2、Google Drive目前用户量少，而Dropbox用户量庞大，因此导致速度有较大差距。</p><p>3、Dropbox用的是Amazon的云存储，其服务器数量以及存储技术和Google有一定差距。</p><p>不过，在测试的时候，我也发现Google Drive存在一些问题，就是对于一个已经存在云端的文件，会重复上传，而Dropbox不会重复上传。对于一些非常大的文件来说，Dropbox的这个特性可以让其能以极快的速度&ldquo;上传&rdquo;大文件。这点可以通过做个实验来验证，将一个大文件复制个副本，然后先后复制到Google Drive以及Dropbox的目录下，就会看到Google Drive每次文件都会被重复上传，而Dropbox只在第一次上传，之后就不会重复上传。看来Google Drive就是带宽充足，云存储技术上还有一些缺陷。</p><p>总的来看，Google Drive的确是Dropbox强有力的一个竞争对手，不过其容量只有5G还是比较少，目前我的免费Dropbox已经有19G的空间，如果Google Drive的免费空间也能达到这个数字，相信会有很多用户会从Dropbox转到Google Drive的。</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/GoogleApps.html" rel="tag"><img src="/logo/GoogleApps.gif" alt="谷歌应用" class="thumb" width="80" height="80" /></a><p>随着Dropbox的走红，<a target="_blank" href="/archives/3071.html">微软</a>和<a target="_blank" href="/archives/3072.html">Google</a>都推出了云存储软件，这些云存储软件在美国等网络环境下是非常快的，但是在中国的网络环境下，究竟哪个软件的速度最快呢，我这里做了一个测试，实地比较一下Dropbox和Google Drive在中国网络环境下的上传速度。</p><p>整个测试思路和早先我<a target="_blank" href="/blog/archives/657.html">测试Dropbox和SugarSync</a>的一样，测试环境是，中国电信的100M共享宽带，在同一台<a href="/tag/Windows.html" title="Windows"  Target="_blank" >Windows</a>电脑上安装运行这两个软件（Dropbox和Google Drive客户端），不设置代理，不设置VPN。同步同一个文件夹，文件夹内共有191张个人拍摄照片，292M容量，保证全部是新内容上传，测试两个工具的实际上传同步速度。</p><p>在软件配置上，在Dropbox的上传控制中，选择&ldquo;不限制上传速度&rdquo;，Google Drive客户端并没有上传速度设置，因此默认设置，由于Google Drive客户端在正常网络环境下是被屏蔽的，因此在hosts文件中，增加了一条drive.google.com的IP数据，该IP使用的是北京的一个IP地址。</p><p style="text-align: center"><img alt="实测Dropbox和Google Drive上传速度对比" src="https://static.williamlong.info/upload/3073_1.jpg" /></p><p>我从11点10开始测试，将191个文件（293M大小）复制到指定的同步目录下，本以为要测试很长时间，但结果令人惊讶。</p><p>Google Drive在修改了Google的Hosts情况下，上传速度惊人，在不到10分钟的时间内，就上传完全部292M文件，而此时此刻，Dropbox的上传进度还没有进行到20%，两者上传速度相差非常悬殊，Google Drive的上传速度完胜Dropbox。</p><p>除了上传速度，晚上我又测试了一下Google Drive和Dropbox的下载速度对比，使用的是家里的12M中国电信ADSL网络进行测试，从18:45开始测试，293M文件，不出预料，Google Drive率先于18：51下载完毕。而此时Dropbox只传输了30%，并且还在慢慢地下载，看来Google Drive的下载速度也占优。</p><p>Google Drive的传输速度这么快，完全出乎了我的意料，我估计这里面的主要原因有：</p><p>1、和中国的Hosts设置有关，走国内网络速度加快。</p><p>2、Google Drive目前用户量少，而Dropbox用户量庞大，因此导致速度有较大差距。</p><p>3、Dropbox用的是Amazon的云存储，其服务器数量以及存储技术和Google有一定差距。</p><p>不过，在测试的时候，我也发现Google Drive存在一些问题，就是对于一个已经存在云端的文件，会重复上传，而Dropbox不会重复上传。对于一些非常大的文件来说，Dropbox的这个特性可以让其能以极快的速度&ldquo;上传&rdquo;大文件。这点可以通过做个实验来验证，将一个大文件复制个副本，然后先后复制到Google Drive以及Dropbox的目录下，就会看到Google Drive每次文件都会被重复上传，而Dropbox只在第一次上传，之后就不会重复上传。看来Google Drive就是带宽充足，云存储技术上还有一些缺陷。</p><p>总的来看，Google Drive的确是Dropbox强有力的一个竞争对手，不过其容量只有5G还是比较少，目前我的免费Dropbox已经有19G的空间，如果Google Drive的免费空间也能达到这个数字，相信会有很多用户会从Dropbox转到Google Drive的。</p>
 <p style="text-align:center"><img src="/logo/GoogleApps.jpg" alt="实测Dropbox和Google Drive上传速度对比" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note3073"></span><a href="javascript:commYea(3073);" id="dig3073">顶一下 ▲</a>(<span id="sdig3073"><Script language="javascript" type="text/javascript">showDig("3073");</script></span>) &nbsp; <a href="javascript:commNay(3073);" id="down3073">踩一下 ▼</a>(<span id="sdown3073"><Script language="javascript" type="text/javascript">showDown("3073");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->

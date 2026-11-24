@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="applicable-device" content="pc,mobile">
+	<link rel="stylesheet" type="text/css" media="all" href="/info/style/style.css"/>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/info/style/css/ie6_hack.css" />
+	<![endif]-->
+	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<link rel="canonical" href="/info/archives/43.html"/>
+	<title>屏保程序模板化完整VB源代码-网站运营优化</title>
+</head>
+<body class="single single-post postid-833 single-format-standard">
+<div id="wrap" class="container clearfix">
+	<div class="header_wrap">
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<h2><a href="/info/" title="网站运营优化" rel="home bookmark">网站运营优化</a></h2>
+			</div><!-- END logo --> 
+		</div><!-- END header -->
+		<label for="menu-toggle" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</label>
+		<div id="navigation" class="clearfix">
+		<input type="checkbox" id="menu-toggle" class="hidden"/>
+		<ul class="sf-menu navbar-nav">
+			<li><a href="/info/" target="_self">首页</a></li><li><a href="/info/cat/news.html" target="_self">动态</a></li><li><a href="/info/cat/review.html" target="_self">评论</a></li><li><a href="/info/cat/plan.html" target="_self">策划</a></li><li><a href="/info/cat/design.html" target="_self">设计</a></li><li><a href="/info/cat/service.html" target="_self">运营</a></li><li><a href="/info/cat/seo.html" target="_self">SEO</a></li><li><a href="/info/cat/application.html" target="_self">应用</a></li><li><a href="/info/cat/server.html" target="_self">服务器</a></li><li><a href="/info/cat/program.html" target="_self">编程</a></li>
+		</ul>
+		</div><!-- END navigation -->
+	</div>
+	
+	<div id="main" class="container">
+		<div class="content alpha  cate9 auth1">
+<div class="entry clearfix breadcrumbs">
+<a href="/info/">网站运营优化</a> &raquo; <a href="/info/cat/program.html" title="查看 编程 中的全部文章">编程</a> &raquo; <span>屏保程序模板化完整VB源代码</span>
+</div>
+    <div class="entry clearfix">
+        <h1><a class="post-title" href="/info/archives/43.html" rel="bookmark">屏保程序模板化完整VB源代码</a></h1>
+	<div class="post-meta">
+		2007年5月9日 | 
+		分类: <a href="/info/cat/program.html" title="编程" rel="category tag">编程</a> | 
+		评论: 0</div><!-- END post-meta -->
+        <div class="clear"></div>
+		<div class="entry-content">
+<p style="text-align:center"><img src="/logo/Script.jpg" alt="屏保程序模板化完整VB源代码" /></p>
+		<p>熟悉Windows操作系统的朋友一定对Windows的屏保程序不陌生，喜欢ＶＢ编程的朋友也一定想编写一个自己的Windows屏保程序。其实屏保程序实质上仍然是一个Windows的可执行程序，理论上说你可把自己的任何一个现成的程序作品改造成屏保程序，当你看完下面的讲解后便可以轻易地编写或是改造一个标准的Windows屏保程序了！</p>
+<p>一个标准的Windows屏保程序应该具备如下特点：</p>
+<p>１、扩展名必须是.scr，程序放置在Windows或者是System目录下。</p>
+<p>２、常规的屏保程序由运行主窗体、设置窗体和更改密码窗体三个窗体组件构成，屏保程序在运行前必须中止它的前一个可能在运行中的程序副本。</p>
+<p>３、屏保主程序运行于全屏幕状态，主窗体无标题栏，背景一般为黑色。</p>
+<p>４、屏保程序运行时隐藏鼠标指针，程序退出（或处理用户输入密码）时显示鼠标。</p>
+<p>５、屏保程序运行时应该禁止使用特殊功能键如重启键、Windows菜单键等，程序退出时恢复这些功能键。</p>
+<p>６、屏保主程序运行时主窗体及它的所有可视控件接受键盘事件KeyDown、鼠标事件MouseDown、MouseDown时能自动终止程序运行（如果设置了密码保护应该触发对应的密码处理模块并响应用户的交互）。</p>
+<p>７、屏保程序有四种运行方式，就是：①运行在预览框中（用于预览屏保的效果&mdash;&mdash;在&ldquo;显示属性&rdquo;&rarr;&ldquo;屏幕保护程序&rdquo;&rarr;&ldquo;小屏幕&rdquo;）；②运行设置程序（用于设置一些相关的样式&mdash;&mdash;在&ldquo;显示属性&rdquo;&rarr;&ldquo;屏幕保护程序&rdquo;&rarr;&ldquo;设置&rdquo;）；运行密码更改程序（用于设置和修改屏保密码&mdash;&mdash;在&ldquo;显示属性&rdquo;&rarr;&ldquo;屏幕保护程序&rdquo;&rarr;&ldquo;密码保护&rdquo;&rarr;&ldquo;更改&rdquo;）；真正的运行屏保（屏保运行时的效果&mdash;在&ldquo;显示属性&rdquo;&rarr;&ldquo;屏幕保护程序&rdquo;&rarr;&ldquo;预览&rdquo;或鼠标、键盘在指定的时间内无动作时）。</p>
+<p>８、屏保程序在启动以及处理设置、更改密码时还应该有对相关数据的存取功能（数据文件操作或注册表操作）。</p>
+<p>正因为屏保程序具有的以上特殊性，设计制作一个标准的屏保程序要比制作一个普通的应用程序要考虑的事情多。我们可以把一个标准的屏保程序分成两大部分：决定程序运行效果的部分（以下简称&ldquo;核心&rdquo;代码，可以看成是一个标准的普通应用程序）；区别于普通应用程序的特别处理部分（即屏保外壳，处理上述８点内容）。这里介绍的《屏保程序模板化完整源代码》提供给朋友们一个制作标准屏保外壳的程序源代码。此源代码标准模板化设计（以下简称&ldquo;模板&rdquo;），它本身就是一个&ldquo;黑屏幕&rdquo;的标准屏保程序。使用此&ldquo;模板&rdquo;，理论上可以把你的任何应用程序改造成屏保程序，你只需要在&ldquo;模板&rdquo;提示的地方选择添加上你的&ldquo;核心&rdquo;代码就可以了，快速、方便！</p>
+<p>把一个现成的应用程序改造成屏保程序时需要把原程序窗体控件添加到相应的&ldquo;模板&rdquo;窗体中，将源代码分解后添加到&ldquo;模板&rdquo;代码中。但原程序中的有些代码在屏保程序中是无用的、或是不合理的（如上述三个窗体间切换部分就应该去掉，如果你是重新设计一个屏保程序，窗体间的切换工作也不必去作）。另外，如果你想让&ldquo;预览&rdquo;的小窗口中能有正常运行一样的效果，主窗体的&ldquo;核心&rdquo;代码在设计时就要有根据屏幕大小的变化自动调整程序运行效果的响应。如果只是能够简单的预览，这部分工作也可以省去。</p>
+<p>作为示例本站还同时提供一个《时钟》程序的完全源代码供你亲自动手把它改造成屏保程序练习用，《时钟》源代码中加入了详细的改造说明，仔细分析这一实例代码相信对你制作屏保程序一定有不小的帮助。需要《时钟》程序的朋友可以从本站下载。</p>
+<p>本套&ldquo;模板&rdquo;由三个窗体和一个通用模块共四部分组成。下面重点介绍&ldquo;模板&rdquo;的源代码及添加&ldquo;核心&rdquo;代码的方法。</p>
+<p>通用模块Module1</p>
+<p>这部分代码包含屏保程序的总入口Sub Main()。如前所述，屏保程序可以以四种不同的运行方式启动，无论程序以何种方式启动，新的启动程序必须先行检测是否有前一个副本的程序模块在运行，如果有就中止它的运行，然后重新启动新的屏保程序模块。</p>
+<p>屏保程序的运行状态由用户选择决定。当屏保以不同方式启动时Windows会赋予它不同的命令行参数，四种运行状态的命令行参数依次为/p、/c、/a和/s，获得此命令行参数后屏保程序就会决定激活哪一个程序模块。</p>
+<p>模块Module1的前面的几个API函数和子过程就是完成以上任务的，这也是该模块的主要功能之一。</p>
+<p>模块中还包含一个供主窗体和设置窗体调用的公有子程序（zhuce，这一部分用黑体标出），作用为：</p>
+<p>１、主窗体运行状态（显示属性的小屏幕预览或屏保正常运行）：取得命令行参数(/p或/s)，调用zhuce，从模块中取得保存于注册表中的有关项目值的数据，在主窗体中初始化屏保&ldquo;核心&rdquo;程序相关变量。</p>
+<p>２、设置窗体运行状态：取得命令行参数(/c)，调用zhuce，从模块中取得保存于注册表中的有关项目值的数据，在设置窗体中初始化屏保设置窗体&ldquo;核心&rdquo;程序相关变量。</p>
+<p>模块Module1中用黑体显示的部分就是完成以上任务的，这是该模块的主要功能之二。</p>
+<p>此外，模块还完成包含&ldquo;侦测当前屏保的运行方式&rdquo;和&ldquo;'卸载窗体结束程序&rdquo;两个子程序供其它窗体代码调用。</p>
+<p>重点说明：</p>
+<p>&ldquo;模板&rdquo;的全部代码中只有屏保程序在注册表中的保存位置可以由用户选择修改（当然不修改直接使用默认也可），其它代码无需修改可直接用于你的屏保制作。&ldquo;模板&rdquo;操作注册表完成屏保设置参数的存取在注册表中的主键位置是：</p>
+<p>HKEY_LOCAL_MACHINE\Software\Microsoft\zimu</p>
+<p>其中的zimu就是默认的主键名，你不喜欢可以更改，但必须同时修改&ldquo;设置&rdquo;窗体和&ldquo;更改&rdquo;密码窗体中相应的注册表保存部分代码内容，建议在没&ldquo;读懂&rdquo;屏保代码之前不要修改，以防程序运行出错。该主键下的注册表项依次为canshu0-canshu10（&ldquo;模板&rdquo;为你准备了10个子项，相信足够你用的了，其中的canshu0专门用于记录屏保密码请勿变动）；模块取出的变量数据存放在全局数组变量tmpVal(0-10)中（这11个变量都是字符串型的，可以被其它窗体代码调用）。另外，用此&ldquo;模板&rdquo;按下面介绍的方法制作屏保程序时建立的模块、窗体（包括窗体上的控件）名请勿更改，如果非要更改勿请在程序制作完成后用&ldquo;搜索／替换&rdquo;方法将原名在所有窗体及模块代码中替换为新名字，否则程序运行时会找不到对像。</p>
+<p>下面具体介绍制作方法。</p>
+<p>在VB开发环境下新建一个工程，VB会自动建立一个主窗体Form1。保存工程：按默认窗体文件名&ldquo;Form1.frm&rdquo;保存窗体文件；将工程文件名&ldquo;工程1.vbp&rdquo;修改为&ldquo;pingbaomoban.vbp&rdquo;（或你的需要名）保存工程文件。</p>
+<p>在VB的&ldquo;工程资源管理器&rdquo;窗口中操作添加一个模块Module1，将下面的代码全部复制下来粘帖到模块代码窗口中。在&ldquo;工程&rdquo;菜单中选择&ldquo;工程属性&rdquo;&rarr;&ldquo;通用&rdquo;，将&ldquo;启动对象&rdquo;修改为&ldquo;Sub Main&rdquo;；选择&ldquo;生成&rdquo;项，将应用程序&ldquo;标题&rdquo;修改为&ldquo;屏保模板化完全代码&rdquo;（或你的需要名），在&ldquo;命令行参数&rdquo;中输入&ldquo;/s&rdquo;，按默认文件名Module1.bas保存模块文件。</p>
+<p>&nbsp;&nbsp;&nbsp; '模块Module1.bas&mdash;&mdash;制作你的屏保程序时无需修改可直接使用，如果屏保程序还需要其它全局性的常量、变量、API函数声明或需要其它的模块，其内容既可插入在本模块中,也可单独建立另外一个新的模块文件<br />&nbsp;&nbsp;&nbsp; Option Explicit<br />&nbsp;&nbsp;&nbsp; Declare Function GetClassName Lib &quot;user32&quot; Alias &quot;GetClassNameA&quot; (ByVal hwnd As Long, ByVal lpClassName As String, ByVal nMaxCount As Long) As Long<br />&nbsp;&nbsp;&nbsp; Declare Function FindWindow Lib &quot;user32&quot; Alias &quot;FindWindowA&quot; (ByVal lpClassName As String, ByVal lpWindowName As String) As Long<br />&nbsp;&nbsp;&nbsp; Declare Function SendMessage Lib &quot;user32&quot; Alias &quot;SendMessageA&quot; (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long<br />&nbsp;&nbsp;&nbsp; Declare Function GetClientRect Lib &quot;user32&quot; (ByVal hwnd As Long, lpRect As RECT) As Long<br />&nbsp;&nbsp;&nbsp; Declare Function SetParent Lib &quot;user32&quot; (ByVal hWndChild As Long, ByVal hWndNewParent As Long) As Long<br />&nbsp;&nbsp;&nbsp; Declare Function GetWindowLong Lib &quot;user32&quot; Alias &quot;GetWindowLongA&quot; (ByVal hwnd As Long, ByVal nIndex As Long) As Long<br />&nbsp;&nbsp;&nbsp; Declare Function SetWindowLong Lib &quot;user32&quot; Alias &quot;SetWindowLongA&quot; (ByVal hwnd As Long, ByVal nIndex As Long, ByVal dwNewLong As Long) As Long<br />&nbsp;&nbsp;&nbsp; Declare Function SetWindowPos Lib &quot;user32&quot; (ByVal hwnd As Long, ByVal hWndInsertAfter As Long, ByVal X As Long, ByVal Y As Long, ByVal cx As Long, ByVal cy As Long, ByVal wFlags As Long) As Long<br />&nbsp;&nbsp;&nbsp; Declare Function SystemParametersInfo Lib &quot;user32&quot; Alias &quot;SystemParametersInfoA&quot; (ByVal uAction As Long, ByVal uParam As Long, ByVal lpvParam As Any, ByVal fuWinIni As Long) As Long<br />&nbsp;&nbsp;&nbsp; Declare Function ShowCursor Lib &quot;user32&quot; (ByVal bShow As Long) As Long<br />&nbsp;&nbsp;&nbsp; Private Declare Function RegOpenKeyEx Lib &quot;advapi32&quot; Alias &quot;RegOpenKeyExA&quot; (ByVal hKey As Long, ByVal lpSubKey As String, ByVal ulOptions As Long, ByVal samDesired As Long, ByRef phkResult As Long) As Long<br />&nbsp;&nbsp;&nbsp; Private Declare Function RegQueryValueEx Lib &quot;advapi32&quot; Alias &quot;RegQueryValueExA&quot; (ByVal hKey As Long, ByVal lpValueName As String, ByVal lpReserved As Long, ByRef lpType As Long, ByVal lpData As String, ByRef lpcbData As Long) As Long<br />&nbsp;&nbsp;&nbsp; Private Declare Function RegCloseKey Lib &quot;advapi32&quot; (ByVal hKey As Long) As Long<br />&nbsp;&nbsp;&nbsp; Private Declare Function RegQueryValueExA Lib &quot;advapi32.dll&quot; (ByVal hKey As Long, ByVal lpValueName As String, ByVal lpReserved As Long, lpType As Long, ByRef lpData As Long, lpcbData As Long) As Long<br />&nbsp;&nbsp;&nbsp; Public Const WM_LOOK = &quot;小窗口预览&quot;<br />&nbsp;&nbsp;&nbsp; Public Const WM_SET = &quot;参数设置&quot;<br />&nbsp;&nbsp;&nbsp; Public Const WM_RUN = &quot;正常运行&quot;<br />&nbsp;&nbsp;&nbsp; Public Const WM_PASS = &quot;设置密码&quot;<br />&nbsp;&nbsp;&nbsp; Global tmpVal(10) As String '串数组其中tmpVal(0)专用于保存屏保密码,tmpVal(1-10)可以保存屏保&quot;核心&quot;程序的10个设置参数,主显示窗口、&quot;设置&quot;和&quot;更改&quot;密码窗口直接使用这一数组变量用于注册表的保存。<br />&nbsp;&nbsp;&nbsp; Global SAVEUSERPASS As Long '记录&quot;显示&quot;属性窗口&quot;密码保护&quot;复选框状态,值1为选中<br />&nbsp;&nbsp;&nbsp; Global XXX, YYY As Long '记录&quot;显示&quot;属性窗口小屏幕尺寸<br />&nbsp;&nbsp;&nbsp; Type RECT<br />&nbsp;&nbsp;&nbsp; Left As Long<br />&nbsp;&nbsp;&nbsp; Top As Long<br />&nbsp;&nbsp;&nbsp; Right As Long<br />&nbsp;&nbsp;&nbsp; Bottom As Long<br />&nbsp;&nbsp;&nbsp; End Type</p>
+<p>&nbsp;&nbsp;&nbsp; Sub Main() '程序运行总入口，根据命令行参数决定程序转子程序的去向<br />&nbsp;&nbsp;&nbsp; Dim ClassName As String * 64 '存放窗口的类名<br />&nbsp;&nbsp;&nbsp; Dim ExeCmd As String '存放命令行参数<br />&nbsp;&nbsp;&nbsp; GetClassName Form1.hwnd, ClassName, 64 '取得窗口的类名<br />&nbsp;&nbsp;&nbsp; ExeCmd = UCase(Command$) '将调用的屏保的参数转换成大写<br />&nbsp;&nbsp;&nbsp; If Not (InStr(ExeCmd, &quot;/P&quot;) = 0) Then '检查屏保的调用参数中是否有&ldquo;/P&rdquo;参数<br />&nbsp;&nbsp;&nbsp; If Not (FindWindow(ClassName, WM_LOOK) = 0) Then CloseSCR '如果找到已有同一个运行方式的实例存在则程序结束<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_SET '关闭前面已启动的其他运行方式的实例<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_RUN '同上<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_PASS '同上<br />&nbsp;&nbsp;&nbsp; SCR_Look '命令行参数/P转显示属性窗口的&quot;小屏幕显示&quot;处理<br />&nbsp;&nbsp;&nbsp; ElseIf Not (InStr(ExeCmd, &quot;S&quot;) = 0) Then<br />&nbsp;&nbsp;&nbsp; If Not (FindWindow(ClassName, WM_RUN) = 0) Then CloseSCR<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_LOOK<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_SET<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_PASS<br />&nbsp;&nbsp;&nbsp; Scr_Run '命令行参数/S转显示属性窗口&quot;预览&quot;（与屏保的正常运行状态相同）处理<br />&nbsp;&nbsp;&nbsp; ElseIf Not (InStr(ExeCmd, &quot;C&quot;) = 0) Then<br />&nbsp;&nbsp;&nbsp; If Not (FindWindow(ClassName, WM_SET) = 0) Then CloseSCR<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_LOOK<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_RUN<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_PASS<br />&nbsp;&nbsp;&nbsp; Scr_Setup '命令行参数/C转显示属性窗口&quot;设置&quot;处理<br />&nbsp;&nbsp;&nbsp; ElseIf Not (InStr(ExeCmd, &quot;A&quot;) = 0) Then<br />&nbsp;&nbsp;&nbsp; If Not (FindWindow(ClassName, WM_PASS) = 0) Then CloseSCR<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_LOOK<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_RUN<br />&nbsp;&nbsp;&nbsp; ClosePreWindow ClassName, WM_SET<br />&nbsp;&nbsp;&nbsp; Scr_Pass '命令行参数/A转显示属性窗口的&quot;更改&quot;密码处理<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp; End<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; End Sub<br />&nbsp;&nbsp;&nbsp; Public Sub ClosePreWindow(ClassName As String, WinCaption As String) '关闭先前运行的同一个程序窗口<br />&nbsp;&nbsp;&nbsp; Dim PreWnd As Long<br />&nbsp;&nbsp;&nbsp; PreWnd = FindWindow(ClassName, WinCaption) '寻找类名为ClassName,标题为WinCaption的窗口<br />&nbsp;&nbsp;&nbsp; If Not (PreWnd = 0) Then Call SendMessage(PreWnd, &amp;H10, 0, 0) '如果窗口已找到则关闭它<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>&nbsp;&nbsp;&nbsp; Public Sub SCR_Look() '小屏幕显示处理<br />&nbsp;&nbsp;&nbsp; Dim LookScrWnd As Long<br />&nbsp;&nbsp;&nbsp; Dim Style As Long<br />&nbsp;&nbsp;&nbsp; Dim LookRect As RECT<br />&nbsp;&nbsp;&nbsp; Form1.Caption = WM_LOOK '赋上具有相应运行方式的标题<br />&nbsp;&nbsp;&nbsp; LookScrWnd = Val(Right(Command$, Len(Command$) - 2)) '取得小屏幕的窗口句柄<br />&nbsp;&nbsp;&nbsp; Style = GetWindowLong(Form1.hwnd, -16) '取得窗口的样式<br />&nbsp;&nbsp;&nbsp; Style = Style Or &amp;H40000000 '在窗口的样式中加入子窗体常数<br />&nbsp;&nbsp;&nbsp; SetWindowLong Form1.hwnd, -16, Style '改变窗体的样式<br />&nbsp;&nbsp;&nbsp; SetParent Form1.hwnd, LookScrWnd '设置窗体的父窗体<br />&nbsp;&nbsp;&nbsp; GetClientRect LookScrWnd, LookRect '取得小屏幕的大小<br />&nbsp;&nbsp;&nbsp; SetWindowPos Form1.hwnd, 0, 0, 0, LookRect.Right, LookRect.Bottom, &amp;H4 Or &amp;H10 Or &amp;H40 '显示窗体并将窗体的大小设置为小屏幕的大小<br />&nbsp;&nbsp;&nbsp; XXX = LookRect.Right: YYY = LookRect.Bottom '取得小窗口尺寸赋于全局变量中<br />&nbsp;&nbsp;&nbsp; Form1.Load '转到屏保小屏幕主显示窗体的初始化过程<br />&nbsp;&nbsp;&nbsp; End Sub<br />&nbsp;&nbsp;&nbsp; Public Sub Scr_Setup() '&quot;设置&quot;处理<br />&nbsp;&nbsp;&nbsp; Form1.Caption = WM_SET<br />&nbsp;&nbsp;&nbsp; Form2.Show '转到屏保设置窗体<br />&nbsp;&nbsp;&nbsp; End Sub<br />&nbsp;&nbsp;&nbsp; Public Sub Scr_Run() '&quot;预览&quot;或屏保的正常运行处理<br />&nbsp;&nbsp;&nbsp; Dim a As Long<br />&nbsp;&nbsp;&nbsp; Form1.Caption = WM_RUN<br />&nbsp;&nbsp;&nbsp; ShowCursor False '隐藏鼠标<br />&nbsp;&nbsp;&nbsp; a = SystemParametersInfo(97, True, CStr(1), 0) '关闭特殊功能键<br />&nbsp;&nbsp;&nbsp; Form1.Move 0, 0, Screen.Width, Screen.Height '改变窗体位置及大小<br />&nbsp;&nbsp;&nbsp; Form1.Load '转到屏保正常显示主窗体的初始化过程<br />&nbsp;&nbsp;&nbsp; Form1.Show<br />&nbsp;&nbsp;&nbsp; End Sub<br />&nbsp;&nbsp;&nbsp; Public Sub Scr_Pass() '&quot;更改&quot;密码处理<br />&nbsp;&nbsp;&nbsp; Form1.Caption = WM_PASS<br />&nbsp;&nbsp;&nbsp; Form3.Show '转到屏保更改窗体<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>&nbsp;&nbsp;&nbsp; Public Function Scan_RUN() As Boolean '侦测当前屏保的运行方式的子程序<br />&nbsp;&nbsp;&nbsp; If (Form1.Caption = WM_RUN) Then '如果屏保是以运行方式在运行<br />&nbsp;&nbsp;&nbsp; Scan_RUN = True<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp; Scan_RUN = False<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; End Function</p>
+<p>&nbsp;&nbsp;&nbsp; Public Sub CloseSCR() '卸载窗体结束程序<br />&nbsp;&nbsp;&nbsp; Dim a As Long<br />&nbsp;&nbsp;&nbsp; ShowCursor True '显示鼠标<br />&nbsp;&nbsp;&nbsp; a = SystemParametersInfo(97, False, CStr(1), 0) '恢复特殊功能键<br />&nbsp;&nbsp;&nbsp; Unload Form3<br />&nbsp;&nbsp;&nbsp; Unload Form2<br />&nbsp;&nbsp;&nbsp; Unload Form1<br />&nbsp;&nbsp;&nbsp; End<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>&nbsp;&nbsp;&nbsp; Public Sub zhuce() '从注册表表中取出&quot;设置&quot;参数tmpVal(1-10)、&quot;更改&quot;的密码tmpVal(0)和&quot;显示&quot;属性窗口&quot;密码保护&quot;复选框状态SAVEUSERPASS<br />&nbsp;&nbsp;&nbsp; Dim a As Long<br />&nbsp;&nbsp;&nbsp; Dim rc(10) As Long<br />&nbsp;&nbsp;&nbsp; Dim hKey As Long<br />&nbsp;&nbsp;&nbsp; Dim KeyValType As Long<br />&nbsp;&nbsp;&nbsp; Dim KeyValSize(10) As Long<br />&nbsp;&nbsp;&nbsp; Dim c As String<br />&nbsp;&nbsp;&nbsp; On Error GoTo 1<br />&nbsp;&nbsp;&nbsp; a = RegOpenKeyEx(&amp;H80000002, &quot;Software\Microsoft\zimu&quot;, 0, 131135, hKey) 'zimu为程序运行参数在注册表中保存的主键名<br />&nbsp;&nbsp;&nbsp; For a = 0 To 10<br />&nbsp;&nbsp;&nbsp; tmpVal(a) = String$(1024, 0)<br />&nbsp;&nbsp;&nbsp; KeyValSize(a) = 1024<br />&nbsp;&nbsp;&nbsp; rc(a) = RegQueryValueEx(hKey, &quot;canshu&quot; + Trim(a), 0, KeyValType, tmpVal(a), KeyValSize(a))<br />&nbsp;&nbsp;&nbsp; Next<br />&nbsp;&nbsp;&nbsp; For a = 0 To 10<br />&nbsp;&nbsp;&nbsp; tmpVal(a) = Left(tmpVal(a), InStr(1, tmpVal(a), Chr(0)) - 1) '整理得到的各参数字串值tmpVal(0-10)<br />&nbsp;&nbsp;&nbsp; Next<br />&nbsp;&nbsp;&nbsp; SAVEUSERPASS = 3 '以下'获得&quot;显示&quot;属性窗口&quot;密码保护&quot;复选框状态SAVEUSERPASS<br />&nbsp;&nbsp;&nbsp; c = String$(1024, 0)<br />&nbsp;&nbsp;&nbsp; a = RegOpenKeyEx(&amp;H80000002, &quot;Network\Logon&quot;, 0, 131135, hKey)<br />&nbsp;&nbsp;&nbsp; rc(0) = RegQueryValueEx(hKey, &quot;username&quot;, 0, KeyValType, c, 1024)<br />&nbsp;&nbsp;&nbsp; c = Left(c, InStr(1, c, Chr(0)) - 1) '获取当前用户名c<br />&nbsp;&nbsp;&nbsp; If c = &quot;&quot; Then '无网络用户<br />&nbsp;&nbsp;&nbsp; a = RegOpenKeyEx(&amp;H80000003, &quot;.DEFAULT\Control Panel\desktop&quot;, 0, 131097, hKey)<br />&nbsp;&nbsp;&nbsp; rc(0) = RegQueryValueExA(hKey, &quot;ScreenSaveUsePassword&quot;, 0, 4, SAVEUSERPASS, 4)<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp; a = RegOpenKeyEx(&amp;H80000003, c + &quot;\Control Panel\desktop&quot;, 0, 131097, hKey)<br />&nbsp;&nbsp;&nbsp; rc(0) = RegQueryValueExA(hKey, &quot;ScreenSaveUsePassword&quot;, 0, 4, SAVEUSERPASS, 4)<br />&nbsp;&nbsp;&nbsp; If SAVEUSERPASS = 3 Then '匿名登录<br />&nbsp;&nbsp;&nbsp; a = RegOpenKeyEx(&amp;H80000003, &quot;.DEFAULT\Control Panel\desktop&quot;, 0, 131097, hKey)<br />&nbsp;&nbsp;&nbsp; rc(0) = RegQueryValueExA(hKey, &quot;ScreenSaveUsePassword&quot;, 0, 4, SAVEUSERPASS, 4)<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; 1<br />&nbsp;&nbsp;&nbsp; a = RegCloseKey(hKey) '关闭注册表<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p><br />主显示窗体Form1</p>
+<p>展示屏保运行的具体效果：该窗体加载时用从注册表中取出的全局变量tmpVal(1-10)数据在Load()过程中初始化该窗体的程序变量，然后运行&ldquo;核心&rdquo;代码展示具体的屏保效果。</p>
+<p>窗体：维持窗体名Form1不变，将背景设为黑色，Caption=&quot;&quot;，AutoRedraw=True，Borderstyle=0，ShowInTaskbar=False；放置一个时钟控件Timer1，Interval＝100，以上未尽属性均可取默认值。</p>
+<p>代码：主窗体&ldquo;模板&rdquo;代码如下，全部复制下来粘帖到Form1的代码窗口中，按默认文件名Form1.frm保存窗体文件。</p>
+<p>如果你是用&ldquo;模板&rdquo;制作你的屏保程序，主窗体的其它控件请根据你的&ldquo;核心&rdquo;代码需要设计添加，主窗体的&ldquo;核心&rdquo;代码请在以数字序号开头的６处绿色注释位置选择添加。</p>
+<p>&nbsp;&nbsp;&nbsp; '主显示窗体Form1<br />&nbsp;&nbsp;&nbsp; Option Explicit<br />&nbsp;&nbsp;&nbsp; Dim YANSHI As Integer<br />&nbsp;&nbsp;&nbsp; '①把屏保主窗体Form1的&ldquo;核心&rdquo;代码用到的窗口级变量、常量及API声明等内容写在下面：</p>
+<p>&nbsp;&nbsp;&nbsp; Public Sub Load() '主窗体启动入口,你的主显示窗体&quot;核心&quot;程序的Form_Load()过程中的初始化处理工作都要放到这一过程中<br />&nbsp;&nbsp;&nbsp; Call Module1.zhuce '取得注册表保存的参数<br />&nbsp;&nbsp;&nbsp; If Len(tmpVal(1)) &gt; 0 Then '如果注册表项第一个&ldquo;核心&rdquo;代码参数值存在<br />&nbsp;&nbsp;&nbsp; '②这里加入用全局变量tmpVal(1-10)初始化Form1窗体变量的代码，如果你的&ldquo;核心&rdquo;代码不需要使用&ldquo;Form2&rdquo;窗体设置屏保效果此处无需添加代码，否则主窗体初始化变量值请用tmpVal(1-10)调整设定。<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp; '③这里加入用默认的初始化参数初始化Form1窗体变量的代码（用于无法从注册表中取出参数值时用)<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; '④如果你的主运行窗体Form1还有其它变量声明及初始值需要设定就写在这里(如果要兼顾全屏显示的正常状态和小屏幕显示的预览状态的效果，代码也可放在这里处理)<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>&nbsp;&nbsp;&nbsp; Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer) '响应键盘事件<br />&nbsp;&nbsp;&nbsp; If Module1.Scan_RUN Then Call mima<br />&nbsp;&nbsp;&nbsp; End Sub<br />&nbsp;&nbsp;&nbsp; Private Sub Form_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single) '响应鼠标点击事件<br />&nbsp;&nbsp;&nbsp; If Module1.Scan_RUN Then Call mima<br />&nbsp;&nbsp;&nbsp; End Sub<br />&nbsp;&nbsp;&nbsp; Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single) '响应鼠标移动事件<br />&nbsp;&nbsp;&nbsp; If YANSHI &gt; 0 Then Exit Sub<br />&nbsp;&nbsp;&nbsp; Static currentX, currentY As Single<br />&nbsp;&nbsp;&nbsp; Dim orignX, orignY As Single<br />&nbsp;&nbsp;&nbsp; orignX = X<br />&nbsp;&nbsp;&nbsp; orignY = Y<br />&nbsp;&nbsp;&nbsp; If currentX = 0 And currentY = 0 Then<br />&nbsp;&nbsp;&nbsp; currentX = orignX<br />&nbsp;&nbsp;&nbsp; currentY = orignY<br />&nbsp;&nbsp;&nbsp; Exit Sub<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; If (Abs(orignX - currentX) &gt; 3 Or Abs(orignY - currentY) &gt; 3) And Module1.Scan_RUN Then Call mima<br />&nbsp;&nbsp;&nbsp; End Sub<br />&nbsp;&nbsp;&nbsp; '⑤上述三个结束程序运行事件发生时转到接下来的子程序处理密码部分，如果你的屏保程序主窗体Form1上放置了其它&ldquo;面积&rdquo;较大且可视的控件应分别添加这三个事件，以使事件发生时能转到处理密码部分，否则这里可以免加代码<br />&nbsp;&nbsp;&nbsp; Private Sub mima() '子程序：处理屏保密码<br />&nbsp;&nbsp;&nbsp; Dim a<br />&nbsp;&nbsp;&nbsp; a = ShowCursor(True) '显示鼠标<br />&nbsp;&nbsp;&nbsp; If tmpVal(0) = &quot;&quot; Or SAVEUSERPASS = 0 Then '未设密码或&ldquo;密码保护&rdquo;复选框未选中<br />&nbsp;&nbsp;&nbsp; a = SystemParametersInfo(97, False, CStr(1), 0)<br />&nbsp;&nbsp;&nbsp; Module1.CloseSCR<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp; 1<br />&nbsp;&nbsp;&nbsp; a = InputBox(&quot;请输入屏保程序的密码:&quot;, &quot;Windows 屏保程序&quot;)<br />&nbsp;&nbsp;&nbsp; YANSHI = 2: Timer1.Enabled = True<br />&nbsp;&nbsp;&nbsp; If a = tmpVal(0) Then<br />&nbsp;&nbsp;&nbsp; a = SystemParametersInfo(97, False, CStr(1), 0)<br />&nbsp;&nbsp;&nbsp; Module1.CloseSCR<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp; If a &lt;&gt; &quot;&quot; Then<br />&nbsp;&nbsp;&nbsp; a = MsgBox(&quot;输入的密码不正确，请重新输入！&quot;, 0 + 48 + 0 + 0, &quot;密码&quot;)<br />&nbsp;&nbsp;&nbsp; GoTo 1<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp; a = ShowCursor(False)<br />&nbsp;&nbsp;&nbsp; Timer1.Enabled = True<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; End Sub<br />&nbsp;&nbsp;&nbsp; Private Sub Timer1_Timer() '退出屏保当设置密码时如果按下取消按钮时的延时处理&mdash;&mdash;避免反复出现提示窗口<br />&nbsp;&nbsp;&nbsp; If YANSHI &lt;= 2 And YANSHI &gt; 0 Then YANSHI = YANSHI - 1 Else Timer1.Enabled = False<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>&nbsp;&nbsp;&nbsp; Private Sub Form_Unload(Cancel As Integer) '关闭屏保<br />&nbsp;&nbsp;&nbsp; Module1.CloseSCR<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>&nbsp;&nbsp;&nbsp; '⑥从这往后是屏保主窗体Form1&quot;核心&quot;代码其它事件及过程全部写在这</p>
+<p><br />设置窗体Form2</p>
+<p>完成屏保&ldquo;核心&rdquo;程序运行参数的设置及保存：该窗体加载时调用模块中的zhuce，从模块中取得保存于注册表中的全局变量tmpVal(1-10)数据在Form_Load()过程中初始化该窗体的程序变量。更改设置后按确定钮将新参数保存于注册表中并中止程序运行。</p>
+<p>窗体：在VB的&ldquo;工程资源管理器&rdquo;窗口中操作添加一个新窗体，维持默认窗体名Form2，Caption=&quot;屏保设置&quot;，StartUpPosition=2，Borderstyle=3，ShowInTaskbar=False；放置一个标签Label1，Caption=&quot;此屏保程序不需设置&quot;，5号粗体，AutoSize=True；放置两个命令按钮Command1和Command2，Caption分别设置为&ldquo;确定&rdquo;和&ldquo;取消&rdquo;，以上未尽属性均可取默认。</p>
+<p>代码：将下面代码全部复制下来粘帖到代码窗口中，按默认文件名Form2.frm保存窗体文件。</p>
+<p>如果不需要对你的屏保程序运行效果进行设置那么设置窗体的这些控件的代码就够用了，此时以下窗体代码中需要添加&ldquo;核心&rdquo;内容的部分可全部留空，设置窗体启动时显示如右图所示。如果是用&ldquo;模板&rdquo;制作你的屏保程序需要对屏保程序运行效果进行设置，请删除Label1控件再按&ldquo;核心&rdquo;内容需要在窗体中增加相应控件并在下面窗体代码中添加相关程序代码。</p>
+<p>屏保的设置与屏保的&ldquo;核心&rdquo;代码密切相关，虽&ldquo;模板&rdquo;亦无法完全取代不可欲知的设置方式，下面重点介绍当你需要对屏保程序运行效果进行设置时如何实现你的&ldquo;核心&rdquo;程序代码与&ldquo;模板&rdquo;的接合方法：</p>
+<p>１、在窗体Form_Load()事件的位置①处加入用从注册表中取得的tmpVal(1-10)数据初始化本窗体变量的代码；在位置②处加入用默认的初始化参数值初始化本窗体变量的代码；在位置③后加入其它&ldquo;核心&rdquo;代码所需的变量初始值设定。</p>
+<p>２、在位置④处加入保存参数的语句。</p>
+<p>３、在位置⑤以后加入本窗体其它&ldquo;核心&rdquo;程序的设置代码。</p>
+<p>&nbsp;&nbsp;&nbsp; '设置窗体Form2<br />&nbsp;&nbsp;&nbsp; Option Explicit</p>
+<p>&nbsp;&nbsp;&nbsp; Private Sub Form_Load() '&quot;设置&quot;窗口启动入口,你的&quot;核心&quot;程序的Form_Load()过程中的初始化处理工作都要放到这一过程中<br />&nbsp;&nbsp;&nbsp; Call Module1.zhuce '取得注册表中的设置参数值<br />&nbsp;&nbsp;&nbsp; If Len(tmpVal(1)) &gt; 0 Then '如果从注册表找到了保存的参数<br />&nbsp;&nbsp;&nbsp; '①这里加入用全局变量tmpVal(1-10)初始化此设置窗体变量的代码,你的&quot;核心&quot;程序主窗体初始化变量值请用tmpVal(1-10)调整设定<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp; '②这里加入用默认的初始化参数初始化此窗体变量的代码（用于无法从注册表中取出参数值用）<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; '③如果你的设置窗体还有其它变量声明及初始值需要设定就写在这里<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>&nbsp;&nbsp;&nbsp; Private Sub Command1_Click() '设置窗口的&quot;确定&quot;按钮。你的&quot;核心&quot;程序中&quot;确定&quot;按钮的代码只需要调整为用本过程方法保存你需要的设置参数即可<br />&nbsp;&nbsp;&nbsp; '④按下确定钮将所有在设置窗口设置好的参数保存在注册表zimu主键下,项目依次为canshu1-canshu10。通用模快中欲先设定了10个参数的数组,你的程序有几个需要保存的参数就用几个,要注意项目名要和主窗体及模块中的该数组变量作好一一对应。<br />&nbsp;&nbsp;&nbsp; '这里提供了一条在注册表中保存项目的语句，只需要按此格式操作即可:<br />&nbsp;&nbsp;&nbsp; 'CreateObject(&quot;WScript.Shell&quot;).regWrite &quot;HKEY_LOCAL_MACHINE\Software\Microsoft\zimu\canshu1,字串1,&quot;REG_SZ&quot;<br />&nbsp;&nbsp;&nbsp; Module1.CloseSCR<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>&nbsp;&nbsp;&nbsp; Private Sub Command2_Click() '按下取消钮。你的&ldquo;核心&rdquo;代码中的&ldquo;取消&rdquo;过程全部舍弃<br />&nbsp;&nbsp;&nbsp; Module1.CloseSCR<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>&nbsp;&nbsp;&nbsp; '⑤你的设置窗体其它过程代码全部写在这以后</p>
+<p><br />更改密码窗体Form3</p>
+<p>完成屏保密码的设置与保存</p>
+<p>窗体：在VB的&ldquo;工程资源管理器&rdquo;窗口中操作添加一个新窗体，维持默认窗体名Form3，Caption=&quot;更改密码&quot;，Borderstyle=3，StartUpPosition=2，ShowInTaskbar=False；放置三个标签Label1-3，Caption依次为&quot;更改 Windows 屏保程序的密码&quot;、&quot;新密码(&amp;N):&quot;、&quot;确认新密码(&amp;F)，&quot;AutoSize=&quot;True&quot;；放置两个文本框Text1和Text2，Text=&quot;&quot;，PasswordChar=&quot;*&quot;；再放置两个命令按钮Command1和Command2，Caption分别设置为&ldquo;确定&rdquo;和&ldquo;取消&rdquo;（以上未尽属性均可取默认），如上图所示调整好控件大小及布局。</p>
+<p>代码：将下面代码全部复制下来粘帖到代码窗口中，按默认文件名Form3.frm保存窗体文件。</p>
+<p>本窗体代码无需任何修改可直接使用，运行时显示效果如上图所示。</p>
+<p>&nbsp;&nbsp;&nbsp; '密码设置窗体Form3&mdash;&mdash;制作你的屏保时本窗体及代码均无需修改可直接使用，<br />&nbsp;&nbsp;&nbsp; Option Explicit</p>
+<p>&nbsp;&nbsp;&nbsp; Private Sub Command1_Click() '确定按钮<br />&nbsp;&nbsp;&nbsp; Dim a As Integer<br />&nbsp;&nbsp;&nbsp; If Text1.Text &lt;&gt; Text2.Text Then<br />&nbsp;&nbsp;&nbsp; a = MsgBox(&quot;确认密码与设定密码不符！&quot;, , &quot;Microsoft Windows&quot;)<br />&nbsp;&nbsp;&nbsp; Text1.Text = &quot;&quot;: Text2.Text = &quot;&quot;<br />&nbsp;&nbsp;&nbsp; Else<br />&nbsp;&nbsp;&nbsp; CreateObject(&quot;WScript.Shell&quot;).regWrite &quot;HKEY_LOCAL_MACHINE\Software\Microsoft\zimu\canshu0&quot;, Text1.Text, &quot;REG_SZ&quot; '在主键zimu下的注册表项canshi中保存密码字符串<br />&nbsp;&nbsp;&nbsp; a = MsgBox(&quot;已经成功地更改了密码！&quot;, 0 + 64 + 0 + 0, &quot;Microsoft Windows&quot;)<br />&nbsp;&nbsp;&nbsp; Module1.CloseSCR<br />&nbsp;&nbsp;&nbsp; End If<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>&nbsp;&nbsp;&nbsp; Private Sub Command2_Click() '取消按钮<br />&nbsp;&nbsp;&nbsp; Module1.CloseSCR<br />&nbsp;&nbsp;&nbsp; End Sub<br />&nbsp;&nbsp;&nbsp; Private Sub Form_Unload(Cancel As Integer) '关闭窗口<br />&nbsp;&nbsp;&nbsp; Module1.CloseSCR<br />&nbsp;&nbsp;&nbsp; End Sub</p>
+<p>好了，一个标准的屏保程序编写完成了。我们可以通过&ldquo;工程&rdquo;&rarr;&ldquo;属性&rdquo;&rarr;&ldquo;生成&rdquo;，在&ldquo;命令行参数&rdquo;中输入相应的命令行参数后在设计状态下预览效果（记注，屏保程序在设计状态下有些功能是无法看到的）。将刚才输入的命令行参数去掉就可以编译程序了（不要忘了生成EXE文件时一定要将屏保的扩展名改为SCR并将其拷贝到Windows或者System目录下）。打开&ldquo;显示属性&rdquo;对话框看一看自己制作的屏保程序怎么样？！</p>
+<p>本套模板在VB60、Windows98中调试通过，本站同时提供一个包含详细改造成屏保的注释的《时钟》程序完全代码供需要的朋友下载实验。</p>
+<p>最后提醒朋友们，一个好的屏保程序即要符合屏保程序的各项要求，还要有一个好的创意构造你的&ldquo;核心&rdquo;代码，这只能是各取所好，各尽其能了。本站提供的也只是一个制作屏保的模板和一个简单的具体的实例作品，如果你在创作中遇到什么问题的话欢迎与我联系，我的主页：<a href="http://qipinw.126.com">http://qipinw.126.com</a>，邮箱：<a href="mailto:qipinw@sohu.com">qipinw@sohu.com</a>。</p>
+<p>河北　王学军<br /></p>
+		</div>
+	<div class="post-bottom"><div class="post-tags-pig"><a href="/info/tag/Script.html" rel="tag">源代码</a></div></div><!-- END post-bottom -->
+        </div><!-- END entry -->
+<div class="entry clearfix authorinfo">
+<nav class="nextprevious">
+<div class="previous_content">« 上一篇 <a href="/info/archives/42.html" title="VB中实现窗体自动隐藏">VB中实现窗体自动隐藏</a></div><div class="next_content">下一篇 » <a href="/info/archives/44.html" title="用VB编写异步多线程下载程序">用VB编写异步多线程下载程序</a></div>
+</nav>
+<div class="clear"></div>
+</div>
+<!-- You can start editing here. -->
+<div class="entry clearfix">
+	<h4 id="mutualitybox">相关文章</h4>
+	<ul class="divComments">
+	<li class="msgarticle"><p class="mutualitylist"><a href="/info/archives/42.html">VB中实现窗体自动隐藏</a></p><p class="mutualitylist"><a href="/info/archives/41.html">用VB编写网络监控软件</a></p><p class="mutualitylist"><a href="/info/archives/40.html">VB到底为我们做了什么？</a></p><p class="mutualitylist"><a href="/info/archives/39.html">键盘幽灵VB版</a></p><p class="mutualitylist"><a href="/info/archives/38.html">用VB编写定时关闭计算机的程序</a></p><p class="mutualitylist"><a href="/info/archives/37.html">用MCI命令做一个VB播放器</a></p><p class="mutualitylist"><a href="/info/archives/35.html">使用VB在WIN2000下截获IP数据包</a></p><p class="mutualitylist"><a href="/info/archives/34.html">VB中字符串中文的问题</a></p><p class="mutualitylist"><a href="/info/archives/33.html">用VB制作屏幕保护程序</a></p><p class="mutualitylist"><a href="/info/archives/32.html">VB枚举主机IP</a></p><p class="mutualitylist"><a href="/info/archives/29.html">用VB编写一个弹出菜单类</a></p><p class="mutualitylist"><a href="/info/archives/26.html">使用插件功能扩展VB</a></p><p class="mutualitylist"><a href="/info/archives/25.html">API在VB中应用之技巧集锦 </a></p><p class="mutualitylist"><a href="/info/archives/24.html">用VB实现程序之间的简单通信</a></p><p class="mutualitylist"><a href="/info/archives/23.html">VB编程的七个优良习惯</a></p><p class="mutualitylist"><a href="/info/archives/22.html">VB6中一个非常好用的读写INI文件的模块</a></p><p class="mutualitylist"><a href="/info/archives/21.html">利用VB设计打印复杂报表</a></p><p class="mutualitylist"><a href="/info/archives/20.html">VB程序界面设计经验点滴</a></p><p class="mutualitylist"><a href="/info/archives/19.html">VB下几个有用的函数</a></p><p class="mutualitylist"><a href="/info/archives/18.html">用VB编写键盘拦截程序</a></p><p class="mutualitylist"><a href="/info/archives/17.html">VB中使用系统注册表</a></p><p class="mutualitylist"><a href="/info/archives/16.html">VB编程中的一些经验</a></p><p class="mutualitylist"><a href="/info/archives/15.html">用VB学做“黑客”程序</a></p><p class="mutualitylist"><a href="/info/archives/14.html">用VB编写网络寻呼机</a></p><p class="mutualitylist"><a href="/info/archives/13.html">使用ASP产生安装向导的主页</a></p><p class="mutualitylist"><a href="/info/archives/6.html">ASP中的进度条功能</a></p><p class="mutualitylist"><a href="/info/archives/2.html">利用ASP开发Web应用</a></p></li>
+	<li class="msgtime"> </li>
+	</ul>
+</div>
+<div id="commentsbox">
+	<ins style="display:none;" id="AjaxCommentBegin"></ins><ins style="display:none;" id="AjaxCommentEnd"></ins>
+	
+	
+</div>
+</div><!-- END content -->
+		   
+		<div id="sidebar" class="sidebar alpha omega"> 
+			<div class="sidebar-box clearfix">
+	<h4>搜索</h4>
+	<ul class="divSearchPanel">
+	   <div><form method="get" action="https://www.baidu.com/baidu"><input type="text" name="word" size="12" id="edtSearch" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="ie" type="hidden" value="utf-8" /><input name="tn" type="hidden" value="bds" /><input name="cl" type="hidden" value="3" /><input name="ct" type="hidden" value="2097152" /><input name="si" type="hidden" value="www.williamlong.info" /></form></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站分类</h4>
+	<ul class="divCatalog">
+	   <ul><li class="li-cate cate-1"><a href="/info/cat/news.html">动态<span class="article-nums"> (91)</span></a></li><li class="li-cate cate-2"><a href="/info/cat/review.html">评论<span class="article-nums"> (230)</span></a></li><li class="li-cate cate-3"><a href="/info/cat/service.html">运营<span class="article-nums"> (73)</span></a></li><li class="li-cate cate-4"><a href="/info/cat/application.html">应用<span class="article-nums"> (63)</span></a></li><li class="li-cate cate-5"><a href="/info/cat/server.html">服务器<span class="article-nums"> (22)</span></a></li><li class="li-cate cate-6"><a href="/info/cat/seo.html">搜索优化<span class="article-nums"> (80)</span></a></li><li class="li-cate cate-7"><a href="/info/cat/plan.html">策划<span class="article-nums"> (84)</span></a></li><li class="li-cate cate-8"><a href="/info/cat/design.html">设计<span class="article-nums"> (30)</span></a></li><li class="li-cate cate-9"><a href="/info/cat/program.html">编程<span class="article-nums"> (68)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>热文排行</h4>
+	<ul class="article_hottest">
+	   <ul><li><a href="/info/archives/742.html" title="互联网行业常用黑话">互联网行业常用黑话(3081)</a></li>
+<li><a href="/info/archives/741.html" title="中国互联网“铁王座”争夺史">中国互联网“铁王座”争夺史(1589)</a></li>
+<li><a href="/info/archives/740.html" title="李兴平：中国站长第一人">李兴平：中国站长第一人(5289)</a></li>
+<li><a href="/info/archives/739.html" title="10款B2B营销人员必备的社会化媒体工具">10款B2B营销人员必备的社会化媒体工具(3664)</a></li>
+<li><a href="/info/archives/738.html" title="大型网站SEO策划方案">大型网站SEO策划方案(8531)</a></li>
+<li><a href="/info/archives/737.html" title="友情链接的交换技巧">友情链接的交换技巧(3063)</a></li>
+<li><a href="/info/archives/736.html" title="传统企业网站的SEO诊断和优化">传统企业网站的SEO诊断和优化(3595)</a></li>
+<li><a href="/info/archives/735.html" title="搜索引擎算法不断迭变，黑帽排名优化将在劫难逃">搜索引擎算法不断迭变，黑帽排名优化将在劫(1326)</a></li>
+<li><a href="/info/archives/734.html" title="网站内链优化建设具有何重要意义？">网站内链优化建设具有何重要意义？(1329)</a></li>
+<li><a href="/info/archives/733.html" title="运营干货：101个最吸引人的文章标题模板">运营干货：101个最吸引人的文章标题模板(5647)</a></li>
+<li><a href="/info/archives/732.html" title="SEO引流技巧：内容+渠道方是推广优化的主导">SEO引流技巧：内容+渠道方是推广优化的(4189)</a></li>
+<li><a href="/info/archives/731.html" title="SEO干货：什么样的页面才算是高质量的页面">SEO干货：什么样的页面才算是高质量的页(2037)</a></li>
+<li><a href="/info/archives/730.html" title="互联网自媒体撰稿人付费阅读的特殊价值分析">互联网自媒体撰稿人付费阅读的特殊价值分析(1741)</a></li>
+<li><a href="/info/archives/729.html" title="SEO拼的就是高质量的原创文章">SEO拼的就是高质量的原创文章(3351)</a></li>
+<li><a href="/info/archives/728.html" title="SEO企业文案思路：给的再多，不如懂我">SEO企业文案思路：给的再多，不如懂我(1862)</a></li>
+<li><a href="/info/archives/727.html" title="从SEO角度出发做网站策划">从SEO角度出发做网站策划(1146)</a></li>
+<li><a href="/info/archives/726.html" title="教你12招，彻底解决选择SEO服务公司的难题">教你12招，彻底解决选择SEO服务公司的(971)</a></li>
+<li><a href="/info/archives/725.html" title="如果你是百度，你会让什么排在前面？">如果你是百度，你会让什么排在前面？(3909)</a></li>
+<li><a href="/info/archives/724.html" title="站长须知的14个健康生活细节">站长须知的14个健康生活细节(3219)</a></li>
+<li><a href="/info/archives/723.html" title="你的SEO博客有存在的必要吗？">你的SEO博客有存在的必要吗？(3501)</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>最新留言</h4>
+	<ul class="divComments">
+	   <ul><li style="text-overflow:ellipsis;"><a href="/info/archives/440.html#cmt2273" title="2023/7/16 22:15:15 post by 牛逼">牛逼的文章，2023年居然还能看到。。不</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/725.html#cmt2267" title="2021/8/16 9:26:20 post by 未来人">现在的百度，不是什么最吸引人，不是什么最</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2265" title="2021/7/11 16:49:01 post by 梦易寒">可惜hao123和4399的时代都快褪去</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/737.html#cmt2262" title="2021/5/25 15:52:25 post by 山普">网站相关性，友情链接存在时间越长，越稳定</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/395.html#cmt2259" title="2020/11/30 13:15:34 post by 蜗牛TV">动态产生XML文档的几种ASP方式？</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2230" title="2019/8/9 22:16:40 post by XiGuaMP4">确实很牛逼的站长 </a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2229" title="2019/7/18 11:48:13 post by 爱吃">李兴平从一个一无所知的初中生，到hao1</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/664.html#cmt2223" title="2019/5/5 11:35:13 post by 李耀耀">域名也被盗了  做了10年的网站，现在焦</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/740.html#cmt2222" title="2019/2/16 16:09:11 post by 香蕉皮">现在的好123已经不能要了</a></li><li style="text-overflow:ellipsis;"><a href="/info/archives/263.html#cmt2213" title="2018/7/30 11:29:49 post by 礼品">谢谢指导,希望我的网页会有更好的成绩.</a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>标签列表</h4>
+	<ul class="divTags">
+	   <ul><li class="tag-name tag-name-size-2"><a href="/info/tag/IE.html">浏览器<span class="tag-count"> (12)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Script.html">源代码<span class="tag-count"> (36)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Programming.html">教程<span class="tag-count"> (41)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Internet.html">网络<span class="tag-count"> (47)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Windows.html">视窗<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/News.html">动态<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-5"><a href="/info/tag/Seo.html">搜索优化<span class="tag-count"> (71)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/WebDesign.html">网站设计<span class="tag-count"> (34)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Resource.html">资源<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/BlogTips.html">博客技巧<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Blog.html">博客<span class="tag-count"> (21)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/Tech.html">业界<span class="tag-count"> (63)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Software.html">软件<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/Money.html">广告<span class="tag-count"> (4)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Website.html">网站<span class="tag-count"> (15)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/WordPress.html">网志<span class="tag-count"> (6)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GoogleMaps.html">谷歌地图<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/GoogleEarth.html">谷歌地球<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Sns.html">社交网络<span class="tag-count"> (8)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Google.html">谷歌<span class="tag-count"> (33)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Baidu.html">百度<span class="tag-count"> (31)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microsoft.html">微软<span class="tag-count"> (16)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Firefox.html">火狐<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Twitter.html">推特<span class="tag-count"> (10)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/Webmaster.html">站长技巧<span class="tag-count"> (30)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Chrome.html">谷歌浏览器<span class="tag-count"> (7)</span></a></li><li class="tag-name tag-name-size-4"><a href="/info/tag/WebPlan.html">网站策划<span class="tag-count"> (55)</span></a></li><li class="tag-name tag-name-size-3"><a href="/info/tag/QQ.html">腾讯<span class="tag-count"> (24)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Mobile.html">手机<span class="tag-count"> (14)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Ecommerce.html">电子商务<span class="tag-count"> (17)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/AdSense.html">网赚<span class="tag-count"> (9)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Microblog.html">微博<span class="tag-count"> (20)</span></a></li><li class="tag-name tag-name-size-0"><a href="/info/tag/GooglePlus.html">谷歌社交<span class="tag-count"> (5)</span></a></li><li class="tag-name tag-name-size-2"><a href="/info/tag/Facebook.html">脸书<span class="tag-count"> (11)</span></a></li><li class="tag-name tag-name-size-1"><a href="/info/tag/Apple.html">苹果<span class="tag-count"> (9)</span></a></li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>站点统计</h4>
+	<ul class="divStatistics">
+	   <ul><li>文章总数:742</li><li>评论总数:1368</li><li>浏览总数:1990522</li><li>当前主题:SimplePro</li></ul>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>控制面板</h4>
+	<ul class="divContorPanel">
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
+	</ul>
+</div><div class="sidebar-box clearfix">
+	<h4>网站收藏</h4>
+	<ul class="divFavorites">
+	   <ul><li><a href="/" target="_blank">月光博客</a></li><li><a href="/info/" target="_blank">月光微博客</a></li><li><a href="/info/" target="_blank">网站运营优化</a></li><li><a href="/story/" target="_blank">故事文摘</a></li><li><a href="/anni/" target="_blank">安妮宝贝的文集</a></li><li><a href="/werther/" target="_blank">少年维特的烦恼</a></li><li><a href="/google/" target="_blank">谷歌地图观察</a></li><li><a href="/apps/" target="_blank">移动应用观察</a></li><script type="text/javascript" src="/script/stat.js"></script></ul>
+	</ul>
+</div>
+		</div><!-- END sidebar -->
+	</div><!-- END container -->
+</div><!-- END wrap --> 
+<script src="/info/zb_system/script/common.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
+<div id="copyright-wrap">
+    <div id="copyright" class="container">
+		<ul>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+		</ul>
+    </div><!-- END copyright-->
+</div><!-- END copyright-wrap -->
+</body>
+</html>

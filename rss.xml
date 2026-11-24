@@ -1,5 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>月光博客</title><link>https://www.williamlong.info/</link><description>关注互联网和搜索引擎的IT科技博客</description><generator>RainbowSoft Studio Z-Blog 2.3 Avengers Build 180518</generator><language>zh-CN</language><pubDate>Thu, 05 Nov 2026 23:38:48 +0800</pubDate><item><title>个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定</title><author>williamlong.info@gmail.com (williamlong)</author><link>https://www.williamlong.info/archives/7568.html</link><pubDate>Sun, 01 Nov 2026 21:49:43 +0800</pubDate><guid>https://www.williamlong.info/archives/7568.html</guid><description><![CDATA[<p>三年前在阿里云续费三年的服务器又要到期了，面临续费的问题。这台服务器的配置是两核4G内存，硬盘容量80G，安装的操作系统是 Windows Server 2012，这台服务器运行着我在国内备案的网站（月光博客等网站）。除了这台服务器之外，我还在美国购买了一台一核512兆内存，10G硬盘的小服务器，上面装的是 CentOS 7.8 和宝塔面板 7.7，这个服务器运行着我在国外的网站以及一些第三方客户的网站。</p>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>月光博客</title><link>https://www.williamlong.info/</link><description>关注互联网和搜索引擎的IT科技博客</description><generator>RainbowSoft Studio Z-Blog 2.3 Avengers Build 180518</generator><language>zh-CN</language><pubDate>Wed, 18 Nov 2026 23:20:51 +0800</pubDate><item><title>老树发新芽：九年老服务器焕新记</title><author>williamlong.info@gmail.com (williamlong)</author><link>https://www.williamlong.info/archives/7570.html</link><pubDate>Wed, 18 Nov 2026 23:15:47 +0800</pubDate><guid>https://www.williamlong.info/archives/7570.html</guid><description><![CDATA[<p>最近，我把一台已经购买使用了 9 年的美国云服务器彻底折腾了一遍：重新安装了操作系统，升级了各种软件，还顺便把一些服务也换成了新版。整个过程还算顺利，趁着刚刚升级的这点劲头，把这次折腾的经历记录下来。</p>
+
+<p>这台服务器是我在 2017 年购买的，当时的价格是每年 19 美元，后来涨到了每年 28 美元。价格虽然便宜，硬件配置也比较低：1 核 CPU、512MB 内存、10GB 硬盘，以及每月 500GB 的流量。</p>
+
+<p>服务器上原来安装的软件也比较简单，底层操作系统是 CentOS 7.6，管理面板使用的是宝塔面板 7.7，同时部署了 Nginx 和 V2Ray 等相关程序。</p>
+
+<p>这些年来，我对服务器进行过不少优化，整体运行状态一直非常不错。日常 CPU 占用率基本保持在 2% 左右，内存占用率大约 38%，服务器负载非常低。</p>
+
+<p>最开始我还在上面搭过 WordPress 网站，装了 PHP 与 MySQL 环境。不过，后来发现这两个服务实在太占用资源，对于只有 512MB 内存的服务器来说，多少有些力不从心。经过一番折腾，最终还是放弃了动态网站，卸载 PHP 和 MySQL，改成了 Hugo 系统，只托管纯 HTML 静态网站，这样整个服务器负载就大幅降低，就这套硬件，即使日访问量达到 10 万 PV，也完全能够应付。对于这种小配置的服务器来说，静态网站简直就是最好的解决方案。</p>
+
+<p>一直就这么平稳跑着，直到我尝试借助 AI 工具运维这台服务器时，AI 上来就给我提出了一个建议：升级服务器操作系统。它提醒我：这台服务器对外开了 7 个端口，托管了 5 个站点，却两年没有打过补丁。</p>
+
+<p>我被说服了。</p>
+
+<p>于是，开始研究如何升级操作系统，以及应该换成哪个版本。</p>
+
+<p>原来的 CentOS 被红帽收购了之后，整个 CentOS 7全系列已经在2024年停止维护，继续使用显然不是长久之计。而且 CentOS 7.6 本身也没有什么直接升级到新版本的简单途径，与其在原有系统上折腾，不如直接重装一个新的操作系统。</p>
+
+<p>经过一番研究，我最终选择了 Debian 12。</p>
+
+<p>Debian 一直以稳定、轻量著称，作为服务器操作系统非常合适。对于我这台只有 512MB 内存的老服务器来说，Debian 也是一个不错的选择。相比原来的 CentOS，资源占用不会有明显增加，完全可以胜任目前的工作。</p>
+
+<p>接下来就是软件方面的升级。</p>
+
+<p>原来使用的宝塔面板是 7.7 版本，一直没有升级，因为高于这个版本的宝塔面板会强制收集手机号，给用户隐私泄露以及服务器安全造成严重威胁，后来我才知道，宝塔面板 12 和 7.7 版一样，不会强制收集手机号，于是我决定升级安装宝塔面板 12。新旧版本在基本使用方式上比较接近，日常管理应该不会有什么太大区别，预计资源占用也不会增加太多。</p>
+
+<p>原来的 V2Ray 也已经停止迭代更新了，现在主流的替代方案是 Xray，于是也决定趁这次机会一起换掉。</p>
+
+<p>至于 Nginx，就没有太多需要操心的地方了，它的兼容性一直很好，资源占用也非常低，直接安装新版即可。</p>
+
+<p>准备工作完成之后，就开始动手了。</p>
+
+<p>我的服务器服务商提供了一键重装操作系统的功能，操作起来倒是非常方便。我先将服务器关机，然后进入管理后台，选择重新安装操作系统，选择 Debian 12 发起重装，没过多久，一个全新的操作系统就安装完成了。</p>
+
+<p>系统安装好之后，先进行系统更新，下载并安装最新的补丁，然后安装宝塔面板 12。接着通过宝塔面板安装 Nginx 1.30.6，最后再安装一个一键部署 Xray 的软件。</p>
+
+<p>到这里，服务器的基础软件环境就算全部安装完成了。</p>
+
+<p>部署完毕我查看整机的 CPU 和内存占用情况，发现结果还挺令人满意：CPU 依然保持在 2% 左右，内存占用率也只有 40% 左右，与之前相比并没有增加多少。</p>
+
+<p>也就是说，在几乎没有增加硬件资源消耗的情况下，整个服务器的软件环境已经全部更新到了新版本。从 CentOS 7.6 到 Debian 12，从宝塔 7.8 到宝塔 12，再从 V2Ray 到 Xray，这台服役了九年的老服务器，算是完成了一次软件层面的脱胎换骨，彻底焕然一新了。</p>
+
+<p>当然，软件安装并不意味着所有事情都已经完成。其中比较复杂的就算 Xray 的配置了，Xray 本身配置逻辑看着不算复杂，但实际上手调试我还是一头雾水。服务器上明明已经一键安装好了 Hysteria 2 协议，客户端却一直不通，我估计这涉及到了协议、端口和防火墙设置，自己还是有些搞不明白。于是，索性把任务交给 AI，让它直接登录服务器帮我配置。</p>
+
+<p>不得不说，现在的 AI 做运维调试确实方便多了，授予登录权限之后，AI 便开始在我服务器玩命折腾，又是开端口，又是改配置，忙得不亦乐乎，没费多长时间，就把 Hysteria 2 协议给调试通了，问题根源其实就是服务器防火墙的 UDP 端口没有正确开放。</p>
+
+<p>至此整台服务器的软件环境全部就位，往后我就可以借助 AI，便捷实时地管理这台机器，不用再耗费大量精力手动折腾各类配置，我自己要是对某些问题不太熟悉，也能让 AI 帮忙分析、测试和排查问题。</p>
+
+<p>最后再感慨一下，这台美国云服务器，每个月的成本只有 2.5 美元，实在是物超所值，每个月只要花 2.5 美元，就能拥有一台运行着 Linux、Nginx、Xray，还能托管多个网站的海外云服务器，而且已经连续使用了九年，这性价比，实在是有点离谱了。我唯一遗憾的是，要是我能早一点有强大的 AI 帮助管理服务器就太好了，那能省多少时间啊，现在的新入门的网站服务器管理员真是太幸福了。</p>
+]]></description><category>网站建设</category><comments>https://www.williamlong.info/archives/7570.html#comment</comments><wfw:commentRss>https://www.williamlong.info/feed.asp?cmt=7570</wfw:commentRss></item><item><title>折腾博客：Z-Blog静态化改造，从Windows换到Linux</title><author>williamlong.info@gmail.com (williamlong)</author><link>https://www.williamlong.info/archives/7569.html</link><pubDate>Tue, 10 Nov 2026 23:22:43 +0800</pubDate><guid>https://www.williamlong.info/archives/7569.html</guid><description><![CDATA[<p>最近我把自己的博客完成了服务器迁移，在上周正式从 Windows 服务器搬迁到了 Linux 服务器。这台服务器配置为 2 核 CPU、40G 硬盘以及 2G 运行内存，Debian 12 操作系统，环境上只装了宝塔面板 12 版本，搭配 Nginx1.30.6，专门用来存放网站的 HTML 静态文件。</p>
+
+<p>按照我的估算，这套配置应对每日 30 万 PV 的访问是完全绰绰有余的，再加上我的站点本身就是纯静态网站，本身抗压能力就更强，短时间之内基本不用担忧流量带来的性能压力。</p>
+
+<p>最开始我的计划，是把整个博客程序从 Z-Blog 迁移到 Hugo，前期绝大部分迁移工作其实都已经做完了。Hugo 生成出来的站点页面效果看着很不错，但有一个很大的短板：它没有可视化的网站后台，不像原来的 Z-Blog，自带集成后台，写文章、管理旧博文、发布内容都能在后台直接操作。习惯了后台操作之后，改用 Hugo 这种模式，没有便捷的管理入口，用起来处处别扭，实在适应不来。</p>
+
+<p>我对于Hugo的编辑和管理界面感觉不太习惯，打算还是用原来的ZBlog进行文章管理，本地Windows11搭建了一个IIS，让AI装上SSL证书，用SwitchHosts切换域名到本地，在本地域名下新建和管理文章，然后让AI编写了一个WinSCP的同步命令，同步本地html到服务器上。</p>
+
+<p>权衡过后，我放弃直接完整迁移到 Hugo，换成一套更加平滑过渡的折中方案，依旧沿用 Z-Blog 原有的内容生成逻辑，整套工作流程是这样的：</p>
+
+<p>在我自己日常使用的 Windows11 本机电脑上，开启系统自带的 IIS 组件，本地搭建一套完整的博客站点，让AI装上SSL证书，再借助 SwitchHosts 工具，把我的博客域名做本地映射，访问域名就会指向本机搭建的网站，在本地域名下新建和管理文章，之后所有写稿、编辑旧文章、发布新内容，全都在本地这套环境里完成。文章编辑发布完毕，Z-Blog 就会在本地生成整套完整的静态页面，之后我再通过 WinSCP 工具，把生成好的静态文件同步上传到远端的 Linux 服务器。这还需要让AI编写了一个 WinSCP 的同步命令，排除本地的asp、mdb等文件，不要将那些文件同步到服务器上。</p>
+
+<p>整套流程实操下来不算复杂，不过中间有一些关键细节需要处理，也是这次折腾耗费心思的地方。</p>
+
+<p>Z-Blog 通过 YTBuild 生成静态页面的时候，输出的 HTML 里面还会残留不少 ASP 相关的代码片段。这些残余代码放到纯静态 Nginx 环境下完全没有用处，还会让页面源码变得杂乱，并且引发大量404日志错误。我去 Z-Blog 官方插件站翻找一圈，并没有现成插件可以清理这类残留，没有现成工具，我就把这个定制化需求交给 AI，让 AI 帮我开发对应的清理插件。</p>
+
+<p>不得不感慨现在 AI 的编程能力确实很厉害，Z-Blog ASP算是一个很冷门的软件，AI接到我的需求之后，先去 GitHub 拉取了 Z-Blog 的完整源码，读懂内部逻辑之后，根据我的需求直接写代码，十几分钟就完成了插件代码编写，然后AI自己用VBS测试通过。</p>
+
+<p>我把写好的插件放到本地站点启用测试，没想到直接一次就运行成功，没有出现任何错误。装上这个插件之后，生成出来的 HTML 源码干干净净，彻底清除掉全部 ASP 遗留标记，效果完全达到我的预期。如果有同样需求的朋友，也可以<a href="https://www.williamlong.info/download/noasp.zip">点击这里下载</a>这个插件使用。</p>
+
+<p>生成完成之后，就是 WinSCP 的同步策略。在配置 WinSCP 同步任务的时候，我设置了文件过滤规则，禁止把 *.asp;*.mdb;*.bat;*.config 这类服务器配置与数据库类文件上传到线上，只同步页面所需的其余文件。</p>
+
+<p>我不想每次发布都把全站文件完整重传一遍，因此走命令行模式实现增量同步，已经上传过、没有改动的文件直接跳过，只同步发生修改的文件，整个同步命令让AI帮我编写出来。</p>
+
+<p>第一次执行全量同步的时候，因为文件数量多，速度会偏慢。但后续更新发布就十分轻快，没有改动的文件直接跳过，只传输新增和修改过的资源，效率很高。</p>
+
+<p>这套发布模式，虽说多了本地搭建环境这一步，本地写内容再同步上传，对比直接在线后台发布要稍微多了几道手续，但收益十分可观，线上服务器不需要再跑 ASP、PHP，也不用部署数据库服务，线上机器的CPU、内存资源得到极大释放，开销被压到很低，可以用来承接更大的并发连接，整个服务器的安全性也大幅提高，整体来看这笔代价非常值得。</p>
+
+<p>实际使用感受下来，新服务器的响应速度十分惊艳，打开页面如同行云流水一般畅快，体验感非常好。这次服务器迁移改造整体算是相当成功，我甚至有点后悔没有早几年做这件事，要是早点完成切换，就能避开过去一大堆服务器维护上的糟心事。再加上现在可以借助 AI 辅助处理开发、调试工作，博客整体的管理、维护成本都下降了一大截。</p>
+
+<p>最后遗留下来的问题是，由于博客全部切换为静态 HTML ，因此评论功能和打分功能暂时无法实现，需要稍后研究研究通过什么方法能够实现替代。</p>
+]]></description><category>网站建设</category><comments>https://www.williamlong.info/archives/7569.html#comment</comments><wfw:commentRss>https://www.williamlong.info/feed.asp?cmt=7569</wfw:commentRss></item><item><title>个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定</title><author>williamlong.info@gmail.com (williamlong)</author><link>https://www.williamlong.info/archives/7568.html</link><pubDate>Sun, 01 Nov 2026 21:49:43 +0800</pubDate><guid>https://www.williamlong.info/archives/7568.html</guid><description><![CDATA[<p>三年前在阿里云续费三年的服务器又要到期了，面临续费的问题。这台服务器的配置是两核4G内存，硬盘容量80G，安装的操作系统是 Windows Server 2012，这台服务器运行着我在国内备案的网站（月光博客等网站）。除了这台服务器之外，我还在美国购买了一台一核512兆内存，10G硬盘的小服务器，上面装的是 CentOS 7.8 和宝塔面板 7.7，这个服务器运行着我在国外的网站以及一些第三方客户的网站。</p>
 
 <p>由于国内网站备案必须要国内的服务器，因此购买服务器还是必要的。问题是继续用这个 Windows 服务器，还是换一个其他的系统。</p>
 
@@ -968,140 +1048,4 @@ git push origin main</p>
 <p>最后想郑重提醒所有老年人：凡是宣称&ldquo;先交钱、再赚钱&rdquo;的居家副业，100%都是圈套。</p>
 
 <p>希望这篇真实的维权实录，希望能够帮更多家庭避开同类陷阱，让那些无良培训机构不再肆意收割老年人群体。</p>
-]]></description><category>生活感悟</category><comments>https://www.williamlong.info/archives/7560.html#comment</comments><wfw:commentRss>https://www.williamlong.info/feed.asp?cmt=7560</wfw:commentRss></item><item><title>Hugo搭建静态网站教程</title><author>williamlong.info@gmail.com (williamlong)</author><link>https://www.williamlong.info/archives/7559.html</link><pubDate>Sun, 30 Aug 2026 22:14:30 +0800</pubDate><guid>https://www.williamlong.info/archives/7559.html</guid><description><![CDATA[<p>之前我介绍了Cloudflare Pages，GitHub Pages等静态网站托管平台，那么，用户如果想搭建一个静态网站，还需要一个静态网站生成软件，在大量的同类工具里，例如Hexo、Jekyll等等，Hugo是速度最快，而且上手也最容易的一个选择，由于Hugo是Go语言编写，速度极快，几千页的网站能在几秒钟生成完毕，这也是目前个人网站搭建平台最优的选择之一，下面我就介绍一下如何使用Hugo搭建一个静态网站。</p>
-
-<p><strong>第一步：安装Hugo</strong></p>
-
-<p>安装Hugo之前，首先要先从下面的两个地址来安装Git和Go：</p>
-
-<p>Git下载地址：https://git-scm.com/install/</p>
-
-<p>Go下载地址：https://go.dev/dl/</p>
-
-<p>安装完成之后，就可以从下面的地址来安装Hugo：</p>
-
-<p>Hugo下载地址：https://github.com/gohugoio/hugo/releases/latest</p>
-
-<p>地址里有很多个Hugo版本，建议选择下载 Hugo Extended 这个版本，大多数包管理器默认安装的就是这个版本。</p>
-
-<p>对于Windows系统来说，Hugo本身只有一个EXE文件，下载后将其放在任意目录均可，但该目录需要在&ldquo;系统变量&rdquo;的Path里才行，比如C:\Windows目录。</p>
-
-<p>之后，打开cmd或者powershell，输入hugo version可以查看当前Hugo程序的版本号。</p>
-
-<p><strong>第二步：创建站点</strong></p>
-
-<p>安装好之后，就可以使用Hugo来搭建网站了。</p>
-
-<p>先创建一个目录，然后用一条命令就能生成一个新静态网站的基础目录结构：（本例创建的站点名为mysite，大家可以自定义）：</p>
-
-<p>hugo new site mysite</p>
-
-<p>之后，我们会看到当前目录新增了一个mysite的文件夹，这个文件夹就是Hugo的工作目录。</p>
-
-<p>下面简单说明几个关键目录的作用：</p>
-
-<p>content/：存放你的文章和页面内容（Markdown 文件）</p>
-
-<p>layouts/：网站模板文件</p>
-
-<p>static/：静态资源，比如图片、字体，会原样复制到最终生成的网站中</p>
-
-<p>themes/：主题存放目录</p>
-
-<p>hugo.toml：站点的核心配置文件</p>
-
-<p>修改 hugo.toml 文件，可以修改网站的语言、标题、网址、分页、permalinks等功能。</p>
-
-<p><strong>第三步：安装主题样式</strong></p>
-
-<p>Hugo 本身不自带任何样式，需要单独安装主题。这里以轻量、简洁著称的 PaperMod 主题为例，用 Git 子模块的方式引入：</p>
-
-<p>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod</p>
-
-<p>之后编辑 hugo.toml ，在文件中加入下面这一行，指定使用这个主题：</p>
-
-<p>theme = &quot;PaperMod&quot;</p>
-
-<p>如果不用Git子模块，也可以直接从GitHub仓库下载该主题的压缩包，解压到 themes/ 目录下即可，效果是一样的。</p>
-
-<p><strong>第四步：写文章</strong></p>
-
-<p>创建好了站点后，现在网站中还什么内容都没有，执行下方命令创建一篇markdown格式的文章：</p>
-
-<p>hugo new posts/hello-world.md</p>
-
-<p>生成的文件位于 content/posts/hello-world.md，打开后大致长这样：</p>
-
-<p>---<br />
-title: &quot;Hello World&quot;<br />
-date: 2026-08-30T10:00:00+08:00<br />
-draft: true<br />
----</p>
-
-<p>顶部用 --- 包裹起来的部分是文章的配置信息，用来定义标题、发布时间、是否为草稿、标签、目录等元信息。正文部分使用标准 Markdown 语法编写就可以了，支持标题、列表、代码块、图片等常见格式。</p>
-
-<p>在顶部加入 tags 和 categories 字段，配合主题自带的归档页面，可以自动生成标签云和分类列表。</p>
-
-<p>默认新建文章为草稿状态，必须将 draft 改为 false，上线后才能正常展示。</p>
-
-<p>把图片放进 static/images/ 目录，在文章中用 /images/xxx.png 的相对路径引用即可。</p>
-
-<p><strong>第五步：预览并生成静态文件</strong></p>
-
-<p>一切准备就绪后，可以使用下面的命令，启动本地开发服务器，实时预览效果：</p>
-
-<p>hugo server</p>
-
-<p>命令执行后，在浏览器打开 http://localhost:1313 就能看到网站了。修改任何文件保存后，页面会自动刷新，不需要手动重启服务。</p>
-
-<p>确认内容和样式都没问题之后，执行下面的命令生成最终的静态网站：</p>
-
-<p>hugo</p>
-
-<p>Hugo会把所有内容编译到 public/ 目录下，这里面的文件就是可以直接部署的完整网站，全是纯 HTML、CSS 和 JS，不依赖任何后端服务。把这个目录发布到Cloudflare Pages或GitHub Pages等静态网站托管平台，即可完成部署上线，具体如何部署，可参考我之前的两篇文章。</p>
-
-<p>如果对于页面不满意，可以修改模板，强烈建议使用目前的Codex、Antigravity或Trae等AI编程工具来修改模板，效率非常高。</p>
-
-<p><strong>小结</strong></p>
-
-<p>总的来说，整个流程走下来其实并不复杂：安装 Hugo、初始化站点、装主题、写 Markdown、本地预览、生成静态文件、推送部署。相比传统的 CMS 建站方式，Hugo 的好处在于内容都是纯文本文件，可以用 Git 做版本管理，也不用操心数据库和服务器安全问题，特别适合个人博客、文档站点这类以内容为主的场景。</p>
-]]></description><category>网站建设</category><comments>https://www.williamlong.info/archives/7559.html#comment</comments><wfw:commentRss>https://www.williamlong.info/feed.asp?cmt=7559</wfw:commentRss></item><item><title>解决Cloudflare Pages的308自动重定向问题</title><author>williamlong.info@gmail.com (williamlong)</author><link>https://www.williamlong.info/archives/7558.html</link><pubDate>Thu, 20 Aug 2026 18:40:04 +0800</pubDate><guid>https://www.williamlong.info/archives/7558.html</guid><description><![CDATA[<p>我在使用Cloudflare Pages的时候，发现了一个非常奇怪的问题，就是发布的带有.html后缀的网页，会自动308重定向到一个没有.html的地址，并且，这个行为是Cloudflare Pages底层硬编码，无法通过配置参数关闭。</p>
-
-<p>这个问题我用中文咨询了所有主流AI，都没有得到好的解决，有给方案说，使用.htm代替.html，因为Cloudflare Pages不会重写.htm文件，但这对于老网站的SEO来说显然不行，还有一个方案说是使用 Pages 函数进行拦截，说将一段代码放入functions/[[path]].js 文件中，然后重新发布，然后就会返回 200 + HTML内容，不会再有308重定向的状态码。我按照其方法发布了，也不行。</p>
-
-<p>接着，我使用Google搜索&ldquo;Cloudflare Pages html 308 Permanent Redirect&rdquo;这样的关键词，看到一大堆Cloudflare的用户反馈同样的问题，但每一个问题都没有给出解决方案，翻了好几页也没找到解决方法。</p>
-
-<p>后来，我用Google Translate将我原先的问题翻译为英文，然后提交给Google Gemini，这时候Gemini给出了一个全新的方案，这是以前没见过的，我按照这个新方案试了一下，竟然成功了，使用 curl -I URL，得到的回应从308变成200了，再访问网页，也没有再跳转了，看来还是英文AI更靠谱啊。</p>
-
-<p>这个解决方案，通过使用Cloudflare Pages 函数（中间件）绕过308重定向限制，在重定向发生之前拦截请求，在内部获取HTML，并将其连同200 OK状态一起返回给浏览器。</p>
-
-<p>下面就是保留.html扩展名的解决方案：</p>
-
-<p>1、在项目根目录（与输出/构建目录同级，但不要位于其内部）创建一个文件夹functions。</p>
-
-<p>2、在它里面创建一个名为_middleware.js的文件。</p>
-
-<p>3、添加以下代码以拦截.html请求：</p>
-
-<p>JavaScript代码如下：</p>
-
-<p>export async function onRequest(context) {<br />
-&nbsp; const url = new URL(context.request.url);<br />
-&nbsp; // 1. Check if the incoming request is for an .html file<br />
-&nbsp; if (url.pathname.endsWith(&#39;.html&#39;)) {<br />
-&nbsp; &nbsp; // 2. Remove the .html extension for the internal lookup<br />
-&nbsp; &nbsp; url.pathname = url.pathname.slice(0, -5);<br />
-&nbsp; &nbsp; // 3. Clone the original request (to keep headers) but use the new URL<br />
-&nbsp; &nbsp; const newRequest = new Request(url.toString(), context.request);<br />
-&nbsp; &nbsp; // 4. Fetch the extension-less asset internally.&nbsp;<br />
-&nbsp; &nbsp; // This returns the 200 HTML response directly to the browser.<br />
-&nbsp; &nbsp; return context.env.ASSETS.fetch(newRequest);<br />
-&nbsp; }<br />
-&nbsp; // For all other requests, proceed to normal Cloudflare routing<br />
-&nbsp; return context.next();<br />
-}</p>
-
-<p>这种方法的原理是，当用户请求.html页面时，此中间件会捕获该请求，这个函数会在后台秘密地向 Cloudflare 请求不带扩展名的页面路径，然后，它会获取成功的HTML 响应，并将其直接发送回原始URL，这时候，旧永久链接将立即加载，无需任何重定向跳转。</p>
-
-<p>需要注意的是，这个功能并不是无限使用的，免费的Cloudflare Pages用户每天的额度是十万次，超过十万次以后当天该函数就停了，需要等到第二天重置额度。</p>
-]]></description><category>网站建设</category><comments>https://www.williamlong.info/archives/7558.html#comment</comments><wfw:commentRss>https://www.williamlong.info/feed.asp?cmt=7558</wfw:commentRss></item></channel></rss>
+]]></description><category>生活感悟</category><comments>https://www.williamlong.info/archives/7560.html#comment</comments><wfw:commentRss>https://www.williamlong.info/feed.asp?cmt=7560</wfw:commentRss></item></channel></rss>

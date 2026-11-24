@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="applicable-device" content="pc,mobile">
 	<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" /> 
-	<link rel="stylesheet" type="text/css" media="all" href="/zb_users/theme/SimplePro/style/style.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/style.css"/>
 	<!--[if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/zb_users/theme/SimplePro/style/css/ie6_hack.css" />
+	<link rel="stylesheet" type="text/css" href="/style/css/ie6_hack.css" />
 	<![endif]-->
 	<script data-ad-client="ca-pub-8464600688944785" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="canonical" href="/archives/3658.html"/>
@@ -45,12 +45,10 @@
 		2013-11-11 9:54:43 | 
 		作者: 音乐天堂 | 
 		分类: <a href="/cat/software.html" title="软件应用" rel="category tag">软件应用</a> | 
-		评论: 27 | 
-		浏览: <span class="AddView" id="spn3658" data-id="3658"></span>
-	</div><!-- END post-meta -->
+		评论: 27</div><!-- END post-meta -->
         <div class="clear"></div>
 		<div class="entry-content">
-		<a href="/tag/Telecom.html" rel="tag"><img src="/logo/Telecom.gif" alt="电信" class="thumb" width="80" height="80" /></a><p>一直以来，电信通过HTTP劫持推送广告的方式已经存在了很多年了，这种手段至今并未停止。这种手段月光博客曾经有多次曝光，见《<a target="_blank" href="/archives/335.html">电信级的网络弹出广告</a>》、《<a target="_blank" href="/archives/369.html">获取了电信恶意弹出广告的罪证</a>》和《<a target="_blank" href="/archives/439.html">谁控制了我们的浏览器？</a>》。虽然HTTP本身的不安全性导致有路由器控制权限的人（比如电信运营商）可以获得没有使用HTTPS登录认证的网站的注册用户的密码，但一开始我并不认为电信运营商会犯触犯法律的风险进行实施。但现在我发现我错了。</p><p>现在有证据显示电信运营商非但获取没有加密的HTTP登录的用户名和密码，还会通过HTTP劫持的手段获取通过RSA加密的用户名和密码。信息来源是国内最大的最权威的漏洞报告平台之一wooyun：<a target="_blank" href="http://zone.wooyun.org/content/2507">链接1</a>、<a target="_blank" href="https://www.evernote.com/shard/s43/sh/e37374d4-cff2-4fbc-bdd3-a9dff823a264/5181d501655126b61722ff846a152655">链接2</a>。</p><p>正如文中所说，国内某邮件服务商在登录入口处将用户输入的帐号和密码通过RSA加密后才会发送到网络上，通过截取网络数据包的方式已经无法对用户输入的密码进行破解了。但由于HTTP本身并没有加密功能，所以RSA的程序必须由邮件服务商以JavaScript的方式进行提供，而登录入口的HTML和所有的JavaScript会通过HTTP发送到用户的浏览器上。而正是由于HTTP的不安全性，导致电信运营商可以在HTML中插入附加的JavaScript代码，在对密码进行RSA加密之前将密码以明文形式发送到网络上。至此，密码已经可以通过抓取网络数据包的方式进行截取了。</p><p style="text-align: center"><img alt="电信级的RSA加密后的密码的破解方法" src="/upload/3658_1.jpg" /></p><p>这种手段并非DNS级的域名劫持。如果是域名劫持，那么用户访问的也就不是邮件服务商的服务器，而是第三方的服务器了。如果要保证用户可以正常登录邮箱，那么第三方服务器就必须将用户浏览器的请求转发到邮件服务商，这样邮件服务商将会看到大量用户通过同一个或少数几个IP地址进行登录，很快就会发现问题。所以只有控制路由器进行TCP级别的HTTP劫持（仿冒邮件服务商的IP发送附加的JavaScript的数据包）才能做到神不知鬼不觉（虽然出了BUG导致曝光了，但如果没有BUG说不定到现在仍旧无人察觉）。</p><p>联想到《<a target="_blank" href="/archives/2058.html">破解Google Gmail的https新思路</a>》中所说的情况，电信运营商和国内的CA机构受到某些部门的指使进行实施，对SSL不了解的人完全可以做到神不知鬼不觉地破解用户的密码。如果是DNS劫持还可以通过多种手段进行反劫持，但如果通过类似HTTP劫持的这种IP仿冒的技术呢？据我观察，CNNIC根证书并未在各大浏览器中已被移除，所以关注于安全的朋友还是需要手动进行处理。也正如wooyun的文中所说，看到国内CA随便签署的证书，一定要保存下来提交给各大浏览器厂家，国内的中级CA还有很多。</p><p>题外话：虽然全球的网络自由在恶化，但并不代表我们就可以放弃追求网络自由。</p><p>来源：投稿，作者：&nbsp;lehui99 (at) <a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a> . com</p><Script language="javascript" type="text/javascript" src="/zb_users/plugin/CommDig/dig.js"></script> 
+		<a href="/tag/Telecom.html" rel="tag"><img src="/logo/Telecom.gif" alt="电信" class="thumb" width="80" height="80" /></a><p>一直以来，电信通过HTTP劫持推送广告的方式已经存在了很多年了，这种手段至今并未停止。这种手段月光博客曾经有多次曝光，见《<a target="_blank" href="/archives/335.html">电信级的网络弹出广告</a>》、《<a target="_blank" href="/archives/369.html">获取了电信恶意弹出广告的罪证</a>》和《<a target="_blank" href="/archives/439.html">谁控制了我们的浏览器？</a>》。虽然HTTP本身的不安全性导致有路由器控制权限的人（比如电信运营商）可以获得没有使用HTTPS登录认证的网站的注册用户的密码，但一开始我并不认为电信运营商会犯触犯法律的风险进行实施。但现在我发现我错了。</p><p>现在有证据显示电信运营商非但获取没有加密的HTTP登录的用户名和密码，还会通过HTTP劫持的手段获取通过RSA加密的用户名和密码。信息来源是国内最大的最权威的漏洞报告平台之一wooyun：<a target="_blank" href="http://zone.wooyun.org/content/2507">链接1</a>、<a target="_blank" href="https://www.evernote.com/shard/s43/sh/e37374d4-cff2-4fbc-bdd3-a9dff823a264/5181d501655126b61722ff846a152655">链接2</a>。</p><p>正如文中所说，国内某邮件服务商在登录入口处将用户输入的帐号和密码通过RSA加密后才会发送到网络上，通过截取网络数据包的方式已经无法对用户输入的密码进行破解了。但由于HTTP本身并没有加密功能，所以RSA的程序必须由邮件服务商以JavaScript的方式进行提供，而登录入口的HTML和所有的JavaScript会通过HTTP发送到用户的浏览器上。而正是由于HTTP的不安全性，导致电信运营商可以在HTML中插入附加的JavaScript代码，在对密码进行RSA加密之前将密码以明文形式发送到网络上。至此，密码已经可以通过抓取网络数据包的方式进行截取了。</p><p style="text-align: center"><img alt="电信级的RSA加密后的密码的破解方法" src="https://static.williamlong.info/upload/3658_1.jpg" /></p><p>这种手段并非DNS级的域名劫持。如果是域名劫持，那么用户访问的也就不是邮件服务商的服务器，而是第三方的服务器了。如果要保证用户可以正常登录邮箱，那么第三方服务器就必须将用户浏览器的请求转发到邮件服务商，这样邮件服务商将会看到大量用户通过同一个或少数几个IP地址进行登录，很快就会发现问题。所以只有控制路由器进行TCP级别的HTTP劫持（仿冒邮件服务商的IP发送附加的JavaScript的数据包）才能做到神不知鬼不觉（虽然出了BUG导致曝光了，但如果没有BUG说不定到现在仍旧无人察觉）。</p><p>联想到《<a target="_blank" href="/archives/2058.html">破解Google Gmail的https新思路</a>》中所说的情况，电信运营商和国内的CA机构受到某些部门的指使进行实施，对SSL不了解的人完全可以做到神不知鬼不觉地破解用户的密码。如果是DNS劫持还可以通过多种手段进行反劫持，但如果通过类似HTTP劫持的这种IP仿冒的技术呢？据我观察，CNNIC根证书并未在各大浏览器中已被移除，所以关注于安全的朋友还是需要手动进行处理。也正如wooyun的文中所说，看到国内CA随便签署的证书，一定要保存下来提交给各大浏览器厂家，国内的中级CA还有很多。</p><p>题外话：虽然全球的网络自由在恶化，但并不代表我们就可以放弃追求网络自由。</p><p>来源：投稿，作者：&nbsp;lehui99 (at) <a href="/tag/Gmail.html" title="Gmail"  Target="_blank" >Gmail</a> . com</p>
 <p style="text-align:center"><img src="/logo/Telecom.jpg" alt="电信级的RSA加密后的密码的破解方法" /></p>
 <div id="article_dig" style="text-align: right">
 <span id="note3658"></span><a href="javascript:commYea(3658);" id="dig3658">顶一下 ▲</a>(<span id="sdig3658"><Script language="javascript" type="text/javascript">showDig("3658");</script></span>) &nbsp; <a href="javascript:commNay(3658);" id="down3658">踩一下 ▼</a>(<span id="sdown3658"><Script language="javascript" type="text/javascript">showDown("3658");</script></span>)
@@ -89,12 +87,12 @@
 </div><div class="sidebar-box clearfix">
 	<h4>搜索</h4>
 	<ul class="divSearchPanel">
-	   <div><form method="get" action="https://cn.bing.com/search"><input type="text" name="q" id="edtSearch" size="12" value="" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input name="q1" type="hidden" value="site:williamlong.info" /></form></div>
+	   <div><form method="get" action="https://www.google.com/search"><input type="text" name="q" id="edtSearch" size="12" /><input type="submit" value="提交" name="btnG" id="btnPost" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="oe" value="UTF-8" /><input type="hidden" name="hl" value="zh-CN" /><input type="hidden" name="domains" value="www.williamlong.info" /><input type="hidden" name="sitesearch" value="www.williamlong.info" /></form></div>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站分类</h4>
 	<ul class="divCatalog">
-	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (196)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (519)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (920)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (918)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3166)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (335)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (674)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (277)</span></a></li></ul>
+	   <ul><li class="li-cate cate-1"><a href="/cat/weblog.html">网络日志<span class="article-nums"> (197)</span></a></li><li class="li-cate cate-2"><a href="/cat/life.html">生活感悟<span class="article-nums"> (529)</span></a></li><li class="li-cate cate-3"><a href="/cat/software.html">软件应用<span class="article-nums"> (935)</span></a></li><li class="li-cate cate-4"><a href="/cat/internet.html">互联网络<span class="article-nums"> (921)</span></a></li><li class="li-cate cate-5"><a href="/cat/tech.html">业界动态<span class="article-nums"> (3184)</span></a></li><li class="li-cate cate-6"><a href="/cat/program.html">编程开发<span class="article-nums"> (339)</span></a></li><li class="li-cate cate-7"><a href="/cat/webmaster.html">网站建设<span class="article-nums"> (681)</span></a></li><li class="li-cate cate-8"><a href="/cat/seo.html">搜索引擎<span class="article-nums"> (483)</span></a></li><li class="li-cate cate-9"><a href="/cat/map.html">网络地图<span class="article-nums"> (279)</span></a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>网站收藏</h4>
@@ -104,16 +102,16 @@
 </div><div class="sidebar-box clearfix">
 	<h4>热文排行</h4>
 	<ul class="article_hottest">
-	   <ul><li><a href="/archives/7520.html" title="我妈妈被电信诈骗95万元的全过程">我妈妈被电信诈骗95万元的全过程(5282)</a></li>
-<li><a href="/archives/7521.html" title="电信诈骗后的复盘：我妈妈的95万元，是怎么从手机银行里消失的">电信诈骗后的复盘：我妈妈的95万元，是怎(1562)</a></li>
-<li><a href="/archives/7523.html" title="7天3次，骗子骗走我母亲95万元">7天3次，骗子骗走我母亲95万元(555)</a></li>
-<li><a href="/archives/7525.html" title="中国2025社会热点大事记">中国2025社会热点大事记(4)</a></li>
-<li><a href="/archives/7522.html" title="“技术男”设三重安全墙，母亲95万存款还是被骗走了">“技术男”设三重安全墙，母亲95万存款还(550)</a></li>
-<li><a href="/archives/7516.html" title="网信办开展“清朗·整治恶意挑动负面情绪问题”专项行动">网信办开展“清朗·整治恶意挑动负面情绪问(688)</a></li>
-<li><a href="/archives/7515.html" title="翟欣欣敲诈勒索案一审获刑12年">翟欣欣敲诈勒索案一审获刑12年(439)</a></li>
-<li><a href="/archives/7514.html" title="《绝命毒师》影评：力工觉醒后的梭哈至死">《绝命毒师》影评：力工觉醒后的梭哈至死(614)</a></li>
-<li><a href="/archives/7513.html" title="《人工智能生成合成内容标识办法》正式施行">《人工智能生成合成内容标识办法》正式施行(396)</a></li>
-<li><a href="/archives/7511.html" title="腾讯子公司实习HR怒怼求职者后被开除">腾讯子公司实习HR怒怼求职者后被开除(95)</a></li></ul>
+	   <ul><li><a href="/archives/7567.html" title="徽剑被杀的反思：当歹徒冒充警察抓人，自媒体人该如何自保？">徽剑被杀的反思：当歹徒冒充警察抓人，自媒(365)</a></li>
+<li><a href="/archives/7568.html" title="个人站长服务器迁移实战：从 Windows 转到 Linux，AI 帮我全搞定">个人站长服务器迁移实战：从 Window(232)</a></li>
+<li><a href="/archives/7566.html" title="越南下龙湾河内旅游游记">越南下龙湾河内旅游游记(286)</a></li>
+<li><a href="/archives/7564.html" title="《纽约时报》：21世纪最佳电影100部">《纽约时报》：21世纪最佳电影100部(1107)</a></li>
+<li><a href="/archives/7563.html" title="《纽约时报》：21世纪最佳电视剧100部">《纽约时报》：21世纪最佳电视剧100部(743)</a></li>
+<li><a href="/archives/7562.html" title="使用PagesCMS和GitHub打造免费CMS网站">使用PagesCMS和GitHub打造免(728)</a></li>
+<li><a href="/archives/7561.html" title="使用VS Code和Github打造免费网站系统">使用VS Code和Github打造免费(737)</a></li>
+<li><a href="/archives/7560.html" title="母亲被配音兼职诈骗">母亲被配音兼职诈骗(1018)</a></li>
+<li><a href="/archives/7559.html" title="Hugo搭建静态网站教程">Hugo搭建静态网站教程(646)</a></li>
+<li><a href="/archives/7558.html" title="解决Cloudflare Pages的308自动重定向问题">解决Cloudflare Pages的3(436)</a></li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
 	<h4>推荐博客</h4>
@@ -123,24 +121,24 @@
 </div><div class="sidebar-box clearfix">
 	<h4>站点统计</h4>
 	<ul class="divStatistics">
-	   <ul><li>文章总数:7525</li><li>评论总数:199528</li><li>浏览总数:72073572</li><li>当前主题:SimplePro</li></ul>
+	   <ul><li>文章总数:7568</li><li>评论总数:199564</li><li>浏览总数:74929566</li><li>当前主题:SimplePro</li></ul>
 	</ul>
 </div><div class="sidebar-box clearfix">
-	<style type="text/css">.divContorPanel{display:none}</style>
+	<h4>控制面板</h4>
 	<ul class="divContorPanel">
-	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login"><a href="/zb_system/cmd.asp?act=login">[用户登录]</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a href="/zb_system/cmd.asp?act=vrs">[查看权限]</a></span></div>
+	   <div><span class="cp-hello">您好,欢迎到访网站!</span><br/><span class="cp-login">[用户登录]</span>&nbsp;&nbsp;<span class="cp-vrs">[查看权限]</span></div>
 	</ul>
 </div>
 		</div><!-- END sidebar -->
 	</div><!-- END container -->
 </div><!-- END wrap --> 
 <script src="/zb_system/script/common.js" type="text/javascript"></script>
-<script src="/zb_system/function/c_html_js_add.asp" type="text/javascript"></script>
+
 <script language="JavaScript" type="text/javascript">LoadRememberInfo();</script>
 <div id="copyright-wrap">
     <div id="copyright" class="container">
 		<ul>
-			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/story/" target="_blank">文摘</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
+			<li><a href="/archives/1.html">关于我们</a> ┊ <a href="/" target="_blank">博客</a> ┊ <a href="/weibo/" target="_blank">微博</a> ┊ <a href="/google/" target="_blank">地图</a> ┊ <a href="/info/" target="_blank">运营</a> ┊ <a href="/apps/" target="_blank">应用</a> ┊ <a href="/movie/" target="_blank">影评</a><div id="BlogPowerBy"><script type="text/javascript" src="/script/footer.js"></script></div></li>
 		</ul>
     </div><!-- END copyright-->
 </div><!-- END copyright-wrap -->
